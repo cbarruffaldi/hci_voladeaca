@@ -1,0 +1,162 @@
+
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+body{
+	background: #dee0dd;
+}
+
+#header-nav{
+	background: #087CA7;
+	border: 0;
+	margin-bottom:0;
+}
+
+#logo-img{
+	background: url('../img/logo.png') no-repeat;
+	width: 300px;
+	height: 60px;
+}
+
+
+#nav-list{
+	text-align: center;
+}
+
+#nav-list a{
+	height: 60px;
+	padding-top: 20px;
+	color: #e3e3e3;
+	font-size: 1.2em;
+	text-align: center;
+}
+
+#nav-list a:hover{
+	color: #030303;
+}
+
+#nav-list li{
+	height:60px;
+}
+
+
+.hvr-fade:hover, .hvr-fade:focus, .hvr-fade:active #nav-list li {
+  background-color: #93bcff;
+  color: white;
+}
+
+.body-contents{
+	background: url('../img/bg/paris.jpg') no-repeat;
+	background-size:cover;
+}
+/*
+#nav-list li:hover{
+	color: #0c004c;
+	background: #97ebfc;
+}*/
+
+.navbar-toggle{
+	margin-top: 15px;
+}
+
+.glyphicon{
+   padding-right: 5px;
+ }
+
+
+.titulo{
+	font-size: 2em;
+	padding: 0.1em 0 0.1em 0.5em;
+ 	border-top-right-radius: 5px;
+ 	border-top-left-radius: 3px;
+ }
+
+ .search_t{
+ 	background: #4d91ff;
+ 	color: #e6efff;
+ }
+
+ .promos{
+ 	background: #9e0b0b;
+ 	color: #e6efff;
+ }
+
+
+.searchcontent{
+	margin-top: 50px;
+}
+.searchbox{
+	/*background-color: #93bcff;*/
+	background:  rgba(147, 188, 255, 0.9);
+
+/*	background: #ffffff;  */
+	border: #93bcff 1px solid;
+	margin-bottom: 100px; 
+	padding-bottom: 1em;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	}
+
+.formtitle{
+	font-weight: bold;
+	font-style: #5b5b5b;
+	font-size: 90%;
+	padding-left: 3px;
+
+}
+
+.content{
+	display:hidden;
+	padding-bottom: 20px;
+	background: rgba(221, 95, 95, 0.8);
+	margin-top: 30px;
+	border-radius: 2px;
+	margin-bottom: 50px;
+}
+
+.botonera{
+	text-align: center;
+	padding-top: 30px;
+}
+
+.botonera button{
+	width: 200px;
+	text-align: center;
+	border-radius: 1px;
+	padding: 10px;
+}
+
+
+.idavuelta{
+	padding: 10px 10px;
+}
+
+.idavuelta div{
+	border-radius: 5px;
+	background: #004d99;
+	font-weight: bold;
+	color: #fff;
+	/*background: #ccdfff;*/
+}
+
+.idavuelta div a{
+	color: #ccf2ff;
+	font-weight: bold;
+}
+
+footer{
+	background: #1a1a00;
+	color: #ffffff;
+	border-top: 5px;
+	border-color: #ffffff;
+	padding-top:10px;
+	line-height: 50px;
+}
+
+
+
+
+
+
+
