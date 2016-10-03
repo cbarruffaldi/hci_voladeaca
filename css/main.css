@@ -9,7 +9,8 @@ body{
 
 #header-nav{
 	background: #087CA7;
-	border: 0;
+	border-radius: 0;
+	border:0;
 	margin-bottom:0;
 }
 
@@ -47,7 +48,7 @@ body{
 }
 
 .body-contents{
-	background: url('../img/bg/paris.jpg') no-repeat;
+	background: url('../img/bg/beach.jpg') no-repeat;
 	background-size:cover;
 }
 /*
@@ -66,6 +67,7 @@ body{
 
 
 .titulo{
+	font-family: 'Oswald', sans-serif;
 	font-size: 2em;
 	padding: 0.1em 0 0.1em 0.5em;
  	border-top-right-radius: 5px;
@@ -78,7 +80,7 @@ body{
  }
 
  .promos{
- 	background: #9e0b0b;
+	background: rgba(0, 103, 0, 0.8);
  	color: #e6efff;
  }
 
@@ -109,7 +111,9 @@ body{
 .content{
 	display:hidden;
 	padding-bottom: 20px;
-	background: rgba(221, 95, 95, 0.8);
+	background: url('../img/polka.jpg');
+	background-repeat:  repeat;
+ 	background:  rgba(0, 153, 0, 0.8); 
 	margin-top: 30px;
 	border-radius: 2px;
 	margin-bottom: 50px;

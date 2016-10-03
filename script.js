@@ -24,10 +24,10 @@ function fillMonth(event){
 function fillWeeks(event){
 	if(expanded.week){
 		selectButton(event.target, "week");
-		make_available("dest");
+		expanded["dest"] || make_available("dest");
 	}
-
-showPack(); //DEDUG
+	
+	showPack(); //DEDUG
 
 }
 
@@ -66,7 +66,7 @@ function changeSelected(type, obj){
 	}
 
 	selected[type]  = obj;
-	selected[type].attr("class", "btn btn-primary btn-" + type);
+	selected[type].attr("class", "btn btn-success btn-" + type);
 }
 
 function showPack(){
