@@ -1,4 +1,48 @@
+ //DATEPICKER
+  $( function() {
+    var dateFormat = "dd/mm/yy",
+      from = $( "#datepicker1" )
+        .datepicker({
+          defaultDate: "+1w",
+          changeMonth: true,
+        })
+        .on( "change", function() {
+          to.datepicker( "option", "minDate", getDate( this ) );
+        }),
+      to = $( "#datepicker2" ).datepicker({
+        defaultDate: "+1w",
+        changeMonth: true,
+      })
+ 
+
+    function getDate( element ) {
+      var date;
+      try {
+        date = $.datepicker.parseDate( dateFormat, element.value );
+      } catch( error ) {
+        date = null;
+      }
+      return date;
+    }
+  } );
+
+
+// Fin datepicker
+
 //Defino cosas en el scope global?
+var buttons = document.querySelectorAll(".btn-month");
+for(var i = 0; i < buttons.length ; i++)
+	buttons[i].addEventListener("click", fillMonth); 
+
+buttons = document.querySelectorAll(".btn-week");
+for(var i = 0; i < buttons.length ; i++)
+	buttons[i].addEventListener("click", fillWeeks); 
+
+buttons = document.querySelectorAll(".btn-dest");
+for(var i = 0; i < buttons.length ; i++)
+	buttons[i].addEventListener("click", fillDest); 
+
+
 var promocion = {};
 
 var selected = {
@@ -14,16 +58,17 @@ var expanded = {
 }
 
 
-function fillMonth(event){
-	selectButton(event.target, "month");
+function fillMonth(){
+	console.log(this);
+	selectButton(this, "month");
 	expanded["week"] || make_available("week");
 	showPack(); //DEDUG
 }
 
 
-function fillWeeks(event){
+function fillWeeks(){
 	if(expanded.week){
-		selectButton(event.target, "week");
+		selectButton(this, "week");
 		expanded["dest"] || make_available("dest");
 	}
 	
@@ -32,9 +77,9 @@ function fillWeeks(event){
 }
 
 
-function fillDest(event){
+function fillDest(){
 	if(expanded.dest){
-		selectButton(event.target, "dest");
+		selectButton(this, "dest");
 	}
 
 showPack(); //DEDUG

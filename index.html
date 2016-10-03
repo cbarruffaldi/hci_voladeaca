@@ -135,26 +135,26 @@
   <div class="row content">
   <div class="titulo promos">Explorar promociones</div> 
   <div class="row botonera promo_month">
-                <button type="button" class="btn btn-default btn-month" value="8" id="AUG" onclick="fillMonth(event);">Agosto</button>
-                <button type="button" class="btn btn-default btn-month" value="9" id="SEPT" onclick="fillMonth(event)">Septiembre</button>
-                <button type="button" class="btn btn-default btn-month" value="10" id="OCT" onclick="fillMonth(event)"> Octubre</button>
-                <button type="button" class="btn btn-default btn-month" value="11" id="NOV" onclick="fillMonth(event)">Noviembre</button>
+                <button type="button" class="btn btn-default btn-month" value="8" id="AUG">Agosto</button>
+                <button type="button" class="btn btn-default btn-month" value="9" id="SEPT">Septiembre</button>
+                <button type="button" class="btn btn-default btn-month" value="10" id="OCT"> Octubre</button>
+                <button type="button" class="btn btn-default btn-month" value="11" id="NOV">Noviembre</button>
   </div>
 
    <div class="row botonera" id="promo_week">
-                <button type="button" class="btn btn-default btn-week disabled" value="0" id="2w" onclick="fillWeeks(event)">Fin de semana</button>
-                <button type="button" class="btn btn-default btn-week disabled" value="1" id="3w" onclick="fillWeeks(event)">Una semana</button>
-                <button type="button" class="btn btn-default btn-week disabled" value="2" id="4w" onclick="fillWeeks(event)">Dos semanas</button>
-                <button type="button" class="btn btn-default btn-week  disabled" value="3" id="5w" onclick="fillWeeks(event)">¡Cualquier momento!</button>
+                <button type="button" class="btn btn-default btn-week disabled" value="0" id="2w">Fin de semana</button>
+                <button type="button" class="btn btn-default btn-week disabled" value="1" id="3w">Una semana</button>
+                <button type="button" class="btn btn-default btn-week disabled" value="2" id="4w">Dos semanas</button>
+                <button type="button" class="btn btn-default btn-week  disabled" value="3" id="5w">¡Cualquier momento!</button>
 
   </div>   
 
 
   <div class="row botonera" id="promo_dest">
-          <button type="button" class="btn btn-default btn-dest disabled" value="0" id="pb" onclick="fillDest(event)">Playas de Brasil</button>
-          <button type="button" class="btn btn-default btn-dest disabled" value="1" id="pp" onclick="fillDest(event)">Paris</button>
-          <button type="button" class="btn btn-default btn-dest disabled" value="2" id="lon" onclick="fillDest(event)">Londres</button>
-          <button type="button" class="btn btn-default btn-dest disabled" value="3" id="mun" onclick="fillDest(event)">Munich</button>
+          <button type="button" class="btn btn-default btn-dest disabled" value="0" id="pb">Playas de Brasil</button>
+          <button type="button" class="btn btn-default btn-dest disabled" value="1" id="pp">Paris</button>
+          <button type="button" class="btn btn-default btn-dest disabled" value="2" id="lon">Londres</button>
+          <button type="button" class="btn btn-default btn-dest disabled" value="3" id="mun">Munich</button>
   </div>
 
     <div class="row botonera" id="showInfo"></div>
@@ -184,36 +184,6 @@
   <script src="jqueryui/jquery-ui.js"></script>
   <script src="jqueryui/uidatepicker-es.js"></script>
   <script>
-
-  
-  $( function() {
-    var dateFormat = "dd/mm/yy",
-      from = $( "#datepicker1" )
-        .datepicker({
-          defaultDate: "+1w",
-          changeMonth: true,
-        })
-        .on( "change", function() {
-          to.datepicker( "option", "minDate", getDate( this ) );
-        }),
-      to = $( "#datepicker2" ).datepicker({
-        defaultDate: "+1w",
-        changeMonth: true,
-      })
- 
-
-    function getDate( element ) {
-      var date;
-      try {
-        date = $.datepicker.parseDate( dateFormat, element.value );
-      } catch( error ) {
-        date = null;
-      }
-      return date;
-    }
-  } );
-
-
   </script>
 
   <script src="script.js"></script>
