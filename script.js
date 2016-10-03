@@ -1,41 +1,30 @@
 //Defino cosas en el scope global?
-var promocion = {
-};
+var promocion = {};
 
-var selected = {};
+var selected = {
+	month: null,
+	dest: null,
+	week: null
+};
 
 var expanded = {
 	month: true,
 	dest: false,
-	weeks: false
+	week: false
 }
-
 
 
 function fillMonth(event){
 	selectButton(event.target, "month");
-
-	expand("weeks", "#promo_weeks", 
-                '<button type="button" class="btn btn-default" value="0" id="2w" onclick="fillWeeks(event)">Fin de semana</button>'
-               + '<button type="button" class="btn btn-default" value="1" id="3w" onclick="fillWeeks(event)">Una semana</button>'
-               + '<button type="button" class="btn btn-default" value="2" id="4w" onclick="fillWeeks(event)">Dos semanas</button>'
-              + '<button type="button" class="btn btn-default" value="3" id="5w" onclick="fillWeeks(event)">¡Cualquier momento!</button>'
-		);
-
+	expanded["week"] || make_available("week");
 	showPack(); //DEDUG
 }
 
 
 function fillWeeks(event){
-	if(expanded.weeks){
-		selectButton(event.target, "weeks");
-
-		expand("dest","#promo_dest",
-					 '<button type="button" class="btn btn-default" value="0" id="pb" onclick="fillDest(event)">Playas de Brasil</button>'
-	               + '<button type="button" class="btn btn-default" value="1" id="pp" onclick="fillDest(event)">Paris</button>'
-	               + '<button type="button" class="btn btn-default" value="2" id="lon" onclick="fillDest(event)">Londres</button>'
-	               + '<button type="button" class="btn btn-default" value="3" id="mun" onclick="fillDest(event)">Munich</button>' );
-
+	if(expanded.week){
+		selectButton(event.target, "week");
+		make_available("dest");
 	}
 
 showPack(); //DEDUG
@@ -53,6 +42,13 @@ showPack(); //DEDUG
 }
 
 
+function make_available(category){
+	$(".btn-" + category).attr("class", "btn btn-default btn-"+category); 	
+	expanded[category] = true;
+}
+
+
+
 function selectButton(target, processing){
 	var id = target.getAttribute("id");
 	var obj = $('#' + id);
@@ -63,21 +59,14 @@ function selectButton(target, processing){
 }
 
 
-function expand(processing, id, code){
-	if(!expanded[processing]){
-			expanded[processing] = true;
-			$( id ).html( code );
-	}
-}
-
 function changeSelected(type, obj){
 
 	if(selected[type]){
-		selected[type].attr("class", "btn btn-default");
+		selected[type].attr("class", "btn btn-default btn-" + type);
 	}
 
 	selected[type]  = obj;
-	selected[type].attr("class", "btn btn-primary");
+	selected[type].attr("class", "btn btn-primary btn-" + type);
 }
 
 function showPack(){
