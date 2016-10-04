@@ -1,3 +1,5 @@
+jQuery(document).ready(function(){
+
 $(".btn-month").on("click", function(){fill(this, "month", "week")});
 $(".btn-week").on("click", function(){fill(this,"week", "dest")})
 $(".btn-dest").on("click", function(){fill(this, "dest")})
@@ -18,8 +20,7 @@ function fill(btn, selected, toExpand){
 	
 	if(toExpand){	
 		expanded[toExpand] || make_available(toExpand);
-		showPack();
-	}
+	} 
 }
 
 function make_available(category){
@@ -29,7 +30,9 @@ function make_available(category){
 
 
 function selectButton(button, type){
+	console.log(button.data("promo"));
 	promocion[type] = button.data("promo");
+
 
 	if(selected[type]){
 		selected[type].removeClass("btn-success");
@@ -50,3 +53,6 @@ function showPack(){
 	}
 	$("#showInfo").html(s);
 }
+
+
+}); //document.ready
