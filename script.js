@@ -25,29 +25,16 @@
       return date;
     }
   } );
-
-
 // Fin datepicker
-
-//Defino cosas en el scope global?
-/*var buttons = document.querySelectorAll(".btn-month");
-for(var i = 0; i < buttons.length ; i++)
-  buttons[i].addEventListener("click", fillMonth); 
-*/
-
-buttons = document.querySelectorAll(".btn-week");
-for(var i = 0; i < buttons.length ; i++)
-	buttons[i].addEventListener("click", function(){fill("week", "dest")}); 
-
-buttons = document.querySelectorAll(".btn-dest");
-for(var i = 0; i < buttons.length ; i++)
-	buttons[i].addEventListener("click", function(){fill("dest", "fin")}); 
 
 
 $(".btn-month").on("click", function(){fill(this, "month", "week")});
+$(".btn-week").on("click", function(){fill(this,"week", "dest")})
+$(".btn-dest").on("click", function(){fill(this, "dest")})
 
 var promocion = {};
 var selected = {};
+
 var expanded = {
 	month: true,
 	dest: false,
@@ -55,29 +42,31 @@ var expanded = {
 }
 
 
-function fill(a, selected, toExpand){
-	var self = $(a);
-	selectButton(self, selected);
+function fill(btn, selected, toExpand){
+	var button = $(btn);
+	selectButton(button, selected);
 	
-	expanded[toExpand] || make_available(toExpand);
-	showPack();
+	if(toExpand){	
+		expanded[toExpand] || make_available(toExpand);
+		showPack();
+	}
 }
 
 function make_available(category){
-	$(".btn-" + category).attr("class", "btn btn-default btn-"+category); 	
+	$(".btn-" + category).removeClass("disabled"); 	
 	expanded[category] = true;
 }
 
 
-function selectButton(btn, type){
-	promocion[type] = btn.attr("value");
+function selectButton(button, type){
+	promocion[type] = button.data("promo");
 
 	if(selected[type]){
 		selected[type].removeClass("btn-success");
 		selected[type].addClass("btn-default");
 	}
 
-	selected[type]  = btn;
+	selected[type]  = button;
 
 	selected[type].removeClass("btn-default");
 	selected[type].addClass("btn-success");
