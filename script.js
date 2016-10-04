@@ -30,60 +30,63 @@
 // Fin datepicker
 
 //Defino cosas en el scope global?
-var buttons = document.querySelectorAll(".btn-month");
+/*var buttons = document.querySelectorAll(".btn-month");
 for(var i = 0; i < buttons.length ; i++)
-	buttons[i].addEventListener("click", fillMonth); 
+  buttons[i].addEventListener("click", fillMonth); 
+*/
 
 buttons = document.querySelectorAll(".btn-week");
 for(var i = 0; i < buttons.length ; i++)
-	buttons[i].addEventListener("click", fillWeeks); 
+	buttons[i].addEventListener("click", function(){fill("week", "dest")}); 
 
 buttons = document.querySelectorAll(".btn-dest");
 for(var i = 0; i < buttons.length ; i++)
-	buttons[i].addEventListener("click", fillDest); 
+	buttons[i].addEventListener("click", function(){fill("dest", "fin")}); 
 
+
+$(".btn-month").on("click", function(){fill(this, "month", "week")});
 
 var promocion = {};
-
-var selected = {
-	month: null,
-	dest: null,
-	week: null
-};
-
+var selected = {};
 var expanded = {
 	month: true,
 	dest: false,
-	week: false
+	week: false,
+	fin: true
 }
 
 
+function fill(a, selected, toExpand){
+	var self = $(a);
+	selectButton(self, selected);
+	expanded[toExpand] || make_available(toExpand);
+	showPack();
+}
+
 function fillMonth(){
-	console.log(this);
-	selectButton(this, "month");
+	var self = $(this);
+	selectButton(self, "month");
 	expanded["week"] || make_available("week");
 	showPack(); //DEDUG
 }
 
 
 function fillWeeks(){
+	var self = $(this);
 	if(expanded.week){
-		selectButton(this, "week");
+		selectButton(self, "week");
 		expanded["dest"] || make_available("dest");
 	}
-	
 	showPack(); //DEDUG
-
 }
 
 
 function fillDest(){
+	var self = $(this);
 	if(expanded.dest){
-		selectButton(this, "dest");
+		selectButton(self, "dest");
 	}
-
 showPack(); //DEDUG
-
 }
 
 
@@ -93,25 +96,18 @@ function make_available(category){
 }
 
 
-
-function selectButton(target, processing){
-	var id = target.getAttribute("id");
-	var obj = $('#' + id);
- 	
-	promocion[processing] = obj.attr("value");
-	changeSelected(processing, obj);
-
-}
-
-
-function changeSelected(type, obj){
+function selectButton(btn, type){
+	promocion[type] = btn.attr("value");
 
 	if(selected[type]){
-		selected[type].attr("class", "btn btn-default btn-" + type);
+		selected[type].removeClass("btn-success");
+		selected[type].addClass("btn-default");
 	}
 
-	selected[type]  = obj;
-	selected[type].attr("class", "btn btn-success btn-" + type);
+	selected[type]  = btn;
+
+	selected[type].removeClass("btn-default");
+	selected[type].addClass("btn-success");
 }
 
 function showPack(){
