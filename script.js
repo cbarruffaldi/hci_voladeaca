@@ -52,43 +52,16 @@ var expanded = {
 	month: true,
 	dest: false,
 	week: false,
-	fin: true
 }
 
 
 function fill(a, selected, toExpand){
 	var self = $(a);
 	selectButton(self, selected);
+	
 	expanded[toExpand] || make_available(toExpand);
 	showPack();
 }
-
-function fillMonth(){
-	var self = $(this);
-	selectButton(self, "month");
-	expanded["week"] || make_available("week");
-	showPack(); //DEDUG
-}
-
-
-function fillWeeks(){
-	var self = $(this);
-	if(expanded.week){
-		selectButton(self, "week");
-		expanded["dest"] || make_available("dest");
-	}
-	showPack(); //DEDUG
-}
-
-
-function fillDest(){
-	var self = $(this);
-	if(expanded.dest){
-		selectButton(self, "dest");
-	}
-showPack(); //DEDUG
-}
-
 
 function make_available(category){
 	$(".btn-" + category).attr("class", "btn btn-default btn-"+category); 	
