@@ -106,7 +106,6 @@ body{
 	font-style: #5b5b5b;
 	font-size: 90%;
 	padding-left: 3px;
-
 }
 
 .content{
@@ -166,7 +165,6 @@ footer{
 
 .filter-area {
 	margin: 8px;
-	padding: 5px;
 }
 
 .filter-area .panel {
@@ -175,11 +173,6 @@ footer{
 	border-style: solid;
 	border-radius: 3px;
 	border-color: #d6d6d6;
-}
-
-.no-gutters {
-	padding: 0;
-	margin: 0;
 }
 
 .filter-area h2 {
@@ -198,5 +191,51 @@ footer{
 
 #price-slider {
 	width: 90%;
+	margin: auto;
 }
 
+.thin-search-box {
+	border-style: solid;
+	border-width: thin;
+	border-color: #d6d6d6;
+	background-color: white;
+	padding: 5px;
+	border-radius: 5px;
+	margin: 0;
+}
+
+.date-label {
+	margin: 0;
+	padding-bottom: 0;
+	padding-left: 5px;
+	padding-top: 10px;
+}
+
+.date-input-ida {
+	margin-right: 0;
+	padding-right: 0;
+}
+
+.date-input-vuelta {
+	margin-left: 0;
+	padding-left: 0;
+}
+
+.boton-pasajeros {
+	margin-right: 2em;
+}
+
+.search-button-small {
+	margin-top: 40px;
+}
+
+.depart-time-button {
+	display: inline;
+}
+
+.depart-time-button img {
+	border: 1px solid #9b9b9b;
+/*	border-top: 4px solid black;*/
+	margin: 0;
+	padding: 0;
+}

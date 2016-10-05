@@ -15,6 +15,7 @@
 	<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
 
 	<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+	<script src="search-page-script.js"></script>
 </head>
 
 <body>
@@ -52,20 +53,46 @@
 
 
 
-	<div class="container-fluid no-gutters">
+	<div class="container-fluid">
 		<div class="row">
 			<div class ="col-md-3">
 				<div class= "panel filter-area">
 					<h2> Filtros </h2>
-					<div class="panel price-filter-panel">
+					<div class="panel price-filter-panel containter">
 						<h3> Precio</h3>
-						<input id='price-slider' type="range" min="0" max="100" value="50"/>
-						<strong class="min-price-value"> $0</strong>
-						<strong class="max-price-value"> $100</strong>
+						<input id='price-slider' type="range" min="0" max="100" value="50" oninput="updateValueText(this.value)"/>
+						<div class="row">
+							<div class="col-md-3">
+								<strong class="min-price-value"> $0</strong>
+							</div>
+							<div class="col-md-2 col-md-offset-2">
+								<strong id="price-slider-value">$50</strong>
+							</div>
+							<div class="col-md-3 col-md-offset-2">
+								<strong class="max-price-value">$100</strong>
+							</div>
+						</div>
 					</div>
+
 					<div class="panel time-filter-panel">
 						<h3> Horarios</h3>
+						<div class="depart-time-grid">
+							<span class="depart-time-button" >
+								<img src="madru.png" width=50 height=50 data-dep-time=0/>
+							</span>
+							<span class="depart-time-button">
+								<img src="mania.png" width=50 height=50  data-dep-time=1/>
+							</span>
+							<span class="depart-time-button" >
+								<img src="tarde.png" width=50 height=50 data-dep-time=2/>
+							</span>
+							<span class="depart-time-button" >
+								<img src="noche.png" width=50 height=50 data-dep-time=3/>
+							</span>
+
+						</div>
 					</div>
+
 					<div class="panel airport-filter-panel">
 						<h3>Aeropuertos</h3>
 						<h4>Origen</h4>
@@ -76,32 +103,87 @@
 					</div>
 				</div>
 			</div> 
+
 			<div class="col-md-9"> <!-- derecha de los filtros -->
-				<div class="containter-fluid results-area no-gutters">
+				<!-- Caja de búsqueda -->
+				<div class="thin-search-box">
 					<div class="row">
-						<div class="thin-search-box">
-							Search box
+
+
+						<div class="col-md-5"> <!-- destinos -->
+							<div class="row ida-vuelta-buttons">
+								<p>Ida y Vuelta | Solo ida</p>
+							</div>
+							<div class="row ida-vuelta-inputs">
+								<div class="form-group">
+									<div class="col-md-6 input-ida">
+										<input type="text" class="form-control" placeholder="Ciudad o aeropuerto...">
+									</div>
+									<div class="col-md-6 input-vuelta">
+										<input type="text" class="form-control" placeholder="Ciudad o aeropuerto..."/>
+									</div>
+								</div>
+							</div>
 						</div>
-					</div>
-					<div class="cheap-flights-carousel">
-						Flights carousel
-					</div>
-					<div class="3days-button">
-						3 days button
-					</div>
-					<div class="row">
-						<div class="order-by-menu">
-							Order by
+
+						<div class="col-md-4"> <!-- fechas -->
+							<div class="row">
+								<div class="form-group">
+									<div class="col-md-6 date-input-ida">
+										<p class="date-label">Ida</p>
+										<input type="text" class="form-control" id='datepicker-ida' placeholder='dd/mm/aaaa'/>
+									</div>
+									<div class="col-md-6 date-input-vuelta">
+										<p class="date-label">Vuelta</p>
+										<input type="text" class="form-control" id='datepicker-vuelta' placeholder='dd/mm/aaaa'/>
+									</div>
+								</div>
+							</div>
 						</div>
-						<div class="currency-menu">
-							Currency
+
+						<!-- TODO: ALINEARLO VERTICALMENTE NO SE COMO -->
+						<div class="col-md-3">
+							<span class="btn-group boton-pasajeros">
+								<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									Pasajeros <span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu">
+									<li><a href="#">Adultos</a></li>
+									<li><a href="#">Niños</a></li>
+									<li><a href="#">Infantes</a></li>
+								</ul>
+							</span>
+
+							<span class="search-button-small">
+								<button type="button" class="btn btn-success">
+									<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+									Buscar
+								</button>
+							</span>
 						</div>
+
 					</div>
-					<div class="flight-options-area">
-						OPCION 1
-						OPCION 2
-					</div>
+
 				</div>
+			</div>
+
+			<div class="row cheap-flights-carousel">
+				Flights carousel	
+			</div>
+			<div class="row 3days-button">
+				3 days button
+			</div>
+			<div class="row">
+				<div class="order-by-menu">
+					Order by
+				</div>
+				<div class="currency-menu">
+					Currency
+				</div>
+			</div>
+			<div class="flight-options-area">
+				OPCION 1
+				OPCION 2
 			</div>
 		</div>
 	</div>
