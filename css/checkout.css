@@ -1,0 +1,81 @@
+.title-style{
+    background-color: #087CA7;
+    color:#e3e3e3;;
+    border-radius: 10px;
+    height: 50px;
+    text-align: center;
+    margin-bottom: 0px;
+
+}
+
+
+.sum-box{
+    border-radius: 10px;
+    background-color: ghostwhite;
+    border-style: groove;
+    line-height: 10px;
+    margin-bottom: 40px;
+}
+
+.form-tags{
+    margin: 10px;
+}
+
+.form-style{
+    border-radius: 10px;
+    background-color: ghostwhite;
+    margin-bottom: 30px;
+    border-style: groove;
+
+}
+
+.tab-content{
+    padding:5px
+}
+
+.nav-tabs{
+    border-radius: 30px;
+}
+
+.nav-tabs > li > a{
+    border: medium none;
+
+}
+.nav-tabs > li > a:hover{
+    background-color: #9acfea !important;
+    border: medium none;
+    border-radius: 0;
+    color:#fff;
+}
+
+#usr-birth{
+    width: 100px;
+
+}
+#usr-name, #usr-lname{
+    width:300px
+}
+
+#usr-docnum{
+    width: 200px;
+}
+
+label {
+    margin: 5px;
+    text-align: left;
+}
+
+
+
+
+.glyphicon.glyphicon-menu-right{
+    font-size: xx-large;
+    margin-bottom: 10px;
+}
+.glyphicon.glyphicon-user{
+    font-size: larger;
+    margin-top: 20px;
+}
+
+
+
