@@ -1,0 +1,130 @@
+<!doctype html>
+<head>
+	<meta charset="utf-8">
+	<title>VolaDeAca - Búsqueda</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+	<link rel="stylesheet" href="jqueryui/jquery-ui.css">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="css/hover.css" media="all">
+	<link rel="stylesheet" href="css/main.css">
+
+	<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+
+	<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+</head>
+
+<body>
+	<header>
+		<nav id="header-nav" class="navbar navbar-default">
+			<div class="container">
+				<div class="navbar-header">
+					<a href="#" class="pull-left">
+						<div id="logo-img"></div>
+					</a>
+
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapsable-nav" aria-expanded="false">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+
+				</div>
+
+
+				<div id="collapsable-nav" class="collapse navbar-collapse">
+					<ul id="nav-list" class="nav navbar-nav navbar-left">
+						<li class="hvr-fade">
+							<a href="#"><span class="glyphicon glyphicon-search"></span>Buscar</a>
+						</li>
+						<li class="hvr-fade"><a href="#"><span class="glyphicon glyphicon-usd"></span>Promociones</a></li>
+
+						<li class="hvr-bounce-to-top"><a href="#"><span class="glyphicon glyphicon-star"></span>Rese&ntilde;as</a></li>
+					</ul>
+				</div>
+
+			</div>
+		</nav>
+	</header>
+
+
+
+	<div class="container-fluid no-gutters">
+		<div class="row">
+			<div class ="col-md-3">
+				<div class= "panel filter-area">
+					<h2> Filtros </h2>
+					<div class="panel price-filter-panel">
+						<h3> Precio</h3>
+						<input id='price-slider' type="range" min="0" max="100" value="50"/>
+						<strong class="min-price-value"> $0</strong>
+						<strong class="max-price-value"> $100</strong>
+					</div>
+					<div class="panel time-filter-panel">
+						<h3> Horarios</h3>
+					</div>
+					<div class="panel airport-filter-panel">
+						<h3>Aeropuertos</h3>
+						<h4>Origen</h4>
+						<h4>Destino</h4>
+					</div>
+					<div class="panel airline-filter-panel">
+						<h3> Aerolíneas</h3>
+					</div>
+				</div>
+			</div> 
+			<div class="col-md-9"> <!-- derecha de los filtros -->
+				<div class="containter-fluid results-area no-gutters">
+					<div class="row">
+						<div class="thin-search-box">
+							Search box
+						</div>
+					</div>
+					<div class="cheap-flights-carousel">
+						Flights carousel
+					</div>
+					<div class="3days-button">
+						3 days button
+					</div>
+					<div class="row">
+						<div class="order-by-menu">
+							Order by
+						</div>
+						<div class="currency-menu">
+							Currency
+						</div>
+					</div>
+					<div class="flight-options-area">
+						OPCION 1
+						OPCION 2
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+	<footer>  
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4" />
+				<p>&copy; VolaDeAca 2016</p>
+			</div> <!-- row -->
+			</footer>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+		<script src="js/vendor/bootstrap.min.js"></script>
+
+		<script src="js/main.js"></script>
+		<script src="js/moment.js" ></script>
+
+		<script src="jqueryui/jquery-ui.js"></script>
+		<script src="jqueryui/uidatepicker-es.js"></script>
+		<script>
+		</script>
+		<script src="datepicker.js"></script>
+		</body>
