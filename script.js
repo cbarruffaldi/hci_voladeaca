@@ -3,7 +3,7 @@ jQuery(document).ready(function(){
 
 	$(".btn-month").on("click", function(){fill(this, "month", "week")});
 	$(".btn-week").on("click", function(){fill(this,"week", "dest")});
-	$(".btn-dest img").on("click", function(){fill(this, "dest")});
+	$(".btn-dest").on("click", function(){fill(this, "dest")});
 
 	var promocion = {};
 	var selected = {};
@@ -17,10 +17,14 @@ jQuery(document).ready(function(){
 
 	function fill(btn, selected, toExpand){
 		var button = $(btn);
-		selectButton(button, selected);
 
-		if(toExpand){	
-			expanded[toExpand] || make_available(toExpand);
+		if(expanded[selected]){
+			selectButton(button, selected);
+
+			if(toExpand){	
+				expanded[toExpand] || make_available(toExpand);
+			}
+
 		} 
 	}
 
