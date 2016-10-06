@@ -12,6 +12,9 @@
     <link rel="stylesheet" href="css/checkout.css">
     <link rel="stylesheet" href="css/main.css">
 
+    <script type="javascript">
+        $("a.tooltipLink").tooltip();
+    </script>
 </head>
 
 <body>
@@ -396,46 +399,189 @@
                                         <option>Masculino</option>
                                     </select>
                                 </div>
-                                <div class="form-group form-inline">
-                                    <label for="usr-birth" class="form-tags">Fecha Nacimiento:</label>
-                                    <input type="number" class="form-control" id="usr-birth" placeholder="dia">
-                                    <input type="number" class="form-control" id="usr-birth" placeholder="mes">
-                                    <input type="number" class="form-control" id="usr-birth" placeholder="año">
+                                <div class="form-group form-inline" id="birth-form">
+                                    <label for="birth-day" class="form-tags">Fecha Nacimiento:</label>
+                                    <input type="number" class="form-control " placeholder="dia" id="birth-day">
+                                    /
+                                    <label for="birth-month" class="form-tags hidden">Mes</label>
+                                    <input type="number" class="form-control" placeholder="mes" id="birth-month">
+                                    /
+                                    <label for="birth-year" class="form-tags hidden">Año</label>
+                                    <input type="number" class="form-control " placeholder="año" id="birth-year">
 
                                 </div>
                             </div>
                         </div>
 
                         <div class="row">
-                            <span class="glyphicon glyphicon-menu-right col-md-offset-11"></span>
+                            <button class="col-md-offset-11"><span class="glyphicon glyphicon-menu-right"></span></button>
                         </div>
                     </div>
 
                     <!-- RESUMEN -->
                     <div class="col-md-2">
-                        RESUMEN
+                        RESUMEN?
 
                     </div>
 
                 </div>
             </div>
+    </div>
 
-        </div>
 
         <!--TAB-->
         <div class="tab-pane" id="2">
-            <h3>COSAS DE PAGO</h3>
 
-        </div>
+            <!--FORMULARIO-->
+            <div class="container">
+                <div class="row title-style"><h3>Informacion de Pago</h3></div>
+                <div class="row form-style" id="form-row">
+                    <div class="col-md-8">
+                        <div class="row sub-style"><h4>Detalles de la tarjeta</h4></div>
+                        <div class="row">
+                            <div class="form-group form-inline">
+                                <div class="form-group form-inline">
+                                    <label for="card-num" class="form-tags">Número de la tarjeta:</label>
+                                    <input type="text" class="form-control" id="card-num">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group form-inline">
+                                <div class="form-group form-inline">
+                                    <label for="exp-month" class="form-tags">Vencimiento:</label>
+                                        <input type="number" class="form-control" placeholder="mes" id="exp-month">
+                                        /
+                                    <label for="exp-year" class="form-tags hidden">año:</label>
+                                        <input type="number" class="form-control" placeholder="año" id="exp-year">
+
+                                    <label for="sec-code" class="form-tags" >Cód.de seguridad:</label>
+                                    <input type="number" class="form-control" id="sec-code">
+                                    <a data-toggle="tooltip" class="tooltipLink" data-original-title="Tooltip text goes here">
+                                        <span class="glyphicon glyphicon-question-sign"></span>
+                                    </a>
+                                    </div>
+                                </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group form-inline justified">
+                                <div class="form-group form-inline">
+                                    <label for="cardholder" class="form-tags ">Nombre del titular:</label>
+                                    <input type="text" class="form-control" id="cardholder" placeholder="Nombre como figura en la tarjeta">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row sub-style"><h4>Datos de Facturacion</h4></div>
+                        <div class="row">
+
+                            <div class="form-group form-inline">
+                                <div class="form-group form-inline">
+                                    <label for="fiscal" class="form-tags">Situacion Fiscal:</label>
+                                    <select class="form-control" id="fiscal">
+                                        <option>Situacion Fiscal 1</option>
+                                        <option>Situacion Fiscal 2</option>
+                                        <option>Situacion Fiscal 3</option>
+                                    </select>
+                                    <label for="cuil" class="form-tags">CUIL:</label>
+                                    <input type="text" class="form-control" id="cuil">
+                                </div>
+                            </div>
+                            <div class="form-group form-inline">
+                                <div class="form-group form-inline">
+                                    <label for="country" class="form-tags">País:</label>
+                                    <select class="form-control" id="country">
+                                        <option>Opciones</option>
+                                    </select>
+                                    <label for="prov" class="form-tags">Provincia:</label>
+                                    <select class="form-control" id="prov">
+                                            <option>Provincias</option>
+                                    </select>
+
+                                    <label for="city" class="form-tags">Ciudad:</label>
+                                    <select class="form-control" id="city">
+                                        <option>Ciudades</option>
+                                    </select>
+
+                                </div>
+                            </div>
+
+                            <div class="form-group form-inline">
+                                <div class="form-group form-inline">
+                                    <label for="street" class="form-tags">Calle:</label>
+                                    <input type="text" class="form-control" id="street">
+                                    <label for="addr-num" class="form-tags">Número:</label>
+                                    <input type="text" class="form-control" id="addr-num">
+                                    <label for="zip-code" class="form-tags">Cód.Postal:</label>
+                                    <input type="text" class="form-control" id="zip-code">
+                                </div>
+                            </div>
+
+                            </div>
+
+
+                        <div class="row">
+                            <button ><span class="glyphicon glyphicon-menu-left"></span></button>
+                            <button class="col-md-offset-10"><span class="glyphicon glyphicon-menu-right"></span></button>
+
+                        </div>
+                        </div>
+
+
+                    <!-- RESUMEN -->
+                    <div class="col-md-2" id="summary" >
+                        <h3 sum></h3>
+
+                    </div>
+                    </div>
+                </div>
+            </div>
+
+
 
         <!--TAB-->
         <div class="tab-pane" id="3">
-            <h3>COSAS DE CONTACTO</h3>
-        </div>
+            <div class="container">
+                <div class="row title-style"><h3>Informacion de Pago</h3></div>
+                <div class="row form-style">
+                    <div class="col-md-8">
+                        <div class="row">
+                            <div class="form-group form-inline">
+                                <div class="form-group form-inline">
+                                    <label for="email" class="form-tags">E-mail:</label>
+                                    <input type="text" class="form-control" id="email">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group form-inline">
+                                <div class="form-group form-inline">
+
+                                    <label for="phone-type" class="form-tags">Tipo:</label>
+                                    <select class="form-control" id="phone-type">
+                                        <option>Fijo</option>
+                                        <option>Celular</option>
+                                    </select>
+                                    <label for="phone-area" class="form-tags">Código de Área:</label>
+                                    <input type="number" class="form-control" id="phone-area">
+                                    <label for="phone" class="form-tags">Número:</label>
+                                    <input type="text" class="form-control" id="phone">
+                                    <span class="glyphicon glyphicon-plus-sign "></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
 
         <!--TAB-->
         <div class="tab-pane" id="4">
-            <h3>CONFIRMACION</h3>
+            <h3>ACA SE VA A LA PAGINA DE CONFIRMACION</h3>
         </div>
     </div>
 </div>
@@ -450,8 +596,6 @@
     </div>
         </div>
 </footer>
-
-
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>

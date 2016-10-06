@@ -8,6 +8,10 @@
 
 }
 
+#form-row > div{
+    display: table-row;
+}
+
 
 .sum-box{
     border-radius: 10px;
@@ -15,10 +19,16 @@
     border-style: groove;
     line-height: 10px;
     margin-bottom: 40px;
+    height: 100%;
 }
 
+.sum{
+    height: 100%;
+    background-color: #0F9E5E;
+}
 .form-tags{
     margin: 10px;
+    display: inline-block;
 }
 
 .form-style{
@@ -27,6 +37,12 @@
     margin-bottom: 30px;
     border-style: groove;
 
+}
+
+.sub-style{
+    background-color: lavender;
+    border-radius: 10px;
+    border-bottom: thick;
 }
 
 .tab-content{
@@ -48,12 +64,22 @@
     color:#fff;
 }
 
-#usr-birth{
-    width: 100px;
-
+#birth-day,#birth-month,#birth-year,#exp-month,#exp-year{
+    width: 70px;
 }
-#usr-name, #usr-lname{
+
+#cardholder, #card-num{
+    width: 600px;
+}
+.hidden{
+    display: none;
+}
+#usr-name, #usr-lname, #cuil{
     width:300px
+}
+
+#birth-form{
+    margin-left:auto;
 }
 
 #usr-docnum{
@@ -65,10 +91,17 @@ label {
     text-align: left;
 }
 
+.glyphicon-question-sign{
+    font-size: medium;
 
-
+}
 
 .glyphicon.glyphicon-menu-right{
+    font-size: xx-large;
+    margin-bottom: 10px;
+
+}
+.glyphicon.glyphicon-menu-left{
     font-size: xx-large;
     margin-bottom: 10px;
 }
