@@ -20,6 +20,12 @@ jQuery(document).ready(function(){
 			timebtn.css("border-top", "5px solid black");
 		}
 	}
+	
+	
+	$("#order-dropdown a").on("click", function() {
+		console.log("clicked dropdown");
+		$("#orderby-btn em").text(this.text);
+	})
 });
 
 function updateValueText(value) {

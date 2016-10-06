@@ -16,6 +16,7 @@
 
 	<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
 	<script src="search-page-script.js"></script>
+	<script src="script.js"></script>
 </head>
 
 <body>
@@ -77,18 +78,18 @@
 					<div class="panel time-filter-panel">
 						<h3> Horarios</h3>
 						<div class="depart-time-grid">
-							<span class="depart-time-button" >
-								<img src="madru.png" width=50 height=50 data-dep-time=0/>
-							</span>
-							<span class="depart-time-button">
-								<img src="mania.png" width=50 height=50  data-dep-time=1/>
-							</span>
-							<span class="depart-time-button" >
-								<img src="tarde.png" width=50 height=50 data-dep-time=2/>
-							</span>
-							<span class="depart-time-button" >
-								<img src="noche.png" width=50 height=50 data-dep-time=3/>
-							</span>
+							<div class="depart-time-button" >
+								<img src="madru.png" data-dep-time=0/>
+							</div>
+							<div class="depart-time-button">
+								<img src="mania.png" data-dep-time=1/>
+							</div>
+							<div class="depart-time-button" >
+								<img src="tarde.png" data-dep-time=2/>
+							</div>
+							<div class="depart-time-button" >
+								<img src="noche.png" data-dep-time=3/>
+							</div>
 
 						</div>
 					</div>
@@ -96,10 +97,34 @@
 					<div class="panel airport-filter-panel">
 						<h3>Aeropuertos</h3>
 						<h4>Origen</h4>
+						<input type="checkbox" id="aer-o-cbox1"> 
+						<label for="aer-o-cbox1">Aeropuerto 1</label>
+						<br/>
+						<input type="checkbox" id="aer-o-cbox2"> <label for="aer-o-cbox2">Aeropuerto 2</label>
+						<br>
+						<input type="checkbox" id="aer-o-cbox3"> 
+						<label for="aer-o-cbox3">Aeropuerto 3</label>
+						<br/>
 						<h4>Destino</h4>
+						<input type="checkbox" id="aer-d-cbox1"> 
+						<label for="aer-d-cbox1">Aeropuerto 1</label>
+						<br/>
+						<input type="checkbox" id="aer-d-cbox2"> <label for="aer-d-cbox2">Aeropuerto 2</label>
+						<br>
+						<input type="checkbox" id="aer-d-cbox3"> 
+						<label for="aer-d-cbox3">Aeropuerto 3</label>
+						<br/>
 					</div>
 					<div class="panel airline-filter-panel">
 						<h3> Aerolíneas</h3>
+						<input type="checkbox" id="airl-cbox1"> 
+						<label for="airl-cbox1">Aerolínea 1</label>
+						<br/>
+						<input type="checkbox" id="airl-cbox2"> <label for="airl-cbox2">Aerolínea 2</label>
+						<br>
+						<input type="checkbox" id="airl-cbox3"> 
+						<label for="airl-cbox3">Aerolínea 3</label>
+						<br/>
 					</div>
 				</div>
 			</div> 
@@ -165,25 +190,57 @@
 					</div>
 
 				</div>
-			</div>
 
-			<div class="row cheap-flights-carousel">
-				Flights carousel	
-			</div>
-			<div class="row 3days-button">
-				3 days button
-			</div>
-			<div class="row">
-				<div class="order-by-menu">
-					Order by
+				<div class="row">
+					<div class="cheap-flights-carousel">
+						<div class="col-md-1">
+							<div class="left-carousel-arrow">
+								<div class="l-arrow-icn glyphicon glyphicon-chevron-left">
+								</div>
+							</div>
+						</div>
+						<div class="col-md-10">
+							<!-- aca van los cuadraditos -->
+						</div>
+						<div class="col-md-1">
+							<div class="right-carousel-arrow">
+								<div class="d-arrow-icn glyphicon glyphicon-chevron-right">
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
-				<div class="currency-menu">
-					Currency
+				<div class="row">
+					<div class="col-md-12">
+						<button type="button" id="3daysbtn" class="btn btn-primary btn-block">+/- 3 días</button>
+					</div>
 				</div>
-			</div>
-			<div class="flight-options-area">
-				OPCION 1
-				OPCION 2
+				<div class="row sort-options">
+					<div class="col-md-3">
+						<div class="order-by-menu">
+							<label for="orderby-btn">Ordenar por:</label>
+							<span class="btn-group">
+								<button id="orderby-btn" class="btn btn-default btn-s dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									<em>Menor precio</em><span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu" id="order-dropdown">
+									<li><a href="#">Menor Precio</a></li>
+									<li><a href="#">Menor Duración</a></li>
+									<li><a href="#">Mejor Puntaje</a></li>
+								</ul>
+							</span>
+						</div>
+					</div>
+					<div class="col-md-2 col-md-offset-7">
+						<div class="currency-menu">
+							Currency
+						</div>
+					</div>
+				</div>
+				<div class="flight-options-area">
+					OPCION 1
+					OPCION 2
+				</div>
 			</div>
 		</div>
 	</div>
@@ -209,4 +266,4 @@
 		<script>
 		</script>
 		<script src="datepicker.js"></script>
-		</body>
+	</footer>

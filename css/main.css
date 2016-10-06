@@ -1,8 +1,8 @@
 
 
 /* ==========================================================================
-   Author's custom styles
-   ========================================================================== */
+Author's custom styles
+========================================================================== */
 body{
 	background: #dee0dd;
 }
@@ -43,8 +43,8 @@ body{
 
 
 .hvr-fade:hover, .hvr-fade:focus, .hvr-fade:active #nav-list li {
-  background-color: #93bcff;
-  color: white;
+	background-color: #93bcff;
+	color: white;
 }
 
 .body-contents{
@@ -54,8 +54,8 @@ body{
 
 /*
 #nav-list li:hover{
-	color: #0c004c;
-	background: #97ebfc;
+color: #0c004c;
+background: #97ebfc;
 }*/
 
 .navbar-toggle{
@@ -63,27 +63,27 @@ body{
 }
 
 .glyphicon{
-   padding-right: 5px;
- }
+	padding-right: 5px;
+}
 
 
 .titulo{
 	font-family: 'Oswald', sans-serif;
 	font-size: 2em;
 	padding: 0.1em 0 0.1em 0.5em;
- 	border-top-right-radius: 5px;
- 	border-top-left-radius: 3px;
- }
+	border-top-right-radius: 5px;
+	border-top-left-radius: 3px;
+}
 
- .search_t{
- 	background: #4d91ff;
- 	color: #e6efff;
- }
+.search_t{
+	background: #4d91ff;
+	color: #e6efff;
+}
 
- .promos{
+.promos{
 	background: rgba(0, 103, 0, 0.8);
- 	color: #e6efff;
- }
+	color: #e6efff;
+}
 
 
 .searchcontent{
@@ -93,13 +93,13 @@ body{
 	/*background-color: #93bcff;*/
 	background:  rgba(147, 188, 255, 0.9);
 
-/*	background: #ffffff;  */
+	/*	background: #ffffff;  */
 	border: #93bcff 1px solid;
 	margin-bottom: 100px; 
 	padding-bottom: 1em;
 	border-bottom-left-radius: 5px;
 	border-bottom-right-radius: 5px;
-	}
+}
 
 .formtitle{
 	font-weight: bold;
@@ -113,7 +113,7 @@ body{
 	padding-bottom: 20px;
 	background: url('../img/polka.jpg');
 	background-repeat:  repeat;
- 	background:  rgba(0, 153, 0, 0.8); 
+	background:  rgba(0, 153, 0, 0.8); 
 	margin-top: 30px;
 	border-radius: 2px;
 	margin-bottom: 50px;
@@ -230,12 +230,38 @@ footer{
 }
 
 .depart-time-button {
-	display: inline;
+	display: inline-block;
+	width: 65px;
+	height: 70px;
 }
 
 .depart-time-button img {
+	height: 100%;
+	width: 100%;
 	border: 1px solid #9b9b9b;
-/*	border-top: 4px solid black;*/
-	margin: 0;
-	padding: 0;
 }
+
+.airport-filter-panel h4 {
+	font-size: 1em;
+	font-weight: 300;
+} 
+
+.cheap-flights-carousel {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	padding: 0;
+	height: 80px;
+}
+
+.left-carousel-arrow, .right-carousel-arrow {
+	border: 2px solid #9b9b9b;
+	border-radius: 5px;
+	width: 80%;
+	height: 80px;
+}
+
+.sort-options {
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
