@@ -20,6 +20,7 @@
  
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
         <script src="script.js"></script>
+       <script src="angular.min.js"></script>
 
         <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
 
@@ -27,40 +28,12 @@
 
      </head>
 
-    <body>
+    <body data-ng-app="">
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
     <header>
-      <nav id="header-nav" class="navbar navbar-default">
-        <div class="container">
-          <div class="navbar-header">
-            <a href="#" class="pull-left">
-              <div id="logo-img"></div>
-            </a>
-
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapsable-nav" aria-expanded="false">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        </button>
-  
-          </div>
-
-
-          <div id="collapsable-nav" class="collapse navbar-collapse">
-          <ul id="nav-list" class="nav navbar-nav navbar-left">
-            <li class="hvr-fade">
-              <a href="#"><span class="glyphicon glyphicon-search"></span>Buscar</a>
-            </li>
-            <li class="hvr-fade"><a href="#"><span class="glyphicon glyphicon-usd"></span>Promociones</a></li>
-
-            <li class="hvr-bounce-to-top"><a href="#"><span class="glyphicon glyphicon-star"></span>Rese&ntilde;as</a></li>
-           </ul>
-          </div>
-
-        </div>
-      </nav>
+    <div ng-include="'./snippets/nav.html'"></div>
     </header>
 
 	<!-- COMIENZO DE LOS TABS DE AYUDA -->
