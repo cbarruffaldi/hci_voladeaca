@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="./awesomplete.css"></link>
+
+    <title>CheloMap</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        height: 70%;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <br>Escribir un ID de ciudad (ejemplo: BUE, BCN, LIM, LON) y apretar enter: 
+
+<input class="awesomplete" id="inputCity"/>
+
+    <h1 id="tit"></h1>
+    <div id="map"></div>
+
+
+    <script src="../js/vendor/jquery-1.11.2.min.js"></script>
+      <script src="../angular.min.js"></script>
+    <script src="./awesomplete.js"></script>
+    <script src="./acomplete.js"></script>
+
+    <script src="maps.js"></script>
+    <script src="mapscript.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBTZDFmbFBMRcM-9FO_zE7oEN8KBgthotk&callback=mapUtils.initMap"
+    async defer></script>
+  </body>
+</html>

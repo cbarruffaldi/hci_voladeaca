@@ -1,0 +1,41 @@
+.item-help {
+	position: relative;
+	margin-top: 1em;
+	margin-bottom: 1em;
+	list-style: none;
+}
+
+.content-help {
+	display: none;
+	text-align: justify;
+	line-height: 1.5em;
+	padding-top: 1em;
+	margin: 0 1em 1em 1em;
+	border-top: 1px solid black;
+}
+
+.title-help {
+	margin: 0;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+	position: relative;
+	cursor: pointer;
+	text-align: center;
+}
+
+.container-help {
+	width: 80%;
+}
+
+.glyphicon-help {
+	position: absolute;
+	top: 0.5em; /* Debe ser como el padding-top del .title-help para que quede centrado */
+	bottom: 0.5em; /* Análogo com bottom */
+	right: 0.3em;
+}
+
+.item-help {
+	margin-bottom: 2em;
+	border: 1px solid black;
+	border-radius: 1em;
+}

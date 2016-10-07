@@ -11,7 +11,10 @@
 
 .info-box{
     padding:0;
-    padding-bottom: 2em;
+    border-radius: 10px;
+    background-color: ghostwhite;
+    padding-bottom: 0.5em;
+    padding-top: 0.5em;
 }
 
 .sum-box{
