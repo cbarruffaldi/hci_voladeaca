@@ -20,7 +20,7 @@
     position: absolute;
     left: 0;
     z-index: 1;
-    min-width: 100%;
+    min-width: 150%;
     box-sizing: border-box;
     list-style: none;
     padding: 0;
@@ -58,7 +58,7 @@
 }
 
 	/* Pointer */
-	.awesomplete > ul:before {
+/*	.awesomplete > ul:before {
 		content: "";
 		position: absolute;
 		top: -.43em;
@@ -72,7 +72,7 @@
 		-webkit-transform: rotate(45deg);
 		transform: rotate(45deg);
 	}
-
+*/
 	.awesomplete > ul > li {
 		position: relative;
 		padding: .2em .5em;
@@ -92,6 +92,7 @@
 		.awesomplete mark {
 			/*background: hsl(65, 100%, 50%);*/
 			/*background: hsl(63, 51%, 73%);*/
+			background: inherit;
 			font-weight: bold;
 		}
 		
@@ -102,7 +103,7 @@
 		}
 		
 		.awesomplete li[aria-selected="true"] mark {
-			background: hsl(86, 100%, 21%);
+			background: inherit; 
 			font-weight: bold;
 			color: inherit;
 		}

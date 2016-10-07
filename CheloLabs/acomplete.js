@@ -20,8 +20,6 @@
         var disp = cityID + " - " + nombre;
         ciudades.push({value: cityID, label: disp}); 
       }
-       console.log(ciudades);
-
     }
 
     window.listFill = fill;

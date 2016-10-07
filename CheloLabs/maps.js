@@ -1,18 +1,19 @@
 
 (function(global){
 
-mapUtils = {};
+	mapUtils = {};
 	
 	mapUtils.markers = [];
 
 	var map;
+	mapUtils.current = "";
+
    	function initMap() {
    	map = new google.maps.Map(document.getElementById('map'), {
    	center: {lat: 0, lng: 0},
-   	zoom: 3
+   	zoom: 2
 	   });
-	}
-
+	
 	function updateMap(id){
 		clearMarkers();
 		
@@ -30,15 +31,16 @@ mapUtils = {};
 		function updateCity(response){
 			if(response.city){
 				$("#tit").text("Ofertas saliendo desde " + response.city.name);
+				mapUtils.current = response.city.name;
 			}
 			else{
 				$("#tit").text("No encontramos resultados");
+				mapUtils.current = null;
 			}
 		}
 
 
 		function fillMap(response){
-			console.log(response);
 			var deals = response.deals;
 
 			var info;
@@ -95,12 +97,14 @@ mapUtils = {};
 			}
 		}
 
-	//le expongo los metodos a global	
-	mapUtils.initMap = initMap;
+	//le expongo los metodos a mapUtils	
 	mapUtils.fillMap = fillMap;
 	mapUtils.updateMap = updateMap;
 	mapUtils.updateCity = updateCity;
-
-
 	global.mapUtils = mapUtils;
+	mapUtils.updateMap("BUE");
+	}
+
+	mapUtils.initMap = initMap;
+
 })(window);

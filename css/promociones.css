@@ -1,0 +1,26 @@
+#map {
+        padding: 0;
+        height: 70%;
+        width: 100%;
+        text-align: center;
+      }
+#map-loading{
+	position:relative;
+	padding-top: 20%;
+	z-index: 10;
+}
+
+#mapform{
+	padding: 30px;
+}
+
+input{
+	width: 200px;
+	font-size: 1.3em;
+}
+
+
+.body-contents-promo{
+	background: url('../img/bg/londonA6.jpg') no-repeat;
+	background-size:cover;
+}

@@ -8,6 +8,7 @@ body{
 }
 
 #header-nav{
+	z-index: 1;
 	background: #087CA7;
 	border-radius: 0;
 	border:0;
