@@ -5,40 +5,60 @@
     height: 50px;
     text-align: center;
     margin-bottom: 0px;
+    padding: 0;
 
 }
 
-#form-row > div{
-    display: table-row;
+.info-box{
+    padding:0;
+    padding-bottom: 2em;
 }
-
 
 .sum-box{
     border-radius: 10px;
     background-color: ghostwhite;
-    border-style: groove;
-    line-height: 10px;
-    margin-bottom: 40px;
-    height: 100%;
+    padding:0;
+
 }
 
 .sum{
     height: 100%;
     background-color: #0F9E5E;
+
+}
+
+.single-label{
+    padding-left: 0;
 }
 .form-tags{
     margin: 10px;
     display: inline-block;
 }
 
+.form-field{
+    padding-bottom: 0.2em;
+
+}
+
+.tocenter-label{
+    padding-top:2em;
+    text-align: center;
+}
+
 .form-style{
     border-radius: 10px;
     background-color: ghostwhite;
     margin-bottom: 30px;
-    border-style: groove;
+    padding: 0;
 
 }
 
+.arrow-btn{
+
+    border: thin;
+    border-color: #0f0f0f;
+    border-radius: 100%;
+}
 .sub-style{
     background-color: lavender;
     border-radius: 10px;
@@ -98,16 +118,20 @@ label {
 
 .glyphicon.glyphicon-menu-right{
     font-size: xx-large;
-    margin-bottom: 10px;
+
 
 }
 .glyphicon.glyphicon-menu-left{
     font-size: xx-large;
-    margin-bottom: 10px;
+
 }
 .glyphicon.glyphicon-user{
     font-size: larger;
     margin-top: 20px;
+}
+
+.glyphicon.glyphicon-plus-sign{
+    font-size: x-large;
 }
 
 
