@@ -1,5 +1,6 @@
 
 (function(global){
+
 mapUtils = {};
 
 $("#ciudad").keypress(function(event) {
@@ -14,8 +15,8 @@ $("#ciudad").keypress(function(event) {
 	var map;
    	function initMap() {
    	map = new google.maps.Map(document.getElementById('map'), {
-   	center: {lat: 25.12, lng: -24.51},
-   	zoom: 2
+   	center: {lat: 0, lng: 0},
+   	zoom: 3
 	   });
 	}
 
@@ -41,6 +42,7 @@ $("#ciudad").keypress(function(event) {
 				$("#tit").text("No encontramos resultados");
 			}
 		}
+
 
 		function fillMap(response){
 			console.log(response);
@@ -82,20 +84,13 @@ $("#ciudad").keypress(function(event) {
 						  });
 
 
-			  marker.addListener('click', function() {
-
+			marker.addListener('click', function() {
 			  	if(mapUtils.infow){
-			  		global.infowindow.close();
+			  		mapUtils.infow.close();
 			  	}
-
 	    		infowindow.open(map, marker);
-
 	    		mapUtils.infow = infowindow;
-	  		});
-
-			  infowindow.addListener('blur', function(){
-			  	this.close()
-			  })
+		  		});
 
 			mapUtils.markers.push(marker);
 		}
