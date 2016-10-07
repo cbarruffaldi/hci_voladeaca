@@ -60,13 +60,13 @@
 <div id="step-tabs" class="container">
     <ul class="nav nav-tabs nav-justified">
         <li class="active">
-            <a  href="#1" data-toggle="tab" >1.Informacion de Pasajeros</a>
+            <a  href="#1">1.Informacion de Pasajeros</a>
         </li>
-        <li class="disabled"><a href="#2" data-toggle="tab" id="tab2">2.Informacion de Pago</a>
+        <li class="disabled disabled-tab"><a href="#2">2.Informacion de Pago</a>
         </li>
-        <li class="disabled"><a href="#3" data-toggle="tab">3.Informacion de Contacto</a>
+        <li class="disabled disabled-tab"><a href="#3">3.Informacion de Contacto</a>
         </li>
-        <li class="disabled"><a href="#4" data-toggle="tab">4.Confirmacion</a>
+        <li class="disabled disabled-tab"><a href="#4">4.Confirmacion</a>
         </li>
     </ul>
 
@@ -115,8 +115,8 @@
                         <h3>Informacion de Pasajeros</h3>
                     </div>
                  <div class="col-md-9 form-style" >
-                    <div class="col-md-12 form-style">
-                        <span class="glyphicon glyphicon-user col-md-2">Adulto</span>
+
+                        <span class="glyphicon glyphicon-user col-md-1">Adulto</span>
 
                         <div class="col-md-10">
                             <div class="form-group">
@@ -174,7 +174,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+
                  </div>
 
                     <div class="col-md-3 sum-box">
@@ -193,7 +193,7 @@
 
             </div>
 
-            <div class="tab-pane" id="2">
+            <div class="tab-pane fade" id="2">
                 <div class="row" id="form2">
                     <!--Titulo -->
                     <div class="col-md-12 title-style">
@@ -314,7 +314,7 @@
                 </div>
             </div>
 
-            <div class="tab-pane" id="3">
+            <div class="tab-pane fade" id="3">
                 <div class="row" id="form3">
                     <!--Titulo -->
                     <div class="col-md-12 title-style">
@@ -382,8 +382,156 @@
 
             </div>
 
-            <div class="tab-pane" id="4">
-                <h3>Aca va la pagina del resumen</h3>
+            <div class="tab-pane fade" id="4">
+                <h3 class="title-style">Confirmación</h3>
+
+                <div class="panel-group">
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4>Información de Pasajeros</h4>
+                        </div>
+
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <p><span class="glyphicon glyphicon-user"></span>Adulto</p>
+                                </div>
+                                <div class="col-md-10">
+
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <p><strong>Nombre: </strong>Lorem</p>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <p><strong>Apellido: </strong>Ipsum</p>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <p><strong>País: </strong>Argentina</p>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <p><strong>Tipo: </strong>DNI</p>
+                                        </div>
+                                        <div class="col-sm-12">
+                                            <p><strong>Número: </strong>1540227113</p>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <p><strong>Sexo :</strong>?</p>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <p><strong>Fecha de nacimiento: </strong>dd/mm/aaaa</p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <!-- Pasajeros subsiguientes irían en otro row com mismo formato -->
+
+                        </div>
+                    </div>
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4>Información de Pago</h4>
+                        </div>
+
+                        <div class="panel-body">
+                            <div class="panel-group">
+
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h5>Detalles de Tarjeta</h5>
+                                    </div>
+
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <p><strong>Número de la tarjeta: </strong>Lorem</p>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <p><strong>Vencimiento: </strong>Lorem</p>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <p><strong>Código de seguridad: </strong>Lorem</p>
+                                            </div>
+                                            <div class="col-sm-12">
+                                                <p><strong>Nombre del titular: </strong>Lorem</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h5>Datos de Facturación</h5>
+                                    </div>
+
+                                    <div class="panel-body">
+
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <p><strong>Situación fiscal: </strong>Lorem</p>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <p><strong>CUIL: </strong>123-345345-345</p>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <p><strong>País: </strong>Argentina</p>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <p><strong>Provincia: </strong>KEKEKEKE</p>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <p><strong>Ciudad: </strong>KOKOKOKO</p>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <p><strong>Calle: </strong>KIKIKIKI</p>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <p><strong>Número: </strong>47764617</p>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <p><strong>Código Postal: </strong>1426</p>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4>Información de Contacto</h4>
+                        </div>
+
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <p><strong>E-mail: </strong></p>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <p><span class="glyphicon glyphicon-earphone"></span><strong>Tipo: </strong>Fijo</p>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <p><strong>Código de área: </strong>47764617</p>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <p><strong>Número: </strong>47764617</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
             </div>
 
         </div>

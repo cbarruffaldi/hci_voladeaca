@@ -65,8 +65,9 @@
 }
 .sub-style{
     background-color: lavender;
-    border-radius: 10px;
     border-bottom: thick;
+    padding: 0.8em;
+    margin: 0.4em;
 }
 
 .tab-content{
@@ -86,6 +87,10 @@
     border: medium none;
     border-radius: 0;
     color:#fff;
+}
+
+.disabled-tab{
+    pointer-events: none;
 }
 
 #birth-day,#birth-month,#birth-year,#exp-month,#exp-year{

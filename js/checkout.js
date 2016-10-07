@@ -1,16 +1,27 @@
 $(document).ready(function(){
     $('.btnNext').click(function(){
-        $('.nav-tabs > .active').next('li').find('a').trigger('click');
 
-        if($('.nav-tabs > .active').hasClass('disabled')) {
+        if($('.nav-tabs > .active').next('li').hasClass('disabled-tab')) {
+            $('.nav-tabs > .active').removeClass('disabled-tab');
             $('.nav-tabs > .active').removeClass('disabled');
+        }
+        $('.nav-tabs > .active').next('li').find('a').tab('show');
+    });
+});
+
+
+$(document).ready(function(){
+    $(".nav-tabs a").click(function(){
+        if($(this).not('disabled')) {
+            $(this).tab('show');
         }
     });
 });
 
 $(document).ready(function(){
     $('.btnPrev').click(function(){
-        $('.nav-tabs > .active').prev('li').find('a').trigger('click');
+
+        $('.nav-tabs > .active').prev('li').find('a').tab('show');
 
     });
 });
@@ -90,9 +101,4 @@ $(document).ready(function(){
 
 });
 
-$(document).ready(function(){
-    $('.tooltipLink').click(function(){
-
-    });
-});
 
