@@ -1,0 +1,88 @@
+<!doctype html>
+<html data-ng-app="">
+<head>
+	<meta charset="utf-8">
+	<title>VolaDeAca - Búsqueda</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+	<link rel="stylesheet" href="jqueryui/jquery-ui.css">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="css/hover.css" media="all">
+	<link rel="stylesheet" href="css/main.css">
+	<style>
+		.textbox{
+			padding:30px;
+			border: 1px solid;
+		}
+	</style>
+	<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+	<script src="angular.min.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+	<script src="search-page-script.js"></script>
+	<script src="script.js"></script>
+</head>
+
+<body>
+
+	<header>
+		<div ng-include="'./snippets/nav.html'"></div>
+	</header>
+
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-2"></div>
+			<div class="col-md-8">
+				<input type="text" placeholder="Escribi aca" data-ng-model="mybox" />
+				<br /><strong>Escribiendo:</strong>
+				<div class="textbox">{{mybox}}</div>
+			</div>
+			<div class="col-md-2"></div>
+
+		</div>
+		<div class="row">
+			<div class="col-md-2"></div>
+			<script>
+				$.ajax({
+					  url: "https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&titles=Argentina",
+					  dataType: "jsonp"
+					}).done(function(response) {
+						//response = JSON.parse(response);
+						console.log(response);
+						summary = response.query.pages[18951905].extract;
+  						$(".text").text(summary); 
+  					} )
+			</script>
+
+			<div class="col-md-8 text"></div>
+			<div class="col-md-8"></div>
+			
+		</div>
+	</div>
+
+
+
+
+	<footer>  
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4" />
+				<p>&copy; VolaDeAca 2016</p>
+			</div> <!-- row -->
+			</footer>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+		<script src="js/vendor/bootstrap.min.js"></script>
+
+		<script src="js/main.js"></script>
+		<script src="js/moment.js" ></script>
+
+		<script src="jqueryui/jquery-ui.js"></script>
+		<script src="jqueryui/uidatepicker-es.js"></script>
+		<script>
+		</script>
+		<script src="datepicker.js"></script>
+	</footer>
+</html>
