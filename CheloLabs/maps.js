@@ -1,4 +1,6 @@
+
 (function(global){
+mapUtils = {};
 
 $("#ciudad").keypress(function(event) {
     if (event.which == 13) {
@@ -7,7 +9,8 @@ $("#ciudad").keypress(function(event) {
     }
 });
 	
-	global.markers = [];
+	mapUtils.markers = [];
+	mapUtils.infow;
 
 	var map;
    	function initMap() {
@@ -20,13 +23,12 @@ $("#ciudad").keypress(function(event) {
 	function updateMap(id){
 		clearMarkers();
 		
-		$.ajax({ url: "http://hci.it.itba.edu.ar/v1/api/geo.groovy?method=getcitybyid&id=" + id + "&callback=updateCity",
+		$.ajax({ url: "http://hci.it.itba.edu.ar/v1/api/geo.groovy?method=getcitybyid&id=" + id + "&callback=mapUtils.updateCity",
 				 dataType: "jsonp"});
 
 
-		var req = "http://hci.it.itba.edu.ar/v1/api/booking.groovy?method=getflightdeals&from=" + id
 		$.ajax({
-						 url: req + "&callback=fillMap",
+						 url: "http://hci.it.itba.edu.ar/v1/api/booking.groovy?method=getflightdeals&from=" + id + "&callback=mapUtils.fillMap",
 						 dataType: "jsonp"
 						});
 	}
@@ -65,14 +67,12 @@ $("#ciudad").keypress(function(event) {
 
 		function addMarker(details){
 
-
 			var point = {lat: details.lat, lng: details.lgt}
 			var marker = new google.maps.Marker({
 	    	position: point,
 	    	map: map,
 		  //  title: details.info.name;
 		  	});
-
 
 			var contentString = "<strong>" + details['info'].name + "</strong>" + "<br />"
 								+ "<strong>Precio: </strong>" +  details['info'].price + "<br />"
@@ -84,7 +84,14 @@ $("#ciudad").keypress(function(event) {
 
 
 			  marker.addListener('click', function() {
+
+			  	if(global.infowindow){
+			  		global.infowindow.close();
+			  	}
+
 	    		infowindow.open(map, marker);
+
+	    		global.infowindow = infowindow;
 	  		});
 
 			  infowindow.addListener('blur', function(){
@@ -102,8 +109,11 @@ $("#ciudad").keypress(function(event) {
 		}
 
 	//le expongo los metodos a global	
-	global.initMap = initMap;
-	global.fillMap = fillMap;
-	global.updateMap = updateMap;
-	global.updateCity = updateCity;
+	mapUtils.initMap = initMap;
+	mapUtils.fillMap = fillMap;
+	mapUtils.updateMap = updateMap;
+	mapUtils.updateCity = updateCity;
+
+
+	global.$mapUtils = mapUtils;
 })(window);
