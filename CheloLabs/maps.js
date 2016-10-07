@@ -2,13 +2,6 @@
 (function(global){
 
 mapUtils = {};
-
-$("#ciudad").keypress(function(event) {
-    if (event.which == 13) {
-        event.preventDefault();
-		updateMap($(this).val());  
-    }
-});
 	
 	mapUtils.markers = [];
 
