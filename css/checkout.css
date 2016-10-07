@@ -55,9 +55,13 @@
 
 .arrow-btn{
 
-    border: thin;
-    border-color: #0f0f0f;
-    border-radius: 100%;
+    border: groove;
+    font-size: 20px;
+    text-align: justify;
+    background-color:#087CA7;
+    border-radius: 15%;
+    color: whitesmoke;
+
 }
 .sub-style{
     background-color: lavender;
@@ -106,6 +110,11 @@
     width: 200px;
 }
 
+.add-rem-button{
+    background: transparent;
+    border: thin;
+
+}
 label {
     margin: 5px;
     text-align: left;
@@ -130,9 +139,14 @@ label {
     margin-top: 20px;
 }
 
+
 .glyphicon.glyphicon-plus-sign{
-    font-size: x-large;
+    font-size: medium;
+    color: green;
 }
 
-
+.glyphicon.glyphicon-minus-sign{
+    font-size: medium;
+    color: red;
+}
 
