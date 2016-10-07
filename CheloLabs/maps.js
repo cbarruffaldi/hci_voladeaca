@@ -10,7 +10,6 @@ $("#ciudad").keypress(function(event) {
 });
 	
 	mapUtils.markers = [];
-	mapUtils.infow;
 
 	var map;
    	function initMap() {
@@ -85,26 +84,26 @@ $("#ciudad").keypress(function(event) {
 
 			  marker.addListener('click', function() {
 
-			  	if(global.infowindow){
+			  	if(mapUtils.infow){
 			  		global.infowindow.close();
 			  	}
 
 	    		infowindow.open(map, marker);
 
-	    		global.infowindow = infowindow;
+	    		mapUtils.infow = infowindow;
 	  		});
 
 			  infowindow.addListener('blur', function(){
 			  	this.close()
 			  })
 
-			markers.push(marker);
+			mapUtils.markers.push(marker);
 		}
 
 
 		function clearMarkers(){
-			for(var i in markers){
-				markers[i].setMap(null);
+			for(var i in mapUtils.markers){
+				mapUtils.markers[i].setMap(null);
 			}
 		}
 
@@ -115,5 +114,5 @@ $("#ciudad").keypress(function(event) {
 	mapUtils.updateCity = updateCity;
 
 
-	global.$mapUtils = mapUtils;
+	global.mapUtils = mapUtils;
 })(window);
