@@ -169,14 +169,44 @@
 						<!-- TODO: ALINEARLO VERTICALMENTE NO SE COMO -->
 						<div class="col-md-3">
 							<span class="btn-group boton-pasajeros">
-								<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<button type="button" id="psg-dropdown" class="btn btn-default dropdown-toggle" aria-haspopup="true" aria-expanded="false">
 									Pasajeros <span class="caret"></span>
 								</button>
-								<ul class="dropdown-menu">
-									<li><a href="#">Adultos</a></li>
-									<li><a href="#">Niños</a></li>
-									<li><a href="#">Infantes</a></li>
-								</ul>
+								<div class="dropdown-menu">
+									<div  class="row passenger-row" id="adult-select">
+										<div class="col-md-5">
+											<strong>Adultos</strong>
+										</div>
+										<div class="col-md-7">
+											<button type="button" class="btn btn-default btn-xs">-</button>
+											<strong class="passenger-number" id="adult-number">0</strong>
+											<button type="button" class="btn btn-default btn-xs">+</button>
+										</div>
+									</div>
+									<div class="row passenger-row" id="child-select">
+										<div class="col-md-5">
+											<strong>Niños</strong>
+										</div>
+										<div class="col-md-7">
+											<button type="button" class="btn btn-default btn-xs">-</button>
+											<strong class="passenger-number" id="child-number">0</strong>
+											<button type="button" class="btn btn-default btn-xs">+</button>
+										</div>
+									</div>
+									<div  class="row passenger-row" id="infant-select">
+										<div class="col-md-5">
+											<strong>Infantes</strong>
+										</div>
+										<div class="col-md-7">
+											<button type="button" class="btn btn-default btn-xs">-</button>
+											<strong class="passenger-number" id="infant-number">0</strong>
+											<button type="button" class="btn btn-default btn-xs">+</button>
+										</div>
+									</div>
+									<div class="row">
+											<button type="button" id="ok-btn" class="btn btn-default btn-s">OK</button>
+									</div>
+								</div>
 							</span>
 
 							<span class="search-button-small">
@@ -231,7 +261,18 @@
 					</div>
 					<div class="col-md-2 col-md-offset-7">
 						<div class="currency-menu">
-							Currency
+							<label for="currecy-btn">Moneda:</label>
+							<span class="btn-group">
+								<button id="currency-btn" class="btn btn-default btn-s dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									<em>ARS</em><span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu" id="currency-dropdown">
+									<li><a href="#">ARS</a></li>
+									<li><a href="#">USD</a></li>
+									<li><a href="#">EUR</a></li>
+									<li><a href="#">REA</a></li>
+								</ul>
+							</span>
 						</div>
 					</div>
 				</div>

@@ -274,3 +274,21 @@ footer{
 	margin-bottom: 5px;
 }
 
+.boton-pasajeros .dropdown-menu {
+	width: 100%;
+	padding: 10px;
+}
+
+.passenger-row {
+	padding: 0.5em;
+}
+
+.passenger-number {
+	margin-right: 3px;
+	margin-left: 3px;
+}
+
+#ok-btn {
+	margin-top: 0.8em;
+	margin-left: 60%;
+}

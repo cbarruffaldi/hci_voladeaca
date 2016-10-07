@@ -120,6 +120,10 @@ label {
     text-align: left;
 }
 
+.glyphicon {
+    margin-right: 0.3em;
+}
+
 .glyphicon-question-sign{
     font-size: medium;
 
