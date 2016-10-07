@@ -11,6 +11,7 @@
 	<link rel="stylesheet" href="css/bootstrap-theme.min.css">
 	<link rel="stylesheet" href="css/hover.css" media="all">
 	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="css/search.css">
 
 	<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
 
@@ -137,7 +138,9 @@
 
 						<div class="col-md-5"> <!-- destinos -->
 							<div class="row ida-vuelta-buttons">
-								<p>Ida y Vuelta | Solo ida</p>
+								<div class="col-md-10">
+									<p>Ida y Vuelta | Solo ida</p>
+								</div>
 							</div>
 							<div class="row ida-vuelta-inputs">
 								<div class="form-group">
@@ -178,9 +181,9 @@
 											<strong>Adultos</strong>
 										</div>
 										<div class="col-md-7">
-											<button type="button" class="btn btn-default btn-xs">-</button>
+											<button type="button" data-sum="minus" class="btn btn-default btn-xs">-</button>
 											<strong class="passenger-number" id="adult-number">0</strong>
-											<button type="button" class="btn btn-default btn-xs">+</button>
+											<button type="button" data-sum="plus" class="btn btn-default btn-xs">+</button>
 										</div>
 									</div>
 									<div class="row passenger-row" id="child-select">
@@ -188,23 +191,23 @@
 											<strong>Niños</strong>
 										</div>
 										<div class="col-md-7">
-											<button type="button" class="btn btn-default btn-xs">-</button>
+											<button type="button" data-sum="minus" class="btn btn-default btn-xs">-</button>
 											<strong class="passenger-number" id="child-number">0</strong>
-											<button type="button" class="btn btn-default btn-xs">+</button>
+											<button type="button" data-sum="plus" class="btn btn-default btn-xs">+</button>
 										</div>
 									</div>
-									<div  class="row passenger-row" id="infant-select">
+									<div class="row passenger-row" id="infant-select">
 										<div class="col-md-5">
 											<strong>Infantes</strong>
 										</div>
 										<div class="col-md-7">
-											<button type="button" class="btn btn-default btn-xs">-</button>
+											<button type="button" data-sum="minus" class="btn btn-default btn-xs">-</button>
 											<strong class="passenger-number" id="infant-number">0</strong>
-											<button type="button" class="btn btn-default btn-xs">+</button>
+											<button type="button" data-sum="plus" class="btn btn-default btn-xs">+</button>
 										</div>
 									</div>
 									<div class="row">
-											<button type="button" id="ok-btn" class="btn btn-default btn-s">OK</button>
+										<button type="button" id="ok-btn" class="btn btn-default btn-s">OK</button>
 									</div>
 								</div>
 							</span>
@@ -243,6 +246,7 @@
 						<button type="button" id="3daysbtn" class="btn btn-primary btn-block">+/- 3 días</button>
 					</div>
 				</div>
+
 				<div class="row sort-options">
 					<div class="col-md-3">
 						<div class="order-by-menu">
@@ -276,33 +280,94 @@
 						</div>
 					</div>
 				</div>
-				<div class="flight-options-area">
-					OPCION 1
-					OPCION 2
+
+				<div class="col-md-12 flight-options-area">
+					<div class="row">
+						<div class="flight-box">
+
+							<div class="col-md-10 flight-info">
+								<div class="airports-line-info">
+									<div class="ida-vuelta-badge">
+										<strong>IDA </strong><span class="glyphicon glyphicon-arrow-right"></span>
+									</div>
+										<strong>Buenos Aires</strong>
+										<span class="airport-badge">EZE</span>
+										<span class="glyphicon glyphicon-arrow-right"></span>
+										<span class="airport-badge">JFK</span>
+										<strong>Nueva York</strong>
+								</div>
+								<div class="flight-details-box">
+									<div class="details-inner-box">
+										<div class="col-md-4">
+
+										</div>
+										<span class="flight-points-box">
+											<strong>EZE->JFK</strong>
+										</span>
+
+										<span class="duration-box">
+											<strong>18h10m</strong>
+										</span>
+
+									</div>
+								</div>
+								<div class="airports-line-info">
+									<span class="ida-vuelta-badge">
+										<strong>VUELTA </strong><span class="glyphicon glyphicon-arrow-left"></span>
+									</span>
+									<span class="airport-badges">
+										<strong>Nueva York</strong>
+										<span class="airport-badge">JFK</span>
+										<span class="glyphicon glyphicon-arrow-right"></span>
+										<span class="airport-badge">EZE</span>
+										<strong>Buenos Aires</strong>
+									</span>
+								</div>
+								<div class="flight-details-box">
+									<div class="details-inner-box">
+										<div class="col-md-4">
+
+										</div>
+										<span class="flight-points-box">
+											<strong>EZE->JFK</strong>
+										</span>
+
+										<span class="duration-box">
+											<strong>18h10m</strong>
+										</span>
+
+									</div>
+								</div>
+							</div>
+
+							<div class="col-md-2 flight-price-box">
+								<div class="price-number">
+									<strong>$9000</strong>
+								</div>
+								<div class="details-btn">
+									<strong>+ detalles</strong>
+								</div>			
+								<div class="buy-btn">
+									<button type="button" class="vda-btn">Comprar</button>
+								</div>
+							</div>
+
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 
 
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script src="js/vendor/bootstrap.min.js"></script>
 
+	<script src="js/main.js"></script>
+	<script src="js/moment.js" ></script>
 
-	<footer>  
-		<div class="container">
-			<div class="row">
-				<div class="col-md-4" />
-				<p>&copy; VolaDeAca 2016</p>
-			</div> <!-- row -->
-			</footer>
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-		<script src="js/vendor/bootstrap.min.js"></script>
-
-		<script src="js/main.js"></script>
-		<script src="js/moment.js" ></script>
-
-		<script src="jqueryui/jquery-ui.js"></script>
-		<script src="jqueryui/uidatepicker-es.js"></script>
-		<script>
-		</script>
-		<script src="datepicker.js"></script>
-	</footer>
+	<script src="jqueryui/jquery-ui.js"></script>
+	<script src="jqueryui/uidatepicker-es.js"></script>
+	<script>
+	</script>
+	<script src="datepicker.js"></script>

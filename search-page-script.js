@@ -30,6 +30,8 @@ jQuery(document).ready(function(){
 		$("#currency-btn em").text(this.text);
 	});
 	
+	var adults = 0, children = 0, infants = 0;
+	
 	$("#psg-dropdown").on("click", function(e) {
 		$("#psg-dropdown").parent().toggleClass("open");
 		
@@ -44,6 +46,26 @@ jQuery(document).ready(function(){
 			}
 		});
 	});
+	
+	console.log("adding listener");
+	$(".passenger-row button").on("click", function() {
+		updatePax(this);
+	});
+													
+	function updatePax(element) {
+		console.log("touched btn");
+		var sum = 0;
+		if ($(element).data("sum") == "minus")
+			sum = -1;
+		else
+			sum = 1;
+		
+		var pax = $(element).parent().find(".passenger-number");
+		var newnum = parseInt(pax.text()) + sum;
+		if (newnum >= 0)
+			pax.text(newnum);
+	}
+	
 	
 });
 
