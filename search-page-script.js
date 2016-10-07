@@ -55,11 +55,11 @@ jQuery(document).ready(function(){
 	function updatePax(element) {
 		console.log("touched btn");
 		var sum = 0;
-		if ($(element).data("sum") == "minus") {
+		if ($(element).data("sum") == "minus")
 			sum = -1;
-		} else {
+		else
 			sum = 1;
-		}
+		
 		var pax = $(element).parent().find(".passenger-number");
 		var newnum = parseInt(pax.text()) + sum;
 		if (newnum >= 0)

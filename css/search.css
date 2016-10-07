@@ -1,0 +1,220 @@
+.panel { 
+	margin: 0;
+	padding: 5px;
+}
+
+.filter-area {
+	margin: 8px;
+}
+
+.filter-area .panel {
+	margin: 5px;
+	border-width: 1px;
+	border-style: solid;
+	border-radius: 3px;
+	border-color: #d6d6d6;
+}
+
+.filter-area h2 {
+	font-size: 1.5em;
+	font-weight: 300;
+	padding-left: 0.5em;
+	margin-top: 0.2em;
+}
+
+.filter-area .panel h3 {
+	margin-top: 0;
+	text-align: left;
+	font-size: 1em;
+	font-weight: 400;
+}
+
+#price-slider {
+	width: 90%;
+	margin: auto;
+}
+
+.thin-search-box {
+	border-style: solid;
+	border-width: thin;
+	border-color: #d6d6d6;
+	background-color: white;
+	padding: 5px;
+	border-radius: 5px;
+	margin: 0;
+}
+
+.date-label {
+	margin: 0;
+	padding-bottom: 0;
+	padding-left: 5px;
+	padding-top: 10px;
+}
+
+.date-input-ida {
+	margin-right: 0;
+	padding-right: 0;
+}
+
+.date-input-vuelta {
+	margin-left: 0;
+	padding-left: 0;
+}
+
+.boton-pasajeros {
+	margin-right: 2em;
+}
+
+.search-button-small {
+	margin-top: 40px;
+}
+
+.depart-time-button {
+	display: inline-block;
+	width: 65px;
+	height: 70px;
+}
+
+.depart-time-grid{
+	text-align:center;
+	padding-bottom: 0.5em;
+}
+.depart-time-button img {
+	height: 100%;
+	width: 100%;
+	border: 1px solid #9b9b9b;
+}
+
+.airport-filter-panel h4 {
+	font-size: 1em;
+	font-weight: 300;
+} 
+
+.cheap-flights-carousel {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	padding: 0;
+	height: 80px;
+}
+
+.carousel-arrow {
+	border: 2px solid #9b9b9b;
+	border-radius: 5px;
+	text-align: center;
+	height: 5em;
+}
+
+.arrow-icn{
+	padding-right:0;
+	padding-top: 1.5em;
+}
+
+.sort-options {
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.boton-pasajeros .dropdown-menu {
+	width: 100%;
+	padding: 10px;
+}
+
+.passenger-row {
+	padding: 0.5em;
+}
+
+.passenger-number {
+	margin-right: 3px;
+	margin-left: 3px;
+}
+
+#ok-btn {
+	margin-top: 0.8em;
+	margin-left: 60%;
+}
+
+.flight-box {
+	height: 25em;
+	margin-top: 1%;
+}
+
+.flight-info {
+	background-color: #FFFFFF;
+	border: 0;
+	border-radius: 5px;
+	padding: 0;
+	height: 100%;
+}
+
+.airports-line-info {
+	height: 12%;
+	border: 0;
+	background: #D8D8D8;
+}
+
+.flight-details-box {
+	height: 35%;
+	padding: 1%;
+}
+
+.ida-vuelta-badge {
+	margin-left: 1em;
+	margin-right: 1em;
+}
+
+.airport-badges {
+	text-align: center;
+}
+
+.airport-badge {
+	margin: 2px;
+	color: #FFFFFF;
+	background-color: #3a3a3a;
+	border-radius: 2px;
+	padding: 3px 6px;
+}
+
+.details-inner-box {
+/*	height: 8em;*/
+	background-color: #D8D8D8;
+	width: 100%;
+	border-radius: 3px;
+	padding: 1.5%;
+}
+
+.flight-price-box {
+	height: 100%;
+	background: #DC0055;
+	border: 1px solid #979797;
+	border-radius: 5px;
+	text-align: center;
+}
+
+.price-number {
+	padding-top: 50%;
+	font-size: 2.5em;
+	line-height: 1em;
+}
+
+.flight-price-box strong {
+	color: #FFFFFF;
+	font-weight: 400;
+}
+
+/* lo podemos usar en general */
+.vda-btn {
+	font-weight: 600;
+	background-color: white;
+	border: 1px solid #9d9d9d;
+	border-radius: 5px;
+	padding: 0.7em 1.2em;
+}
+
+.vda-btn:hover {
+	background-color: #dddddd;
+}
+
+.buy-btn .vda-btn {
+	margin-top: 10%;
+	color: #000000;
+}
