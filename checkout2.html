@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,10 +8,11 @@
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-    <script type="text/javascript" src="js/vendor/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/checkout.js"></script>
+    <script src="js/vendor/bootstrap.min.js"></script>
+    <script src="js/checkout.js"></script>
     <link rel="stylesheet" href="css/checkout.css">
     <link rel="stylesheet" href="css/main.css">
+
 </head>
 
 <body>
@@ -59,13 +60,13 @@
 <div id="step-tabs" class="container">
     <ul class="nav nav-tabs nav-justified">
         <li class="active">
-            <a  href="#1" data-toggle="tab">1.Informacion de Pasajeros</a>
+            <a  href="#1">1.Informacion de Pasajeros</a>
         </li>
-        <li><a href="#2" data-toggle="tab">2.Informacion de Pago</a>
+        <li class="disabled disabled-tab"><a href="#2">2.Informacion de Pago</a>
         </li>
-        <li><a href="#3" data-toggle="tab">3.Informacion de Contacto</a>
+        <li class="disabled disabled-tab"><a href="#3">3.Informacion de Contacto</a>
         </li>
-        <li><a href="#4" data-toggle="tab">4.Confirmacion</a>
+        <li class="disabled disabled-tab"><a href="#4">4.Confirmacion</a>
         </li>
     </ul>
 
@@ -114,29 +115,29 @@
                         <h3>Informacion de Pasajeros</h3>
                     </div>
                  <div class="col-md-9 form-style" >
-                    <div class="col-md-12 form-style">
-                        <span class="glyphicon glyphicon-user col-md-2">Adulto</span>
+
+                        <span class="glyphicon glyphicon-user col-md-1">Adulto</span>
 
                         <div class="col-md-10">
                             <div class="form-group">
                                 <!--Primer Fila-->
-                                <div class="col-md-6 form-field">
+                                <div class="col-md-6 form-field basicField">
                                     <label for="usr-name">Nombre:</label>
                                     <input type="text" class="form-control" id="usr-name">
                                 </div>
-                                <div class="col-md-6 form-field">
+                                <div class="col-md-6 form-field basicField">
                                     <label for="usr-lname">Apellido:</label>
                                     <input type="text" class="form-control" id="usr-lname">
                                 </div>
                                 <!--Segunda Fila-->
-                                <div class="col-md-2 form-field">
+                                <div class="col-md-2 form-field openField">
                                     <label for="usr-country" >Pais:</label>
                                     <select class="form-control" id="usr-country">
                                         <option>Pais1</option>
                                         <option>País2</option>
                                     </select>
                                 </div>
-                                <div class="col-md-2 col-md-offset-1 form-field">
+                                <div class="col-md-2 col-md-offset-1 form-field openField">
                                     <label for="usr-doc">Tipo:</label>
                                     <select class="form-control" id="usr-doc">
                                         <option>DNI</option>
@@ -144,21 +145,21 @@
                                         <option>Otro</option>
                                     </select>
                                 </div>
-                                <div class="col-md-6 col-md-offset-1 form-field">
+                                <div class="col-md-6 col-md-offset-1 form-field openField">
                                     <label for="usr-docnum">Numero:</label>
                                     <input type="text" class="form-control" id="usr-docnum">
                                 </div>
 
 
                                 <!--Tercera fila -->
-                                <div class="col-md-3 form-field">
+                                <div class="col-md-3 form-field openField">
                                     <label for="usr-gen">Sexo:</label>
                                     <select class="form-control" id="usr-gen">
                                         <option>Femenino</option>
                                         <option>Masculino</option>
                                     </select>
                                 </div>
-                                <div class="col-md-9 form-inline form-field" >
+                                <div class="col-md-9 form-inline form-field openField" >
                                     <div class="col-md-12 single-label">
                                     <label>Fecha de Nacimiento:</label>
                                     </div>
@@ -173,7 +174,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+
                  </div>
 
                     <div class="col-md-3 sum-box">
@@ -182,17 +183,17 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-md-1">
-                        <button class="arrow-btn hidden"><span class="glyphicon glyphicon-menu-left"></span></button>
+                    <div class="col-md-2">
+                        <button class="arrow-btn btnPrev hidden"><span class="glyphicon glyphicon-menu-left">Volver</span></button>
                     </div>
-                    <div class="col-md-1 col-md-offset-10">
-                        <button class="arrow-btn" ><span class="glyphicon glyphicon-menu-right"></span></button>
+                    <div class="col-md-2 col-md-offset-8">
+                        <button class="arrow-btn btnNext" >Continuar<span class="glyphicon glyphicon-menu-right"></span></button>
                     </div>
                 </div>
 
             </div>
 
-            <div class="tab-pane" id="2">
+            <div class="tab-pane fade" id="2">
                 <div class="row" id="form2">
                     <!--Titulo -->
                     <div class="col-md-12 title-style">
@@ -226,10 +227,11 @@
                             <div class="col-md-4 form-inline form-field">
                                 <label for="sec-code"  >Cód.de seguridad:</label>
                                 <input type="number" class="form-control" id="sec-code">
-                                <a data-toggle="tooltip" class="tooltipLink" data-original-title="Ayuda">
+                                <a href='#' data-toggle="popover" title="¿Donde se ecuentra el código de seguridad?" data-content="<img src='img/security-code.jpg' width='200' />">
                                     <span class="glyphicon glyphicon-question-sign"></span>
                                 </a>
                             </div>
+
 
                             <!-- Tercera fila -->
                             <div class="col-md-12 form-field">
@@ -301,23 +303,24 @@
                         <h3>Resumen</h3>
                     </div>
                 </div>
+
                 <div class="row">
-                    <div class="col-md-1">
-                        <button class="arrow-btn"><span class="glyphicon glyphicon-menu-left"></span></button>
+                    <div class="col-md-2">
+                        <button class="arrow-btn btnPrev "><span class="glyphicon glyphicon-menu-left">Volver</span></button>
                     </div>
-                    <div class="col-md-1 col-md-offset-10">
-                        <button class="arrow-btn" ><span class="glyphicon glyphicon-menu-right"></span></button>
+                    <div class="col-md-2 col-md-offset-8">
+                        <button class="arrow-btn btnNext" >Continuar<span class="glyphicon glyphicon-menu-right"></span></button>
                     </div>
                 </div>
             </div>
 
-            <div class="tab-pane" id="3">
+            <div class="tab-pane fade" id="3">
                 <div class="row" id="form3">
                     <!--Titulo -->
                     <div class="col-md-12 title-style">
                         <h3>Informacion de Contacto</h3>
                     </div>
-                    <div class="col-md-9 form-style">
+                    <div class="col-md-9 form-style" id="contact-form">
 
                         <div class="form-group">
                             <!--Primera Fila -->
@@ -327,34 +330,38 @@
                             </div>
 
                             <!-- Segunda Fila -->
-                            <div class="col-md-1 form-field">
-                                <label class="tocenter-label">Teléfono:</label>
-                            </div>
-                            <div class="col-md-2 form-field">
-                                <label for="phone-type">Tipo:</label>
-                                <select class="form-control" id="phone-type">
-                                    <option>Fijo</option>
-                                    <option>Celular</option>
-                                </select>
-                            </div>
-                            <div class="col-md-3 form-field">
-                                <label for="phone-country">País:</label>
-                                <select class="form-control" id="phone-country">
-                                    <option>Pais1</option>
-                                    <option>Pais2</option>
-                                    <option>Pais3</option>
-                                </select>
-                            </div>
-                            <div class="col-md-2 form-field">
-                                <label for="phone-area">Cód.de Área:</label>
-                                <input type="number" class="form-control" id="phone-area">
-                            </div>
-                            <div class="col-md-3 form-field">
-                                <label for="phone">Número:</label>
-                                <input type="text" class="form-control" id="phone">
-                            </div>
-                            <div class="col-md-1 tocenter-label">
-                                <span class="glyphicon glyphicon-plus-sign "></span>
+                            <div class="phone-data">
+                                <div class="col-md-1 form-field phone-row">
+                                    <label class="tocenter-label">Teléfono:</label>
+                                </div>
+                                <div class="col-md-2 form-field">
+                                    <label for="phone-type">Tipo:</label>
+                                    <select class="form-control" id="phone-type">
+                                        <option>Fijo</option>
+                                        <option>Celular</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-3 form-field">
+                                    <label for="phone-country">País:</label>
+                                    <select class="form-control" id="phone-country">
+                                        <option>Pais1</option>
+                                        <option>Pais2</option>
+                                        <option>Pais3</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-2 form-field">
+                                    <label for="phone-area">Cód.de Área:</label>
+                                    <input type="number" class="form-control" id="phone-area">
+                                </div>
+                                <div class="col-md-3 form-field">
+                                    <label for="phone">Número:</label>
+                                    <input type="text" class="form-control" id="phone">
+                                </div>
+                                <div class="col-md-1 tocenter-label">
+                                    <a href="#" class="btn btn-default add-Phone add-rem-button">
+                                    <span class="glyphicon glyphicon-plus-sign"></span>
+                                    </a>
+                                </div>
                             </div>
                         </div>
 
@@ -365,18 +372,166 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-md-1">
-                        <button class="arrow-btn"><span class="glyphicon glyphicon-menu-left"></span></button>
+                    <div class="col-md-2">
+                        <button class="arrow-btn btnPrev"><span class="glyphicon glyphicon-menu-left">Volver</span></button>
                     </div>
-                    <div class="col-md-1 col-md-offset-10">
-                        <button class="arrow-btn" ><span class="glyphicon glyphicon-menu-right"></span></button>
+                    <div class="col-md-2 col-md-offset-8">
+                        <button class="arrow-btn btnNext" >Continuar<span class="glyphicon glyphicon-menu-right"></span></button>
                     </div>
                 </div>
 
             </div>
 
-            <div class="tab-pane" id="4">
-                <h3>Aca va la pagina del resumen</h3>
+            <div class="tab-pane fade" id="4">
+                <h3 class="title-style">Confirmación</h3>
+
+                <div class="panel-group">
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4>Información de Pasajeros</h4>
+                        </div>
+
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <p><span class="glyphicon glyphicon-user"></span>Adulto</p>
+                                </div>
+                                <div class="col-md-10">
+
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <p><strong>Nombre: </strong>Lorem</p>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <p><strong>Apellido: </strong>Ipsum</p>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <p><strong>País: </strong>Argentina</p>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <p><strong>Tipo: </strong>DNI</p>
+                                        </div>
+                                        <div class="col-sm-12">
+                                            <p><strong>Número: </strong>1540227113</p>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <p><strong>Sexo :</strong>?</p>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <p><strong>Fecha de nacimiento: </strong>dd/mm/aaaa</p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <!-- Pasajeros subsiguientes irían en otro row com mismo formato -->
+
+                        </div>
+                    </div>
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4>Información de Pago</h4>
+                        </div>
+
+                        <div class="panel-body">
+                            <div class="panel-group">
+
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h5>Detalles de Tarjeta</h5>
+                                    </div>
+
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <p><strong>Número de la tarjeta: </strong>Lorem</p>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <p><strong>Vencimiento: </strong>Lorem</p>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <p><strong>Código de seguridad: </strong>Lorem</p>
+                                            </div>
+                                            <div class="col-sm-12">
+                                                <p><strong>Nombre del titular: </strong>Lorem</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h5>Datos de Facturación</h5>
+                                    </div>
+
+                                    <div class="panel-body">
+
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <p><strong>Situación fiscal: </strong>Lorem</p>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <p><strong>CUIL: </strong>123-345345-345</p>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <p><strong>País: </strong>Argentina</p>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <p><strong>Provincia: </strong>KEKEKEKE</p>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <p><strong>Ciudad: </strong>KOKOKOKO</p>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <p><strong>Calle: </strong>KIKIKIKI</p>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <p><strong>Número: </strong>47764617</p>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <p><strong>Código Postal: </strong>1426</p>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4>Información de Contacto</h4>
+                        </div>
+
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <p><strong>E-mail: </strong></p>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <p><span class="glyphicon glyphicon-earphone"></span><strong>Tipo: </strong>Fijo</p>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <p><strong>Código de área: </strong>47764617</p>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <p><strong>Número: </strong>47764617</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
             </div>
 
         </div>

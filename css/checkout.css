@@ -55,14 +55,19 @@
 
 .arrow-btn{
 
-    border: thin;
-    border-color: #0f0f0f;
-    border-radius: 100%;
+    border: groove;
+    font-size: 20px;
+    text-align: justify;
+    background-color:#087CA7;
+    border-radius: 15%;
+    color: whitesmoke;
+
 }
 .sub-style{
     background-color: lavender;
-    border-radius: 10px;
     border-bottom: thick;
+    padding: 0.8em;
+    margin: 0.4em;
 }
 
 .tab-content{
@@ -82,6 +87,10 @@
     border: medium none;
     border-radius: 0;
     color:#fff;
+}
+
+.disabled-tab{
+    pointer-events: none;
 }
 
 #birth-day,#birth-month,#birth-year,#exp-month,#exp-year{
@@ -106,9 +115,18 @@
     width: 200px;
 }
 
+.add-rem-button{
+    background: transparent;
+    border: thin;
+
+}
 label {
     margin: 5px;
     text-align: left;
+}
+
+.glyphicon {
+    margin-right: 0.3em;
 }
 
 .glyphicon-question-sign{
@@ -130,9 +148,14 @@ label {
     margin-top: 20px;
 }
 
+
 .glyphicon.glyphicon-plus-sign{
-    font-size: x-large;
+    font-size: medium;
+    color: green;
 }
 
-
+.glyphicon.glyphicon-minus-sign{
+    font-size: medium;
+    color: red;
+}
 
