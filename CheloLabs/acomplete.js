@@ -1,6 +1,7 @@
 (function(){
 
 	airports = [];
+  idMap = {};
     load();
 
     function load(){
@@ -24,7 +25,8 @@
         var nombre = response.airports[i].description;
         var cityID = response.airports[i].id;
         var disp = cityID + " - " + nombre;
-        airports.push({value: cityID, label: disp}); 
+        airports.push({value: disp, label: disp}); 
+        idMap[disp] = cityID;
       }
     }
 
@@ -36,18 +38,17 @@
         var nombre = response.cities[i].name;
         var cityID = response.cities[i].id;
         var disp = cityID + " - " + nombre + " (todos los aeropuertos)";
-        airports.push({value: cityID, label: disp}); 
+        airports.push({value: disp, label: disp}); 
+        idMap[disp] = cityID;
       }
+
     }
 
 
     window.listFill = fill;
     window.cityFill = cfill;
-	new Awesomplete(document.getElementById("inputCity"), {
-	list: airports,
-	minChars: 1,
-	autoFirst: true}
-	);
+    window.$idMap = idMap;
+    window.$airportList = airports;
 
 })();
 

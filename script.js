@@ -1,6 +1,20 @@
 
 jQuery(document).ready(function(){
 
+
+	new Awesomplete(document.getElementById("origen"), {
+	list: $airportList,
+	minChars: 3,
+	autoFirst: true}
+	);
+
+	new Awesomplete(document.getElementById("destino"), {
+	list: $airportList,
+	minChars: 3,
+	autoFirst: true}
+	);
+
+
 	$(".btn-month").on("click", function(){fill(this, "month", "week")});
 	$(".btn-week").on("click", function(){fill(this,"week", "dest")});
 	$(".btn-dest").on("click", function(){fill(this, "dest")});

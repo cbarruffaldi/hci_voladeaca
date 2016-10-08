@@ -16,12 +16,11 @@
         <link rel="stylesheet" href="css/bootstrap-theme.min.css">
         <link rel="stylesheet" href="css/hover.css" media="all">
         <link rel="stylesheet" href="css/main.css">
- 
+          <link rel="stylesheet" href="./CheloLabs/awesomplete.css"></link>
+
         <script src="angular.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
-        <script src="script.js"></script>
-
-        <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+      <!--  <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet"> -->
 
    <!--     <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script> -->
 
@@ -53,14 +52,14 @@
     <div class="col-md-3">
     <div class="formtitle">Origen</div>
     <div class="form-group">
-      <input type="text" class="form-control" placeholder="Ciudad o aeropuerto...">
+      <input type="text" class="form-control awesomplete" id="origen" placeholder="Ciudad o aeropuerto...">
     </div>
     </div><!-- /input-group -->
     
     <div class="col-md-3">
       <div class="formtitle">Destino</div>
       <div class="form-group">
-       <input type="text" class="form-control" placeholder="Ciudad o aeropuerto...">
+       <input type="text" class="form-control awesomplete" id="destino" placeholder="Ciudad o aeropuerto...">
      </div>
     </div>
    
@@ -155,8 +154,13 @@
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
   <script src="js/vendor/bootstrap.min.js"></script>
 
+  <script src="CheloLabs/awesomplete.js"></script>
+  <script src="CheloLabs/acomplete.js" async defer></script>
+  <script src="script.js" async defer></script>
+
   <script src="js/main.js"></script>
   <script src="js/moment.js" ></script>
+
 
   <script src="jqueryui/jquery-ui.js"></script>
   <script src="jqueryui/uidatepicker-es.js"></script>
