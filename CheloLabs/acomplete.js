@@ -42,8 +42,6 @@
       }
 
     }
-
-    load();
     
     //Este es el objeto que le voy a exponer a global (namespace de estas funciones)
     acUtils = {
@@ -55,5 +53,7 @@
     
     global.$acUtils = acUtils;
 
+    load();
+    
 })(window);
 

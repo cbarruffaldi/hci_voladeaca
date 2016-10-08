@@ -50,7 +50,6 @@ body{
 
 .body-contents{
 	background: url('../img/bg/beach.jpg') no-repeat;
-	background-size:cover;
 }
 
 /*
@@ -121,6 +120,20 @@ background: #97ebfc;
 	margin-bottom: 50px;
 }
 
+
+.form-control.inputerr{
+	  border: 1px solid #FF0000;
+}
+
+.formError{
+	margin-top: -10px;
+	padding-left: 5px;
+	font-size:0.9em;
+	color: #a0003a;
+	position: absolute;
+	display: none;
+}
+
 .botonera{
 	text-align: center;
 	padding-top: 30px;
@@ -151,6 +164,9 @@ background: #97ebfc;
 	font-weight: bold;
 }
 
+.searchbut{
+	padding-top: 15px;
+}
 footer{
 	background: #1a1a00;
 	color: #ffffff;

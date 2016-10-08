@@ -15,8 +15,8 @@
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/bootstrap-theme.min.css">
         <link rel="stylesheet" href="css/hover.css" media="all">
+        <link rel="stylesheet" href="./CheloLabs/awesomplete.css"></link>
         <link rel="stylesheet" href="css/main.css">
-          <link rel="stylesheet" href="./CheloLabs/awesomplete.css"></link>
 
         <script src="angular.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
@@ -30,7 +30,7 @@
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
     <header>
-        <div data-ng-include="'./snippets/nav.html'" id=></div>
+        <div data-ng-include="'./snippets/nav.html'"></div>
     </header>
 
     
@@ -54,6 +54,7 @@
     <div class="form-group">
       <input type="text" class="form-control awesomplete" id="origen" placeholder="Ciudad o aeropuerto...">
     </div>
+    <div id="origen-err" class="formError">Por favor ingrese un origen valido</div>
     </div><!-- /input-group -->
     
     <div class="col-md-3">
@@ -61,7 +62,8 @@
       <div class="form-group">
        <input type="text" class="form-control awesomplete" id="destino" placeholder="Ciudad o aeropuerto...">
      </div>
-    </div>
+     <div id="destino-err" class="formError">Por favor ingrese un destino valido</div>
+   </div>
    
     <div class='col-md-2'>
           <div class="formtitle">Fecha de salida</div>
@@ -94,7 +96,7 @@
     </div>
 
     <div class="row">
-      <div class="col-md-12" align="center">
+      <div class="col-md-12 searchbut" align="center">
          <button type="button" class="btn btn-info" aria-label="Buscar">
         <span class="glyphicon glyphicon-search" aria-hidden="true"></span> BUSCAR
         </button>
@@ -153,14 +155,13 @@
 </footer>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
   <script src="js/vendor/bootstrap.min.js"></script>
-
+ 
   <script src="CheloLabs/awesomplete.js"></script>
-  <script src="CheloLabs/acomplete.js" async defer></script>
+  <script src="CheloLabs/acomplete.js"></script>
+  <script src="js/searchbox.js"></script>
   <script src="script.js" async defer></script>
 
   <script src="js/main.js"></script>
-  <script src="js/moment.js" ></script>
-
 
   <script src="jqueryui/jquery-ui.js"></script>
   <script src="jqueryui/uidatepicker-es.js"></script>

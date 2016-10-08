@@ -69,7 +69,7 @@ var _ = function (input, o) {
 					me.select();
 				}
 				else if (c === 27) { // Esc
-					me.close({ reason: "esc" });
+					me.close({ reason: "esc" }, true);
 				}
 				else if (c === 38 || c === 40) { // Down/Up arrow
 					evt.preventDefault();
@@ -148,7 +148,7 @@ _.prototype = {
 		return this.isOpened;
 	},
 
-	close: function (o) {
+	close: function (o, validate) {
 		if (!this.opened) {
 			return;
 		}
@@ -156,6 +156,11 @@ _.prototype = {
 		this.ul.setAttribute("hidden", "");
 		this.isOpened = false;
 		this.index = -1;
+
+		//Chelo Modification
+		if(validate && validateInput){
+		validateInput(this.input)
+		}
 
 		$.fire(this.input, "awesomplete-close", o || {});
 	},
@@ -220,7 +225,7 @@ _.prototype = {
 
 			if (allowed) {
 				this.replace(suggestion);
-				this.close({ reason: "select" });
+				this.close({ reason: "select" }, true);
 				$.fire(this.input, "awesomplete-selectcomplete", {
 					text: suggestion
 				});

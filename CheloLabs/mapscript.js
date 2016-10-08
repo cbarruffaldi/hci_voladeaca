@@ -1,3 +1,4 @@
+(function(){
 	new Awesomplete(document.getElementById("inputCity"), {
 	list: $acUtils.airportList,
 	minChars: 1,
@@ -21,3 +22,4 @@
 	$("#updateCity").on('click', function(){
 		mapUtils.updateMap($acUtils.id_map[$("#inputCity").val()]);
 	})
+})();
