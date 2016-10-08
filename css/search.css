@@ -1,10 +1,12 @@
-.panel { 
+.panel {
 	margin: 0;
 	padding: 5px;
 }
 
 .filter-area {
 	margin: 8px;
+	margin-left: 1.5%;
+	position: fixed;
 }
 
 .filter-area .panel {
@@ -88,25 +90,6 @@
 .airport-filter-panel h4 {
 	font-size: 1em;
 	font-weight: 300;
-} 
-
-.cheap-flights-carousel {
-	margin-top: 10px;
-	margin-bottom: 10px;
-	padding: 0;
-	height: 80px;
-}
-
-.carousel-arrow {
-	border: 2px solid #9b9b9b;
-	border-radius: 5px;
-	text-align: center;
-	height: 5em;
-}
-
-.arrow-icn{
-	padding-right:0;
-	padding-top: 1.5em;
 }
 
 .sort-options {
@@ -134,8 +117,11 @@
 }
 
 .flight-box {
-	height: 25em;
-	margin-top: 1%;
+	margin-top: 3%;
+	border-radius: 5px;
+  box-shadow: -5px -5px 10px #b3b3b3;
+	background: #FFFFFF;
+	overflow: auto;
 }
 
 .flight-info {
@@ -152,22 +138,18 @@
 	border: 0;
 	border-top-left-radius: 5px;
 	background: #D8D8D8;
-	height: 13%;
+	height: 3em;
 }
 
 .ida-vuelta-badge {
-	margin-left: 1em;
-	margin-right: 1em;
 	margin-top: 1.2%;
-	width: 10%;
 	font-size: 1.2em;
 	font-weight: 700;
 	border-right: 1px solid #3a3a3a;
-	display: inline-block;
+	text-align: center;
 }
 
 .orig-dest-badges {
-	display: inline-block;
 	text-align: left;
 	font-size: 1.2em;
 	margin-top: 1.2%;
@@ -190,27 +172,24 @@
 	padding: 3px 6px;
 }
 
-.details-inner-box {
+.selected-box {
 	background-color: #D8D8D8;
 	border-radius: 3px;
 	padding: 1%;
 	margin: 1%;
+	margin-bottom: 0;
 }
 
-.airline-info-box .air-name{
+.selected-box .airline-info-box .air-name{
 	height: 100%;
 }
 
-.air-img {
-/*	margin: 0;*/
-}
-
-.air-img img {
+.selected-box .air-img img {
 	max-width: 100%;
 	margin-top: 10%;
 }
 
-.air-name h1 {
+.selected-box .air-name h1 {
 	margin: 0;
 	font-size: 1.5em;
 	font-weight: 400;
@@ -218,25 +197,25 @@
 
 }
 
-.flight-point-info {
+.selected-box .flight-point-info {
 	text-align: center;
 	margin: 0;
 	padding: 0;
 }
 
-.airport-id {
+.selected-box .airport-id {
 	font-size: 1.5em;
 	font-weight: 700;
 	line-height: 1em;
 }
 
-.flight-date {
+.selected-box .flight-date {
 	font-size: 1em;
 	font-weight: 500;
 	line-height: 1em;
 }
 
-.duration {
+.selected-box .duration {
 	text-align: center;
 	color: #204DCC;
 	font-size: 1.5em;
@@ -244,17 +223,89 @@
 	line-height: 1em;
 }
 
-.fl-number {
+.selected-box .fl-number {
 	text-align: center;
 	font-weight: 300;
 }
 
-.flight-price-box {
+.unselected-box {
+	background-color: #D8D8D8;
+	padding: 0.5%;
+	margin-right: 1%;
+	margin-left: 1%;
+	border-top: 1px solid #7e7e7e;
+}
+
+.unselected-box .airline-info-box .air-name{
 	height: 100%;
+}
+
+.unselected-box img {
+	display: none;
+}
+
+.unselected-box .air-name h1 {
+	margin: 0;
+	font-size: 1.2em;
+	font-weight: 400;
+	text-align: center;
+}
+
+.unselected-box .flight-point-info {
+	text-align: center;
+	margin: 0;
+	padding: 0;
+}
+
+.unselected-box .airport-id {
+	font-size: 1em;
+	font-weight: 700;
+}
+
+.unselected-box .flight-date {
+	font-size: 1em;
+	font-weight: 500;
+	line-height: 1em;
+}
+
+.unselected-box .duration {
+	text-align: center;
+	color: #204DCC;
+	font-size: 1em;
+	font-weight: 500;
+	line-height: 1em;
+}
+
+.unselected-box .fl-number {
+	display: none;
+}
+
+.flight-price-box {
+	min-height: 25em;
 	background: #DC0055;
 	border-bottom-right-radius: 5px;
 	border-top-right-radius: 5px;
 	text-align: center;
+}
+
+.options-btn button {
+	width: 100%;
+	border: 1px solid #204DCC;
+	background-color: #FFFFFF;
+	color: #204DCC;
+	font-size: 1.1em;
+	padding: 0.8%;
+	font-weight: 400;
+	letter-spacing: 1px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	transition: all 0.3s;
+}
+
+.options-btn button:hover{
+	background-color: #204DCC;
+	color: #FFFFFF;
+	transition: all 0.3s;
 }
 
 .price-number {
@@ -268,6 +319,7 @@
 .details-btn {
 	color: #FFFFFF;
 	font-weight: 500;
+	margin-top: 5px;
 }
 
 /* lo podemos usar en general */
@@ -279,6 +331,12 @@
 	padding: 0.7em 1.2em;
 }
 
+.vda-text-btn {
+	padding: 0;
+	border: 0;
+	background: none;
+}
+
 .vda-btn:hover {
 	background-color: #dddddd;
 }
@@ -287,6 +345,7 @@
 	margin-top: 10%;
 	color: #000000;
 }
-.flight-details-box {
-	height: 44%;
+
+button:focus {
+	outline: 0;
 }

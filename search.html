@@ -26,8 +26,6 @@
 		<div data-ng-include="'./snippets/nav.html'"></div>
 	</header>
 
-
-
 	<div class="container-fluid">
 		<div class="row">
 			<div class ="col-md-3">
@@ -71,45 +69,44 @@
 					<div class="panel airport-filter-panel">
 						<h3>Aeropuertos</h3>
 						<h4>Origen</h4>
-						<input type="checkbox" id="aer-o-cbox1"> 
+						<input type="checkbox" id="aer-o-cbox1">
 						<label for="aer-o-cbox1">Aeropuerto 1</label>
 						<br/>
 						<input type="checkbox" id="aer-o-cbox2"> <label for="aer-o-cbox2">Aeropuerto 2</label>
 						<br>
-						<input type="checkbox" id="aer-o-cbox3"> 
+						<input type="checkbox" id="aer-o-cbox3">
 						<label for="aer-o-cbox3">Aeropuerto 3</label>
 						<br/>
 						<h4>Destino</h4>
-						<input type="checkbox" id="aer-d-cbox1"> 
+						<input type="checkbox" id="aer-d-cbox1">
 						<label for="aer-d-cbox1">Aeropuerto 1</label>
 						<br/>
 						<input type="checkbox" id="aer-d-cbox2"> <label for="aer-d-cbox2">Aeropuerto 2</label>
 						<br>
-						<input type="checkbox" id="aer-d-cbox3"> 
+						<input type="checkbox" id="aer-d-cbox3">
 						<label for="aer-d-cbox3">Aeropuerto 3</label>
 						<br/>
 					</div>
 					<div class="panel airline-filter-panel">
 						<h3> Aerolíneas</h3>
-						<input type="checkbox" id="airl-cbox1"> 
+						<input type="checkbox" id="airl-cbox1">
 						<label for="airl-cbox1">Aerolínea 1</label>
 						<br/>
 						<input type="checkbox" id="airl-cbox2"> <label for="airl-cbox2">Aerolínea 2</label>
 						<br>
-						<input type="checkbox" id="airl-cbox3"> 
+						<input type="checkbox" id="airl-cbox3">
 						<label for="airl-cbox3">Aerolínea 3</label>
 						<br/>
 					</div>
 				</div>
-			</div> 
+			</div>
 
-			<div class="col-md-9"> <!-- derecha de los filtros -->
+			<div class="col-md-9">
+
 				<!-- Caja de búsqueda -->
 				<div class="thin-search-box">
 					<div class="row">
-
-
-						<div class="col-md-5"> <!-- destinos -->
+						<div class="col-md-5">
 							<div class="row ida-vuelta-buttons">
 								<div class="col-md-10">
 									<p>Ida y Vuelta | Solo ida</p>
@@ -126,8 +123,7 @@
 								</div>
 							</div>
 						</div>
-
-						<div class="col-md-4"> <!-- fechas -->
+						<div class="col-md-4">
 							<div class="row">
 								<div class="form-group">
 									<div class="col-md-6 date-input-ida">
@@ -141,7 +137,6 @@
 								</div>
 							</div>
 						</div>
-
 						<!-- TODO: ALINEARLO VERTICALMENTE NO SE COMO -->
 						<div class="col-md-3">
 							<span class="btn-group boton-pasajeros">
@@ -197,6 +192,7 @@
 
 				</div>
 
+<!--
 				<div class="row">
 					<div class="cheap-flights-carousel">
 						<div class="col-md-1">
@@ -205,7 +201,7 @@
 							</div>
 						</div>
 						<div class="col-md-10">
-							<!-- aca van los cuadraditos -->
+							 aca van los cuadraditos
 						</div>
 						<div class="col-md-1">
 							<div class="carousel-arrow">
@@ -214,6 +210,8 @@
 						</div>
 					</div>
 				</div>
+-->
+
 				<div class="row">
 					<div class="col-md-12">
 						<button type="button" id="3daysbtn" class="btn btn-primary btn-block">+/- 3 días</button>
@@ -255,162 +253,218 @@
 				</div>
 
 				<div class="col-md-12 flight-options-area">
-					<div class="row">
-						<div class="flight-box">
 
-							<div class="col-md-10 flight-info">
-								
-								<div class="row airports-line-info">
-									<div class="col-md-3 ida-vuelta-badge">
-										IDA <span class="glyphicon glyphicon-arrow-right"></span>
-									</div>
-									<div class="col-md-9 orig-dest-badges">
-										Buenos Aires
-										<span class="airport-badge">EZE</span>
-										<span class="glyphicon glyphicon-arrow-right"></span>
-										<span class="airport-badge">JFK</span>
-										Nueva York
-									</div>
+					<div class="row flight-box">
+						<div class="col-md-10 flight-info">
+							<div class="row airports-line-info">
+								<div class="col-md-2 ida-vuelta-badge">
+									IDA <span class="glyphicon glyphicon-arrow-right"></span>
 								</div>
-
-								<div class="flight-details-box">
-									<div class="row details-inner-box">
-										<div class="col-md-1 air-img">
-											<img src="aircanada.png">
-										</div>
-										<div class="col-md-2 air-name">
-											<h1>Air Canada</h1> 
-											<!-- que lo centre magoya --> 
-										</div>
-
-										<div class="col-md-3">
-											<div class="flight-point-info">
-												<div class="airport-id">
-													EZE
-												</div>
-												<div class="flight-date">
-													Viernes 10
-												</div>
-												<div class="flight-time">
-													10:00hs
-												</div>
-											</div>
-										</div>
-										
-										<div class="col-md-1">
-											<img src="paper-plane.svg">
-										</div>
-										
-										<div class="col-md-3">
-											<div class="flight-point-info">
-												<div class="airport-id">
-													JFK
-												</div>
-												<div class="flight-date">
-													Sábado 11
-												</div>
-												<div class="flight-time">
-													01:00hs
-												</div>
-											</div>
-										</div>
-										
-										<div class="col-md-2">
-												<div class="duration">18h18m</div>
-												<div class="fl-number">Nº AC3214</div>
-										</div>
-									</div>
-								</div>
-
-								<div class="row airports-line-info">
-									<div class="col-md-3 ida-vuelta-badge">
-										IDA <span class="glyphicon glyphicon-arrow-right"></span>
-									</div>
-									<div class="col-md-9 orig-dest-badges">
-										Buenos Aires
-										<span class="airport-badge">EZE</span>
-										<span class="glyphicon glyphicon-arrow-right"></span>
-										<span class="airport-badge">JFK</span>
-										Nueva York
-									</div>
-								</div>
-
-								<div class="flight-details-box">
-									<div class="row details-inner-box">
-										<div class="col-md-1 air-img">
-											<img src="aircanada.png">
-										</div>
-										<div class="col-md-2 air-name">
-											<h1>Air Canada</h1> 
-											<!-- que lo centre magoya --> 
-										</div>
-
-										<div class="col-md-3">
-											<div class="flight-point-info">
-												<div class="airport-id">
-													JFK
-												</div>
-												<div class="flight-date">
-													Viernes 17
-												</div>
-												<div class="flight-time">
-													12:00hs
-												</div>
-											</div>
-										</div>
-										
-										<div class="col-md-1">
-											<img src="paper-plane.svg">
-										</div>
-										
-										<div class="col-md-3">
-											<div class="flight-point-info">
-												<div class="airport-id">
-													EZE
-												</div>
-												<div class="flight-date">
-													Sábado 18
-												</div>
-												<div class="flight-time">
-													03:00hs
-												</div>
-											</div>
-										</div>
-										
-										<div class="col-md-2">
-												<div class="duration">18h19m</div>
-												<div class="fl-number">Nº AC3215</div>
-										</div>
-									</div>
+								<div class="col-md-10 orig-dest-badges">
+									Buenos Aires
+									<span class="airport-badge">EZE</span>
+									<span class="glyphicon glyphicon-arrow-right"></span>
+									<span class="airport-badge">JFK</span>
+									Nueva York
 								</div>
 							</div>
 
-							<div class="col-md-2 flight-price-box">
-								<div class="price-number">
-									$9000
+								<div class="row selected-box">
+									<div class="col-md-1 air-img">
+										<img src="aircanada.png">
+									</div>
+									<div class="col-md-2 air-name">
+										<h1>Air Canada</h1>
+										<!-- que lo centre magoya -->
+									</div>
+
+									<div class="col-md-3">
+										<div class="flight-point-info">
+											<div class="airport-id">
+												EZE
+											</div>
+											<div class="flight-date">
+												Viernes 10
+											</div>
+											<div class="flight-time">
+												10:00hs
+											</div>
+										</div>
+									</div>
+
+									<div class="col-md-1 plane-img">
+										<img src="paper-plane.svg">
+									</div>
+
+									<div class="col-md-3">
+										<div class="flight-point-info">
+											<div class="airport-id">
+												JFK
+											</div>
+											<div class="flight-date">
+												Sábado 11
+											</div>
+											<div class="flight-time">
+												01:00hs
+											</div>
+										</div>
+									</div>
+
+									<div class="col-md-2">
+										<div class="duration">18h18m</div>
+										<div class="fl-number">Nº AC3214</div>
+									</div>
 								</div>
-								<div class="details-btn">
-									+ detalles
-								</div>			
-								<div class="buy-btn">
-									<button type="button" class="vda-btn">Comprar</button>
+
+
+
+								<div class="row unselected-box collapse">
+									<div class="col-md-1 air-img">
+										<img src="aircanada.png">
+									</div>
+									<div class="col-md-2 air-name">
+										<h1>Air Canada</h1>
+										<!-- que lo centre magoya -->
+									</div>
+
+									<div class="col-md-3">
+										<div class="flight-point-info">
+											<div class="airport-id">
+												EZE
+											</div>
+											<div class="flight-date">
+												Viernes 10
+											</div>
+											<div class="flight-time">
+												10:00hs
+											</div>
+										</div>
+									</div>
+
+									<div class="col-md-1">
+										<img src="paper-plane.svg">
+									</div>
+
+									<div class="col-md-3">
+										<div class="flight-point-info">
+											<div class="airport-id">
+												JFK
+											</div>
+											<div class="flight-date">
+												Sábado 11
+											</div>
+											<div class="flight-time">
+												01:00hs
+											</div>
+										</div>
+									</div>
+
+									<div class="col-md-2">
+										<div class="duration">18h18m</div>
+										<div class="fl-number">Nº AC3214</div>
+									</div>
+								</div>
+
+								<div class="row options-btn">
+									<div class="col-md-10 col-md-offset-1">
+										<button class="vda-btn">Ver mas opciones para el mismo precio  <span class="glyphicon glyphicon-chevron-down"></span></button>
+									</div>
+								</div>
+
+							<div class="row airports-line-info">
+								<div class="col-md-2 ida-vuelta-badge">
+									VUELTA <span class="glyphicon glyphicon-arrow-left"></span>
+								</div>
+								<div class="col-md-10 orig-dest-badges">
+									Nueva York
+									<span class="airport-badge">JFK</span>
+									<span class="glyphicon glyphicon-arrow-right"></span>
+									<span class="airport-badge">EZE</span>
+									Buenos Aires
 								</div>
 							</div>
 
+								<div class="row selected-box">
+									<div class="col-md-1 air-img">
+										<img src="aircanada.png">
+									</div>
+									<div class="col-md-2 air-name">
+										<h1>Air Canada</h1>
+										<!-- que lo centre magoya -->
+									</div>
+
+									<div class="col-md-3">
+										<div class="flight-point-info">
+											<div class="airport-id">
+												JFK
+											</div>
+											<div class="flight-date">
+												Viernes 17
+											</div>
+											<div class="flight-time">
+												12:00hs
+											</div>
+										</div>
+									</div>
+
+									<div class="col-md-1">
+										<img src="paper-plane.svg">
+									</div>
+
+									<div class="col-md-3">
+										<div class="flight-point-info">
+											<div class="airport-id">
+												EZE
+											</div>
+											<div class="flight-date">
+												Sábado 18
+											</div>
+											<div class="flight-time">
+												03:00hs
+											</div>
+										</div>
+									</div>
+
+									<div class="col-md-2">
+										<div class="duration">18h19m</div>
+										<div class="fl-number">Nº AC3215</div>
+									</div>
+								</div>
+								<div class="row options-btn">
+									<div class="col-md-10 col-md-offset-1">
+										<button class="vda-btn">Ver mas opciones para el mismo precio  <span class="glyphicon glyphicon-chevron-down"></span></button>
+									</div>
+								</div>
 						</div>
-					</div>
+
+						<div class="col-md-2 flight-price-box">
+							<div class="price-number">
+								$9000
+							</div>
+							<div class="details-btn">
+								<div class="collapse price-details">
+									<div>Básico 7438</div>
+									<div>Iva 21% 1562</div>
+								</div>
+								<button class="vda-text-btn">+ detalles</button>
+							</div>
+							<div class="buy-btn">
+								<button class="vda-btn">Comprar</button>
+							</div>
+						</div>
+
+					</div> <!-- fin vuelo -->
+
+
 				</div>
 			</div>
 		</div>
 	</div>
 
-
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<script src="js/vendor/bootstrap.min.js"></script>
-
 	<script src="js/main.js"></script>
 	<script src="js/moment.js" ></script>
-
 	<script src="jqueryui/jquery-ui.js"></script>
 	<script src="jqueryui/uidatepicker-es.js"></script>
 	<script>
