@@ -15,7 +15,7 @@
 
 	<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
 
-    <script src="angular.min.js"></script>
+	<script src="angular.min.js"></script>
 	<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
 	<script src="search-page-script.js"></script>
 	<script src="script.js"></script>
@@ -23,7 +23,7 @@
 
 <body data-ng-app="">
 	<header>
-		    <div data-ng-include="'./snippets/nav.html'"></div>
+		<div data-ng-include="'./snippets/nav.html'"></div>
 	</header>
 
 
@@ -259,6 +259,7 @@
 						<div class="flight-box">
 
 							<div class="col-md-10 flight-info">
+								
 								<div class="row airports-line-info">
 									<div class="col-md-3 ida-vuelta-badge">
 										IDA <span class="glyphicon glyphicon-arrow-right"></span>
@@ -274,43 +275,113 @@
 
 								<div class="flight-details-box">
 									<div class="row details-inner-box">
-										<div class="airline-info-box">
-											<div class="col-md-1 air-img">
-												<img src="aircanada.png">
-											</div>
-											<div class="col-md-2 air-name">
-												<h1>Air Canada</h1>
-											</div>
+										<div class="col-md-1 air-img">
+											<img src="aircanada.png">
+										</div>
+										<div class="col-md-2 air-name">
+											<h1>Air Canada</h1> 
+											<!-- que lo centre magoya --> 
 										</div>
 
-										<div class="flight-point-info">
-											<div class="airport-id">
-												EZE
-											</div>
-											<div class="flight-date">
-												Viernes 10
-											</div>
-											<div class="flight-time">
-												10:00hs
-											</div>
-										</div>
-										<div class="flight-point-info">
-											<div class="airport-id">
-												JFK
-											</div>
-											<div class="flight-date">
-												Sabado 11
-											</div>
-											<div class="flight-time">
-												1:00hs
+										<div class="col-md-3">
+											<div class="flight-point-info">
+												<div class="airport-id">
+													EZE
+												</div>
+												<div class="flight-date">
+													Viernes 10
+												</div>
+												<div class="flight-time">
+													10:00hs
+												</div>
 											</div>
 										</div>
-
-										<div class="duration-box">
+										
+										<div class="col-md-1">
+											<img src="paper-plane.svg">
+										</div>
+										
+										<div class="col-md-3">
+											<div class="flight-point-info">
+												<div class="airport-id">
+													JFK
+												</div>
+												<div class="flight-date">
+													Sábado 11
+												</div>
+												<div class="flight-time">
+													01:00hs
+												</div>
+											</div>
+										</div>
+										
+										<div class="col-md-2">
+												<div class="duration">18h18m</div>
+												<div class="fl-number">Nº AC3214</div>
 										</div>
 									</div>
+								</div>
 
+								<div class="row airports-line-info">
+									<div class="col-md-3 ida-vuelta-badge">
+										IDA <span class="glyphicon glyphicon-arrow-right"></span>
+									</div>
+									<div class="col-md-9 orig-dest-badges">
+										Buenos Aires
+										<span class="airport-badge">EZE</span>
+										<span class="glyphicon glyphicon-arrow-right"></span>
+										<span class="airport-badge">JFK</span>
+										Nueva York
+									</div>
+								</div>
 
+								<div class="flight-details-box">
+									<div class="row details-inner-box">
+										<div class="col-md-1 air-img">
+											<img src="aircanada.png">
+										</div>
+										<div class="col-md-2 air-name">
+											<h1>Air Canada</h1> 
+											<!-- que lo centre magoya --> 
+										</div>
+
+										<div class="col-md-3">
+											<div class="flight-point-info">
+												<div class="airport-id">
+													JFK
+												</div>
+												<div class="flight-date">
+													Viernes 17
+												</div>
+												<div class="flight-time">
+													12:00hs
+												</div>
+											</div>
+										</div>
+										
+										<div class="col-md-1">
+											<img src="paper-plane.svg">
+										</div>
+										
+										<div class="col-md-3">
+											<div class="flight-point-info">
+												<div class="airport-id">
+													EZE
+												</div>
+												<div class="flight-date">
+													Sábado 18
+												</div>
+												<div class="flight-time">
+													03:00hs
+												</div>
+											</div>
+										</div>
+										
+										<div class="col-md-2">
+												<div class="duration">18h19m</div>
+												<div class="fl-number">Nº AC3215</div>
+										</div>
+									</div>
 								</div>
 							</div>
 

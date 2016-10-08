@@ -142,21 +142,17 @@
 	background-color: #FFFFFF;
 	border: 0;
 	border-bottom-left-radius: 5px;
+	border-top-left-radius: 5px;
 	padding: 0;
 	height: 100%;
 }
 
 .airports-line-info {
 	margin: 0;
-	height: 12%;
 	border: 0;
 	border-top-left-radius: 5px;
 	background: #D8D8D8;
-}
-
-.flight-details-box {
-	height: 35%;
-	padding: 1%;
+	height: 13%;
 }
 
 .ida-vuelta-badge {
@@ -174,7 +170,7 @@
 	display: inline-block;
 	text-align: left;
 	font-size: 1.2em;
-/*	margin-top: 1.2%;*/
+	margin-top: 1.2%;
 	font-weight: 700;
 }
 
@@ -196,44 +192,61 @@
 
 .details-inner-box {
 	background-color: #D8D8D8;
-	height: 100%;
 	border-radius: 3px;
 	padding: 1%;
+	margin: 1%;
 }
 
 .airline-info-box .air-name{
 	height: 100%;
 }
 
-.airline-info-box img{
-	width: 100%;
-}
-
 .air-img {
-	padding: 0;
+/*	margin: 0;*/
 }
 
-.airline-info-box h1 {
+.air-img img {
+	max-width: 100%;
+	margin-top: 10%;
+}
+
+.air-name h1 {
+	margin: 0;
 	font-size: 1.5em;
-/*	width: 55%;*/
-	margin: 0;
+	font-weight: 400;
 	text-align: center;
-	vertical-align: middle;
-	border-right: 1px solid #3A3A3A;
-	display: inline-block;
+
 }
 
-.airport-id, .flight-date, .flight-time {
-	display: block;
-}
-
-.no-gutters {
+.flight-point-info {
+	text-align: center;
 	margin: 0;
 	padding: 0;
 }
 
-.flight-points-box {
+.airport-id {
+	font-size: 1.5em;
+	font-weight: 700;
+	line-height: 1em;
+}
+
+.flight-date {
+	font-size: 1em;
+	font-weight: 500;
+	line-height: 1em;
+}
+
+.duration {
 	text-align: center;
+	color: #204DCC;
+	font-size: 1.5em;
+	font-weight: 500;
+	line-height: 1em;
+}
+
+.fl-number {
+	text-align: center;
+	font-weight: 300;
 }
 
 .flight-price-box {
@@ -242,11 +255,6 @@
 	border-bottom-right-radius: 5px;
 	border-top-right-radius: 5px;
 	text-align: center;
-}
-
-.flight-point-info {
-	display: inline-block;
-	padding: 1%;
 }
 
 .price-number {
@@ -278,4 +286,7 @@
 .buy-btn .vda-btn {
 	margin-top: 10%;
 	color: #000000;
+}
+.flight-details-box {
+	height: 44%;
 }
