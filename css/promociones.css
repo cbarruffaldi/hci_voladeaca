@@ -20,6 +20,25 @@ input{
 }
 
 
+.mapcontent{
+	margin-top: 50px;
+}
+
+.mapbox{
+	background:  rgba(147, 188, 255, 0.9);
+	/*	background: #ffffff;  */
+	border: #93bcff 1px solid;
+	margin-bottom: 100px; 
+	padding-bottom: 1em;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+
+.promo_t{
+	background: #DC0055;
+	color: #e6efff;
+}
+
 .body-contents-promo{
 	background: url('../img/bg/londonA6.jpg') no-repeat;
 	background-size:cover;
