@@ -1,19 +1,28 @@
 
 /* Arreglo de funciones para cada etapa */
-var validations = [validationPassengers];
+var validations = [validationPassengers, validationPayment, validationContact];
+
+function validationPayment() {
+
+}
+
+function validationContact() {
+
+}
 
 $(document).ready(function(){
     $('.btnNext').click(function(){
         var active = $('.nav-tabs > .active');
         var indexTab = $('.nav-tabs').children('li').index(active); /* índice para saber a qué funcíón llamar */
+        var next = active.next('li'); /* siguiente tab al actual */
 
         validations[indexTab](); /* llama a función según índice */
 
-        if(active.next('li').hasClass('disabled-tab')) {
-            active.removeClass('disabled-tab');
-            active.removeClass('disabled');
+        if(next.hasClass('disabled-tab')) {
+            next.removeClass('disabled-tab');
+            next.removeClass('disabled');
         }
-        active.next('li').find('a').tab('show');
+        next.find('a').tab('show');
     });
 });
 
