@@ -1,11 +1,19 @@
+
+/* Arreglo de funciones para cada etapa */
+var validations = [validationPassengers];
+
 $(document).ready(function(){
     $('.btnNext').click(function(){
+        var active = $('.nav-tabs > .active');
+        var indexTab = $('.nav-tabs').children('li').index(active); /* índice para saber a qué funcíón llamar */
 
-        if($('.nav-tabs > .active').next('li').hasClass('disabled-tab')) {
-            $('.nav-tabs > .active').removeClass('disabled-tab');
-            $('.nav-tabs > .active').removeClass('disabled');
+        validations[indexTab](); /* llama a función según índice */
+
+        if(active.next('li').hasClass('disabled-tab')) {
+            active.removeClass('disabled-tab');
+            active.removeClass('disabled');
         }
-        $('.nav-tabs > .active').next('li').find('a').tab('show');
+        active.next('li').find('a').tab('show');
     });
 });
 
@@ -147,8 +155,8 @@ function validateDate(day,month,year){
     if(year < 0){
         return 2;
     }
-    var date = new Date(year,month - 1,day);
-    return date.toDateString().slice(4);
+
+    return [day, month, year].join('/');
 
 }
 
@@ -158,32 +166,26 @@ function addSumField(field) {
 }
 
 function addSumBlockPass() {
+    var passengersSummary = $('.summary-passengers');
+    var passenger = $('<div class="summary-passenger"><p></p></div>');
 
-    var first = '<div class= "summary-block">'+ '</div>';
-    $(".summary").append(first);
-
-    $(".summary-block").append(addSumField("name"));
-    $(".summary-block").append(addSumField("lname"));
-    $(".summary-block").append(addSumField("date"))
-    $(".summary-block").append(addSumField("gen"));
-    $(".summary-block").append(addSumField("country"));
-    $(".summary-block").append(addSumField("doc"));
-    $(".summary-block").append(addSumField("docnum"));
-
-
+    passengersSummary.append(passenger);
+/*
+    summary.append(addSumField("name"));
+    summary.append(addSumField("lname"));
+    summary.append(addSumField("date"));
+    summary.append(addSumField("gen"));
+    summary.append(addSumField("country"));
+    summary.append(addSumField("doc"));
+    summary.append(addSumField("docnum"));
+*/
 }
 
 function completeDataPass(name, lname, date, gen, country, doc, docnum){
-    $(".field-name").text(name);
-    $(".field-lname").text(lname);
-    $(".field-date").text(date);
-    $(".field-gen").text(gen);
-    $(".field-country").text(country);
-    $(".field-doc").text(doc);
-    $(".field-docnum").text(docnum);
+    $('.summary-passenger').find('p').text([name, lname, date, gen, country, doc, docnum].join(' '));
 }
 
-function validation() {
+function validationPassengers() {
 
     var name = validateName(document.getElementById("usr-name").value);
     if (name == 1) {
@@ -197,7 +199,7 @@ function validation() {
         lname= "Apellido Vacío";
     }
 
-    // TODO: VALIDAR DOCUMENTO  Y TODO LA VERDAD...
+    // TODO: VALIDAR DOCUMENTO Y TODO LA VERDAD...
 
     var day =document.getElementById("birth-day").value;
     var month = document.getElementById("birth-month").value;
@@ -216,30 +218,19 @@ function validation() {
     var docnum = document.getElementById("usr-docnum").value;
     var doc = document.getElementById("usr-doc").value;
 
-    if (doc != 1) {
-        console.log("Docuemnto vacío");
+    if (doc == 1) {
+        console.log("Documento vacío");
         doc = "Documento Vacío";
     }
 
     var country= document.getElementById("usr-country").value;
     var gen = document.getElementById("usr-gen").value;
-    completeDataPass('Nombre: ' + name , 'Apellido: ' + lname , 'fecha Nacimiento: '  + date , 'Sexo: '+ gen, 'País: ' + country +
-        'Tipo de Documento: ' + doc, 'Numero de Documento: ' + docnum);
 
-
+    completeDataPass(name, lname, date, gen, country, doc, docnum);
 }
-
-
-$(document).ready(function(){
-
-    $('#cont1').click(validation);
-
-});
 
 $(document).ready(function(){
 
     addSumBlockPass();
 
 });
-
-

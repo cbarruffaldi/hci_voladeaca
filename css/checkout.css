@@ -1,4 +1,4 @@
-.title-style{
+.title-style {
     background-color: #087CA7;
     color:#e3e3e3;;
     border-radius: 10px;
@@ -9,7 +9,7 @@
 
 }
 
-.info-box{
+.info-box {
     padding:0;
     border-radius: 10px;
     background-color: ghostwhite;
@@ -17,28 +17,27 @@
     padding-top: 0.5em;
 }
 
-.sum-box{
+.sum-box {
     border-radius: 10px;
     background-color: ghostwhite;
     padding:0;
 
 }
 
-.sum{
+.sum {
     height: 100%;
     background-color: #0F9E5E;
-
 }
 
-.single-label{
+.single-label {
     padding-left: 0;
 }
-.form-tags{
+.form-tags {
     margin: 10px;
     display: inline-block;
 }
 
-.form-field{
+.form-field {
     padding-bottom: 0.2em;
 
 }
