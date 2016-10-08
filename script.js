@@ -3,13 +3,13 @@ jQuery(document).ready(function(){
 
 
 	new Awesomplete(document.getElementById("origen"), {
-	list: $airportList,
+	list: $acUtils.airportList,
 	minChars: 3,
 	autoFirst: true}
 	);
 
 	new Awesomplete(document.getElementById("destino"), {
-	list: $airportList,
+	list: $acUtils.airportList,
 	minChars: 3,
 	autoFirst: true}
 	);
