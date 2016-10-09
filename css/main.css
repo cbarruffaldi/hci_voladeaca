@@ -132,6 +132,7 @@ background: #97ebfc;
 	color: #a0003a;
 	position: absolute;
 	display: none;
+	padding-bottom: 15px;
 }
 
 .botonera{
@@ -145,7 +146,6 @@ background: #97ebfc;
 	border-radius: 1px;
 	padding: 10px;
 }
-
 
 .idavuelta{
 	padding: 10px 10px;

@@ -58,19 +58,22 @@
 
 
 	function dateCheck(emptyCheck){
-		ret = true;
-		date1 = $("#datepicker1");
-		date2 = $("#datepicker2");
+		var ret = true;
+
+		var date1 = $("#datepicker1");
+		var date2 = $("#datepicker2");
 		
+
 		date1.removeClass("inputerr");
 		date2.removeClass("inputerr");
 
 		$("#datepicker1-err").fadeOut();
 		$("#datepicker2-err").fadeOut();
 
+		var departure, arrival; 
+
 		if(date1.val() || emptyCheck){
-			var departure = moment(date1.val(), "DD/MM/YYYY");
-			
+			departure = moment(date1.val(), "DD/MM/YYYY", true);
 			if(!departure.isValid()){
 				date1.addClass('inputerr');
 				ret = false;
@@ -82,12 +85,24 @@
 		}
 
 		if(date2.val() || emptyCheck){
-			var arrival = moment(date2.val(), "DD/MM/YYYY");
+			arrival = moment(date2.val(), "DD/MM/YYYY", true);
 			if(!arrival.isValid()){
 					date2.addClass("inputerr");
 					ret = false;
 				$("#datepicker2-err").text("Ingrese una fecha valida");
 				$("#datepicker2-err").fadeIn();
+			}
+		}
+
+		if(departure && arrival){ 
+		//Si ambas estan definidas chequeo que no sean incompatibles
+			if(departure.isAfter(arrival)){
+				ret = false
+				date1.addClass('inputerr');
+				date2.addClass('inputerr');
+
+				$("#datepicker1-err").text("La ida debe ser antes que la vuelta");
+				$("#datepicker1-err").fadeIn();
 			}
 		}
 		
@@ -108,6 +123,7 @@
 		if(checker){		
 			var uri = 'search.html?';
 			uri += 'orig=' + $id_map[$("#origen").val()];
+			uri += '&d='
 			uri += '&dest=' + $id_map[$("#destino").val()];
 			window.location.href = uri;
 		}
