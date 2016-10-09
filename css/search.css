@@ -1,74 +1,40 @@
-.panel {
-	margin: 0;
-	padding: 5px;
-}
-
 .filter-area {
-	margin: 8px;
-	margin-left: 1.5%;
-	position: fixed;
-}
-
-.filter-area .panel {
-	margin: 5px;
-	border-width: 1px;
-	border-style: solid;
+	padding: 5%;
+	margin-top: 5%;
+	background-color: #FFFFFF;
 	border-radius: 3px;
-	border-color: #d6d6d6;
+	box-shadow: 0 0 10px #a3a3a3;
 }
 
 .filter-area h2 {
 	font-size: 1.5em;
-	font-weight: 300;
+	font-weight: 400;
 	padding-left: 0.5em;
 	margin-top: 0.2em;
 }
 
-.filter-area .panel h3 {
-	margin-top: 0;
-	text-align: left;
+.filter-box {
+	padding-top: 4%;
+	padding-bottom: 4%;
+	border-top: 1px solid #dddddd;
+}
+
+.filter-name {
+	font-size: 1.2em;
+	font-weight: 600;
+}
+
+.filter-section-name {
 	font-size: 1em;
-	font-weight: 400;
+	font-weight: 500;
+	letter-spacing: 1px;
+	color: #204dcc;
 }
 
-#price-slider {
-	width: 90%;
-	margin: auto;
-}
-
-.thin-search-box {
-	border-style: solid;
-	border-width: thin;
-	border-color: #d6d6d6;
-	background-color: white;
-	padding: 5px;
-	border-radius: 5px;
-	margin: 0;
-}
-
-.date-label {
-	margin: 0;
-	padding-bottom: 0;
-	padding-left: 5px;
-	padding-top: 10px;
-}
-
-.date-input-ida {
-	margin-right: 0;
-	padding-right: 0;
-}
-
-.date-input-vuelta {
-	margin-left: 0;
-	padding-left: 0;
-}
-
-.boton-pasajeros {
-	margin-right: 2em;
-}
-
-.search-button-small {
-	margin-top: 40px;
+label {
+	margin-top: 2%;
+	font-weight: 500;
+	margin-left: 10px;
 }
 
 .depart-time-button {
@@ -78,8 +44,9 @@
 }
 
 .depart-time-grid {
-	text-align:center;
-	padding-bottom: 0.5em;
+	text-align: center;
+	margin-bottom: 2%;
+	margin-top: 1%;
 }
 
 .depart-time-button img {
@@ -93,14 +60,11 @@
 	box-sizing: border-box;
 }
 
-.airport-filter-panel h4 {
-	font-size: 1em;
-	font-weight: 300;
-}
-
-.sort-options {
-	margin-top: 5px;
-	margin-bottom: 5px;
+.three-day-row button {
+	width: 100%;
+	font-size: 1.1em;
+	padding: 0.8%;
+	margin-bottom: 1%;
 }
 
 .boton-pasajeros .dropdown-menu {
@@ -122,10 +86,47 @@
 	margin-left: 60%;
 }
 
+.results-carousel {
+	margin-bottom: 1%;
+	margin-top: 1%;
+}
+
+.results-carousel button {
+	height: 4em;
+	border-radius: 5px;
+	background-color: #FFFFFF;
+	box-shadow: 0 0 8px #a3a3a3;
+}
+
+.carousel-flight {
+	height: 4em;
+	text-align: center;
+	padding: 3%;
+	border-radius: 5px;
+	border: 1px solid #FFFFFF;
+	background-color: #FFFFFF;
+	box-shadow: 0 0 8px #a3a3a3;
+}
+
+.carousel-flight:hover {
+	border-color: #204DCC;
+	transition: all 0.3s;
+	cursor: pointer;
+}
+
+.carousel-flight .air-name {
+	font-size: 1.2em;
+}
+
+.carousel-flight .fl-price {
+	font-size: 1.3em;
+	color: #204DCC;
+}
+
 .flight-box {
 	margin-top: 3%;
-	border-radius: 5px;
-  box-shadow: -5px -5px 10px #b3b3b3;
+	border-radius: 3px;
+	box-shadow: 0 0 12px #a3a3a3;
 	background: #FFFFFF;
 	overflow: auto;
 }
@@ -133,8 +134,8 @@
 .flight-info {
 	background-color: #FFFFFF;
 	border: 0;
-	border-bottom-left-radius: 5px;
-	border-top-left-radius: 5px;
+	border-bottom-left-radius: 3px;
+	border-top-left-radius: 3px;
 	padding: 0;
 	height: 100%;
 }
@@ -142,7 +143,7 @@
 .airports-line-info {
 	margin: 0;
 	border: 0;
-	border-top-left-radius: 5px;
+	border-top-left-radius: 3px;
 	background: #D8D8D8;
 	height: 3em;
 }
@@ -292,8 +293,8 @@
 .flight-price-box {
 	min-height: 25em;
 	background: #DC0055;
-	border-bottom-right-radius: 5px;
-	border-top-right-radius: 5px;
+	border-bottom-right-radius: 3px;
+	border-top-right-radius: 3px;
 	text-align: center;
 }
 
@@ -302,13 +303,14 @@
 	border: 1px solid #204DCC;
 	background-color: #FFFFFF;
 	color: #204DCC;
-	font-size: 1.1em;
 	padding: 0.8%;
-	font-weight: 400;
+	font-weight: 500;
 	letter-spacing: 1px;
-	margin-top: 5px;
-	margin-bottom: 5px;
+	margin-bottom: 3%;
 	transition: all 0.3s;
+	border-top: 0;
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
 }
 
 .options-btn button:hover{
@@ -331,35 +333,7 @@
 	margin-top: 5px;
 }
 
-/* lo podemos usar en general */
-.vda-btn {
-	font-weight: 600;
-	background-color: white;
-	border: 1px solid #9d9d9d;
-	border-radius: 5px;
-	padding: 0.7em 1.2em;
-}
-
-.vda-text-btn {
-	padding: 0;
-	border: 0;
-	background: none;
-}
-
-.vda-btn-small {
-	padding: 0.3em 0.6em;
-	font-size: 1em;
-}
-
-.vda-btn:hover {
-	background-color: #dddddd;
-}
-
 .buy-btn .vda-btn {
 	margin-top: 10%;
 	color: #000000;
-}
-
-button:focus {
-	outline: 0;
 }
