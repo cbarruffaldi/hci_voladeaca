@@ -122,54 +122,67 @@
                         <div class="col-md-10">
                             <div class="form-group">
                                 <!--Primer Fila-->
-                                <div class="col-md-6 form-field basicField">
-                                    <label for="usr-name">Nombre:</label>
-                                    <input type="text" class="form-control" id="usr-name" value="">
-                                </div>
-                                <div class="col-md-6 form-field basicField">
-                                    <label for="usr-lname">Apellido:</label>
-                                    <input type="text" class="form-control" id="usr-lname">
+                                <div class="row">
+                                    <div class="col-md-6 form-field basicField">
+                                        <label for="usr-name">Nombre:</label>
+                                        <input type="text" class="form-control" id="usr-name" value="">
+                                        <p class="error-msg"></p>
+                                    </div>
+
+                                    <div class="col-md-6 form-field basicField">
+                                        <label for="usr-lname">Apellido:</label>
+                                        <input type="text" class="form-control" id="usr-lname">
+                                        <p class="error-msg"></p>
+                                    </div>
                                 </div>
 
                                 <!--Segunda Fila-->
-                                <div class="col-md-2 form-field openField">
-                                    <label for="usr-country" >Pais:</label>
-                                    <select class="form-control" id="usr-country">
-                                        <option>Pais1</option>
-                                        <option>País2</option>
+                                <div class="row">
+                                    <div class="col-md-2 form-field openField">
+                                        <label for="usr-country" >Pais:</label>
+                                        <select class="form-control" id="usr-country">
+                                            <option>Pais1</option>
+                                            <option>País2</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-md-2 col-md-offset-1 form-field openField">
+                                        <label for="usr-doc">Tipo:</label>
+                                        <select class="form-control" id="usr-doc">
+                                            <option>DNI</option>
+                                            <option>Pasaporte</option>
                                     </select>
-                                </div>
-                                <div class="col-md-2 col-md-offset-1 form-field openField">
-                                    <label for="usr-doc">Tipo:</label>
-                                    <select class="form-control" id="usr-doc">
-                                        <option>DNI</option>
-                                        <option>Pasaporte</option>
-                                        <option>Otro</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-6 col-md-offset-1 form-field openField">
-                                    <label for="usr-docnum">Número:</label>
-                                    <input type="text" class="form-control" id="usr-docnum">
-                                </div>
+                                    </div>
+
+                                    <div class="col-md-6 col-md-offset-1 form-field openField">
+                                        <label for="usr-docnum">Número:</label>
+                                        <input type="text" class="form-control" id="usr-docnum">
+                                        <p class="error-msg"></p>
+                                    </div>
+                                 </div>
 
                                 <!--Tercera fila -->
-                                <div class="col-md-3 form-field openField">
-                                    <label for="usr-gen">Sexo:</label>
-                                    <select class="form-control" id="usr-gen">
-                                        <option>Femenino</option>
-                                        <option>Masculino</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-9 form-inline form-field openField" >
-                                    <div class="col-md-12 single-label">
-                                    <label>Fecha de Nacimiento:</label>
+                                <div class="row">
+                                    <div class="col-md-3 form-field openField">
+                                        <label for="usr-gen">Sexo:</label>
+                                        <select class="form-control" id="usr-gen">
+                                            <option>Femenino</option>
+                                            <option>Masculino</option>
+                                        </select>
                                     </div>
-                                    <label for="birth-day" class="hidden">Día</label>
-                                    <input type="number" class="form-control " placeholder="dia" id="birth-day"/>
-                                    <label for="birth-month" class="hidden">Mes</label>
-                                    <input type="number" class="form-control" placeholder="mes" id="birth-month"/>
-                                    <label for="birth-year" class="hidden">Año</label>
-                                    <input type="number" class="form-control " placeholder="año" id="birth-year"/>
+
+                                    <div class="col-md-9 form-inline form-field openField" >
+                                        <div class="col-md-12 single-label">
+                                        <label>Fecha de Nacimiento:</label>
+                                        </div>
+                                        <label for="birth-day" class="hidden">Día</label>
+                                        <input type="number" class="form-control " placeholder="dia" id="birth-day"/>
+                                        <label for="birth-month" class="hidden">Mes</label>
+                                        <input type="number" class="form-control" placeholder="mes" id="birth-month"/>
+                                        <label for="birth-year" class="hidden">Año</label>
+                                        <input type="number" class="form-control " placeholder="año" id="birth-year"/>
+                                        <p class="error-msg"></p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -192,37 +205,45 @@
                         </div>
 
                         <div class="form-group">
-                            <!--Primera Linea -->
-                            <div class="col-md-12 form-field">
-                                <label for="card-num">Número de la tarjeta:</label>
-                                <input type="text" class="form-control" id="card-num"/>
+                            <!--Primera Fila -->
+                            <div class="row">
+                                <div class="col-md-12 form-field">
+                                    <label for="card-num">Número de la tarjeta:</label>
+                                    <input type="text" class="form-control" id="card-num"/>
+                                </div>
                             </div>
 
                             <!-- Segunda Fila-->
-                            <div class="col-md-4 form-inline form-field">
-                                <div class="col-md-12 single-label">
-                                    <label>Vencimiento:</label>
+                            <div class="row">
+                                <div class="col-md-4 form-inline form-field">
+                                    <div class="col-md-12 single-label">
+                                        <label>Vencimiento:</label>
+                                    </div>
+                                    <label for="exp-month" class="hidden">Mes:</label>
+                                    <input type="number" class="form-control" placeholder="mes" id="exp-month">
+                                    /
+                                    <label for="exp-year" class="hidden">Año:</label>
+                                    <input type="number" class="form-control" placeholder="año" id="exp-year">
                                 </div>
-                                <label for="exp-month" class="hidden">Mes:</label>
-                                <input type="number" class="form-control" placeholder="mes" id="exp-month">
-                                /
-                                <label for="exp-year" class="hidden">Año:</label>
-                                <input type="number" class="form-control" placeholder="año" id="exp-year">
-                            </div>
-                            <div class="col-md-4 form-inline form-field">
-                                <label for="sec-code"  >Cód.de seguridad:</label>
-                                <input type="number" class="form-control" id="sec-code">
-                                <a href='#' data-toggle="popover" title="¿Donde se ecuentra el código de seguridad?" data-content="<img src='img/security-code.jpg' width='200' />">
-                                    <span class="glyphicon glyphicon-question-sign"></span>
-                                </a>
+
+                                <div class="col-md-4 form-inline form-field">
+                                    <label for="sec-code"  >Cód.de seguridad:</label>
+                                    <input type="number" class="form-control" id="sec-code">
+                                    <a href='#' data-toggle="popover" title="¿Donde se ecuentra el código de seguridad?" data-content="<img src='img/security-code.jpg' width='200' />">
+                                        <span class="glyphicon glyphicon-question-sign"></span>
+                                    </a>
+                                </div>
                             </div>
 
 
                             <!-- Tercera fila -->
-                            <div class="col-md-12 form-field">
-                                <label for="cardholder" >Nombre del titular:</label>
-                                <input type="text" class="form-control" id="cardholder" placeholder="Nombre como figura en la tarjeta">
+                            <div class="row">
+                                <div class="col-md-12 form-field">
+                                    <label for="cardholder" >Nombre del titular:</label>
+                                    <input type="text" class="form-control" id="cardholder" placeholder="Nombre como figura en la tarjeta">
+                                </div>
                             </div>
+
                         </div>
 
                         <!--Subtitulo 2 -->
@@ -232,54 +253,66 @@
 
                         <div class="form-group">
                             <!-- Primera Linea -->
-                            <div class="col-md-4 form-field">
-                                <label for="fiscal">Situacion Fiscal:</label>
-                                <select class="form-control" id="fiscal">
-                                    <option>Situacion Fiscal 1</option>
-                                    <option>Situacion Fiscal 2</option>
-                                    <option>Situacion Fiscal 3</option>
-                                </select>
-                            </div>
-                            <div class="col-md-8 form-field">
-                                <label for="cuil">CUIL:</label>
-                                <input type="text" class="form-control" id="cuil">
+                            <div class="row">
+                                <div class="col-md-4 form-field">
+                                    <label for="fiscal">Situacion Fiscal:</label>
+                                    <select class="form-control" id="fiscal">
+                                        <option>Situacion Fiscal 1</option>
+                                        <option>Situacion Fiscal 2</option>
+                                        <option>Situacion Fiscal 3</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-md-8 form-field">
+                                    <label for="cuil">CUIL:</label>
+                                    <input type="text" class="form-control" id="cuil">
+                                </div>
                             </div>
 
                             <!--Segunda Linea -->
-                            <div class="col-md-4 form-field">
-                                <label for="country">País:</label>
-                                <select class="form-control" id="country">
-                                    <option>Opciones</option>
-                                </select>
-                            </div>
-                            <div class="col-md-4 form-field">
-                                <label for="prov" >Provincia:</label>
-                                <select class="form-control" id="prov">
-                                    <option>Provincias</option>
-                                </select>
-                            </div>
-                            <div class="col-md-4 form-field">
-                                <label for="city">Ciudad:</label>
-                                <select class="form-control" id="city">
-                                    <option>Ciudades</option>
-                                </select>
+                            <div class="row">
+                                <div class="col-md-4 form-field">
+                                    <label for="country">País:</label>
+                                    <select class="form-control" id="country">
+                                        <option>Opciones</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-md-4 form-field">
+                                    <label for="prov" >Provincia:</label>
+                                    <select class="form-control" id="prov">
+                                        <option>Provincias</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-md-4 form-field">
+                                    <label for="city">Ciudad:</label>
+                                    <select class="form-control" id="city">
+                                        <option>Ciudades</option>
+                                    </select>
+                                </div>
                             </div>
 
                             <!--Tercer Fila -->
-                            <div class="col-md-2">
-                                <label class="tocenter-label">Dirección:</label>
-                            </div>
-                            <div class="col-md-6 form-field">
-                                <label for="street">Calle:</label>
-                                <input type="text" class="form-control" id="street">
-                            </div>
-                            <div class="col-md-2 form-field">
-                                <label for="addr-num" >Número:</label>
-                                <input type="text" class="form-control" id="addr-num">
-                            </div>
-                            <div class="col-md-2 form-field">
-                                <label for="zip-code">Cód.Postal:</label>
-                                <input type="text" class="form-control" id="zip-code">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <label class="tocenter-label">Dirección:</label>
+                                </div>
+
+                                <div class="col-md-6 form-field">
+                                    <label for="street">Calle:</label>
+                                    <input type="text" class="form-control" id="street">
+                                </div>
+
+                                <div class="col-md-2 form-field">
+                                    <label for="addr-num" >Número:</label>
+                                    <input type="text" class="form-control" id="addr-num">
+                                </div>
+
+                                <div class="col-md-2 form-field">
+                                    <label for="zip-code">Cód.Postal:</label>
+                                    <input type="text" class="form-control" id="zip-code">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -303,43 +336,47 @@
 
                         <div class="form-group">
                             <!--Primera Fila -->
-                            <div class="col-md-12 form-field">
-                                <label for="email" >E-mail:</label>
-                                <input type="text" class="form-control" id="email">
+                            <div class="row">
+                                <div class="col-md-12 form-field">
+                                    <label for="email" >E-mail:</label>
+                                    <input type="text" class="form-control" id="email">
+                                </div>
                             </div>
 
                             <!-- Segunda Fila -->
-                            <div class="phone-data">
-                                <div class="col-md-1 form-field phone-row">
-                                    <label class="tocenter-label">Teléfono:</label>
-                                </div>
-                                <div class="col-md-2 form-field">
-                                    <label for="phone-type">Tipo:</label>
-                                    <select class="form-control" id="phone-type">
-                                        <option>Fijo</option>
-                                        <option>Celular</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-3 form-field">
-                                    <label for="phone-country">País:</label>
-                                    <select class="form-control" id="phone-country">
-                                        <option>Pais1</option>
-                                        <option>Pais2</option>
-                                        <option>Pais3</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-2 form-field">
-                                    <label for="phone-area">Cód.de Área:</label>
-                                    <input type="number" class="form-control" id="phone-area">
-                                </div>
-                                <div class="col-md-3 form-field">
-                                    <label for="phone">Número:</label>
-                                    <input type="text" class="form-control" id="phone">
-                                </div>
-                                <div class="col-md-1 tocenter-label">
-                                    <a href="#" class="btn btn-default add-Phone add-rem-button">
-                                    <span class="glyphicon glyphicon-plus-sign"></span>
-                                    </a>
+                            <div class="row">
+                                <div class="phone-data">
+                                    <div class="col-md-1 form-field phone-row">
+                                        <label class="tocenter-label">Teléfono:</label>
+                                    </div>
+                                    <div class="col-md-2 form-field">
+                                        <label for="phone-type">Tipo:</label>
+                                        <select class="form-control" id="phone-type">
+                                            <option>Fijo</option>
+                                            <option>Celular</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3 form-field">
+                                        <label for="phone-country">País:</label>
+                                        <select class="form-control" id="phone-country">
+                                            <option>Pais1</option>
+                                            <option>Pais2</option>
+                                            <option>Pais3</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-2 form-field">
+                                        <label for="phone-area">Cód.de Área:</label>
+                                        <input type="number" class="form-control" id="phone-area">
+                                    </div>
+                                    <div class="col-md-3 form-field">
+                                        <label for="phone">Número:</label>
+                                        <input type="text" class="form-control" id="phone">
+                                    </div>
+                                    <div class="col-md-1 tocenter-label">
+                                        <a href="#" class="btn btn-default add-Phone add-rem-button">
+                                        <span class="glyphicon glyphicon-plus-sign"></span>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>

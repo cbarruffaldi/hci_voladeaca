@@ -29,6 +29,19 @@
     background-color: #0F9E5E;
 }
 
+p.error-msg {
+    color: #a0003a;
+    font-size: 0.9em;
+    margin: 0;
+    padding-left: 0.2em;
+    padding-top: 0.2em;
+    display: none;
+}
+
+input.error-input {
+    border: 1px solid #FF0000;
+}
+
 .single-label {
     padding-left: 0;
 }
@@ -39,7 +52,6 @@
 
 .form-field {
     padding-bottom: 0.2em;
-
 }
 
 .tocenter-label{
@@ -52,7 +64,6 @@
     background-color: ghostwhite;
     margin-bottom: 30px;
     padding: 0;
-
 }
 
 .arrow-btn{
