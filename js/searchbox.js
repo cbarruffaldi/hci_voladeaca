@@ -58,7 +58,7 @@
 
 
 	function dateCheck(emptyCheck){
-		var ret = true;
+		var valid = true;
 
 		var date1 = $("#datepicker1");
 		var date2 = $("#datepicker2");
@@ -76,7 +76,7 @@
 			departure = moment(date1.val(), "DD/MM/YYYY", true);
 			if(!departure.isValid()){
 				date1.addClass('inputerr');
-				ret = false;
+				valid = false;
 				
 				$("#datepicker1-err").text("Ingrese una fecha valida");
 				$("#datepicker1-err").fadeIn();
@@ -88,14 +88,16 @@
 			arrival = moment(date2.val(), "DD/MM/YYYY", true);
 			if(!arrival.isValid()){
 					date2.addClass("inputerr");
-					ret = false;
+					valid = false;
 				$("#datepicker2-err").text("Ingrese una fecha valida");
 				$("#datepicker2-err").fadeIn();
 			}
 		}
 
-		if(departure && arrival){ 
-		//Si ambas estan definidas chequeo que no sean incompatibles
+		if(valid && departure && arrival){ 
+		//Si ambas estan definidas y bien formadas
+		//chequeo que no sean incompatibles.
+
 			if(departure.isAfter(arrival)){
 				ret = false
 				date1.addClass('inputerr');
@@ -106,7 +108,7 @@
 			}
 		}
 		
-		return ret;
+		return valid;
 	}
 
 	global.validateInput = function(target){
