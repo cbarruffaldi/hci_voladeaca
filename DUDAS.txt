@@ -1,0 +1,2 @@
+- Mejor manera de agregar html via JS
+- Cambiar contenido de un tag sin tocar los hijos

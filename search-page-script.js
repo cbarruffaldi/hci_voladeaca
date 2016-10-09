@@ -1,36 +1,34 @@
+var selectedTimeFilter = [];
+var adults = 0, children = 0, infants = 0;
+
+function selectBorder(elem) {
+	console.log(elem);
+	var timebtn = $(elem)
+	var i = timebtn.data("dep-time");
+
+	if (selectedTimeFilter[i]) {
+		selectedTimeFilter[i] = false;
+		timebtn.removeClass("selected-time");
+	} else {
+		selectedTimeFilter[i] = true;
+		timebtn.addClass("selected-time");
+	}
+}
+
 jQuery(document).ready(function(){
 
 	$(".depart-time-button img").on("click", function(){
 		selectBorder(this);
 	});
 
-	var selectedTimeFilter = [];
-
-	function selectBorder(elem) {
-		var timebtn = $(elem)
-		var i = timebtn.data("dep-time");
-		console.log("CHANGE BORDER");
-		console.log(i);
-
-		if (selectedTimeFilter[i]) {
-			selectedTimeFilter[i] = false;
-			timebtn.css("border-top", "");
-		} else {
-			selectedTimeFilter[i] = true;
-			timebtn.css("border-top", "5px solid black");
-		}
-	}
-
-
 	$("#order-dropdown a").on("click", function() {
-		$("#orderby-btn em").text(this.text);
+		$("#orderby-btn").text(this.text);
 	});
 
 	$("#currency-dropdown a").on("click", function() {
-		$("#currency-btn em").text(this.text);
+		$("#currency-btn").text(this.text);
 	});
 
-	var adults = 0, children = 0, infants = 0;
 
 	$("#psg-dropdown").on("click", function(e) {
 		$("#psg-dropdown").parent().toggleClass("open");
@@ -47,13 +45,11 @@ jQuery(document).ready(function(){
 		});
 	});
 
-	console.log("adding listener");
 	$(".passenger-row button").on("click", function() {
 		updatePax(this);
 	});
 
 	function updatePax(element) {
-		console.log("touched btn");
 		var sum = 0;
 		if ($(element).data("sum") == "minus")
 			sum = -1;
@@ -66,9 +62,13 @@ jQuery(document).ready(function(){
 			pax.text(newnum);
 	}
 
-	$(".options-btn").on("click", function(){
-		$(this).parent().find(".unselected-box").collapse('toggle');
-	})
+	$("#options-ida button").on("click", function(){
+		$("#unselected-ida").collapse('toggle');
+	});
+
+	$("#options-vuelta button").on("click", function(){
+		$("#unselected-vuelta").collapse('toggle');
+	});
 
 	$(".details-btn button").on("click", function() {
 		var btn = $(this);
