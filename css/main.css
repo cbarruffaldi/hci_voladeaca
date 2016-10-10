@@ -1,24 +1,22 @@
-
-
-/* ==========================================================================
-Author's custom styles
-========================================================================== */
 body{
 	background: #dee0dd;
 }
 
 #header-nav{
 	z-index: 1;
-	background: #087CA7;
+	background: #FFFFFF;
 	border-radius: 0;
-	border:0;
+	border: 0;
+	border-bottom: 1px solid #a5a5a5;
 	margin-bottom:0;
 }
 
 #logo-img{
-	background: url('../img/logo.png') no-repeat;
-	width: 300px;
-	height: 60px;
+	background: url('../logo2b.svg') no-repeat;
+	background-size: 300px 50px;
+	background-position: center;
+	width: 250px;
+	height: 55px;
 }
 
 
@@ -29,23 +27,19 @@ body{
 #nav-list a{
 	height: 60px;
 	padding-top: 20px;
-	color: #e3e3e3;
+	color: #333;
 	font-size: 1.2em;
 	text-align: center;
 }
 
 #nav-list a:hover{
-	color: #030303;
+	color: #204DCC;
+	background-color: #e2e2e2;
+	transition: all 0.3s;
 }
 
 #nav-list li{
 	height:60px;
-}
-
-
-.hvr-fade:hover, .hvr-fade:focus, .hvr-fade:active #nav-list li {
-	background-color: #93bcff;
-	color: white;
 }
 
 .body-contents{

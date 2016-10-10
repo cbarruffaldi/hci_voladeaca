@@ -80,9 +80,22 @@ jQuery(document).ready(function(){
 			btn.text("+ detalles");
 		}
 	});
-});
 
-//TODO HACER BIEN
-function updateValueText(value) {
-	$("#price-slider-value").text("$" + value);
-}
+	var handlesSlider = document.getElementById('price-slider');
+
+	noUiSlider.create(handlesSlider, {
+		start: [ 0, 10000],
+		margin: ((10000 - 0) * 0.25),
+		connect: true,
+		tooltips: [wNumb({decimals: 0, prefix: "Desde: $"}), wNumb({decimals: 0, prefix: "Hasta: $"})],
+		range: {
+			'min': [0],
+			'max': [10000]
+		},
+		step: 100,
+	});
+
+	$("#restart-price-btn").on("click", function(){
+		handlesSlider.noUiSlider.reset();
+	});
+});

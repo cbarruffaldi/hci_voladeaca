@@ -22,6 +22,7 @@
 .filter-name {
 	font-size: 1.2em;
 	font-weight: 600;
+	text-align: left;
 }
 
 .filter-section-name {
@@ -29,6 +30,21 @@
 	font-weight: 500;
 	letter-spacing: 1px;
 	color: #204dcc;
+}
+
+.slider-box {
+	padding-top: 5%;
+	padding-bottom: 23%;
+	padding-right: 17%;
+}
+
+.price-filter {
+	text-align: center;
+}
+
+.price-filter button {
+	font-weight: 500;
+	color: #204DCC;
 }
 
 label {
@@ -116,10 +132,13 @@ label {
 
 .carousel-flight .air-name {
 	font-size: 1.2em;
+	font-weight: 500;
 }
 
 .carousel-flight .fl-price {
 	font-size: 1.3em;
+	font-weight: 500;
+	letter-spacing: 1px;
 	color: #204DCC;
 }
 

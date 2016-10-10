@@ -13,13 +13,12 @@
 	<link rel="stylesheet" href="css/main.css">
 	<link rel="stylesheet" href="css/search.css">
 	<link rel="stylesheet" href="css/buttons.css">
+	<link rel="stylesheet" href="css/nouislider-custom.css">
 
 	<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
 
 	<script src="angular.min.js"></script>
 	<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
-	<script src="search-page-script.js"></script>
-	<script src="flight-select.js"></script>
 	<script src="script.js"></script>
 </head>
 
@@ -35,19 +34,13 @@
 					<h2> Filtros </h2>
 					<div class="price-filter filter-box">
 						<div class="filter-name"> Precio</div>
-						<input id='price-slider' type="range" min="0" max="100" value="50" oninput="updateValueText(this.value)"/>
-						<div class="row">
-							<div class="col-md-3">
-								<strong class="min-price-value"> $0</strong>
-							</div>
-							<div class="col-md-2 col-md-offset-2">
-								<strong id="price-slider-value">$50</strong>
-							</div>
-							<div class="col-md-3 col-md-offset-2">
-								<strong class="max-price-value">$100</strong>
+						<div class="slider-box">
+							<div id="price-slider"> 
 							</div>
 						</div>
-
+						<button id="restart-price-btn" class="vda-text-btn">
+							Reestablecer
+						</button>
 					</div>
 
 					<div class="time-filter filter-box">
@@ -488,7 +481,9 @@
 	<script src="js/moment.js" ></script>
 	<script src="jqueryui/jquery-ui.js"></script>
 	<script src="jqueryui/uidatepicker-es.js"></script>
-	<script>
-	</script>
+	<script src="wNumb.js"></script>
+	<script src="nouislider.min.js"></script>
 	<script src="datepicker.js"></script>
+	<script src="search-page-script.js"></script>
+	<script src="flight-select.js"></script>
 </body>
