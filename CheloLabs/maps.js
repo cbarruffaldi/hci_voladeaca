@@ -101,13 +101,12 @@
 	mapUtils.fillMap = fillMap;
 	mapUtils.updateMap = updateMap;
 	mapUtils.updateCity = updateCity;
-	
-	global.mapUtils = mapUtils;
-	
+		
 	mapUtils.updateMap("BUE");
 
 	} //initMap
 
 	mapUtils.initMap = initMap;
+	global.mapUtils = mapUtils;
 
 })(window);

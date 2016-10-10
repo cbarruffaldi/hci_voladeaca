@@ -1,9 +1,9 @@
 (function(global){
-	if(! global.acUtils ){
+	if(! global.$acUtils ){
 		console.log("Err");
 	}
 
-	var $id_map = global.acUtils.id_map;
+	var $id_map = global.$acUtils.id_map;
 
 //	$(".formError").fadeOut();
 
@@ -62,7 +62,6 @@
 
 		var date1 = $("#datepicker1");
 		var date2 = $("#datepicker2");
-		
 
 		date1.removeClass("inputerr");
 		date2.removeClass("inputerr");
@@ -107,7 +106,7 @@
 				$("#datepicker1-err").fadeIn();
 			}
 		}
-		
+
 		return valid;
 	}
 
@@ -118,16 +117,24 @@
 
 
 	$("#searchButton").on('click', function(obj){
+		
 		var checker = isValidAirport($("#origen"), true);
+	
 		checker =  isValidAirport($("#destino"), true) & checker;
+
 		checker = dateCheck(true) & checker;
 
+
 		if(checker){		
+			var iDate = moment($("#datepicker1").val(), "DD/MM/YYYY");
+			var vDate = moment($("#datepicker2").val(), "DD/MM/YYYY");
 			var uri = 'search.html?';
 			uri += 'orig=' + $id_map[$("#origen").val()];
-			uri += '&d='
 			uri += '&dest=' + $id_map[$("#destino").val()];
+			uri += '&date=' + iDate.format("YYYY-MM-DD");
+			uri += '&vdate=' + vDate.format("YYYY-MM-DD");
 			window.location.href = uri;
+		
 		}
 	})
 

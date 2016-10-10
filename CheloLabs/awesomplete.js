@@ -5,7 +5,7 @@
  * MIT license
  */
 
-(function () {
+(function (global) {
 
 var _ = function (input, o) {
 	var me = this;
@@ -158,8 +158,8 @@ _.prototype = {
 		this.index = -1;
 
 		//Chelo Modification
-		if(validate && validateInput){
-		validateInput(this.input)
+		if(validate && global.validateInput){
+			validateInput(this.input)
 		}
 
 		$.fire(this.input, "awesomplete-close", o || {});
@@ -449,4 +449,4 @@ if (typeof module === "object" && module.exports) {
 
 return _;
 
-}());
+}(window));
