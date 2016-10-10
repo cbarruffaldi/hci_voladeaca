@@ -12,6 +12,7 @@
 	<link rel="stylesheet" href="css/hover.css" media="all">
 	<link rel="stylesheet" href="css/main.css">
 	<link rel="stylesheet" href="css/search.css">
+	<link rel="stylesheet" href="css/buttons.css">
 
 	<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
 
@@ -30,10 +31,10 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class ="col-md-3">
-				<div class= "panel filter-area">
+				<div class="filter-area">
 					<h2> Filtros </h2>
-					<div class="panel price-filter-panel containter">
-						<h3> Precio</h3>
+					<div class="price-filter filter-box">
+						<div class="filter-name"> Precio</div>
 						<input id='price-slider' type="range" min="0" max="100" value="50" oninput="updateValueText(this.value)"/>
 						<div class="row">
 							<div class="col-md-3">
@@ -46,158 +47,197 @@
 								<strong class="max-price-value">$100</strong>
 							</div>
 						</div>
+
 					</div>
 
-					<div class="panel time-filter-panel">
-						<h3> Horarios</h3>
+					<div class="time-filter filter-box">
+						<div class="filter-name"> Horarios</div>
+
+						<div class="filter-section-name">Despegue Ida</div>
 						<div class="depart-time-grid">
 							<div class="depart-time-button" >
-								<img src="madru.png" data-dep-time=0/>
+								<img src="madru.png" data-dep-time="0"/>
 							</div>
 							<div class="depart-time-button">
-								<img src="mania.png" data-dep-time=1/>
+								<img src="mania.png" data-dep-time="1"/>
 							</div>
 							<div class="depart-time-button" >
-								<img src="tarde.png" data-dep-time=2/>
+								<img src="tarde.png" data-dep-time="2"/>
 							</div>
 							<div class="depart-time-button" >
-								<img src="noche.png" data-dep-time=3/>
+								<img src="noche.png" data-dep-time="3"/>
 							</div>
+						</div>
 
+						<div class="filter-section-name">Despegue Vuelta</div>
+						<div class="depart-time-grid">
+
+							<div class="depart-time-button" >
+								<img src="madru.png" data-dep-time="4"/>
+							</div>
+							<div class="depart-time-button">
+								<img src="mania.png" data-dep-time="5"/>
+							</div>
+							<div class="depart-time-button" >
+								<img src="tarde.png" data-dep-time="6"/>
+							</div>
+							<div class="depart-time-button" >
+								<img src="noche.png" data-dep-time="7"/>
+							</div>
 						</div>
 					</div>
 
-					<div class="panel airport-filter-panel">
-						<h3>Aeropuertos</h3>
-						<h4>Origen</h4>
+					<div class="airport-filter filter-box">
+						<div class="filter-name">Aeropuertos</div>
+						<div class="filter-section-name">Origen</div>
 						<input type="checkbox" id="aer-o-cbox1">
 						<label for="aer-o-cbox1">Aeropuerto 1</label>
 						<br/>
 						<input type="checkbox" id="aer-o-cbox2"> <label for="aer-o-cbox2">Aeropuerto 2</label>
-						<br>
+						<br/>
 						<input type="checkbox" id="aer-o-cbox3">
 						<label for="aer-o-cbox3">Aeropuerto 3</label>
-						<br/>
-						<h4>Destino</h4>
+						<div class="filter-section-name">Destino</div>
 						<input type="checkbox" id="aer-d-cbox1">
 						<label for="aer-d-cbox1">Aeropuerto 1</label>
 						<br/>
 						<input type="checkbox" id="aer-d-cbox2"> <label for="aer-d-cbox2">Aeropuerto 2</label>
-						<br>
+						<br/>
 						<input type="checkbox" id="aer-d-cbox3">
 						<label for="aer-d-cbox3">Aeropuerto 3</label>
-						<br/>
 					</div>
-					<div class="panel airline-filter-panel">
-						<h3> Aerolíneas</h3>
+
+					<div class="airline-filter filter-box">
+						<div class="filter-name"> Aerolíneas</div>
 						<input type="checkbox" id="airl-cbox1">
 						<label for="airl-cbox1">Aerolínea 1</label>
 						<br/>
 						<input type="checkbox" id="airl-cbox2"> <label for="airl-cbox2">Aerolínea 2</label>
-						<br>
+						<br/>
 						<input type="checkbox" id="airl-cbox3">
 						<label for="airl-cbox3">Aerolínea 3</label>
-						<br/>
 					</div>
 				</div>
 			</div>
 
 			<div class="col-md-9">
 
-				<!-- Caja de búsqueda -->
-				<div class="thin-search-box">
-					<div class="row">
-						<div class="col-md-5">
-							<div class="row ida-vuelta-buttons">
-								<div class="col-md-10">
-									<p>Ida y Vuelta | Solo ida</p>
-								</div>
+				<!-- Pasajeros -->
+				<div class="btn-group boton-pasajeros">
+					<button type="button" id="psg-dropdown" class="btn btn-default dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+						Pasajeros <span class="caret"></span>
+					</button>
+					<div class="dropdown-menu">
+						<div  class="row passenger-row" id="adult-select">
+							<div class="col-md-5">
+								<strong>Adultos</strong>
 							</div>
-							<div class="row ida-vuelta-inputs">
-								<div class="form-group">
-									<div class="col-md-6 input-ida">
-										<input type="text" class="form-control" placeholder="Ciudad o aeropuerto...">
-									</div>
-									<div class="col-md-6 input-vuelta">
-										<input type="text" class="form-control" placeholder="Ciudad o aeropuerto..."/>
-									</div>
-								</div>
+							<div class="col-md-7">
+								<button type="button" data-sum="minus" class="btn btn-default btn-xs">-</button>
+								<strong class="passenger-number" id="adult-number">0</strong>
+								<button type="button" data-sum="plus" class="btn btn-default btn-xs">+</button>
 							</div>
 						</div>
-						<div class="col-md-4">
-							<div class="row">
-								<div class="form-group">
-									<div class="col-md-6 date-input-ida">
-										<p class="date-label">Ida</p>
-										<input type="text" class="form-control" id='datepicker-ida' placeholder='dd/mm/aaaa'/>
-									</div>
-									<div class="col-md-6 date-input-vuelta">
-										<p class="date-label">Vuelta</p>
-										<input type="text" class="form-control" id='datepicker-vuelta' placeholder='dd/mm/aaaa'/>
-									</div>
-								</div>
+						<div class="row passenger-row" id="child-select">
+							<div class="col-md-5">
+								<strong>Niños</strong>
+							</div>
+							<div class="col-md-7">
+								<button type="button" data-sum="minus" class="btn btn-default btn-xs">-</button>
+								<strong class="passenger-number" id="child-number">0</strong>
+								<button type="button" data-sum="plus" class="btn btn-default btn-xs">+</button>
 							</div>
 						</div>
-						<!-- TODO: ALINEARLO VERTICALMENTE NO SE COMO -->
-						<div class="col-md-3">
-							<span class="btn-group boton-pasajeros">
-								<button type="button" id="psg-dropdown" class="btn btn-default dropdown-toggle" aria-haspopup="true" aria-expanded="false">
-									Pasajeros <span class="caret"></span>
-								</button>
-								<div class="dropdown-menu">
-									<div  class="row passenger-row" id="adult-select">
-										<div class="col-md-5">
-											<strong>Adultos</strong>
-										</div>
-										<div class="col-md-7">
-											<button type="button" data-sum="minus" class="btn btn-default btn-xs">-</button>
-											<strong class="passenger-number" id="adult-number">0</strong>
-											<button type="button" data-sum="plus" class="btn btn-default btn-xs">+</button>
-										</div>
-									</div>
-									<div class="row passenger-row" id="child-select">
-										<div class="col-md-5">
-											<strong>Niños</strong>
-										</div>
-										<div class="col-md-7">
-											<button type="button" data-sum="minus" class="btn btn-default btn-xs">-</button>
-											<strong class="passenger-number" id="child-number">0</strong>
-											<button type="button" data-sum="plus" class="btn btn-default btn-xs">+</button>
-										</div>
-									</div>
-									<div class="row passenger-row" id="infant-select">
-										<div class="col-md-5">
-											<strong>Infantes</strong>
-										</div>
-										<div class="col-md-7">
-											<button type="button" data-sum="minus" class="btn btn-default btn-xs">-</button>
-											<strong class="passenger-number" id="infant-number">0</strong>
-											<button type="button" data-sum="plus" class="btn btn-default btn-xs">+</button>
-										</div>
-									</div>
-									<div class="row">
-										<button type="button" id="ok-btn" class="btn btn-default btn-s">OK</button>
-									</div>
-								</div>
-							</span>
-
-							<span class="search-button-small">
-								<button type="button" class="btn btn-success">
-									<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-									Buscar
-								</button>
-							</span>
+						<div class="row passenger-row" id="infant-select">
+							<div class="col-md-5">
+								<strong>Infantes</strong>
+							</div>
+							<div class="col-md-7">
+								<button type="button" data-sum="minus" class="btn btn-default btn-xs">-</button>
+								<strong class="passenger-number" id="infant-number">0</strong>
+								<button type="button" data-sum="plus" class="btn btn-default btn-xs">+</button>
+							</div>
 						</div>
-
-					</div>
-
-				</div>
-
-				<div class="row">
-					<div class="col-md-12">
-						<button type="button" id="3daysbtn" class="btn btn-primary btn-block">+/- 3 días</button>
+						<div class="row">
+							<button type="button" id="ok-btn" class="btn btn-default btn-s">OK</button>
+						</div>
 					</div>
 				</div>
+				<!-- fin pasajeros -->
+
+				<!-- carousel vuelos baratos -->
+				<div class="row results-carousel">
+					<div class="col-md-1">
+						<button type="button" id="left-car-btn" class="vda-btn"><span class="glyphicon glyphicon-chevron-left"></span></button>
+					</div>
+					<div class="col-md-2">
+						<div class="carousel-flight">
+							<div class="air-name">
+								Aerolínea 1
+							</div>
+							<div class="fl-price">
+								$20
+							</div>					
+						</div>
+					</div>
+					<div class="col-md-2">
+						<div class="carousel-flight">
+							<div class="air-name">
+								Aerolínea 2
+							</div>
+							<div class="fl-price">
+								$50
+							</div>					
+						</div>
+					</div>
+					<div class="col-md-2">
+						<div class="carousel-flight">
+							<div class="air-name">
+								Aerolínea 3
+							</div>
+							<div class="fl-price">
+								$80
+							</div>					
+						</div>
+					</div>
+					<div class="col-md-2">
+						<div class="carousel-flight">
+							<div class="air-name">
+								Aerolínea 4
+							</div>
+							<div class="fl-price">
+								$14
+							</div>					
+						</div>
+					</div>
+					<div class="col-md-2">
+						<div class="carousel-flight">
+							<div class="air-name">
+								Aerolínea 5
+							</div>
+							<div class="fl-price">
+								$10
+							</div>					
+						</div>
+					</div>
+					<div class="col-md-1">
+						<button type="button" id="right-car-btn" class="vda-btn"><span class="glyphicon glyphicon-chevron-right"></span></button>
+					</div>
+				</div>
+				<!-- fin carousel -->
+
+				<!-- tabla +/- 3 dias -->
+				<div class="collapse" id="3daytable">
+					HOLA!
+					<table class="table table-bordered">
+					</table>
+				</div>
+				<div class="row three-day-row">
+					<div class="col-md-10 col-md-offset-1">
+						<button type="button" class="vda-btn" data-toggle="collapse" data-target="#3daytable" aria-expanded="false" aria-controls="3daytable">+/- 3 días <span class="caret"></span></button>
+					</div>
+				</div>
+				<!-- fin +/- 3 días -->
 
 				<div class="row sort-options">
 					<div class="col-md-3">
@@ -265,8 +305,8 @@
 									</div>
 								</div>
 								<div class="col-md-1">
-										<div class="airport-id depart-air">
-										</div>
+									<div class="airport-id depart-air">
+									</div>
 								</div>
 
 								<div class="col-md-1">
@@ -311,8 +351,8 @@
 											</div>
 										</div>
 										<div class="col-md-1">
-												<div class="airport-id depart-air">
-												</div>
+											<div class="airport-id depart-air">
+											</div>
 										</div>
 
 										<div class="col-md-1">
@@ -437,8 +477,6 @@
 						</div>
 
 					</div> <!-- fin vuelo -->
-
-
 				</div>
 			</div>
 		</div>

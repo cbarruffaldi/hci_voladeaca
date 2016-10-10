@@ -259,7 +259,7 @@ function PassengerValidator() {
 
 function PaymentValidator() {
 	this.validate = function(id, value) {
-		return true;
+		return validValidation(value);
 	}
 
 	this.validateStage = function() {
@@ -269,7 +269,7 @@ function PaymentValidator() {
 
 function ContactValidator() {
 	this.validate = function(id, value) {
-		return true;
+		return validValidation(value);
 	}
 
 	this.validateStage = function() {

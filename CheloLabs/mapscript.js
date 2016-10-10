@@ -6,7 +6,7 @@
 	);
 
 
-	$("#inputCity").val("Buenos Aires (todos los aeropuertos)");
+	//$("#inputCity").val("");
 
 	$("#inputCity").keypress(function(event) {
  	  if (event.which == 13) {

@@ -1,7 +1,7 @@
 (function(global){
 
-	airports = [];
-  idMap = {};
+	var airports = [];
+  var idMap = {};
 
     function load(){
       $.ajax({
@@ -44,7 +44,7 @@
     }
     
     //Este es el objeto que le voy a exponer a global (namespace de estas funciones)
-    acUtils = {
+    var acUtils = {
       listFill: fill,
       cityFill: cfill,
       id_map: idMap,

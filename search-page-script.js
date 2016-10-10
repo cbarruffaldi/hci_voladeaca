@@ -15,6 +15,19 @@ function selectBorder(elem) {
 	}
 }
 
+function updatePax(element) {
+	var sum = 0;
+	if ($(element).data("sum") == "minus")
+		sum = -1;
+	else
+		sum = 1;
+
+	var pax = $(element).parent().find(".passenger-number");
+	var newnum = parseInt(pax.text()) + sum;
+	if (newnum >= 0)
+		pax.text(newnum);
+}
+
 jQuery(document).ready(function(){
 
 	$(".depart-time-button img").on("click", function(){
@@ -49,18 +62,6 @@ jQuery(document).ready(function(){
 		updatePax(this);
 	});
 
-	function updatePax(element) {
-		var sum = 0;
-		if ($(element).data("sum") == "minus")
-			sum = -1;
-		else
-			sum = 1;
-
-		var pax = $(element).parent().find(".passenger-number");
-		var newnum = parseInt(pax.text()) + sum;
-		if (newnum >= 0)
-			pax.text(newnum);
-	}
 
 	$("#options-ida button").on("click", function(){
 		$("#unselected-ida").collapse('toggle');
