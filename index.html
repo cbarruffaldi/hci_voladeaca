@@ -4,173 +4,211 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
 <!--[if gt IE 8]><!--> 
 <html data-ng-app class="no-js" lang=""> <!--<![endif]-->
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>VolaDeAca</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>VolaDeAca</title>
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="apple-touch-icon" href="apple-touch-icon.png">
 
-        <link rel="stylesheet" href="jqueryui/jquery-ui.css">
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/bootstrap-theme.min.css">
-        <link rel="stylesheet" href="css/hover.css" media="all">
-        <link rel="stylesheet" href="./CheloLabs/awesomplete.css">
-        <link rel="stylesheet" href="css/main.css">
+		<link rel="stylesheet" href="jqueryui/jquery-ui.css">
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/bootstrap-theme.min.css">
+		<link rel="stylesheet" href="css/hover.css" media="all">
+		<link rel="stylesheet" href="./CheloLabs/awesomplete.css">
+		<link rel="stylesheet" href="css/main.css">
+		<link rel="stylesheet" href="css/index.css">
+		<link rel="stylesheet" href="css/buttons.css">
 
-        <script src="angular.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
-      <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet"> 
+		<script src="angular.min.js"></script>
+		<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+		<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet"> 
 
-   <!--     <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script> -->
+		<!--     <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script> -->
 
-   </head>
-    <body>
-        <!--[if lt IE 8]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-    <header>
-        <div data-ng-include="'./snippets/nav.html'"></div>
-    </header>
-
-    
-  <div class="body-contents">
-
-  <div class="container">
-  <div class="row searchcontent">
-        <div class="titulo search_t">Buscar vuelos</div>
-        <div class="searchbox col-sm-12">
-          <div class="row idavuelta">
-            <div class="col-md-2">
-            <a href="#"> Solo ida</a> | 
-            <a href="#"> Ida y vuelta</a>
-          </div>
-        </div>
-
-  <div class="row search">
-    
-    <div class="col-md-3">
-    <div class="formtitle">Origen</div>
-    <div class="form-group">
-      <input type="text" class="form-control awesomplete" id="origen" placeholder="Ciudad o aeropuerto...">
-    </div>
-    <div id="origen-err" class="formError"></div>
-    </div><!-- /input-group -->
-    
-    <div class="col-md-3">
-      <div class="formtitle">Destino</div>
-      <div class="form-group">
-       <input type="text" class="form-control awesomplete" id="destino" placeholder="Ciudad o aeropuerto...">
-     </div>
-    <div id="destino-err" class="formError"></div>
-     
-   </div>
-   
-    <div class='col-md-2'>
-          <div class="formtitle">Fecha de salida</div>
-        <div class="form-group">
-            <div class='input-group date'>
-                <input type='text' class="form-control" id='datepicker1' placeholder='dd/mm/aaaa' />
-                <span class="input-group-addon">
-                    <span class="glyphicon glyphicon-calendar" id="cal1"></span>
-                </span>
-            </div>
-        </div> 
-      <div id="datepicker1-err" class="formError"></div>
-    </div>
-
-    <div class='col-md-2'>
-          <div class="formtitle">Fecha de vuelta</div>
-        <div class="form-group">
-            <div class='input-group date'>
-                <input type='text' class="form-control" id='datepicker2' placeholder='dd/mm/aaaa' />
-                <span class="input-group-addon">
-                    <span class="glyphicon glyphicon-calendar"></span>
-                </span>
-            </div>
-       </div>
-       <div id="datepicker2-err" class="formError"></div>
-    </div>
-
-    <div class='col-md-2'>
-      <div class="formtitle">Pasajeros</div>
-        <input type='text' class="form-control" placeholder="Pasajeros"/>
-    </div>
-    </div>
-
-    <div class="row">
-      <div class="col-md-12 searchbut">
-         <button type="button" class="btn btn-info" id="searchButton" aria-label="Buscar">
-        <span class="glyphicon glyphicon-search" aria-hidden="true"></span> BUSCAR
-        </button>
-      </div>
-    </div>
-    </div> <!-- searchbox -->
-    </div> <!-- row -->
-
-    </div> <!-- container -->
-  <!-- </div> - body-search --> 
-
- <!-- <div class="body-contents"> -->
-
-  <div class="container">
-  <div class="row content">
-  <div class="titulo promos">Explorar promociones</div> 
-  <div class="row botonera promo_month">
-                <button type="button" class="btn btn-default btn-month" data-promo="8" id="AUG">Agosto</button>
-                <button type="button" class="btn btn-default btn-month" data-promo="9" id="SEPT">Septiembre</button>
-                <button type="button" class="btn btn-default btn-month" data-promo="10" id="OCT"> Octubre</button>
-                <button type="button" class="btn btn-default btn-month" data-promo="11" id="NOV">Noviembre</button>
-  </div>
-
-   <div class="row botonera" id="promo_week">
-                <button type="button" class="btn btn-default btn-week disabled" data-promo="0" id="2w">Fin de semana</button>
-                <button type="button" class="btn btn-default btn-week disabled" data-promo="1" id="3w">Una semana</button>
-                <button type="button" class="btn btn-default btn-week disabled" data-promo="2" id="4w">Dos semanas</button>
-                <button type="button" class="btn btn-default btn-week disabled" data-promo="3" id="5w">¡Cualquier momento!</button>
-
-  </div>   
+	</head>
+	<body>
+		<!--[if lt IE 8]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+		<header>
+			<div data-ng-include="'./snippets/nav.html'"></div>
+		</header>
 
 
-  <div class="row botonera" id="promo_dest">
-          <button type="button" class="btn btn-default btn-dest disabled" data-promo="0" id="pb">Playas de Brasil</button>
-          <button type="button" class="btn btn-default btn-dest disabled" data-promo="1" id="pp">Paris</button>
-          <button type="button" class="btn btn-default btn-dest disabled" data-promo="2" id="lon">Londres</button>
-          <button type="button" class="btn btn-default btn-dest disabled" data-promo="3" id="mun">Munich</button>
-  </div>
+		<div class="body-contents">
 
-    <div class="row botonera" id="showInfo"></div>
+			<div class="container">
+				<div class="row searchcontent">
+					<div class="titulo search_t">Buscar vuelos</div>
+					<div class="searchbox col-sm-12">
+						<div class="row idavuelta">
+							<div class="col-md-3">
+								<button class="vda-text-btn selected-iv"> Ida y vuelta</button>
+								<button class="vda-text-btn"> Solo ida</button>
+							</div>
+						</div>
+
+						<div class="row search">
+
+							<div class="col-md-3">
+								<div class="formtitle">Origen</div>
+								<div class="form-group">
+									<input type="text" class="form-control awesomplete" id="origen" placeholder="Ciudad o aeropuerto...">
+								</div>
+								<div id="origen-err" class="formError"></div>
+							</div><!-- /input-group -->
+
+							<div class="col-md-3">
+								<div class="formtitle">Destino</div>
+								<div class="form-group">
+									<input type="text" class="form-control awesomplete" id="destino" placeholder="Ciudad o aeropuerto...">
+								</div>
+								<div id="destino-err" class="formError"></div>
+
+							</div>
+
+							<div class='col-md-2'>
+								<div class="formtitle">Fecha de salida</div>
+								<div class="form-group">
+									<div class='input-group date'>
+										<input type='text' class="form-control" id='datepicker1' placeholder='dd/mm/aaaa' />
+										<span class="input-group-addon">
+											<span class="glyphicon glyphicon-calendar" id="cal1"></span>
+										</span>
+									</div>
+								</div> 
+								<div id="datepicker1-err" class="formError"></div>
+							</div>
+
+							<div class='col-md-2'>
+								<div class="formtitle">Fecha de vuelta</div>
+								<div class="form-group">
+									<div class='input-group date'>
+										<input type='text' class="form-control" id='datepicker2' placeholder='dd/mm/aaaa' />
+										<span class="input-group-addon">
+											<span class="glyphicon glyphicon-calendar"></span>
+										</span>
+									</div>
+								</div>
+								<div id="datepicker2-err" class="formError"></div>
+							</div>
+
+							<div class='col-md-2'>
+								<button type="button" id="psg-dropdown" class="vda-btn dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+									0 Pasajeros
+								</button>
+								<div class="dropdown-menu">
+									<div  class="row passenger-row">
+										<div class="col-md-5">
+											<span>Adultos</span>
+										</div>
+										<div class="col-md-7">
+											<button type="button" data-sum="minus" data-info="adults" class="vda-btn">-</button>
+											<span class="passenger-number" id="adult-number">0</span>
+											<button type="button" data-sum="plus" data-info="adults" class="vda-btn">+</button>
+										</div>
+									</div>
+									<div class="row passenger-row">
+										<div class="col-md-5">
+											<span>Niños</span>
+										</div>
+										<div class="col-md-7">
+											<button type="button" data-sum="minus" class="vda-btn" data-info="children">-</button>
+											<span class="passenger-number" id="child-number">0</span>
+											<button type="button" data-sum="plus"  data-info="children" class="vda-btn">+</button>
+										</div>
+									</div>
+									<div class="row passenger-row">
+										<div class="col-md-5">
+											<span>Infantes</span>
+										</div>
+										<div class="col-md-7">
+											<button type="button" data-sum="minus" data-info="infants" class="vda-btn">-</button>
+											<span class="passenger-number" id="infant-number">0</span>
+											<button type="button" data-sum="plus" data-info="infants" class="vda-btn">+</button>
+										</div>
+									</div>
+									<div class="row">
+										<button type="button" id="ok-btn" class="vda-btn">OK</button>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-12 searchbut">
+								<button type="button" class="vda-btn" id="searchButton" aria-label="Buscar">
+									<span class="glyphicon glyphicon-search" aria-hidden="true"></span> BUSCAR
+								</button>
+							</div>
+						</div>
+					</div> <!-- searchbox -->
+				</div> <!-- row -->
+
+			</div> <!-- container -->
+			<!-- </div> - body-search --> 
+
+			<!-- <div class="body-contents"> -->
+
+			<div class="container">
+				<div class="row content">
+					<div class="titulo promos">Explorar promociones</div> 
+					<div class="row botonera promo_month">
+						<button type="button" class="btn btn-default btn-month" data-promo="8" id="AUG">Agosto</button>
+						<button type="button" class="btn btn-default btn-month" data-promo="9" id="SEPT">Septiembre</button>
+						<button type="button" class="btn btn-default btn-month" data-promo="10" id="OCT"> Octubre</button>
+						<button type="button" class="btn btn-default btn-month" data-promo="11" id="NOV">Noviembre</button>
+					</div>
+
+					<div class="row botonera" id="promo_week">
+						<button type="button" class="btn btn-default btn-week disabled" data-promo="0" id="2w">Fin de semana</button>
+						<button type="button" class="btn btn-default btn-week disabled" data-promo="1" id="3w">Una semana</button>
+						<button type="button" class="btn btn-default btn-week disabled" data-promo="2" id="4w">Dos semanas</button>
+						<button type="button" class="btn btn-default btn-week disabled" data-promo="3" id="5w">¡Cualquier momento!</button>
+
+					</div>   
 
 
-  </div>
+					<div class="row botonera" id="promo_dest">
+						<button type="button" class="btn btn-default btn-dest disabled" data-promo="0" id="pb">Playas de Brasil</button>
+						<button type="button" class="btn btn-default btn-dest disabled" data-promo="1" id="pp">Paris</button>
+						<button type="button" class="btn btn-default btn-dest disabled" data-promo="2" id="lon">Londres</button>
+						<button type="button" class="btn btn-default btn-dest disabled" data-promo="3" id="mun">Munich</button>
+					</div>
 
+					<div class="row botonera" id="showInfo"></div>
 
-   </div> 
-  </div>
+				</div>
+			</div> 
+		</div>
 
+<!--
 
-<footer>  
-  <div class="container">
-    <div class="row">
-        <p>&copy; VolaDeAca 2016</p>
-  </div> <!-- row -->
-</div>
-</footer>
-  <script src="js/vendor/bootstrap.min.js"></script>
- 
-  <script src="CheloLabs/awesomplete.js"></script>
-  <script src="CheloLabs/acomplete.js"></script>
-  <script src="js/searchbox.js"></script>
-  <script src="script.js" async defer></script>
+		<footer>  
+			<div class="container">
+				<div class="row">
+					<p>&copy; VolaDeAca 2016</p>
+				</div>
+			</div>
+		</footer>
+-->
+		<script src="js/vendor/bootstrap.min.js"></script>
 
-  <script src="js/main.js"></script>
-  <script src="js/moment.js"></script>
+		<script src="CheloLabs/awesomplete.js"></script>
+		<script src="CheloLabs/acomplete.js"></script>
+		<script src="js/searchbox.js"></script>
+		<script src="script.js" async defer></script>
 
-  <script src="jqueryui/jquery-ui.js"></script>
-  <script src="jqueryui/uidatepicker-es.js"></script>
-  <script>
-  </script>
-  <script src="datepicker.js"></script>
-</body>
+		<script src="js/main.js"></script>
+		<script src="js/moment.js"></script>
+
+		<script src="jqueryui/jquery-ui.js"></script>
+		<script src="jqueryui/uidatepicker-es.js"></script>
+		<script>
+		</script>
+		<script src="datepicker.js"></script>
+		<script src="psg-btn.js"></script>
+	</body>
 </html>

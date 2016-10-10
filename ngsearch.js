@@ -106,8 +106,15 @@ app.controller("flightCtrl", function($scope) {
 
 
 	$scope.containers = [
-    	container1, container2, container3   
+    	container1, container2   
     ]
 
+	function newCont() {
+		console.log("Added container");
+		$scope.containers.push(container3);
+	};
+	
+	$scope.newCont = newCont;
+	
 });
 
