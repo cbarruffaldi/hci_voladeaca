@@ -109,33 +109,30 @@ $(function(){
 });
 
 
-$(document).ready(function(){
-    var maxField = 5; //Input fields increment limitation
-    var addButton = $('.add-Phone'); //Add button selector
-    var wrapper = $('#contact-form'); //Input field wrapper
+function addPhone(id){
     var fieldHTML =' <div class="row"> <div class="phone-data">' +
         '<div class="col-md-2 col-md-offset-1 form-field">' +
-        '<label for="phone-type">Tipo:</label>' +
-        '<select class="form-control" id="phone-type">' +
+        '<label for="phone-type-' + id + '">Tipo:</label>' +
+        '<select class="form-control" id="phone-type-' + id + '">' +
         '<option>Fijo</option> ' +
         '<option>Celular</option> ' +
         '</select> ' +
         '</div> ' +
         '<div class="col-md-3 form-field"> ' +
-        '<label for="phone-country">País:</label> ' +
-        '<select class="form-control" id="phone-country"> ' +
+        '<label for="phone-country-' + id + '">País:</label> ' +
+        '<select class="form-control" id="phone-country-' + id + '"> ' +
         '<option>Pais1</option> ' +
         '<option>Pais2</option> ' +
         '<option>Pais3</option> ' +
         '</select> ' +
         '</div> ' +
         '<div class="col-md-2 form-field"> ' +
-        '<label for="phone-area">Cód.de Área:</label> ' +
-        '<input type="number" class="form-control" id="phone-area"> ' +
+        '<label for="phone-area-' + id + '">Cód.de Área:</label> ' +
+        '<input type="number" class="form-control" id="phone-area-' + id + '"> ' +
         '</div> ' +
         '<div class="col-md-3 form-field"> ' +
-        '<label for="phone">Número:</label> ' +
-        '<input type="text" class="form-control" id="phone"> ' +
+        '<label for="phone-' + id + '">Número:</label> ' +
+        '<input type="text" class="form-control" id="phone-' + id + '"> ' +
         '</div> ' +
         '<div class="col-md-1 tocenter-label">' +
         '<a href="#" class="btn btn-default remove-phone add-rem-button">' +
@@ -143,12 +140,21 @@ $(document).ready(function(){
         '</a>' +
         '</div>'+' </div>' +'</div>' + '</div>';
 
+        return fieldHTML;
+};
 
+$(document).ready(function(){
     var x = 1; //Initial field counter is 1
+    var maxField = 5; //Input fields increment limitation
+    var addButton = $('.add-Phone'); //Add button selector
+    var wrapper = $('#contact-form'); //Input field wrapper
+    var count = 1;
+
     $(addButton).click(function(){ //Once add button is clicked
         if(x < maxField){ //Check maximum number of input fields
+            $(wrapper).append(addPhone(count)); // Add field html
             x++; //Increment field counter
-            $(wrapper).append(fieldHTML); // Add field html
+            count++;
         }
     });
     $(wrapper).on('click', '.remove-phone', function(e){ //Once remove button is clicked
@@ -251,3 +257,4 @@ $(document).ready(function(){
 });
 
 */
+
