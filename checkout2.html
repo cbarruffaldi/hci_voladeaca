@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <script src="js/vendor/bootstrap.min.js"></script>
+    <script src="js/validators.js"></script>
     <script src="js/checkout.js"></script>
     <link rel="stylesheet" href="css/checkout.css">
     <link rel="stylesheet" href="css/main.css">
@@ -173,7 +174,7 @@
 
                                     <div class="col-md-9 form-inline form-field openField" >
                                         <div class="col-md-12 single-label">
-                                        <label>Fecha de Nacimiento:</label>
+                                            <label>Fecha de Nacimiento:</label>
                                         </div>
                                         <label for="birth-day" class="hidden">Día</label>
                                         <input type="number" class="form-control " placeholder="dia" id="birth-day"/>
@@ -181,7 +182,10 @@
                                         <input type="number" class="form-control" placeholder="mes" id="birth-month"/>
                                         <label for="birth-year" class="hidden">Año</label>
                                         <input type="number" class="form-control " placeholder="año" id="birth-year"/>
-                                        <p class="error-msg"></p>
+                                        <p class="error-msg" id="error-birthdate"></p>
+                                        <p class="error-msg" id="error-birth-day"></p>
+                                        <p class="error-msg" id="error-birth-month"></p>
+                                        <p class="error-msg" id="error-birth-year"></p>
                                     </div>
                                 </div>
                             </div>
@@ -210,6 +214,7 @@
                                 <div class="col-md-12 form-field">
                                     <label for="card-num">Número de la tarjeta:</label>
                                     <input type="text" class="form-control" id="card-num"/>
+                                    <p class="error-msg"></p>
                                 </div>
                             </div>
 
@@ -224,6 +229,7 @@
                                     /
                                     <label for="exp-year" class="hidden">Año:</label>
                                     <input type="number" class="form-control" placeholder="año" id="exp-year">
+                                    <p class="error-msg"></p>
                                 </div>
 
                                 <div class="col-md-4 form-inline form-field">
@@ -232,6 +238,7 @@
                                     <a href='#' data-toggle="popover" title="¿Donde se ecuentra el código de seguridad?" data-content="<img src='img/security-code.jpg' width='200' />">
                                         <span class="glyphicon glyphicon-question-sign"></span>
                                     </a>
+                                    <p class="error-msg"></p>
                                 </div>
                             </div>
 
@@ -241,6 +248,7 @@
                                 <div class="col-md-12 form-field">
                                     <label for="cardholder" >Nombre del titular:</label>
                                     <input type="text" class="form-control" id="cardholder" placeholder="Nombre como figura en la tarjeta">
+                                    <p class="error-msg"></p>
                                 </div>
                             </div>
 
@@ -266,6 +274,7 @@
                                 <div class="col-md-8 form-field">
                                     <label for="cuil">CUIL:</label>
                                     <input type="text" class="form-control" id="cuil">
+                                    <p class="error-msg"></p>
                                 </div>
                             </div>
 
@@ -302,16 +311,19 @@
                                 <div class="col-md-6 form-field">
                                     <label for="street">Calle:</label>
                                     <input type="text" class="form-control" id="street">
+                                    <p class="error-msg"></p>
                                 </div>
 
                                 <div class="col-md-2 form-field">
                                     <label for="addr-num" >Número:</label>
                                     <input type="text" class="form-control" id="addr-num">
+                                    <p class="error-msg"></p>
                                 </div>
 
                                 <div class="col-md-2 form-field">
                                     <label for="zip-code">Cód.Postal:</label>
                                     <input type="text" class="form-control" id="zip-code">
+                                    <p class="error-msg"></p>
                                 </div>
                             </div>
                         </div>
@@ -340,6 +352,7 @@
                                 <div class="col-md-12 form-field">
                                     <label for="email" >E-mail:</label>
                                     <input type="text" class="form-control" id="email">
+                                    <p class="error-msg"></p>
                                 </div>
                             </div>
 
@@ -367,10 +380,12 @@
                                     <div class="col-md-2 form-field">
                                         <label for="phone-area">Cód.de Área:</label>
                                         <input type="number" class="form-control" id="phone-area">
+                                        <p class="error-msg"></p>
                                     </div>
                                     <div class="col-md-3 form-field">
                                         <label for="phone">Número:</label>
                                         <input type="text" class="form-control" id="phone">
+                                        <p class="error-msg"></p>
                                     </div>
                                     <div class="col-md-1 tocenter-label">
                                         <a href="#" class="btn btn-default add-Phone add-rem-button">

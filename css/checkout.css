@@ -36,6 +36,7 @@ p.error-msg {
     padding-left: 0.2em;
     padding-top: 0.2em;
     display: none;
+    white-space: pre-line;
 }
 
 input.error-input {
