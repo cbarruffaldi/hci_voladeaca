@@ -12,8 +12,8 @@ body{
 }
 
 #logo-img{
-	background: url('../logo2b.svg') no-repeat;
-	background-size: 300px 50px;
+	background: url('../logo2.png') no-repeat;
+	background-size: 250px 50px;
 	background-position: center;
 	width: 250px;
 	height: 55px;
@@ -89,7 +89,7 @@ background: #97ebfc;
 
 	/*	background: #ffffff;  */
 	border: #93bcff 1px solid;
-	margin-bottom: 100px; 
+	margin-bottom: 100px;
 	padding-bottom: 1em;
 	border-bottom-left-radius: 5px;
 	border-bottom-right-radius: 5px;
@@ -108,7 +108,7 @@ background: #97ebfc;
 	padding-bottom: 20px;
 	background: url('../img/polka.jpg');
 	background-repeat:  repeat;
-	background:  rgba(0, 153, 0, 0.8); 
+	background:  rgba(0, 153, 0, 0.8);
 	margin-top: 30px;
 	border-radius: 2px;
 	margin-bottom: 50px;
