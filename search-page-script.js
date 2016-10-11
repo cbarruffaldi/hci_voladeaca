@@ -27,15 +27,18 @@ jQuery(document).ready(function(){
 		$("#currency-btn").text(this.text);
 	});
 
-	$(".options-ida button").on("click", function(obj){
+	$(".options-btn button").on("click", function(obj){
 		var toggleID = $(this).attr("data-toggle");
 		$("[data-toggleinfo = " + toggleID + "]").collapse('toggle');
 	});
 
-	$("#options-vuelta button").on("click", function(){
-		$(".unselected-vuelta ").collapse('toggle');
-		
+	
+	$(".unselected-ida").on("click", function(obj){
+		var toggleID = $(this).attr("data-toggleinfo");
+		$("[data-toggleinfo = " + toggleID + "]").collapse('toggle');
 	});
+
+
 
 	$(".details-btn button").on("click", function() {
 		var btn = $(this);

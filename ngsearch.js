@@ -44,7 +44,11 @@ app.controller("flightCtrl", function($scope) {
 	}
 
 
-
+	$scope.changeSelected = function(flight, tramo){
+		tramo.selected.selected = false;
+		flight.selected = true;
+		tramo.selected = flight;
+	}
 
 
 
@@ -117,8 +121,8 @@ app.controller("flightCtrl", function($scope) {
 
 
 	var container = {
-		tramos: [ {desc: "ida", departAirport:"EZE", arrivalAirport: "JFK", vuelos: []}, 
-					{desc:"vuelta", departAirport:"JFK", arrivalAirport: "BUE", vuelos: []} ],
+		tramos: [ {desc: "ida", departAirport:"EZE", arrivalAirport: "JFK", vuelos: [], selected: null}, 
+					{desc:"vuelta", departAirport:"JFK", arrivalAirport: "BUE", vuelos: [], selected: null} ],
 		precio: 6000
 	};
 
@@ -126,11 +130,11 @@ app.controller("flightCtrl", function($scope) {
 	var flight1c = {};
 	var flight2c = {};
 
-	flight1c.airlineName = "Air Chelo";
+	flight1c.airlineName = "Air Chelivery";
 	flight1c.departDate = "Viernes 10";
 	flight1c.departTime = "10:00hs";
 	flight1c.duration = "18h18m";
-	flight1c.flnumber = "AC3214";
+	flight1c.flnumber = "ACAJAJS4";
 	flight1c.arrivalDate = "Sábado 11";
 	flight1c.arrivalTime = "01:00hs";
 	flight1c.selected = false;
@@ -146,14 +150,19 @@ app.controller("flightCtrl", function($scope) {
 
 	container.tramos[0].vuelos.push(flight1c);
 	container.tramos[0].vuelos.push(flight1b);
+	container.tramos[0].selected = flight1b;
+
 	container.tramos[1].vuelos.push(flight2c);
 	container.tramos[1].vuelos.push(flight2b);
 	container.tramos[1].vuelos.push(flight2);
+	container.tramos[1].selected = flight2b;
 
-
-	$scope.containers = [
+	container.idx = 0;
+	containers = [
     	container   
     ]
+
+    $scope.containers = containers;
 
 	function newCont() {
 		console.log("Added container");
