@@ -81,6 +81,8 @@ jQuery(document).ready(function(){
 		}
 	});
 
+
+
 	var handlesSlider = document.getElementById('price-slider');
 
 	noUiSlider.create(handlesSlider, {
@@ -98,4 +100,11 @@ jQuery(document).ready(function(){
 	$("#restart-price-btn").on("click", function(){
 		handlesSlider.noUiSlider.reset();
 	});
+
+	handlesSlider.noUiSlider.on('update', function(){
+		var max = handlesSlider.noUiSlider.get()[1];
+		$("#preciobox").val(max);
+	});
+
+
 });
