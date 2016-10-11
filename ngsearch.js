@@ -155,5 +155,12 @@ app.controller("flightCtrl", function($scope) {
     	container   
     ]
 
+	function newCont() {
+		console.log("Added container");
+		$scope.containers.push(container3);
+	};
+	
+	$scope.newCont = newCont;
+	
 });
 

@@ -26,8 +26,10 @@ function removeErrorState(inputForm) {
     errorMsg.text('');
 }
 
+var passengerValidator = new PassengerValidator();
+
 $(document).ready(function() {
-    var validators = [new PassengerValidator(), new PaymentValidator(), new ContactValidator()];
+    var validators = [passengerValidator, new PaymentValidator(), new ContactValidator()];
 
     $('.btnNext').click(function(){
         var active = $('.nav-tabs > .active');
@@ -42,6 +44,11 @@ $(document).ready(function() {
                 next.removeClass('disabled');
             }
             next.find('a').tab('show');
+            if( indexTab == 0) {
+                getPassengerData();
+            } else if(indexTab == 1) {
+                //getPaymentinfo()
+            }
         }
     });
 
@@ -75,16 +82,31 @@ $(document).ready(function(){
     });
 });
 
+/* 0: pasajeros
+*  1: pago
+*  2: contacto*/
+
+function getCurrentStage() {
+    var active = $('.nav-tabs > .active');
+    var indexTab = $('.nav-tabs').children('li').index(active);
+    return indexTab;
+}
+
 $(document).ready(function(){
     $('.btnPrev').click(function(){
-
+        var i = getCurrentStage();
+        if( i == 1) {
+            $(".summary-passengers").children().remove();
+        } else if (i == 2){
+            $(".summary-payment").children().remove();
+        }
         $('.nav-tabs > .active').prev('li').find('a').tab('show');
 
     });
 });
 
 $(document).ready(function(){
-    $('[data-toggle="popover"]').popover({
+    $('#code-popover').popover({
         html: true,
         trigger: 'hover',
 
@@ -257,4 +279,47 @@ $(document).ready(function(){
 });
 
 */
+
+function addName(name, obj) {
+    obj.append('<h5 class="sum-passname">' + name + '</h5>');
+}
+function addPassData(country, doctype, docnum, gen, birth, obj){
+    var x1 = '<div class="sum-field">' + country + ' ' + doctype + ':'+ docnum +'</div>';
+    var x2 = '<div class="sum-field">' + gen + ' ' + birth +'</div>';
+    var x3 = '<a href="#" class="col-md-offset-9 pass-popover" data-toggle="popover">' + 'Modificar...' + '</a>';
+
+    obj.append(x1);
+    obj.append(x2);
+    obj.append(x3);
+
+
+}
+
+
+$(document).ready(function(){
+   $('#pass-popover').popover({
+       html: true,
+       trigger: 'hover',
+
+       content: function () {
+          return '<img src="img/security-code.jpg"/>'
+            }
+        })});
+
+function fillPassengerSum(data){
+    addName(data["usr-name"] + ' ' + data["usr-lname"], $(".summary-passengers"));
+    addPassData(data["usr-country"], data["usr-doc"], data["usr-docnum"], data["usr-gen"], data["birth-day"] + '/' + data["birth-month"] + '/' + data["birth-year"],$(".summary-passengers"));
+}
+
+function getPassengerData(){
+    var passData = passengerValidator.data;
+    fillPassengerSum(passData);
+}
+
+
+
+
+
+
+
 
