@@ -27,12 +27,14 @@ jQuery(document).ready(function(){
 		$("#currency-btn").text(this.text);
 	});
 
-	$("#options-ida button").on("click", function(){
-		$("#unselected-ida").collapse('toggle');
+	$(".options-ida button").on("click", function(obj){
+		var toggleID = $(this).attr("data-toggle");
+		$("[data-toggleinfo = " + toggleID + "]").collapse('toggle');
 	});
 
 	$("#options-vuelta button").on("click", function(){
-		$("#unselected-vuelta").collapse('toggle');
+		$(".unselected-vuelta ").collapse('toggle');
+		
 	});
 
 	$(".details-btn button").on("click", function() {

@@ -331,8 +331,8 @@
 							</div>
 							</div> <!-- ng repeat flights -->
 
-														<div class="row unselected-box collapse" id="unselected-ida">
-								<div class="col-md-12">
+						<div class="row unselected-box collapse unselected-ida" data-toggleinfo={{$index}} >
+						<div class="col-md-12">
 
 						<div data-ng-repeat="f in t.vuelos | filter: {selected: false}">
 						<div class="row unselected-item">
@@ -385,13 +385,10 @@
 						</div> <!-- unselected repeat -->
 
 						</div>
-
 						</div>
-
-
-							<div class="row options-btn" id="options-ida">
+							<div class="row options-btn options-ida">
 								<div class="col-md-8 col-md-offset-2">
-									<button class="vda-btn">Ver mas opciones para el mismo precio  <span class="glyphicon glyphicon-chevron-down"></span></button>
+									<button class="vda-btn" data-toggle="{{$index}}">Ver mas opciones para el mismo precio  <span class="glyphicon glyphicon-chevron-down"></span></button>
 								</div>
 							</div>
 						</div>
