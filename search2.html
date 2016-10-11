@@ -282,7 +282,7 @@
 									Nueva York
 								</div>
 							</div>
-							<div data-ng-repeat="f in t.vuelos | filter: {selected: true}">
+							<div data-ng-repeat="f in t.vuelos | filter: {isSelected: true}">
 							<div class="row selected-box" id="selected-ida-{{f.flnumber}}">
 								<div class="col-md-1 air-img">
 									<img src="aircanada.png" alt="Logo aerolinea">
@@ -335,7 +335,7 @@
 						<div class="row unselected-box collapse unselected-ida" data-toggleinfo={{$index}} >
 						<div class="col-md-12">
 
-						<div data-ng-repeat="f in t.vuelos | filter: {selected: false}">
+						<div data-ng-repeat="f in t.vuelos | filter: {isSelected: false}">
 						<div class="row unselected-item" data-ng-click="changeSelected(f, t)">
 								<div class="col-md-1 air-img">
 									<img src="aircanada.png" alt="Logo aerolinea">
