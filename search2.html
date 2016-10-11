@@ -1,4 +1,5 @@
 <!doctype html>
+<html lang="es">
 <head>
 	<meta charset="utf-8">
 	<title>VolaDeAca - Búsqueda</title>
@@ -23,7 +24,7 @@
 
 </head>
 
-<body data-ng-app="flightApp" ng-controller="flightCtrl">
+<body data-ng-app="flightApp" data-ng-controller="flightCtrl">
 	<header>
 		<div data-ng-include="'./snippets/nav.html'"></div>
 	</header>
@@ -51,16 +52,16 @@
 						<div class="filter-section-name">Despegue Ida</div>
 						<div class="depart-time-grid">
 							<div class="depart-time-button" >
-								<img src="madru.png" data-dep-time="0" data-ng-click="toggleTimeFilter('dawn')"/>
+								<img src="madru.png" alt="Madrugada" data-dep-time="0" data-ng-click="toggleTimeFilter('dawn')"/>
 							</div>
 							<div class="depart-time-button">
-								<img src="mania.png" data-dep-time="1" data-ng-click="toggleTimeFilter('morn')"/>
+								<img src="mania.png" alt="Mañana" data-dep-time="1" data-ng-click="toggleTimeFilter('morn')"/>
 							</div>
 							<div class="depart-time-button" >
-								<img src="tarde.png" data-dep-time="2" data-ng-click="toggleTimeFilter('noon')"/>
+								<img src="tarde.png" alt="Tarde" data-dep-time="2" data-ng-click="toggleTimeFilter('noon')"/>
 							</div>
 							<div class="depart-time-button" >
-								<img src="noche.png" data-dep-time="3" data-ng-click="toggleTimeFilter('night')"/>
+								<img src="noche.png" alt="Noche" data-dep-time="3" data-ng-click="toggleTimeFilter('night')"/>
 							</div>
 						</div>
 
@@ -68,16 +69,16 @@
 						<div class="depart-time-grid">
 
 							<div class="depart-time-button" >
-								<img src="madru.png" data-dep-time="4"/>
+								<img src="madru.png" alt="Madrugada" data-dep-time="4"/>
 							</div>
 							<div class="depart-time-button">
-								<img src="mania.png" data-dep-time="5"/>
+								<img src="mania.png" alt="Mañana" data-dep-time="5"/>
 							</div>
 							<div class="depart-time-button" >
-								<img src="tarde.png" data-dep-time="6"/>
+								<img src="tarde.png" alt="Tarde" data-dep-time="6"/>
 							</div>
 							<div class="depart-time-button" >
-								<img src="noche.png" data-dep-time="7"/>
+								<img src="noche.png" alt="Noche" data-dep-time="7"/>
 							</div>
 						</div>
 					</div>
@@ -93,8 +94,8 @@
 
 						<div class="filter-section-name">Destino</div>
 						<div data-ng-repeat="a in v_Airports">
-							<input type="checkbox" id="aer-o-cbox{{a.id}}" data-ng-click="toggleVAir(a.id)">
-							<label for="aer-o-cbox{{a.id}}">{{a.name}}</label>
+							<input type="checkbox" id="aer-v-cbox{{a.id}}" data-ng-click="toggleVAir(a.id)">
+							<label for="aer-v-cbox{{a.id}}">{{a.name}}</label>
 							<br/>
 						</div>
 						
@@ -104,7 +105,7 @@
 						<div class="filter-name">Aerolíneas</div>
 						<div data-ng-repeat="a in aerolineas">
 						<input type="checkbox" id="airl-cbox{{a.id}}" />
-						<label for="airl-cbox1">{{a.name}}</label>
+						<label for="airl-cbox{{a.">{{a.name}}</label>
 						<br/>
 						</div>
 					</div>
@@ -234,7 +235,7 @@
 					<div class="col-md-3">
 						<div class="order-by-menu">
 							<label for="orderby-btn">Ordenar por:</label>
-							<span class="btn-group">
+							<div class="btn-group">
 								<button id="orderby-btn" class="vda-btn vda-btn-small dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 									Menor precio<span class="caret"></span>
 								</button>
@@ -243,13 +244,13 @@
 									<li><a href="#">Menor Duración</a></li>
 									<li><a href="#">Mejor Puntaje</a></li>
 								</ul>
-							</span>
+							</div>
 						</div>
 					</div>
 					<div class="col-md-2 col-md-offset-7">
 						<div class="currency-menu">
-							<label for="currecy-btn">Moneda:</label>
-							<span class="btn-group">
+							<label for="currency-btn">Moneda:</label>
+							<div class="btn-group">
 								<button id="currency-btn" class="vda-btn vda-btn-small dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 									ARS<span class="caret"></span>
 								</button>
@@ -259,7 +260,7 @@
 									<li><a href="#">EUR</a></li>
 									<li><a href="#">REA</a></li>
 								</ul>
-							</span>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -284,7 +285,7 @@
 							<div data-ng-repeat="f in t.vuelos | filter: {selected: true}">
 							<div class="row selected-box" id="selected-ida-{{f.flnumber}}">
 								<div class="col-md-1 air-img">
-									<img src="aircanada.png">
+									<img src="aircanada.png" alt="Logo aerolinea">
 								</div>
 								<div class="col-md-2 air-name">
 									{{f.airlineName}}
@@ -337,7 +338,7 @@
 						<div data-ng-repeat="f in t.vuelos | filter: {selected: false}">
 						<div class="row unselected-item" data-ng-click="changeSelected(f, t)">
 								<div class="col-md-1 air-img">
-									<img src="aircanada.png">
+									<img src="aircanada.png" alt="Logo aerolinea">
 								</div>
 								<div class="col-md-2 air-name">
 									{{f.airlineName}}
@@ -429,3 +430,4 @@
 	<script src="flight-select.js"></script>
 	<script src="ngsearch.js"></script>
 </body>
+</html>
