@@ -33,7 +33,7 @@ p.error-msg {
     color: #a0003a;
     font-size: 0.9em;
     margin: 0;
-    padding-left: 0.2em;
+    padding-left: 0.4em;
     padding-top: 0.2em;
     display: none;
     white-space: pre-line;
@@ -41,6 +41,14 @@ p.error-msg {
 
 input.error-input {
     border: 1px solid #FF0000;
+}
+
+#error-card {
+    margin-top: 1.8em;
+    margin-right: 0.5em;
+    color: #a0003a;
+    display: none;
+    font-size: 0.9em;    
 }
 
 .single-label {

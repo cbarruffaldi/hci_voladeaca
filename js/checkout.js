@@ -27,7 +27,10 @@ function removeErrorState(inputForm) {
 }
 
 $(document).ready(function() {
+
+    /* Validadores por cada etapa */
     var validators = [new PassengerValidator(), new PaymentValidator(), new ContactValidator()];
+
 
     $('.btnNext').click(function(){
         var active = $('.nav-tabs > .active');
@@ -52,6 +55,13 @@ $(document).ready(function() {
         var value = $(this).val();
         var validator = validators[indexTab];
         var validation;
+
+        value = value.trim();
+        if (value.length > 0) {
+            var words = value.split(/[\s]+/);
+            words = words.map(function (word) {return word.toUpperFirstLetter();});
+            value = words.join(' ');
+        }
         
         validation = validator.validate(id, value);
 
