@@ -227,58 +227,6 @@ function completeDataPass(name, lname, date, gen, country, doc, docnum){
     $('.summary-passenger').find('p').text([name, lname, date, gen, country, doc, docnum].join(' '));
 }
 
-/*
-function validationPassengers() {
-
-    var name = validateName(document.getElementById("usr-name").value);
-    if (name == 1) {
-        console.log("Nombre vacío");
-        name = "Nombre vacío";
-    }
-
-    var lname = validateName(document.getElementById("usr-lname").value);
-    if(lname == 1) {
-        console.log("Apellido vacío");
-        lname= "Apellido Vacío";
-    }
-
-    // TODO: VALIDAR DOCUMENTO Y TODO LA VERDAD...
-
-    var day =document.getElementById("birth-day").value;
-    var month = document.getElementById("birth-month").value;
-    var year = document.getElementById("birth-year").value;
-    date = validateDate(day,month,year);
-
-    if( date == 1) {
-        console.log("Fecha vacía");
-        date =  "Fecha Vacía";
-    }else if( date == 2) {
-        console.log("Fecha inválida");
-        date="Fecha Invalida";
-    }
-    console.log(date);
-
-    var docnum = document.getElementById("usr-docnum").value;
-    var doc = document.getElementById("usr-doc").value;
-
-    if (doc == 1) {
-        console.log("Documento vacío");
-        doc = "Documento Vacío";
-    }
-
-    var country= document.getElementById("usr-country").value;
-    var gen = document.getElementById("usr-gen").value;
-
-    completeDataPass(name, lname, date, gen, country, doc, docnum);
-}
-
-$(document).ready(function(){
-
-    addSumBlockPass();
-
-});
-
-*/
 
 function addName(name, obj) {
     obj.append('<h5 class="sum-passname">' + name + '</h5>');
@@ -286,7 +234,7 @@ function addName(name, obj) {
 function addPassData(country, doctype, docnum, gen, birth, obj){
     var x1 = '<div class="sum-field">' + country + ' ' + doctype + ':'+ docnum +'</div>';
     var x2 = '<div class="sum-field">' + gen + ' ' + birth +'</div>';
-    var x3 = '<a href="#" class="col-md-offset-9 pass-popover" data-toggle="popover">' + 'Modificar...' + '</a>';
+    var x3 = '<a href="#" class="col-md-offset-9 sum-modal" data-toggle="modal" data-target="#pass-modal">' + 'Modificar...' + '</a>';
 
     obj.append(x1);
     obj.append(x2);
@@ -315,6 +263,13 @@ function getPassengerData(){
     var passData = passengerValidator.data;
     fillPassengerSum(passData);
 }
+
+function fillPassengerModal(){
+
+}
+
+$()
+
 
 
 
