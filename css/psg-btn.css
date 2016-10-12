@@ -1,0 +1,63 @@
+#zero-adults-msg {
+	display:none;
+	margin: 0;
+	border: 0;
+	color: crimson;
+}
+
+.passengers .dropdown-menu {
+	width: 265px;
+	left: -50px;
+	padding: 5%;
+	text-align: center;
+	box-shadow: 0 0 5px #7f7f7f;
+}
+
+.passenger-row {
+	padding: 5% 1%;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.cat-title {
+	font-size: 1.3em;
+	font-weight: 500;
+	letter-spacing: 1px;
+	padding-left: 5%;
+	display: inline-block;
+}
+
+.cat-info {
+	font-size: 0.9em;
+	font-weight: 500;
+	color: #333;
+}
+
+.div-line {
+	border-bottom: 1px solid #a3a3a3;
+	margin-top: 2%;
+	margin-left: 5%;
+	margin-right: 5%;
+}
+
+.passenger-number {
+	display: inline-block;
+	font-size: 1.3em;
+	font-weight: 500;
+	border: 1px solid #7b7b7b;
+	border-radius: 5px;
+	padding: 4% 12%;
+}
+
+.passenger-row button {
+	font-size: 1.3em;
+	padding: 10px;
+	padding-bottom: 12px;
+	line-height: 10px;
+	margin-top: 4%;
+}
+
+#ok-btn {
+	margin-top: 10px;
+	border: 1px solid #a3a3a3;
+}

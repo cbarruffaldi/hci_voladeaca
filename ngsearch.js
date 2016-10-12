@@ -1,18 +1,38 @@
 var app = angular.module("flightApp", []);
 app.controller("flightCtrl", function($scope) {
 
+	function showSpinner() {
+		console.log("SPINNER");
+	}
+
+	function hideSpinner() {
+		console.log("HIDE SPINNER");
+	}
+
+	$scope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
+		if (toState.resolve) {
+			$scope.showSpinner();
+		}
+	});
+
+	$scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
+		if (toState.resolve) {
+			$scope.hideSpinner();
+		}
+	});
+
 	var filters = {
 		time: { active: false,
-				dawn: false,
-				morn: false,
-				noon: false,
-				night: false
-				},
+					 dawn: false,
+					 morn: false,
+					 noon: false,
+					 night: false
+					},
 		airports: {
-				active: false,
-				list: {}
-			}
+			active: false,
+			list: {}
 		}
+	}
 
 
 	function toggleTimeFilter(time){
@@ -124,7 +144,7 @@ app.controller("flightCtrl", function($scope) {
 
 	var container = {
 		tramos: [ {desc: "ida", departAirport:"EZE", arrivalAirport: "JFK", vuelos: [], selected: null}, 
-					{desc:"vuelta", departAirport:"JFK", arrivalAirport: "BUE", vuelos: [], selected: null} ],
+						 {desc:"vuelta", departAirport:"JFK", arrivalAirport: "BUE", vuelos: [], selected: null} ],
 		precio: 6000
 	};
 
@@ -161,17 +181,18 @@ app.controller("flightCtrl", function($scope) {
 
 	container.idx = 0;
 	containers = [
-    	container   
-    ]
+		container   
+	]
 
-    $scope.containers = containers;
+	$scope.containers = containers;
 
 	function newCont() {
 		console.log("Added container");
 		$scope.containers.push(container3);
 	};
-	
+
 	$scope.newCont = newCont;
-	
+
 });
+
 

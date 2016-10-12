@@ -1,5 +1,4 @@
 <!doctype html>
-<html lang="es">
 <head>
 	<meta charset="utf-8">
 	<title>VolaDeAca - Búsqueda</title>
@@ -16,15 +15,14 @@
 	<link rel="stylesheet" href="css/buttons.css">
 	<link rel="stylesheet" href="css/nouislider-custom.css">
 
-	<script src="angular.min.js"></script>
-
-
 	<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
 
-
+	<script src="angular.min.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+	<script src="script.js"></script>
 </head>
 
-<body data-ng-app="flightApp" data-ng-controller="flightCtrl">
+<body data-ng-app="">
 	<header>
 		<div data-ng-include="'./snippets/nav.html'"></div>
 	</header>
@@ -36,9 +34,8 @@
 					<h2> Filtros </h2>
 					<div class="price-filter filter-box">
 						<div class="filter-name"> Precio</div>
-						<input type="number" data-ng-model="precio" id="preciobox"/> 
 						<div class="slider-box">
-							<div id="price-slider">
+							<div id="price-slider"> 
 							</div>
 						</div>
 						<button id="restart-price-btn" class="vda-text-btn">
@@ -52,16 +49,16 @@
 						<div class="filter-section-name">Despegue Ida</div>
 						<div class="depart-time-grid">
 							<div class="depart-time-button" >
-								<img src="madru.png" alt="Madrugada" data-dep-time="0" data-ng-click="toggleTimeFilter('dawn')"/>
+								<img src="madru.png" data-dep-time="0"/>
 							</div>
 							<div class="depart-time-button">
-								<img src="mania.png" alt="Mañana" data-dep-time="1" data-ng-click="toggleTimeFilter('morn')"/>
+								<img src="mania.png" data-dep-time="1"/>
 							</div>
 							<div class="depart-time-button" >
-								<img src="tarde.png" alt="Tarde" data-dep-time="2" data-ng-click="toggleTimeFilter('noon')"/>
+								<img src="tarde.png" data-dep-time="2"/>
 							</div>
 							<div class="depart-time-button" >
-								<img src="noche.png" alt="Noche" data-dep-time="3" data-ng-click="toggleTimeFilter('night')"/>
+								<img src="noche.png" data-dep-time="3"/>
 							</div>
 						</div>
 
@@ -69,16 +66,16 @@
 						<div class="depart-time-grid">
 
 							<div class="depart-time-button" >
-								<img src="madru.png" alt="Madrugada" data-dep-time="4"/>
+								<img src="madru.png" data-dep-time="4"/>
 							</div>
 							<div class="depart-time-button">
-								<img src="mania.png" alt="Mañana" data-dep-time="5"/>
+								<img src="mania.png" data-dep-time="5"/>
 							</div>
 							<div class="depart-time-button" >
-								<img src="tarde.png" alt="Tarde" data-dep-time="6"/>
+								<img src="tarde.png" data-dep-time="6"/>
 							</div>
 							<div class="depart-time-button" >
-								<img src="noche.png" alt="Noche" data-dep-time="7"/>
+								<img src="noche.png" data-dep-time="7"/>
 							</div>
 						</div>
 					</div>
@@ -86,28 +83,32 @@
 					<div class="airport-filter filter-box">
 						<div class="filter-name">Aeropuertos</div>
 						<div class="filter-section-name">Origen</div>
-						<div data-ng-repeat="a in i_Airports">
-							<input type="checkbox" id="aer-o-cbox{{a.id}}" data-ng-click="toggleIAir(a.id)">
-							<label for="aer-o-cbox{{a.id}}">{{a.name}}</label>
-							<br/>
-						</div>
-
+						<input type="checkbox" id="aer-o-cbox1">
+						<label for="aer-o-cbox1">Aeropuerto 1</label>
+						<br/>
+						<input type="checkbox" id="aer-o-cbox2"> <label for="aer-o-cbox2">Aeropuerto 2</label>
+						<br/>
+						<input type="checkbox" id="aer-o-cbox3">
+						<label for="aer-o-cbox3">Aeropuerto 3</label>
 						<div class="filter-section-name">Destino</div>
-						<div data-ng-repeat="a in v_Airports">
-							<input type="checkbox" id="aer-v-cbox{{a.id}}" data-ng-click="toggleVAir(a.id)">
-							<label for="aer-v-cbox{{a.id}}">{{a.name}}</label>
-							<br/>
-						</div>
-						
+						<input type="checkbox" id="aer-d-cbox1">
+						<label for="aer-d-cbox1">Aeropuerto 1</label>
+						<br/>
+						<input type="checkbox" id="aer-d-cbox2"> <label for="aer-d-cbox2">Aeropuerto 2</label>
+						<br/>
+						<input type="checkbox" id="aer-d-cbox3">
+						<label for="aer-d-cbox3">Aeropuerto 3</label>
 					</div>
 
 					<div class="airline-filter filter-box">
-						<div class="filter-name">Aerolíneas</div>
-						<div data-ng-repeat="a in aerolineas">
-						<input type="checkbox" id="airl-cbox{{a.id}}" />
-						<label for="airl-cbox{{a.">{{a.name}}</label>
+						<div class="filter-name"> Aerolíneas</div>
+						<input type="checkbox" id="airl-cbox1">
+						<label for="airl-cbox1">Aerolínea 1</label>
 						<br/>
-						</div>
+						<input type="checkbox" id="airl-cbox2"> <label for="airl-cbox2">Aerolínea 2</label>
+						<br/>
+						<input type="checkbox" id="airl-cbox3">
+						<label for="airl-cbox3">Aerolínea 3</label>
 					</div>
 				</div>
 			</div>
@@ -235,7 +236,7 @@
 					<div class="col-md-3">
 						<div class="order-by-menu">
 							<label for="orderby-btn">Ordenar por:</label>
-							<div class="btn-group">
+							<span class="btn-group">
 								<button id="orderby-btn" class="vda-btn vda-btn-small dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 									Menor precio<span class="caret"></span>
 								</button>
@@ -244,13 +245,13 @@
 									<li><a href="#">Menor Duración</a></li>
 									<li><a href="#">Mejor Puntaje</a></li>
 								</ul>
-							</div>
+							</span>
 						</div>
 					</div>
 					<div class="col-md-2 col-md-offset-7">
 						<div class="currency-menu">
-							<label for="currency-btn">Moneda:</label>
-							<div class="btn-group">
+							<label for="currecy-btn">Moneda:</label>
+							<span class="btn-group">
 								<button id="currency-btn" class="vda-btn vda-btn-small dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 									ARS<span class="caret"></span>
 								</button>
@@ -260,49 +261,44 @@
 									<li><a href="#">EUR</a></li>
 									<li><a href="#">REA</a></li>
 								</ul>
-							</div>
+							</span>
 						</div>
 					</div>
 				</div>
 
 				<div class="col-md-12 flight-options-area">
-				<!-- <div data-ng-repeat="c in containers"> -->
-					<div class="row flight-box" data-ng-repeat="c in containers | filter:myFilter">
+
+					<div class="row flight-box">
 						<div class="col-md-10 flight-info">
-						<div data-ng-repeat="t in c.tramos">
 							<div class="row airports-line-info">
 								<div class="col-md-2 ida-vuelta-badge">
-									{{t.desc}} <span class="glyphicon glyphicon-arrow-right"></span>
+									IDA <span class="glyphicon glyphicon-arrow-right"></span>
 								</div>
 								<div class="col-md-10 orig-dest-badges">
 									Buenos Aires
-									<span class="airport-badge">{{t.departAirport}}</span>
+									<span class="airport-badge">EZE</span>
 									<span class="glyphicon glyphicon-arrow-right"></span>
-									<span class="airport-badge">{{t.arrivalAirport}}</span>
+									<span class="airport-badge">JFK</span>
 									Nueva York
 								</div>
 							</div>
-							<div data-ng-repeat="f in t.vuelos | filter: {isSelected: true}">
-							<div class="row selected-box" id="selected-ida-{{f.flnumber}}">
+
+							<div class="row selected-box" id="selected-ida">
 								<div class="col-md-1 air-img">
-									<img src="aircanada.png" alt="Logo aerolinea">
+									<img src="aircanada.png">
 								</div>
 								<div class="col-md-2 air-name">
-									{{f.airlineName}}
 									<!-- que lo centre magoya -->
 								</div>
 
 								<div class="col-md-1">
 									<div class="flight-date depart-date">
-									{{f.departDate}}
 									</div>
 									<div class="flight-time depart-time">
-									{{f.departTime}}
 									</div>
 								</div>
 								<div class="col-md-1">
 									<div class="airport-id depart-air">
-									{{t.departAirport}}
 									</div>
 								</div>
 
@@ -313,90 +309,153 @@
 
 								<div class="col-md-1">
 									<div class="airport-id land-air">
-									{{t.arrivalAirport}}
 									</div>
 								</div>
 								<div class="col-md-1">
 									<div class="flight-date land-date">
-									{{f.arrivalDate}}
 									</div>
 									<div class="flight-time land-time">
-									{{f.arrivalTime}}
 									</div>
 								</div>
 
 								<div class="col-md-2">
-									<div class="duration">{{f.duration}}</div>
-									<div class="fl-number">{{f.flnumber}}</div>
+									<div class="duration"></div>
+									<div class="fl-number"></div>
 								</div>
 							</div>
-							</div> <!-- ng repeat flights -->
 
-						<div class="row unselected-box collapse unselected-ida" data-toggleinfo={{$index}} >
-						<div class="col-md-12">
 
-						<div data-ng-repeat="f in t.vuelos | filter: {isSelected: false}">
-						<div class="row unselected-item" data-ng-click="changeSelected(f, t)">
-								<div class="col-md-1 air-img">
-									<img src="aircanada.png" alt="Logo aerolinea">
-								</div>
-								<div class="col-md-2 air-name">
-									{{f.airlineName}}
-									<!-- que lo centre magoya -->
+
+							<div class="row unselected-box collapse" id="unselected-ida">
+								<div class="col-md-12">
+
+									<div class="row unselected-item">
+										<div class="col-md-1 air-img">
+											<img src="aircanada.png">
+										</div>
+										<div class="col-md-2 air-name">
+											<!-- que lo centre magoya -->
+										</div>
+
+										<div class="col-md-1">
+											<div class="flight-date depart-date">
+											</div>
+											<div class="flight-time depart-time">
+											</div>
+										</div>
+										<div class="col-md-1">
+											<div class="airport-id depart-air">
+											</div>
+										</div>
+
+										<div class="col-md-1">
+											<div class="glyphicon glyphicon-arrow-right">
+											</div>
+										</div>
+
+										<div class="col-md-1">
+											<div class="airport-id land-air">
+											</div>
+										</div>
+										<div class="col-md-1">
+											<div class="flight-date land-date">
+											</div>
+											<div class="flight-time land-time">
+											</div>
+										</div>
+
+										<div class="col-md-2">
+											<div class="duration"></div>
+											<div class="fl-number"></div>
+										</div>
+									</div>
+
 								</div>
 
-								<div class="col-md-1">
-									<div class="flight-date depart-date">
-									{{f.departDate}}
-									</div>
-									<div class="flight-time depart-time">
-									{{f.departTime}}
-									</div>
-								</div>
-								<div class="col-md-1">
-									<div class="airport-id depart-air">
-									{{t.departAirport}}
-									</div>
-								</div>
+							</div>
 
-								<div class="col-md-1">
-									<div class="glyphicon glyphicon-arrow-right">
-									</div>
-								</div>
-
-								<div class="col-md-1">
-									<div class="airport-id land-air">
-									{{t.arrivalAirport}}
-									</div>
-								</div>
-								<div class="col-md-1">
-									<div class="flight-date land-date">
-									{{f.arrivalDate}}
-									</div>
-									<div class="flight-time land-time">
-									{{f.arrivalTime}}
-									</div>
-								</div>
-
-								<div class="col-md-2">
-									<div class="duration">{{f.duration}}</div>
-									<div class="fl-number">{{f.flnumber}}</div>
-								</div>
-						</div>
-						</div> <!-- unselected repeat -->
-
-						</div>
-						</div>
-							<div class="row options-btn">
+							<div class="row options-btn" id="options-ida">
 								<div class="col-md-8 col-md-offset-2">
-									<button class="vda-btn" data-toggle="{{$index}}">Ver mas opciones para el mismo precio  <span class="glyphicon glyphicon-chevron-down"></span></button>
+									<button class="vda-btn">Ver mas opciones para el mismo precio  <span class="glyphicon glyphicon-chevron-down"></span></button>
 								</div>
 							</div>
+
+							<div class="row airports-line-info">
+								<div class="col-md-2 ida-vuelta-badge">
+									VUELTA <span class="glyphicon glyphicon-arrow-left"></span>
+								</div>
+								<div class="col-md-10 orig-dest-badges">
+									Nueva York
+									<span class="airport-badge">JFK</span>
+									<span class="glyphicon glyphicon-arrow-right"></span>
+									<span class="airport-badge">EZE</span>
+									Buenos Aires
+								</div>
+							</div>
+
+							<div class="row selected-box" id="selected-vuelta">
+								<div class="col-md-1 air-img">
+									<img src="aircanada.png">
+								</div>
+								<div class="col-md-2 air-name">
+									<h1>Air Canada</h1>
+									<!-- que lo centre magoya -->
+								</div>
+
+								<div class="col-md-3">
+									<div class="flight-point-info">
+										<div class="airport-id">
+											JFK
+										</div>
+										<div class="flight-date">
+											Viernes 17
+										</div>
+										<div class="flight-time">
+											12:00hs
+										</div>
+									</div>
+								</div>
+
+								<div class="col-md-1">
+									<img src="paper-plane.svg">
+								</div>
+
+								<div class="col-md-3">
+									<div class="flight-point-info">
+										<div class="airport-id">
+											EZE
+										</div>
+										<div class="flight-date">
+											Sábado 18
+										</div>
+										<div class="flight-time">
+											03:00hs
+										</div>
+									</div>
+								</div>
+
+								<div class="col-md-2">
+									<div class="duration">18h19m</div>
+									<div class="fl-number">Nº AC3215</div>
+								</div>
+							</div>
+
+							<div class="row unselected-box collapse" id="unselected-vuelta">
+								<div class="col-md-12">
+								</div>
+							</div>
+
+							<div class="row options-btn" id="options-vuelta">
+								<div class="col-md-8 col-md-offset-2">
+									<button class="vda-btn">Ver mas opciones para el mismo precio  <span class="glyphicon glyphicon-chevron-down"></span></button>
+								</div>
+							</div>
+
 						</div>
-					</div>
-					<div class="col-md-2 flight-price-box">
+
+						<div class="col-md-2 flight-price-box">
 							<div class="price-number">
-								{{c.precio}}
+								$9000
 							</div>
 							<div class="details-btn">
 								<div class="collapse price-details">
@@ -405,17 +464,16 @@
 								</div>
 								<button class="vda-text-btn">+ detalles</button>
 							</div>
-							<div class="buy-btn" data-ng-click="newCont()">
-								<button class="vda-btn" id="btn-{{c.id}}">Comprar</button>
+							<div class="buy-btn">
+								<button class="vda-btn">Comprar</button>
 							</div>
 						</div>
+
+					</div> <!-- fin vuelo -->
 				</div>
-			<!-- 	</div> c in containers -->
-			</div>
 			</div>
 		</div>
 	</div>
-
 
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<script src="js/vendor/bootstrap.min.js"></script>
@@ -428,6 +486,4 @@
 	<script src="datepicker.js"></script>
 	<script src="search-page-script.js"></script>
 	<script src="flight-select.js"></script>
-	<script src="ngsearch.js"></script>
 </body>
-</html>

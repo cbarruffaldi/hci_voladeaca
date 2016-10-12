@@ -1,10 +1,5 @@
 jQuery(document).ready(function(){
 
-	$(".idavuelta button").on("click", function() {
-		$(".idavuelta button").removeClass("selected-iv");
-		$(this).addClass("selected-iv");
-	})
-
 	new Awesomplete(document.getElementById("origen"), {
 		list: $acUtils.airportList,
 		minChars: 3,
@@ -57,14 +52,12 @@ jQuery(document).ready(function(){
 
 
 		if(selected[type]){
-			selected[type].removeClass("btn-success");
-			selected[type].addClass("btn-default");
+			selected[type].removeClass("btn-toggle");
 		}
 
 		selected[type]  = button;
 
-		selected[type].removeClass("btn-default");
-		selected[type].addClass("btn-success");
+		selected[type].addClass("btn-toggle");
 	}
 
 	function showPack(){
