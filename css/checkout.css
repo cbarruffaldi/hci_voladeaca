@@ -24,6 +24,19 @@
 
 }
 
+.sum-field {
+    text-align: justify;
+    word-spacing: 30px;
+    max-width: 100%;
+    overflow-wrap: break-word;
+
+}
+
+.sum-passname{
+    max-width: 100%;
+    overflow-wrap: break-word;
+}
+
 .sum {
     height: 100%;
     background-color: #0F9E5E;

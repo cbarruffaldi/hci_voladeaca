@@ -1,5 +1,9 @@
 jQuery(document).ready(function(){
 
+	$(".idavuelta button").on("click", function() {
+		$(".idavuelta button").removeClass("selected-iv");
+		$(this).addClass("selected-iv");
+	})
 
 	new Awesomplete(document.getElementById("origen"), {
 		list: $acUtils.airportList,
@@ -71,5 +75,6 @@ jQuery(document).ready(function(){
 		}
 		$("#showInfo").html(s);
 	}
+	
 	
 }); //document.ready

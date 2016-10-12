@@ -1,0 +1,121 @@
+.body-contents{
+	background: url('../img/bg/sunset.jpg') no-repeat;
+	background-size: cover;
+}
+
+.titulo{
+	font-size: 2em;
+	padding: 0.1em 0 0.1em 0.5em;
+	border-top-right-radius: 5px;
+	border-top-left-radius: 3px;
+}
+
+.search_t {
+	background: #DC0055;
+	color: #FFFFFF;
+}
+
+.promos{
+	background: rgba(0, 103, 0, 0.8);
+	color: #e6efff;
+}
+
+
+.searchcontent{
+	margin-top: 9%;
+}
+
+.searchbox{
+	background-color: rgba( 255, 255, 255, 0.8);
+	margin-bottom: 100px;
+	padding-bottom: 1em;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+
+.formtitle{
+	font-weight: bold;
+	font-style: #5b5b5b;
+	padding-left: 3px;
+}
+
+
+.content{
+	display:hidden;
+	padding-bottom: 20px;
+	background:  rgba(0, 153, 0, 0.8);
+	margin-top: 30px;
+	border-radius: 2px;
+	margin-bottom: 50px;
+}
+
+
+.form-control.inputerr{
+	  border: 1px solid #FF0000;
+}
+
+.formError{
+	margin-top: -10px;
+	padding-left: 5px;
+	font-size:0.9em;
+	color: #a0003a;
+	position: absolute;
+	display: none;
+	padding-bottom: 15px;
+}
+
+.idavuelta {
+	margin-top: 4px;
+	margin-bottom: 4px;
+}
+
+.idavuelta button {
+	background: none;
+	outline: none;
+	font-size: 1.2em;
+	font-weight: 500;
+	color: #333;
+	margin-bottom: 8px;
+	margin-top: 5px;
+	margin-left: 20px;
+}
+
+.selected-iv {
+	border-bottom: 4px solid #DC0055 !important;
+} 
+
+.botonera{
+	text-align: center;
+	padding-top: 30px;
+}
+
+.botonera button{
+	width: 200px;
+	text-align: center;
+	border-radius: 1px;
+	padding: 10px;
+}
+
+.searchbut{
+	margin-top: 6px;
+	padding-top: 15px;
+	text-align: center;
+}
+
+.searchbut button {
+	background-color: #DC0055;
+	color: #FFFFFF;
+	font-size: 1.2em;
+	font-weight: 400;
+	border: none;
+	box-shadow: 0 0 10px #7f7f7f;
+}
+
+.searchbut button:hover {
+	background-color: #DC0055;
+	color: #FFFFFF;
+}
+
+#psg-dropdown {
+	margin-top: 10%;
+}

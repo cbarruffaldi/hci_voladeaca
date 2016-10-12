@@ -1,5 +1,4 @@
 var selectedTimeFilter = [];
-var adults = 0, children = 0, infants = 0;
 
 function selectBorder(elem) {
 	console.log(elem);
@@ -15,21 +14,7 @@ function selectBorder(elem) {
 	}
 }
 
-function updatePax(element) {
-	var sum = 0;
-	if ($(element).data("sum") == "minus")
-		sum = -1;
-	else
-		sum = 1;
-
-	var pax = $(element).parent().find(".passenger-number");
-	var newnum = parseInt(pax.text()) + sum;
-	if (newnum >= 0)
-		pax.text(newnum);
-}
-
 jQuery(document).ready(function(){
-
 	$(".depart-time-button img").on("click", function(){
 		selectBorder(this);
 	});
@@ -42,34 +27,18 @@ jQuery(document).ready(function(){
 		$("#currency-btn").text(this.text);
 	});
 
-
-	$("#psg-dropdown").on("click", function(e) {
-		$("#psg-dropdown").parent().toggleClass("open");
-
-		// Listener para cerrar dropdown.
-		$("body").on("click", function(e) {
-			var psgdrop = $("#psg-dropdown");
-			var okbtn = $("#ok-btn");
-
-			//TODO: ver como carajo funciona esto
-			if (okbtn.is(e.target) || (!psgdrop.is(e.target) && psgdrop.has(e.target).length === 0 && $(".open").has(e.target).length === 0)) {
-				psgdrop.parent().removeClass("open");
-			}
-		});
+	$(".options-btn button").on("click", function(obj){
+		var toggleID = $(this).attr("data-toggle");
+		$("[data-toggleinfo = " + toggleID + "]").collapse('toggle');
 	});
 
-	$(".passenger-row button").on("click", function() {
-		updatePax(this);
+	
+	$(".unselected-ida").on("click", function(obj){
+		var toggleID = $(this).attr("data-toggleinfo");
+		$("[data-toggleinfo = " + toggleID + "]").collapse('toggle');
 	});
 
 
-	$("#options-ida button").on("click", function(){
-		$("#unselected-ida").collapse('toggle');
-	});
-
-	$("#options-vuelta button").on("click", function(){
-		$("#unselected-vuelta").collapse('toggle');
-	});
 
 	$(".details-btn button").on("click", function() {
 		var btn = $(this);
@@ -80,6 +49,8 @@ jQuery(document).ready(function(){
 			btn.text("+ detalles");
 		}
 	});
+
+
 
 	var handlesSlider = document.getElementById('price-slider');
 
@@ -98,4 +69,11 @@ jQuery(document).ready(function(){
 	$("#restart-price-btn").on("click", function(){
 		handlesSlider.noUiSlider.reset();
 	});
+
+	handlesSlider.noUiSlider.on('update', function(){
+		var max = handlesSlider.noUiSlider.get()[1];
+		$("#preciobox").val(max);
+	});
+
+
 });

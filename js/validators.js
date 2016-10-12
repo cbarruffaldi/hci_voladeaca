@@ -365,7 +365,7 @@ function PassengerValidator() {
     this.validDate = false;
 
     this.getData = function() {
-    	return data;
+    	return this.data;
     }
 
     this.birthDateReady = function() {
@@ -485,7 +485,7 @@ function PaymentCardValidator() {
 	this.data = {};
 
 	this.getData = function() {
-		return data;
+		return this.data;
 	}
 
 	this.validate = function(id, value) {
@@ -575,7 +575,7 @@ function PaymentAddressValidator() {
 	this.data = {};
 
 	this.getData = function() {
-		return data;
+		return this.data;
 	}
 
 	this.validate = function(id, value) {
@@ -607,6 +607,14 @@ function PaymentValidator() {
 	this.addrValidator = new PaymentAddressValidator();
 	this.cardValidator = new PaymentCardValidator();
 
+	this.getCardData = function() {
+		return this.cardValidator.getData();
+	}
+
+	this.getAddressData = function() {
+		return this.addrValidator.getData();
+	}
+
 	this.getData = function() {
 		var data = {};
 
@@ -621,7 +629,8 @@ function PaymentValidator() {
 	}
 
 	this.validateStage = function() {
-		return this.cardValidator.validateStage() && this.addrValidator.validateStage();
+		var valid = this.cardValidator.validateStage();
+		return this.addrValidator.validateStage() && valid;
 	}
 }
 
@@ -681,3 +690,5 @@ function validateStep(data, step, optionals) {
 
     return valid;    
 }
+
+

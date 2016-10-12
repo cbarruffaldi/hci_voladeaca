@@ -12,8 +12,8 @@ body{
 }
 
 #logo-img{
-	background: url('../logo2b.svg') no-repeat;
-	background-size: 300px 50px;
+	background: url('../logo2.png') no-repeat;
+	background-size: 250px 50px;
 	background-position: center;
 	width: 250px;
 	height: 55px;
@@ -42,10 +42,6 @@ body{
 	height:60px;
 }
 
-.body-contents{
-	background: url('../img/bg/beach.jpg') no-repeat;
-}
-
 /*
 #nav-list li:hover{
 color: #0c004c;
@@ -60,110 +56,9 @@ background: #97ebfc;
 	padding-right: 5px;
 }
 
-
-.titulo{
-	font-family: 'Oswald', sans-serif;
-	font-size: 2em;
-	padding: 0.1em 0 0.1em 0.5em;
-	border-top-right-radius: 5px;
-	border-top-left-radius: 3px;
-}
-
-.search_t{
-	background: #4d91ff;
-	color: #e6efff;
-}
-
-.promos{
-	background: rgba(0, 103, 0, 0.8);
-	color: #e6efff;
-}
-
-
-.searchcontent{
-	margin-top: 50px;
-}
-.searchbox{
-	/*background-color: #93bcff;*/
-	background:  rgba(147, 188, 255, 0.9);
-
-	/*	background: #ffffff;  */
-	border: #93bcff 1px solid;
-	margin-bottom: 100px; 
-	padding-bottom: 1em;
-	border-bottom-left-radius: 5px;
-	border-bottom-right-radius: 5px;
-}
-
-.formtitle{
-	font-weight: bold;
-	font-style: #5b5b5b;
-	font-size: 90%;
-	padding-left: 3px;
-}
-
-
-.content{
-	display:hidden;
-	padding-bottom: 20px;
-	background: url('../img/polka.jpg');
-	background-repeat:  repeat;
-	background:  rgba(0, 153, 0, 0.8); 
-	margin-top: 30px;
-	border-radius: 2px;
-	margin-bottom: 50px;
-}
-
-
-.form-control.inputerr{
-	  border: 1px solid #FF0000;
-}
-
-.formError{
-	margin-top: -10px;
-	padding-left: 5px;
-	font-size:0.9em;
-	color: #a0003a;
-	position: absolute;
-	display: none;
-	padding-bottom: 15px;
-}
-
-.botonera{
-	text-align: center;
-	padding-top: 30px;
-}
-
-.botonera button{
-	width: 200px;
-	text-align: center;
-	border-radius: 1px;
-	padding: 10px;
-}
-
-.idavuelta{
-	padding: 10px 10px;
-}
-
-.idavuelta div{
-	border-radius: 5px;
-	background: #004d99;
-	font-weight: bold;
-	color: #fff;
-	/*background: #ccdfff;*/
-}
-
-.idavuelta div a{
-	color: #ccf2ff;
-	font-weight: bold;
-}
-
-.searchbut{
-	padding-top: 15px;
-}
 footer{
-	background: #1a1a00;
-	color: #ffffff;
+	background: #FFFFFF;
+	color: #333;
 	border-top: 5px;
 	border-color: #ffffff;
 	padding-top:10px;
