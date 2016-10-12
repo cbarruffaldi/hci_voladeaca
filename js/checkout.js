@@ -219,12 +219,34 @@ function addName(name, obj) {
 function addPassData(country, doctype, docnum, gen, birth, obj){
     var x1 = '<div class="sum-field">' + country + ' ' + doctype + ':'+ docnum +'</div>';
     var x2 = '<div class="sum-field">' + gen + ' ' + birth +'</div>';
-    var x3 = '<a href="#" class="col-md-offset-9 sum-modal" data-toggle="modal" data-target="#pass-modal">' + 'Modificar...' + '</a>';
+    var x3 = '<a href="#" class="col-md-offset-9 sum-modal" data-toggle="modal" data-target="#pass-modal">Modificar...</a>';
 
     obj.append(x1);
     obj.append(x2);
     obj.append(x3);
 }
+
+var SUM_PASSENGERS = '.summary-passengers';
+
+function getModifyStage(modify) {
+    if (modify.parents(SUM_PASSENGERS))
+        return 0;
+    return 1;
+}
+$(document).ready(function() {
+    $('.sum-modal').click(function () {
+        var tabId = getModifyStage($(this)) + 1;
+        /* TODO: ver que pasajero es */
+        if (tabId == 1) {
+            var formGroup = $('#' + tabId).find('.form-group');
+            $('.modal-body').append(formGroup);
+        }
+    });
+
+    $('.leave-btn').click(function () {
+        $('.modal-body').find('.form-group').remove();
+    });
+});
 
 $(document).ready(function(){
    $('#pass-popover').popover({
@@ -245,4 +267,3 @@ function getPassengerData(){
     var passData = passengerValidator.getData();
     fillPassengerSum(passData);
 }
-
