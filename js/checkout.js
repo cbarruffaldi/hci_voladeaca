@@ -10,9 +10,8 @@ String.prototype.toUpperFirstLetter = function() {
     return this.charAt(0).toUpperCase() + this.slice(1).toLowerCase();
 }
 
-/* OJO: estás dos funciones usan next, no siblings */
 function setErrorState(inputForm, string) {
-    var errorMsg = inputForm.siblings('.error-msg').eq(0); /* Agarrá el primer sibling con clase error-msg */
+    var errorMsg = inputForm.siblings('.error-msg').eq(0); /* Agarra el primer sibling con clase error-msg */
     inputForm.addClass('error-input');
     errorMsg.text(string);
     errorMsg.fadeIn();
@@ -26,39 +25,62 @@ function removeErrorState(inputForm) {
     errorMsg.text('');
 }
 
-var passengerValidator = new PassengerValidator();
+/* 0: pasajeros
+*  1: pago
+*  2: contacto*/
+
+function getCurrentStage() {
+    var active = $('.nav-tabs > .active');
+    var indexTab = $('.nav-tabs').children('li').index(active);
+    return indexTab;
+}
+
+var passengerValidator = new PassengerValidator(); /* Etapa 0 */
+var paymentValidator = new PaymentValidator();     /* Etapa 1 */
+var contactValidator = new ContactValidator();     /* Etapa 2 */
 
 $(document).ready(function() {
-    var validators = [passengerValidator, new PaymentValidator(), new ContactValidator()];
+
+    /* Validadores por cada etapa */
+    var validators = [passengerValidator, paymentValidator, contactValidator];
 
     $('.btnNext').click(function(){
         var active = $('.nav-tabs > .active');
-        var indexTab = $('.nav-tabs').children('li').index(active); /* índice para saber a qué funcíón llamar */
+        var indexTab = getCurrentStage(); /* índice para saber a qué funcíón llamar */
         var next = active.next('li'); /* siguiente tab al actual */
         var validator = validators[indexTab];
 
-/* Comentar siguiente if si resulta molesto no poder pasar las etapas */
+    /* Comentar siguiente if si resulta molesto no poder pasar las etapas */
         if (validator.validateStage()) {
             if(next.hasClass('disabled-tab')) {
                 next.removeClass('disabled-tab');
                 next.removeClass('disabled');
             }
+            
             next.find('a').tab('show');
-            if( indexTab == 0) {
+            
+            if(indexTab == 0) {
                 getPassengerData();
-            } else if(indexTab == 1) {
+            } 
+            else if(indexTab == 1) {
                 //getPaymentinfo()
             }
         }
     });
 
     $('input').blur(function() {
-        var active = $('.nav-tabs > .active');
-        var indexTab = $('.nav-tabs').children('li').index(active);
+        var indexTab = getCurrentStage();
         var id = $(this).attr('id');
         var value = $(this).val();
         var validator = validators[indexTab];
         var validation;
+
+        value = value.trim();
+        if (value.length > 0) {
+            var words = value.split(/[\s]+/);
+            words = words.map(function (word) {return word.toUpperFirstLetter();});
+            value = words.join(' ');
+        }
         
         validation = validator.validate(id, value);
 
@@ -81,16 +103,6 @@ $(document).ready(function(){
         }
     });
 });
-
-/* 0: pasajeros
-*  1: pago
-*  2: contacto*/
-
-function getCurrentStage() {
-    var active = $('.nav-tabs > .active');
-    var indexTab = $('.nav-tabs').children('li').index(active);
-    return indexTab;
-}
 
 $(document).ready(function(){
     $('.btnPrev').click(function(){
@@ -200,85 +212,6 @@ $(document).ready(function() {
     })});
 */
 
-function addSumField(field) {
-    var toAdd = '<h5 ' + 'class=field-' + field + '></h5>';
-    return toAdd;
-}
-
-function addSumBlockPass() {
-    var passengersSummary = $('.summary-passengers');
-    var passenger = $('<div class="summary-passenger"><p></p></div>');
-
-    passengersSummary.append(passenger);
-/*
-    summary.append(addSumField("name"));
-    summary.append(addSumField("lname"));
-    summary.append(addSumField("date"));
-    summary.append(addSumField("gen"));
-    summary.append(addSumField("country"));
-    summary.append(addSumField("doc"));
-    summary.append(addSumField("docnum"));
-*/
-}
-
-/* Agrega info al cuadro de resúmen 
-** TODO: no se usa todavía */
-function completeDataPass(name, lname, date, gen, country, doc, docnum){
-    $('.summary-passenger').find('p').text([name, lname, date, gen, country, doc, docnum].join(' '));
-}
-
-/*
-function validationPassengers() {
-
-    var name = validateName(document.getElementById("usr-name").value);
-    if (name == 1) {
-        console.log("Nombre vacío");
-        name = "Nombre vacío";
-    }
-
-    var lname = validateName(document.getElementById("usr-lname").value);
-    if(lname == 1) {
-        console.log("Apellido vacío");
-        lname= "Apellido Vacío";
-    }
-
-    // TODO: VALIDAR DOCUMENTO Y TODO LA VERDAD...
-
-    var day =document.getElementById("birth-day").value;
-    var month = document.getElementById("birth-month").value;
-    var year = document.getElementById("birth-year").value;
-    date = validateDate(day,month,year);
-
-    if( date == 1) {
-        console.log("Fecha vacía");
-        date =  "Fecha Vacía";
-    }else if( date == 2) {
-        console.log("Fecha inválida");
-        date="Fecha Invalida";
-    }
-    console.log(date);
-
-    var docnum = document.getElementById("usr-docnum").value;
-    var doc = document.getElementById("usr-doc").value;
-
-    if (doc == 1) {
-        console.log("Documento vacío");
-        doc = "Documento Vacío";
-    }
-
-    var country= document.getElementById("usr-country").value;
-    var gen = document.getElementById("usr-gen").value;
-
-    completeDataPass(name, lname, date, gen, country, doc, docnum);
-}
-
-$(document).ready(function(){
-
-    addSumBlockPass();
-
-});
-
-*/
 
 function addName(name, obj) {
     obj.append('<h5 class="sum-passname">' + name + '</h5>');
@@ -286,15 +219,34 @@ function addName(name, obj) {
 function addPassData(country, doctype, docnum, gen, birth, obj){
     var x1 = '<div class="sum-field">' + country + ' ' + doctype + ':'+ docnum +'</div>';
     var x2 = '<div class="sum-field">' + gen + ' ' + birth +'</div>';
-    var x3 = '<a href="#" class="col-md-offset-9 pass-popover" data-toggle="popover">' + 'Modificar...' + '</a>';
+    var x3 = '<a href="#" class="col-md-offset-9 sum-modal" data-toggle="modal" data-target="#pass-modal">Modificar...</a>';
 
     obj.append(x1);
     obj.append(x2);
     obj.append(x3);
-
-
 }
 
+var SUM_PASSENGERS = '.summary-passengers';
+
+function getModifyStage(modify) {
+    if (modify.parents(SUM_PASSENGERS))
+        return 0;
+    return 1;
+}
+$(document).ready(function() {
+    $('.sum-modal').click(function () {
+        var tabId = getModifyStage($(this)) + 1;
+        /* TODO: ver que pasajero es */
+        if (tabId == 1) {
+            var formGroup = $('#' + tabId).find('.form-group');
+            $('.modal-body').append(formGroup);
+        }
+    });
+
+    $('.leave-btn').click(function () {
+        $('.modal-body').find('.form-group').remove();
+    });
+});
 
 $(document).ready(function(){
    $('#pass-popover').popover({
@@ -312,14 +264,6 @@ function fillPassengerSum(data){
 }
 
 function getPassengerData(){
-    var passData = passengerValidator.data;
+    var passData = passengerValidator.getData();
     fillPassengerSum(passData);
 }
-
-
-
-
-
-
-
-

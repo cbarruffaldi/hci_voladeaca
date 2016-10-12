@@ -8,16 +8,21 @@
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-    <script src="js/vendor/bootstrap.min.js"></script>
+
     <script src="js/validators.js"></script>
     <script src="js/checkout.js"></script>
     <link rel="stylesheet" href="css/checkout.css">
     <link rel="stylesheet" href="css/main.css">
 
+    <script src="bootstrap.min.js"></script> <!--TODO:VER POR QUE NO FUNCIONA EL OTRO-->
+    <script src="angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
+
 </head>
 
 <body>
-
+<div ng-app="">
 <!-- header -->
 <header>
     <nav id="header-nav" class="navbar navbar-default">
@@ -60,6 +65,7 @@
 
 <!-- Tabs -->
 <div id="step-tabs" class="container">
+
     <ul class="nav nav-tabs nav-justified">
         <li class="active">
             <a href="#1">1.Informacion de Pasajeros</a>
@@ -75,7 +81,7 @@
 
     <!--CUADRO RESUMEN-->
     <div class="row">
-        <div class="title-style col-md-12 "><h3>Informacion del viaje</h3></div>
+        <div class="title-style col-md-12"><h3>Informacion del viaje</h3></div>
         <div class="col-md-12 info-box">
             <div class="panel panel-default">
                 <div class="panel-body col-md-12 info-box">
@@ -119,15 +125,18 @@
                  <div class="col-md-12 form-style" >
 
                     <h5 class="col-md-2"><span class="glyphicon glyphicon-user"></span>Adulto</h5>
-                    <form role="form">
+                    <form>
                         <div class="col-md-10">
                             <div class="form-group">
                                 <!--Primer Fila-->
+
                                 <div class="row">
                                     <div class="col-md-6 form-field basicField">
                                         <label for="usr-name">Nombre:</label>
                                         <input type="text" class="form-control" id="usr-name" value="" maxlength="80">
                                         <p class="error-msg"></p>
+
+
                                     </div>
 
                                     <div class="col-md-6 form-field basicField">
@@ -188,8 +197,8 @@
                                         <p class="error-msg" id="error-birth-year"></p>
                                     </div>
                                 </div>
+                                    </div>
                             </div>
-                        </div>
                      </form>
                  </div>
                 </div>
@@ -237,10 +246,11 @@
                                     </div>
                                     <label for="exp-month" class="hidden">Mes:</label>
                                     <input type="number" class="form-control" placeholder="mes" id="exp-month">
-                                    /
                                     <label for="exp-year" class="hidden">Año:</label>
                                     <input type="number" class="form-control" placeholder="año" id="exp-year">
-                                    <p class="error-msg"></p>
+                                    <p class="error-msg" id="error-expiration"></p>
+                                    <p class="error-msg" id="error-exp-month"></p>
+                                    <p class="error-msg" id="error-exp-year"></p>
                                 </div>
 
                                 <div class="col-md-4 form-inline form-field">
@@ -250,6 +260,11 @@
                                         <span class="glyphicon glyphicon-question-sign"></span>
                                     </a>
                                     <p class="error-msg"></p>
+                                </div>
+                                
+                                <!-- Mensaje error validación tarjeta de crédito -->
+                                <div class="col-md-4">
+                                    <p id="error-card">No hemos podido verificar su tarjeta de crédito. Por favor revise sus datos.</p>
                                 </div>
                             </div>
 
@@ -309,7 +324,7 @@
                                 </div>
 
                                 <div class="col-md-2 form-field">
-                                    <label for="addr-num" >Número:</label>
+                                    <label for="addr-num">Número:</label>
 
                                     <input type="text" class="form-control" id="addr-num" maxlength="6">
                                     <p class="error-msg"></p>
@@ -582,7 +597,27 @@
 
     </div>
 
-<p id="wrapper"></p>
 
+<!-- MODAL DE PASAJERO -->
+<!-- TODO: NO SE DONDE SE PONEN ESTAS COSAS -->
+<div id="pass-modal" class="modal fade" role="dialog" data-backdrop="static">
+    <div class="modal-dialog">
 
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Modificar Información de pasajero</h4>
+            </div>
+            <div class="modal-body col-md-12">
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default save-btn leave-btn" data-dismiss="modal">Guardar</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</div>
 </body>
