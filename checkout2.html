@@ -246,10 +246,11 @@
                                     </div>
                                     <label for="exp-month" class="hidden">Mes:</label>
                                     <input type="number" class="form-control" placeholder="mes" id="exp-month">
-                                    /
                                     <label for="exp-year" class="hidden">Año:</label>
                                     <input type="number" class="form-control" placeholder="año" id="exp-year">
-                                    <p class="error-msg"></p>
+                                    <p class="error-msg" id="error-expiration"></p>
+                                    <p class="error-msg" id="error-exp-month"></p>
+                                    <p class="error-msg" id="error-exp-year"></p>
                                 </div>
 
                                 <div class="col-md-4 form-inline form-field">
@@ -259,6 +260,11 @@
                                         <span class="glyphicon glyphicon-question-sign"></span>
                                     </a>
                                     <p class="error-msg"></p>
+                                </div>
+                                
+                                <!-- Mensaje error validación tarjeta de crédito -->
+                                <div class="col-md-4">
+                                    <p id="error-card">No hemos podido verificar su tarjeta de crédito. Por favor revise sus datos.</p>
                                 </div>
                             </div>
 
@@ -318,7 +324,7 @@
                                 </div>
 
                                 <div class="col-md-2 form-field">
-                                    <label for="addr-num" >Número:</label>
+                                    <label for="addr-num">Número:</label>
 
                                     <input type="text" class="form-control" id="addr-num" maxlength="6">
                                     <p class="error-msg"></p>

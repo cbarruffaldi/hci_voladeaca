@@ -1,2 +1,4 @@
 - Mejor manera de agregar html via JS
 - Cambiar contenido de un tag sin tocar los hijos
+- Cardholder nombre y apellido. Las tarjetas no funcionan asi
+- Si hay dpto tiene que haber piso también??
