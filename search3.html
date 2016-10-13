@@ -18,8 +18,8 @@
 	<link rel="stylesheet" href="css/angular-animations.css">
 	<link rel="stylesheet" href="css/nouislider-custom.css">
 	<link rel="stylesheet" href="css/psg-btn.css">
+	<link rel="stylesheet" href="css/spinner.css">
 	<link rel="stylesheet" href="./CheloLabs/awesomplete.css">
-
 
 	<style>
 	.row .selected-box{
@@ -118,7 +118,7 @@
 
 						<div data-ng-repeat="a in airlines">
 						<input type="checkbox" id="airl-cbox{{a.id}}" data-ng-click="toggleAirline(a.id)" />
-						<label for="airl-cbox{{a.">{{a.name}}</label>
+						<label for="airl-cbox{{a.id}}">{{a.name}}</label>
 						<br/>
 						</div>
 					</div>
@@ -344,7 +344,11 @@
 					</div>
 				</div>
 				<div class="col-md-12 flight-options-area">
-					<img id="loadImg" style="padding-top: 250px; padding-left: 48%"src="./CheloLabs/ajax-loader.gif"></img>
+					<div id="loadImg" class="spinner">
+  					<div class="dot1"></div>
+  					<div class="dot2"></div>
+					</div>
+					<!-- <img id="loadImg" style="padding-top: 250px; padding-left: 48%"src="./CheloLabs/ajax-loader.gif"></img> -->
 					<div
 					id="resultShow" data-ng-include="'./snippets/searchresults.html'">
 				</div>
