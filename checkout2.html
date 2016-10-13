@@ -132,7 +132,7 @@
                                 <div class="row">
                                     <div class="col-md-6 form-field basicField">
                                         <label for="usr-name">Nombre:</label>
-                                        <input type="text" class="form-control" id="usr-name" value="" maxlength="80">
+                                        <input autocomplete="off" type="text" class="form-control" id="usr-name" value="" maxlength="80">
                                         <p class="error-msg"></p>
 
 
@@ -140,7 +140,7 @@
 
                                     <div class="col-md-6 form-field basicField">
                                         <label for="usr-lname">Apellido:</label>
-                                        <input type="text" class="form-control" id="usr-lname" maxlength="80">
+                                        <input autocomplete="off" type="text" class="form-control" id="usr-lname" maxlength="80">
                                         <p class="error-msg"></p>
                                     </div>
                                 </div>
@@ -165,7 +165,7 @@
 
                                     <div class="col-md-6 col-md-offset-1 form-field openField">
                                         <label for="usr-docnum">Número:</label>
-                                        <input type="number" class="form-control" id="usr-docnum" maxlength="8">
+                                        <input autocomplete="off" type="text" class="form-control" id="usr-docnum" maxlength="8">
                                         <p class="error-msg"></p>
                                     </div>
                                  </div>
@@ -185,11 +185,11 @@
                                             <label>Fecha de Nacimiento:</label>
                                         </div>
                                         <label for="birth-day" class="hidden">Día</label>
-                                        <input type="number" class="form-control " placeholder="dia" id="birth-day"/>
+                                        <input autocomplete="off" type="text" class="form-control " placeholder="dia" id="birth-day"/>
                                         <label for="birth-month" class="hidden">Mes</label>
-                                        <input type="number" class="form-control" placeholder="mes" id="birth-month"/>
+                                        <input autocomplete="off" type="text" class="form-control" placeholder="mes" id="birth-month"/>
                                         <label for="birth-year" class="hidden">Año</label>
-                                        <input type="number" class="form-control " placeholder="año" id="birth-year"/>
+                                        <input autocomplete="off" type="text" class="form-control " placeholder="año" id="birth-year"/>
                                         <p class="error-msg" id="error-birthdate"></p>
                                         <p class="error-msg" id="error-birth-day"></p>
                                         <p class="error-msg" id="error-birth-month"></p>
@@ -221,7 +221,7 @@
                                 <div class="row">
                                     <div class="col-md-8 form-field">
                                         <label for="card-num">Número de la tarjeta:</label>
-                                        <input type="number" class="form-control" id="card-num"/>
+                                        <input autocomplete="off" type="text" class="form-control" id="card-num"/>
                                         <p class="error-msg"></p>
                                     </div>
                                     <div class="col-md-2 col-md-offset-1 form-field">
@@ -244,9 +244,9 @@
                                             <label>Vencimiento:</label>
                                         </div>
                                         <label for="exp-month" class="hidden">Mes:</label>
-                                        <input type="number" class="form-control" placeholder="mes" id="exp-month">
+                                        <input autocomplete="off" type="text" class="form-control" placeholder="mes" id="exp-month">
                                         <label for="exp-year" class="hidden">Año:</label>
-                                        <input type="number" class="form-control" placeholder="año" id="exp-year">
+                                        <input autocomplete="off" type="text" class="form-control" placeholder="año" id="exp-year">
                                         <p class="error-msg" id="error-expiration"></p>
                                         <p class="error-msg" id="error-exp-month"></p>
                                         <p class="error-msg" id="error-exp-year"></p>
@@ -254,7 +254,7 @@
 
                                     <div class="col-md-4 form-inline form-field">
                                         <label for="sec-code"  >Cód.de seguridad:</label>
-                                        <input type="number" class="form-control" id="sec-code">
+                                        <input autocomplete="off" type="text" class="form-control" id="sec-code">
                                         <a href='#' id= 'code-popover' data-toggle="popover" title="¿Donde se ecuentra el código de seguridad?" data-content="<img src='img/security-code.jpg' width='200' />">
                                             <span class="glyphicon glyphicon-question-sign"></span>
                                         </a>
@@ -272,7 +272,7 @@
                                 <div class="row">
                                     <div class="col-md-12 form-field">
                                         <label for="cardholder" >Nombre del titular:</label>
-                                        <input type="text" class="form-control" id="cardholder" placeholder="Nombre como figura en la tarjeta">
+                                        <input autocomplete="off" type="text" class="form-control" id="cardholder" placeholder="Nombre como figura en la tarjeta">
                                         <p class="error-msg"></p>
                                     </div>
                                  </div>
@@ -319,32 +319,32 @@
 
                                     <div class="col-md-4 form-field">
                                         <label for="street">Calle:</label>
-                                        <input type="text" class="form-control" id="street" maxlength="80">
+                                        <input autocomplete="off" type="text" class="form-control" id="street" maxlength="80">
                                         <p class="error-msg"></p>
                                     </div>
 
                                     <div class="col-md-2 form-field">
                                         <label for="addr-num">Número:</label>
 
-                                        <input type="text" class="form-control" id="addr-num" maxlength="6">
+                                        <input autocomplete="off" type="text" class="form-control" id="addr-num" maxlength="6">
                                         <p class="error-msg"></p>
                                     </div>
 
                                     <div class="col-md-2 form-field">
                                         <label for="zip-code">Cód.Postal:</label>
-                                        <input type="text" class="form-control" id="zip-code" maxlength="10">
+                                        <input autocomplete="off" type="text" class="form-control" id="zip-code" maxlength="10">
                                         <p class="error-msg"></p>
                                     </div>
 
                                     <div class="col-md-2 form-field">
                                         <label for="floor">Piso:</label>
-                                        <input type="text" class="form-control" id="floor" maxlength="3">
+                                        <input autocomplete="off" type="text" class="form-control" id="floor" maxlength="3">
                                         <p class="error-msg"></p>
                                     </div>
 
                                     <div class="col-md-1 form-field">
                                         <label for="department">Dpto.:</label>
-                                        <input type="text" class="form-control" id="department" maxlength="2">
+                                        <input autocomplete="off" type="text" class="form-control" id="department" maxlength="2">
                                         <p class="error-msg"></p>
                                     </div>
 
@@ -355,8 +355,8 @@
 
                     <div class="col-md-3 sum-box summary">
                         <h3>Resumen</h3>
+                        <h5>Pasajeros</h5>
                         <div class="summary-passengers">
-                            <h5>Pasajeros</h5>
                         </div>
 
                     </div>
@@ -376,7 +376,7 @@
                             <div class="row">
                                 <div class="col-md-12 form-field">
                                     <label for="email" >E-mail:</label>
-                                    <input type="text" class="form-control" id="email" maxlength="128">
+                                    <input autocomplete="off" type="text" class="form-control" id="email" maxlength="128">
                                     <p class="error-msg"></p>
                                 </div>
                             </div>
@@ -404,12 +404,12 @@
                                     </div>
                                     <div class="col-md-2 form-field">
                                         <label for="phone-area-0">Cód.de Área:</label>
-                                        <input type="number" class="form-control" id="phone-area-0">
+                                        <input autocomplete="off" type="text" class="form-control" id="phone-area-0">
                                         <p class="error-msg"></p>
                                     </div>
                                     <div class="col-md-3 form-field">
                                         <label for="phone-0">Número:</label>
-                                        <input type="number" class="form-control" id="phone-0">
+                                        <input autocomplete="off" type="text" class="form-control" id="phone-0">
                                         <p class="error-msg"></p>
                                     </div>
                                     <div class="col-md-1 tocenter-label">
@@ -424,13 +424,13 @@
 
                     <div class="col-md-3 sum-box summary">
                         <h3>Resumen</h3>
+                        <h5>Pasajeros</h5>
                         <div class="summary-passengers">
-                            <h5>Pasajeros</h5>
                         </div>
-                        <div class="summary-payment">
-                            <h5>Pago</h5>
-                            <h6>Tarjeta</h6>
-                            <h6>Facturación</h6>
+                        <h5>Pago</h5>
+                        <h6>Tarjeta</h6>
+                        <h6>Facturación</h6>
+                        <div class="summary-payment">    
                         </div>
                     </div>
                 </div>
