@@ -1,7 +1,5 @@
 var app = angular.module("flightApp", []);
 
-
-
 app.controller("flightCtrl", function($scope, $http) {
 		$scope.twoWays = false;
 		//Funcionalidad

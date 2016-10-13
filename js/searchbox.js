@@ -114,7 +114,7 @@
 		validators[id] && validators[id](target);
 	}
 
-
+	$("#date-col-2").removeClass("disabled-dp");
 	$(".idavuelta button").on("click", function() {
 		$(".idavuelta button").removeClass("selected-iv");
 		$(this).addClass("selected-iv");
@@ -143,20 +143,18 @@
 
 		if(checker){		
 			var iDate = moment($("#datepicker1").val(), "DD/MM/YYYY").format("YYYY-MM-DD");
-			var vDate;
-			if (soloIda)
-				vDate = "##"
-			else 
-				vDate = moment($("#datepicker2").val(), "DD/MM/YYYY").format("YYYY-MM-DD");
 			
-			var uri = 'search.html?';
+			if(!soloIda){
+				var vDate = moment($("#datepicker2").val(), "DD/MM/YYYY").format("YYYY-MM-DD");
+			}
+			var uri = 'search3.html?';
 			uri += 'orig=' + $id_map[$("#origen").val()];
 			uri += '&dest=' + $id_map[$("#destino").val()];
 			uri += '&date=' + iDate;
-			uri += '&vdate=' + vDate;
-			uri += '&adpax=' + window.passengers.adults;
-			uri += '&chpax=' + window.passengers.children;
-			uri += '&inpax=' + window.passengers.infants;
+			uri += (soloIda ? "" : '&vdate=' + vDate);
+			uri += '&adults=' + window.passengers.adults;
+			uri += '&children=' + window.passengers.children;
+			uri += '&infants=' + window.passengers.infants;
 			window.location.href = uri;
 		}
 	})
