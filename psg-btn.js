@@ -1,5 +1,5 @@
 var passengers = {}
-passengers.adults = 0
+passengers.adults = 1
 passengers.children = 0
 passengers.infants = 0
 
@@ -13,18 +13,26 @@ function updateNumbers() {
 	$("#infant-number").text(passengers.infants);
 	var t = passengers.total();
 	var str = t + " Pasajero" + ((t == 1) ? "" : "s");
-	$("#psg-dropdown").text(str);
+	$("#psg-dropdown .btn-content").text(str);
 }
 
-function updatePax(element) {
+function zeroAdultsError() {
+	$("#zero-adults-msg").fadeIn();
+}
+
+function updatePax(pressedbtn) {
 	var sum = 0;
-	if ($(element).data("sum") == "minus")
+	if ($(pressedbtn).data("sum") == "minus")
 		sum = -1;
 	else
 		sum = 1;
 	
-	if (passengers[$(element).data("info")] + sum >= 0)
-		passengers[$(element).data("info")] += sum;
+	var cat = $(pressedbtn).data("info");
+	
+	if (cat == "adults" && passengers[cat] + sum < 1)
+		zeroAdultsError();
+	else if(passengers[cat] + sum >= 0)
+		passengers[cat] += sum;
 		
 	updateNumbers();
 }
@@ -49,6 +57,7 @@ jQuery(document).ready(function() {
 	});	
 
 	$(".passenger-row button").on("click", function() {
+		$("#zero-adults-msg").fadeOut();
 		updatePax(this);
 	});
 })

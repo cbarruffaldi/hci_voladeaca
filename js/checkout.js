@@ -6,6 +6,8 @@ var MIN_SEC_CODE = 3;
 var MAX_SEC_CODE = 4;
 var CAMPO_OBLIGATORIO = 'Campo obligatorio';
 
+var summaryStage = null;
+
 String.prototype.toUpperFirstLetter = function() {
     return this.charAt(0).toUpperCase() + this.slice(1).toLowerCase();
 }
@@ -30,6 +32,8 @@ function removeErrorState(inputForm) {
 *  2: contacto*/
 
 function getCurrentStage() {
+    if (summaryStage !== null)
+        return summaryStage;
     var active = $('.nav-tabs > .active');
     var indexTab = $('.nav-tabs').children('li').index(active);
     return indexTab;
@@ -219,7 +223,7 @@ function addName(name, obj) {
 function addPassData(country, doctype, docnum, gen, birth, obj){
     var x1 = '<div class="sum-field">' + country + ' ' + doctype + ':'+ docnum +'</div>';
     var x2 = '<div class="sum-field">' + gen + ' ' + birth +'</div>';
-    var x3 = '<a href="#" class="col-md-offset-9 sum-modal" data-toggle="modal" data-target="#pass-modal">Modificar...</a>';
+    var x3 = '<a href="#" class="col-md-offset-9 sum-modal" data-toggle="modal" data-target="#modify-modal">Modificar...</a>';
 
     obj.append(x1);
     obj.append(x2);
@@ -233,17 +237,22 @@ function getModifyStage(modify) {
         return 0;
     return 1;
 }
-$(document).ready(function() {
-    $('.sum-modal').click(function () {
-        var tabId = getModifyStage($(this)) + 1;
-        /* TODO: ver que pasajero es */
-        if (tabId == 1) {
-            var formGroup = $('#' + tabId).find('.form-group');
-            $('.modal-body').append(formGroup);
-        }
-    });
 
+$(document).on('show.bs.modal', '#modify-modal', function(event) {
+    var modifyLink = $(event.relatedTarget);
+    var modal = $(this);
+    var tabId = getModifyStage(modifyLink) + 1;
+    summaryStage = getModifyStage(modifyLink);
+    /* TODO: ver que pasajero es */
+    if (tabId == 1) {
+        var formGroup = $('#' + tabId).find('.form-group');
+        modal.find('.modal-body').append(formGroup);
+    }
+});
+
+$(document).ready(function() {
     $('.leave-btn').click(function () {
+        summaryStage = null;
         $('.modal-body').find('.form-group').remove();
     });
 });
