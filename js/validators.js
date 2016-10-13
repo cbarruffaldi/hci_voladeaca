@@ -177,15 +177,17 @@ function validateName(string) {
 function validateDay(d) {
 	if (d.length == 0)
 		return invalidValidation('Día obligatorio');
-	if (d < 1 || d > 31)
+	if (!isNumber(d) || d < 1 || d > 31)
 		return invalidValidation('Día inválido');
+	if (d.length == 1)
+		d = '0' + d;
 	return validValidation(d);
 }
 
 function validateMonth(m) {
 	if (m.length == 0)
 		return invalidValidation('Mes obligatorio');
-	if (m < 1 || m > 12)
+	if (!isNumber(m) || m < 1 || m > 12)
 		return invalidValidation('Mes inválido');
 	if (m.length == 1)
 		m = '0' + m;
@@ -195,7 +197,7 @@ function validateMonth(m) {
 function validateYear(y) {
 	if (y.length == 0)
 		return invalidValidation('Año obligatorio');
-	if (y < 1900)
+	if (!isNumber(y) || y < 1900)
 		return invalidValidation('Año inválido');
 	return validValidation(y);
 }
