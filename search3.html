@@ -16,8 +16,12 @@
 	<link rel="stylesheet" href="css/buttons.css">
 	<link rel="stylesheet" href="css/nouislider-custom.css">
 
-	<script src="angular.min.js"></script>
-
+	<style>
+		.row .selected-box{
+			margin-bottom: 20px;
+		}
+	</style>
+ <script src="extlib/angular.min.js"></script>
 
 	<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
 
@@ -265,8 +269,9 @@
 					</div>
 				</div>
 				<div class="col-md-12 flight-options-area">
+					<img id="loadImg" style="padding-top: 250px; padding-left: 48%"src="./CheloLabs/ajax-loader.gif"></img>
 					<div 
-						data-ng-include="'./snippets/searchresults.html'">
+						id="resultShow" data-ng-include="'./snippets/searchresults.html'">
 					</div>
 				</div>
 			</div>
@@ -281,8 +286,8 @@
 	<script src="js/moment.js" ></script>
 	<script src="jqueryui/jquery-ui.js"></script>
 	<script src="jqueryui/uidatepicker-es.js"></script>
-	<script src="wNumb.js"></script>
-	<script src="nouislider.min.js"></script>
+	<script src="extlib/wNumb.js"></script>
+	<script src="extlib/nouislider.min.js"></script>
 	<script src="datepicker.js"></script>
 	<script src="search-page-script.js"></script>
 	<script src="flight-select.js"></script>

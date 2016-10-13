@@ -29,13 +29,13 @@ app.controller("flightCtrl", function($scope, $http) {
 			}
 
 			var baseURL = "http://hci.it.itba.edu.ar/v1/api/booking.groovy?method=getonewayflights" 
-			baseURL += "&from=" + orig;
-			baseURL += "&to=" + dest;
 			baseURL += "&adults=" + (adults ? adults : 0);
 			baseURL += "&children=" + (children ? children : 0);
 			baseURL += "&infants=" + (infants ? infants : 0);
 			
 			var URL = baseURL + "&dep_date=" + date;
+				URL += "&from=" + orig;
+				URL += "&to=" + dest;
 
 			$http({
  				method: 'GET',
@@ -43,11 +43,16 @@ app.controller("flightCtrl", function($scope, $http) {
 			}).then(function successCallback(response) {
 					if(vdate){
 						var vURL = baseURL + "&dep_date=" + vdate;
+							vURL += "&from=" + dest;
+							vURL += "&to=" + orig;
+
 						$http({
 							method: 'GET',
 							url: vURL
 						}).then(function success(vresponse){
 							process(response, vresponse);
+							$("#resultShow").show();
+							$("#loadImg").hide();
 						}, 
 							function errorCallback(response){
 								console.log("Error in response");
@@ -55,7 +60,9 @@ app.controller("flightCtrl", function($scope, $http) {
 						)
 					} 
 					else {
-						process(response)
+						process(response);
+						$("#resultShow").show();
+						$("#loadImg").hide();
 					}
   			}, function errorCallback(response) {
     				console.log("Error in response");
@@ -120,10 +127,10 @@ app.controller("flightCtrl", function($scope, $http) {
 
 		function Container(flight1, flight2){
 			this.flights = []
-			this.flights[0] = { desc: "Ida", flight: flight1 };
+			this.flights[0] = { desc: "IDA ", flight: flight1 };
 			this.precio = 1000;
 			if(flight2){
-				this.flights[1] = { desc: "Vuelta", flight: flight2};
+				this.flights[1] = { desc: "VUELTA ", flight: flight2};
 			}
 			return this; 
 		}
