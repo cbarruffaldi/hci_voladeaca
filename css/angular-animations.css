@@ -1,0 +1,18 @@
+.flight-box.ng-move,
+.flight-box.ng-enter,
+.flight-box.ng-leave {
+  -webkit-transition:all linear 0.5s;
+  transition:all linear 0.5s;
+}
+
+.flight-box.ng-leave.ng-leave-active,
+.flight-box.ng-move,
+.flight-box.ng-enter {
+  opacity:0;
+}
+
+.flight-box.ng-leave,
+.flight-box.ng-move.ng-move-active,
+.flight-box.ng-enter.ng-enter-active {
+  opacity:1;
+}

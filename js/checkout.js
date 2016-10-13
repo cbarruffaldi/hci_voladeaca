@@ -43,10 +43,10 @@ var passengerValidator = new PassengerValidator(); /* Etapa 0 */
 var paymentValidator = new PaymentValidator();     /* Etapa 1 */
 var contactValidator = new ContactValidator();     /* Etapa 2 */
 
-$(document).ready(function() {
+/* Validadores por cada etapa */
+var validators = [passengerValidator, paymentValidator, contactValidator];
 
-    /* Validadores por cada etapa */
-    var validators = [passengerValidator, paymentValidator, contactValidator];
+$(document).ready(function() {
 
     $('.btnNext').click(function(){
         var active = $('.nav-tabs > .active');
@@ -64,10 +64,10 @@ $(document).ready(function() {
             next.find('a').tab('show');
             
             if(indexTab == 0) {
-                getPassengerData();
+                fillPassengerSum(validator.getData());
             } 
             else if(indexTab == 1) {
-                //getPaymentinfo()
+                fillPaymentSum(validator.getData());
             }
         }
     });
@@ -108,16 +108,19 @@ $(document).ready(function(){
     });
 });
 
-$(document).ready(function(){
-    $('.btnPrev').click(function(){
-        var i = getCurrentStage();
-        if( i == 1) {
-            $(".summary-passengers").children().remove();
-        } else if (i == 2){
-            $(".summary-payment").children().remove();
-        }
-        $('.nav-tabs > .active').prev('li').find('a').tab('show');
+function cleanSummaryStage(stage) {
+    if (stage == 1) {
+        $(".summary-passengers").children().remove();
+    } 
+    else if (stage == 2){
+        $(".summary-payment").children().remove();
+    }    
+}
 
+$(document).ready(function() {
+    $('.btnPrev').click(function() {
+        cleanSummaryStage(getCurrentStage());
+        $('.nav-tabs > .active').prev('li').find('a').tab('show');        
     });
 });
 
@@ -244,7 +247,10 @@ $(document).on('show.bs.modal', '#modify-modal', function(event) {
     var modifyLink = $(event.relatedTarget);
     var modal = $(this);
     var tabId = getModifyStage(modifyLink) + 1;
+
     summaryStage = getModifyStage(modifyLink);
+    validators[summaryStage].generateBackup();
+
     /* TODO: ver que pasajero es */
     if (tabId == 1) {
         var formGroup = $('#' + tabId).find('.form-group');
@@ -253,12 +259,43 @@ $(document).on('show.bs.modal', '#modify-modal', function(event) {
     }
 });
 
+function closeModal() {
+    summaryStage = null;
+    var formGroup = $('.modal-body').find('.form-group');
+    formGroupParent.append(formGroup);
+    formGroupParent = null;
+    $('#modify-modal').modal('hide');
+}
+
+function saveModal(validator) {
+    cleanSummaryStage(summaryStage+1);
+    if (summaryStage == 0) {
+        fillPassengerSum(validator.getData());
+    }
+    else if (summaryStage == 1) {
+        fillPaymentSum(validator.getData());
+    }
+    closeModal();
+}
+
+function cancelModal(validator) {
+    validator.applyBackup(); /* Reemplaza todo por los valores del backup */
+    closeModal();
+}
+
 $(document).ready(function() {
-    $('.leave-btn').click(function () {
-        summaryStage = null;
-        var formGroup = $('.modal-body').find('.form-group');
-        formGroupParent.append(formGroup);
-        formGroupParent = null;
+    $('.save-btn').click(function() {
+        var modalStage = getCurrentStage();
+        var validator = validators[modalStage];
+
+        if (validator.validateStage())
+            saveModal(validator);
+    });
+
+    $('.cancel-btn').click(function() {
+        var modalStage = getCurrentStage();
+
+        cancelModal(validators[modalStage]);        
     });
 });
 
@@ -272,12 +309,11 @@ $(document).ready(function(){
             }
         })});
 
-function fillPassengerSum(data){
+function fillPassengerSum(data) {
     addName(data["usr-name"] + ' ' + data["usr-lname"], $(".summary-passengers"));
     addPassData(data["usr-country"], data["usr-doc"], data["usr-docnum"], data["usr-gen"], data["birth-day"] + '/' + data["birth-month"] + '/' + data["birth-year"],$(".summary-passengers"));
 }
 
-function getPassengerData(){
-    var passData = passengerValidator.getData();
-    fillPassengerSum(passData);
+function fillPaymentSum(data) {
+
 }

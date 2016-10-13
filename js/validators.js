@@ -362,10 +362,27 @@ function PassengerValidator() {
                                 'usr-gen': null };
 
     this.data = {};
+    this.backup = {};
     this.validDate = false;
 
     this.getData = function() {
     	return this.data;
+    }
+
+    this.generateBackup = function() {
+    	this.backup = $.extend(true, {}, this.data);
+    }
+
+    this.applyBackup = function() {
+    	for (prop in this.backup) {
+    		var form = $('#' + prop)
+    		this.data[prop] = this.backup[prop];
+    		form.val(this.data[prop]);
+    		removeErrorState(form);
+    		form.siblings('.error-msg').hide();
+    	}
+    	this.backup = {};
+    	this.validDate = true;
     }
 
     this.birthDateReady = function() {
@@ -483,10 +500,30 @@ function PaymentCardValidator() {
 	this.validExpDate = false;
 	this.isErrorCardShowed = false;
 	this.data = {};
+    this.backup = {};
 
 	this.getData = function() {
 		return this.data;
 	}
+
+    this.generateBackup = function() {
+    	this.backup = $.extend(true, {}, this.data);
+    }
+
+    this.applyBackup = function() {
+    	for (prop in this.backup) {
+    		var form = $('#' + prop)
+    		this.data[prop] = this.backup[prop];
+    		form.val(this.data[prop]);
+    		removeErrorState(form);
+    	    form.siblings('.error-msg').hide();
+    	}
+    	this.backup = {};
+    	this.validCreditCard = true;
+    	this.validExpDate = true;
+    	this.isErrorCardShowed = false;
+    	removeCreditCardError();
+    }
 
 	this.validate = function(id, value) {
 		var validateFunction = this.inputValidations[id];
@@ -573,10 +610,25 @@ function PaymentAddressValidator() {
 							   };
 
 	this.data = {};
+    this.backup = {};
 
 	this.getData = function() {
 		return this.data;
 	}
+
+    this.generateBackup = function() {
+    	this.backup = $.extend(true, {}, this.data);
+    }
+
+    this.applyBackup = function() {
+    	for (prop in this.backup) {
+    		var form = $('#' + prop)
+    		this.data[prop] = this.backup[prop];
+    		form.val(this.data[prop]);
+    		removeErrorState(form);
+    	}
+    	this.backup = {};
+    }
 
 	this.validate = function(id, value) {
 		var inputValidation = this.inputValidations[id] || this.optionalValidations[id];
@@ -606,6 +658,16 @@ function PaymentAddressValidator() {
 function PaymentValidator() {
 	this.addrValidator = new PaymentAddressValidator();
 	this.cardValidator = new PaymentCardValidator();
+
+    this.generateBackup = function() {
+    	this.addrValidator.generateBackup();
+    	this.cardValidator.generateBackup();
+    }
+
+    this.applyBackup = function() {
+ 		this.addrValidator.applyBackup();
+ 		this.cardValidator.applyBackup();
+    }
 
 	this.getCardData = function() {
 		return this.cardValidator.getData();
@@ -641,6 +703,23 @@ function ContactValidator() {
 							}
 
 	this.data = {};
+    this.backup = {};
+
+    this.generateBackup = function() {
+    	this.backup = $.extend(true, {}, this.data);
+    }
+
+    this.applyBackup = function() {
+    	for (prop in this.backup) {
+    		var form = $('#' + prop)
+    		this.data[prop] = this.backup[prop];
+    		form.val(this.data[prop]);
+    		removeErrorState(form);
+    		form.siblings('.error-msg').hide();
+    	}
+
+    	this.backup = {};
+    }
 
 	this.getData = function() {
 		return this.data;

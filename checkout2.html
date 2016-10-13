@@ -215,145 +215,148 @@
                         <div class="col-md-12 sub-style">
                             <h4>Detalles de la Tarjeta</h4>
                         </div>
-
-                        <div class="form-group">
-                            <!--Primera Fila -->
-                            <div class="row">
-                                <div class="col-md-8 form-field">
-                                    <label for="card-num">Número de la tarjeta:</label>
-                                    <input type="number" class="form-control" id="card-num"/>
-                                    <p class="error-msg"></p>
-                                </div>
-                                <div class="col-md-2 col-md-offset-1 form-field">
-                                    <label for="installments">Cuotas:</label>
-                                    <select class="form-control" id="installments">
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
-                                        <option>6</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <!-- Segunda Fila-->
-                            <div class="row">
-                                <div class="col-md-4 form-inline form-field">
-                                    <div class="col-md-12 single-label">
-                                        <label>Vencimiento:</label>
+                        <div id="card-details">
+                            <div class="form-group">
+                                <!--Primera Fila -->
+                                <div class="row">
+                                    <div class="col-md-8 form-field">
+                                        <label for="card-num">Número de la tarjeta:</label>
+                                        <input type="number" class="form-control" id="card-num"/>
+                                        <p class="error-msg"></p>
                                     </div>
-                                    <label for="exp-month" class="hidden">Mes:</label>
-                                    <input type="number" class="form-control" placeholder="mes" id="exp-month">
-                                    <label for="exp-year" class="hidden">Año:</label>
-                                    <input type="number" class="form-control" placeholder="año" id="exp-year">
-                                    <p class="error-msg" id="error-expiration"></p>
-                                    <p class="error-msg" id="error-exp-month"></p>
-                                    <p class="error-msg" id="error-exp-year"></p>
+                                    <div class="col-md-2 col-md-offset-1 form-field">
+                                        <label for="installments">Cuotas:</label>
+                                        <select class="form-control" id="installments">
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                            <option>6</option>
+                                        </select>
+                                    </div>
                                 </div>
 
-                                <div class="col-md-4 form-inline form-field">
-                                    <label for="sec-code"  >Cód.de seguridad:</label>
-                                    <input type="number" class="form-control" id="sec-code">
-                                    <a href='#' id= 'code-popover' data-toggle="popover" title="¿Donde se ecuentra el código de seguridad?" data-content="<img src='img/security-code.jpg' width='200' />">
-                                        <span class="glyphicon glyphicon-question-sign"></span>
-                                    </a>
-                                    <p class="error-msg"></p>
+                                <!-- Segunda Fila-->
+                                <div class="row">
+                                    <div class="col-md-4 form-inline form-field">
+                                        <div class="col-md-12 single-label">
+                                            <label>Vencimiento:</label>
+                                        </div>
+                                        <label for="exp-month" class="hidden">Mes:</label>
+                                        <input type="number" class="form-control" placeholder="mes" id="exp-month">
+                                        <label for="exp-year" class="hidden">Año:</label>
+                                        <input type="number" class="form-control" placeholder="año" id="exp-year">
+                                        <p class="error-msg" id="error-expiration"></p>
+                                        <p class="error-msg" id="error-exp-month"></p>
+                                        <p class="error-msg" id="error-exp-year"></p>
+                                    </div>
+
+                                    <div class="col-md-4 form-inline form-field">
+                                        <label for="sec-code"  >Cód.de seguridad:</label>
+                                        <input type="number" class="form-control" id="sec-code">
+                                        <a href='#' id= 'code-popover' data-toggle="popover" title="¿Donde se ecuentra el código de seguridad?" data-content="<img src='img/security-code.jpg' width='200' />">
+                                            <span class="glyphicon glyphicon-question-sign"></span>
+                                        </a>
+                                        <p class="error-msg"></p>
+                                    </div>
+                                    
+                                    <!-- Mensaje error validación tarjeta de crédito -->
+                                    <div class="col-md-4">
+                                        <p id="error-card">No hemos podido verificar su tarjeta de crédito. Por favor revise sus datos.</p>
+                                    </div>
                                 </div>
-                                
-                                <!-- Mensaje error validación tarjeta de crédito -->
-                                <div class="col-md-4">
-                                    <p id="error-card">No hemos podido verificar su tarjeta de crédito. Por favor revise sus datos.</p>
-                                </div>
+
+
+                                <!-- Tercera fila -->
+                                <div class="row">
+                                    <div class="col-md-12 form-field">
+                                        <label for="cardholder" >Nombre del titular:</label>
+                                        <input type="text" class="form-control" id="cardholder" placeholder="Nombre como figura en la tarjeta">
+                                        <p class="error-msg"></p>
+                                    </div>
+                                 </div>
+
                             </div>
-
-
-                            <!-- Tercera fila -->
-                            <div class="row">
-                                <div class="col-md-12 form-field">
-                                    <label for="cardholder" >Nombre del titular:</label>
-                                    <input type="text" class="form-control" id="cardholder" placeholder="Nombre como figura en la tarjeta">
-                                    <p class="error-msg"></p>
-                                </div>
-                            </div>
-
                         </div>
 
                         <!--Subtitulo 2 -->
                         <div class="col-md-12 sub-style">
                             <h4>Datos de Facturacion</h4>
                         </div>
+                        <div id="#billing-details">
+                            <div class="form-group">
 
-                        <div class="form-group">
+                                <!--Primera Linea -->
+                                <div class="row">
+                                    <div class="col-md-4 form-field">
+                                        <label for="country">País:</label>
+                                        <select class="form-control" id="country">
+                                            <option>Opciones</option>
+                                        </select>
+                                    </div>
 
-                            <!--Primera Linea -->
-                            <div class="row">
-                                <div class="col-md-4 form-field">
-                                    <label for="country">País:</label>
-                                    <select class="form-control" id="country">
-                                        <option>Opciones</option>
-                                    </select>
+                                    <div class="col-md-4 form-field">
+                                        <label for="prov">Provincia:</label>
+                                        <select class="form-control" id="prov">
+                                            <option>Provincias</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-md-4 form-field">
+                                        <label for="city">Ciudad:</label>
+                                        <select class="form-control" id="city">
+                                            <option>Ciudades</option>
+                                        </select>
+                                    </div>
                                 </div>
 
-                                <div class="col-md-4 form-field">
-                                    <label for="prov">Provincia:</label>
-                                    <select class="form-control" id="prov">
-                                        <option>Provincias</option>
-                                    </select>
+                                <!--Tercer Fila -->
+                                <div class="row">
+                                    <div class="col-md-1">
+                                        <label class="tocenter-label">Dirección:</label>
+                                    </div>
+
+                                    <div class="col-md-4 form-field">
+                                        <label for="street">Calle:</label>
+                                        <input type="text" class="form-control" id="street" maxlength="80">
+                                        <p class="error-msg"></p>
+                                    </div>
+
+                                    <div class="col-md-2 form-field">
+                                        <label for="addr-num">Número:</label>
+
+                                        <input type="text" class="form-control" id="addr-num" maxlength="6">
+                                        <p class="error-msg"></p>
+                                    </div>
+
+                                    <div class="col-md-2 form-field">
+                                        <label for="zip-code">Cód.Postal:</label>
+                                        <input type="text" class="form-control" id="zip-code" maxlength="10">
+                                        <p class="error-msg"></p>
+                                    </div>
+
+                                    <div class="col-md-2 form-field">
+                                        <label for="floor">Piso:</label>
+                                        <input type="text" class="form-control" id="floor" maxlength="3">
+                                        <p class="error-msg"></p>
+                                    </div>
+
+                                    <div class="col-md-1 form-field">
+                                        <label for="department">Dpto.:</label>
+                                        <input type="text" class="form-control" id="department" maxlength="2">
+                                        <p class="error-msg"></p>
+                                    </div>
+
                                 </div>
-
-                                <div class="col-md-4 form-field">
-                                    <label for="city">Ciudad:</label>
-                                    <select class="form-control" id="city">
-                                        <option>Ciudades</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <!--Tercer Fila -->
-                            <div class="row">
-                                <div class="col-md-1">
-                                    <label class="tocenter-label">Dirección:</label>
-                                </div>
-
-                                <div class="col-md-4 form-field">
-                                    <label for="street">Calle:</label>
-                                    <input type="text" class="form-control" id="street" maxlength="80">
-                                    <p class="error-msg"></p>
-                                </div>
-
-                                <div class="col-md-2 form-field">
-                                    <label for="addr-num">Número:</label>
-
-                                    <input type="text" class="form-control" id="addr-num" maxlength="6">
-                                    <p class="error-msg"></p>
-                                </div>
-
-                                <div class="col-md-2 form-field">
-                                    <label for="zip-code">Cód.Postal:</label>
-                                    <input type="text" class="form-control" id="zip-code" maxlength="10">
-                                    <p class="error-msg"></p>
-                                </div>
-
-                                <div class="col-md-2 form-field">
-                                    <label for="floor">Piso:</label>
-                                    <input type="text" class="form-control" id="floor" maxlength="3">
-                                    <p class="error-msg"></p>
-                                </div>
-
-                                <div class="col-md-1 form-field">
-                                    <label for="department">Dpto.:</label>
-                                    <input type="text" class="form-control" id="department" maxlength="2">
-                                    <p class="error-msg"></p>
-                                </div>
-
-                            </div>
                         </div>
+                    </div>
                     </div>
 
                     <div class="col-md-3 sum-box summary">
                         <h3>Resumen</h3>
                         <div class="summary-passengers">
+                            <h5>Pasajeros</h5>
                         </div>
 
                     </div>
@@ -422,10 +425,13 @@
                     <div class="col-md-3 sum-box summary">
                         <h3>Resumen</h3>
                         <div class="summary-passengers">
+                            <h5>Pasajeros</h5>
                         </div>
                         <div class="summary-payment">
-
-                    </div>
+                            <h5>Pago</h5>
+                            <h6>Tarjeta</h6>
+                            <h6>Facturación</h6>
+                        </div>
                     </div>
                 </div>
 
@@ -611,7 +617,8 @@
             </div>
 
             <div class="modal-footer">
-                <button type="button" class="btn btn-default save-btn leave-btn" data-dismiss="modal">Guardar</button>
+                <button type="button" class="btn btn-default cancel-btn">Cancelar</button>
+                <button type="button" class="btn btn-default save-btn">Guardar</button>
             </div>
         </div>
 
