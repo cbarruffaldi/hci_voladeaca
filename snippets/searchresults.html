@@ -4,7 +4,7 @@
 						<div data-ng-repeat="t in c.flights">
 							<div class="row airports-line-info">
 								<div class="col-md-2 ida-vuelta-badge">
-									{{t.flight.desc}} <span class="glyphicon glyphicon-arrow-right"></span>
+									{{t.desc}} <span class="glyphicon glyphicon-arrow-right"></span>
 								</div>
 								<div class="col-md-10 orig-dest-badges">
 									Buenos Aires
@@ -28,7 +28,7 @@
 									Dia {{t.flight.departMoment.day()}}
 									</div>
 									<div class="flight-time depart-time">
-									{{t.flight.departMoment}}
+									Hora {{t.flight.departMoment}}
 									</div>
 								</div>
 								<div class="col-md-1">
@@ -52,7 +52,7 @@
 									Dia {{t.flight.arrivalMoment.day()}}
 									</div>
 									<div class="flight-time land-time">
-									{{t.flight.arrivalMoment}}
+									Hora {{t.flight.arrivalMoment}}
 									</div>
 								</div>
 
