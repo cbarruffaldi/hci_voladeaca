@@ -237,6 +237,8 @@ function getModifyStage(modify) {
         return 0;
     return 1;
 }
+ /* El div padre del form group del input */
+var formGroupParent;
 
 $(document).on('show.bs.modal', '#modify-modal', function(event) {
     var modifyLink = $(event.relatedTarget);
@@ -246,6 +248,7 @@ $(document).on('show.bs.modal', '#modify-modal', function(event) {
     /* TODO: ver que pasajero es */
     if (tabId == 1) {
         var formGroup = $('#' + tabId).find('.form-group');
+        formGroupParent = formGroup.parent();
         modal.find('.modal-body').append(formGroup);
     }
 });
@@ -253,7 +256,9 @@ $(document).on('show.bs.modal', '#modify-modal', function(event) {
 $(document).ready(function() {
     $('.leave-btn').click(function () {
         summaryStage = null;
-        $('.modal-body').find('.form-group').remove();
+        var formGroup = $('.modal-body').find('.form-group');
+        formGroupParent.append(formGroup);
+        formGroupParent = null;
     });
 });
 
