@@ -1,0 +1,42 @@
+<script src="../js/vendor/jquery-1.11.2.min.js"></script>
+
+<script>
+function getFlight(origin, dest, dep_date){
+	$.ajax({
+        url: "http://hci.it.itba.edu.ar/v1/api/booking.groovy?method=getonewayflights&from=" + origin + "&to="+ dest +"&dep_date="+ dep_date +"&adults=1&children=0&infants=0&sort_key=fare&callback=processFlights",
+        datatype: "jsonp"
+      });
+}
+
+
+function processFlights(response){
+		var f = response.flights;
+		var dict = {};
+		for(var i = 0; i < f.length ; i++){
+			var key = f[i].price.total.total;
+			if(!dict[key]){
+				dict[key] = [];
+			}
+			dict[key].push(f[i].outbound_routes[0].segments[0].airline.name + " " + f[i].outbound_routes[0].segments[0].number);
+		}
+	
+		for (var key in dict) {
+		  if (dict.hasOwnProperty(key)) {
+    			console.log(key + " -> " + dict[key]);
+  			}
+		}
+
+		console.log();
+		console.log();
+		console.log();
+		console.log("==============================");
+		console.log();
+		console.log();
+
+
+}
+console.log("OK");
+getFlight("LON", "BUE", "2016-12-25");
+getFlight("BUE", "LON", "2016-12-27");
+window.processFlights = processFlights;
+</script>
