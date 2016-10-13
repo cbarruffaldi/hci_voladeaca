@@ -1,0 +1,55 @@
+.searchbox{
+	background-color: rgba( 255, 255, 255, 0.8);
+	margin-bottom: 100px;
+	padding-bottom: 1em;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+
+.formtitle{
+	font-weight: bold;
+	font-style: #5b5b5b;
+	padding-left: 3px;
+}
+
+.disabled-dp .formtitle {
+	color: #7b7b7b;
+}
+
+.form-control.inputerr{
+	border: 1px solid #FF0000;
+}
+
+.formError{
+	margin-top: -10px;
+	padding-left: 5px;
+	font-size:0.9em;
+	color: #a0003a;
+	position: absolute;
+	display: none;
+	padding-bottom: 15px;
+}
+
+.idavuelta {
+	margin-top: 4px;
+	margin-bottom: 4px;
+}
+
+.idavuelta button {
+	background: none;
+	outline: none;
+	font-size: 1.2em;
+	font-weight: 500;
+	color: #333;
+	margin-bottom: 8px;
+	margin-top: 5px;
+	margin-left: 20px;
+}
+
+.idavuelta button:hover {
+	border-bottom: 4px solid #b7b7b7;
+}
+
+.selected-iv {
+	border-bottom: 4px solid #DC0055 !important;
+}

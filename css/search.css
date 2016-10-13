@@ -88,46 +88,31 @@ label {
 	padding: 10px;
 }
 
-.passenger-row {
-	padding: 0.5em;
-}
-
-.passenger-number {
-	margin-right: 3px;
-	margin-left: 3px;
-}
-
-#ok-btn {
-	margin-top: 0.8em;
-	margin-left: 60%;
-}
-
 .results-carousel {
-	margin-bottom: 1%;
-	margin-top: 1%;
+	margin: 1%;
+	padding: 1%;
 }
 
 .results-carousel button {
 	height: 4em;
 	border-radius: 5px;
 	background-color: #FFFFFF;
-	box-shadow: 0 0 8px #a3a3a3;
 }
 
 .carousel-flight {
 	height: 4em;
 	text-align: center;
 	padding: 3%;
-	border-radius: 5px;
-	border: 1px solid #FFFFFF;
-	background-color: #FFFFFF;
-	box-shadow: 0 0 8px #a3a3a3;
+	border: 1px solid #7b7b7b;
+	border-radius: 3px;
+	box-shadow: 0 0 5px #e3e3e3;
 }
 
 .carousel-flight:hover {
 	border-color: #204DCC;
 	transition: all 0.3s;
 	cursor: pointer;
+	box-shadow: 0 0 5px #204DCC;
 }
 
 .carousel-flight .air-name {
