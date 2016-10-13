@@ -1,4 +1,4 @@
-var app = angular.module("flightApp", []);
+var app = angular.module("flightApp", ['ngAnimate']);
 
 app.controller("flightCtrl", function($scope, $http) {
 		$scope.twoWays = false;
@@ -69,12 +69,54 @@ app.controller("flightCtrl", function($scope, $http) {
 		}
 
 
+		
+
+		$scope.filterFn = function myFilter(container, b, c){
+			var pass = true;
+			var flight1 = container.flights[0].flight;
+			if(container.flights[1]){
+				var flight2 = container.flights[1].flight;
+			}
+
+			var airlinePass = true;
+			if(activeAirlineFilter()){
+				console.log(flight1.airline.id);
+				airlinePass = $scope.airlineFilter[flight1.airline.id];
+				if(flight2){
+					pass = airlinePass || $scope.airlineFilter[flight2.airline.id];
+				}
+			}
+			pass = pass && airlinePass;
+
+
+			if($scope.precio){
+				pass = pass && container.precio <= $scope.precio
+			}
+			
+			return pass;
+		};
+
+
+		function activeAirlineFilter(){
+			var o = $scope.airlineFilter;
+			for (var key in o) {
+  				if (o.hasOwnProperty(key) && o[key]) {
+ 				   return true;
+  				}
+			}	
+			return false;
+		}
+
+
 		function process(response, vresponse){
 		//	console.log(response);
 			var iFlights = stripFlights(response.data.flights);
+			setFilters(response.data.filters[0].values);
 			if(vresponse){
 				var vFlights = stripFlights(vresponse.data.flights);
+				setFilters(vresponse.data.filters[0].values);
 				combineAndPush(iFlights, vFlights);
+
 			} else {
 				for(var i in iFlights){
 				$scope.containers.push(new Container(iFlights[i]));
@@ -99,6 +141,25 @@ app.controller("flightCtrl", function($scope, $http) {
 				flights.push(fli)
 			}
 			return flights;
+		}
+
+		function setFilters(filter){
+			if(! $scope.airlines){
+				$scope.airlines = [];
+			}
+			if(! $scope.airlineFilter){
+				$scope.airlineFilter = {};
+			}
+
+			for(var i in filter){
+				console.log(filter);
+				$scope.airlineFilter[filter[i].id] = false;
+				$scope.airlines.indexOf(filter[i])
+				
+				if( < 0){
+					$scope.airlines.push(filter[i]);
+				}
+			}
 		}
 
 		function FlightDetails(flight){
@@ -126,7 +187,7 @@ app.controller("flightCtrl", function($scope, $http) {
 		function Container(flight1, flight2){
 			this.flights = []
 			this.flights[0] = { desc: "IDA ", flight: flight1 };
-			this.precio = 1000;
+			this.precio = 5000 + Math.floor(25000*Math.random());
 			if(flight2){
 				this.flights[1] = { desc: "VUELTA ", flight: flight2};
 			}
@@ -194,8 +255,9 @@ app.controller("flightCtrl", function($scope, $http) {
 		console.log(s);
 	};
 
-	$scope.myFilter = function(a,b,c){
-		return true;
+	
+	$scope.toggleAirline = function(id){
+		$scope.airlineFilter[id] = !$scope.airlineFilter[id];
 	};
 	
 

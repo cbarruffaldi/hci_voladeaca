@@ -1,5 +1,5 @@
 				<!-- <div data-ng-repeat="c in containers"> -->
-					<div class="row flight-box" data-ng-repeat="c in containers">
+					<div class="row flight-box" data-ng-repeat="c in containers | filter: filterFn | orderBy: '-precio'">
 						<div class="col-md-10 flight-info">
 						<div data-ng-repeat="t in c.flights">
 							<div class="row airports-line-info">
@@ -16,7 +16,7 @@
 							</div>
 							<div class="row selected-box" id="selected-ida-{{f.fnumber}}">
 								<div class="col-md-1 air-img">
-									<img src="aircanada.png" alt="Logo aerolinea">
+									<img src="aircanada.png" alt="Logo aerolinea" />
 								</div>
 								<div class="col-md-2 air-name">
 									{{t.flight.airline.name}}
@@ -80,4 +80,3 @@
 					</div>
 				</div>
 			<!-- 	</div> c in containers -->
-			</div>

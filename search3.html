@@ -15,6 +15,7 @@
 	<link rel="stylesheet" href="css/search.css">
 	<link rel="stylesheet" href="css/search-searchbox.css">
 	<link rel="stylesheet" href="css/buttons.css">
+	<link rel="stylesheet" href="css/angular-animations.css">
 	<link rel="stylesheet" href="css/nouislider-custom.css">
 	<link rel="stylesheet" href="css/psg-btn.css">
 	<link rel="stylesheet" href="./CheloLabs/awesomplete.css">
@@ -25,7 +26,9 @@
 		margin-bottom: 20px;
 	}
 	</style>
-	<script src="extlib/angular.min.js"></script>
+
+ <script src="extlib/angular.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-animate.js"></script>
 
 	<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
 
@@ -44,7 +47,8 @@
 					<h2> Filtros </h2>
 					<div class="price-filter filter-box">
 						<div class="filter-name"> Precio</div>
-						<input type="number" data-ng-model="precio" id="preciobox"/>
+
+						<input type="number" data-ng-model="precio" ng-model-options="{debounce: 1000}" id="preciobox"/>
 						<div class="slider-box">
 							<div id="price-slider">
 							</div>
@@ -111,10 +115,11 @@
 
 					<div class="airline-filter filter-box">
 						<div class="filter-name">Aerolíneas</div>
-						<div data-ng-repeat="a in aerolineas">
-							<input type="checkbox" id="airl-cbox{{a.id}}" />
-							<label for="airl-cbox{{a.">{{a.name}}</label>
-							<br/>
+
+						<div data-ng-repeat="a in airlines">
+						<input type="checkbox" id="airl-cbox{{a.id}}" data-ng-click="toggleAirline(a.id)" />
+						<label for="airl-cbox{{a.">{{a.name}}</label>
+						<br/>
 						</div>
 					</div>
 				</div>
