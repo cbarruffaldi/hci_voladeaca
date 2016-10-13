@@ -13,7 +13,7 @@ app.controller("flightCtrl", function($scope, $http) {
 		function fetch(){
 			var orig = getURLParameter("orig");
 			var dest = getURLParameter("dest");
-			var date = getURLParameter("date"); 
+			var date = getURLParameter("date");
 			var adults = getURLParameter("adults");
 			var children = getURLParameter("children");
 			var infants = getURLParameter("infants");
@@ -26,11 +26,11 @@ app.controller("flightCtrl", function($scope, $http) {
 				return;
 			}
 
-			var baseURL = "http://hci.it.itba.edu.ar/v1/api/booking.groovy?method=getonewayflights" 
+			var baseURL = "http://hci.it.itba.edu.ar/v1/api/booking.groovy?method=getonewayflights"
 			baseURL += "&adults=" + (adults ? adults : 0);
 			baseURL += "&children=" + (children ? children : 0);
 			baseURL += "&infants=" + (infants ? infants : 0);
-			
+
 			var URL = baseURL + "&dep_date=" + date;
 				URL += "&from=" + orig;
 				URL += "&to=" + dest;
@@ -51,12 +51,12 @@ app.controller("flightCtrl", function($scope, $http) {
 							process(response, vresponse);
 							$("#resultShow").show();
 							$("#loadImg").hide();
-						}, 
+						},
 							function errorCallback(response){
 								console.log("Error in response");
 							}
 						)
-					} 
+					}
 					else {
 						process(response);
 						$("#resultShow").show();
@@ -69,7 +69,7 @@ app.controller("flightCtrl", function($scope, $http) {
 		}
 
 
-		
+
 
 		$scope.filterFn = function myFilter(container, b, c){
 			var pass = true;
@@ -92,7 +92,7 @@ app.controller("flightCtrl", function($scope, $http) {
 			if($scope.precio){
 				pass = pass && container.precio <= $scope.precio
 			}
-			
+
 			return pass;
 		};
 
@@ -103,7 +103,7 @@ app.controller("flightCtrl", function($scope, $http) {
   				if (o.hasOwnProperty(key) && o[key]) {
  				   return true;
   				}
-			}	
+			}
 			return false;
 		}
 
@@ -154,9 +154,7 @@ app.controller("flightCtrl", function($scope, $http) {
 			for(var i in filter){
 				console.log(filter);
 				$scope.airlineFilter[filter[i].id] = false;
-				$scope.airlines.indexOf(filter[i])
-				
-				if( < 0){
+				if($scope.airlines.indexOf(filter[i]) < 0){
 					$scope.airlines.push(filter[i]);
 				}
 			}
@@ -175,7 +173,7 @@ app.controller("flightCtrl", function($scope, $http) {
 
 			this.arrivalMoment = moment(s.arrival.date);
 			this.arrivalMoment.utcOffset(parseInt(s.arrival.airport.time_zone));
-			
+
 			this.duration = r.duration;
 			this.flnumber = s.number;
 			this.flid = s.id;
@@ -191,7 +189,7 @@ app.controller("flightCtrl", function($scope, $http) {
 			if(flight2){
 				this.flights[1] = { desc: "VUELTA ", flight: flight2};
 			}
-			return this; 
+			return this;
 		}
 
 		function Filter(airportList, airlineList) {
@@ -204,7 +202,7 @@ app.controller("flightCtrl", function($scope, $http) {
 
 			this.airports = {
 					active: false,
-					list: {}	
+					list: {}
 					};
 
 			for(var i in airportList){
@@ -255,13 +253,13 @@ app.controller("flightCtrl", function($scope, $http) {
 		console.log(s);
 	};
 
-	
+
 	$scope.toggleAirline = function(id){
 		$scope.airlineFilter[id] = !$scope.airlineFilter[id];
 	};
-	
+
 
 
 	fetch();
-	
+
 });
