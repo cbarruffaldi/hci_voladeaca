@@ -314,6 +314,19 @@ function fillPassengerSum(data) {
     addPassData(data["usr-country"], data["usr-doc"], data["usr-docnum"], data["usr-gen"], data["birth-day"] + '/' + data["birth-month"] + '/' + data["birth-year"],$(".summary-passengers"));
 }
 
-function fillPaymentSum(data) {
+function addPaymentData(card, installments, expdate, secCode,obj){
+    var x1 = '<div class="sum-field">' + card+ '</div>';
+    var x2 = '<div class="sum-field">' + secCode + ' ' + expdate +'</div>';
+    var x3 = '<div class="sum-field">' +'Cuotas: '+ installments+'</div>';
+    var x4 = '<a href="#" class="col-md-offset-9 sum-modal" data-toggle="modal" data-target="#modify-modal">Modificar...</a>';
 
+    obj.append(x1);
+    obj.append(x2);
+    obj.append(x3);
+    obj.append(x4);
+}
+
+
+function fillPaymentSum(data) {
+    addPaymentData(data["card-num"],data["installments"],data["exp-month"] + '/' + data["exp-year"], data["sec-code"],$(".summary-payment"));
 }
