@@ -101,8 +101,8 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 				pass = pass && $scope.vTimeFilter.validate(flight2.departMoment.date.getHours());
 			}
 
-			if($scope.precio){
-				pass = pass && container.precio <= $scope.precio
+			if($scope.maxprice){
+				pass = pass && (container.price.total.total <= $scope.maxprice)
 			}
 
 			return pass;
@@ -131,20 +131,53 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 				combineAndPush(iFlights, vFlights);
 
 			} else {
-				for(var i in iFlights){
-				$scope.containers.push(new Container(iFlights[i]));
-				}
-				console.log($scope.containers);
+				pushAll(iFlights);
 			}
 		}
 
+		function pushAll(flights){
+				var maxPrice;
+				var minPrice;
+
+				for(var i in flights){
+					var c = new Container(flights[i]);
+					$scope.containers.push(c);
+
+					var price = c.price.total.total;
+
+					if(!minPrice || price < minPrice){
+						minPrice = price;
+					}
+				
+					else if(!maxPrice || maxPrice < price){
+						maxPrice = price;
+					}
+
+				}
+			
+				initSlider(minPrice, maxPrice);
+		}
+
 		function combineAndPush(iFlights, vFlights){
+			var maxPrice;
+			var minPrice;
 			for(var i in iFlights){
 				for(var j in vFlights){
-					$scope.containers.push(new Container(iFlights[i], vFlights[j]));
+					var c = new Container(iFlights[i], vFlights[j]);
+					var price = c.price.total.total;
+					if(!minPrice || price < minPrice){
+						minPrice = price;
+					}
+					else if(!maxPrice || maxPrice < price){
+						maxPrice = price;
+					}
+
+					$scope.containers.push(c);
 				}
 			}
+			initSlider(minPrice, maxPrice);
 		}
+
 
 		function stripFlights(f){
 			flights = [];
@@ -238,11 +271,42 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 		function Container(flight1, flight2){
 			this.flights = []
 			this.flights[0] = { desc: "IDA ", flight: flight1 };
-			this.precio = 5000 + Math.floor(25000*Math.random());
+
 			if(flight2){
 				this.flights[1] = { desc: "VUELTA ", flight: flight2};
+				this.price = mergePrices(flight1.price, flight2.price);
+			}else{
+				this.price = flight1.price;
 			}
+
+			this.precio = this.price.total.total;
 			return this;
+		}
+
+
+		function mergePrices(p, q){
+			var price = {}
+	
+		  if(p.adults){
+				price.adults = p.adults;
+				price.adults.base_fare += q.adults.base_fare;
+			}
+			if(p.children){
+				price.children = p.children;
+				price.children.base_fare += q.children.base_fare;
+			}
+			if(p.infants){
+				price.infants = p.infants;
+				price.infants.base_fare += q.infants.base_fare;
+			}
+
+			price.total = p.total
+			price.total.charges += q.total.charges;
+			price.total.fare += q.total.fare;
+			price.total.taxes += q.total.taxes;
+			price.total.total += q.total.total;
+
+			return price;
 		}
 
 		function TimeFilter(airportList, airlineList) {
@@ -299,6 +363,38 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 		$scope.airlineFilter[id] = !$scope.airlineFilter[id];
 	};
 
+
+
+
+	function initSlider(minPrice, maxPrice){
+	var handlesSlider = document.getElementById('price-slider');
+
+	noUiSlider.create(handlesSlider, {
+		start: [minPrice, maxPrice],
+		margin: ((minPrice - maxPrice) * 0.25),
+		connect: true,
+		tooltips: [wNumb({decimals: 0, prefix: "Desde: $"}), wNumb({decimals: 0, prefix: "Hasta: $"})],
+		range: {
+			'min': [minPrice],
+			'max': [maxPrice]
+		},
+		//step: minPrice - maxPrice,
+	});
+
+	$("#restart-price-btn").on("click", function(){
+		handlesSlider.noUiSlider.reset();
+	});
+
+	handlesSlider.noUiSlider.on('update', function(){
+		var min = handlesSlider.noUiSlider.get()[0];
+		var max = handlesSlider.noUiSlider.get()[1];
+		$("#preciomax").val(max);
+		$("#preciomax").trigger("change");
+		$("#preciomin").val(min);
+		$("#preciomin").trigger("change");
+
+	});
+}
 
 
 	fetch();
