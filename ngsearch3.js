@@ -1,9 +1,15 @@
-var app = angular.module("flightApp", ['ngAnimate']);
+var app = angular.module("flightApp", ['ngAnimate', 'infinite-scroll']);
 
-app.controller("flightCtrl", function($scope, $http) {
+app.controller("flightCtrl", function($scope, $http, $window) {
 		$scope.twoWays = false;
 		//Funcionalidad
 		$scope.containers = [] //Los voy a ir llenando mientras proceso la respuesta
+
+		$scope.scrollLimit = 10;
+		
+		$scope.loadMore = function(){
+			$scope.scrollLimit += 7;
+		}
 
 		function getURLParameter(name) {
   			return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [null, ''])[1].replace(/\+/g, '%20')) || null;
@@ -80,7 +86,6 @@ app.controller("flightCtrl", function($scope, $http) {
 
 			var airlinePass = true;
 			if(activeAirlineFilter()){
-				console.log(flight1.airline.id);
 				airlinePass = $scope.airlineFilter[flight1.airline.id];
 				if(flight2){
 					pass = airlinePass || $scope.airlineFilter[flight2.airline.id];
@@ -153,8 +158,8 @@ app.controller("flightCtrl", function($scope, $http) {
 
 			for(var i in filter){
 				console.log(filter);
-				$scope.airlineFilter[filter[i].id] = false;
-				if($scope.airlines.indexOf(filter[i]) < 0){
+				if($scope.airlineFilter[filter[i].id] === undefined){
+					$scope.airlineFilter[filter[i].id] = false;
 					$scope.airlines.push(filter[i]);
 				}
 			}
@@ -255,6 +260,7 @@ app.controller("flightCtrl", function($scope, $http) {
 
 
 	$scope.toggleAirline = function(id){
+		$scope.scrollLimit = 15;
 		$scope.airlineFilter[id] = !$scope.airlineFilter[id];
 	};
 

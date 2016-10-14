@@ -2,7 +2,7 @@
 .flight-box.ng-enter,
 .flight-box.ng-leave {
   -webkit-transition:all linear 0.5s;
-  transition:all linear 0.5s;
+  transition:all linear 0.8s;
 }
 
 .flight-box.ng-leave.ng-leave-active,
