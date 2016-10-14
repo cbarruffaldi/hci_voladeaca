@@ -1,0 +1,80 @@
+				<div class="filter-area">
+					<h2> Filtros </h2>
+					<div class="price-filter filter-box">
+						<div class="filter-name"> Precio</div>
+
+						<input type="number" data-ng-model="precio" ng-model-options="{debounce: 1000}" id="preciobox"/>
+						<div class="slider-box">
+							<div id="price-slider">
+							</div>
+						</div>
+						<button id="restart-price-btn" class="vda-text-btn">
+							Reestablecer
+						</button>
+					</div>
+
+					<div class="time-filter filter-box">
+						<div class="filter-name"> Horarios</div>
+
+						<div class="filter-section-name">Despegue Ida</div>
+						<div class="depart-time-grid">
+							<div class="depart-time-button" >
+								<img src="img/timestamps/00t06.png" alt="Madrugada" data-dep-time="0" data-ng-click="toggleTimeFilter('dawn')"/>
+							</div>
+							<div class="depart-time-button">
+								<img src="img/timestamps/06t12.png" alt="Mañana" data-dep-time="1" data-ng-click="toggleTimeFilter('morn')"/>
+							</div>
+							<div class="depart-time-button" >
+								<img src="img/timestamps/12t18.png" alt="Tarde" data-dep-time="2" data-ng-click="toggleTimeFilter('noon')"/>
+							</div>
+							<div class="depart-time-button" >
+								<img src="img/timestamps/18t00.png" alt="Noche" data-dep-time="3" data-ng-click="toggleTimeFilter('night')"/>
+							</div>
+						</div>
+
+						<div class="filter-section-name">Despegue Vuelta</div>
+						<div class="depart-time-grid">
+
+							<div class="depart-time-button" >
+								<img src="img/timestamps/00t06.png" alt="Madrugada" data-dep-time="4"/>
+							</div>
+							<div class="depart-time-button">
+								<img src="img/timestamps/06t12.png" alt="Mañana" data-dep-time="5"/>
+							</div>
+							<div class="depart-time-button" >
+								<img src="img/timestamps/12t18.png" alt="Tarde" data-dep-time="6"/>
+							</div>
+							<div class="depart-time-button" >
+								<img src="img/timestamps/18t00.png" alt="Noche" data-dep-time="7"/>
+							</div>
+						</div>
+					</div>
+
+					<div class="airport-filter filter-box">
+						<div class="filter-name">Aeropuertos</div>
+						<div class="filter-section-name">Origen</div>
+						<div data-ng-repeat="a in i_Airports">
+							<input type="checkbox" id="aer-o-cbox{{a.id}}" data-ng-click="toggleIAir(a.id)">
+							<label for="aer-o-cbox{{a.id}}">{{a.name}}</label>
+							<br/>
+						</div>
+
+						<div class="filter-section-name">Destino</div>
+						<div data-ng-repeat="a in v_Airports">
+							<input type="checkbox" id="aer-v-cbox{{a.id}}" data-ng-click="toggleVAir(a.id)">
+							<label for="aer-v-cbox{{a.id}}">{{a.name}}</label>
+							<br/>
+						</div>
+
+					</div>
+
+					<div class="airline-filter filter-box">
+						<div class="filter-name">Aerolíneas</div>
+
+						<div data-ng-repeat="a in airlines">
+						<input type="checkbox" id="airl-cbox{{a.id}}" data-ng-click="toggleAirline(a.id)" checked="checked" />
+						<label for="airl-cbox{{a.id}}">{{a.name}}</label>
+						<br/>
+						</div>
+					</div>
+				</div>

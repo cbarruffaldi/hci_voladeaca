@@ -93,6 +93,11 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 		//	}
 			pass = pass && airlinePass;
 
+			pass = pass && $scope.iTimeFilter.validate(flight1.departMoment.getHours());
+		
+			if(flight2){
+				pass = pass && $scope.vTimeFilter.validate(flight2.departMoment.getHours());
+			}
 
 			if($scope.precio){
 				pass = pass && container.precio <= $scope.precio
@@ -100,6 +105,7 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 
 			return pass;
 		};
+
 
 
 		function activeAirlineFilter(){
@@ -114,7 +120,7 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 
 
 		function process(response, vresponse){
-		//	console.log(response);
+			console.log(response);
 			var iFlights = stripFlights(response.data.flights);
 			setFilters(response.data.filters[0].values);
 			if(vresponse){
@@ -173,12 +179,18 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 			this.arrivalAirport = s.arrival.airport;
 			this.airline = s.airline;
 
-			this.departMoment = moment(s.departure.date);
-			this.departMoment.utcOffset(parseInt(s.departure.airport.time_zone));
+			this.departMoment = new Date(s.departure.date);
+			//console.log("Departure obj: ");
+			//console.log(s.departure.date);
+			//console.log("Departure mom: ");
+			//this.departMoment.utcOffset(parseInt(s.departure.airport.time_zone));
+			//console.log(this.departMoment);
 
-			this.arrivalMoment = moment(s.arrival.date);
-			this.arrivalMoment.utcOffset(parseInt(s.arrival.airport.time_zone));
-
+			this.arrivalMoment = new Date(s.arrival.date);
+			//this.arrivalMoment.utcOffset(parseInt(s.arrival.airport.time_zone));
+			console.log("Arrival moment: ")
+			console.log(this.arrivalMoment);
+			console.log("Duration " + r.duration);
 			this.duration = r.duration;
 			this.flnumber = s.number;
 			this.flid = s.id;
@@ -197,30 +209,23 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 			return this;
 		}
 
-		function Filter(airportList, airlineList) {
-			this.time = { active: false,
+		function TimeFilter(airportList, airlineList) {
+			var self = this;
+			self.time = { active: false,
 				dawn: false,
 				morn: false,
 				noon: false,
 				night: false
 					};
 
-			this.airports = {
-					active: false,
-					list: {}
-					};
-
-			for(var i in airportList){
-				this.airports.list[airportList[i]] = false;
-			}
-
-			this.airlines = {
-				active: false,
-				list: {}
-			}
-
-			for(var i in airlineList){
-				this.airline.list[airlineList[i]] = false;
+			self.validate = function(hour){
+				if(!self.time.active){
+					return true;
+				}
+				if(hour < 6) return self.time.dawn;
+				else if(hour < 12) return self.time.morn ;
+				else if(hour < 18) return self.time.noon;
+				else return self.time.night;
 			}
 		};
 
@@ -238,17 +243,11 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 		tf[time] = !tf[time];
 		tf.active = tf.dawn || tf.morn || tf.noon || tf.night;
 
-		console.log("Activated: " + time);
-		console.log("Activated: " + tf.active);
 	}
 
 	$scope.toggleTimeFilter = toggleTimeFilter;
-
-	var container1 = {
-		tramos: [],
-		precio: 1000,
-		id: 10
-	};
+	$scope.iTimeFilter = new TimeFilter();
+	$scope.vTimeFilter = new TimeFilter();
 
 	$scope.toggleIAir = function(s){
 		console.log(s);
