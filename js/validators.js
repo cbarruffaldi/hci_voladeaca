@@ -459,7 +459,7 @@ function PaymentCardValidator() {
 	}
 
 	this.creditCardReady = function() {
-		return this.validExpDate && this.data[CARD_NUM] && this.data[SEC_CODE];
+		return this.expDateReady() && this.validExpDate && this.data[CARD_NUM] && this.data[SEC_CODE];
 	}
 
 	this.validateExpDate = function() {
@@ -611,7 +611,7 @@ function PaymentAddressValidator() {
 							  	 'department': validateDepartment
 							   };
 
-	this.data = {};
+	this.data = {'floor':'', 'department':''};
     this.backup = {};
 
 	this.getData = function() {
@@ -644,9 +644,6 @@ function PaymentAddressValidator() {
 
 		if (validation.valid) {
 			this.data[id] = validation.value;
-
-			if (this.isOptional(id) && validation.value.length == 0)
-				delete this.data[id];
 		}
 
 		return validation;
@@ -771,5 +768,3 @@ function validateStep(data, step, optionals) {
 
     return valid;    
 }
-
-

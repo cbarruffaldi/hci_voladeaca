@@ -115,6 +115,7 @@ function cleanSummaryStage(stage) {
     } 
     else if (stage == 2){
         $(".summary-payment").children().remove();
+        $(".summary-billing").children().remove();
     }    
 }
 
@@ -240,11 +241,18 @@ function addPassData(country, doctype, docnum, gen, birth, obj){
 }
 
 var SUM_PASSENGERS = '.summary-passengers';
+var SUM_PAYMENT = '.summary-payment';
+var SUM_BILLING = '.summary-billing';
 
 function getModifyStage(modify) {
-    if (modify.parents(SUM_PASSENGERS))
-        return 0;
-    return 1;
+    /* TODO: para varios pasajeros */
+    if (modify.parents(SUM_PASSENGERS).length)
+        return [0, 0];
+    else if (modify.parents(SUM_PAYMENT).length)
+        return [1, 0];
+    else if (modify.parents(SUM_BILLING).length)
+        return [1, 1];
+    return [2, 0];
 }
  /* El div padre del form group del input */
 var formGroupParent;
@@ -252,14 +260,20 @@ var formGroupParent;
 $(document).on('show.bs.modal', '#modify-modal', function(event) {
     var modifyLink = $(event.relatedTarget);
     var modal = $(this);
-    var tabId = getModifyStage(modifyLink) + 1;
+    var modifyStage = getModifyStage(modifyLink);
+    summaryStage = modifyStage[0];
+    var tabId = $('#' + (summaryStage + 1));
 
-    summaryStage = getModifyStage(modifyLink);
     validators[summaryStage].generateBackup();
 
     /* TODO: ver que pasajero es */
-    if (tabId == 1) {
-        var formGroup = $('#' + tabId).find('.form-group');
+    if (summaryStage == 0) {
+        var formGroup = tabId.find('.form-group');
+        formGroupParent = formGroup.parent();
+        modal.find('.modal-body').append(formGroup);
+    }
+    else if (summaryStage == 1) {
+        var formGroup = tabId.find('.form-group').eq(modifyStage[1]);
         formGroupParent = formGroup.parent();
         modal.find('.modal-body').append(formGroup);
     }
@@ -274,13 +288,15 @@ function closeModal() {
 }
 
 function saveModal(validator) {
+    var data = validator.getData();
     cleanSummaryStage(summaryStage+1);
+
     if (summaryStage == 0) {
-        fillPassengerSum(validator.getData());
+        fillPassengerSum(data);
     }
     else if (summaryStage == 1) {
-        fillPaymentSum(validator.getData());
-        fillBillingSum(validator.getData());
+        fillPaymentSum(data);
+        fillBillingSum(data);
     }
     closeModal();
 }
