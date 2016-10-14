@@ -65,6 +65,7 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 						)
 					}
 					else {
+						console.log(response);
 						process(response);
 						$("#resultShow").show();
 						$("#loadImg").hide();
@@ -94,10 +95,10 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 		//	}
 			pass = pass && airlinePass;
 
-			pass = pass && $scope.iTimeFilter.validate(flight1.departMoment.getHours());
+			pass = pass && $scope.iTimeFilter.validate(flight1.departMoment.date.getHours());
 		
 			if(flight2){
-				pass = pass && $scope.vTimeFilter.validate(flight2.departMoment.getHours());
+				pass = pass && $scope.vTimeFilter.validate(flight2.departMoment.date.getHours());
 			}
 
 			if($scope.precio){
@@ -173,32 +174,66 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 		}
 
 		function FlightDetails(flight){
+			this.departure = {}
+			this.arrival = {}
+
 			r = flight.outbound_routes[0]
 			s = r.segments[0];
 
-			this.departAirport = s.departure.airport;
-			this.arrivalAirport = s.arrival.airport;
+			this.departure.airport = s.departure.airport;
+			this.arrival.airport = s.arrival.airport;
+			
 			this.airline = s.airline;
 
-			this.departMoment = new Date(s.departure.date);
-			//console.log("Departure obj: ");
-			//console.log(s.departure.date);
-			//console.log("Departure mom: ");
-			//this.departMoment.utcOffset(parseInt(s.departure.airport.time_zone));
-			//console.log(this.departMoment);
-
-			this.arrivalMoment = new Date(s.arrival.date);
-			//this.arrivalMoment.utcOffset(parseInt(s.arrival.airport.time_zone));
-			console.log("Arrival moment: ")
+			this.departMoment = new TimeDetails(s.departure.date);
+			this.arrivalMoment = new TimeDetails(s.arrival.date);
+			
+			console.log("ArrMom")
 			console.log(this.arrivalMoment);
-			console.log("Duration " + r.duration);
 			this.duration = r.duration;
-			this.flnumber = s.number;
-			this.flid = s.id;
+			
+			this.number = s.number;
+			this.id = s.id;
 
+			console.log("Pricee")
+			console.log(this.price)
 			this.price = flight.price;
 			return this; //?
 		}
+
+		function TimeDetails($date){
+			this.date = new Date($date);
+			this.dayName = getDayName(this.date.getDay());
+			this.monthName = getMonthName(this.date.getMonth());
+			this.fullDayName = this.dayName + " " + this.date.getDate(); 
+			
+			var t = $date.split(" ")[1].split(":");
+			this.clockName = t[0] + ":" + t[1] + "hs";
+		}
+
+
+		function getDayName(d){
+			var days = ["Domingo", "Lunes", "Martes",
+						"Miércoles", "Jueves", "Viernes", "Sábado"]
+
+			if(d >= 0 && d <= 6)
+				return days[d];
+			else
+				return "";
+		}
+
+		function getMonthName(m){
+			var months = ["enero", "febrero", "marzo",
+						"abril", "mayo", "junio", "julio",
+						"agosto", "septiembre", "octubre", "noviembre",
+						"diciembre"];
+
+			if(m >= 0 && m <= 11)
+				return months[m];
+			else
+				return "";
+		}
+
 
 		function Container(flight1, flight2){
 			this.flights = []
