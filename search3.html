@@ -1,388 +1,386 @@
 <!doctype html>
 <html lang="es">
-<head>
-	<meta charset="utf-8">
-	<title>VolaDeAca - Búsqueda</title>
-	<meta name="description" content="">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="apple-touch-icon" href="apple-touch-icon.png">
+	<head>
+		<meta charset="utf-8">
+		<title>VolaDeAca - Búsqueda</title>
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="apple-touch-icon" href="apple-touch-icon.png">
 
-	<link rel="stylesheet" href="jqueryui/jquery-ui.css">
-	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<link rel="stylesheet" href="css/bootstrap-theme.min.css">
-	<link rel="stylesheet" href="css/hover.css" media="all">
-	<link rel="stylesheet" href="css/main.css">
-	<link rel="stylesheet" href="css/search.css">
-	<link rel="stylesheet" href="css/search-searchbox.css">
-	<link rel="stylesheet" href="css/buttons.css">
-	<link rel="stylesheet" href="css/angular-animations.css">
-	<link rel="stylesheet" href="css/nouislider-custom.css">
-	<link rel="stylesheet" href="css/psg-btn.css">
-	<link rel="stylesheet" href="css/spinner.css">
-	<link rel="stylesheet" href="./CheloLabs/awesomplete.css">
+		<link rel="stylesheet" href="jqueryui/jquery-ui.css">
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/bootstrap-theme.min.css">
+		<link rel="stylesheet" href="css/hover.css" media="all">
+		<link rel="stylesheet" href="css/main.css">
+		<link rel="stylesheet" href="css/search.css">
+		<link rel="stylesheet" href="css/search-searchbox.css">
+		<link rel="stylesheet" href="css/buttons.css">
+		<link rel="stylesheet" href="css/angular-animations.css">
+		<link rel="stylesheet" href="css/nouislider-custom.css">
+		<link rel="stylesheet" href="css/psg-btn.css">
+		<link rel="stylesheet" href="css/spinner.css">
+		<link rel="stylesheet" href="./CheloLabs/awesomplete.css">
 
-	<style>
-	.row .selected-box{
-		margin-bottom: 20px;
-	}
-	</style>
+		<style>
+			.row .selected-box{
+				margin-bottom: 20px;
+			}
+		</style>
 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
- <script src="extlib/angular.min.js"></script>
-	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-animate.js"></script>
+		<script src="extlib/angular.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-animate.js"></script>
 
-	<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+		<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
 
 
-</head>
+	</head>
 
-<body data-ng-app="flightApp" data-ng-controller="flightCtrl">
-	<header>
-		<div data-ng-include="'./snippets/nav.html'"></div>
-	</header>
+	<body data-ng-app="flightApp" data-ng-controller="flightCtrl">
+		<header>
+			<div data-ng-include="'./snippets/nav.html'"></div>
+		</header>
 
-	<div class="container-fluid">
-		<div class="row">
-			<div class ="col-md-3">
-				<div class="filter-area">
-					<h2> Filtros </h2>
-					<div class="price-filter filter-box">
-						<div class="filter-name"> Precio</div>
+		<div class="container-fluid">
+			<div class="row">
+				<div class ="col-md-3">
+					<div class="filter-area">
+						<h2> Filtros </h2>
+						<div class="price-filter filter-box">
+							<div class="filter-name"> Precio</div>
 
-						<input type="number" data-ng-model="precio" ng-model-options="{debounce: 1000}" id="preciobox"/>
-						<div class="slider-box">
-							<div id="price-slider">
+							<input type="number" data-ng-model="precio" ng-model-options="{debounce: 1000}" id="preciobox"/>
+							<div class="slider-box">
+								<div id="price-slider">
+								</div>
 							</div>
-						</div>
-						<button id="restart-price-btn" class="vda-text-btn">
-							Reestablecer
-						</button>
-					</div>
-
-					<div class="time-filter filter-box">
-						<div class="filter-name"> Horarios</div>
-
-						<div class="filter-section-name">Despegue Ida</div>
-						<div class="depart-time-grid">
-							<div class="depart-time-button" >
-								<img src="img/timestamps/00t06.png" alt="Madrugada" data-dep-time="0" data-ng-click="toggleTimeFilter('dawn', iTimeFilter)"/>
-							</div>
-							<div class="depart-time-button">
-								<img src="img/timestamps/06t12.png" alt="Mañana" data-dep-time="1" data-ng-click="toggleTimeFilter('morn', iTimeFilter)"/>
-							</div>
-							<div class="depart-time-button" >
-								<img src="img/timestamps/12t18.png" alt="Tarde" data-dep-time="2" data-ng-click="toggleTimeFilter('noon', iTimeFilter)"/>
-							</div>
-							<div class="depart-time-button" >
-								<img src="img/timestamps/18t00.png" alt="Noche" data-dep-time="3" data-ng-click="toggleTimeFilter('night', iTimeFilter)"/>
-							</div>
+							<button id="restart-price-btn" class="vda-text-btn">
+								Reestablecer
+							</button>
 						</div>
 
-						<div class="filter-section-name">Despegue Vuelta</div>
-						<div class="depart-time-grid">
+						<div class="time-filter filter-box">
+							<div class="filter-name"> Horarios</div>
 
-							<div class="depart-time-button" >
-								<img src="img/timestamps/00t06.png" alt="Madrugada" data-dep-time="4" data-ng-click="toggleTimeFilter('dawn', vTimeFilter)"/>
+							<div class="filter-section-name">Despegue Ida</div>
+							<div class="depart-time-grid">
+								<div class="depart-time-button" >
+									<img src="img/timestamps/00t06.png" alt="Madrugada" data-dep-time="0" data-ng-click="toggleTimeFilter('dawn', iTimeFilter)"/>
+								</div>
+								<div class="depart-time-button">
+									<img src="img/timestamps/06t12.png" alt="Mañana" data-dep-time="1" data-ng-click="toggleTimeFilter('morn', iTimeFilter)"/>
+								</div>
+								<div class="depart-time-button" >
+									<img src="img/timestamps/12t18.png" alt="Tarde" data-dep-time="2" data-ng-click="toggleTimeFilter('noon', iTimeFilter)"/>
+								</div>
+								<div class="depart-time-button" >
+									<img src="img/timestamps/18t00.png" alt="Noche" data-dep-time="3" data-ng-click="toggleTimeFilter('night', iTimeFilter)"/>
+								</div>
 							</div>
-							<div class="depart-time-button">
-								<img src="img/timestamps/06t12.png" alt="Mañana" data-dep-time="5" data-ng-click="toggleTimeFilter('morn', vTimeFilter)" />
-							</div>
-							<div class="depart-time-button" >
-								<img src="img/timestamps/12t18.png" alt="Tarde" data-dep-time="6" data-ng-click="toggleTimeFilter('noon', vTimeFilter)"/>
-							</div>
-							<div class="depart-time-button" >
-								<img src="img/timestamps/18t00.png" alt="Noche" data-dep-time="7" data-ng-click="toggleTimeFilter('night', vTimeFilter)"/>
+
+							<div class="filter-section-name">Despegue Vuelta</div>
+							<div class="depart-time-grid">
+
+								<div class="depart-time-button" >
+									<img src="img/timestamps/00t06.png" alt="Madrugada" data-dep-time="4" data-ng-click="toggleTimeFilter('dawn', vTimeFilter)"/>
+								</div>
+								<div class="depart-time-button">
+									<img src="img/timestamps/06t12.png" alt="Mañana" data-dep-time="5" data-ng-click="toggleTimeFilter('morn', vTimeFilter)" />
+								</div>
+								<div class="depart-time-button" >
+									<img src="img/timestamps/12t18.png" alt="Tarde" data-dep-time="6" data-ng-click="toggleTimeFilter('noon', vTimeFilter)"/>
+								</div>
+								<div class="depart-time-button" >
+									<img src="img/timestamps/18t00.png" alt="Noche" data-dep-time="7" data-ng-click="toggleTimeFilter('night', vTimeFilter)"/>
+								</div>
 							</div>
 						</div>
-					</div>
 
-					<div class="airport-filter filter-box">
-						<div class="filter-name">Aeropuertos</div>
-						<div class="filter-section-name">Origen</div>
-						<div data-ng-repeat="a in i_Airports">
-							<input type="checkbox" id="aer-o-cbox{{a.id}}" data-ng-click="toggleIAir(a.id)">
-							<label for="aer-o-cbox{{a.id}}">{{a.name}}</label>
-							<br/>
+						<div class="airport-filter filter-box">
+							<div class="filter-name">Aeropuertos</div>
+							<div class="filter-section-name">Origen</div>
+							<div data-ng-repeat="a in i_Airports">
+								<input type="checkbox" id="aer-o-cbox{{a.id}}" data-ng-click="toggleIAir(a.id)">
+								<label for="aer-o-cbox{{a.id}}">{{a.name}}</label>
+								<br/>
+							</div>
+
+							<div class="filter-section-name">Destino</div>
+							<div data-ng-repeat="a in v_Airports">
+								<input type="checkbox" id="aer-v-cbox{{a.id}}" data-ng-click="toggleVAir(a.id)">
+								<label for="aer-v-cbox{{a.id}}">{{a.name}}</label>
+								<br/>
+							</div>
+
 						</div>
 
-						<div class="filter-section-name">Destino</div>
-						<div data-ng-repeat="a in v_Airports">
-							<input type="checkbox" id="aer-v-cbox{{a.id}}" data-ng-click="toggleVAir(a.id)">
-							<label for="aer-v-cbox{{a.id}}">{{a.name}}</label>
-							<br/>
-						</div>
+						<div class="airline-filter filter-box">
+							<div class="filter-name">Aerolíneas</div>
 
-					</div>
-
-					<div class="airline-filter filter-box">
-						<div class="filter-name">Aerolíneas</div>
-
-						<div data-ng-repeat="a in airlines">
-						<input type="checkbox" id="airl-cbox{{a.id}}" data-ng-click="toggleAirline(a.id)" checked="checked" />
-						<label for="airl-cbox{{a.id}}">{{a.name}}</label>
-						<br/>
+							<div data-ng-repeat="a in airlines">
+								<input type="checkbox" id="airl-cbox{{a.id}}" data-ng-click="toggleAirline(a.id)" checked="checked" />
+								<label for="airl-cbox{{a.id}}">{{a.name}}</label>
+								<br/>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
 
-			<div class="col-md-9">
-				<div class="row search-row">
-					<div class="col-md-12">
-						<div class="searchbox">
-							<div class="row idavuelta">
-								<div class="col-md-3">
-									<button data-info="idavuelta" class="vda-text-btn selected-iv"> Ida y vuelta</button>
-									<button data-info="ida" class="vda-text-btn"> Solo ida</button>
+				<div class="col-md-9">
+					<div class="row search-row">
+						<div class="col-md-12">
+							<div class="searchbox">
+								<div class="row idavuelta">
+									<div class="col-md-3">
+										<button data-info="idavuelta" class="vda-text-btn selected-iv"> Ida y vuelta</button>
+										<button data-info="ida" class="vda-text-btn"> Solo ida</button>
+									</div>
+								</div>
+
+								<div class="row search">
+
+									<div id="orig-col" class="col-md-2 no-gutters">
+										<div class="form-group">
+											<input type="text" class="form-control awesomplete" id="origen" placeholder="Ciudad o aeropuerto...">
+										</div>
+										<div id="origen-err" class="formError"></div>
+									</div><!-- /input-group -->
+
+									<div id="dest-col" class="col-md-2 no-gutters">
+										<div class="form-group">
+											<input type="text" class="form-control awesomplete" id="destino" placeholder="Ciudad o aeropuerto...">
+										</div>
+										<div id="destino-err" class="formError"></div>
+
+									</div>
+
+									<div id="date-col-1" class='col-md-2 no-gutters'>
+										<div class="form-group">
+											<div class='input-group date'>
+												<input type='text' class="form-control" id='datepicker1' placeholder='dd/mm/aaaa' />
+											</div>
+										</div>
+										<div id="datepicker1-err" class="formError"></div>
+									</div>
+
+									<div id="date-col-2"  class='col-md-2 no-gutters'>
+										<div class="form-group">
+											<div class='input-group date'>
+												<input type='text' class="form-control" id='datepicker2' autocomplete="off" placeholder='dd/mm/aaaa' />
+											</div>
+										</div>
+										<div id="datepicker2-err" class="formError"></div>
+									</div>
+
+									<div class='col-md-2 passengers no-gutters'>
+										<button type="button" id="psg-dropdown" class="vda-btn dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+											<span class="btn-content">1 Pasajero</span>
+											<span class="caret"></span>
+										</button>
+										<div class="dropdown-menu">
+											<div  class="row passenger-row">
+												<div class="col-md-5">
+													<div class="cat-title">Adultos</div>
+													<div class="cat-info">+ de 13 años</div>
+												</div>
+												<div class="col-md-7">
+													<button type="button" data-sum="minus" data-info="adults" class="vda-btn">-</button>
+													<div class="passenger-number" id="adult-number">1</div>
+													<button type="button" data-sum="plus" data-info="adults" class="vda-btn">+</button>
+												</div>
+											</div>
+											<div id="zero-adults-msg" class="row">
+												Debe haber por lo menos un adulto
+											</div>
+											<div class="row div-line"></div>
+											<div class="row passenger-row">
+												<div class="col-md-5">
+													<div class="cat-title">Niños</div>
+													<div class="cat-info">+ de 2 años</div>
+												</div>
+												<div class="col-md-7">
+													<button type="button" data-sum="minus" class="vda-btn" data-info="children">-</button>
+													<div class="passenger-number" id="child-number">0</div>
+													<button type="button" data-sum="plus"  data-info="children" class="vda-btn">+</button>
+												</div>
+											</div>
+											<div class="row div-line"></div>
+											<div class="row passenger-row">
+												<div class="col-md-5">
+													<div class="cat-title">Infantes</div>
+													<div class="cat-info">0 a 2 años</div>
+
+												</div>
+												<div class="col-md-7">
+													<button type="button" data-sum="minus" data-info="infants" class="vda-btn">-</button>
+													<div class="passenger-number" id="infant-number">0</div>
+													<button type="button" data-sum="plus" data-info="infants" class="vda-btn">+</button>
+												</div>
+											</div>
+											<div class="row div-line"></div>
+											<div class="row">
+												<button type="button" id="ok-btn" class="vda-btn">OK</button>
+											</div>
+										</div>
+									</div>
+
+									<div class="col-md-2 modify-search-btn">
+										<button type="button" class="vda-btn" id="searchButton" aria-label="Buscar">
+											<span class="glyphicon glyphicon-search" aria-hidden="true"></span> BUSCAR
+										</button>
+									</div>
 								</div>
 							</div>
-
-							<div class="row search">
-
-								<div id="orig-col" class="col-md-2 no-gutters">
-									<div class="form-group">
-										<input type="text" class="form-control awesomplete" id="origen" placeholder="Ciudad o aeropuerto...">
-									</div>
-									<div id="origen-err" class="formError"></div>
-								</div><!-- /input-group -->
-
-								<div id="dest-col" class="col-md-2 no-gutters">
-									<div class="form-group">
-										<input type="text" class="form-control awesomplete" id="destino" placeholder="Ciudad o aeropuerto...">
-									</div>
-									<div id="destino-err" class="formError"></div>
-
-								</div>
-
-								<div id="date-col-1" class='col-md-2 no-gutters'>
-									<div class="form-group">
-										<div class='input-group date'>
-											<input type='text' class="form-control" id='datepicker1' placeholder='dd/mm/aaaa' />
-										</div>
-									</div>
-									<div id="datepicker1-err" class="formError"></div>
-								</div>
-
-								<div id="date-col-2"  class='col-md-2 no-gutters'>
-									<div class="form-group">
-										<div class='input-group date'>
-											<input type='text' class="form-control" id='datepicker2' autocomplete="off" placeholder='dd/mm/aaaa' />
-										</div>
-									</div>
-									<div id="datepicker2-err" class="formError"></div>
-								</div>
-
-								<div class='col-md-2 passengers no-gutters'>
-									<button type="button" id="psg-dropdown" class="vda-btn dropdown-toggle" aria-haspopup="true" aria-expanded="false">
-										<span class="btn-content">1 Pasajero</span>
-										<span class="caret"></span>
-									</button>
-									<div class="dropdown-menu">
-										<div  class="row passenger-row">
-											<div class="col-md-5">
-												<div class="cat-title">Adultos</div>
-												<div class="cat-info">+ de 13 años</div>
-											</div>
-											<div class="col-md-7">
-												<button type="button" data-sum="minus" data-info="adults" class="vda-btn">-</button>
-												<div class="passenger-number" id="adult-number">1</div>
-												<button type="button" data-sum="plus" data-info="adults" class="vda-btn">+</button>
-											</div>
-										</div>
-										<div id="zero-adults-msg" class="row">
-											Debe haber por lo menos un adulto
-										</div>
-										<div class="row div-line"></div>
-										<div class="row passenger-row">
-											<div class="col-md-5">
-												<div class="cat-title">Niños</div>
-												<div class="cat-info">+ de 2 años</div>
-											</div>
-											<div class="col-md-7">
-												<button type="button" data-sum="minus" class="vda-btn" data-info="children">-</button>
-												<div class="passenger-number" id="child-number">0</div>
-												<button type="button" data-sum="plus"  data-info="children" class="vda-btn">+</button>
-											</div>
-										</div>
-										<div class="row div-line"></div>
-										<div class="row passenger-row">
-											<div class="col-md-5">
-												<div class="cat-title">Infantes</div>
-												<div class="cat-info">0 a 2 años</div>
-
-											</div>
-											<div class="col-md-7">
-												<button type="button" data-sum="minus" data-info="infants" class="vda-btn">-</button>
-												<div class="passenger-number" id="infant-number">0</div>
-												<button type="button" data-sum="plus" data-info="infants" class="vda-btn">+</button>
-											</div>
-										</div>
-										<div class="row div-line"></div>
-										<div class="row">
-											<button type="button" id="ok-btn" class="vda-btn">OK</button>
-										</div>
-									</div>
-								</div>
-
-								<div class="col-md-2 modify-search-btn">
-									<button type="button" class="vda-btn" id="searchButton" aria-label="Buscar">
-										<span class="glyphicon glyphicon-search" aria-hidden="true"></span> BUSCAR
-									</button>
-								</div>
-							</div>
-						</div>
-					</div> <!-- searchbox -->
-				</div>
+						</div> <!-- searchbox -->
+					</div>
 
 
-				<!-- carousel vuelos baratos -->
+					<!-- carousel vuelos baratos -->
 					<div class="results-carousel">
 						<div class="row">
-						<div class="col-md-1">
-							<button type="button" id="left-car-btn" class="vda-btn"><span class="glyphicon glyphicon-chevron-left"></span></button>
-						</div>
-						<div class="col-md-2">
-							<div class="carousel-flight">
-								<div class="air-name">
-									Aerolínea 1
-								</div>
-								<div class="fl-price">
-									$20
+							<div class="col-md-1">
+								<button type="button" id="left-car-btn" class="vda-btn"><span class="glyphicon glyphicon-chevron-left"></span></button>
+							</div>
+							<div class="col-md-2">
+								<div class="carousel-flight">
+									<div class="air-name">
+										Aerolínea 1
+									</div>
+									<div class="fl-price">
+										$20
+									</div>
 								</div>
 							</div>
-						</div>
-						<div class="col-md-2">
-							<div class="carousel-flight">
-								<div class="air-name">
-									Aerolínea 2
-								</div>
-								<div class="fl-price">
-									$50
-								</div>
-							</div>
-						</div>
-						<div class="col-md-2">
-							<div class="carousel-flight">
-								<div class="air-name">
-									Aerolínea 3
-								</div>
-								<div class="fl-price">
-									$80
+							<div class="col-md-2">
+								<div class="carousel-flight">
+									<div class="air-name">
+										Aerolínea 2
+									</div>
+									<div class="fl-price">
+										$50
+									</div>
 								</div>
 							</div>
-						</div>
-						<div class="col-md-2">
-							<div class="carousel-flight">
-								<div class="air-name">
-									Aerolínea 4
-								</div>
-								<div class="fl-price">
-									$14
-								</div>
-							</div>
-						</div>
-						<div class="col-md-2">
-							<div class="carousel-flight">
-								<div class="air-name">
-									Aerolínea 5
-								</div>
-								<div class="fl-price">
-									$10
+							<div class="col-md-2">
+								<div class="carousel-flight">
+									<div class="air-name">
+										Aerolínea 3
+									</div>
+									<div class="fl-price">
+										$80
+									</div>
 								</div>
 							</div>
-						</div>
-						<div class="col-md-1">
-							<button type="button" id="right-car-btn" class="vda-btn"><span class="glyphicon glyphicon-chevron-right"></span></button>
+							<div class="col-md-2">
+								<div class="carousel-flight">
+									<div class="air-name">
+										Aerolínea 4
+									</div>
+									<div class="fl-price">
+										$14
+									</div>
+								</div>
+							</div>
+							<div class="col-md-2">
+								<div class="carousel-flight">
+									<div class="air-name">
+										Aerolínea 5
+									</div>
+									<div class="fl-price">
+										$10
+									</div>
+								</div>
+							</div>
+							<div class="col-md-1">
+								<button type="button" id="right-car-btn" class="vda-btn"><span class="glyphicon glyphicon-chevron-right"></span></button>
+							</div>
 						</div>
 					</div>
-				</div>
-				<!-- fin carousel -->
+					<!-- fin carousel -->
 
-				<!-- tabla +/- 3 dias -->
-				<div class="collapse" id="3daytable">
-					HOLA!
-					<table class="table table-bordered">
-					</table>
-				</div>
-				<div class="row three-day-row">
-					<div class="col-md-10 col-md-offset-1">
-						<button type="button" class="vda-btn" data-toggle="collapse" data-target="#3daytable" aria-expanded="false" aria-controls="3daytable">+/- 3 días <span class="caret"></span></button>
+					<!-- tabla +/- 3 dias -->
+					<div class="collapse" id="3daytable">
+						HOLA!
+						<table class="table table-bordered">
+						</table>
 					</div>
-				</div>
-				<!-- fin +/- 3 días -->
+					<div class="row three-day-row">
+						<div class="col-md-10 col-md-offset-1">
+							<button type="button" class="vda-btn" data-toggle="collapse" data-target="#3daytable" aria-expanded="false" aria-controls="3daytable">+/- 3 días <span class="caret"></span></button>
+						</div>
+					</div>
+					<!-- fin +/- 3 días -->
 
-				<div class="row sort-options">
-					<div class="col-md-3">
-						<div class="order-by-menu">
-							<label for="orderby-btn">Ordenar por:</label>
-							<div class="btn-group">
-								<button id="orderby-btn" class="vda-btn vda-btn-small dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									Menor precio<span class="caret"></span>
-								</button>
-								<ul class="dropdown-menu" id="order-dropdown">
-									<li><a href="#">Menor Precio</a></li>
-									<li><a href="#">Menor Duración</a></li>
-									<li><a href="#">Mejor Puntaje</a></li>
-								</ul>
+					<div class="row sort-options">
+						<div class="col-md-3">
+							<div class="order-by-menu">
+								<label for="orderby-btn">Ordenar por:</label>
+								<div class="btn-group">
+									<button id="orderby-btn" class="vda-btn vda-btn-small dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+										Menor precio<span class="caret"></span>
+									</button>
+									<ul class="dropdown-menu" id="order-dropdown">
+										<li><a href="#">Menor Precio</a></li>
+										<li><a href="#">Menor Duración</a></li>
+										<li><a href="#">Mejor Puntaje</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-2 col-md-offset-7">
+							<div class="currency-menu">
+								<label for="currency-btn">Moneda:</label>
+								<div class="btn-group">
+									<button id="currency-btn" class="vda-btn vda-btn-small dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+										ARS<span class="caret"></span>
+									</button>
+									<ul class="dropdown-menu" id="currency-dropdown">
+										<li><a href="#">ARS</a></li>
+										<li><a href="#">USD</a></li>
+										<li><a href="#">EUR</a></li>
+										<li><a href="#">REA</a></li>
+									</ul>
+								</div>
 							</div>
 						</div>
 					</div>
-					<div class="col-md-2 col-md-offset-7">
-						<div class="currency-menu">
-							<label for="currency-btn">Moneda:</label>
-							<div class="btn-group">
-								<button id="currency-btn" class="vda-btn vda-btn-small dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									ARS<span class="caret"></span>
-								</button>
-								<ul class="dropdown-menu" id="currency-dropdown">
-									<li><a href="#">ARS</a></li>
-									<li><a href="#">USD</a></li>
-									<li><a href="#">EUR</a></li>
-									<li><a href="#">REA</a></li>
-								</ul>
-							</div>
+					<div class="col-md-12 flight-options-area">
+						<div id="loadImg" class="spinner">
+							<div class="dot1"></div>
+							<div class="dot2"></div>
+						</div>
+						<div id="resultShow" data-ng-include="'./snippets/searchresults.html'">
 						</div>
 					</div>
-				</div>
-				<div class="col-md-12 flight-options-area">
-					<div id="loadImg" class="spinner">
-  					<div class="dot1"></div>
-  					<div class="dot2"></div>
-					</div>
-					<!-- <img id="loadImg" style="padding-top: 250px; padding-left: 48%"src="./CheloLabs/ajax-loader.gif"></img> -->
-					<div
-					id="resultShow" data-ng-include="'./snippets/searchresults.html'">
 				</div>
 			</div>
 		</div>
-	</div>
-</div>
-</div>
+		</div>
 
-<script src="js/main.js"></script>
-<script src="js/moment.js" ></script>
-<script src="jqueryui/jquery-ui.js"></script>
-<script src="jqueryui/uidatepicker-es.js"></script>
-<script src="extlib/wNumb.js"></script>
-<script src="extlib/nouislider.min.js"></script>
-<script src="datepicker.js"></script>
-<script src="js/ng-infinite-scroll.js"></script>
-<script src="search-page-script.js"></script>
-<script src="flight-select.js"></script>
-<script src="search-setup.js"></script>
-<script src="prengsearch.js"></script>
-<script src="ngsearch3.js"></script>
-<script src="js/vendor/bootstrap.min.js"></script>
-<script src="CheloLabs/awesomplete.js"></script>
-<script src="CheloLabs/acomplete.js"></script>
-<script src="js/searchbox.js"></script>
-<script src="indexScript.js"></script>
-<script src="js/main.js"></script>
-<script src="js/moment.js"></script>
-<script src="jqueryui/jquery-ui.js"></script>
-<script src="jqueryui/uidatepicker-es.js"></script>
-<script src="datepicker.js"></script>
-<script src="psg-btn.js"></script>
-</body>
+	<script src="js/main.js"></script>
+	<script src="js/moment.js" ></script>
+	<script src="jqueryui/jquery-ui.js"></script>
+	<script src="jqueryui/uidatepicker-es.js"></script>
+	<script src="extlib/wNumb.js"></script>
+	<script src="extlib/nouislider.min.js"></script>
+	<script src="datepicker.js"></script>
+	<script src="js/ng-infinite-scroll.js"></script>
+	<script src="search-page-script.js"></script>
+	<script src="flight-select.js"></script>
+	<script src="search-setup.js"></script>
+	<script src="prengsearch.js"></script>
+	<script src="ngsearch3.js"></script>
+	<script src="js/vendor/bootstrap.min.js"></script>
+	<script src="CheloLabs/awesomplete.js"></script>
+	<script src="CheloLabs/acomplete.js"></script>
+	<script src="js/searchbox.js"></script>
+	<script src="indexScript.js"></script>
+	<script src="js/main.js"></script>
+	<script src="js/moment.js"></script>
+	<script src="jqueryui/jquery-ui.js"></script>
+	<script src="jqueryui/uidatepicker-es.js"></script>
+	<script src="datepicker.js"></script>
+	<script src="psg-btn.js"></script>
+	</body>
 </html>

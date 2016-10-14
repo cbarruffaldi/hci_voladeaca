@@ -18,11 +18,11 @@
 		<link rel="stylesheet" href="css/index-searchbox.css">
 		<link rel="stylesheet" href="css/buttons.css">
 		<link rel="stylesheet" href="css/psg-btn.css">
-
+		<link rel="stylesheet" href="css/spinner.css">
 
 		<script src="extlib/angular.min.js"></script>
 		<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
-		
+
 	</head>
 	<body data-ng-app="promoApp" data-ng-controller="promoCtrl">
 		<header>
@@ -187,25 +187,12 @@
 					</div>
 
 					<div class="row results-area">
-						<div class="col-md-4">
-							<div data-ng-repeat="p in promos">
-								<h3>{{p}}</h3>
-							</div>
-							<!--
-							<div class="result-box">
-								<img class="place-img" src="austria.jpg"/>
-								<div class="promo-text">
-									<div class="promo-dest">
-										Austria
-									</div>
-									<div class="promo-info">
-										desde $100 por persona
-									</div>
-								</div>
-							</div>
--->
+						<div id="loadImg" style="visibility:hidden" class="spinner">
+							<div class="dot1"></div>
+							<div class="dot2"></div>
 						</div>
-						
+						<div id="promoResultShow" data-ng-include="'./snippets/promoresults.html'">
+						</div>
 					</div>
 
 				</div>

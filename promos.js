@@ -56,6 +56,9 @@ app2.controller("promoCtrl", function($scope, $http) {
 
 		console.log(query);
 		if (completedSelection) {
+			$("#loadImg").css('visibility', 'visible');
+			$("#loadImg").show();
+			$("#promoResultShow").hide();
 			sendPromoSearch(query)
 		}
 
@@ -79,6 +82,8 @@ app2.controller("promoCtrl", function($scope, $http) {
 		var dur = promosInfo[query.duration];
 		var vdate = promosInfo[query.month].toString() + (dur > 8 ? "" : "0") + (1 + dur).toString();
 
+		$scope.promos = {};
+		$scope.containers = [];
 		for (var des of promosInfo[query.dest]) {
 			fetchPromo(idate, vdate, "EZE", des);
 		}
@@ -105,29 +110,46 @@ app2.controller("promoCtrl", function($scope, $http) {
 				url: vURL
 			}).then(function success(vresponse){
 				process(response, vresponse);
-				console.log($scope.containers); // tira cualquiera
+				$scope.promos = getCheapestFlights($scope.containers);
+				$("#promoResultShow").show();
+				$("#loadImg").hide();
 			},
 							function errorCallback(response){
 				console.log("Error in response");
 			}
 						 )
-		
 
-						}, function errorCallback(response) {
+
+		}, function errorCallback(response) {
 			console.log("Error in response");
 		});
 
 	}
 
 
-	function addCheapestFlight() {
-		//		var cheapest = $scope.containers[0];
-		//		for (c of $scope.containers) {
-		//			if (c.precio < cheapest.precio)
-		//				cheapest = c;
-		//		}
-		//		$scope.promos.push($scope.containers[0]);
-		console.log("Conts: " + $scope.containers);
+	function getCheapestFlights(containers) {
+		var f = {};
+		if (containers.length == 0)
+			return f;
+
+		for (var co of containers) {
+			var city = destCityName(co);
+			if (f[city]) {
+				if (co.precio < f[city].precio)
+					f[city] = co;
+			}
+			else {
+				f[city] = co;
+			}
+			f[city].shortName = city;
+		}
+
+		return f;
+	}
+
+	function destCityName(container) {
+		var longname = container.flights[0].flight.arrivalAirport.city.name;
+		return longname.substr(0, longname.indexOf(','));
 	}
 
 	function process(response, vresponse){
