@@ -55,7 +55,6 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 							url: vURL
 						}).then(function success(vresponse){
 							process(response, vresponse);
-							console.log("CONTS: " + $scope.containers);
 							$("#resultShow").show();
 							$("#loadImg").hide();
 						},
@@ -104,6 +103,10 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 			if($scope.maxprice){
 				pass = pass && (container.price.total.total <= $scope.maxprice)
 			}
+			if($scope.minprice){
+				pass = pass && (container.price.total.total >= $scope.minprice)
+			}
+
 
 			return pass;
 		};
@@ -167,8 +170,10 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 					var price = c.price.total.total;
 					if(!minPrice || price < minPrice){
 						minPrice = price;
+						console.log(price);
+						console.log("container: "); console.log(c);
 					}
-					else if(!maxPrice || maxPrice < price){
+					if(!maxPrice || maxPrice < price){
 						maxPrice = price;
 					}
 
@@ -285,7 +290,7 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 
 
 		function mergePrices(p, q){
-			var price = {}
+			var price = { total : {}}
 	
 		  if(p.adults){
 				price.adults = p.adults;
@@ -300,11 +305,10 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 				price.infants.base_fare += q.infants.base_fare;
 			}
 
-			price.total = p.total
-			price.total.charges += q.total.charges;
-			price.total.fare += q.total.fare;
-			price.total.taxes += q.total.taxes;
-			price.total.total += q.total.total;
+			price.total.charges = parseInt(p.total.charges) + parseInt(q.total.charges);
+			price.total.fare = parseInt(p.total.fare) + parseInt(q.total.fare);
+			price.total.taxes = parseInt(p.total.taxes) + parseInt(q.total.taxes);
+			price.total.total = parseInt(p.total.total) + parseInt(q.total.total);
 
 			return price;
 		}
