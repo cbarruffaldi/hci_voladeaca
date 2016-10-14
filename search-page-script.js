@@ -52,28 +52,4 @@ jQuery(document).ready(function(){
 
 
 
-	var handlesSlider = document.getElementById('price-slider');
-
-	noUiSlider.create(handlesSlider, {
-		start: [ 0, 10000],
-		margin: ((10000 - 0) * 0.25),
-		connect: true,
-		tooltips: [wNumb({decimals: 0, prefix: "Desde: $"}), wNumb({decimals: 0, prefix: "Hasta: $"})],
-		range: {
-			'min': [0],
-			'max': [10000]
-		},
-		step: 100,
-	});
-
-	$("#restart-price-btn").on("click", function(){
-		handlesSlider.noUiSlider.reset();
-	});
-
-	handlesSlider.noUiSlider.on('update', function(){
-		var max = handlesSlider.noUiSlider.get()[1];
-		$("#preciobox").val(max);
-	});
-
-
 });
