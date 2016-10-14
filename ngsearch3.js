@@ -55,6 +55,7 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 							url: vURL
 						}).then(function success(vresponse){
 							process(response, vresponse);
+							console.log("CONTS: " + $scope.containers);
 							$("#resultShow").show();
 							$("#loadImg").hide();
 						},

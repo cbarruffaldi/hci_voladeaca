@@ -1,9 +1,5 @@
 <!doctype html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
-<!--[if gt IE 8]><!-->
-<html data-ng-app class="no-js" lang=""> <!--<![endif]-->
+<html lang="es">
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -26,10 +22,9 @@
 
 		<script src="extlib/angular.min.js"></script>
 		<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
-		<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
-
+		
 	</head>
-	<body>
+	<body data-ng-app="promoApp" data-ng-controller="promoCtrl">
 		<header>
 			<div data-ng-include="'./snippets/nav.html'"></div>
 		</header>
@@ -164,36 +159,54 @@
 
 			<!-- <div class="body-contents"> -->
 
-			<div class="container">
+			<div class="container-fluid">
 				<div class="row content">
 					<div class="promos">
 						<div class="titulo">Explorar promociones</div>
 						<h4>Elegí la <strong>fecha</strong>, la <strong> duración</strong> y el <strong>destino</strong> del viaje que buscás</h4>
 					</div>
 					<div class="row botonera promo_month">
-						<button type="button" class="vda-btn btn-month" data-promo="8" id="AUG">Agosto</button>
-						<button type="button" class="vda-btn btn-month" data-promo="9" id="SEPT">Septiembre</button>
-						<button type="button" class="vda-btn btn-month" data-promo="10" id="OCT"> Octubre</button>
-						<button type="button" class="vda-btn btn-month" data-promo="11" id="NOV">Noviembre</button>
+						<button type="button" class="vda-btn btn-month" data-promo="8" data-month="Noviembre">Noviembre</button>
+						<button type="button" class="vda-btn btn-month" data-promo="9" data-month="Diciembre">Diciembre</button>
+						<button type="button" class="vda-btn btn-month" data-promo="10" data-month="Enero-2017"> Enero 2017</button>
+						<button type="button" class="vda-btn btn-month" data-promo="11" data-month="Febrero-2017">Febrero 2017</button>
 					</div>
 
-					<div class="row botonera" id="promo_week">
-						<button type="button" class="vda-btn btn-week disabled" data-promo="0" id="2w">Fin de semana</button>
-						<button type="button" class="vda-btn btn-week disabled" data-promo="1" id="3w">Una semana</button>
-						<button type="button" class="vda-btn btn-week disabled" data-promo="2" id="4w">Dos semanas</button>
-						<button type="button" class="vda-btn btn-week disabled" data-promo="3" id="5w">¡Cualquier momento!</button>
-
+					<div class="row botonera" id="promo_duration">
+						<button type="button" class="vda-btn btn-duration disabled" data-promo="0" data-duration="weekend">Fin de semana</button>
+						<button type="button" class="vda-btn btn-duration disabled" data-promo="1" data-duration="week">Una semana</button>
+						<button type="button" class="vda-btn btn-duration disabled" data-promo="2" data-duration="twoweeks">Dos semanas</button>
 					</div>
 
 
 					<div class="row botonera" id="promo_dest">
-						<button type="button" class="vda-btn btn-dest disabled" data-promo="0" id="pb">Playas de Brasil</button>
-						<button type="button" class="vda-btn btn-dest disabled" data-promo="1" id="pp">Paris</button>
-						<button type="button" class="vda-btn btn-dest disabled" data-promo="2" id="lon">Londres</button>
-						<button type="button" class="vda-btn btn-dest disabled" data-promo="3" id="mun">Munich</button>
+						<button type="button" class="vda-btn btn-dest disabled" data-promo="0" data-dest="Brasil">Playas de Brasil</button>
+						<button type="button" class="vda-btn btn-dest disabled" data-promo="1" data-dest="Europa">Europa</button>
+						<button type="button" class="vda-btn btn-dest disabled" data-promo="2" data-dest="EEUU">EEUU</button>
+						<button type="button" class="vda-btn btn-dest disabled" data-promo="3" data-dest="Argentina">Argentina</button>
 					</div>
 
-					<div class="row botonera" id="showInfo"></div>
+					<div class="row results-area">
+						<div class="col-md-4">
+							<div data-ng-repeat="p in promos">
+								<h3>{{p}}</h3>
+							</div>
+							<!--
+							<div class="result-box">
+								<img class="place-img" src="austria.jpg"/>
+								<div class="promo-text">
+									<div class="promo-dest">
+										Austria
+									</div>
+									<div class="promo-info">
+										desde $100 por persona
+									</div>
+								</div>
+							</div>
+-->
+						</div>
+						
+					</div>
 
 				</div>
 			</div>
@@ -218,7 +231,7 @@
 
 		<script src="js/main.js"></script>
 		<script src="js/moment.js"></script>
-
+		<script src="promos.js"></script>
 		<script src="jqueryui/jquery-ui.js"></script>
 		<script src="jqueryui/uidatepicker-es.js"></script>
 		<script src="datepicker.js"></script>
