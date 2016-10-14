@@ -26,7 +26,7 @@
 		margin-bottom: 20px;
 	}
 	</style>
-	
+
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
  <script src="extlib/angular.min.js"></script>
@@ -119,7 +119,7 @@
 						<div class="filter-name">Aerolíneas</div>
 
 						<div data-ng-repeat="a in airlines">
-						<input type="checkbox" id="airl-cbox{{a.id}}" data-ng-click="toggleAirline(a.id)" />
+						<input type="checkbox" id="airl-cbox{{a.id}}" data-ng-click="toggleAirline(a.id)" checked="checked" />
 						<label for="airl-cbox{{a.id}}">{{a.name}}</label>
 						<br/>
 						</div>

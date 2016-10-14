@@ -1,6 +1,6 @@
 				<!-- <div data-ng-repeat="c in containers"> -->
-				  <div infinite-scroll='loadMore()' infinite-scroll-distance='2'>
-					<div class="row flight-box" data-ng-repeat="c in containers | filter: filterFn | limitTo: scrollLimit | orderBy: '-precio'">
+				  <div infinite-scroll='loadMore()' infinite-scroll-distance='1'>
+					<div class="row flight-box" data-ng-repeat="c in containers | filter: filterFn | orderBy: '-precio' | limitTo: scrollLimit">
 						<div class="col-md-10 flight-info">
 						<div data-ng-repeat="t in c.flights">
 							<div class="row airports-line-info">

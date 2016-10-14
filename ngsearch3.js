@@ -8,7 +8,7 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 		$scope.scrollLimit = 10;
 		
 		$scope.loadMore = function(){
-			$scope.scrollLimit += 7;
+			$scope.scrollLimit += 5;
 		}
 
 		function getURLParameter(name) {
@@ -85,12 +85,12 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 			}
 
 			var airlinePass = true;
-			if(activeAirlineFilter()){
+		//	if(activeAirlineFilter()){
 				airlinePass = $scope.airlineFilter[flight1.airline.id];
 				if(flight2){
-					pass = airlinePass || $scope.airlineFilter[flight2.airline.id];
+					airlinePass = airlinePass || $scope.airlineFilter[flight2.airline.id];
 				}
-			}
+		//	}
 			pass = pass && airlinePass;
 
 
@@ -159,7 +159,7 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 			for(var i in filter){
 				console.log(filter);
 				if($scope.airlineFilter[filter[i].id] === undefined){
-					$scope.airlineFilter[filter[i].id] = false;
+					$scope.airlineFilter[filter[i].id] = true;
 					$scope.airlines.push(filter[i]);
 				}
 			}
