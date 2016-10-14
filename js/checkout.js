@@ -68,6 +68,7 @@ $(document).ready(function() {
             } 
             else if(indexTab == 1) {
                 fillPaymentSum(validator.getData());
+                fillBillingSum(validator.getData());
             }
         }
     });
@@ -223,14 +224,19 @@ $(document).ready(function() {
 function addName(name, obj) {
     obj.append('<h5 class="sum-passname">' + name + '</h5>');
 }
+
 function addPassData(country, doctype, docnum, gen, birth, obj){
-    var x1 = '<div class="sum-field">' + country + ' ' + doctype + ':'+ docnum +'</div>';
-    var x2 = '<div class="sum-field">' + gen + ' ' + birth +'</div>';
-    var x3 = '<a href="#" class="col-md-offset-9 sum-modal" data-toggle="modal" data-target="#modify-modal">Modificar...</a>';
+    var x1 = '<div class="sum-field col-md-6">' + country + '</div>';
+    var x2 = '<div class="sum-field col-md-6">' + doctype + ':'+ docnum +'</div>';
+    var x3 = '<div class="sum-field col-md-6">' + gen + '</div>';
+    var x4 = '<div class="sum-field col-md-6">' + birth +'</div>';
+    var x5 = '<a href="#" class="col-md-offset-9 sum-modal" data-toggle="modal" data-target="#modify-modal">Modificar...</a>';
 
     obj.append(x1);
     obj.append(x2);
     obj.append(x3);
+    obj.append(x4);
+    obj.append(x5);
 }
 
 var SUM_PASSENGERS = '.summary-passengers';
@@ -274,6 +280,7 @@ function saveModal(validator) {
     }
     else if (summaryStage == 1) {
         fillPaymentSum(validator.getData());
+        fillBillingSum(validator.getData());
     }
     closeModal();
 }
@@ -315,9 +322,23 @@ function fillPassengerSum(data) {
 }
 
 function addPaymentData(card, installments, expdate, secCode,obj){
-    var x1 = '<div class="sum-field">' + card+ '</div>';
-    var x2 = '<div class="sum-field">' + secCode + ' ' + expdate +'</div>';
-    var x3 = '<div class="sum-field">' +'Cuotas: '+ installments+'</div>';
+    var x1 = '<div class="sum-field col-md-12">' + card+ '</div>';
+    var x2 = '<div class="sum-field col-md-6">' + secCode +'</div>';
+    var x3 = '<div class="sum-field col-md-6"">' + expdate +'</div>';
+    var x4 = '<div class="sum-field col-md-12">' +'Cuotas: '+ installments+'</div>';
+    var x5 = '<a href="#" class="col-md-offset-9 sum-modal" data-toggle="modal" data-target="#modify-modal">Modificar...</a>';
+
+    obj.append(x1);
+    obj.append(x2);
+    obj.append(x3);
+    obj.append(x4);
+    obj.append(x5);
+}
+
+function addBillingData(country, street ,zipcode, floor, department, obj){
+    var x1 = '<div class="sum-field col-md-12">' + country + '</div>';
+    var x2 = '<div class="sum-field col-md-12"">' + street +'</div>';
+    var x3 = '<div class="sum-field col-md-12">' +floor + 'º ' + department+ ' ' + zipcode +'</div>';
     var x4 = '<a href="#" class="col-md-offset-9 sum-modal" data-toggle="modal" data-target="#modify-modal">Modificar...</a>';
 
     obj.append(x1);
@@ -326,7 +347,10 @@ function addPaymentData(card, installments, expdate, secCode,obj){
     obj.append(x4);
 }
 
-
 function fillPaymentSum(data) {
     addPaymentData(data["card-num"],data["installments"],data["exp-month"] + '/' + data["exp-year"], data["sec-code"],$(".summary-payment"));
+}
+
+function fillBillingSum(data){
+    addBillingData(data["country"]+ ', ' + data["prov"] + ', ' + data["city"], data["street"]+ ' ' + data["addr-num"],data["zip-code"],data["floor"], data["department"], $(".summary-billing"));
 }

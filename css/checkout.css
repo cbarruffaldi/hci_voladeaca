@@ -26,7 +26,6 @@
 
 .sum-field {
     text-align: justify;
-    word-spacing: 30px;
     max-width: 100%;
     overflow-wrap: break-word;
 
@@ -192,5 +191,10 @@ label {
 .glyphicon.glyphicon-minus-sign{
     font-size: medium;
     color: red;
+}
+
+#modify-modal .modal-dialog{
+    width: 60%;
+
 }
 
