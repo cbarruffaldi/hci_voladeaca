@@ -15,6 +15,25 @@ app.controller("flightCtrl", function($scope, $http, $window) {
   			return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [null, ''])[1].replace(/\+/g, '%20')) || null;
 		}
 
+		function fillAirlines(){
+			$http({
+			 	method: 'GET',
+  				url: 'http://hci.it.itba.edu.ar/v1/api/misc.groovy?method=getairlines'}
+  				).then(function successCallback(response){
+  					console.log("response1")
+  					console.log(response);
+					$scope.airlineLogos = {};
+					for(var i in response.data.airlines){
+						$scope.airlineLogos[response.data.airlines[i].id] = response.data.airlines[i].logo;
+					}
+		});
+
+		}
+		
+
+		$scope.getLogo = function(id){
+			return $scope.airlineLogos[id];
+		}
 
 		function fetch(){
 			var orig = getURLParameter("orig");
@@ -400,7 +419,7 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 	});
 }
 
-
+	fillAirlines();
 	fetch();
 
 });
