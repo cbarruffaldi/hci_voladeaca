@@ -401,26 +401,32 @@ function fillBillingSum(data){
 
 /* Eleccion de paises */
 
-var stocks = new Bloodhound({
-    datumTokenizer: function(d) { return Bloodhound.tokenizers.whitespace(d.code); },
-    queryTokenizer: Bloodhound.tokenizers.whitespace,
-    limit: 3,
-    prefetch: {
-        url: 'countrycode.json',
-        filter: function(list) {
-            return $.map(list, function(stock) { return { code: stock.code, name: stock.name }; });
+$(document).ready(function () {
+    var stocks = new Bloodhound({
+        datumTokenizer: function (d) {
+            return Bloodhound.tokenizers.whitespace(d.code);
+        },
+        queryTokenizer: Bloodhound.tokenizers.whitespace,
+        limit: 3,
+        prefetch: {
+            url: 'countrycode.json',
+            filter: function (list) {
+                return $.map(list, function (stock) {
+                    return {code: stock.code, name: stock.name};
+                });
+            }
         }
-    }
-});
+    });
 
-stocks.initialize();
+    stocks.initialize();
 
-$('.typeahead').typeahead(null, {
-    name: 'stocks',
-    displayKey: function(stock) {
-        return stock.name;
-    },
-    source: stocks.ttAdapter()
-}).on('typeahead:selected', function(event, data) {
-    console.log(data.code)
+    $('.typeahead').typeahead(null, {
+        name: 'stocks',
+        displayKey: function (stock) {
+            return stock.name;
+        },
+        source: stocks.ttAdapter()
+    }).on('typeahead:selected', function (event, data) {
+        console.log(data.code)
+    });
 });
