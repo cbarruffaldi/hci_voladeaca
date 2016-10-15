@@ -197,7 +197,7 @@ function validateMonth(m) {
 function validateYear(y) {
 	if (y.length == 0)
 		return invalidValidation('Año obligatorio');
-	if (!isNumber(y) || y < 1900)
+	if (!isNumber(y) || y < 1880)
 		return invalidValidation('Año inválido');
 	return validValidation(y);
 }
@@ -307,6 +307,49 @@ function validateCreditCardAPI(number, expDate, secCod) {
     return valid;
 }
 
+function validateDate(day, month, year) {
+    var birthDate = new Date(year, month - 1, day);
+
+    if (birthDate.getMonth()+1 != month)
+        return invalidValidation('Fecha inválida');
+
+    return validValidation();    	
+}
+
+var ADULT_YEAR = 11;
+var INFANT_YEAR = 2;
+
+function validateAdultDate(day, month, year, travelDate) {
+	var birthDate = new Date(year, month - 1, day);
+	var maxBirthDate = new Date(travelDate);
+	maxBirthDate.setFullYear(maxBirthDate.getFullYear() - ADULT_YEAR);
+
+	if (birthDate > maxBirthDate)
+		return invalidValidation('Fecha inválida de adulto');
+
+	return validValidation();
+}
+
+function validateInfantDate(day, month, year, travelDate) {
+	var birthDate = new Date(year, month - 1, day);
+	var minBirthDate = new Date(travelDate);
+	minBirthDate.setFullYear(minBirthDate.getFullYear() - INFANT_YEAR);
+
+	if (birthDate < minBirthDate || birthDate > travelDate)
+		return invalidValidation('Fecha inválida de infante');
+
+	return validValidation();
+}
+
+function validateChildDate(day, month, year, travelDate) {
+	var birthDate = new Date(year, month - 1, day);
+
+	if (validateAdultDate(day, month, year) || validateChildDate(day, month, year) || birthDate > travelDate)
+		return invalidValidation('Fecha inválida de niño');
+
+	return validValidation();
+}
+
 /* VALIDADORES 
 ** Métodos públicos: 
 ** 
@@ -328,31 +371,97 @@ function validateCreditCardAPI(number, expDate, secCod) {
 ** lo que pinte.
 */
 
-/* TODO: cantidad de adultos, infantes y niños */
-function PassengerValidator() {
 
-	/* Son de clase porq quizás cuando haya más pasajeros haya que concatenar
-	** las constantes con algún identificador más */
-	this.validateBirthDay = function(d) {
-		var validation = validateDay(d);
-		
-		return manageBirthErrors(validation, BIRTH_DAY, ERROR_BIRTH_DAY);
+/* cantidad de adultos, niños, infantes y fecha de finalización de viaje */
+function PassengersValidator(ad, ch, inf, travelDate) {
+
+	this.passengerValidators = [];
+	this.adults = ad;
+	this.childs = ch;
+	this.infants = inf;
+
+	this.amount = 0;
+
+	while (ad--)
+		this.passengerValidators.push(new PassengerValidator(validateAdultDate, travelDate, this.amount++));
+	
+	while (ch--)
+		this.passengerValidators.push(new PassengerValidator(validateChildDate, travelDate, this.amount++));
+
+	while (inf--)
+		this.passengerValidators.push(new PassengerValidator(validateInfantDate, travelDate, this.amount++));
+
+	this.getData = function() {
+		var data = [];
+
+		this.passengerValidators.forEach(function(passValidator) {
+			data.push(passValidator.getData());
+		});
+
+		return data;
 	}
 
-	this.validateBirthMonth = function(m) {
-		var validation = validateMonth(m);
-		
-		return manageBirthErrors(validation, BIRTH_MONTH, ERROR_BIRTH_MONTH);
+	this.validate = function(id, value) {
+		var split = id.split('-');
+		var passId = split.pop();
+
+		return this.passengerValidators[passId].validate(split.join('-'), value);
 	}
 
-	this.validateBirthYear = function(y) {
-		var validation = validateYear(y);
-		
-		return manageBirthErrors(validation, BIRTH_YEAR, ERROR_BIRTH_YEAR);
+	this.validateStage = function() {
+		var valid = true;
+
+		this.passengerValidators.forEach(function(passValidator) {
+			if(!passValidator.validateStage())
+				valid = false;
+		});
+
+		return valid;
 	}
+
+	this.generateBackup = function() {
+		this.passengerValidators.forEach(function(passValidator) {
+			passValidator.generateBackup();
+		});
+	}
+
+	this.applyBackup = function() {
+		this.passengerValidators.forEach(function(passValidator) {
+			passValidator.applyBackup();
+		});		
+	}
+}
+
+function PassengerValidator(validateFunction, trDate, passId) {
 
 	/* Mapa id-->función. Las que tienen función null es porque no son input, sino de selección 
 	** (no hay que validar) */
+
+    this.data = {};
+    this.backup = {};
+    this.validDate = false;
+    this.travelDate = trDate;
+    this.validateBirthCategory = validateFunction;
+    this.passengerId = passId;
+
+	this.validateBirthDay = function(d, passengerId) {
+		var validation = validateDay(d);
+		
+		return manageBirthErrors(validation, BIRTH_DAY + '-' + passengerId, ERROR_BIRTH_DAY + '-' + passengerId);
+	}
+
+	this.validateBirthMonth = function(m, passengerId) {
+		var validation = validateMonth(m);
+		
+		return manageBirthErrors(validation, BIRTH_MONTH + '-' + passengerId, ERROR_BIRTH_MONTH + '-' + passengerId);
+	}
+
+	this.validateBirthYear = function(y, passengerId) {
+		var validation = validateYear(y);
+		
+		return manageBirthErrors(validation, BIRTH_YEAR + '-' + passengerId, ERROR_BIRTH_YEAR + '-' + passengerId);
+	}
+
 	this.inputValidations = {	'usr-name': validateName,
                                 'usr-lname': validateName,
                                 'usr-docnum': validateDocNum,
@@ -363,20 +472,17 @@ function PassengerValidator() {
                                 'usr-country': null,
                                 'usr-gen': null };
 
-    this.data = {};
-    this.backup = {};
-    this.validDate = false;
 
     this.getData = function() {
     	return this.data;
     }
 
     this.generateBackup = function() {
-    	this.backup = $.extend(true, {}, this.data);
+    	this.backup = $.extend(true, {}, this.getData());
     }
 
     this.applyBackup = function() {
-    	for (prop in this.backup) {
+    	for (var prop in this.backup) {
     		var form = $('#' + prop)
     		this.data[prop] = this.backup[prop];
     		form.val(this.data[prop]);
@@ -395,18 +501,17 @@ function PassengerValidator() {
     	return id ==  BIRTH_DAY || id == BIRTH_MONTH || id == BIRTH_YEAR;
     }
 
- 	/* TODO: Validar niño e infante */
-    this.validateBirthDate = function() {
-	    var birthDate = new Date(this.data[BIRTH_YEAR], this.data[BIRTH_MONTH] - 1, this.data[BIRTH_DAY]);
-	    var currentDate = new Date();
+    this.validateBirthDate = function(day, month, year) {
+    	this.validDate = false;
 
-	    if (birthDate > currentDate || (birthDate.getMonth()+1 != this.data[BIRTH_MONTH])) {
-	    	this.validDate = false;
-	        return invalidValidation('Fecha inválida');
-	    }
+    	var validation = validateDate(day, month, year);
 
-	    this.validDate = true;
-	    return validValidation();
+    	if (validation.valid) {
+    		validation = this.validateBirthCategory(day, month, year, this.travelDate);
+    		this.validDate = validation.valid;
+    	}
+
+    	return validation;
     }
 
     this.validate = function(id, value) {
@@ -418,16 +523,17 @@ function PassengerValidator() {
     	this.data[id] = null;
  
     	if (validateFunction) {
-    		validation = validateFunction(value);
+    		validation = validateFunction(value, this.passengerId);
  
     		if (validation.valid) {
     			this.data[id] = validation.value; /* agregamos a los datos */
 
     			if (this.birthDateReady() && this.birthId(id)) {
-    				validation = this.validateBirthDate();
+    				validation = this.validateBirthDate(this.data[BIRTH_DAY], this.data[BIRTH_MONTH], this.data[BIRTH_YEAR]);
+    				this.validDate = validation.valid;
 
     				if (!validation.valid) {/* Pone en rojo todos los campos de cumpleaños */
-    					var $focused = $('#' + id);
+    					var $focused = $('#' + id + '-' + this.passengerId);
     					$focused.siblings('input').addClass(ERROR_INPUT);
 	    				$focused.addClass(ERROR_INPUT);
 	    			}
@@ -444,7 +550,7 @@ function PassengerValidator() {
     	/* Es necesario que se llame a validateStep pues coloca los mensaje de campo obligatorio,
     	** más allá de que la fecha sea válida o no. Sino podría devolver un arreglo con los ids
     	** de los campos no llenados. */
-    	return validateStep(this.data, this.inputValidations) && this.validDate;
+    	return validateStep(this.data, this.inputValidations, undefined, this.passengerId) && this.validDate;
     }
 }
 
@@ -509,11 +615,11 @@ function PaymentCardValidator() {
 	}
 
     this.generateBackup = function() {
-    	this.backup = $.extend(true, {}, this.data);
+    	this.backup = $.extend(true, {}, this.getData());
     }
 
     this.applyBackup = function() {
-    	for (prop in this.backup) {
+    	for (var prop in this.backup) {
     		var form = $('#' + prop)
     		this.data[prop] = this.backup[prop];
     		form.val(this.data[prop]);
@@ -619,11 +725,11 @@ function PaymentAddressValidator() {
 	}
 
     this.generateBackup = function() {
-    	this.backup = $.extend(true, {}, this.data);
+    	this.backup = $.extend(true, {}, this.getData());
     }
 
     this.applyBackup = function() {
-    	for (prop in this.backup) {
+    	for (var prop in this.backup) {
     		var form = $('#' + prop)
     		this.data[prop] = this.backup[prop];
     		form.val(this.data[prop]);
@@ -695,41 +801,90 @@ function PaymentValidator() {
 	}
 }
 
-/* TODO: tema telefonos */
-function ContactValidator() {
-	this.inputValidations = { 'phone': validatePhone,
-							  'email': validateEmail
-							}
 
-	this.data = {};
-    this.backup = {};
+function ContactValidator() {
+
+	this.email;
+    this.phones = {'phone-0': undefined}; /* pares id: teléfono*/
+
+    this.backupEmail;
+    this.backupPhones = {};
+
+	this.phoneId = function(id) {
+		return id != 'email';
+	}
+
+    this.addPhone = function(id) {
+    	this.phones['phone-' + id] = undefined;
+    }
+
+    this.removePhone = function(id) {
+    	delete this.phones['phone-' + id];
+    }
+    this.getBackupPhones = function() {
+    	return this.backupPhones;
+    }
 
     this.generateBackup = function() {
-    	this.backup = $.extend(true, {}, this.data);
+    	this.backupPhones = $.extend(true, {}, this.phones);
+    	this.backupEmail = this.email;
     }
 
     this.applyBackup = function() {
-    	for (prop in this.backup) {
+    	this.phones = {};
+
+    	for (var prop in this.backupPhones) {
     		var form = $('#' + prop)
-    		this.data[prop] = this.backup[prop];
+    		this.phones[prop] = this.backupPhones[prop];
     		form.val(this.data[prop]);
     		removeErrorState(form);
     		form.siblings('.error-msg').hide();
     	}
 
+    	this.email = this.backupEmail;
+
+    	var form = $('#email')
+    	form.val(this.email);
+    	removeErrorState(form);
+    	form.siblings('.error-msg').hide();
+
     	this.backup = {};
     }
 
 	this.getData = function() {
-		return this.data;
+		var data = {'email': this.email, 'phones': []};
+		for (var prop in this.phones)
+			data['phones'].push(phones[prop]);
+		return data;
 	}
 
 	this.validate = function(id, value) {
-		return validValidation(value);
+		var validation;
+		if (id.includes('phone')) {
+			this.phones[id] = null;
+			validation = validatePhone(value);
+			if (validation.valid)
+				this.phones[id] = validation.value;
+		}
+		else if (id == 'email') {
+			this.email = null
+			validation = validateEmail(value);
+			if (validation.valid)
+				this.email = validation.value;
+		}
+
+		return validation;
+	}
+
+	this.invalidPhones = function() {
+		for(var prop in this.phones)
+			if (this.phones[prop] == null)
+				return true;
 	}
 
 	this.validateStage = function() {
-		return true;
+		var valid = validateStep(this.phones, this.phones) && !this.invalidPhones();
+		return validateStep({'email': this.email}, {'email': this.email}) && valid;
 	}
 }
 
@@ -738,7 +893,7 @@ function ContactValidator() {
 ** null algún campo significa que fue visitado por el
 ** usuario pero quedó erróneo. Si vale undefined ni fue
 ** visitado. */
-function validateStep(data, step, optionals) {
+function validateStep(data, step, optionals, extraId) {
     var valid = true;
 
     for (var prop in step) {
@@ -748,14 +903,20 @@ function validateStep(data, step, optionals) {
             if (data[prop] === undefined) { /* No hay mensaje de error, hay que colocarlo */
                 valid = false;
                 data[prop] = null;   /* Mensaje de error colocado --> reemplazamos undefined por null */
-                setErrorState($id, CAMPO_OBLIGATORIO); /* Esta función se encuentra en checkout.js*/
+                if (extraId === undefined)
+                	setErrorState($id, CAMPO_OBLIGATORIO); /* Esta función se encuentra en checkout.js*/
+                else 
+                	setErrorState($('#' + prop + '-' + extraId), CAMPO_OBLIGATORIO);
             }
             else if (data[prop] === null) { /* Ya tiene el mensaje de error correspondiente */
                 valid = false;
             }
         }
-        else { /* Retira el valor de algo que no es input */
+        else if (extraId === undefined) { /* Retira el valor de algo que no es input */
             data[prop] = $id.val();
+        }
+        else {
+        	data[prop] = $('#' + prop + '-' + extraId).val();
         }
     }
 
