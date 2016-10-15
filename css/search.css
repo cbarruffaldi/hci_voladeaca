@@ -179,15 +179,10 @@ label {
 }
 
 .selected-box {
-	background-color: #D8D8D8;
 	border-radius: 3px;
 	padding: 1%;
 	margin: 1%;
-	margin-bottom: 0;
-}
-
-.selected-box .airline-info-box .air-name{
-	height: 100%;
+	box-shadow: 0 0 8px #7b7b7b;
 }
 
 .selected-box .air-img img {
@@ -195,107 +190,61 @@ label {
 	margin-top: 10%;
 }
 
-.selected-box .air-name h1 {
-	margin: 0;
-	font-size: 1.5em;
-	font-weight: 400;
-	text-align: center;
-
+.air-name-col {
+	text-align: left;
+	vertical-align: middle;
 }
 
-.selected-box .flight-point-info {
-	text-align: center;
-	margin: 0;
-	padding: 0;
-}
-
-.selected-box .airport-id {
-	font-size: 1.5em;
-	font-weight: 700;
-	line-height: 1em;
-}
-
-.selected-box .flight-date {
-	font-size: 1em;
+.air-name {
+	font-size: 1.3em;
 	font-weight: 500;
-	line-height: 1em;
 }
 
-.selected-box .duration {
+.date-col, .duration-col, .airports-col{
 	text-align: center;
-	color: #204DCC;
-	font-size: 1.5em;
-	font-weight: 500;
-	line-height: 1em;
 }
 
-.selected-box .fl-number {
-	text-align: center;
-	font-weight: 300;
-}
-
-.unselected-box {
-	margin-right: 1%;
-	margin-left: 1%;
-}
-
-.unselected-item {
-	border-bottom: 1px solid #7e7e7e;
-	cursor: pointer;
-	background-color: #FFFFFF;
-}
-
-.unselected-item:hover {
-	background-color: #e6e6e6;
-	transition: all 0.3s;
-}
-
-.unselected-box .airline-info-box .air-name{
-	height: 100%;
-}
-
-.unselected-box img {
-	display: none;
-}
-
-.unselected-box .air-name h1 {
-	margin: 0;
+.depart-date, .land-date{
 	font-size: 1.2em;
 	font-weight: 400;
-	text-align: center;
+	letter-spacing: 1px;
 }
 
-.unselected-box .flight-point-info {
-	text-align: center;
-	margin: 0;
-	padding: 0;
-}
-
-.unselected-box .airport-id {
-	font-size: 1em;
-	font-weight: 700;
-}
-
-.unselected-box .flight-date {
-	font-size: 1em;
-	font-weight: 500;
-	line-height: 1em;
-}
-
-.unselected-box .duration {
-	text-align: center;
+.depart-time, .land-time{
+	font-size: 1.3em;
 	color: #204DCC;
-	font-size: 1em;
-	font-weight: 500;
-	line-height: 1em;
 }
 
-.unselected-box .fl-number {
-	display: none;
+.vcenter {
+	align-items: center;
+	display: flex;
+}
+
+.airports-col .airport-id {
+	border: 1px solid #204DCC;
+	border-radius: 5px;
+	font-size: 1.4em;
+	color: #FFFFFF;
+	background-color: #204DCC;
+	padding: 5px 8px;
+	text-align: center;
+	margin-top: 3px;
+}
+
+.airports-col img {
+	height: 2em;
+	margin: 5px;
+	margin-top: 0;
+}
+
+.duration {
+	color: #DC0055;
+	font-size: 1.5em;
+	font-weight: 500;
 }
 
 .flight-price-box {
-	min-height: 25em;
+	height: 22em;
 	background: #DC0055;
 	border-bottom-right-radius: 3px;
 	border-top-right-radius: 3px;

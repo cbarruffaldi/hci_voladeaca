@@ -1,88 +1,76 @@
-				<!-- <div data-ng-repeat="c in containers"> -->
-				  <div infinite-scroll='loadMore()' infinite-scroll-distance='3'>
-					<div class="row flight-box" data-ng-repeat="c in containers | filter: filterFn | orderBy: 'precio' | limitTo: scrollLimit">
-						<div class="col-md-10 flight-info">
-						<div data-ng-repeat="t in c.flights">
-							<div class="row airports-line-info">
-								<div class="col-md-2 ida-vuelta-badge">
-									{{t.desc}} <span class="glyphicon glyphicon-arrow-right"></span>
-								</div>
-								<div class="col-md-10 orig-dest-badges">
-									Buenos Aires
-									<span class="airport-badge">{{t.flight.departure.airport.id}}</span>
-									<span class="glyphicon glyphicon-arrow-right"></span>
-									<span class="airport-badge">{{t.flight.arrival.airport.id}}</span>
-									Nueva York
-								</div>
-							</div>
-							<div class="row selected-box" id="selected-ida-{{f.fnumber}}">
-								<div class="col-md-1 air-img">
-									<img src="aircanada.png" alt="Logo aerolinea" />
-								</div>
-								<div class="col-md-2 air-name">
-									{{t.flight.airline.name}}
-									<!-- que lo centre magoya -->
-								</div>
-
-								<div class="col-md-1">
-									<!-- <div class="flight-date depart-date">
-									Dia {{t.flight.departMoment.day()}}
-									</div> -->
-									<div class="flight-time depart-time">
-									{{t.flight.departMoment.fullDayName}}
-									{{t.flight.departMoment.clockName}}
-									</div>
-								</div>
-								<div class="col-md-1">
-									<div class="airport-id depart-air">
-									{{t.flight.departure.airport.id}}
-									</div>
-								</div>
-
-								<div class="col-md-1">
-									<div class="glyphicon glyphicon-arrow-right">
-									</div>
-								</div>
-
-								<div class="col-md-1">
-									<div class="airport-id land-air">
-									{{t.flight.arrival.airport.id}}
-									</div>
-								</div>
-								<div class="col-md-1">
-									<!-- <div class="flight-date land-date">
-									Dia {{t.flight.arrivalMoment.day()}}
-									</div> -->
-									<div class="flight-time land-time">
-									{{t.flight.arrivalMoment.fullDayName}} <br>
-									{{t.flight.arrivalMoment.clockName}}
-									</div>
-								</div>
-
-								<div class="col-md-2">
-									<div class="duration">{{t.flight.duration}}</div>
-									<div class="fl-number">Vuelo {{t.flight.number}}</div>
-								</div>
-							</div>
+<!-- <div data-ng-repeat="c in containers"> -->
+<div infinite-scroll='loadMore()' infinite-scroll-distance='3'>
+	<div class="row flight-box" data-ng-repeat="c in containers | filter: filterFn | orderBy: 'precio' | limitTo: scrollLimit">
+		<div class="col-md-10 flight-info">
+			<div data-ng-repeat="t in c.flights">
+				<div class="row airports-line-info">
+					<div class="col-md-2 ida-vuelta-badge">
+						{{t.desc}}
+					</div>
+					<div class="col-md-10 orig-dest-badges">
+						{{t.flight.departure.cityshort}}
+						<span class="airport-badge">{{t.flight.departure.airport.id}}</span>
+						<span class="glyphicon glyphicon-arrow-right"></span>
+						<span class="airport-badge">{{t.flight.arrival.airport.id}}</span>
+						{{t.flight.arrival.cityshort}}
+					</div>
+				</div>
+				<div class="row selected-box vcenter" id="selected-ida-{{f.fnumber}}">
+					<div class="col-md-1 air-img">
+						<img src="aircanada.png" alt="Logo aerolinea" />
+					</div>
+					<div class="col-md-2 air-name-col">
+						<div class="air-name">
+							{{t.flight.airline.name}}
 						</div>
 					</div>
-					<div class="col-md-2 flight-price-box">
-							<div class="price-number">
-								$ {{c.price.total.total}}
-							</div>								<div class="collapse price-details" id="price-details-{{$index}}">
-									<div>Pasaje: {{c.price.total.fare}}</div>						
-
-									<div>Impuestos: {{c.price.total.taxes}}</div>
-
-									<div>Recargos: {{c.price.total.charges}}</div>
-								</div>
-							<div class="details-btn">
-								<button data-toggle="collapse"data-target="#price-details-{{$index}}" class="vda-text-btn">+ detalles</button>
-							</div>
-							<div class="buy-btn" data-ng-click="newCont()">
-								<button class="vda-btn" id="btn-{{c.id}}">Comprar</button>
-							</div>
+					<div class="col-md-2 date-col">
+						<div class="depart-date">
+							{{t.flight.departMoment.fullDayName}}
+						</div>
+						<div class="depart-time">
+							{{t.flight.departMoment.clockName}}
+						</div>
+					</div>
+					<div class="col-md-3 airports-col">
+						<span class="airport-id depart-air">{{t.flight.departure.airport.id}}</span>
+						<span class="arrow-icon"><img src="./img/icn/pp.svg"></span>
+						<span class="airport-id land-air">
+							{{t.flight.arrival.airport.id}}
+						</span>
+					</div>
+					<div class="col-md-2 date-col">
+						<div class="land-date">
+							{{t.flight.arrivalMoment.fullDayName}}
+						</div>
+						<div class="land-time">
+							{{t.flight.arrivalMoment.clockName}}
+						</div>
+					</div>
+					<div class="col-md-2 duration-col">
+						<div class="duration">{{t.flight.duration}}</div>
+						<div class="fl-number">Vuelo {{t.flight.number}}</div>
 					</div>
 				</div>
 			</div>
-			<!-- 	</div> c in containers -->
+		</div>
+		<div class="col-md-2 flight-price-box">
+			<div class="price-number">
+				$ {{c.price.total.total}}
+			</div>								<div class="collapse price-details" id="price-details-{{$index}}">
+			<div>Pasaje: {{c.price.total.fare}}</div>						
+
+			<div>Impuestos: {{c.price.total.taxes}}</div>
+
+			<div>Recargos: {{c.price.total.charges}}</div>
+			</div>
+			<div class="details-btn">
+				<button data-toggle="collapse"data-target="#price-details-{{$index}}" class="vda-text-btn">+ detalles</button>
+			</div>
+			<div class="buy-btn" data-ng-click="newCont()">
+				<button class="vda-btn" id="btn-{{c.id}}">Comprar</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- 	</div> c in containers -->

@@ -219,7 +219,11 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 			s = r.segments[0];
 
 			this.departure.airport = s.departure.airport;
+			var citylong = s.departure.airport.city.name;
+			this.departure.cityshort = citylong.substr(0, citylong.indexOf(','));
+			citylong = s.arrival.airport.city.name;
 			this.arrival.airport = s.arrival.airport;
+			this.arrival.cityshort = citylong.substr(0, citylong.indexOf(','));
 			
 			this.airline = s.airline;
 
@@ -228,8 +232,8 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 			
 			console.log("ArrMom")
 			console.log(this.arrivalMoment);
-			this.duration = r.duration;
-			
+			var auxDur = r.duration.split(':');
+			this.duration = Number(auxDur[0]).toString() + "h " + Number(auxDur[1]).toString() + "m";
 			this.number = s.number;
 			this.id = s.id;
 
