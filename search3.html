@@ -49,8 +49,9 @@
 					<h2> Filtros </h2>
 					<div class="price-filter filter-box">
 						<div class="filter-name"> Precio</div>
+						<input style="display:none" data-ng-model="minprice" ng-model-options="{debounce: 1000}" id="preciomin"/>
 
-						<input type="number" data-ng-model="precio" ng-model-options="{debounce: 1000}" id="preciobox"/>
+						<input style="display:none" data-ng-model="maxprice" ng-model-options="{debounce: 1000}" id="preciomax"/>
 						<div class="slider-box">
 							<div id="price-slider">
 							</div>
@@ -66,16 +67,16 @@
 						<div class="filter-section-name">Despegue Ida</div>
 						<div class="depart-time-grid">
 							<div class="depart-time-button" >
-								<img src="img/timestamps/00t06.png" alt="Madrugada" data-dep-time="0" data-ng-click="toggleTimeFilter('dawn')"/>
+								<img src="img/timestamps/00t06.png" alt="Madrugada" data-dep-time="0" data-ng-click="toggleTimeFilter('dawn', iTimeFilter)"/>
 							</div>
 							<div class="depart-time-button">
-								<img src="img/timestamps/06t12.png" alt="Mañana" data-dep-time="1" data-ng-click="toggleTimeFilter('morn')"/>
+								<img src="img/timestamps/06t12.png" alt="Mañana" data-dep-time="1" data-ng-click="toggleTimeFilter('morn', iTimeFilter)"/>
 							</div>
 							<div class="depart-time-button" >
-								<img src="img/timestamps/12t18.png" alt="Tarde" data-dep-time="2" data-ng-click="toggleTimeFilter('noon')"/>
+								<img src="img/timestamps/12t18.png" alt="Tarde" data-dep-time="2" data-ng-click="toggleTimeFilter('noon', iTimeFilter)"/>
 							</div>
 							<div class="depart-time-button" >
-								<img src="img/timestamps/18t00.png" alt="Noche" data-dep-time="3" data-ng-click="toggleTimeFilter('night')"/>
+								<img src="img/timestamps/18t00.png" alt="Noche" data-dep-time="3" data-ng-click="toggleTimeFilter('night', iTimeFilter)"/>
 							</div>
 						</div>
 
@@ -83,16 +84,16 @@
 						<div class="depart-time-grid">
 
 							<div class="depart-time-button" >
-								<img src="img/timestamps/00t06.png" alt="Madrugada" data-dep-time="4"/>
+								<img src="img/timestamps/00t06.png" alt="Madrugada" data-dep-time="4" data-ng-click="toggleTimeFilter('dawn', vTimeFilter)"/>
 							</div>
 							<div class="depart-time-button">
-								<img src="img/timestamps/06t12.png" alt="Mañana" data-dep-time="5"/>
+								<img src="img/timestamps/06t12.png" alt="Mañana" data-dep-time="5" data-ng-click="toggleTimeFilter('morn', vTimeFilter)" />
 							</div>
 							<div class="depart-time-button" >
-								<img src="img/timestamps/12t18.png" alt="Tarde" data-dep-time="6"/>
+								<img src="img/timestamps/12t18.png" alt="Tarde" data-dep-time="6" data-ng-click="toggleTimeFilter('noon', vTimeFilter)"/>
 							</div>
 							<div class="depart-time-button" >
-								<img src="img/timestamps/18t00.png" alt="Noche" data-dep-time="7"/>
+								<img src="img/timestamps/18t00.png" alt="Noche" data-dep-time="7" data-ng-click="toggleTimeFilter('night', vTimeFilter)"/>
 							</div>
 						</div>
 					</div>
@@ -360,7 +361,6 @@
 </div>
 </div>
 
-<script src="js/vendor/bootstrap.min.js"></script>
 <script src="js/main.js"></script>
 <script src="js/moment.js" ></script>
 <script src="jqueryui/jquery-ui.js"></script>
@@ -372,7 +372,6 @@
 <script src="search-page-script.js"></script>
 <script src="flight-select.js"></script>
 <script src="search-setup.js"></script>
-<script src="prengsearch.js"></script>
 <script src="ngsearch3.js"></script>
 <script src="js/vendor/bootstrap.min.js"></script>
 <script src="CheloLabs/awesomplete.js"></script>

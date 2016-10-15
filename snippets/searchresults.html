@@ -1,6 +1,6 @@
 				<!-- <div data-ng-repeat="c in containers"> -->
-				  <div infinite-scroll='loadMore()' infinite-scroll-distance='1'>
-					<div class="row flight-box" data-ng-repeat="c in containers | filter: filterFn | orderBy: '-precio' | limitTo: scrollLimit">
+				  <div infinite-scroll='loadMore()' infinite-scroll-distance='3'>
+					<div class="row flight-box" data-ng-repeat="c in containers | filter: filterFn | orderBy: 'precio' | limitTo: scrollLimit">
 						<div class="col-md-10 flight-info">
 						<div data-ng-repeat="t in c.flights">
 							<div class="row airports-line-info">
@@ -9,9 +9,9 @@
 								</div>
 								<div class="col-md-10 orig-dest-badges">
 									Buenos Aires
-									<span class="airport-badge">{{t.flight.departAirport.id}}</span>
+									<span class="airport-badge">{{t.flight.departure.airport.id}}</span>
 									<span class="glyphicon glyphicon-arrow-right"></span>
-									<span class="airport-badge">{{t.flight.arrivalAirport.id}}</span>
+									<span class="airport-badge">{{t.flight.arrival.airport.id}}</span>
 									Nueva York
 								</div>
 							</div>
@@ -25,16 +25,17 @@
 								</div>
 
 								<div class="col-md-1">
-									<div class="flight-date depart-date">
+									<!-- <div class="flight-date depart-date">
 									Dia {{t.flight.departMoment.day()}}
-									</div>
+									</div> -->
 									<div class="flight-time depart-time">
-									Hora {{t.flight.departMoment}}
+									{{t.flight.departMoment.fullDayName}}
+									{{t.flight.departMoment.clockName}}
 									</div>
 								</div>
 								<div class="col-md-1">
 									<div class="airport-id depart-air">
-									{{t.flight.departAirport.id}}
+									{{t.flight.departure.airport.id}}
 									</div>
 								</div>
 
@@ -45,35 +46,38 @@
 
 								<div class="col-md-1">
 									<div class="airport-id land-air">
-									{{t.flight.arrivalAirport.id}}
+									{{t.flight.arrival.airport.id}}
 									</div>
 								</div>
 								<div class="col-md-1">
-									<div class="flight-date land-date">
+									<!-- <div class="flight-date land-date">
 									Dia {{t.flight.arrivalMoment.day()}}
-									</div>
+									</div> -->
 									<div class="flight-time land-time">
-									Hora {{t.flight.arrivalMoment}}
+									{{t.flight.arrivalMoment.fullDayName}} <br>
+									{{t.flight.arrivalMoment.clockName}}
 									</div>
 								</div>
 
 								<div class="col-md-2">
 									<div class="duration">{{t.flight.duration}}</div>
-									<div class="fl-number">{{t.flight.flnumber}}</div>
+									<div class="fl-number">Vuelo {{t.flight.number}}</div>
 								</div>
 							</div>
 						</div>
 					</div>
 					<div class="col-md-2 flight-price-box">
 							<div class="price-number">
-								{{c.precio}}
-							</div>
-							<div class="details-btn">
-								<div class="collapse price-details">
-									<div>Básico 7438</div>
-									<div>Iva 21% 1562</div>
+								$ {{c.price.total.total}}
+							</div>								<div class="collapse price-details" id="price-details-{{$index}}">
+									<div>Pasaje: {{c.price.total.fare}}</div>						
+
+									<div>Impuestos: {{c.price.total.taxes}}</div>
+
+									<div>Recargos: {{c.price.total.charges}}</div>
 								</div>
-								<button class="vda-text-btn">+ detalles</button>
+							<div class="details-btn">
+								<button data-toggle="collapse"data-target="#price-details-{{$index}}" class="vda-text-btn">+ detalles</button>
 							</div>
 							<div class="buy-btn" data-ng-click="newCont()">
 								<button class="vda-btn" id="btn-{{c.id}}">Comprar</button>
