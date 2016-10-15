@@ -7,6 +7,7 @@
     <title>Página de Compra</title>
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+    <link href="css/typeahead.css" rel="stylesheet"/>
 
     <script src="js/vendor/jquery-1.11.2.min.js"></script>
 
@@ -17,6 +18,9 @@
 
     <script src="bootstrap.min.js"></script> <!--TODO:VER POR QUE NO FUNCIONA EL OTRO-->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
+    <script src="type/typeahead.bundle.min.js"></script>
+    <script src="type/bloodhound.min.js"></script>
 
 
 </head>
@@ -131,16 +135,16 @@
 
                                 <div class="row">
                                     <div class="col-md-6 form-field basicField">
-                                        <label for="usr-name">Nombre:</label>
-                                        <input autocomplete="off" type="text" class="form-control" id="usr-name" value="" maxlength="80">
+                                        <label for="usr-name-0">Nombre:</label>
+                                        <input autocomplete="off" type="text" class="form-control usr-name" id="usr-name-0" value="" maxlength="80">
                                         <p class="error-msg"></p>
 
 
                                     </div>
 
                                     <div class="col-md-6 form-field basicField">
-                                        <label for="usr-lname">Apellido:</label>
-                                        <input autocomplete="off" type="text" class="form-control" id="usr-lname" maxlength="80">
+                                        <label for="usr-lname-0">Apellido:</label>
+                                        <input autocomplete="off" type="text" class="form-control usr-lname" id="usr-lname-0" maxlength="80">
                                         <p class="error-msg"></p>
                                     </div>
                                 </div>
@@ -148,24 +152,23 @@
                                 <!--Segunda Fila-->
                                 <div class="row">
                                     <div class="col-md-2 form-field openField">
-                                        <label for="usr-country" >Pais:</label>
-                                        <select class="form-control" id="usr-country">
-                                            <option>Pais1</option>
-                                            <option>País2</option>
-                                        </select>
+
+                                        <label for="usr-country-0" >Pais:</label>
+                                        <input class="typeahead form-control" type="text" id="usr-country-0">
+
                                     </div>
 
                                     <div class="col-md-2 col-md-offset-1 form-field openField">
-                                        <label for="usr-doc">Tipo:</label>
-                                        <select class="form-control" id="usr-doc">
+                                        <label for="usr-doc-0">Tipo:</label>
+                                        <select class="form-control usr-doc" id="usr-doc-0">
                                             <option>DNI</option>
                                             <option>Pasaporte</option>
                                     </select>
                                     </div>
 
                                     <div class="col-md-6 col-md-offset-1 form-field openField">
-                                        <label for="usr-docnum">Número:</label>
-                                        <input autocomplete="off" type="text" class="form-control" id="usr-docnum" maxlength="8">
+                                        <label for="usr-docnum-0">Número:</label>
+                                        <input autocomplete="off" type="text" class="form-control usr-docnum" id="usr-docnum-0" maxlength="8">
                                         <p class="error-msg"></p>
                                     </div>
                                  </div>
@@ -173,8 +176,8 @@
                                 <!--Tercera fila -->
                                 <div class="row">
                                     <div class="col-md-3 form-field openField">
-                                        <label for="usr-gen">Sexo:</label>
-                                        <select class="form-control" id="usr-gen">
+                                        <label for="usr-gen-0">Sexo:</label>
+                                        <select class="form-control usr-gen" id="usr-gen-0">
                                             <option>Femenino</option>
                                             <option>Masculino</option>
                                         </select>
@@ -184,16 +187,16 @@
                                         <div class="col-md-12 single-label">
                                             <label>Fecha de Nacimiento:</label>
                                         </div>
-                                        <label for="birth-day" class="hidden">Día</label>
-                                        <input autocomplete="off" type="text" class="form-control " placeholder="dia" id="birth-day"/>
-                                        <label for="birth-month" class="hidden">Mes</label>
-                                        <input autocomplete="off" type="text" class="form-control" placeholder="mes" id="birth-month"/>
-                                        <label for="birth-year" class="hidden">Año</label>
-                                        <input autocomplete="off" type="text" class="form-control " placeholder="año" id="birth-year"/>
-                                        <p class="error-msg" id="error-birthdate"></p>
-                                        <p class="error-msg" id="error-birth-day"></p>
-                                        <p class="error-msg" id="error-birth-month"></p>
-                                        <p class="error-msg" id="error-birth-year"></p>
+                                        <label for="birth-day-0" class="hidden">Día</label>
+                                        <input autocomplete="off" type="text" class="form-control birth-day" placeholder="dia" id="birth-day-0"/>
+                                        <label for="birth-month-0" class="hidden">Mes</label>
+                                        <input autocomplete="off" type="text" class="form-control birth-month" placeholder="mes" id="birth-month-0"/>
+                                        <label for="birth-year-0" class="hidden">Año</label>
+                                        <input autocomplete="off" type="text" class="form-control birth-year" placeholder="año" id="birth-year-0"/>
+                                        <p class="error-msg" id="error-birthdate-0"></p>
+                                        <p class="error-msg" id="error-birth-day-0"></p>
+                                        <p class="error-msg" id="error-birth-month-0"></p>
+                                        <p class="error-msg" id="error-birth-year-0"></p>
                                     </div>
                                 </div>
                                     </div>
@@ -374,7 +377,7 @@
                         <div class="form-group">
                             <!--Primera Fila -->
                             <div class="row">
-                                <div class="col-md-12 form-field">
+                                <div class="col-md-8 form-field">
                                     <label for="email" >E-mail:</label>
                                     <input autocomplete="off" type="text" class="form-control" id="email" maxlength="128">
                                     <p class="error-msg"></p>
@@ -394,20 +397,7 @@
                                             <option>Celular</option>
                                         </select>
                                     </div>
-                                    <div class="col-md-3 form-field">
-                                        <label for="phone-country-0">País:</label>
-                                        <select class="form-control" id="phone-country-0">
-                                            <option>Pais1</option>
-                                            <option>Pais2</option>
-                                            <option>Pais3</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-2 form-field">
-                                        <label for="phone-area-0">Cód.de Área:</label>
-                                        <input autocomplete="off" type="text" class="form-control" id="phone-area-0">
-                                        <p class="error-msg"></p>
-                                    </div>
-                                    <div class="col-md-3 form-field">
+                                    <div class="col-md-8 form-field phone-input">
                                         <label for="phone-0">Número:</label>
                                         <input autocomplete="off" type="text" class="form-control" id="phone-0">
                                         <p class="error-msg"></p>
@@ -629,5 +619,8 @@
 
     </div>
 </div>
+
+
+
 
 </body>

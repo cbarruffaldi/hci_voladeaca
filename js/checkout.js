@@ -39,12 +39,13 @@ function getCurrentStage() {
     return indexTab;
 }
 
-var passengerValidator = new PassengerValidator(); /* Etapa 0 */
+/* TODO: obtener verdadera cantidad de adultos, niños, infantes y fecha de fin de viaje */
+var passengersValidator = new PassengersValidator(1, 0, 0, new Date()); /* Etapa 0 */
 var paymentValidator = new PaymentValidator();     /* Etapa 1 */
 var contactValidator = new ContactValidator();     /* Etapa 2 */
 
 /* Validadores por cada etapa */
-var validators = [passengerValidator, paymentValidator, contactValidator];
+var validators = [passengersValidator, paymentValidator, contactValidator];
 
 $(document).ready(function() {
 
@@ -60,7 +61,7 @@ $(document).ready(function() {
                 next.removeClass('disabled-tab');
                 next.removeClass('disabled');
             }
-            
+
             next.find('a').tab('show');
             
             if(indexTab == 0) {
@@ -73,33 +74,33 @@ $(document).ready(function() {
         }
     });
 
-    $('input').blur(function() {
-        var indexTab = getCurrentStage();
-        var id = $(this).attr('id');
-        var value = $(this).val();
-        var validator = validators[indexTab];
-        var validation;
-
-        value = value.trim();
-        if (value.length > 0) {
-            var words = value.split(/[\s]+/);
-            words = words.map(function (word) {return word.toUpperFirstLetter();});
-            value = words.join(' ');
-        }
-        
-        validation = validator.validate(id, value);
-
-        if (validation.valid && !validation.ignore) {
-            $(this).val(validation.value); /* Reemplaza valor del campo por uno más lindo o el mismo */
-            removeErrorState($(this));
-        }
-        else if (!validation.ignore) {
-            setErrorState($(this), validation.value);
-        }
-    });
 
 });
 
+$(document).on('blur', 'input', function() {
+    var indexTab = getCurrentStage();
+    var id = $(this).attr('id');
+    var value = $(this).val();
+    var validator = validators[indexTab];
+    var validation;
+
+    value = value.trim();
+    if (value.length > 0) {
+        var words = value.split(/[\s]+/);
+        words = words.map(function (word) {return word.toUpperFirstLetter();});
+        value = words.join(' ');
+    }
+    
+    validation = validator.validate(id, value);
+
+    if (validation.valid && !validation.ignore) {
+        $(this).val(validation.value); /* Reemplaza valor del campo por uno más lindo o el mismo */
+        removeErrorState($(this));
+    }
+    else if (!validation.ignore) {
+        setErrorState($(this), validation.value);
+    }    
+});
 
 $(document).ready(function(){
     $(".nav-tabs a").click(function(){
@@ -153,7 +154,7 @@ $(function(){
 
 
 function addPhone(id){
-    var fieldHTML =' <div class="row"> <div class="phone-data">' +
+    var fieldHTML =' <div class="row extra-phone"> <div class="phone-data">' +
         '<div class="col-md-2 col-md-offset-1 form-field">' +
         '<label for="phone-type-' + id + '">Tipo:</label>' +
         '<select class="form-control" id="phone-type-' + id + '">' +
@@ -161,21 +162,10 @@ function addPhone(id){
         '<option>Celular</option> ' +
         '</select> ' +
         '</div> ' +
-        '<div class="col-md-3 form-field"> ' +
-        '<label for="phone-country-' + id + '">País:</label> ' +
-        '<select class="form-control" id="phone-country-' + id + '"> ' +
-        '<option>Pais1</option> ' +
-        '<option>Pais2</option> ' +
-        '<option>Pais3</option> ' +
-        '</select> ' +
-        '</div> ' +
-        '<div class="col-md-2 form-field"> ' +
-        '<label for="phone-area-' + id + '">Cód.de Área:</label> ' +
-        '<input type="number" class="form-control" id="phone-area-' + id + '"> ' +
-        '</div> ' +
-        '<div class="col-md-3 form-field"> ' +
+        '<div class="col-md-8 form-field phone-input"> ' +
         '<label for="phone-' + id + '">Número:</label> ' +
-        '<input type="text" class="form-control" id="phone-' + id + '"> ' +
+        '<input autocomplete="off" type="text" class="form-control" id="phone-' + id + '"> ' +
+        '<p class="error-msg"></p> ' +
         '</div> ' +
         '<div class="col-md-1 tocenter-label">' +
         '<a href="#" class="btn btn-default remove-phone add-rem-button">' +
@@ -186,27 +176,52 @@ function addPhone(id){
         return fieldHTML;
 };
 
+var fieldCounter = 1; //Initial field counter is 1
 $(document).ready(function(){
-    var x = 1; //Initial field counter is 1
     var maxField = 5; //Input fields increment limitation
     var addButton = $('.add-Phone'); //Add button selector
-    var wrapper = $('#contact-form'); //Input field wrapper
+    var wrapper = $('#contact-form').children('.form-group'); //Input field wrapper
     var count = 1;
 
-    $(addButton).click(function(){ //Once add button is clicked
-        if(x < maxField){ //Check maximum number of input fields
-            $(wrapper).append(addPhone(count)); // Add field html
-            x++; //Increment field counter
+    function getPhoneId(buttonClicked) {
+        return buttonClicked.parent().siblings('.phone-input').find('input').attr('id').split('-')[1];
+    }
+
+    addButton.click(function(e) { //Once add button is clicked
+        e.preventDefault();
+        if(fieldCounter < maxField){ //Check maximum number of input fields
+            wrapper.append(addPhone(count)); // Add field html
+            contactValidator.addPhone(count);
+            fieldCounter++; //Increment field counter
             count++;
         }
+        
+        if (fieldCounter == maxField) {
+            addButton.hide();
+        }
     });
-    $(wrapper).on('click', '.remove-phone', function(e){ //Once remove button is clicked
+
+    wrapper.on('click', '.remove-phone', function(e) { //Once remove button is clicked
         e.preventDefault();
-        $(this).parent().parent().remove(); //Remove field html
-        x--; //Decrement field counter
+        addButton.fadeIn();
+        contactValidator.removePhone(getPhoneId($(this)));
+        $(this).parent().parent().parent().remove(); //Remove field html
+        fieldCounter--; //Decrement field counter
     })
 
 });
+
+function restorePhones(phonesId) {
+    var backupPhonesId = Object.keys(contactValidator.getBackupPhones());
+    fieldCounter = backupPhonesId.length;
+    var wrapper = $('#contact-form').children('.form-group');
+
+    $('.extra-phone').remove();
+
+    backupPhonesId.forEach(function(stringId) {
+        wrapper.append(addPhone(stringId.split('-')[1]));
+    });
+}
 
 /*
 $(document).ready(function() {
@@ -302,6 +317,9 @@ function saveModal(validator) {
 }
 
 function cancelModal(validator) {
+    if(validator == contactValidator) {
+        restorePhones();
+    }
     validator.applyBackup(); /* Reemplaza todo por los valores del backup */
     closeModal();
 }
@@ -332,7 +350,16 @@ $(document).ready(function(){
             }
         })});
 
+
 function fillPassengerSum(data) {
+    var id = 0;
+
+    /* TODO: generar resúmen de todos los pasajeros */
+    data.forEach(function(pData) {
+        id++;
+    });
+
+    data = data[0];  //para que ande lo de abajo
     addName(data["usr-name"] + ' ' + data["usr-lname"], $(".summary-passengers"));
     addPassData(data["usr-country"], data["usr-doc"], data["usr-docnum"], data["usr-gen"], data["birth-day"] + '/' + data["birth-month"] + '/' + data["birth-year"],$(".summary-passengers"));
 }
@@ -370,3 +397,36 @@ function fillPaymentSum(data) {
 function fillBillingSum(data){
     addBillingData(data["country"]+ ', ' + data["prov"] + ', ' + data["city"], data["street"]+ ' ' + data["addr-num"],data["zip-code"],data["floor"], data["department"], $(".summary-billing"));
 }
+
+
+/* Eleccion de paises */
+
+$(document).ready(function () {
+    var stocks = new Bloodhound({
+        datumTokenizer: function (d) {
+            return Bloodhound.tokenizers.whitespace(d.code);
+        },
+        queryTokenizer: Bloodhound.tokenizers.whitespace,
+        limit: 3,
+        prefetch: {
+            url: 'countrycode.json',
+            filter: function (list) {
+                return $.map(list, function (stock) {
+                    return {code: stock.code, name: stock.name};
+                });
+            }
+        }
+    });
+
+    stocks.initialize();
+
+    $('.typeahead').typeahead(null, {
+        name: 'stocks',
+        displayKey: function (stock) {
+            return stock.name;
+        },
+        source: stocks.ttAdapter()
+    }).on('typeahead:selected', function (event, data) {
+        console.log(data.code)
+    });
+});
