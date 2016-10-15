@@ -44,9 +44,14 @@
 	display: inline-block;
 	font-size: 1.3em;
 	font-weight: 500;
-	border: 1px solid #7b7b7b;
 	border-radius: 5px;
 	padding: 4% 12%;
+	background-color: #e3e3e3;
+	
+}
+
+.passenger-number:hover {
+	cursor: default;
 }
 
 .passenger-row button {

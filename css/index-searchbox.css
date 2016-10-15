@@ -1,6 +1,5 @@
 .searchbox{
-	background-color: rgba( 255, 255, 255, 0.8);
-	margin-bottom: 100px;
+	background: rgba( 235, 235, 235, 0.8);
 	padding-bottom: 1em;
 	border-bottom-left-radius: 5px;
 	border-bottom-right-radius: 5px;

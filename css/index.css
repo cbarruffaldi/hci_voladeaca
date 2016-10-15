@@ -1,7 +1,6 @@
 .body-contents{
 	background: url('../img/bg/sunset.jpg') no-repeat;
-	height: 100%;
-	/*	background-attachment: fixed;*/
+	background-attachment: fixed;
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -14,33 +13,37 @@
 	border-top-left-radius: 3px;
 }
 
+.subtitulo h4{
+	font-weight: 400;
+}
+
 .search_t {
 	background: #DC0055;
 	color: #FFFFFF;
 }
 
-.promos {
-/*	background: #204DCC;*/
-}
-
-.promos .titulo {
+.explora-area .titulo {
 	color: #204DCC;
 	font-size: 2.8em;
 	font-weight: 500;
 }
 
 .searchcontent{
-	margin-top: 9%;
+	margin-top: 11%;
+	box-shadow: 1px 0px 15px #333;
+	margin-bottom: 11%;
 }
 
-.content{
+.explore-content{
 	display:hidden;
 	padding-bottom: 20px;
-	background: rgba( 255, 255, 255, 0.8);
+	background: rgba( 235, 235, 235, 0.8);
 	margin-top: 30px;
 	border-radius: 2px;
 	margin-bottom: 50px;
 	text-align: center;
+	box-shadow: 1px 0px 15px #333;
+	min-height: 46em;
 }
 
 .botonera{
@@ -49,6 +52,7 @@
 }
 
 .botonera button{
+	display: inline-block;
 	min-width: 150px;
 	text-align: center;
 	font-size: 1.2em;
@@ -108,6 +112,48 @@
 	margin-top: 10%;
 }
 
-.content h4 {
-	font-weight: 400;
+.result-box {
+	position: relative;
+	margin: 5%;
+	margin-top: 10%;
+	display: inline-block;
 }
+
+.result-box img {
+	height: 18em;
+	width: 100%;
+	box-shadow: 0 0 5px #7b7b7b;
+	transition: all 0.3s;
+}
+
+.result-box img:hover {
+	box-shadow: 0 0 15px #204DCC;
+	cursor: pointer;
+}
+
+.promo-text {
+	position: absolute;
+	top: 0;
+	left: 0;
+	text-align: left;
+	color: #FFFFFF;
+	padding: 10px;
+}
+
+.promo-text:hover {
+	cursor: pointer;
+}
+
+.promo-dest {
+	display: inline-block;
+	padding: 0 10px;
+	background-color: rgba(0,0,0,0.55);
+	font-size: 2.5em;
+}
+
+.promo-info {
+	background-color: rgba(0,0,0,0.55);
+	font-size: 1.3em;
+	padding: 0 10px;
+}
+

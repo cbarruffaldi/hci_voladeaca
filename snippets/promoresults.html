@@ -1,0 +1,39 @@
+<div data-ng-repeat="p in promos">
+	<div class="col-md-4">
+		<div class="result-box" data-toggle="modal" data-target="#modal-explore-{{$index}}">
+			<img class="place-img" src="austria.jpg"/>
+			<div class="promo-text">
+				<div class="promo-dest">	{{p.shortName}}
+				</div>
+				<div class="promo-info">
+					desde ${{p.precio}} por persona
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal fade" id="modal-explore-{{$index}}" role="dialog">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-md-8">
+							<div class="result-box" data-toggle="modal" data-target="#modal-explore-{{$index}}">
+								<img class="place-img" src="austria.jpg"/>
+								<div class="promo-text">
+									<div class="promo-dest">	{{p.shortName}}
+									</div>
+									<div class="promo-info">
+										desde ${{p.precio}} por persona
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

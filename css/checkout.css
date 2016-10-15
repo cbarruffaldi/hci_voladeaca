@@ -127,8 +127,8 @@ input.error-input {
     pointer-events: none;
 }
 
-#birth-day,#birth-month,#birth-year,#exp-month,#exp-year{
-    width: 70px;
+.birth-day,.birth-month,.birth-year,#exp-month,#exp-year{
+    width: 70px !important;
 }
 
 #cardholder, #card-num{
@@ -137,7 +137,8 @@ input.error-input {
 .hidden{
     display: none;
 }
-#usr-name, #usr-lname, #cuil{
+
+.usr-name, .usr-lname, #cuil{
     width:300px
 }
 
@@ -145,7 +146,7 @@ input.error-input {
     margin-left:auto;
 }
 
-#usr-docnum{
+.usr-docnum{
     width: 200px;
 }
 
