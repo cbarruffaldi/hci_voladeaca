@@ -17,7 +17,7 @@
 				</div>
 				<div class="row selected-box vcenter" id="selected-ida-{{f.fnumber}}">
 					<div class="col-md-1 air-img">
-						<img src="aircanada.png" alt="Logo aerolinea" />
+						<img src="{{getLogo(t.flight.airline.id)}}" alt="Logo aerolinea" height="30" width="30"/>
 					</div>
 					<div class="col-md-2 air-name-col">
 						<div class="air-name">
@@ -57,12 +57,11 @@
 		<div class="col-md-2 flight-price-box">
 			<div class="price-number">
 				$ {{c.price.total.total}}
-			</div>								<div class="collapse price-details" id="price-details-{{$index}}">
-			<div>Pasaje: {{c.price.total.fare}}</div>						
-
-			<div>Impuestos: {{c.price.total.taxes}}</div>
-
-			<div>Recargos: {{c.price.total.charges}}</div>
+			</div>
+			<div class="collapse price-details" id="price-details-{{$index}}">
+				<div>Pasaje: ${{c.price.total.fare}}</div>                        
+				<div>Impuestos: ${{c.price.total.taxes}}</div>
+				<div>Recargos: ${{c.price.total.charges}}</div>
 			</div>
 			<div class="details-btn">
 				<button data-toggle="collapse"data-target="#price-details-{{$index}}" class="vda-text-btn">+ detalles</button>
