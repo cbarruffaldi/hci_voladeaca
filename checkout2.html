@@ -7,6 +7,7 @@
     <title>Página de Compra</title>
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+    <link href="css/typeahead.css" rel="stylesheet"/>
 
     <script src="js/vendor/jquery-1.11.2.min.js"></script>
 
@@ -17,6 +18,9 @@
 
     <script src="bootstrap.min.js"></script> <!--TODO:VER POR QUE NO FUNCIONA EL OTRO-->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
+    <script src="type/typeahead.bundle.min.js"></script>
+    <script src="type/bloodhound.min.js"></script>
 
 
 </head>
@@ -149,10 +153,8 @@
                                 <div class="row">
                                     <div class="col-md-2 form-field openField">
                                         <label for="usr-country" >Pais:</label>
-                                        <select class="form-control" id="usr-country">
-                                            <option>Pais1</option>
-                                            <option>País2</option>
-                                        </select>
+                                        <input class="typeahead form-control" type="text" id="usr-country">
+
                                     </div>
 
                                     <div class="col-md-2 col-md-offset-1 form-field openField">
@@ -629,5 +631,34 @@
 
     </div>
 </div>
+
+
+<!-- POR QUE NO FUNCIONA EN EL JS?!?!??!?! :( :( :( :( -->
+<script>
+    var stocks = new Bloodhound({
+        datumTokenizer: function(d) { return Bloodhound.tokenizers.whitespace(d.code); },
+        queryTokenizer: Bloodhound.tokenizers.whitespace,
+        limit: 3,
+        prefetch: {
+            url: 'js/countrycode.json',
+            filter: function(list) {
+                return $.map(list, function(stock) { return { code: stock.code, name: stock.name }; });
+            }
+        }
+    });
+
+    stocks.initialize();
+
+    $('.typeahead').typeahead(null, {
+        name: 'stocks',
+        displayKey: function(stock) {
+            return stock.name;
+        },
+        source: stocks.ttAdapter()
+    }).on('typeahead:selected', function(event, data) {
+        console.log(data.code)
+    });
+</script>
+
 
 </body>

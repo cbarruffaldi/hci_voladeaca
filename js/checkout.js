@@ -370,3 +370,30 @@ function fillPaymentSum(data) {
 function fillBillingSum(data){
     addBillingData(data["country"]+ ', ' + data["prov"] + ', ' + data["city"], data["street"]+ ' ' + data["addr-num"],data["zip-code"],data["floor"], data["department"], $(".summary-billing"));
 }
+
+
+/* Eleccion de paises */
+
+var stocks = new Bloodhound({
+    datumTokenizer: function(d) { return Bloodhound.tokenizers.whitespace(d.code); },
+    queryTokenizer: Bloodhound.tokenizers.whitespace,
+    limit: 3,
+    prefetch: {
+        url: 'countrycode.json',
+        filter: function(list) {
+            return $.map(list, function(stock) { return { code: stock.code, name: stock.name }; });
+        }
+    }
+});
+
+stocks.initialize();
+
+$('.typeahead').typeahead(null, {
+    name: 'stocks',
+    displayKey: function(stock) {
+        return stock.name;
+    },
+    source: stocks.ttAdapter()
+}).on('typeahead:selected', function(event, data) {
+    console.log(data.code)
+});
