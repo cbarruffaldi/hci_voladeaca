@@ -28,6 +28,20 @@
 
 <body ng-app="checkoutApp">
 
+<script>
+    var $bought;
+    if(!localStorage.boughtFlight){
+      console.log("No se que haces en esta pagina plebeyo, volve a la busqueda");
+    }
+    else{
+        $bought = JSON.parse(localStorage.boughtFlight);
+        localStorage.removeItem('boughtFlight');
+    }
+    console.log("Pack: "); console.log($bought);
+    var i = $bought.twoWays ? 1 : 0;
+    console.log($bought.container.flights[i].flight.arrivalMoment)
+</script>
+
 <!-- header -->
 <header>
     <nav id="header-nav" class="navbar navbar-default">
@@ -311,12 +325,12 @@
 
                                 <!--Primera Linea -->
                                 <div class="row">
-                                    <div class="col-md-3 form-field">
-                                        <label for="country">País:</label>
+                                    <div class="col-md-5 form-field">
+                                        <label for="country" class="col-md-12">País:</label>
                                         <input class="typeahead form-control" type="text" id="country">
                                     </div>
 
-                                    <div class="col-md-3 form-field">
+                                    <div class="col-md-4 form-field">
                                         <label for="city">Ciudad:</label>
                                         <input class="typeahead city-typeahead form-control" type="text" id="city">
 

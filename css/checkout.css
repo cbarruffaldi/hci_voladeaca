@@ -101,6 +101,10 @@ input.error-input {
     color: whitesmoke;
 
 }
+
+.city-typeahead, #country {
+    width: 20em;
+}
 .sub-style{
     background-color: lavender;
     border-bottom: thick;
@@ -136,7 +140,7 @@ input.error-input {
 }
 
 #cardholder, #card-num{
-    width: 600px;
+    width: 570px;
 }
 .hidden{
     display: none;
@@ -202,4 +206,6 @@ label {
     width: 60%;
 
 }
+
+
 
