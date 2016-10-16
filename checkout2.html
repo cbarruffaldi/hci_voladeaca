@@ -26,6 +26,18 @@
 </head>
 
 <body>
+
+<script>
+    var $bought;
+    if(!localStorage.boughtFlight){
+      console.log("No se que haces en esta pagina plebeyo, volve a la busqueda");
+    }
+    else{
+        $bought = JSON.parse(localStorage.boughtFlight);
+    }
+    console.log("Pack: "); console.log($bought);
+</script>
+
 <!-- header -->
 <header>
     <nav id="header-nav" class="navbar navbar-default">
