@@ -109,7 +109,6 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 			}
 
 			localStorage.setItem('boughtFlight', JSON.stringify($selectedFlight));
-
 			window.location.href = "checkout2.html";
 
 
