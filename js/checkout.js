@@ -39,8 +39,10 @@ function getCurrentStage() {
     return indexTab;
 }
 
+var $passengers = JSON.parse(localStorage.boughtFlight).passengers;
+
 /* TODO: obtener verdadera cantidad de adultos, niños, infantes y fecha de fin de viaje */
-var passengersValidator = new PassengersValidator(2, 1, 1, new Date()); /* Etapa 0 */
+var passengersValidator = new PassengersValidator($passengers.adults, $passengers.children, $passengers.infants, new Date()); /* Etapa 0 */
 var paymentValidator = new PaymentValidator();     /* Etapa 1 */
 var contactValidator = new ContactValidator();     /* Etapa 2 */
 
@@ -136,14 +138,8 @@ $(document).ready(function(){
         }
 })});
 
-$(document).ready(function(){
-    $('.basicField').click(function(){
-        $('.openField').show();
-    });
-});
-
 $(document).on('click', '.basicField', function(){
-    $(this).closest('.form-group').find('.openField').slideDown();
+    $(this).closest('.form-group').find('.openField').show();
 });
 
 
@@ -230,33 +226,16 @@ $(document).ready(function() {
     })});
 */
 
-
-function addName(name, obj) {
-    obj.append('<h5 class="sum-passname">' + name + '</h5>');
-}
-
-function addPassData(country, doctype, docnum, gen, birth, obj){
-    var x1 = '<div class="sum-field col-md-6">' + country + '</div>';
-    var x2 = '<div class="sum-field col-md-6">' + doctype + ':'+ docnum +'</div>';
-    var x3 = '<div class="sum-field col-md-6">' + gen + '</div>';
-    var x4 = '<div class="sum-field col-md-6">' + birth +'</div>';
-    var x5 = '<a href="#" class="col-md-offset-9 sum-modal" data-toggle="modal" data-target="#modify-modal">Modificar...</a>';
-
-    obj.append(x1);
-    obj.append(x2);
-    obj.append(x3);
-    obj.append(x4);
-    obj.append(x5);
-}
-
 var SUM_PASSENGERS = '.summary-passengers';
 var SUM_PAYMENT = '.summary-payment';
 var SUM_BILLING = '.summary-billing';
 
 function getModifyStage(modify) {
     /* TODO: para varios pasajeros */
-    if (modify.parents(SUM_PASSENGERS).length)
-        return [0, 0];
+    if (modify.parents(SUM_PASSENGERS).length) {
+        var passIndex = modify.parent().index();
+        return [0, passIndex];
+    }
     else if (modify.parents(SUM_PAYMENT).length)
         return [1, 0];
     else if (modify.parents(SUM_BILLING).length)
@@ -277,7 +256,7 @@ $(document).on('show.bs.modal', '#modify-modal', function(event) {
 
     /* TODO: ver que pasajero es */
     if (summaryStage == 0) {
-        var formGroup = tabId.find('.form-group');
+        var formGroup = tabId.find('.form-group').eq(modifyStage[1]);
         formGroupParent = formGroup.parent();
         modal.find('.modal-body').append(formGroup);
     }
@@ -345,17 +324,32 @@ $(document).ready(function(){
         })});
 
 
-function fillPassengerSum(data) {
-    var id = 0;
+function addName(name, obj) {
+    obj.append('<h5 class="sum-passname">' + name + '</h5>');
+}
 
-    /* TODO: generar resúmen de todos los pasajeros */
-    data.forEach(function(pData) {
-        id++;
+function addPassData(country, doctype, docnum, gen, birth, obj){
+    var x1 = '<div class="sum-field col-md-6">' + country + '</div>';
+    var x2 = '<div class="sum-field col-md-6">' + doctype + ':'+ docnum +'</div>';
+    var x3 = '<div class="sum-field col-md-6">' + gen + '</div>';
+    var x4 = '<div class="sum-field col-md-6">' + birth +'</div>';
+    var x5 = '<a href="#" class="col-md-offset-9 sum-modal" data-toggle="modal" data-target="#modify-modal">Modificar...</a>';
+
+    obj.append(x1);
+    obj.append(x2);
+    obj.append(x3);
+    obj.append(x4);
+    obj.append(x5);
+}
+
+function fillPassengerSum(passengersData) {
+
+    passengersData.forEach(function(data) {
+        var passengerSum = $('<div class="summary-passenger"></div>');
+        addName(data["usr-name"] + ' ' + data["usr-lname"], passengerSum);
+        addPassData(data["usr-country"], data["usr-doc"], data["usr-docnum"], data["usr-gen"], data["birth-day"] + '/' + data["birth-month"] + '/' + data["birth-year"], passengerSum);
+        $(".summary-passengers").append(passengerSum);
     });
-
-    data = data[0];  //para que ande lo de abajo
-    addName(data["usr-name"] + ' ' + data["usr-lname"], $(".summary-passengers"));
-    addPassData(data["usr-country"], data["usr-doc"], data["usr-docnum"], data["usr-gen"], data["birth-day"] + '/' + data["birth-month"] + '/' + data["birth-year"],$(".summary-passengers"));
 }
 
 function addPaymentData(card, installments, expdate, secCode,obj){
