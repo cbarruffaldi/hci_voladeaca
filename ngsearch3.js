@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 var app = angular.module("flightApp", ['ngAnimate', 'infinite-scroll']);
 
 app.controller("flightCtrl", function($scope, $http, $window) {
@@ -56,7 +55,7 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 			$selectedFlight.passengers = {adults: adults ? parseInt(adults):0,
 												children: children ? parseInt(children):0,
 												infants: infants ? parseInt(infants) : 0,
-												total: adults+children+infants};
+												total: parseInt(adults )+parseInt(children)+ parseInt(infants)};
 			console.log($scope.selectedFlight);								
 
 			$http({
@@ -98,14 +97,22 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 		}
 
 		$scope.buy = function(container){
+			localStorage.removeItem('boughtFlight');
+
 			$selectedFlight.container = container;
 			console.log($selectedFlight);
-			
-			sessionStorage.set('boughtFlight', JSON.stringify($selectedFlight));
+			sessionStorage.setItem('boughtFlight', JSON.stringify($selectedFlight));
+
 			if(localStorage.boughtFlight){
 				console.log("Have one in local");
-				localStorage.set('boughtFlight', JSON.stringify($selectedFlight));
+				localStorage.setItem('boughtFlight', JSON.stringify($selectedFlight));
 			}
+
+			localStorage.setItem('boughtFlight', JSON.stringify($selectedFlight));
+
+			window.location.href = "checkout2.html";
+
+
 		}
 
 
@@ -251,13 +258,24 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 
 			this.arrival.airport = s.arrival.airport;
 			this.arrival.airport.name = s.arrival.airport.description.split(",")[0];
+
+			var citylong = s.departure.airport.city.name;
+
+			this.departure.cityshort = citylong.substr(0, citylong.indexOf(','));
+
+			citylong = s.arrival.airport.city.name;
+
+ 			this.arrival.airport = s.arrival.airport;
+			this.arrival.cityshort = citylong.substr(0, citylong.indexOf(','));
 			
 			this.airline = s.airline;
 
 			this.departMoment = new TimeDetails(s.departure.date);
 			this.arrivalMoment = new TimeDetails(s.arrival.date);
 			
-			this.duration = r.duration;
+			var auxDur = r.duration.split(':');
+
+			this.duration = Number(auxDur[0]).toString() + "h " + Number(auxDur[1]).toString() + "m";
 			
 			this.number = s.number;
 			this.id = s.id;

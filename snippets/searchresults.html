@@ -48,7 +48,7 @@
 						</div>
 					</div>
 					<div class="col-md-2 duration-col">
-						<div class="duration">{{t.flight.duration}}</div>
+						<div class="duration"><span class="glyphicon glyphicon-time"> </span>{{t.flight.duration}}</div>
 						<div class="fl-number">Vuelo {{t.flight.number}}</div>
 					</div>
 				</div>
@@ -67,7 +67,7 @@
 				<button data-toggle="collapse"data-target="#price-details-{{$index}}" class="vda-text-btn">+ detalles</button>
 			</div>
 			<div class="buy-btn" data-ng-click="newCont()">
-				<button class="vda-btn" id="btn-{{c.id}}">Comprar</button>
+				<button class="vda-btn" id="btn-{{c.id}}" data-ng-click="buy(c)">Comprar</button>
 			</div>
 		</div>
 	</div>
