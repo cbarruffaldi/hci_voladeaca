@@ -62,9 +62,9 @@
 					</div>
 
 					<div class="time-filter filter-box">
-						<div class="filter-name"> Horarios</div>
+						<div class="filter-name"> Horarios de despegue</div>
 
-						<div class="filter-section-name">Despegue Ida</div>
+						<div class="filter-section-name" data-ng-if="twoWays">Ida</div>
 						<div class="depart-time-grid">
 							<div class="depart-time-button" >
 								<img src="img/timestamps/00t06.png" alt="Madrugada" data-dep-time="0" data-ng-click="toggleTimeFilter('dawn', iTimeFilter)"/>
@@ -79,8 +79,8 @@
 								<img src="img/timestamps/18t00.png" alt="Noche" data-dep-time="3" data-ng-click="toggleTimeFilter('night', iTimeFilter)"/>
 							</div>
 						</div>
-
-						<div class="filter-section-name">Despegue Vuelta</div>
+						<div data-ng-if="twoWays">
+						<div class="filter-section-name">Vuelta</div>
 						<div class="depart-time-grid">
 
 							<div class="depart-time-button" >
@@ -97,7 +97,7 @@
 							</div>
 						</div>
 					</div>
-
+					</div>
 					<div class="airport-filter filter-box">
 						<div class="filter-name">Aeropuertos</div>
 						<div class="filter-section-name">En {{airports.iCity}}</div>
@@ -321,9 +321,9 @@
 									Menor precio<span class="caret"></span>
 								</button>
 								<ul class="dropdown-menu" id="order-dropdown">
-									<li><a href="#">Menor Precio</a></li>
-									<li><a href="#">Menor Duración</a></li>
-									<li><a href="#">Mejor Puntaje</a></li>
+									<li><a href="#" data-ng-click="toggleOrder('price')">Menor Precio</a></li>
+									<li><a href="#" data-ng-click="toggleOrder('duration')">Menor Duración</a></li>
+									<li><a href="#" data-ng-click="toggleOrder('score')">Mejor Puntaje</a></li>
 								</ul>
 							</div>
 						</div>

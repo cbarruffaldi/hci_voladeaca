@@ -4,6 +4,7 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 		$scope.twoWays = false;
 		$scope.containers = [] 
 		$scope.scrollLimit = 10;
+		$scope.orderBy = {criterion: 'price', reversed: false}
 		
 		function fillAirlines(){
 		 return	$http({
@@ -157,6 +158,29 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 		};
 
 
+
+		$scope.orderFn = function(c){
+			var ret = 0;
+			console.log(c);
+			switch($scope.orderBy.criterion) {
+  			  case 'price':
+        		ret = c.price.total.total;
+        		break;
+    	      case 'duration':
+    	      	for(i in c.flights){
+    	      		ret += c.flights[i].flight.flightMinutes;
+    	      	}
+        		break;
+        	  default:
+        		ret = c.price.total.total;
+			}
+
+			if($scope.orderBy.reversed){
+				ret = -ret;
+			}
+			return ret;
+
+		}
 
 		function activeAirlineFilter(){
 			var o = $scope.airlineFilter;
@@ -329,6 +353,7 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 			
 			var auxDur = r.duration.split(':');
 
+			this.flightMinutes = parseInt(auxDur[0])*60 + parseInt(auxDur[1]);
 			this.duration = Number(auxDur[0]).toString() + "h " + Number(auxDur[1]).toString() + "m";
 			
 			this.number = s.number;
@@ -423,16 +448,20 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 	$scope.vTimeFilter = new TimeFilter();
 
 	$scope.toggleAirport = function(id){
-		$scope.scrollLimit = 10;
+		$scope.scrollLimit = 12;
 		$scope.airports.filter[id] = !$scope.airports.filter[id]
 	};
 
 
 	$scope.toggleAirline = function(id){
-		$scope.scrollLimit = 15;
+		$scope.scrollLimit = 12;
 		$scope.airlineFilter[id] = !$scope.airlineFilter[id];
 	};
 
+	$scope.toggleOrder = function(id){
+		$scope.scrollLimit = 12;
+		$scope.orderBy.criterion = id;
+	}
 
 	//Utilidades
 
