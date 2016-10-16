@@ -165,8 +165,8 @@
 												<div class="col-md-2 form-field openField">
 
 													<label for="usr-country-{{$index}}">Pais:</label>
-													<input class="typeahead country-typeahead form-control" type="text" id="usr-country-{{$index}}">
-
+													<input autocomplete="off" class="typeahead country-typeahead form-control" type="text" id="usr-country-{{$index}}">
+                                                    <p class="error-msg"></p>
 												</div>
 
 												<div class="col-md-2 col-md-offset-1 form-field openField">
@@ -325,13 +325,14 @@
 										<div class="row">
 											<div class="col-md-5 form-field">
 												<label for="country" class="col-md-12">País:</label>
-												<input class="typeahead form-control" type="text" id="country">
+												<input autocomplete="off" class="typeahead form-control" type="text" id="country">
+                                                <p class="error-msg"></p>
 											</div>
 
 											<div class="col-md-4 form-field">
 												<label for="city">Ciudad:</label>
-												<input class="typeahead city-typeahead form-control" type="text" id="city">
-
+												<input autocomplete="off" class="typeahead city-typeahead form-control" type="text" id="city">
+                                                <p class="error-msg"></p>
 											</div>
 										</div>
 
@@ -640,8 +641,4 @@
 
 			</div>
 		</div>
-
-
-
-
 	</body>

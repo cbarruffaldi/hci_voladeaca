@@ -294,7 +294,6 @@ function validateCardholder(cardholder) {
 	return validateName(cardholder);
 }
 
-/* TODO: cambiar el random cuando ande la API */
 function validateCreditCardAPI(number, expDate, secCod) {
     var valid = false;
     $.ajax({
@@ -303,7 +302,6 @@ function validateCreditCardAPI(number, expDate, secCod) {
     }).done(function(data) {
         valid = data.valid;
     });
-    return Math.random() > 0.5;
     return valid;
 }
 
@@ -469,7 +467,7 @@ function PassengerValidator(validateFunction, trDate, passId) {
                                 'birth-month': this.validateBirthMonth,
                                 'birth-year': this.validateBirthYear,
                                 'usr-doc': null,
-                                'usr-country': null,
+                                'usr-country': validateName,
                                 'usr-gen': null };
 
 
@@ -712,9 +710,8 @@ function PaymentAddressValidator() {
 	this.inputValidations = { 'street': validateStreet,
 							  'addr-num': validateAddrNum,
 							  'zip-code': validateZipCode,
-							  'country': null,
-							  'prov': null,
-							  'city': null
+							  'country': validateName,
+							  'city': validateName
 							};
 
 	this.optionalValidations = { 'floor': validateFloor,
