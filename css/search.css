@@ -59,6 +59,10 @@ label {
 	height: 70px;
 }
 
+.depart-time-button:hover {
+	cursor: pointer;
+}
+
 .depart-time-grid {
 	text-align: center;
 	margin-bottom: 2%;
@@ -289,4 +293,13 @@ label {
 .buy-btn .vda-btn {
 	margin-top: 10%;
 	color: #000000;
+	font-size: 1.3em;
+	padding: 8px 16px;
+	font-variant: small-caps;
+	font-weight: 800;
+}
+
+.buy-btn .vda-btn:hover {
+	transition: all 0.4s;
+	box-shadow: 0 0 10px #e3e3e3;
 }
