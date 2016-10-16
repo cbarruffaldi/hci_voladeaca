@@ -52,3 +52,7 @@
 .selected-iv {
 	border-bottom: 4px solid #DC0055 !important;
 }
+
+#cal1, #cal2{
+	cursor: pointer;
+}

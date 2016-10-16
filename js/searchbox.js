@@ -6,6 +6,22 @@
 	var $id_map = global.$acUtils.id_map;
 	var soloIda = false;
 
+	$( function(){$("#datepicker1").datepicker({minDate: '+2D'}) 
+		 
+		});
+	$("#datepicker1").keydown(function() {
+		$( function(){$("#datepicker1").datepicker("hide") } );
+  		return true;
+		});
+
+	$("#cal1").click( function() { 
+		$( function() { $("#datepicker1").datepicker("show") });
+	});	
+
+	$("#cal2").click( function() { 
+		$( function() { $("#datepicker2").datepicker("show") });
+	});
+
 	$("#origen, #destino").on('focus', function(){ 
 		var self = $(this);
 		if(self.hasClass('inputerr')){
@@ -92,10 +108,19 @@
 			}
 		}
 
-		if(valid && departure && arrival){ 
+		if(valid && departure && (soloIda || arrival)){ 
 			//Si ambas estan definidas y bien formadas
 			//chequeo que no sean incompatibles.
+		
+			var now = moment();
+			now.add(2,'days');
+			console.log(now);
+			if(now.isAfter(departure)){
+				date1.addClass('inputerr');
+				$("#datepicker1-err").text("Debe ser por lo menos dos días desde ahora");
+				$("#datepicker1-err").fadeIn();
 
+			}
 			if(!soloIda && departure.isAfter(arrival)){
 				ret = false
 				date1.addClass('inputerr');

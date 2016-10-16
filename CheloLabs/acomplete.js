@@ -2,6 +2,7 @@
 
 	var airports = [];
   var idMap = {};
+  var nameMap = {};
 
     function load(){
       $.ajax({
@@ -25,6 +26,7 @@
         var disp = cityID + " - " + nombre;
         airports.push({value: disp, label: disp}); 
         idMap[disp] = cityID;
+        nameMap[cityID] = disp;
       }
     }
 
@@ -48,6 +50,7 @@
       listFill: fill,
       cityFill: cfill,
       id_map: idMap,
+      name_map: nameMap
       airportList: airports
     }
     
