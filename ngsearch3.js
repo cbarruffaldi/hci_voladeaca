@@ -4,6 +4,7 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 		$scope.twoWays = false;
 		$scope.containers = [] 
 		$scope.scrollLimit = 10;
+		$scope.orderBy = {criterion: 'price', reversed: false}
 		
 		function fillAirlines(){
 		 return	$http({
@@ -35,7 +36,8 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 			var infants = getURLParameter("infants");
 			var vdate = getURLParameter("vdate");
 
-			$selectedFlight.twoWays = vdate ? true : false;
+			$scope.twoWays = vdate ? true : false;
+			$selectedFlight.twoWays = $scope.twoWays;
 
 			if(!(orig && dest && date && (adults || children || infants))){
 				console.log("Param error");
@@ -109,7 +111,6 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 			}
 
 			localStorage.setItem('boughtFlight', JSON.stringify($selectedFlight));
-
 			window.location.href = "checkout2.html";
 
 
@@ -144,11 +145,43 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 			if($scope.minprice){
 				pass = pass && (container.price.total.total >= $scope.minprice)
 			}
+
+			pass = pass && $scope.airports.filter[flight1.departure.airport.id]
+			pass = pass && $scope.airports.filter[flight1.arrival.airport.id]
 			
+			if(flight2){
+					pass = pass && $scope.airports.filter[flight2.departure.airport.id]
+					pass = pass && $scope.airports.filter[flight2.arrival.airport.id]
+			}
+
 			return pass;
+
 		};
 
 
+
+		$scope.orderFn = function(c){
+			var ret = 0;
+			console.log(c);
+			switch($scope.orderBy.criterion) {
+  			  case 'price':
+        		ret = c.price.total.total;
+        		break;
+    	      case 'duration':
+    	      	for(i in c.flights){
+    	      		ret += c.flights[i].flight.flightMinutes;
+    	      	}
+        		break;
+        	  default:
+        		ret = c.price.total.total;
+			}
+
+			if($scope.orderBy.reversed){
+				ret = -ret;
+			}
+			return ret;
+
+		}
 
 		function activeAirlineFilter(){
 			var o = $scope.airlineFilter;
@@ -175,15 +208,40 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 			}
 		}
 
+
+		$scope.airports = {iList: [], 
+						   vList: [], 
+						   iCity: "", 
+						   vCity: "", 
+						   filter: {}};
+
 		function pushAll(flights){
 				var maxPrice;
 				var minPrice;
 
+				if(flights.length > 0){
+					$scope.airports.iCity = flights[0].departure.airport.city.name.split(",")[0];
+					$scope.airports.vCity = flights[0].arrival.airport.city.name.split(",")[0];
+				}
+
 				for(var i in flights){
+
 					var c = new Container(flights[i]);
 					$scope.containers.push(c);
 
+					if(!$scope.airports.filter[flights[i].departure.airport.id]){
+						$scope.airports.iList.push(flights[i].departure.airport);
+						$scope.airports.filter[flights[i].departure.airport.id] = true;
+					}
+
+					if(!$scope.airports.filter[flights[i].arrival.airport.id]){
+						$scope.airports.vList.push(flights[i].arrival.airport);
+						$scope.airports.filter[flights[i].arrival.airport.id] = true;
+					}
+
+
 					var price = c.price.total.total;
+
 
 					if(!minPrice || price < minPrice){
 						minPrice = price;
@@ -201,6 +259,16 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 		function combineAndPush(iFlights, vFlights){
 			var maxPrice;
 			var minPrice;
+
+
+				if(iFlights.length > 0){
+					$scope.airports.iCity = iFlights[0].departure.airport.city.name.split(",")[0];
+				}
+				if(vFlights.length > 0){
+					$scope.airports.vCity = vFlights[0].departure.airport.city.name.split(",")[0];
+				}
+
+
 			for(var i in iFlights){
 				for(var j in vFlights){
 					var c = new Container(iFlights[i], vFlights[j]);
@@ -213,6 +281,17 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 					}
 
 					$scope.containers.push(c);
+						
+						if(!$scope.airports.filter[iFlights[i].departure.airport.id]){
+						$scope.airports.iList.push(iFlights[i].departure.airport);
+						$scope.airports.filter[iFlights[i].departure.airport.id] = true;
+					}
+
+						if(!$scope.airports.filter[vFlights[j].departure.airport.id]){
+						$scope.airports.vList.push(vFlights[j].departure.airport);
+						$scope.airports.filter[vFlights[j].departure.airport.id] = true;
+					}
+
 				}
 			}
 			initSlider(minPrice, maxPrice);
@@ -223,7 +302,6 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 			flights = [];
 			for(var i in f){
 				var fli = new FlightDetails(f[i]);
-//				console.log(fli);
 				flights.push(fli)
 			}
 			return flights;
@@ -244,6 +322,7 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 					$scope.airlines.push(filter[i]);
 				}
 			}
+
 		}
 
 		function FlightDetails(flight){
@@ -275,6 +354,7 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 			
 			var auxDur = r.duration.split(':');
 
+			this.flightMinutes = parseInt(auxDur[0])*60 + parseInt(auxDur[1]);
 			this.duration = Number(auxDur[0]).toString() + "h " + Number(auxDur[1]).toString() + "m";
 			
 			this.number = s.number;
@@ -356,13 +436,6 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 		};
 
 
-	function createFilters(){
-		$scope.iFilter = new Filter(queryData.iAirports, queryData.vAirports);
-
-		if(queryData.twoWays){
-			$scope.vFilter = new Filter(queryData.vAirports, queryData.vAirlines);
-		}
-	}
 
 	function toggleTimeFilter(time, filter){
 		var tf = filter.time;
@@ -375,20 +448,21 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 	$scope.iTimeFilter = new TimeFilter();
 	$scope.vTimeFilter = new TimeFilter();
 
-	$scope.toggleIAir = function(s){
-		console.log(s);
-	};
-
-	$scope.toggleVAir = function(s){
-		console.log(s);
+	$scope.toggleAirport = function(id){
+		$scope.scrollLimit = 12;
+		$scope.airports.filter[id] = !$scope.airports.filter[id]
 	};
 
 
 	$scope.toggleAirline = function(id){
-		$scope.scrollLimit = 15;
+		$scope.scrollLimit = 12;
 		$scope.airlineFilter[id] = !$scope.airlineFilter[id];
 	};
 
+	$scope.toggleOrder = function(id){
+		$scope.scrollLimit = 12;
+		$scope.orderBy.criterion = id;
+	}
 
 	//Utilidades
 

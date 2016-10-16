@@ -39,8 +39,10 @@ function getCurrentStage() {
     return indexTab;
 }
 
+var $passengers = JSON.parse(localStorage.boughtFlight).passengers;
+
 /* TODO: obtener verdadera cantidad de adultos, niños, infantes y fecha de fin de viaje */
-var passengersValidator = new PassengersValidator(2, 1, 1, new Date()); /* Etapa 0 */
+var passengersValidator = new PassengersValidator($passengers.adults, $passengers.children, $passengers.infants, new Date()); /* Etapa 0 */
 var paymentValidator = new PaymentValidator();     /* Etapa 1 */
 var contactValidator = new ContactValidator();     /* Etapa 2 */
 
@@ -136,14 +138,8 @@ $(document).ready(function(){
         }
 })});
 
-$(document).ready(function(){
-    $('.basicField').click(function(){
-        $('.openField').show();
-    });
-});
-
 $(document).on('click', '.basicField', function(){
-    $(this).closest('.form-group').find('.openField').slideDown();
+    $(this).closest('.form-group').find('.openField').show();
 });
 
 
@@ -230,33 +226,16 @@ $(document).ready(function() {
     })});
 */
 
-
-function addName(name, obj) {
-    obj.append('<h5 class="sum-passname">' + name + '</h5>');
-}
-
-function addPassData(country, doctype, docnum, gen, birth, obj){
-    var x1 = '<div class="sum-field col-md-6">' + country + '</div>';
-    var x2 = '<div class="sum-field col-md-6">' + doctype + ':'+ docnum +'</div>';
-    var x3 = '<div class="sum-field col-md-6">' + gen + '</div>';
-    var x4 = '<div class="sum-field col-md-6">' + birth +'</div>';
-    var x5 = '<a href="#" class="col-md-offset-9 sum-modal" data-toggle="modal" data-target="#modify-modal">Modificar...</a>';
-
-    obj.append(x1);
-    obj.append(x2);
-    obj.append(x3);
-    obj.append(x4);
-    obj.append(x5);
-}
-
 var SUM_PASSENGERS = '.summary-passengers';
 var SUM_PAYMENT = '.summary-payment';
 var SUM_BILLING = '.summary-billing';
 
 function getModifyStage(modify) {
     /* TODO: para varios pasajeros */
-    if (modify.parents(SUM_PASSENGERS).length)
-        return [0, 0];
+    if (modify.parents(SUM_PASSENGERS).length) {
+        var passIndex = modify.parent().index();
+        return [0, passIndex];
+    }
     else if (modify.parents(SUM_PAYMENT).length)
         return [1, 0];
     else if (modify.parents(SUM_BILLING).length)
@@ -277,7 +256,7 @@ $(document).on('show.bs.modal', '#modify-modal', function(event) {
 
     /* TODO: ver que pasajero es */
     if (summaryStage == 0) {
-        var formGroup = tabId.find('.form-group');
+        var formGroup = tabId.find('.form-group').eq(modifyStage[1]);
         formGroupParent = formGroup.parent();
         modal.find('.modal-body').append(formGroup);
     }
@@ -345,17 +324,32 @@ $(document).ready(function(){
         })});
 
 
-function fillPassengerSum(data) {
-    var id = 0;
+function addName(name, obj) {
+    obj.append('<h5 class="sum-passname">' + name + '</h5>');
+}
 
-    /* TODO: generar resúmen de todos los pasajeros */
-    data.forEach(function(pData) {
-        id++;
+function addPassData(country, doctype, docnum, gen, birth, obj){
+    var x1 = '<div class="sum-field col-md-6">' + country + '</div>';
+    var x2 = '<div class="sum-field col-md-6">' + doctype + ':'+ docnum +'</div>';
+    var x3 = '<div class="sum-field col-md-6">' + gen + '</div>';
+    var x4 = '<div class="sum-field col-md-6">' + birth +'</div>';
+    var x5 = '<a href="#" class="col-md-offset-9 sum-modal" data-toggle="modal" data-target="#modify-modal">Modificar...</a>';
+
+    obj.append(x1);
+    obj.append(x2);
+    obj.append(x3);
+    obj.append(x4);
+    obj.append(x5);
+}
+
+function fillPassengerSum(passengersData) {
+
+    passengersData.forEach(function(data) {
+        var passengerSum = $('<div class="summary-passenger"></div>');
+        addName(data["usr-name"] + ' ' + data["usr-lname"], passengerSum);
+        addPassData(data["usr-country"], data["usr-doc"], data["usr-docnum"], data["usr-gen"], data["birth-day"] + '/' + data["birth-month"] + '/' + data["birth-year"], passengerSum);
+        $(".summary-passengers").append(passengerSum);
     });
-
-    data = data[0];  //para que ande lo de abajo
-    addName(data["usr-name"] + ' ' + data["usr-lname"], $(".summary-passengers"));
-    addPassData(data["usr-country"], data["usr-doc"], data["usr-docnum"], data["usr-gen"], data["birth-day"] + '/' + data["birth-month"] + '/' + data["birth-year"],$(".summary-passengers"));
 }
 
 function addPaymentData(card, installments, expdate, secCode,obj){
@@ -402,7 +396,7 @@ $(document).ready(function () {
 
         var stocks = new Bloodhound({
             datumTokenizer: function (d) {
-                return Bloodhound.tokenizers.whitespace(d.id);
+                return Bloodhound.tokenizers.whitespace(d.name);
             },
             queryTokenizer: Bloodhound.tokenizers.whitespace,
             limit: 3,
@@ -412,24 +406,34 @@ $(document).ready(function () {
         });
         stocks.initialize();
 
-        $('#country').typeahead(null, {
+        var countryTypeahead = $('#country').typeahead(null, {
             name: 'stocks',
             displayKey: function (stock) {
                 return stock.name;
             },
             source: stocks.ttAdapter()
-        }).on('typeahead:selected', function (event, data) {
-            getCities(data.id);
-        });
+        })
+            .on('typeahead:selected', function (event, data) {
+            $("#city").val('');
+            createCityJSON(cities,data.id);
+        })
+            .on('change', function() {
+                console.log('Por favor elija un país de la lista');
+                //TODO:MANDAR AL VALIDADOR PARA QUE LO PONGA EN ROJITO
+            });
+
+
+        /*El de los pasajeros */
         $('.country-typeahead').typeahead(null, {
             name: 'stocks',
             displayKey: function (stock) {
                 return stock.name;
             },
             source: stocks.ttAdapter()
-        }).on('typeahead:selected', function (event, data) {
-
-        });
+        }).on('change', function() {
+            console.log('Por favor elija un país de la lista');
+            //TODO:MANDAR AL VALIDADOR PARA QUE LO PONGA EN ROJITO
+    });
     };
 
 
@@ -460,69 +464,15 @@ $(document).ready(function () {
         loadCountries(jsonObj);
     };
 
-/* Eleccion de ciudades */
-/*
-     function loadCities(document) {
-         var stocks = new Bloodhound({
-             datumTokenizer: function (d) {
-                 return Bloodhound.tokenizers.whitespace(d.id);
-             },
-             queryTokenizer: Bloodhound.tokenizers.whitespace,
-             limit: 3,
-             local: document,
-             identify: function(obj) { return obj.id; },
-
-         });
-         stocks.initialize();
-
-         $('#country').typeahead(null, {
-             name: 'stocks',
-             displayKey: function (stock) {
-                 return stock.name;
-             },
-             source: stocks.ttAdapter()
-         }).on('typeahead:selected', function (event, data) {
-
-         });
-     };
-
-function getCities(countryid) {
-        $.ajax({
-            url: 'http://hci.it.itba.edu.ar/v1/api/geo.groovy?method=getcities',
-            data: {
-                format: 'json'
-            },
-            dataType: 'jsonp',
-            success: function (data){
-                createCityJSON(data, countryid);
-            },
-            type: 'GET'
-        });
-    }
-
-     function createCityJSON(data, countryid) {
-     jsonObj = [];
-
-     $.each(data.cities, function () {
-     item = {};
-
-     if(countryid == $(this).attr("country").id) {
-         item ["id"] = $(this).attr("id");
-         item ["name"] = $(this).attr("name");
-         item ["country"] = $(this).attr("country").id;
-     }
-     jsonObj.push(item);
-     });
-
-     loadCities(jsonObj);
-     }
-*/
+    /*Eleccion de ciudades */
 
     function loadCities(document) {
 
+        $('.city-typeahead').typeahead('destroy');
+
         var stocks = new Bloodhound({
             datumTokenizer: function (d) {
-                return Bloodhound.tokenizers.whitespace(d.id);
+                return Bloodhound.tokenizers.whitespace(d.name);
             },
             queryTokenizer: Bloodhound.tokenizers.whitespace,
             limit: 3,
@@ -532,44 +482,51 @@ function getCities(countryid) {
         });
         stocks.initialize();
 
-        $('.city-typeahead').typeahead(null, {
+        var cityTypeahead =$('.city-typeahead').typeahead(null, {
             name: 'stocks',
             displayKey: function (stock) {
                 return stock.name;
             },
             source: stocks.ttAdapter()
         }).on('typeahead:selected', function (event, data) {
-            getCities(data.id);
+            console.log(data);
+            cityTypeahead.typeahead('destroy');
+        }).on('change', function() {
+            console.log('Por favor elija un país de la lista');
+            //TODO:MANDAR AL VALIDADOR PARA QUE LO PONGA EN ROJITO
         });
 
     };
 
-    function getCities(id) {
+    /* Solo se pide una vez las ciudades */
+    var cities;
 
-        $.ajax({
-            url: 'http://hci.it.itba.edu.ar/v1/api/geo.groovy?method=getcities',
-            data: {
-                format: 'json'
-            },
-            dataType: 'jsonp',
-            success: function (data) {
+    $.ajax({
+        url: 'http://hci.it.itba.edu.ar/v1/api/geo.groovy?method=getcities',
+        data: {
+            format: 'json'
+        },
+        dataType: 'jsonp',
+        success: function (data) {
 
-                createCityJSON(data,id);
-            },
-            type: 'GET'
-        });
-    }
+            cities = data;
+        },
+        type: 'GET'
+    });
+
     function createCityJSON(data,id) {
         jsonObj = [];
 
         $.each(data.cities, function () {
-                item = {};
-                item ["id"] = $(this).attr('id');
-                item ["name"] = $(this).attr('name');
-                item ["country"] = $(this).attr('country').id;
+            if ($(this).attr('country').id == id) {
 
-                jsonObj.push(item);
+            item = {};
+            item ["id"] = $(this).attr('id');
+            item ["name"] = $(this).attr('name');
+            item ["country"] = $(this).attr('country').id;
 
+            jsonObj.push(item);
+        }
         });
 
         console.log(jsonObj);

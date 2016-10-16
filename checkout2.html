@@ -28,17 +28,6 @@
 
 <body ng-app="checkoutApp">
 
-<script>
-    var $bought;
-    if(!localStorage.boughtFlight){
-      console.log("No se que haces en esta pagina plebeyo, volve a la busqueda");
-    }
-    else{
-        $bought = JSON.parse(localStorage.boughtFlight);
-    }
-    console.log("Pack: "); console.log($bought);
-</script>
-
 <!-- header -->
 <header>
     <nav id="header-nav" class="navbar navbar-default">
@@ -146,17 +135,17 @@
                                 <!--Primer Fila-->
 
                                 <div class="row">
-                                    <div class="col-md-6 form-field basicField">
+                                    <div class="col-md-6 form-field">
                                         <label for="usr-name-{{$index}}">Nombre:</label>
-                                        <input autocomplete="off" type="text" class="form-control usr-name" id="usr-name-{{$index}}" value="" maxlength="80">
+                                        <input autocomplete="off" type="text" class="form-control usr-name basicField" id="usr-name-{{$index}}" value="" maxlength="80">
                                         <p class="error-msg"></p>
 
 
                                     </div>
 
-                                    <div class="col-md-6 form-field basicField">
+                                    <div class="col-md-6 form-field">
                                         <label for="usr-lname-{{$index}}">Apellido:</label>
-                                        <input autocomplete="off" type="text" class="form-control usr-lname" id="usr-lname-{{$index}}" maxlength="80">
+                                        <input autocomplete="off" type="text" class="form-control usr-lname basicField" id="usr-lname-{{$index}}" maxlength="80">
                                         <p class="error-msg"></p>
                                     </div>
                                 </div>
@@ -322,12 +311,12 @@
 
                                 <!--Primera Linea -->
                                 <div class="row">
-                                    <div class="col-md-3 form-field">
-                                        <label for="country">País:</label>
+                                    <div class="col-md-5 form-field">
+                                        <label for="country" class="col-md-12">País:</label>
                                         <input class="typeahead form-control" type="text" id="country">
                                     </div>
 
-                                    <div class="col-md-3 form-field">
+                                    <div class="col-md-4 form-field">
                                         <label for="city">Ciudad:</label>
                                         <input class="typeahead city-typeahead form-control" type="text" id="city">
 

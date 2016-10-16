@@ -344,7 +344,7 @@ function validateInfantDate(day, month, year, travelDate) {
 function validateChildDate(day, month, year, travelDate) {
 	var birthDate = new Date(year, month - 1, day);
 
-	if (validateAdultDate(day, month, year) || validateChildDate(day, month, year) || birthDate > travelDate)
+	if (validateAdultDate(day, month, year, travelDate).valid || validateInfantDate(day, month, year, travelDate).valid || birthDate > travelDate)
 		return invalidValidation('Fecha inválida de niño');
 
 	return validValidation();
