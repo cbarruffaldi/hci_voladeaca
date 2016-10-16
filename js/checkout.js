@@ -40,7 +40,7 @@ function getCurrentStage() {
 }
 
 /* TODO: obtener verdadera cantidad de adultos, niños, infantes y fecha de fin de viaje */
-var passengersValidator = new PassengersValidator(1, 0, 0, new Date()); /* Etapa 0 */
+var passengersValidator = new PassengersValidator(2, 1, 1, new Date()); /* Etapa 0 */
 var paymentValidator = new PaymentValidator();     /* Etapa 1 */
 var contactValidator = new ContactValidator();     /* Etapa 2 */
 
@@ -73,8 +73,6 @@ $(document).ready(function() {
             }
         }
     });
-
-
 });
 
 $(document).on('blur', 'input', function() {
@@ -93,9 +91,10 @@ $(document).on('blur', 'input', function() {
     
     validation = validator.validate(id, value);
 
-    if (validation.valid && !validation.ignore) {
+    if (validation.valid) {
         $(this).val(validation.value); /* Reemplaza valor del campo por uno más lindo o el mismo */
-        removeErrorState($(this));
+        if (!validation.ignore)
+            removeErrorState($(this));
     }
     else if (!validation.ignore) {
         setErrorState($(this), validation.value);
@@ -143,13 +142,8 @@ $(document).ready(function(){
     });
 });
 
-
-
-$(function(){
-    $('.openField').hide();
-    $('.basicField').on("click", function(){
-        $('.openField').slideDown();
-    });
+$(document).on('click', '.basicField', function(){
+    $(this).closest('.form-group').find('.openField').slideDown();
 });
 
 
