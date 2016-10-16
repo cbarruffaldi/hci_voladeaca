@@ -20,11 +20,15 @@ jQuery(document).ready(function(){
 	});
 
 	$("#order-dropdown a").on("click", function() {
-		$("#orderby-btn").text(this.text);
+		var orderbtn = $("#orderby-btn")
+		orderbtn.text(this.text);
+		orderbtn.append('<span class="caret"></span>');
 	});
 
 	$("#currency-dropdown a").on("click", function() {
-		$("#currency-btn").text(this.text);
+		var currbtn = $("#currency-btn")
+		currbtn.text(this.text);
+		currbtn.append('<span class="caret"></span>');
 	});
 
 	$(".options-btn button").on("click", function(obj){
