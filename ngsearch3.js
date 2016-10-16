@@ -36,7 +36,8 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 			var infants = getURLParameter("infants");
 			var vdate = getURLParameter("vdate");
 
-			$selectedFlight.twoWays = vdate ? true : false;
+			$scope.twoWays = vdate ? true : false;
+			$selectedFlight.twoWays = $scope.twoWays;
 
 			if(!(orig && dest && date && (adults || children || infants))){
 				console.log("Param error");
