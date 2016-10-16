@@ -127,7 +127,12 @@ function cleanSummaryStage(stage) {
 
 $(document).ready(function() {
     $('.btnPrev').click(function() {
-        cleanSummaryStage(getCurrentStage());
+        var stageIndex = getCurrentStage();
+        if (stageIndex == 0) {
+            parent.history.back();
+            return false;
+        }
+        cleanSummaryStage(stageIndex);
         $('.nav-tabs > .active').prev('li').find('a').tab('show');        
     });
 });
