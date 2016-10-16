@@ -1,18 +1,39 @@
-(function(){
+(function(global){
 
-function getURLParameter(name) {
-  return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [null, ''])[1].replace(/\+/g, '%20')) || null;
-}
+	function getURLParameter(name) {
+		return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [null, ''])[1].replace(/\+/g, '%20')) || null;
+	}
 
-$("#resultShow").hide();
+	function setOneWay() {
 
-/*$("#loadingImg").on("click", function(){
-	$("#searchResults").show();
-	$("#loadingImg").hide();
-});
-*/
+	}
 
-queryData = {}
-window.queryData = queryData;
+	function fillSearchBox() {
+		var orig = getURLParameter("orig");
+		var dest = getURLParameter("dest");
+		var idate = getURLParameter("date");
+		var adults = getURLParameter("adults");
+		var children = getURLParameter("children");
+		var infants = getURLParameter("infants");
+		var vdate = getURLParameter("vdate");
 
-})();
+		console.log("ORIGEN: " + orig);
+		$("#origen").val(orig);
+		$("#destino").val(dest);
+		$("#datepicker1").val(idate);
+
+		if (vdate)
+			$("#datepicker2").val(vdate);
+		else {
+			$(".idavuelta button").removeClass("selected-iv");
+			$(".idavuelta .ida").addClass("selected-iv");
+			global.setOneWay();
+		} 
+	};
+
+	jQuery(document).ready(function(){
+		fillSearchBox();
+	});
+
+})(window);
+
