@@ -32,102 +32,84 @@
 
 		<!-- header -->
 		<header>
-			<nav id="header-nav" class="navbar navbar-default">
-				<div class="container">
-					<div class="navbar-header">
-						<a href="index.html" class="pull-left">
-							<div id="logo-img"></div>
-						</a>
-
-						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapsable-nav" aria-expanded="false">
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-						</button>
-
-					</div>
-
-
-					<div id="collapsable-nav" class="collapse navbar-collapse">
-						<ul id="nav-list" class="nav navbar-nav navbar-left">
-							<li class="hvr-fade">
-								<a href="#"><span class="glyphicon glyphicon-search"></span>Buscar</a>
-							</li>
-							<li class="hvr-fade"><a href="#"><span class="glyphicon glyphicon-usd"></span>Promociones</a></li>
-
-							<li class="hvr-bounce-to-top"><a href="#"><span class="glyphicon glyphicon-star"></span>Rese&ntilde;as</a></li>
-							<li class="hvr-fade"><a href="help.html"><span class="glyphicon glyphicon-question-sign"></span>Ayuda</a></li>
-						</ul>
-					</div>
-
-				</div>
-			</nav>
+			<div data-ng-include="'./snippets/nav.html'"></div>
 		</header>
 
 		<!-- TITULO -->
+		<!--
+<div class="container">
+<div class="row"><h1>Página de Compra</h1>
+</div>
+</div>
+-->
+
+
 		<div class="container">
-			<div class="row"><h1>Página de Compra</h1>
-			</div>
-		</div>
-
-		<!-- Tabs -->
-		<div id="step-tabs" class="container">
-
-			<ul class="nav nav-tabs nav-justified">
-				<li class="active">
-					<a href="#1">1. Pasajeros</a>
-				</li>
-				<li class="disabled disabled-tab"><a href="#2">2. Pago</a>
-				</li>
-				<li class="disabled disabled-tab"><a href="#3">3. Información de Contacto</a>
-				</li>
-				<li class="disabled disabled-tab"><a href="#4">4. Confirmación</a>
-				</li>
-			</ul>
-
-
-			<!--CUADRO RESUMEN-->
-			<div class="row resume-box">
-				<div class="title-style col-md-12"><h3>Información del viaje</h3></div>
-				<div class="col-md-12 info-box">
-					<div class="panel panel-default">
-						<div class="row">
-							<div class="panel-body col-md-12 info-box">
-								<div class="row">
-									<div class="col-md-2">
-										FECHA
-										<hr>
-									</div>
-									<div class="col-md-8">
-										INFO GENERAL
-										<hr>
-									</div>
-									<div class="col-md-2">
-										DETALLES DEL PRECIO
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-md-2">
-										FECHA
-									</div>
-									<div class="col-md-8">
-										INFO GENERAL
-									</div>
-									<div class="col-md-2">
-										TOTAL: $$$$$$$
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
+			<!-- Tabs -->
+			<div id="step-tabs" class="row">
+				<div class="col-md-12">
+					<ul class="nav nav-tabs nav-justified">
+						<li class="active">
+							<a href="#1">1. Pasajeros</a>
+						</li>
+						<li class="disabled disabled-tab"><a href="#2">2. Pago</a>
+						</li>
+						<li class="disabled disabled-tab"><a href="#3">3. Información de Contacto</a>
+						</li>
+						<li class="disabled disabled-tab"><a href="#4">4. Confirmación</a>
+						</li>
+					</ul>
 				</div>
 			</div>
 
-			<div class="row">
+			<!--CUADRO RESUMEN-->
+			<!--
+<div class="row resume-box">
+<div class="title-style col-md-12">
+<h3>Información del viaje</h3>
+</div>
+<div class="row">
+<div class="col-md-12 info-box">
+<div class="panel panel-default">
+<div class="row">
+<div class="panel-body col-md-12 info-box">
+<div class="row">
+<div class="col-md-2">
+FECHA
+<hr>
+</div>
+<div class="col-md-8">
+INFO GENERAL
+<hr>
+</div>
+<div class="col-md-2">
+DETALLES DEL PRECIO
+</div>
+</div>
+<div class="row">
+<div class="col-md-2">
+FECHA
+</div>
+<div class="col-md-8">
+INFO GENERAL
+</div>
+<div class="col-md-2">
+TOTAL: $$$$$$$
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+-->
 
+			<div class="row tab-row">
 				<div class="tab-content col-md-12">
-
 					<div class="tab-pane active" id="1" ng-controller="PassengersController">
+
+						<!-- Form pasajeros -->
 						<div class="row" id="form1">
 							<div class="col-md-12 title-style">
 								<h3>Información de Pasajeros</h3>
@@ -135,468 +117,497 @@
 						</div>
 						<div class="row" ng-repeat="passenger in passengerList">
 							<div class="col-md-12 form-style">
-								<div class="col-md-2 psg-type-col">
-									<div class="psg-type">
-										<span class="glyphicon glyphicon-user"></span>{{passenger.type}}</div>
-								</div>
-								<form>
-									<div class="col-md-10">
-										<div class="form-group">
-											<!--Primer Fila-->
-
-											<div class="row">
-												<div class="col-md-6 form-field">
-													<label for="usr-name-{{$index}}">Nombre:</label>
-													<input autocomplete="off" type="text" class="form-control usr-name basicField" id="usr-name-{{$index}}" value="" maxlength="80">
-													<p class="error-msg"></p>
-
-
-												</div>
-
-												<div class="col-md-6 form-field">
-													<label for="usr-lname-{{$index}}">Apellido:</label>
-													<input autocomplete="off" type="text" class="form-control usr-lname basicField" id="usr-lname-{{$index}}" maxlength="80">
-													<p class="error-msg"></p>
-												</div>
-											</div>
-
-											<!--Segunda Fila-->
-											<div class="row">
-												<div class="col-md-2 form-field openField">
-
-													<label for="usr-country-{{$index}}">Pais:</label>
-													<input class="typeahead country-typeahead form-control" type="text" id="usr-country-{{$index}}">
-
-												</div>
-
-												<div class="col-md-2 col-md-offset-1 form-field openField">
-													<label for="usr-doc-{{$index}}">Documento:</label>
-													<select class="form-control usr-doc" id="usr-doc-{{$index}}">
-														<option>DNI</option>
-														<option>Pasaporte</option>
-													</select>
-												</div>
-
-												<div class="col-md-6 col-md-offset-1 form-field openField">
-													<label for="usr-docnum-{{$index}}">Número de Documento:</label>
-													<input autocomplete="off" type="text" class="form-control usr-docnum" id="usr-docnum-{{$index}}" maxlength="8">
-													<p class="error-msg"></p>
-												</div>
-											</div>
-
-											<!--Tercera fila -->
-											<div class="row">
-												<div class="col-md-3 form-field openField">
-													<label for="usr-gen-{{$index}}">Sexo:</label>
-													<select class="form-control usr-gen" id="usr-gen-{{$index}}">
-														<option>Femenino</option>
-														<option>Masculino</option>
-													</select>
-												</div>
-
-												<div class="col-md-9 form-inline form-field openField" >
-													<div class="col-md-12 single-label">
-														<label>Fecha de Nacimiento:</label>
-													</div>
-													<label for="birth-day-{{$index}}" class="hidden">Día</label>
-													<input autocomplete="off" type="text" class="form-control birth-day" placeholder="DD" id="birth-day-{{$index}}"/>
-													<label for="birth-month-{{$index}}" class="hidden">Mes</label>
-													<input autocomplete="off" type="text" class="form-control birth-month" placeholder="MM" id="birth-month-{{$index}}"/>
-													<label for="birth-year-{{$index}}" class="hidden">Año</label>
-													<input autocomplete="off" type="text" class="form-control birth-year" placeholder="YYYY" id="birth-year-{{$index}}"/>
-													<p class="error-msg" id="error-birthdate-{{$index}}"></p>
-													<p class="error-msg" id="error-birth-day-{{$index}}"></p>
-													<p class="error-msg" id="error-birth-month-{{$index}}"></p>
-													<p class="error-msg" id="error-birth-year-{{$index}}"></p>
-												</div>
-											</div>
+								<div class="psg-info">
+									<div class="row">
+										<div class="col-md-2 psg-type-col">
+											<div class="psg-type">
+												<span class="glyphicon glyphicon-user"></span>{{passenger.type}}</div>
 										</div>
+										<form>
+											<div class="col-md-10">
+												<div class="form-group">
+
+													<!--Primer Fila-->
+													<div class="row">
+														<div class="col-md-6 form-field">
+															<label for="usr-name-{{$index}}">Nombre:</label>
+															<input autocomplete="off" type="text" class="form-control usr-name basicField" id="usr-name-{{$index}}" value="" maxlength="80">
+															<p class="error-msg"></p>
+
+
+														</div>
+
+														<div class="col-md-6 form-field">
+															<label for="usr-lname-{{$index}}">Apellido:</label>
+															<input autocomplete="off" type="text" class="form-control usr-lname basicField" id="usr-lname-{{$index}}" maxlength="80">
+															<p class="error-msg"></p>
+														</div>
+													</div>
+
+													<!--Segunda Fila-->
+													<div class="row">
+														<div class="col-md-2 form-field openField">
+
+															<label for="usr-country-{{$index}}">Pais:</label>
+															<input class="typeahead country-typeahead form-control" type="text" id="usr-country-{{$index}}">
+
+														</div>
+
+														<div class="col-md-2 col-md-offset-1 form-field openField">
+															<label for="usr-doc-{{$index}}">Documento:</label>
+															<select class="form-control usr-doc" id="usr-doc-{{$index}}">
+																<option>DNI</option>
+																<option>Pasaporte</option>
+															</select>
+														</div>
+
+														<div class="col-md-6 col-md-offset-1 form-field openField">
+															<label for="usr-docnum-{{$index}}">Número de Documento:</label>
+															<input autocomplete="off" type="text" class="form-control usr-docnum" id="usr-docnum-{{$index}}" maxlength="8">
+															<p class="error-msg"></p>
+														</div>
+													</div>
+
+													<!--Tercera fila -->
+													<div class="row">
+														<div class="col-md-3 form-field openField">
+															<label for="usr-gen-{{$index}}">Sexo:</label>
+															<select class="form-control usr-gen" id="usr-gen-{{$index}}">
+																<option>Femenino</option>
+																<option>Masculino</option>
+															</select>
+														</div>
+
+														<div class="col-md-9 form-inline form-field openField" >
+															<div class="col-md-12 single-label">
+																<label>Fecha de Nacimiento:</label>
+															</div>
+															<label for="birth-day-{{$index}}" class="hidden">Día</label>
+															<input autocomplete="off" type="text" class="form-control birth-day" placeholder="DD" id="birth-day-{{$index}}"/>
+															<label for="birth-month-{{$index}}" class="hidden">Mes</label>
+															<input autocomplete="off" type="text" class="form-control birth-month" placeholder="MM" id="birth-month-{{$index}}"/>
+															<label for="birth-year-{{$index}}" class="hidden">Año</label>
+															<input autocomplete="off" type="text" class="form-control birth-year" placeholder="YYYY" id="birth-year-{{$index}}"/>
+															<p class="error-msg" id="error-birthdate-{{$index}}"></p>
+															<p class="error-msg" id="error-birth-day-{{$index}}"></p>
+															<p class="error-msg" id="error-birth-month-{{$index}}"></p>
+															<p class="error-msg" id="error-birth-year-{{$index}}"></p>
+														</div>
+													</div>
+												</div>
+											</div>
+										</form>
 									</div>
-								</form>
+
+								</div>
 							</div>
 						</div>
 					</div>
 
 					<div class="tab-pane fade" id="2">
 						<div class="row" id="form2">
-							<!--Titulo -->
-							<div class="row">
-								<div class="col-md-12 title-style">
-									<h3>Información de Pago</h3>
+							<div class="col-md-12">
+								<!--Titulo -->
+								<div class="row">
+									<div class="col-md-12 title-style">
+										<h3>Información de Pago</h3>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-9 form-style">
+
+										<!--Subtitulo 1-->
+										<div class="row">
+											<div class="col-md-12 sub-style">
+												<h4>Detalles de la Tarjeta</h4>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-12">
+
+												<div id="card-details">
+													<div class="form-group">
+														<!--Primera Fila -->
+														<div class="row">
+															<div class="col-md-8 form-field">
+																<label for="card-num">Número de la tarjeta:</label>
+																<input autocomplete="off" type="text" class="form-control" id="card-num"/>
+																<p class="error-msg"></p>
+															</div>
+															<div class="col-md-2 col-md-offset-1 form-field">
+																<label for="installments">Cuotas:</label>
+																<select class="form-control" id="installments">
+																	<option>1</option>
+																	<option>2</option>
+																	<option>3</option>
+																	<option>4</option>
+																	<option>5</option>
+																	<option>6</option>
+																	<option>7</option>
+																	<option>8</option>
+																	<option>9</option>
+																	<option>10</option>
+																	<option>11</option>
+																	<option>12</option>
+																	<option>13</option>
+																	<option>14</option>
+																	<option>15</option>
+																	<option>16</option>
+																	<option>17</option>
+																	<option>18</option>
+																	<option>19</option>
+																	<option>20</option>
+																	<option>21</option>
+																	<option>22</option>
+																	<option>23</option>
+																	<option>24</option>
+																</select>
+															</div>
+														</div>
+
+														<!-- Segunda Fila-->
+														<div class="row">
+															<div class="col-md-4 form-inline form-field">
+																<div class="row">
+																	<div class="col-md-12 single-label">
+																		<label>Vencimiento:</label>
+																	</div>
+																</div>
+																<label for="exp-month" class="hidden">Mes:</label>
+																<input autocomplete="off" type="text" class="form-control" placeholder="mes" id="exp-month">
+																<label for="exp-year" class="hidden">Año:</label>
+																<input autocomplete="off" type="text" class="form-control" placeholder="año" id="exp-year">
+																<p class="error-msg" id="error-expiration"></p>
+																<p class="error-msg" id="error-exp-month"></p>
+																<p class="error-msg" id="error-exp-year"></p>
+															</div>
+
+															<div class="col-md-4 form-inline form-field">
+																<label for="sec-code"  >Cód.de seguridad:</label>
+																<input autocomplete="off" type="text" class="form-control" id="sec-code">
+																<a href='#' id= 'code-popover' data-toggle="popover" title="¿Donde se ecuentra el código de seguridad?" data-content="<img src='img/security-code.jpg' width='200' />">
+																	<span class="glyphicon glyphicon-question-sign"></span>
+																</a>
+																<p class="error-msg"></p>
+															</div>
+
+															<!-- Mensaje error validación tarjeta de crédito -->
+															<div class="col-md-4">
+																<p id="error-card">No hemos podido verificar su tarjeta de crédito. Por favor revise sus datos.</p>
+															</div>
+														</div>
+
+
+														<!-- Tercera fila -->
+														<div class="row">
+															<div class="col-md-12 form-field">
+																<label for="cardholder" >Nombre del titular:</label>
+																<input autocomplete="off" type="text" class="form-control" id="cardholder" placeholder="Nombre como figura en la tarjeta">
+																<p class="error-msg"></p>
+															</div>
+														</div>
+
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<!--Subtitulo 2 -->
+										<div class="row">
+											<div class="col-md-12 sub-style">
+												<h4>Datos de Facturacion</h4>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-12">
+												<div id="billing-details">
+													<div class="form-group">
+
+														<!--Primera Linea -->
+														<div class="row">
+															<div class="col-md-5 form-field">
+																<label for="country" class="col-md-12">País:</label>
+																<input class="typeahead form-control" type="text" id="country">
+															</div>
+
+															<div class="col-md-4 form-field">
+																<label for="city">Ciudad:</label>
+																<input class="typeahead city-typeahead form-control" type="text" id="city">
+
+															</div>
+														</div>
+
+														<!--Tercer Fila -->
+														<div class="row">
+															<div class="col-md-12">
+																<div class="direc-subtitle">Dirección</div>
+															</div>
+														</div>
+														<div class="row">
+															<div class="col-md-5 form-field">
+																<label for="street">Calle:</label>
+																<input autocomplete="off" type="text" class="form-control" id="street" maxlength="80">
+																<p class="error-msg"></p>
+															</div>
+
+															<div class="col-md-2 form-field">
+																<label for="addr-num">Número:</label>
+
+																<input autocomplete="off" type="text" class="form-control" id="addr-num" maxlength="6">
+																<p class="error-msg"></p>
+															</div>
+
+															<div class="col-md-2 form-field">
+																<label for="zip-code">Cód.Postal:</label>
+																<input autocomplete="off" type="text" class="form-control" id="zip-code" maxlength="10">
+																<p class="error-msg"></p>
+															</div>
+
+															<div class="col-md-2 form-field">
+																<label for="floor">Piso:</label>
+																<input autocomplete="off" type="text" class="form-control" id="floor" maxlength="3">
+																<p class="error-msg"></p>
+															</div>
+
+															<div class="col-md-1 form-field">
+																<label for="department">Dpto.:</label>
+																<input autocomplete="off" type="text" class="form-control" id="department" maxlength="2">
+																<p class="error-msg"></p>
+															</div>
+
+														</div>
+													</div>
+												</div>
+											</div>
+
+										</div>
+
+									</div>
+
+									<div class="col-md-3 sum-box summary">
+										<h3>Resumen</h3>
+										<h5>Pasajeros</h5>
+										<div class="summary-passengers">
+										</div>
+									</div>
+
 								</div>
 							</div>
-							<div class="col-md-9 form-style">
 
-								<!--Subtitulo 1-->
-								<div class="col-md-12 sub-style">
-									<h4>Detalles de la Tarjeta</h4>
+						</div>
+
+						<div class="tab-pane fade" id="3">
+							<div class="row" id="form3">
+								<!--Titulo -->
+								<div class="col-md-12 title-style">
+									<h3>Información de Contacto</h3>
 								</div>
-								<div id="card-details">
+								<div class="col-md-9 form-style" id="contact-form">
+
 									<div class="form-group">
 										<!--Primera Fila -->
 										<div class="row">
 											<div class="col-md-8 form-field">
-												<label for="card-num">Número de la tarjeta:</label>
-												<input autocomplete="off" type="text" class="form-control" id="card-num"/>
+												<label for="email" >E-mail:</label>
+												<input autocomplete="off" type="text" class="form-control" id="email" maxlength="128">
 												<p class="error-msg"></p>
-											</div>
-											<div class="col-md-2 col-md-offset-1 form-field">
-												<label for="installments">Cuotas:</label>
-												<select class="form-control" id="installments">
-													<option>1</option>
-													<option>2</option>
-													<option>3</option>
-													<option>4</option>
-													<option>5</option>
-													<option>6</option>
-													<option>7</option>
-													<option>8</option>
-													<option>9</option>
-													<option>10</option>
-													<option>11</option>
-													<option>12</option>
-													<option>13</option>
-													<option>14</option>
-													<option>15</option>
-													<option>16</option>
-													<option>17</option>
-													<option>18</option>
-													<option>19</option>
-													<option>20</option>
-													<option>21</option>
-													<option>22</option>
-													<option>23</option>
-													<option>24</option>
-												</select>
 											</div>
 										</div>
 
-										<!-- Segunda Fila-->
+										<!-- Segunda Fila -->
 										<div class="row">
-											<div class="col-md-4 form-inline form-field">
-												<div class="col-md-12 single-label">
-													<label>Vencimiento:</label>
+											<div class="phone-data">
+												<div class="col-md-1 form-field phone-row">
+													<label class="tocenter-label">Teléfono:</label>
 												</div>
-												<label for="exp-month" class="hidden">Mes:</label>
-												<input autocomplete="off" type="text" class="form-control" placeholder="mes" id="exp-month">
-												<label for="exp-year" class="hidden">Año:</label>
-												<input autocomplete="off" type="text" class="form-control" placeholder="año" id="exp-year">
-												<p class="error-msg" id="error-expiration"></p>
-												<p class="error-msg" id="error-exp-month"></p>
-												<p class="error-msg" id="error-exp-year"></p>
-											</div>
-
-											<div class="col-md-4 form-inline form-field">
-												<label for="sec-code"  >Cód.de seguridad:</label>
-												<input autocomplete="off" type="text" class="form-control" id="sec-code">
-												<a href='#' id= 'code-popover' data-toggle="popover" title="¿Donde se ecuentra el código de seguridad?" data-content="<img src='img/security-code.jpg' width='200' />">
-													<span class="glyphicon glyphicon-question-sign"></span>
-												</a>
-												<p class="error-msg"></p>
-											</div>
-
-											<!-- Mensaje error validación tarjeta de crédito -->
-											<div class="col-md-4">
-												<p id="error-card">No hemos podido verificar su tarjeta de crédito. Por favor revise sus datos.</p>
-											</div>
-										</div>
-
-
-										<!-- Tercera fila -->
-										<div class="row">
-											<div class="col-md-12 form-field">
-												<label for="cardholder" >Nombre del titular:</label>
-												<input autocomplete="off" type="text" class="form-control" id="cardholder" placeholder="Nombre como figura en la tarjeta">
-												<p class="error-msg"></p>
-											</div>
-										</div>
-
-									</div>
-								</div>
-
-								<!--Subtitulo 2 -->
-								<div class="col-md-12 sub-style">
-									<h4>Datos de Facturacion</h4>
-								</div>
-								<div id="billing-details">
-									<div class="form-group">
-
-										<!--Primera Linea -->
-										<div class="row">
-											<div class="col-md-5 form-field">
-												<label for="country" class="col-md-12">País:</label>
-												<input class="typeahead form-control" type="text" id="country">
-											</div>
-
-											<div class="col-md-4 form-field">
-												<label for="city">Ciudad:</label>
-												<input class="typeahead city-typeahead form-control" type="text" id="city">
-
-											</div>
-										</div>
-
-										<!--Tercer Fila -->
-										<div class="row">
-											<div class="col-md-1">
-												<label class="tocenter-label">Dirección:</label>
-											</div>
-
-											<div class="col-md-4 form-field">
-												<label for="street">Calle:</label>
-												<input autocomplete="off" type="text" class="form-control" id="street" maxlength="80">
-												<p class="error-msg"></p>
-											</div>
-
-											<div class="col-md-2 form-field">
-												<label for="addr-num">Número:</label>
-
-												<input autocomplete="off" type="text" class="form-control" id="addr-num" maxlength="6">
-												<p class="error-msg"></p>
-											</div>
-
-											<div class="col-md-2 form-field">
-												<label for="zip-code">Cód.Postal:</label>
-												<input autocomplete="off" type="text" class="form-control" id="zip-code" maxlength="10">
-												<p class="error-msg"></p>
-											</div>
-
-											<div class="col-md-2 form-field">
-												<label for="floor">Piso:</label>
-												<input autocomplete="off" type="text" class="form-control" id="floor" maxlength="3">
-												<p class="error-msg"></p>
-											</div>
-
-											<div class="col-md-1 form-field">
-												<label for="department">Dpto.:</label>
-												<input autocomplete="off" type="text" class="form-control" id="department" maxlength="2">
-												<p class="error-msg"></p>
-											</div>
-
-										</div>
-									</div>
-								</div>
-							</div>
-
-							<div class="col-md-3 sum-box summary">
-								<h3>Resumen</h3>
-								<h5>Pasajeros</h5>
-								<div class="summary-passengers">
-								</div>
-
-							</div>
-						</div>
-					</div>
-
-					<div class="tab-pane fade" id="3">
-						<div class="row" id="form3">
-							<!--Titulo -->
-							<div class="col-md-12 title-style">
-								<h3>Información de Contacto</h3>
-							</div>
-							<div class="col-md-9 form-style" id="contact-form">
-
-								<div class="form-group">
-									<!--Primera Fila -->
-									<div class="row">
-										<div class="col-md-8 form-field">
-											<label for="email" >E-mail:</label>
-											<input autocomplete="off" type="text" class="form-control" id="email" maxlength="128">
-											<p class="error-msg"></p>
-										</div>
-									</div>
-
-									<!-- Segunda Fila -->
-									<div class="row">
-										<div class="phone-data">
-											<div class="col-md-1 form-field phone-row">
-												<label class="tocenter-label">Teléfono:</label>
-											</div>
-											<div class="col-md-2 form-field">
-												<label for="phone-type-0">Tipo:</label>
-												<select class="form-control" id="phone-type-0">
-													<option>Fijo</option>
-													<option>Celular</option>
-												</select>
-											</div>
-											<div class="col-md-8 form-field phone-input">
-												<label for="phone-0">Número:</label>
-												<input autocomplete="off" type="text" class="form-control" id="phone-0">
-												<p class="error-msg"></p>
-											</div>
-											<div class="col-md-1 tocenter-label">
-												<a href="#" class="btn btn-default add-Phone add-rem-button">
-													<span class="glyphicon glyphicon-plus-sign"></span>
-												</a>
+												<div class="col-md-2 form-field">
+													<label for="phone-type-0">Tipo:</label>
+													<select class="form-control" id="phone-type-0">
+														<option>Fijo</option>
+														<option>Celular</option>
+													</select>
+												</div>
+												<div class="col-md-8 form-field phone-input">
+													<label for="phone-0">Número:</label>
+													<input autocomplete="off" type="text" class="form-control" id="phone-0">
+													<p class="error-msg"></p>
+												</div>
+												<div class="col-md-1 tocenter-label">
+													<a href="#" class="btn btn-default add-Phone add-rem-button">
+														<span class="glyphicon glyphicon-plus-sign"></span>
+													</a>
+												</div>
 											</div>
 										</div>
 									</div>
 								</div>
+
+								<div class="col-md-3 sum-box summary">
+									<h3>Resumen</h3>
+									<h5>Pasajeros</h5>
+									<div class="summary-passengers">
+									</div>
+									<h5>Pago</h5>
+									<h6>Tarjeta</h6>
+									<div class="summary-payment">
+									</div>
+
+									<h6>Facturación</h6>
+									<div class="summary-billing">
+
+									</div>
+
+								</div>
 							</div>
 
-							<div class="col-md-3 sum-box summary">
-								<h3>Resumen</h3>
-								<h5>Pasajeros</h5>
-								<div class="summary-passengers">
-								</div>
-								<h5>Pago</h5>
-								<h6>Tarjeta</h6>
-								<div class="summary-payment">
-								</div>
-
-								<h6>Facturación</h6>
-								<div class="summary-billing">
-
-								</div>
-
-							</div>
 						</div>
 
-					</div>
+						<div class="tab-pane fade" id="4">
+							<h3 class="title-style">Confirmación</h3>
 
-					<div class="tab-pane fade" id="4">
-						<h3 class="title-style">Confirmación</h3>
+							<div class="panel-group">
 
-						<div class="panel-group">
-
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4>Información de Pasajeros</h4>
-								</div>
-
-								<div class="panel-body">
-									<div class="row">
-										<div class="col-md-2">
-											<p><span class="glyphicon glyphicon-user"></span>Adulto</p>
-										</div>
-										<div class="col-md-10">
-
-											<div class="row">
-												<div class="col-sm-6">
-													<p><strong>Nombre: </strong>Lorem</p>
-												</div>
-												<div class="col-sm-6">
-													<p><strong>Apellido: </strong>Ipsum</p>
-												</div>
-												<div class="col-sm-6">
-													<p><strong>País: </strong>Argentina</p>
-												</div>
-												<div class="col-sm-6">
-													<p><strong>Tipo: </strong>DNI</p>
-												</div>
-												<div class="col-sm-12">
-													<p><strong>Número: </strong>1540227113</p>
-												</div>
-												<div class="col-sm-6">
-													<p><strong>Sexo :</strong>?</p>
-												</div>
-												<div class="col-sm-6">
-													<p><strong>Fecha de nacimiento: </strong>dd/mm/aaaa</p>
-												</div>
-											</div>
-
-										</div>
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<h4>Información de Pasajeros</h4>
 									</div>
 
-									<!-- Pasajeros subsiguientes irían en otro row com mismo formato -->
-
-								</div>
-							</div>
-
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4>Información de Pago</h4>
-								</div>
-
-								<div class="panel-body">
-									<div class="panel-group">
-
-										<div class="panel panel-default">
-											<div class="panel-heading">
-												<h5>Detalles de Tarjeta</h5>
+									<div class="panel-body">
+										<div class="row">
+											<div class="col-md-2">
+												<p><span class="glyphicon glyphicon-user"></span>Adulto</p>
 											</div>
-
-											<div class="panel-body">
-												<div class="row">
-													<div class="col-sm-12">
-														<p><strong>Número de la tarjeta: </strong>Lorem</p>
-													</div>
-													<div class="col-sm-4">
-														<p><strong>Vencimiento: </strong>Lorem</p>
-													</div>
-													<div class="col-sm-8">
-														<p><strong>Código de seguridad: </strong>Lorem</p>
-													</div>
-													<div class="col-sm-12">
-														<p><strong>Nombre del titular: </strong>Lorem</p>
-													</div>
-												</div>
-											</div>
-										</div>
-
-										<div class="panel panel-default">
-											<div class="panel-heading">
-												<h5>Datos de Facturación</h5>
-											</div>
-
-											<div class="panel-body">
+											<div class="col-md-10">
 
 												<div class="row">
-													<div class="col-sm-4">
-														<p><strong>Situación fiscal: </strong>Lorem</p>
+													<div class="col-sm-6">
+														<p><strong>Nombre: </strong>Lorem</p>
 													</div>
-													<div class="col-sm-8">
-														<p><strong>CUIL: </strong>123-345345-345</p>
+													<div class="col-sm-6">
+														<p><strong>Apellido: </strong>Ipsum</p>
 													</div>
-													<div class="col-sm-4">
+													<div class="col-sm-6">
 														<p><strong>País: </strong>Argentina</p>
 													</div>
-													<div class="col-sm-4">
-														<p><strong>Provincia: </strong>KEKEKEKE</p>
+													<div class="col-sm-6">
+														<p><strong>Tipo: </strong>DNI</p>
 													</div>
-													<div class="col-sm-4">
-														<p><strong>Ciudad: </strong>KOKOKOKO</p>
+													<div class="col-sm-12">
+														<p><strong>Número: </strong>1540227113</p>
 													</div>
-													<div class="col-sm-4">
-														<p><strong>Calle: </strong>KIKIKIKI</p>
+													<div class="col-sm-6">
+														<p><strong>Sexo :</strong>?</p>
 													</div>
-													<div class="col-sm-4">
-														<p><strong>Número: </strong>47764617</p>
+													<div class="col-sm-6">
+														<p><strong>Fecha de nacimiento: </strong>dd/mm/aaaa</p>
 													</div>
-													<div class="col-sm-4">
-														<p><strong>Código Postal: </strong>1426</p>
-													</div>
-
 												</div>
 
 											</div>
 										</div>
+
+										<!-- Pasajeros subsiguientes irían en otro row com mismo formato -->
+
 									</div>
 								</div>
-							</div>
 
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4>Información de Contacto</h4>
-								</div>
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<h4>Información de Pago</h4>
+									</div>
 
-								<div class="panel-body">
-									<div class="row">
-										<div class="col-md-12">
-											<p><strong>E-mail: </strong></p>
-										</div>
+									<div class="panel-body">
+										<div class="panel-group">
 
-										<div class="col-md-4">
-											<p><span class="glyphicon glyphicon-earphone"></span><strong>Tipo: </strong>Fijo</p>
-										</div>
+											<div class="panel panel-default">
+												<div class="panel-heading">
+													<h5>Detalles de Tarjeta</h5>
+												</div>
 
-										<div class="col-md-4">
-											<p><strong>Código de área: </strong>47764617</p>
-										</div>
+												<div class="panel-body">
+													<div class="row">
+														<div class="col-sm-12">
+															<p><strong>Número de la tarjeta: </strong>Lorem</p>
+														</div>
+														<div class="col-sm-4">
+															<p><strong>Vencimiento: </strong>Lorem</p>
+														</div>
+														<div class="col-sm-8">
+															<p><strong>Código de seguridad: </strong>Lorem</p>
+														</div>
+														<div class="col-sm-12">
+															<p><strong>Nombre del titular: </strong>Lorem</p>
+														</div>
+													</div>
+												</div>
+											</div>
 
-										<div class="col-md-4">
-											<p><strong>Número: </strong>47764617</p>
+											<div class="panel panel-default">
+												<div class="panel-heading">
+													<h5>Datos de Facturación</h5>
+												</div>
+
+												<div class="panel-body">
+
+													<div class="row">
+														<div class="col-sm-4">
+															<p><strong>Situación fiscal: </strong>Lorem</p>
+														</div>
+														<div class="col-sm-8">
+															<p><strong>CUIL: </strong>123-345345-345</p>
+														</div>
+														<div class="col-sm-4">
+															<p><strong>País: </strong>Argentina</p>
+														</div>
+														<div class="col-sm-4">
+															<p><strong>Provincia: </strong>KEKEKEKE</p>
+														</div>
+														<div class="col-sm-4">
+															<p><strong>Ciudad: </strong>KOKOKOKO</p>
+														</div>
+														<div class="col-sm-4">
+															<p><strong>Calle: </strong>KIKIKIKI</p>
+														</div>
+														<div class="col-sm-4">
+															<p><strong>Número: </strong>47764617</p>
+														</div>
+														<div class="col-sm-4">
+															<p><strong>Código Postal: </strong>1426</p>
+														</div>
+
+													</div>
+
+												</div>
+											</div>
 										</div>
 									</div>
+								</div>
+
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<h4>Información de Contacto</h4>
+									</div>
+
+									<div class="panel-body">
+										<div class="row">
+											<div class="col-md-12">
+												<p><strong>E-mail: </strong></p>
+											</div>
+
+											<div class="col-md-4">
+												<p><span class="glyphicon glyphicon-earphone"></span><strong>Tipo: </strong>Fijo</p>
+											</div>
+
+											<div class="col-md-4">
+												<p><strong>Código de área: </strong>47764617</p>
+											</div>
+
+											<div class="col-md-4">
+												<p><strong>Número: </strong>47764617</p>
+											</div>
+										</div>
+									</div>
+
 								</div>
 
 							</div>
@@ -604,7 +615,6 @@
 						</div>
 
 					</div>
-
 				</div>
 			</div>
 			<div class="row">

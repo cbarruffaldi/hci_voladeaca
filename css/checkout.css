@@ -2,6 +2,10 @@
 	display: none;
 }
 
+.fade {
+	display: none;
+}
+
 .nav-tabs li {
 	font-size: 1.3em;
 	border: 0;
@@ -38,6 +42,12 @@
 	border: 1px solid #DC0055;
 }
 
+.tab-row {
+	box-shadow: 2px 2px 5px #a8a8a8;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+
 .resume-box {
 	margin-bottom: 14px;
 }
@@ -61,10 +71,17 @@
 	font-weight: 500;
 }
 
-label{
+label {
 	font-weight: bold;
 	font-style: #5b5b5b;
 	padding-left: 3px;
+}
+
+.direc-subtitle {
+	font-size: 1.2em;
+	font-weight: 600;
+	margin-top: 12px;
+	margin-left: 8px;
 }
 
 .sum-box {
@@ -154,16 +171,8 @@ input.error-input {
 }
 
 .sub-style{
-	background-color: lavender;
-	border-bottom: thick;
+	background-color: #d8d8d8;
 	padding: 0.8em;
-	margin: 0.4em;
-}
-
-.tab-content{
-	padding:5px;
-	background: none;
-
 }
 
 /*
