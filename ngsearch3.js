@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 var app = angular.module("flightApp", ['ngAnimate', 'infinite-scroll']);
 
 app.controller("flightCtrl", function($scope, $http, $window) {

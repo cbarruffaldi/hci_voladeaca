@@ -153,13 +153,13 @@
                                 <div class="row">
                                     <div class="col-md-2 form-field openField">
 
-                                        <label for="usr-country-0" >Pais:</label>
-                                        <input class="typeahead form-control" type="text" id="usr-country-0">
+                                        <label for="usr-country-0">Pais:</label>
+                                        <input class="typeahead country-typeahead form-control" type="text" id="usr-country-0">
 
                                     </div>
 
                                     <div class="col-md-2 col-md-offset-1 form-field openField">
-                                        <label for="usr-doc-0">Tipo:</label>
+                                        <label for="usr-doc-0">Documento:</label>
                                         <select class="form-control usr-doc" id="usr-doc-0">
                                             <option>DNI</option>
                                             <option>Pasaporte</option>
@@ -167,7 +167,7 @@
                                     </div>
 
                                     <div class="col-md-6 col-md-offset-1 form-field openField">
-                                        <label for="usr-docnum-0">Número:</label>
+                                        <label for="usr-docnum-0">Número de Documento:</label>
                                         <input autocomplete="off" type="text" class="form-control usr-docnum" id="usr-docnum-0" maxlength="8">
                                         <p class="error-msg"></p>
                                     </div>
@@ -188,11 +188,11 @@
                                             <label>Fecha de Nacimiento:</label>
                                         </div>
                                         <label for="birth-day-0" class="hidden">Día</label>
-                                        <input autocomplete="off" type="text" class="form-control birth-day" placeholder="dia" id="birth-day-0"/>
+                                        <input autocomplete="off" type="text" class="form-control birth-day" placeholder="DD" id="birth-day-0"/>
                                         <label for="birth-month-0" class="hidden">Mes</label>
-                                        <input autocomplete="off" type="text" class="form-control birth-month" placeholder="mes" id="birth-month-0"/>
+                                        <input autocomplete="off" type="text" class="form-control birth-month" placeholder="MM" id="birth-month-0"/>
                                         <label for="birth-year-0" class="hidden">Año</label>
-                                        <input autocomplete="off" type="text" class="form-control birth-year" placeholder="año" id="birth-year-0"/>
+                                        <input autocomplete="off" type="text" class="form-control birth-year" placeholder="YYYY" id="birth-year-0"/>
                                         <p class="error-msg" id="error-birthdate-0"></p>
                                         <p class="error-msg" id="error-birth-day-0"></p>
                                         <p class="error-msg" id="error-birth-month-0"></p>
@@ -236,6 +236,24 @@
                                             <option>4</option>
                                             <option>5</option>
                                             <option>6</option>
+                                            <option>7</option>
+                                            <option>8</option>
+                                            <option>9</option>
+                                            <option>10</option>
+                                            <option>11</option>
+                                            <option>12</option>
+                                            <option>13</option>
+                                            <option>14</option>
+                                            <option>15</option>
+                                            <option>16</option>
+                                            <option>17</option>
+                                            <option>18</option>
+                                            <option>19</option>
+                                            <option>20</option>
+                                            <option>21</option>
+                                            <option>22</option>
+                                            <option>23</option>
+                                            <option>24</option>
                                         </select>
                                     </div>
                                 </div>
@@ -292,25 +310,15 @@
 
                                 <!--Primera Linea -->
                                 <div class="row">
-                                    <div class="col-md-4 form-field">
+                                    <div class="col-md-3 form-field">
                                         <label for="country">País:</label>
-                                        <select class="form-control" id="country">
-                                            <option>Opciones</option>
-                                        </select>
+                                        <input class="typeahead form-control" type="text" id="country">
                                     </div>
 
-                                    <div class="col-md-4 form-field">
-                                        <label for="prov">Provincia:</label>
-                                        <select class="form-control" id="prov">
-                                            <option>Provincias</option>
-                                        </select>
-                                    </div>
-
-                                    <div class="col-md-4 form-field">
+                                    <div class="col-md-3 form-field">
                                         <label for="city">Ciudad:</label>
-                                        <select class="form-control" id="city">
-                                            <option>Ciudades</option>
-                                        </select>
+                                        <input class="typeahead city-typeahead form-control" type="text" id="city">
+
                                     </div>
                                 </div>
 

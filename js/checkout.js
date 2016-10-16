@@ -395,38 +395,191 @@ function fillPaymentSum(data) {
 }
 
 function fillBillingSum(data){
-    addBillingData(data["country"]+ ', ' + data["prov"] + ', ' + data["city"], data["street"]+ ' ' + data["addr-num"],data["zip-code"],data["floor"], data["department"], $(".summary-billing"));
+    addBillingData(data["country"]+ ', ' + data["city"], data["street"]+ ' ' + data["addr-num"],data["zip-code"],data["floor"], data["department"], $(".summary-billing"));
 }
 
 
-/* Eleccion de paises */
+
+/*Eleccion de Paises */
 
 $(document).ready(function () {
-    var stocks = new Bloodhound({
-        datumTokenizer: function (d) {
-            return Bloodhound.tokenizers.whitespace(d.code);
+
+    function loadCountries(document) {
+
+        var stocks = new Bloodhound({
+            datumTokenizer: function (d) {
+                return Bloodhound.tokenizers.whitespace(d.id);
+            },
+            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            limit: 3,
+            local: document,
+            identify: function(obj) { return obj.id; },
+
+        });
+        stocks.initialize();
+
+        $('#country').typeahead(null, {
+            name: 'stocks',
+            displayKey: function (stock) {
+                return stock.name;
+            },
+            source: stocks.ttAdapter()
+        }).on('typeahead:selected', function (event, data) {
+            getCities(data.id);
+        });
+        $('.country-typeahead').typeahead(null, {
+            name: 'stocks',
+            displayKey: function (stock) {
+                return stock.name;
+            },
+            source: stocks.ttAdapter()
+        }).on('typeahead:selected', function (event, data) {
+
+        });
+    };
+
+
+    $.ajax({
+        url: 'http://hci.it.itba.edu.ar/v1/api/geo.groovy?method=getcountries',
+        data: {
+            format: 'json'
         },
-        queryTokenizer: Bloodhound.tokenizers.whitespace,
-        limit: 3,
-        prefetch: {
-            url: 'countrycode.json',
-            filter: function (list) {
-                return $.map(list, function (stock) {
-                    return {code: stock.code, name: stock.name};
-                });
-            }
-        }
+        dataType: 'jsonp',
+        success: function (data) {
+
+            createCountryJSON(data);
+        },
+        type: 'GET'
     });
 
-    stocks.initialize();
+    function createCountryJSON(data) {
+        jsonObj = [];
 
-    $('.typeahead').typeahead(null, {
-        name: 'stocks',
-        displayKey: function (stock) {
-            return stock.name;
-        },
-        source: stocks.ttAdapter()
-    }).on('typeahead:selected', function (event, data) {
-        console.log(data.code)
-    });
+        $.each(data.countries, function () {
+            item = {};
+            item ["id"] = $(this).attr('id');
+            item ["name"] = $(this).attr('name');
+
+            jsonObj.push(item);
+        });
+
+        loadCountries(jsonObj);
+    };
+
+/* Eleccion de ciudades */
+/*
+     function loadCities(document) {
+         var stocks = new Bloodhound({
+             datumTokenizer: function (d) {
+                 return Bloodhound.tokenizers.whitespace(d.id);
+             },
+             queryTokenizer: Bloodhound.tokenizers.whitespace,
+             limit: 3,
+             local: document,
+             identify: function(obj) { return obj.id; },
+
+         });
+         stocks.initialize();
+
+         $('#country').typeahead(null, {
+             name: 'stocks',
+             displayKey: function (stock) {
+                 return stock.name;
+             },
+             source: stocks.ttAdapter()
+         }).on('typeahead:selected', function (event, data) {
+
+         });
+     };
+
+function getCities(countryid) {
+        $.ajax({
+            url: 'http://hci.it.itba.edu.ar/v1/api/geo.groovy?method=getcities',
+            data: {
+                format: 'json'
+            },
+            dataType: 'jsonp',
+            success: function (data){
+                createCityJSON(data, countryid);
+            },
+            type: 'GET'
+        });
+    }
+
+     function createCityJSON(data, countryid) {
+     jsonObj = [];
+
+     $.each(data.cities, function () {
+     item = {};
+
+     if(countryid == $(this).attr("country").id) {
+         item ["id"] = $(this).attr("id");
+         item ["name"] = $(this).attr("name");
+         item ["country"] = $(this).attr("country").id;
+     }
+     jsonObj.push(item);
+     });
+
+     loadCities(jsonObj);
+     }
+*/
+
+    function loadCities(document) {
+
+        var stocks = new Bloodhound({
+            datumTokenizer: function (d) {
+                return Bloodhound.tokenizers.whitespace(d.id);
+            },
+            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            limit: 3,
+            local: document,
+
+
+        });
+        stocks.initialize();
+
+        $('.city-typeahead').typeahead(null, {
+            name: 'stocks',
+            displayKey: function (stock) {
+                return stock.name;
+            },
+            source: stocks.ttAdapter()
+        }).on('typeahead:selected', function (event, data) {
+            getCities(data.id);
+        });
+
+    };
+
+    function getCities(id) {
+
+        $.ajax({
+            url: 'http://hci.it.itba.edu.ar/v1/api/geo.groovy?method=getcities',
+            data: {
+                format: 'json'
+            },
+            dataType: 'jsonp',
+            success: function (data) {
+
+                createCityJSON(data,id);
+            },
+            type: 'GET'
+        });
+    }
+    function createCityJSON(data,id) {
+        jsonObj = [];
+
+        $.each(data.cities, function () {
+                item = {};
+                item ["id"] = $(this).attr('id');
+                item ["name"] = $(this).attr('name');
+                item ["country"] = $(this).attr('country').id;
+
+                jsonObj.push(item);
+
+        });
+
+        console.log(jsonObj);
+        loadCities(jsonObj);
+    };
+
 });
