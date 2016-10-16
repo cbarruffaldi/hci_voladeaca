@@ -1,250 +1,265 @@
 .openField {
-    display: none;
+	display: none;
+}
+
+.nav-tabs li {
+	font-size: 1.3em;
+	border: 0;
+	border-radius: 4px;
 }
 
 .body-contents{
-    background-color: white;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+	background-color: white;
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 
 .title-style {
-    font-size: 2em;
-    padding: 0.1em 0 0.1em 0.5em;
-    border-top-right-radius: 5px;
-    border-top-left-radius: 3px;
-    background: #DC0055;
-    color: #FFFFFF;
+	padding: 0.1em 0 0.1em 0.5em;
+	border-top-right-radius: 5px;
+	border-top-left-radius: 3px;
+	background: #DC0055;
+}
+
+.title-style h3 {
+	margin-left: 20px;
+	letter-spacing: 1px;
+	font-weight: 300;
+	font-size: 2em;
+	color: #FFFFFF;
+}
+
+.info-box, .form-style {
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	background-color: #FFFFFF;
+	border: 1px solid #DC0055;
+}
+
+.resume-box {
+	margin-bottom: 14px;
+}
+
+.psg-type-col {
+	text-align: center;
+}
+
+.psg-type-col .psg-type {
+	font-size: 1.3em;
+	padding: 10px 0;
 }
 
 .page-title {
-    font-size: 2em;
-    padding: 0.1em 0 0.1em 0.5em;
-    border-top-right-radius: 5px;
-    border-top-left-radius: 3px;
-    color: #204DCC;
-    font-size: 2.8em;
-    font-weight: 500;
+	font-size: 2em;
+	padding: 0.1em 0 0.1em 0.5em;
+	border-top-right-radius: 5px;
+	border-top-left-radius: 3px;
+	color: #204DCC;
+	font-size: 2.8em;
+	font-weight: 500;
 }
 
 label{
-    font-weight: bold;
-    font-style: #5b5b5b;
-    padding-left: 3px;
-}
-
-.info-box {
-    background: rgba( 235, 235, 235, 0.8);
-    padding-bottom: 1em;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    padding:inherit;
-
+	font-weight: bold;
+	font-style: #5b5b5b;
+	padding-left: 3px;
 }
 
 .sum-box {
-    background: rgba( 235, 235, 235, 0.8);
-    padding-bottom: 1em;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    padding:inherit;
+	background-color: #FFFFFF;
+	padding-bottom: 1em;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
 }
 
 .sum-field {
-    text-align: justify;
-    max-width: 100%;
-    overflow-wrap: break-word;
+	text-align: justify;
+	max-width: 100%;
+	overflow-wrap: break-word;
 
 }
 
 .sum-passname{
-    max-width: 100%;
-    overflow-wrap: break-word;
+	max-width: 100%;
+	overflow-wrap: break-word;
 }
 
 .sum {
-    height: 100%;
-    background-color: #0F9E5E;
+	height: 100%;
+	background-color: #0F9E5E;
 }
 
 p.error-msg {
-    color: #a0003a;
-    font-size: 0.9em;
-    margin: 0;
-    padding-left: 0.4em;
-    padding-top: 0.2em;
-    display: none;
-    white-space: pre-line;
+	color: #a0003a;
+	font-size: 0.9em;
+	margin: 0;
+	padding-left: 0.4em;
+	padding-top: 0.2em;
+	display: none;
+	white-space: pre-line;
 }
 
 input.error-input {
-    border: 1px solid #FF0000;
+	border: 1px solid #FF0000;
 }
 
 #error-card {
-    margin-top: 1.8em;
-    margin-right: 0.5em;
-    color: #a0003a;
-    display: none;
-    font-size: 0.9em;    
+	margin-top: 1.8em;
+	margin-right: 0.5em;
+	color: #a0003a;
+	display: none;
+	font-size: 0.9em;    
 }
 
 .single-label {
-    padding-left: 0;
+	padding-left: 0;
 }
 .form-tags {
-    margin: 10px;
-    display: inline-block;
+	margin: 10px;
+	display: inline-block;
 }
 
 .form-field {
-    padding-bottom: 0.2em;
+	padding-bottom: 0.2em;
 }
 
 .tocenter-label{
-    padding-top:2em;
-    text-align: center;
-}
-
-.form-style{
-    background: rgba( 235, 235, 235, 0.8);
-    padding-bottom: 1em;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    padding:inherit;
-    border-bottom-style: ridge;
+	padding-top:2em;
+	text-align: center;
 }
 
 .arrow-btn {
-    font-size: 1.1em;
-    color: #FFFFFF;
-    border: 1px solid #DC0055;
-    background-color: #DC0055;
-    box-shadow: 0 0 14px #8e8e8e;
-    transition: all 0.3s;
-    width: 100%;
-    letter-spacing: 1px;
-    margin-top: 20px;
-    text-align: center;
-
+	margin-top: 10px;
+	font-size: 1.3em;
+	transition: all 0.3s;
+	width: 100%;
+	letter-spacing: 1px;
+	padding: 0.5em 1em !important; 
 }
+
 .arrow-btn button:hover {
-    border: 1px solid #FFFFFF;
-    background-color: #DC0055;
+	border: 1px solid #FFFFFF;
+	background-color: #DC0055;
 }
 
 .arrow-btn button:active {
-    box-shadow: none;
-    background-color: crimson;
+	box-shadow: none;
+	background-color: crimson;
 }
 
 .city-typeahead, #country {
-    width: 20em;
+	width: 20em;
 }
 
 .sub-style{
-    background-color: lavender;
-    border-bottom: thick;
-    padding: 0.8em;
-    margin: 0.4em;
+	background-color: lavender;
+	border-bottom: thick;
+	padding: 0.8em;
+	margin: 0.4em;
 }
 
 .tab-content{
-    padding:5px;
-    background: none;
+	padding:5px;
+	background: none;
 
 }
 
+/*
 .nav-tabs{
-    border-radius: 30px;
+border-radius: 30px;
 }
+*/
 
+/*
 .nav-tabs > li > a{
-    border: medium none;
+border: medium none;
+}
+*/
 
-}
+/*
 .nav-tabs > li > a:hover{
-    background-color: #9acfea !important;
-    border: medium none;
-    border-radius: 0;
-    color:#fff;
+background-color: #9acfea !important;
+border: medium none;
+border-radius: 0;
+color:#fff;
 }
+*/
 
 .disabled-tab{
-    pointer-events: none;
+	pointer-events: none;
 }
 
 .birth-day,.birth-month,.birth-year,#exp-month,#exp-year{
-    width: 70px !important;
+	width: 70px !important;
 }
 
 #cardholder, #card-num{
-    width: 570px;
+	width: 570px;
 }
 .hidden{
-    display: none;
+	display: none;
 }
 
 .usr-name, .usr-lname, #cuil{
-    width:300px
+	width:300px
 }
 
 #birth-form{
-    margin-left:auto;
+	margin-left:auto;
 }
 
 .usr-docnum{
-    width: 200px;
+	width: 200px;
 }
 
 .add-rem-button{
-    background: transparent;
-    border: thin;
+	background: transparent;
+	border: thin;
 
 }
 label {
-    margin: 5px;
-    text-align: left;
+	margin: 5px;
+	text-align: left;
 }
 
 .glyphicon {
-    margin-right: 0.3em;
+	margin-right: 0.3em;
 }
 
 .glyphicon-question-sign{
-    font-size: medium;
+	font-size: medium;
 
 }
 
 .glyphicon.glyphicon-menu-right{
-    font-size: x-large;
+	font-size: x-large;
 
 
 }
 .glyphicon.glyphicon-menu-left{
-    font-size: x-large;
+	font-size: x-large;
 
 }
 .glyphicon.glyphicon-user{
-    font-size: larger;
-    margin-top: 20px;
+	font-size: larger;
+	margin-top: 20px;
 }
 
 
 .glyphicon.glyphicon-plus-sign{
-    font-size: medium;
-    color: green;
+	font-size: medium;
+	color: green;
 }
 
 .glyphicon.glyphicon-minus-sign{
-    font-size: medium;
-    color: red;
+	font-size: medium;
+	color: red;
 }
 
 #modify-modal .modal-dialog{
-    width: 60%;
+	width: 60%;
 
 }
 
