@@ -1,3 +1,8 @@
+.no-gutters {
+	padding: 0;
+	margin: 0;
+}
+
 .filter-area {
 	padding: 5%;
 	margin-top: 5%;
@@ -236,8 +241,7 @@ label {
 }
 
 .airports-col img {
-	height: 2em;
-	margin: 5px;
+	max-width: 70%;
 	margin-top: 0;
 }
 
@@ -253,27 +257,6 @@ label {
 	border-bottom-right-radius: 3px;
 	border-top-right-radius: 3px;
 	text-align: center;
-}
-
-.options-btn button {
-	width: 100%;
-	border: 1px solid #204DCC;
-	background-color: #FFFFFF;
-	color: #204DCC;
-	padding: 0.8%;
-	font-weight: 500;
-	letter-spacing: 1px;
-	margin-bottom: 3%;
-	transition: all 0.3s;
-	border-top: 0;
-	border-top-left-radius: 0;
-	border-top-right-radius: 0;
-}
-
-.options-btn button:hover{
-	background-color: #204DCC;
-	color: #FFFFFF;
-	transition: all 0.3s;
 }
 
 .price-number {

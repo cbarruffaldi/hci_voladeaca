@@ -32,13 +32,30 @@
 							{{t.flight.departMoment.clockName}}
 						</div>
 					</div>
-					<div class="col-md-3 airports-col">
-						<span class="airport-id depart-air">{{t.flight.departure.airport.id}}</span>
+
+					<div class="col-md-1 no-gutters airports-col"> 
+						<span class="airport-id depart-air">
+							{{t.flight.departure.airport.id}}
+						</span>
+					</div>
+					<div class="col-md-1 no-gutters airports-col"> 
 						<span class="arrow-icon"><img src="./img/icn/pp.svg"></span>
+					</div>
+					<div class="col-md-1 no-gutters airports-col">
 						<span class="airport-id land-air">
 							{{t.flight.arrival.airport.id}}
 						</span>
 					</div>
+
+					<!--
+<div class="col-md-3 airports-col">
+<span class="airport-id depart-air">{{t.flight.departure.airport.id}}</span>
+<span class="arrow-icon"><img src="./img/icn/pp.svg"></span>
+<span class="airport-id land-air">
+{{t.flight.arrival.airport.id}}
+</span>
+</div>
+-->
 					<div class="col-md-2 date-col">
 						<div class="land-date">
 							{{t.flight.arrivalMoment.fullDayName}}
