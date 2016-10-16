@@ -456,7 +456,7 @@ $(document).ready(function () {
         $.each(data.countries, function () {
             item = {};
             item ["id"] = $(this).attr('id');
-            item ["name"] = $(this).attr('name');
+            item ["name"] = decodeHtml($(this).attr('name'));
 
             jsonObj.push(item);
         });
@@ -522,7 +522,7 @@ $(document).ready(function () {
 
             item = {};
             item ["id"] = $(this).attr('id');
-            item ["name"] = $(this).attr('name');
+            item ["name"] = decodeHtml($(this).attr('name'));
             item ["country"] = $(this).attr('country').id;
 
             jsonObj.push(item);
@@ -534,3 +534,9 @@ $(document).ready(function () {
     };
 
 });
+
+function decodeHtml(html) {
+    var txt = document.createElement("textarea");
+    txt.innerHTML = html;
+    return txt.value;
+}
