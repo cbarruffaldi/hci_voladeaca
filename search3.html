@@ -118,10 +118,9 @@
 
 					<div class="airline-filter filter-box">
 						<div class="filter-name">Aerolíneas</div>
-
 						<div data-ng-repeat="a in airlines">
 						<input type="checkbox" id="airl-cbox{{a.id}}" data-ng-click="toggleAirline(a.id)" checked="checked" />
-						<label for="airl-cbox{{a.id}}">{{a.name}}</label>
+						<label for="airl-cbox{{a.id}}"><img data-ng-src="{{getLogo(a.id)}}" alt="{{a.name}}" /><span class="airfilter">{{a.name}}</span></label>
 						<br/>
 						</div>
 					</div>

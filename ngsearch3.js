@@ -2,30 +2,19 @@ var app = angular.module("flightApp", ['ngAnimate', 'infinite-scroll']);
 
 app.controller("flightCtrl", function($scope, $http, $window) {
 		$scope.twoWays = false;
-		//Funcionalidad
-		$scope.containers = [] //Los voy a ir llenando mientras proceso la respuesta
-
+		$scope.containers = [] 
 		$scope.scrollLimit = 10;
 		
-		$scope.loadMore = function(){
-			$scope.scrollLimit += 5;
-		}
-
-		function getURLParameter(name) {
-  			return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [null, ''])[1].replace(/\+/g, '%20')) || null;
-		}
-
 		function fillAirlines(){
-			$http({
+		 return	$http({
 			 	method: 'GET',
   				url: 'http://hci.it.itba.edu.ar/v1/api/misc.groovy?method=getairlines'}
   				).then(function successCallback(response){
-  					console.log("response1")
-  					console.log(response);
 					$scope.airlineLogos = {};
 					for(var i in response.data.airlines){
 						$scope.airlineLogos[response.data.airlines[i].id] = response.data.airlines[i].logo;
 					}
+				localStorage.setItem('airlineLogos', JSON.stringify($scope.airlineLogos));
 		});
 
 		}
@@ -36,6 +25,8 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 		}
 
 		function fetch(){
+			$selectedFlight = {};
+
 			var orig = getURLParameter("orig");
 			var dest = getURLParameter("dest");
 			var date = getURLParameter("date");
@@ -44,7 +35,7 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 			var infants = getURLParameter("infants");
 			var vdate = getURLParameter("vdate");
 
-			$scope.twoWays = vdate ? true : false;
+			$selectedFlight.twoWays = vdate ? true : false;
 
 			if(!(orig && dest && date && (adults || children || infants))){
 				console.log("Param error");
@@ -59,6 +50,13 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 			var URL = baseURL + "&dep_date=" + date;
 				URL += "&from=" + orig;
 				URL += "&to=" + dest;
+
+
+			$selectedFlight.passengers = {adults: adults ? parseInt(adults):0,
+												children: children ? parseInt(children):0,
+												infants: infants ? parseInt(infants) : 0,
+												total: adults+children+infants};
+			console.log($scope.selectedFlight);								
 
 			$http({
  				method: 'GET',
@@ -94,7 +92,20 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 
 		}
 
+		$scope.loadMore = function(){
+			$scope.scrollLimit += 5;
+		}
 
+		$scope.buy = function(container){
+			$selectedFlight.container = container;
+			console.log($selectedFlight);
+			
+			sessionStorage.set('boughtFlight', JSON.stringify($selectedFlight));
+			if(localStorage.boughtFlight){
+				console.log("Have one in local");
+				localStorage.set('boughtFlight', JSON.stringify($selectedFlight));
+			}
+		}
 
 
 		$scope.filterFn = function myFilter(container, b, c){
@@ -125,8 +136,7 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 			if($scope.minprice){
 				pass = pass && (container.price.total.total >= $scope.minprice)
 			}
-
-
+			
 			return pass;
 		};
 
@@ -189,8 +199,6 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 					var price = c.price.total.total;
 					if(!minPrice || price < minPrice){
 						minPrice = price;
-						console.log(price);
-						console.log("container: "); console.log(c);
 					}
 					if(!maxPrice || maxPrice < price){
 						maxPrice = price;
@@ -222,7 +230,7 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 			}
 
 			for(var i in filter){
-				console.log(filter);
+
 				if($scope.airlineFilter[filter[i].id] === undefined){
 					$scope.airlineFilter[filter[i].id] = true;
 					$scope.airlines.push(filter[i]);
@@ -238,22 +246,21 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 			s = r.segments[0];
 
 			this.departure.airport = s.departure.airport;
+			this.departure.airport.name = s.departure.airport.description.split(",")[0];
+
 			this.arrival.airport = s.arrival.airport;
+			this.arrival.airport.name = s.arrival.airport.description.split(",")[0];
 			
 			this.airline = s.airline;
 
 			this.departMoment = new TimeDetails(s.departure.date);
 			this.arrivalMoment = new TimeDetails(s.arrival.date);
 			
-			console.log("ArrMom")
-			console.log(this.arrivalMoment);
 			this.duration = r.duration;
 			
 			this.number = s.number;
 			this.id = s.id;
 
-			console.log("Pricee")
-			console.log(this.price)
 			this.price = flight.price;
 			return this; //?
 		}
@@ -266,29 +273,6 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 			
 			var t = $date.split(" ")[1].split(":");
 			this.clockName = t[0] + ":" + t[1] + "hs";
-		}
-
-
-		function getDayName(d){
-			var days = ["Domingo", "Lunes", "Martes",
-						"Miércoles", "Jueves", "Viernes", "Sábado"]
-
-			if(d >= 0 && d <= 6)
-				return days[d];
-			else
-				return "";
-		}
-
-		function getMonthName(m){
-			var months = ["enero", "febrero", "marzo",
-						"abril", "mayo", "junio", "julio",
-						"agosto", "septiembre", "octubre", "noviembre",
-						"diciembre"];
-
-			if(m >= 0 && m <= 11)
-				return months[m];
-			else
-				return "";
 		}
 
 
@@ -387,6 +371,11 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 	};
 
 
+	//Utilidades
+
+	function getURLParameter(name) {
+ 			return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [null, ''])[1].replace(/\+/g, '%20')) || null;
+		}
 
 
 	function initSlider(minPrice, maxPrice){
@@ -419,7 +408,40 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 	});
 }
 
-	fillAirlines();
-	fetch();
+	
+	function getDayName(d){
+			var days = ["Domingo", "Lunes", "Martes",
+						"Miércoles", "Jueves", "Viernes", "Sábado"]
+
+			if(d >= 0 && d <= 6)
+				return days[d];
+			else
+				return "";
+		}
+
+	
+	function getMonthName(m){
+			var months = ["enero", "febrero", "marzo",
+						"abril", "mayo", "junio", "julio",
+						"agosto", "septiembre", "octubre", "noviembre",
+						"diciembre"];
+
+			if(m >= 0 && m <= 11)
+				return months[m];
+			else
+				return "";
+		}
+
+	
+
+	//Ejecucion
+
+
+	if(!localStorage.airlineLogos){
+		fillAirlines().then(fetch);
+	}else{
+		$scope.airlineLogos = JSON.parse(localStorage.airlineLogos);
+		fetch();
+	}
 
 });

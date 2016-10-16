@@ -45,6 +45,7 @@
 			var info;
 			var details = {};
 
+			console.log(deals);
 			for(var i in deals){
 				info = deals[i].city
 				details['lat'] = info.latitude;
@@ -52,6 +53,7 @@
 			
 				details['info'] = { name: info.name,
 									country: info.country,
+									id: info.id,
 									price: deals[i].price
 								  };
 
@@ -71,7 +73,8 @@
 
 			var contentString = "<strong>" + details['info'].name + "</strong>" + "<br />"
 								+ "<strong>Precio: </strong>" +  details['info'].price + "<br />"
-								+ "<a href='#'>Buscar!</a>"; 
+								+ "<a href='#' class='markerLink' \
+										data-cityID='" + details['info'].id + "' + onclick='searchPromo(this)'>Buscar!</a>"; 
 
 			var infowindow  = new google.maps.InfoWindow({
 	    				content: contentString
@@ -101,7 +104,7 @@
 	mapUtils.updateMap = updateMap;
 	mapUtils.updateCity = updateCity;
 		
-	mapUtils.updateMap("BUE");
+	//mapUtils.updateMap("BUE");
 
 	} //initMap
 
