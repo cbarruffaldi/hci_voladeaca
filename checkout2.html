@@ -21,11 +21,12 @@
 
     <script src="type/typeahead.bundle.min.js"></script>
     <script src="type/bloodhound.min.js"></script>
+    <script src="js/ngcheckout.js"></script>
 
 
 </head>
 
-<body>
+<body ng-app="checkoutApp">
 <!-- header -->
 <header>
     <nav id="header-nav" class="navbar navbar-default">
@@ -120,14 +121,13 @@
 
         <div class="tab-content ">
 
-            <div class="tab-pane active" id="1">
+            <div class="tab-pane active" id="1" ng-controller="PassengersController">
                 <div class="row" id="form1">
                     <div class="col-md-12 title-style">
                         <h3>Información de Pasajeros</h3>
                     </div>
-                 <div class="col-md-12 form-style" >
-
-                    <h5 class="col-md-2"><span class="glyphicon glyphicon-user"></span>Adulto</h5>
+                 <div class="col-md-12 form-style" ng-repeat="passenger in passengerList">
+                    <h5 class="col-md-2"><span class="glyphicon glyphicon-user"></span>{{passenger.type}}</h5>
                     <form>
                         <div class="col-md-10">
                             <div class="form-group">
@@ -135,16 +135,16 @@
 
                                 <div class="row">
                                     <div class="col-md-6 form-field basicField">
-                                        <label for="usr-name-0">Nombre:</label>
-                                        <input autocomplete="off" type="text" class="form-control usr-name" id="usr-name-0" value="" maxlength="80">
+                                        <label for="usr-name-{{$index}}">Nombre:</label>
+                                        <input autocomplete="off" type="text" class="form-control usr-name" id="usr-name-{{$index}}" value="" maxlength="80">
                                         <p class="error-msg"></p>
 
 
                                     </div>
 
                                     <div class="col-md-6 form-field basicField">
-                                        <label for="usr-lname-0">Apellido:</label>
-                                        <input autocomplete="off" type="text" class="form-control usr-lname" id="usr-lname-0" maxlength="80">
+                                        <label for="usr-lname-{{$index}}">Apellido:</label>
+                                        <input autocomplete="off" type="text" class="form-control usr-lname" id="usr-lname-{{$index}}" maxlength="80">
                                         <p class="error-msg"></p>
                                     </div>
                                 </div>
@@ -153,22 +153,22 @@
                                 <div class="row">
                                     <div class="col-md-2 form-field openField">
 
-                                        <label for="usr-country-0">Pais:</label>
-                                        <input class="typeahead country-typeahead form-control" type="text" id="usr-country-0">
+                                        <label for="usr-country-{{$index}}">Pais:</label>
+                                        <input class="typeahead country-typeahead form-control" type="text" id="usr-country-{{$index}}">
 
                                     </div>
 
                                     <div class="col-md-2 col-md-offset-1 form-field openField">
-                                        <label for="usr-doc-0">Documento:</label>
-                                        <select class="form-control usr-doc" id="usr-doc-0">
+                                        <label for="usr-doc-{{$index}}">Documento:</label>
+                                        <select class="form-control usr-doc" id="usr-doc-{{$index}}">
                                             <option>DNI</option>
                                             <option>Pasaporte</option>
                                     </select>
                                     </div>
 
                                     <div class="col-md-6 col-md-offset-1 form-field openField">
-                                        <label for="usr-docnum-0">Número de Documento:</label>
-                                        <input autocomplete="off" type="text" class="form-control usr-docnum" id="usr-docnum-0" maxlength="8">
+                                        <label for="usr-docnum-{{$index}}">Número de Documento:</label>
+                                        <input autocomplete="off" type="text" class="form-control usr-docnum" id="usr-docnum-{{$index}}" maxlength="8">
                                         <p class="error-msg"></p>
                                     </div>
                                  </div>
@@ -176,8 +176,8 @@
                                 <!--Tercera fila -->
                                 <div class="row">
                                     <div class="col-md-3 form-field openField">
-                                        <label for="usr-gen-0">Sexo:</label>
-                                        <select class="form-control usr-gen" id="usr-gen-0">
+                                        <label for="usr-gen-{{$index}}">Sexo:</label>
+                                        <select class="form-control usr-gen" id="usr-gen-{{$index}}">
                                             <option>Femenino</option>
                                             <option>Masculino</option>
                                         </select>
@@ -187,16 +187,16 @@
                                         <div class="col-md-12 single-label">
                                             <label>Fecha de Nacimiento:</label>
                                         </div>
-                                        <label for="birth-day-0" class="hidden">Día</label>
-                                        <input autocomplete="off" type="text" class="form-control birth-day" placeholder="DD" id="birth-day-0"/>
-                                        <label for="birth-month-0" class="hidden">Mes</label>
-                                        <input autocomplete="off" type="text" class="form-control birth-month" placeholder="MM" id="birth-month-0"/>
-                                        <label for="birth-year-0" class="hidden">Año</label>
-                                        <input autocomplete="off" type="text" class="form-control birth-year" placeholder="YYYY" id="birth-year-0"/>
-                                        <p class="error-msg" id="error-birthdate-0"></p>
-                                        <p class="error-msg" id="error-birth-day-0"></p>
-                                        <p class="error-msg" id="error-birth-month-0"></p>
-                                        <p class="error-msg" id="error-birth-year-0"></p>
+                                        <label for="birth-day-{{$index}}" class="hidden">Día</label>
+                                        <input autocomplete="off" type="text" class="form-control birth-day" placeholder="DD" id="birth-day-{{$index}}"/>
+                                        <label for="birth-month-{{$index}}" class="hidden">Mes</label>
+                                        <input autocomplete="off" type="text" class="form-control birth-month" placeholder="MM" id="birth-month-{{$index}}"/>
+                                        <label for="birth-year-{{$index}}" class="hidden">Año</label>
+                                        <input autocomplete="off" type="text" class="form-control birth-year" placeholder="YYYY" id="birth-year-{{$index}}"/>
+                                        <p class="error-msg" id="error-birthdate-{{$index}}"></p>
+                                        <p class="error-msg" id="error-birth-day-{{$index}}"></p>
+                                        <p class="error-msg" id="error-birth-month-{{$index}}"></p>
+                                        <p class="error-msg" id="error-birth-year-{{$index}}"></p>
                                     </div>
                                 </div>
                                     </div>
