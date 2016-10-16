@@ -114,23 +114,30 @@
 		validators[id] && validators[id](target);
 	}
 
+	global.setOneWay = function() {
+		var pickerVuelta = $("#date-col-2");
+		pickerVuelta.addClass("disabled-dp");
+		pickerVuelta.find("input").prop('disabled', true);
+		soloIda = true;
+	}
+
+	global.setRoundWay = function() {
+		var pickerVuelta = $("#date-col-2");
+		pickerVuelta.removeClass("disabled-dp");
+		pickerVuelta.find("input").prop('disabled', false);
+		soloIda = false;
+	}
+
 	$("#date-col-2").removeClass("disabled-dp");
 	$(".idavuelta button").on("click", function() {
 		$(".idavuelta button").removeClass("selected-iv");
 		$(this).addClass("selected-iv");
 
-		var pickerVuelta = $("#date-col-2");
-
-		if ($(this).data("info") == "ida") {
-			pickerVuelta.addClass("disabled-dp");
-			pickerVuelta.find("input").prop('disabled', true);
-			soloIda = true;
-		}
-		else {
-			pickerVuelta.removeClass("disabled-dp");
-			pickerVuelta.find("input").prop('disabled', false);
-			soloIda = false;
-		}
+		if ($(this).data("info") == "ida")
+			global.setOneWay();	
+		else 
+			global.setRoundWay();
+		
 	})
 
 	$("#searchButton").on('click', function(obj){
@@ -143,7 +150,7 @@
 
 		if(checker){		
 			var iDate = moment($("#datepicker1").val(), "DD/MM/YYYY").format("YYYY-MM-DD");
-			
+
 			if(!soloIda){
 				var vDate = moment($("#datepicker2").val(), "DD/MM/YYYY").format("YYYY-MM-DD");
 			}

@@ -32,24 +32,15 @@ jQuery(document).ready(function(){
 		$("[data-toggleinfo = " + toggleID + "]").collapse('toggle');
 	});
 
-	
-	$(".unselected-ida").on("click", function(obj){
-		var toggleID = $(this).attr("data-toggleinfo");
-		$("[data-toggleinfo = " + toggleID + "]").collapse('toggle');
-	});
 
-
-
-	$(".details-btn button").on("click", function() {
-		var btn = $(this);
-		btn.parent().find(".price-details").collapse('toggle');
-		if (btn.text() == "+ detalles") {
-			btn.text("- detalles");
-		} else {
-			btn.text("+ detalles");
-		}
-	});
-
-
+//	$(".details-btn button").on("click", function() {
+//		var btn = $(this);
+//		btn.parent().find(".price-details").collapse('toggle');
+//		if (btn.text() == "+ detalles") {
+//			btn.text("- detalles");
+//		} else {
+//			btn.text("+ detalles");
+//		}
+//	});
 
 });
