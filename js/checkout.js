@@ -14,6 +14,8 @@ String.prototype.toUpperFirstLetter = function() {
 
 function setErrorState(inputForm, string) {
     var errorMsg = inputForm.siblings('.error-msg').eq(0); /* Agarra el primer sibling con clase error-msg */
+    if (!errorMsg.length)
+        errorMsg = inputForm.parent().siblings('.error-msg').eq(0);
     inputForm.addClass('error-input');
     errorMsg.text(string);
     errorMsg.fadeIn();
@@ -21,6 +23,8 @@ function setErrorState(inputForm, string) {
 
 function removeErrorState(inputForm) {
     var errorMsg = inputForm.siblings('.error-msg').eq(0);
+    if (!errorMsg.length)
+        errorMsg = inputForm.parent().siblings('.error-msg').eq(0);
     inputForm.removeClass('error-input');
     inputForm.siblings().removeClass('error-input');
     errorMsg.hide();
@@ -520,13 +524,13 @@ $(document).ready(function () {
         $.each(data.cities, function () {
             if ($(this).attr('country').id == id) {
 
-            item = {};
-            item ["id"] = $(this).attr('id');
-            item ["name"] = $(this).attr('name');
-            item ["country"] = $(this).attr('country').id;
+                item = {};
+                item ["id"] = $(this).attr('id');
+                item ["name"] = $(this).attr('name');
+                item ["country"] = $(this).attr('country').id;
 
-            jsonObj.push(item);
-        }
+                jsonObj.push(item);
+            }
         });
 
         console.log(jsonObj);
