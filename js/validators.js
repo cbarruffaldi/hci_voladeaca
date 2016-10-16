@@ -483,7 +483,7 @@ function PassengerValidator(validateFunction, trDate, passId) {
 
     this.applyBackup = function() {
     	for (var prop in this.backup) {
-    		var form = $('#' + prop)
+    		var form = $('#' + prop + '-' + this.passengerId);
     		this.data[prop] = this.backup[prop];
     		form.val(this.data[prop]);
     		removeErrorState(form);
@@ -529,6 +529,7 @@ function PassengerValidator(validateFunction, trDate, passId) {
     			this.data[id] = validation.value; /* agregamos a los datos */
 
     			if (this.birthDateReady() && this.birthId(id)) {
+    				var niceValue = validation.value;
     				validation = this.validateBirthDate(this.data[BIRTH_DAY], this.data[BIRTH_MONTH], this.data[BIRTH_YEAR]);
     				this.validDate = validation.valid;
 
@@ -536,9 +537,10 @@ function PassengerValidator(validateFunction, trDate, passId) {
     					var $focused = $('#' + id + '-' + this.passengerId);
     					$focused.siblings('input').addClass(ERROR_INPUT);
 	    				$focused.addClass(ERROR_INPUT);
+	    				$focused.val(niceValue);
 	    			}
 	    			else
-	    				validation.value = value;
+	    				validation.value = niceValue;
     			}
     		}
     	}
@@ -655,14 +657,16 @@ function PaymentCardValidator() {
 			this.data[id] = validation.value;
 
 			if (this.expDateReady() && this.expId(id)) {
+				var niceValue = validation.value;
 				validation = this.validateExpDate();
    				if (!validation.valid) {  /* Pone en rojo todos los campos de vencimiento */
     				var $focused = $('#' + id);
     				$focused.siblings('input').addClass(ERROR_INPUT);
 	    			$focused.addClass(ERROR_INPUT);
+	    			$focused.val(niceValue);
 	    		}
 	    		else
-	    			validation.value = value;
+	    			validation.value = niceValue;
 			}
 
 	    	if (this.creditCardReady() && this.creditCardId(id)) {
