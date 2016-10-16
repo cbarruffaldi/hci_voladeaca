@@ -8,6 +8,8 @@
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
     <link href="css/typeahead.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="css/buttons.css">
+
 
     <script src="js/vendor/jquery-1.11.2.min.js"></script>
 
@@ -41,6 +43,8 @@
     var i = $bought.twoWays ? 1 : 0;
     console.log($bought.container.flights[i].flight.arrivalMoment)
 </script>
+
+<div class="body-contents">
 
 <!-- header -->
 <header>
@@ -78,7 +82,7 @@
 
 <!-- TITULO -->
 <div class="container">
-    <div class="row"><h1>Página de Compra</h1>
+    <div class="row"><h1 class="page-title"><span class="glyphicon glyphicon-shopping-cart"></span>Compra</h1>
     </div>
 </div>
 
@@ -611,10 +615,10 @@
 
         <div class="row">
             <div class="col-md-2">
-                <button class="arrow-btn btnPrev"><span class="glyphicon glyphicon-menu-left"></span>Volver</button>
+                <button class="arrow-btn btnPrev vda-btn"><span class="glyphicon glyphicon-menu-left"></span>Volver</button>
             </div>
             <div class="col-md-2 col-md-offset-8">
-                <button class="arrow-btn btnNext">Continuar<span class="glyphicon glyphicon-menu-right"></span></button>
+                <button class="arrow-btn btnNext vda-btn">Continuar<span class="glyphicon glyphicon-menu-right"></span></button>
             </div>
         </div>
 
@@ -645,5 +649,5 @@
 
 
 
-
+</div>
 </body>

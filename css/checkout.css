@@ -2,30 +2,54 @@
     display: none;
 }
 
-.title-style {
-    background-color: #087CA7;
-    color:#e3e3e3;;
-    border-radius: 10px;
-    height: 50px;
-    text-align: center;
-    margin-bottom: 0px;
-    padding: 0;
+.body-contents{
+    background-color: white;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 
+.title-style {
+    font-size: 2em;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 3px;
+    background: #DC0055;
+    color: #FFFFFF;
+}
+
+.page-title {
+    font-size: 2em;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 3px;
+    color: #204DCC;
+    font-size: 2.8em;
+    font-weight: 500;
+}
+
+label{
+    font-weight: bold;
+    font-style: #5b5b5b;
+    padding-left: 3px;
 }
 
 .info-box {
-    padding:0;
-    border-radius: 10px;
-    background-color: ghostwhite;
-    padding-bottom: 0.5em;
-    padding-top: 0.5em;
+    background: rgba( 235, 235, 235, 0.8);
+    padding-bottom: 1em;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding:inherit;
+
 }
 
 .sum-box {
-    border-radius: 10px;
-    background-color: ghostwhite;
-    padding:0;
-
+    background: rgba( 235, 235, 235, 0.8);
+    padding-bottom: 1em;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding:inherit;
 }
 
 .sum-field {
@@ -85,26 +109,41 @@ input.error-input {
 }
 
 .form-style{
-    border-radius: 10px;
-    background-color: ghostwhite;
-    margin-bottom: 30px;
-    padding: 0;
+    background: rgba( 235, 235, 235, 0.8);
+    padding-bottom: 1em;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding:inherit;
+    border-bottom-style: ridge;
 }
 
-.arrow-btn{
+.arrow-btn {
+    font-size: 1.1em;
+    color: #FFFFFF;
+    border: 1px solid #DC0055;
+    background-color: #DC0055;
+    box-shadow: 0 0 14px #8e8e8e;
+    transition: all 0.3s;
+    width: 100%;
+    letter-spacing: 1px;
+    margin-top: 20px;
+    text-align: center;
 
-    border: groove;
-    font-size: 20px;
-    text-align: justify;
-    background-color:#087CA7;
-    border-radius: 15%;
-    color: whitesmoke;
+}
+.arrow-btn button:hover {
+    border: 1px solid #FFFFFF;
+    background-color: #DC0055;
+}
 
+.arrow-btn button:active {
+    box-shadow: none;
+    background-color: crimson;
 }
 
 .city-typeahead, #country {
     width: 20em;
 }
+
 .sub-style{
     background-color: lavender;
     border-bottom: thick;
@@ -113,7 +152,9 @@ input.error-input {
 }
 
 .tab-content{
-    padding:5px
+    padding:5px;
+    background: none;
+
 }
 
 .nav-tabs{
@@ -178,12 +219,12 @@ label {
 }
 
 .glyphicon.glyphicon-menu-right{
-    font-size: xx-large;
+    font-size: x-large;
 
 
 }
 .glyphicon.glyphicon-menu-left{
-    font-size: xx-large;
+    font-size: x-large;
 
 }
 .glyphicon.glyphicon-user{
