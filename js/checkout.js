@@ -217,19 +217,6 @@ function restorePhones(phonesId) {
     });
 }
 
-/*
-$(document).ready(function() {
-// Function to get input value.
-    $('#cont1').click(function() {
-        var text_value =
-        if (text_value == '') {
-            alert("Enter Some Text In Input Field");
-        } else {
-
-        }
-    })});
-*/
-
 var SUM_PASSENGERS = '.summary-passengers';
 var SUM_PAYMENT = '.summary-payment';
 var SUM_BILLING = '.summary-billing';
@@ -527,10 +514,6 @@ $(document).ready(function () {
         $.each(data.cities, function () {
             if ($(this).attr('country').id == id) {
 
-                item = {};
-                item ["id"] = $(this).attr('id');
-                item ["name"] = decodeHtml($(this).attr('name'));
-                item ["country"] = $(this).attr('country').id;
             item = {};
             item ["id"] = $(this).attr('id');
             item ["name"] = decodeHtml($(this).attr('name'));
