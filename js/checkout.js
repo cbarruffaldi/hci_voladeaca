@@ -367,9 +367,12 @@ function addPaymentData(card, installments, expdate, secCode,obj){
 }
 
 function addBillingData(country, street ,zipcode, floor, department, obj){
+    if(floor != '')
+        floor = floor + 'º ';
+
     var x1 = '<div class="sum-field col-md-12">' + country + '</div>';
     var x2 = '<div class="sum-field col-md-12"">' + street +'</div>';
-    var x3 = '<div class="sum-field col-md-12">' +floor + 'º ' + department+ ' ' + zipcode +'</div>';
+    var x3 = '<div class="sum-field col-md-12">' +floor  + department+ ' ' + zipcode +'</div>';
     var x4 = '<a href="#" class="col-md-offset-9 sum-modal" data-toggle="modal" data-target="#modify-modal">Modificar...</a>';
 
     obj.append(x1);
