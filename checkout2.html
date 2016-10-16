@@ -34,8 +34,11 @@
     }
     else{
         $bought = JSON.parse(localStorage.boughtFlight);
+        localStorage.removeItem('boughtFlight');
     }
     console.log("Pack: "); console.log($bought);
+    var i = $bought.twoWays ? 1 : 0;
+    console.log($bought.container.flights[i].flight.arrivalMoment)
 </script>
 
 <!-- header -->

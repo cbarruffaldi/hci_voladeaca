@@ -100,16 +100,16 @@
 
 					<div class="airport-filter filter-box">
 						<div class="filter-name">Aeropuertos</div>
-						<div class="filter-section-name">Origen</div>
-						<div data-ng-repeat="a in i_Airports">
-							<input type="checkbox" id="aer-o-cbox{{a.id}}" data-ng-click="toggleIAir(a.id)">
+						<div class="filter-section-name">En {{airports.iCity}}</div>
+						<div data-ng-repeat="a in airports.iList">
+							<input type="checkbox" checked="checked" id="aer-o-cbox{{a.id}}" data-ng-click="toggleAirport(a.id)">
 							<label for="aer-o-cbox{{a.id}}">{{a.name}}</label>
 							<br/>
 						</div>
 
-						<div class="filter-section-name">Destino</div>
-						<div data-ng-repeat="a in v_Airports">
-							<input type="checkbox" id="aer-v-cbox{{a.id}}" data-ng-click="toggleVAir(a.id)">
+						<div class="filter-section-name">En {{airports.vCity}}</div>
+						<div data-ng-repeat="a in airports.vList">
+							<input type="checkbox" checked="checked"  id="aer-v-cbox{{a.id}}" data-ng-click="toggleAirport(a.id)">
 							<label for="aer-v-cbox{{a.id}}">{{a.name}}</label>
 							<br/>
 						</div>

@@ -11,7 +11,7 @@
 						{{t.flight.departure.cityshort}}
 						<span class="airport-badge">{{t.flight.departure.airport.id}}</span>
 						<span class="glyphicon glyphicon-arrow-right"></span>
-						<span class="airport-badge">{{t.flight.arrival.airport.id}}</span>
+						<span class="airport-badge" data-toggle="tooltip" title="Hooray!">{{t.flight.arrival.airport.id}}</span>
 						{{t.flight.arrival.cityshort}}
 					</div>
 				</div>
@@ -56,7 +56,7 @@
 		</div>
 		<div class="col-md-2 flight-price-box">
 			<div class="price-number">
-				$ {{c.price.total.total}}
+				${{c.price.total.total}}
 			</div>
 			<div class="collapse price-details" id="price-details-{{$index}}">
 				<div>Pasaje: ${{c.price.total.fare}}</div>                        
