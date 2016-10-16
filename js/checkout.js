@@ -14,6 +14,8 @@ String.prototype.toUpperFirstLetter = function() {
 
 function setErrorState(inputForm, string) {
     var errorMsg = inputForm.siblings('.error-msg').eq(0); /* Agarra el primer sibling con clase error-msg */
+    if (!errorMsg.length)
+        errorMsg = inputForm.parent().siblings('.error-msg').eq(0);
     inputForm.addClass('error-input');
     errorMsg.text(string);
     errorMsg.fadeIn();
@@ -21,6 +23,8 @@ function setErrorState(inputForm, string) {
 
 function removeErrorState(inputForm) {
     var errorMsg = inputForm.siblings('.error-msg').eq(0);
+    if (!errorMsg.length)
+        errorMsg = inputForm.parent().siblings('.error-msg').eq(0);
     inputForm.removeClass('error-input');
     inputForm.siblings().removeClass('error-input');
     errorMsg.hide();
@@ -213,19 +217,6 @@ function restorePhones(phonesId) {
     });
 }
 
-/*
-$(document).ready(function() {
-// Function to get input value.
-    $('#cont1').click(function() {
-        var text_value =
-        if (text_value == '') {
-            alert("Enter Some Text In Input Field");
-        } else {
-
-        }
-    })});
-*/
-
 var SUM_PASSENGERS = '.summary-passengers';
 var SUM_PAYMENT = '.summary-payment';
 var SUM_BILLING = '.summary-billing';
@@ -367,9 +358,12 @@ function addPaymentData(card, installments, expdate, secCode,obj){
 }
 
 function addBillingData(country, street ,zipcode, floor, department, obj){
+    if(floor != '')
+        floor = floor + 'º ';
+
     var x1 = '<div class="sum-field col-md-12">' + country + '</div>';
     var x2 = '<div class="sum-field col-md-12"">' + street +'</div>';
-    var x3 = '<div class="sum-field col-md-12">' +floor + 'º ' + department+ ' ' + zipcode +'</div>';
+    var x3 = '<div class="sum-field col-md-12">' +floor  + department+ ' ' + zipcode +'</div>';
     var x4 = '<a href="#" class="col-md-offset-9 sum-modal" data-toggle="modal" data-target="#modify-modal">Modificar...</a>';
 
     obj.append(x1);
@@ -525,8 +519,8 @@ $(document).ready(function () {
             item ["name"] = decodeHtml($(this).attr('name'));
             item ["country"] = $(this).attr('country').id;
 
-            jsonObj.push(item);
-        }
+                jsonObj.push(item);
+            }
         });
 
         console.log(jsonObj);
