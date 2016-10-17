@@ -1,5 +1,7 @@
 var app = angular.module("checkoutApp", []);
-app.controller('PassengersController', function($scope) {
+app.controller('CheckoutController', function($scope) {
+
+	/* Genera información para los pasajeros */
 
 	function buildList(passengers) {
 		var list = [];
@@ -28,4 +30,14 @@ app.controller('PassengersController', function($scope) {
     console.log($bought.container.flights[0].flight.arrivalMoment);
 
 	$scope.passengerList = buildList($bought.passengers);
+
+
+	/* Parte de confirmación */
+
+	$scope.fillDatas = function() {
+		$scope.passengersData = passengersValidator.getData();
+		$scope.paymentData = paymentValidator.getData();
+		$scope.contactData = contactValidator.getData();
+		$scope.phones = $scope.contactData['phones'];
+	}
 });

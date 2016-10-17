@@ -45,7 +45,7 @@ function getCurrentStage() {
 
 var $passengers = JSON.parse(localStorage.boughtFlight).passengers;
 
-/* TODO: obtener verdadera cantidad de adultos, niños, infantes y fecha de fin de viaje */
+/* TODO: obtener verdadera fecha de fin de viaje */
 var passengersValidator = new PassengersValidator($passengers.adults, $passengers.children, $passengers.infants, new Date()); /* Etapa 0 */
 var paymentValidator = new PaymentValidator();     /* Etapa 1 */
 var contactValidator = new ContactValidator();     /* Etapa 2 */
@@ -138,6 +138,10 @@ $(document).ready(function() {
 });
 
 $(document).ready(function(){
+    $('#code-popover').click(function(event) {
+        event.preventDefault();
+    });
+    
     $('#code-popover').popover({
         html: true,
         trigger: 'hover',
