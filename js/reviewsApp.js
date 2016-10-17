@@ -8,8 +8,8 @@ app.controller("reviewsCtrl", function($scope, $http, $window) {
 		while(!$scope.airlineData); //Jaja
 		$scope.results = [];
 		var URL = 'http://hci.it.itba.edu.ar/v1/api/review.groovy?method=getairlinereviews';
-  				if($scope.flightNum){
-  					URL += '&flight_number=' + $scope.flightNum;
+  				if($("#nroVuelo").val()){
+  					URL += '&flight_number=' + $("#nroVuelo").val();
   				}
   				if($("#input-aerolinea").val()){
   				  URL += "&airline_id=" + $scope.airlineData.id_map[$("#input-aerolinea").val()];
@@ -31,6 +31,14 @@ app.controller("reviewsCtrl", function($scope, $http, $window) {
 
 	
 
+	$scope.filterReviews = function(r){
+		console.log(r)
+		console.log($("#nroVuelo").val())
+		if($("#nroVuelo").val()){
+			return ('' + r.flight.number).indexOf($scope.nrovuelo) >= 0
+		}
+		return true;
+	}
 	function ReviewDetails(data){
 
 	}
@@ -52,7 +60,8 @@ app.controller("reviewsCtrl", function($scope, $http, $window) {
 		$('ul.tabs li').removeClass('current');
 		$(this).addClass('current');
 		$("#vuelobox").removeClass('current');
-		$("#nroVueo").val("");
+		$("#nroVuelo").val("");
+		$("#nroVuelo").trigger("change");
 	})
 
 	

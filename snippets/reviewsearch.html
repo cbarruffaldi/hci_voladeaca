@@ -1,5 +1,5 @@
 <div infinite-scroll='loadMore()' infinite-scroll-distance='1'>
-	<div class="row review" data-ng-repeat="r in results | limitTo: scrollLimit">
+	<div class="row review" data-ng-repeat="r in results | filter: filterReviews | limitTo: scrollLimit">
 		<div class="col-md-2"></div>
 		<div class="col-md-8">
 		<div class="row reviewtitle">
