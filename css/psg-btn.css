@@ -1,4 +1,4 @@
-#zero-adults-msg {
+#zero-psg-msg {
 	display:none;
 	margin: 0;
 	border: 0;
@@ -17,6 +17,11 @@
 	padding: 5% 1%;
 	text-align: center;
 	vertical-align: middle;
+}
+
+.passenger-row .disabled {
+	background-color: #b3b3b3;
+	border-color: #b3b3b3;
 }
 
 .cat-title {
@@ -47,7 +52,7 @@
 	border-radius: 5px;
 	padding: 4% 12%;
 	background-color: #e3e3e3;
-	
+
 }
 
 .passenger-number:hover {
