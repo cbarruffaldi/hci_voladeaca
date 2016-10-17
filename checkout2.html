@@ -28,7 +28,7 @@
 
 	</head>
 
-	<body ng-app="checkoutApp">
+	<body data-ng-app="checkoutApp" data-ng-controller="CheckoutController">
 
 		<!-- header -->
 		<header>
@@ -127,13 +127,13 @@
 
 				<div class="tab-content col-md-12">
 
-					<div class="tab-pane active" id="1" ng-controller="PassengersController">
+					<div class="tab-pane active" id="1">
 						<div class="row" id="form1">
 							<div class="col-md-12 title-style">
 								<h3>Información de Pasajeros</h3>
 							</div>
 						</div>
-						<div class="row" ng-repeat="passenger in passengerList">
+						<div class="row" data-ng-repeat="passenger in passengerList">
 							<div class="col-md-12 form-style">
 								<div class="col-md-2 psg-type-col">
 									<div class="psg-type">
@@ -242,7 +242,7 @@
 											</div>
 											<div class="col-md-2 col-md-offset-1 form-field">
 												<label for="installments">Cuotas:</label>
-												<select class="form-control" id="installments">
+												<select autocomplete="off" class="form-control" id="installments">
 													<option>1</option>
 													<option>2</option>
 													<option>3</option>
@@ -465,33 +465,33 @@
 								</div>
 
 								<div class="panel-body">
-									<div class="row">
+									<div class="row" data-ng-repeat="passenger in passengersData">
 										<div class="col-md-2">
-											<p><span class="glyphicon glyphicon-user"></span>Adulto</p>
+											<p><span class="glyphicon glyphicon-user"></span>{{passenger['type']}}</p>
 										</div>
 										<div class="col-md-10">
 
 											<div class="row">
 												<div class="col-sm-6">
-													<p><strong>Nombre: </strong>Lorem</p>
+													<p><strong>Nombre: </strong>{{passenger['usr-name']}}</p>
 												</div>
 												<div class="col-sm-6">
-													<p><strong>Apellido: </strong>Ipsum</p>
+													<p><strong>Apellido: </strong>{{passenger['usr-lname']}}</p>
 												</div>
 												<div class="col-sm-6">
-													<p><strong>País: </strong>Argentina</p>
+													<p><strong>País: </strong>{{passenger['usr-country']}}</p>
 												</div>
 												<div class="col-sm-6">
-													<p><strong>Tipo: </strong>DNI</p>
+													<p><strong>Documento: </strong>{{passenger['usr-doc']}}</p>
 												</div>
 												<div class="col-sm-12">
-													<p><strong>Número: </strong>1540227113</p>
+													<p><strong>Número de Documento: </strong>{{passenger['usr-docnum']}}</p>
 												</div>
 												<div class="col-sm-6">
-													<p><strong>Sexo :</strong>?</p>
+													<p><strong>Sexo: </strong>{{passenger['usr-gen']}}<p>
 												</div>
 												<div class="col-sm-6">
-													<p><strong>Fecha de nacimiento: </strong>dd/mm/aaaa</p>
+													<p><strong>Fecha de nacimiento: </strong>{{passenger['birth-day']}}/{{passenger['birth-month']}}/{{passenger['birth-year']}}</p>
 												</div>
 											</div>
 
@@ -518,17 +518,20 @@
 
 											<div class="panel-body">
 												<div class="row">
-													<div class="col-sm-12">
-														<p><strong>Número de la tarjeta: </strong>Lorem</p>
+													<div class="col-sm-8">
+														<p><strong>Número de la tarjeta: </strong>{{paymentData['card-num']}}</p>
 													</div>
 													<div class="col-sm-4">
-														<p><strong>Vencimiento: </strong>Lorem</p>
+														<p><strong>Cuotas: </strong>{{paymentData['installments']}}</p>
+													</div>													
+													<div class="col-sm-4">
+														<p><strong>Vencimiento: </strong>{{paymentData['exp-month']}}/{{paymentData['exp-year']}}</p>
 													</div>
 													<div class="col-sm-8">
-														<p><strong>Código de seguridad: </strong>Lorem</p>
+														<p><strong>Código de seguridad: </strong>{{paymentData['sec-code']}}</p>
 													</div>
 													<div class="col-sm-12">
-														<p><strong>Nombre del titular: </strong>Lorem</p>
+														<p><strong>Nombre del titular: </strong>{{paymentData['cardholder']}}</p>
 													</div>
 												</div>
 											</div>
@@ -543,30 +546,26 @@
 
 												<div class="row">
 													<div class="col-sm-4">
-														<p><strong>Situación fiscal: </strong>Lorem</p>
+														<p><strong>País: </strong>{{paymentData['country']}}</p>
 													</div>
 													<div class="col-sm-8">
-														<p><strong>CUIL: </strong>123-345345-345</p>
+														<p><strong>Ciudad: </strong>{{paymentData['city']}}</p>
 													</div>
 													<div class="col-sm-4">
-														<p><strong>País: </strong>Argentina</p>
+														<p><strong>Calle: </strong>{{paymentData['street']}}</p>
 													</div>
 													<div class="col-sm-4">
-														<p><strong>Provincia: </strong>KEKEKEKE</p>
+														<p><strong>Número: </strong>{{paymentData['addr-num']}}</p>
 													</div>
 													<div class="col-sm-4">
-														<p><strong>Ciudad: </strong>KOKOKOKO</p>
+														<p><strong>Código Postal: </strong>{{paymentData['zip-code']}}</p>
 													</div>
-													<div class="col-sm-4">
-														<p><strong>Calle: </strong>KIKIKIKI</p>
+													<div class="col-sm-4" data-ng-if="paymentData['floor'].length">
+														<p><strong>Piso: </strong>{{paymentData['floor']}}</p>
 													</div>
-													<div class="col-sm-4">
-														<p><strong>Número: </strong>47764617</p>
+													<div class="col-sm-4" data-ng-if="paymentData['department'].length">
+														<p><strong>Departamento: </strong>{{paymentData['department']}}</p>
 													</div>
-													<div class="col-sm-4">
-														<p><strong>Código Postal: </strong>1426</p>
-													</div>
-
 												</div>
 
 											</div>
@@ -583,19 +582,17 @@
 								<div class="panel-body">
 									<div class="row">
 										<div class="col-md-12">
-											<p><strong>E-mail: </strong></p>
+											<p><strong>E-mail: </strong>{{contactData['email']}}</p>
 										</div>
 
+									</div>
+									<div class="row" data-ng-repeat="phone in phones">
 										<div class="col-md-4">
-											<p><span class="glyphicon glyphicon-earphone"></span><strong>Tipo: </strong>Fijo</p>
+											<p><span class="glyphicon glyphicon-earphone"></span><strong>Tipo: </strong>{{phone['type']}}</p>
 										</div>
 
-										<div class="col-md-4">
-											<p><strong>Código de área: </strong>47764617</p>
-										</div>
-
-										<div class="col-md-4">
-											<p><strong>Número: </strong>47764617</p>
+										<div class="col-md-8">
+											<p><strong>Número: </strong>{{phone['number']}}</p>
 										</div>
 									</div>
 								</div>
@@ -613,7 +610,7 @@
 					<button class="arrow-btn btnPrev vda-btn">-Volver</button>
 				</div>
 				<div class="col-md-2 col-md-offset-8">
-					<button class="arrow-btn btnNext vda-btn">Continuar-</button>
+					<button class="arrow-btn btnNext vda-btn" data-ng-click="fillDatas()">Continuar-</button>
 				</div>
 			</div>
 
@@ -635,10 +632,12 @@
 
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default cancel-btn">Cancelar</button>
-						<button type="button" class="btn btn-default save-btn">Guardar</button>
+						<button type="button" class="btn btn-default save-btn" data-ng-click="fillDatas()">Guardar</button>
 					</div>
 				</div>
 
 			</div>
 		</div>
+
+		<!-- TODO: falta el footer -->
 	</body>

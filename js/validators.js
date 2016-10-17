@@ -93,7 +93,7 @@ function validateEmail(email) {
 	if (n == 0)
 		return invalidValidation(CAMPO_OBLIGATORIO);
 	if (!regex.test(email))
-		return invalidValidation('Email inválido');
+		return invalidValidation('E-mail inválido');
 	if (n > MAX_EMAIL)
 		return invalidValidation(ERROR_MSG_LONG);
 
@@ -302,6 +302,7 @@ function validateCreditCardAPI(number, expDate, secCod) {
     }).done(function(data) {
         valid = data.valid;
     });
+    return Math.random() > 0.5;
     return valid;
 }
 
@@ -381,13 +382,13 @@ function PassengersValidator(ad, ch, inf, travelDate) {
 	this.amount = 0;
 
 	while (ad--)
-		this.passengerValidators.push(new PassengerValidator(validateAdultDate, travelDate, this.amount++));
+		this.passengerValidators.push(new PassengerValidator("Adulto", validateAdultDate, travelDate, this.amount++));
 	
 	while (ch--)
-		this.passengerValidators.push(new PassengerValidator(validateChildDate, travelDate, this.amount++));
+		this.passengerValidators.push(new PassengerValidator("Niño", validateChildDate, travelDate, this.amount++));
 
 	while (inf--)
-		this.passengerValidators.push(new PassengerValidator(validateInfantDate, travelDate, this.amount++));
+		this.passengerValidators.push(new PassengerValidator("Infante", validateInfantDate, travelDate, this.amount++));
 
 	this.getData = function() {
 		var data = [];
@@ -430,12 +431,12 @@ function PassengersValidator(ad, ch, inf, travelDate) {
 	}
 }
 
-function PassengerValidator(validateFunction, trDate, passId) {
+function PassengerValidator(type, validateFunction, trDate, passId) {
 
 	/* Mapa id-->función. Las que tienen función null es porque no son input, sino de selección 
 	** (no hay que validar) */
 
-    this.data = {};
+    this.data = {'type': type};
     this.backup = {};
     this.validDate = false;
     this.travelDate = trDate;
@@ -854,8 +855,10 @@ function ContactValidator() {
 
 	this.getData = function() {
 		var data = {'email': this.email, 'phones': []};
-		for (var prop in this.phones)
-			data['phones'].push(phones[prop]);
+		for (var prop in this.phones) {
+			var type = $('#' + 'phone-type-' + prop.split('-')[1]).val();
+			data['phones'].push({'type': type, 'number': this.phones[prop]});
+		}
 		return data;
 	}
 
