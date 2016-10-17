@@ -33,9 +33,9 @@ app.controller("reviewsCtrl", function($scope, $http, $window) {
 
 	$scope.filterReviews = function(r){
 		console.log(r)
-		console.log($("#nroVuelo").val())
 		if($("#nroVuelo").val()){
-			return ('' + r.flight.number).indexOf($scope.nrovuelo) >= 0
+			console.log(('' + r.flight.number).indexOf($("#nroVuelo").val()))
+			return ('' + r.flight.number).indexOf($("#nroVuelo").val()) >= 0
 		}
 		return true;
 	}
