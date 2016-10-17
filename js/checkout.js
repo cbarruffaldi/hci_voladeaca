@@ -65,7 +65,7 @@ $(document).ready(function() {
         var validator = validators[indexTab];
 
     /* Comentar siguiente if si resulta molesto no poder pasar las etapas */
-        if (validator.validateStage()) {
+    //    if (validator.validateStage()) {
             if(next.hasClass('disabled-tab')) {
                 next.removeClass('disabled-tab');
                 next.removeClass('disabled');
@@ -80,7 +80,7 @@ $(document).ready(function() {
                 fillPaymentSum(validator.getData());
                 fillBillingSum(validator.getData());
             }
-        }
+    //    }
     });
 });
 
@@ -136,7 +136,7 @@ $(document).ready(function() {
             return false;
         }
         cleanSummaryStage(stageIndex);
-        $('.nav-tabs > .active').prev('li').find('a').tab('show');        
+        $('.nav-tabs .active').prev('li').find('a').tab('show');        
     });
 });
 
