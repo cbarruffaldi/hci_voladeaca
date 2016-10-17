@@ -1,0 +1,33 @@
+<div infinite-scroll='loadMore()' infinite-scroll-distance='1'>
+	<div class="row review" data-ng-repeat="r in results | limitTo: scrollLimit">
+		<div class="col-md-2"></div>
+		<div class="col-md-8">
+		<div class="row reviewtitle">
+		<h3>{{r.flight.airline.id}} {{r.flight.number}}</h3>
+		</div>
+		<div class="row review-details">
+		Overall: {{r.rating.overall}}
+		Would recomend: {{r.yes_recommend}}
+
+		</div>
+		<div class="row comments">
+		<strong>Comments:</strong><br />
+		<p>{{r.comments}}</p>
+		</div>
+		<div class="row ratings">
+		<div class="col-md-6">
+		<p><strong>Rating:</strong></p>
+		<p>Comfort: {{r.rating.comfort}}</p>
+		<p>Food: {{r.rating.comfort}}</p>
+		<p>Friendliness: {{r.rating.comfort}}</p>
+		</div>
+		<div class="col-md-6">
+		<p>Mileage_program: {{r.rating.comfort}}</p>
+		<p>Punctuality: {{r.rating.punctuality}}</p>
+		<p>Quality/Price: {{r.rating.quality_price}}</p>
+		</div>
+		</div>
+		</div>
+		<div class="col-md-2"></div>
+	</div>
+</div>

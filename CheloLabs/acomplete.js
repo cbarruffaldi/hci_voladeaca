@@ -50,7 +50,7 @@
       listFill: fill,
       cityFill: cfill,
       id_map: idMap,
-      name_map: nameMap
+      name_map: nameMap,
       airportList: airports
     }
     
