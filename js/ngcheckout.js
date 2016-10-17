@@ -27,8 +27,6 @@ app.controller('CheckoutController', function($scope) {
         $bought = JSON.parse(localStorage.boughtFlight);
     }
 
-    console.log($bought.container.flights[0].flight.arrivalMoment);
-
 	$scope.passengerList = buildList($bought.passengers);
 
 

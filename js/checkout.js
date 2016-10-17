@@ -33,7 +33,7 @@ function removeErrorState(inputForm) {
 
 /* 0: pasajeros
 *  1: pago
-*  2: contacto*/
+*  2: contacto */
 
 function getCurrentStage() {
     if (summaryStage !== null)
@@ -43,10 +43,13 @@ function getCurrentStage() {
     return indexTab;
 }
 
-var $passengers = JSON.parse(localStorage.boughtFlight).passengers;
+var $bought = JSON.parse(localStorage.boughtFlight);
+var $passengers = $bought.passengers;
 
-/* TODO: obtener verdadera fecha de fin de viaje */
-var passengersValidator = new PassengersValidator($passengers.adults, $passengers.children, $passengers.infants, new Date()); /* Etapa 0 */
+var twoWay = $bought.twoWays ? 1 : 0;
+var finalDate = $bought.container.flights[twoWay].flight.arrivalMoment.date;
+
+var passengersValidator = new PassengersValidator($passengers.adults, $passengers.children, $passengers.infants, finalDate); /* Etapa 0 */
 var paymentValidator = new PaymentValidator();     /* Etapa 1 */
 var contactValidator = new ContactValidator();     /* Etapa 2 */
 
