@@ -482,13 +482,13 @@ function PassengerValidator(type, validateFunction, trDate, passId) {
 
     this.applyBackup = function() {
     	for (var prop in this.backup) {
-	    		if (!prop.includes('$')) {
+    		if (!prop.includes('$$')) {
 	    		var form = $('#' + prop + '-' + this.passengerId);
 	    		this.data[prop] = this.backup[prop];
 	    		form.val(this.data[prop]);
 	    		removeErrorState(form);
 	    		form.siblings('.error-msg').hide();
-	    	}
+    		}
     	}
     	this.backup = {};
     	this.validDate = true;

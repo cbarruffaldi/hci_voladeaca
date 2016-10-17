@@ -9,22 +9,11 @@
 		<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
 		<link href="css/typeahead.css" rel="stylesheet"/>
 
-		<script src="js/vendor/jquery-1.11.2.min.js"></script>
-
-		<script src="js/validators.js"></script>
-		<script src="js/checkout.js"></script>
 		<link rel="stylesheet" href="css/checkout.css">
 		<link rel="stylesheet" href="css/main.css">
 		<link rel="stylesheet" href="css/buttons.css">
 
-
-		<script src="bootstrap.min.js"></script> <!--TODO:VER POR QUE NO FUNCIONA EL OTRO-->
-		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-
-		<script src="type/typeahead.bundle.min.js"></script>
-		<script src="type/bloodhound.min.js"></script>
-		<script src="js/ngcheckout.js"></script>
-
+		<script src="extlib/angular.min.js"></script>
 
 	</head>
 
@@ -199,11 +188,11 @@
 														<label>Fecha de Nacimiento:</label>
 													</div>
 													<label for="birth-day-{{$index}}" class="hidden">Día</label>
-													<input autocomplete="off" type="text" class="form-control birth-day" placeholder="DD" id="birth-day-{{$index}}"/>
+													<input maxlength="2" autocomplete="off" type="text" class="form-control birth-day" placeholder="DD" id="birth-day-{{$index}}"/>
 													<label for="birth-month-{{$index}}" class="hidden">Mes</label>
-													<input autocomplete="off" type="text" class="form-control birth-month" placeholder="MM" id="birth-month-{{$index}}"/>
+													<input maxlength="2" autocomplete="off" type="text" class="form-control birth-month" placeholder="MM" id="birth-month-{{$index}}"/>
 													<label for="birth-year-{{$index}}" class="hidden">Año</label>
-													<input autocomplete="off" type="text" class="form-control birth-year" placeholder="YYYY" id="birth-year-{{$index}}"/>
+													<input maxlength="4" autocomplete="off" type="text" class="form-control birth-year" placeholder="YYYY" id="birth-year-{{$index}}"/>
 													<p class="error-msg" id="error-birthdate-{{$index}}"></p>
 													<p class="error-msg" id="error-birth-day-{{$index}}"></p>
 													<p class="error-msg" id="error-birth-month-{{$index}}"></p>
@@ -237,7 +226,7 @@
 										<div class="row">
 											<div class="col-md-8 form-field">
 												<label for="card-num">Número de la tarjeta:</label>
-												<input autocomplete="off" type="text" class="form-control" id="card-num"/>
+												<input maxlength="16" autocomplete="off" type="text" class="form-control" id="card-num"/>
 												<p class="error-msg"></p>
 											</div>
 											<div class="col-md-2 col-md-offset-1 form-field">
@@ -278,9 +267,9 @@
 													<label>Vencimiento:</label>
 												</div>
 												<label for="exp-month" class="hidden">Mes:</label>
-												<input autocomplete="off" type="text" class="form-control" placeholder="mes" id="exp-month">
+												<input maxlength="2" autocomplete="off" type="text" class="form-control" placeholder="mes" id="exp-month">
 												<label for="exp-year" class="hidden">Año:</label>
-												<input autocomplete="off" type="text" class="form-control" placeholder="año" id="exp-year">
+												<input maxlength="4" autocomplete="off" type="text" class="form-control" placeholder="año" id="exp-year">
 												<p class="error-msg" id="error-expiration"></p>
 												<p class="error-msg" id="error-exp-month"></p>
 												<p class="error-msg" id="error-exp-year"></p>
@@ -465,6 +454,8 @@
 								</div>
 
 								<div class="panel-body">
+
+								<!-- row de un pasajero -->
 									<div class="row" data-ng-repeat="passenger in passengersData">
 										<div class="col-md-2">
 											<p><span class="glyphicon glyphicon-user"></span>{{passenger['type']}}</p>
@@ -484,21 +475,20 @@
 												<div class="col-sm-6">
 													<p><strong>Documento: </strong>{{passenger['usr-doc']}}</p>
 												</div>
-												<div class="col-sm-12">
+												<div class="col-sm-6">
 													<p><strong>Número de Documento: </strong>{{passenger['usr-docnum']}}</p>
 												</div>
 												<div class="col-sm-6">
-													<p><strong>Sexo: </strong>{{passenger['usr-gen']}}<p>
-												</div>
-												<div class="col-sm-6">
 													<p><strong>Fecha de nacimiento: </strong>{{passenger['birth-day']}}/{{passenger['birth-month']}}/{{passenger['birth-year']}}</p>
+												</div>
+												<div class="col-sm-12">
+													<p><strong>Sexo: </strong>{{passenger['usr-gen']}}<p>
 												</div>
 											</div>
 
 										</div>
 									</div>
-
-									<!-- Pasajeros subsiguientes irían en otro row com mismo formato -->
+								<!-- fin row de pasajero -->
 
 								</div>
 							</div>
@@ -518,21 +508,21 @@
 
 											<div class="panel-body">
 												<div class="row">
-													<div class="col-sm-8">
+													<div class="col-sm-4">
 														<p><strong>Número de la tarjeta: </strong>{{paymentData['card-num']}}</p>
 													</div>
 													<div class="col-sm-4">
-														<p><strong>Cuotas: </strong>{{paymentData['installments']}}</p>
-													</div>													
+														<p><strong>Código de seguridad: </strong>{{paymentData['sec-code']}}</p>
+													</div>
 													<div class="col-sm-4">
 														<p><strong>Vencimiento: </strong>{{paymentData['exp-month']}}/{{paymentData['exp-year']}}</p>
 													</div>
-													<div class="col-sm-8">
-														<p><strong>Código de seguridad: </strong>{{paymentData['sec-code']}}</p>
-													</div>
-													<div class="col-sm-12">
+													<div class="col-sm-4">
 														<p><strong>Nombre del titular: </strong>{{paymentData['cardholder']}}</p>
 													</div>
+													<div class="col-sm-8">
+														<p><strong>Cuotas: </strong>{{paymentData['installments']}}</p>
+													</div>													
 												</div>
 											</div>
 										</div>
@@ -625,7 +615,7 @@
 				<!-- Modal content-->
 				<div class="modal-content">
 					<div class="modal-header">
-						<h4 class="modal-title">Modificar Información de pasajero</h4>
+						<h4 class="modal-title"></h4>
 					</div>
 					<div class="modal-body col-md-12">
 					</div>
@@ -640,4 +630,15 @@
 		</div>
 
 		<!-- TODO: falta el footer -->
+	
+		<script src="js/vendor/jquery-1.11.2.min.js"></script>
+		<script src="js/validators.js"></script>
+		<script src="js/checkout.js"></script>
+		<script src="bootstrap.min.js"></script> <!--TODO:VER POR QUE NO FUNCIONA EL OTRO-->
+		<script src="type/typeahead.bundle.min.js"></script>
+		<script src="type/bloodhound.min.js"></script>
+		<script src="js/ngcheckout.js"></script>
 	</body>
+
+
+</html>

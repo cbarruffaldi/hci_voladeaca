@@ -141,7 +141,7 @@ $(document).ready(function(){
     $('#code-popover').click(function(event) {
         event.preventDefault();
     });
-    
+
     $('#code-popover').popover({
         html: true,
         trigger: 'hover',
@@ -251,19 +251,25 @@ $(document).on('show.bs.modal', '#modify-modal', function(event) {
     var modifyStage = getModifyStage(modifyLink);
     summaryStage = modifyStage[0];
     var tabId = $('#' + (summaryStage + 1));
+    var modalHeader = $('.modal-title');
 
     validators[summaryStage].generateBackup();
 
-    /* TODO: ver que pasajero es */
+    var formGroup = tabId.find('.form-group').eq(modifyStage[1]);
+    formGroupParent = formGroup.parent();
+    modal.find('.modal-body').append(formGroup);
+
     if (summaryStage == 0) {
-        var formGroup = tabId.find('.form-group').eq(modifyStage[1]);
-        formGroupParent = formGroup.parent();
-        modal.find('.modal-body').append(formGroup);
+        modalHeader.text('Modificar Información de Pasajero');
     }
     else if (summaryStage == 1) {
-        var formGroup = tabId.find('.form-group').eq(modifyStage[1]);
-        formGroupParent = formGroup.parent();
-        modal.find('.modal-body').append(formGroup);
+        if (modifyStage[1])
+            modalHeader.text('Modificar Información de Facturación');
+        else
+            modalHeader.text('Modificar Información de Tarjeta');
+    }
+    else if (summaryStage == 2) {
+            modalHeader.text('Modificar Información de Contacto');
     }
 });
 
@@ -367,12 +373,14 @@ function addPaymentData(card, installments, expdate, secCode,obj){
 }
 
 function addBillingData(country, street ,zipcode, floor, department, obj){
-    if(floor != '')
-        floor = floor + 'º ';
+    if (floor.length)
+        floor = 'Piso: ' + floor + ' ';
+    if (department.length)
+        department = 'Dpto.: ' + department + ' ';
 
     var x1 = '<div class="sum-field col-md-12">' + country + '</div>';
     var x2 = '<div class="sum-field col-md-12"">' + street +'</div>';
-    var x3 = '<div class="sum-field col-md-12">' +floor  + department+ ' ' + zipcode +'</div>';
+    var x3 = '<div class="sum-field col-md-12">' + floor  + department +  zipcode +'</div>';
     var x4 = '<a href="#" class="col-md-offset-9 sum-modal" data-toggle="modal" data-target="#modify-modal">Modificar...</a>';
 
     obj.append(x1);
