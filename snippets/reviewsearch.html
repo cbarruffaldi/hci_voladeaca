@@ -1,5 +1,36 @@
-<div infinite-scroll='loadMore()' infinite-scroll-distance='1'>
-	<div class="row review" data-ng-repeat="r in results | filter: filterReviews | limitTo: scrollLimit">
+<div infinite-scroll='loadMore("details")' infinite-scroll-distance='1'>
+
+	<div data-ng-if="!flightSelected">
+		<div data-ng-repeat="f in flightResults | limitTo: scrollLimit.details">
+		<div class="container">
+			
+			<h3 class="row"> {{f.flight.airline.id}} {{f.flight.number}} </h3>
+				<div class="row ratings">
+					<div class="col-md-6">
+					<p><strong>Ratings promedio:</strong></p>
+					<p>Comfort: {{(f.rating.comfort).toFixed(2)}}</p>
+					<p>Food: {{(f.rating.comfort).toFixed(2)}}</p>
+					<p>Friendliness: {{(f.rating.comfort).toFixed(2)}}</p>
+					</div>
+					<div class="col-md-6">
+					<p>Mileage_program: {{(f.rating.comfort).toFixed(2)}}</p>
+					<p>Punctuality: {{(f.rating.punctuality).toFixed(2)}}</p>
+					<p>Quality/Price: {{(f.rating.quality_price).toFixed(2)}}</p>
+					</div>
+				</div>
+		<div class="row">
+			<h4><a href="#" data-ng-click="selectFlight(f)">Ver todas</a></h4>
+		</div>
+		</div>
+	</div>
+		
+	</div>
+</div>
+
+<div infinite-scroll='loadMore("reviews")' infinite-scroll-distance='1'>
+	<div data-ng-if="flightSelected">
+	<h4><a href="#" data-ng-click="deselectFlight()">&laquo; Volver </a>
+	<div class="row review" data-ng-repeat="r in reviewResults | filter: filterReviews | limitTo: scrollLimit.reviews">
 		<div class="col-md-2"></div>
 		<div class="col-md-8">
 		<div class="row reviewtitle">
@@ -29,5 +60,6 @@
 		</div>
 		</div>
 		<div class="col-md-2"></div>
+	</div>
 	</div>
 </div>
