@@ -467,8 +467,8 @@ function PassengerValidator(type, validateFunction, trDate, passId) {
                                 'birth-day': this.validateBirthDay,
                                 'birth-month': this.validateBirthMonth,
                                 'birth-year': this.validateBirthYear,
-                                'usr-doc': null,
                                 'usr-country': validateName,
+                                'usr-doc': null,
                                 'usr-gen': null };
 
 
@@ -482,11 +482,13 @@ function PassengerValidator(type, validateFunction, trDate, passId) {
 
     this.applyBackup = function() {
     	for (var prop in this.backup) {
-    		var form = $('#' + prop + '-' + this.passengerId);
-    		this.data[prop] = this.backup[prop];
-    		form.val(this.data[prop]);
-    		removeErrorState(form);
-    		form.siblings('.error-msg').hide();
+	    		if (!prop.includes('$')) {
+	    		var form = $('#' + prop + '-' + this.passengerId);
+	    		this.data[prop] = this.backup[prop];
+	    		form.val(this.data[prop]);
+	    		removeErrorState(form);
+	    		form.siblings('.error-msg').hide();
+	    	}
     	}
     	this.backup = {};
     	this.validDate = true;
