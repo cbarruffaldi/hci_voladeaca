@@ -448,7 +448,7 @@ function validateCity(name) {
 
 	if (currentCities) {
 		currentCities.forEach(function(city) {
-			if (city['name'].toUpperCase().includes(name.toUpperCase()))
+			if (city['name'].toUpperCase() == name.toUpperCase())
 				validation = validValidation(name);
 		});
 	}
