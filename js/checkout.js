@@ -397,7 +397,7 @@ function fillPaymentSum(data) {
 }
 
 function fillBillingSum(data){
-    addBillingData(data["country"]+ ', ' + data["city"], data["street"]+ ' ' + data["addr-num"],data["zip-code"],data["floor"], data["department"], $(".summary-billing"));
+    addBillingData(data["city"] + ', ' + data["country"], data["street"]+ ' ' + data["addr-num"],data["zip-code"],data["floor"], data["department"], $(".summary-billing"));
 }
 
 
@@ -432,8 +432,10 @@ $(document).ready(function () {
             source: stocks.ttAdapter()
         })
             .on('blur', function() {
-                if(cityTypeahead)
-                    cityTypeahead.typeahead('destroy');                
+                if(cityTypeahead) {
+                    cityTypeahead.typeahead('destroy');
+                    currentCities = undefined;
+                }
                 console.log('se ejecuta change');
                 $("#city").val('');
                 var countryId = findCountryId($('#country').val());
@@ -543,14 +545,17 @@ $(document).ready(function () {
     }
 
     function createCityJSON(data,id) {
-        jsonObj = [];
+        var jsonObj = [];
 
         $.each(data.cities, function () {
             if ($(this).attr('country').id == id) {
 
+                var split = decodeHtml($(this).attr('name')).split(',');
+
+
                 item = {};
                 item ["id"] = $(this).attr('id');
-                item ["name"] = decodeHtml($(this).attr('name'));
+                item ["name"] = split.length == 3 ? split[0] + ',' + split[1] : split[0];
                 item ["country"] = $(this).attr('country').id;
 
                 jsonObj.push(item);
