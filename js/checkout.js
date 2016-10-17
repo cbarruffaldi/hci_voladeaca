@@ -401,10 +401,14 @@ function fillBillingSum(data){
 }
 
 
+var countries;
+var currentCities;
 
 /*Eleccion de Paises */
 
 $(document).ready(function () {
+
+    var cityTypeahead;
 
     function loadCountries(document) {
 
@@ -427,13 +431,14 @@ $(document).ready(function () {
             },
             source: stocks.ttAdapter()
         })
-            .on('typeahead:selected', function (event, data) {
-            $("#city").val('');
-            createCityJSON(cities,data.id);
-        })
-            .on('change', function() {
-                console.log('Por favor elija un país de la lista');
-                //TODO:MANDAR AL VALIDADOR PARA QUE LO PONGA EN ROJITO
+            .on('blur', function() {
+                if(cityTypeahead)
+                    cityTypeahead.typeahead('destroy');                
+                console.log('se ejecuta change');
+                $("#city").val('');
+                var countryId = findCountryId($('#country').val());
+                if (countryId)
+                    currentCities = createCityJSON(cities, countryId);                
             });
 
 
@@ -459,16 +464,16 @@ $(document).ready(function () {
         dataType: 'jsonp',
         success: function (data) {
 
-            createCountryJSON(data);
+            countries = createCountryJSON(data);
         },
         type: 'GET'
     });
 
     function createCountryJSON(data) {
-        jsonObj = [];
+        var jsonObj = [];
 
         $.each(data.countries, function () {
-            item = {};
+            var item = {};
             item ["id"] = $(this).attr('id');
             item ["name"] = decodeHtml($(this).attr('name'));
 
@@ -476,7 +481,10 @@ $(document).ready(function () {
         });
 
         loadCountries(jsonObj);
+
+        return jsonObj;
     };
+
 
     /*Eleccion de ciudades */
 
@@ -496,18 +504,13 @@ $(document).ready(function () {
         });
         stocks.initialize();
 
-        var cityTypeahead =$('.city-typeahead').typeahead(null, {
+        cityTypeahead =$('.city-typeahead').typeahead(null, {
             name: 'stocks',
             displayKey: function (stock) {
                 return stock.name;
             },
             source: stocks.ttAdapter()
-        }).on('typeahead:selected', function (event, data) {
-            console.log(data);
-            cityTypeahead.typeahead('destroy');
-        }).on('change', function() {
-            console.log('Por favor elija un país de la lista');
-            //TODO:MANDAR AL VALIDADOR PARA QUE LO PONGA EN ROJITO
+        }).on('blur', function (event, data) {
         });
 
     };
@@ -528,23 +531,36 @@ $(document).ready(function () {
         type: 'GET'
     });
 
+    function findCountryId(name) {
+        var id;
+
+        countries.forEach(function(country) {
+            if (country['name'].toUpperCase() == name.toUpperCase())
+                id = country['id'];
+        });
+
+        return id;
+    }
+
     function createCityJSON(data,id) {
         jsonObj = [];
 
         $.each(data.cities, function () {
             if ($(this).attr('country').id == id) {
 
-            item = {};
-            item ["id"] = $(this).attr('id');
-            item ["name"] = decodeHtml($(this).attr('name'));
-            item ["country"] = $(this).attr('country').id;
+                item = {};
+                item ["id"] = $(this).attr('id');
+                item ["name"] = decodeHtml($(this).attr('name'));
+                item ["country"] = $(this).attr('country').id;
 
                 jsonObj.push(item);
+
             }
         });
 
         console.log(jsonObj);
         loadCities(jsonObj);
+        return jsonObj;
     };
 
 });

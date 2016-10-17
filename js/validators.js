@@ -431,6 +431,30 @@ function PassengersValidator(ad, ch, inf, travelDate) {
 	}
 }
 
+function validateCountry(name) {
+	var validation = invalidValidation('País inválido');
+
+	countries.forEach(function (country) {
+		if (country['name'].toUpperCase() == name.toUpperCase())
+			validation = validValidation(name);
+	});
+
+	return validation;
+}
+
+
+function validateCity(name) {
+	var validation = invalidValidation('Ciudad inválida');
+
+	if (currentCities) {
+		currentCities.forEach(function(city) {
+			if (city['name'].toUpperCase().includes(name.toUpperCase()))
+				validation = validValidation(name);
+		});
+	}
+	return validation;
+}
+
 function PassengerValidator(type, validateFunction, trDate, passId) {
 
 	/* Mapa id-->función. Las que tienen función null es porque no son input, sino de selección 
@@ -467,7 +491,7 @@ function PassengerValidator(type, validateFunction, trDate, passId) {
                                 'birth-day': this.validateBirthDay,
                                 'birth-month': this.validateBirthMonth,
                                 'birth-year': this.validateBirthYear,
-                                'usr-country': validateName,
+                                'usr-country': validateCountry,
                                 'usr-doc': null,
                                 'usr-gen': null };
 
@@ -713,8 +737,8 @@ function PaymentAddressValidator() {
 	this.inputValidations = { 'street': validateStreet,
 							  'addr-num': validateAddrNum,
 							  'zip-code': validateZipCode,
-							  'country': validateName,
-							  'city': validateName
+							  'country': validateCountry,
+							  'city': validateCity
 							};
 
 	this.optionalValidations = { 'floor': validateFloor,
