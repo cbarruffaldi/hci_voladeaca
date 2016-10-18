@@ -1,7 +1,7 @@
 <div data-ng-repeat="p in promos">
 	<div class="col-md-4">
 		<div class="result-box" data-toggle="modal" data-target="#modal-explore-{{$index}}">
-			<img class="place-img" src="austria.jpg"/>
+			<img class="place-img" src="{{p.imgsrc}}"/>
 			<div class="promo-text">
 				<div class="promo-dest">	{{p.shortName}}
 				</div>
@@ -17,7 +17,7 @@
 				<div class="modal-body">
 					<div class="row">
 						<div class="col-md-7">
-							<img class="place-img" src="austria.jpg"/>
+							<img class="place-img" src="{{p.imgsrc}}"/>
 						</div>
 						<div class="col-md-5">
 							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
