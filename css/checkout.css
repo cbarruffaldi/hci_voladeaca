@@ -73,7 +73,6 @@
 
 label {
 	font-weight: bold;
-	font-style: #5b5b5b;
 	padding-left: 3px;
 }
 
@@ -127,7 +126,7 @@ input.error-input {
 	margin-right: 0.5em;
 	color: #a0003a;
 	display: none;
-	font-size: 0.9em;    
+	font-size: 0.9em;
 }
 
 .single-label {
@@ -153,7 +152,7 @@ input.error-input {
 	transition: all 0.3s;
 	width: 100%;
 	letter-spacing: 1px;
-	padding: 0.5em 1em !important; 
+	padding: 0.5em 1em !important;
 }
 
 .arrow-btn button:hover {
@@ -196,9 +195,12 @@ color:#fff;
 }
 */
 
+
 .disabled-tab{
-	pointer-events: none;
+	
 }
+
+
 
 .birth-day,.birth-month,.birth-year,#exp-month,#exp-year{
 	width: 70px !important;
@@ -270,6 +272,3 @@ label {
 #modify-modal .modal-dialog{
 	width: 60%;
 }
-
-
-
