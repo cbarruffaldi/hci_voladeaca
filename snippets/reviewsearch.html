@@ -5,17 +5,19 @@
 		<div class="container">
 			
 			<h3 class="row"> {{f.flight.airline.id}} {{f.flight.number}} </h3>
+			<div class="row ratetitulo"><strong>Ratings promedio: {{(f.rating.overall).toFixed(2)}}</strong></div>
 				<div class="row ratings">
 					<div class="col-md-6">
-					<p><strong>Ratings promedio:</strong></p>
-					<p>Comfort: {{(f.rating.comfort).toFixed(2)}}</p>
-					<p>Food: {{(f.rating.comfort).toFixed(2)}}</p>
-					<p>Friendliness: {{(f.rating.comfort).toFixed(2)}}</p>
+					<ul>
+						<li>Comfort: {{(f.rating.comfort).toFixed(2)}}</li>
+						<li>Food: {{(f.rating.food).toFixed(2)}}</li>
+						<li>Friendliness: {{(f.rating.friendliness).toFixed(2)}}</li>
 					</div>
 					<div class="col-md-6">
-					<p>Mileage_program: {{(f.rating.comfort).toFixed(2)}}</p>
-					<p>Punctuality: {{(f.rating.punctuality).toFixed(2)}}</p>
-					<p>Quality/Price: {{(f.rating.quality_price).toFixed(2)}}</p>
+						<li>Mileage_program: {{(f.rating.mileage_program).toFixed(2)}}</li>
+						<li>Punctuality: {{(f.rating.punctuality).toFixed(2)}}</li>
+						<li>Quality/Price: {{(f.rating.quality_price).toFixed(2)}}</li>
+					</ul>
 					</div>
 				</div>
 		<div class="row">
@@ -27,7 +29,7 @@
 	</div>
 </div>
 
-<div infinite-scroll='loadMore("reviews")' infinite-scroll-distance='1'>
+<div infinite-scroll='loadMore("reviews")' infinite-scroll-distance='1' id="reviewRes">
 	<div data-ng-if="flightSelected">
 	<h4><a href="#" data-ng-click="deselectFlight()">&laquo; Volver </a>
 	<div class="row review" data-ng-repeat="r in reviewResults | filter: filterReviews | limitTo: scrollLimit.reviews">
@@ -48,14 +50,16 @@
 		<div class="row ratings">
 		<div class="col-md-6">
 		<p><strong>Rating:</strong></p>
-		<p>Comfort: {{r.rating.comfort}}</p>
-		<p>Food: {{r.rating.comfort}}</p>
-		<p>Friendliness: {{r.rating.comfort}}</p>
+		<ul>
+		<li>Comfort: {{r.rating.comfort}}</li>
+		<li>Food: {{r.rating.comfort}}</li>
+		<li>Friendliness: {{r.rating.comfort}}</li>
 		</div>
 		<div class="col-md-6">
-		<p>Mileage_program: {{r.rating.comfort}}</p>
-		<p>Punctuality: {{r.rating.punctuality}}</p>
-		<p>Quality/Price: {{r.rating.quality_price}}</p>
+		<li>Mileage_program: {{r.rating.comfort}}</li>
+		<li>Punctuality: {{r.rating.punctuality}}</li>
+		<li>Quality/Price: {{r.rating.quality_price}}</li>
+		<ul>
 		</div>
 		</div>
 		</div>

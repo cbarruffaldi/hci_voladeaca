@@ -45,13 +45,25 @@ app.controller("reviewsCtrl", function($scope, $http, $window) {
   						} else {
   							added[rid] = new ReviewDetails(r);
   						}
+  						r.comments = decodeURIComponent(decodeHtml(r.comments));
   						$scope.reviewResults.push(r);
   						
   					}
-  					console.log("Added:"); console.log(added);
 					$scope.flightResults = Object.keys(added).map(function (key) { return added[key]; });
-					console.log("FR: "); console.log($scope.flightResults);
+					scrollTo("reviewRes");
 		});
+	}
+
+	function scrollTo(id){
+    $('html,body').animate({
+        scrollTop: $("#"+id).offset().top - 100},
+        'slow');
+	}	
+
+	function decodeHtml(html) {
+    	var txt = document.createElement("textarea");
+    	txt.innerHTML = html;
+    	return txt.value;
 	}
 
 	$scope.filterReviews = function(r){
