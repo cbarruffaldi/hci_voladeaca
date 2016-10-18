@@ -476,7 +476,7 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 
 	noUiSlider.create(handlesSlider, {
 		start: [minPrice, maxPrice],
-		margin: ((minPrice - maxPrice) * 0.25),
+		margin: ((maxPrice - minPrice) * 0.25),
 		connect: true,
 		tooltips: [wNumb({decimals: 0, prefix: "Desde: $"}), wNumb({decimals: 0, prefix: "Hasta: $"})],
 		range: {
