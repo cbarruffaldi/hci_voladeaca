@@ -197,8 +197,9 @@ color:#fff;
 */
 
 .disabled-tab{
-	pointer-events: none;
+	
 }
+
 
 .birth-day,.birth-month,.birth-year,#exp-month,#exp-year{
 	width: 70px !important;

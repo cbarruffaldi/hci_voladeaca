@@ -72,6 +72,8 @@ $(document).ready(function() {
             }
 
             next.find('a').tab('show');
+            active.addClass('disabled');
+            active.addClass('disabled-tab');
             
             if(indexTab == 0) {
                 fillPassengerSum(validator.getData());
@@ -109,7 +111,7 @@ $(document).on('blur', 'input', function() {
         setErrorState($(this), validation.value);
     }    
 });
-
+/*
 $(document).ready(function(){
     $(".nav-tabs a").click(function(){
         if($(this).not('disabled')) {
@@ -118,6 +120,7 @@ $(document).ready(function(){
     });
 });
 
+*/
 function cleanSummaryStage(stage) {
     if (stage == 1) {
         $(".summary-passengers").children().remove();
@@ -136,7 +139,10 @@ $(document).ready(function() {
             return false;
         }
         cleanSummaryStage(stageIndex);
-        $('.nav-tabs .active').prev('li').find('a').tab('show');        
+        $('.nav-tabs .active').addClass('disabled');
+        $('.nav-tabs .active').addClass('disabled');
+        $('.nav-tabs .active').prev('li').find('a').tab('show'); 
+
     });
 });
 
