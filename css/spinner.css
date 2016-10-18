@@ -22,6 +22,8 @@
   animation: sk-bounce 2.0s infinite ease-in-out;
 }
 
+@keyframes sk-rotate { 100% { transform: rotate(360deg); -webkit-transform: rotate(360deg) }}
+
 .dot2 {
   top: auto;
   bottom: 0;
