@@ -117,10 +117,12 @@
 	margin: 5%;
 	margin-top: 10%;
 	display: inline-block;
+	height: 18em;
+	width: 90%;
 }
 
 .result-box img {
-	height: 18em;
+	height: 100%;
 	width: 100%;
 	box-shadow: 0 0 5px #7b7b7b;
 	transition: all 0.3s;
@@ -156,4 +158,3 @@
 	font-size: 1.3em;
 	padding: 0 10px;
 }
-

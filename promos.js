@@ -70,7 +70,7 @@ app2.controller("promoCtrl", function($scope, $http, $q) {
 			$("#loadImg").css('visibility', 'visible');
 			$("#loadImg").show();
 			$("#promoResultShow").hide();
-			$(".botonera button").attr("disabled", true);
+			$(".botonera button").attr("disabled", true); // desactiva los botones hasta que termine la busqueda.
 			sendPromoSearch(query);
 		}
 
@@ -131,8 +131,6 @@ app2.controller("promoCtrl", function($scope, $http, $q) {
 			}).then(function success(vresponse){
 				process(response, vresponse);
 				$scope.promos = getCheapestFlights($scope.containers);
-				// $("#promoResultShow").show();
-				// $("#loadImg").hide();
 				deferred.resolve();
 			},
 							function errorCallback(response){
