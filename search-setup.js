@@ -4,10 +4,6 @@
 		return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [null, ''])[1].replace(/\+/g, '%20')) || null;
 	}
 
-	function setOneWay() {
-
-	}
-
 	function fillSearchBox() {
 		var orig = getURLParameter("orig");
 		var dest = getURLParameter("dest");
@@ -17,7 +13,6 @@
 		var infants = getURLParameter("infants");
 		var vdate = getURLParameter("vdate");
 
-		console.log("ORIGEN: " + orig);
 		$("#origen").val(orig);
 		$("#destino").val(dest);
 		$("#datepicker1").val(idate);
@@ -28,7 +23,10 @@
 			$(".idavuelta button").removeClass("selected-iv");
 			$(".idavuelta .ida").addClass("selected-iv");
 			global.setOneWay();
-		} 
+		}
+		
+		global.$acUtils.cityFill();
+		global.$acUtils.name_map["AEP"];
 	};
 
 	jQuery(document).ready(function(){
