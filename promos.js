@@ -6,8 +6,8 @@ app2.controller("promoCtrl", function($scope, $http, $q) {
 	$scope.promos = {};
 
 	function resetData() {
-//		$scope.containers = [];
-//		$scope.promos = {};
+		$scope.containers = [];
+		$scope.promos = {};
 	}
 
 	$(".btn-month").on("click", function(){
@@ -93,17 +93,22 @@ app2.controller("promoCtrl", function($scope, $http, $q) {
 		var dur = promosInfo[query.duration];
 		var vdate = promosInfo[query.month].toString() + (dur > 8 ? "" : "0") + (1 + dur).toString();
 
-//		var promises = [];
+		var promises = [];
 		for (var des of promosInfo[query.dest]) {
-			fetchPromo(idate, vdate, "BUE", des);
+			promises.push(fetchPromo(idate, vdate, "BUE", des));
 		}
-
+		console.log("PROMISES");
+		console.log(promises);
 		// No anda
-//		$q.all(promises).then(fetchImages());
-		fetchImages();
+		$q.all(promises).then(function(response){
+			fetchImages();
+		});
+
+		// fetchImages();
 	}
 
 	function fetchPromo(idate, vdate, orig, dest){
+		var deferred = $q.defer();
 		var baseURL = "http://hci.it.itba.edu.ar/v1/api/booking.groovy?method=getonewayflights"
 		baseURL += "&adults=1&children=0&infants=0";
 
@@ -111,7 +116,7 @@ app2.controller("promoCtrl", function($scope, $http, $q) {
 		URL += "&from=" + orig;
 		URL += "&to=" + dest;
 
-		return $http({
+		$http({
 			method: 'GET',
 			url: URL
 		}).then(function successCallback(response) {
@@ -127,17 +132,21 @@ app2.controller("promoCtrl", function($scope, $http, $q) {
 				$scope.promos = getCheapestFlights($scope.containers);
 				$("#promoResultShow").show();
 				$("#loadImg").hide();
+				deferred.resolve();
 			},
 							function errorCallback(response){
 				console.log("Error in response");
+				deferred.reject();
 			}
 						 )
 
 
 		}, function errorCallback(response) {
 			console.log("Error in response");
+			deferred.reject();
 		});
 
+		return deferred.promise;
 	}
 
 	function fetchImages() {
@@ -158,7 +167,6 @@ app2.controller("promoCtrl", function($scope, $http, $q) {
 		console.log($scope.promos);
 		console.log("CITY " + city)
 		$scope.promos[city]["imgsrc"] = imgsrc;
-//		console.log($scope.promos.city.imgsrc);
 	}
 
 	function imagefetch(city) {
