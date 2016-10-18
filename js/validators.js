@@ -1,4 +1,4 @@
-var MAX_NAME = 80;
+ var MAX_NAME = 80;
 var MAX_DOC_NUM = 8;
 var MIN_CREDIT_NUM = 13;
 var MAX_CREDIT_NUM = 16;
@@ -42,10 +42,10 @@ String.prototype.toUpperFirstLetter = function() {
 
 /* Retornan objetos que representan una validación.
 ** Si valid es true fue correcta y value el nuevo valor más lindo.
-** Con más lindo se refiere por ejemṕlo: si es un nombre, coloca la 
+** Con más lindo se refiere por ejemṕlo: si es un nombre, coloca la
 ** primer letra en mayúscula y quita los espacios al comienzo y al final.
 ** Si valid es false la validación no fue correcta y en value se devuelve
-** el mensaje de error. 
+** el mensaje de error.
 ** SI el ignore es true, el checkout.js no hace nada con la respuesta. */
 function invalidValidation(val) {
     return {valid: false, value: val, ignore: false};
@@ -56,7 +56,7 @@ function validValidation(val) {
 }
 
 function ignoreInvalidValidation(val) {
-    return {valid: false, value: val, ignore: true};	
+    return {valid: false, value: val, ignore: true};
 }
 
 function ignoreValidValidation(val) {
@@ -231,7 +231,7 @@ function manageBirthErrors(validation, fieldId, errorNodeId) {
 	}
 
 	setBirthErrorState(fieldId, errorNodeId, validation.value);
-	return ignoreInvalidValidation(validation.value);	
+	return ignoreInvalidValidation(validation.value);
 }
 
 function validateZipCode(zipCode) {
@@ -254,7 +254,7 @@ function validateCardNumber(num) {
 		return invalidValidation(ERROR_MSG_NUMBER);
 	if (n == 0)
 		return invalidValidation(CAMPO_OBLIGATORIO);
-	if (n < MIN_CREDIT_NUM) 
+	if (n < MIN_CREDIT_NUM)
 		return invalidValidation(ERROR_MSG_SHORT);
 	if (n > MAX_CREDIT_NUM)
 		return invalidValidation(ERROR_MSG_LONG);
@@ -294,16 +294,13 @@ function validateCardholder(cardholder) {
 	return validateName(cardholder);
 }
 
-function validateCreditCardAPI(number, expDate, secCod) {
-    var valid = false;
-    $.ajax({
+function validateCreditCardAPI(number, expDate, secCod, callback, id, validation) {
+    $.ajax({ 
         url: "http://hci.it.itba.edu.ar/v1/api/booking.groovy?method=validatecreditcard&number="+number+"&exp_date="+expDate+"&sec_code="+secCod+"&callback=?",
         dataType: "jsonp"
     }).done(function(data) {
-        valid = data.valid;
+    	callback(data.valid, id, validation);
     });
-    return Math.random() > 0.5;
-    return valid;
 }
 
 function validateDate(day, month, year) {
@@ -312,7 +309,7 @@ function validateDate(day, month, year) {
     if (birthDate.getMonth()+1 != month)
         return invalidValidation('Fecha inválida');
 
-    return validValidation();    	
+    return validValidation();
 }
 
 var ADULT_YEAR = 11;
@@ -349,9 +346,9 @@ function validateChildDate(day, month, year, travelDate) {
 	return validValidation();
 }
 
-/* VALIDADORES 
-** Métodos públicos: 
-** 
+/* VALIDADORES
+** Métodos públicos:
+**
 ** validate(id, value)
 ** 		Valida el valor del campo con ese id y value.
 ** validateStage()
@@ -383,7 +380,7 @@ function PassengersValidator(ad, ch, inf, travelDate) {
 
 	while (ad--)
 		this.passengerValidators.push(new PassengerValidator("Adulto", validateAdultDate, travelDate, this.amount++));
-	
+
 	while (ch--)
 		this.passengerValidators.push(new PassengerValidator("Niño", validateChildDate, travelDate, this.amount++));
 
@@ -427,12 +424,15 @@ function PassengersValidator(ad, ch, inf, travelDate) {
 	this.applyBackup = function() {
 		this.passengerValidators.forEach(function(passValidator) {
 			passValidator.applyBackup();
-		});		
+		});
 	}
 }
 
 function validateCountry(name) {
 	var validation = invalidValidation('País inválido');
+
+	if (!name.length)
+		return invalidValidation(CAMPO_OBLIGATORIO);
 
 	countries.forEach(function (country) {
 		if (country['name'].toUpperCase() == name.toUpperCase())
@@ -446,18 +446,22 @@ function validateCountry(name) {
 function validateCity(name) {
 	var validation = invalidValidation('Ciudad inválida');
 
+	if(!name.length)
+		return invalidValidation(CAMPO_OBLIGATORIO);
+
 	if (currentCities) {
 		currentCities.forEach(function(city) {
 			if (city['name'].toUpperCase() == name.toUpperCase())
 				validation = validValidation(name);
 		});
 	}
+	
 	return validation;
 }
 
 function PassengerValidator(type, validateFunction, trDate, passId) {
 
-	/* Mapa id-->función. Las que tienen función null es porque no son input, sino de selección 
+	/* Mapa id-->función. Las que tienen función null es porque no son input, sino de selección
 	** (no hay que validar) */
 
     this.data = {'type': type};
@@ -469,19 +473,19 @@ function PassengerValidator(type, validateFunction, trDate, passId) {
 
 	this.validateBirthDay = function(d, passengerId) {
 		var validation = validateDay(d);
-		
+
 		return manageBirthErrors(validation, BIRTH_DAY + '-' + passengerId, ERROR_BIRTH_DAY + '-' + passengerId);
 	}
 
 	this.validateBirthMonth = function(m, passengerId) {
 		var validation = validateMonth(m);
-		
+
 		return manageBirthErrors(validation, BIRTH_MONTH + '-' + passengerId, ERROR_BIRTH_MONTH + '-' + passengerId);
 	}
 
 	this.validateBirthYear = function(y, passengerId) {
 		var validation = validateYear(y);
-		
+
 		return manageBirthErrors(validation, BIRTH_YEAR + '-' + passengerId, ERROR_BIRTH_YEAR + '-' + passengerId);
 	}
 
@@ -546,10 +550,10 @@ function PassengerValidator(type, validateFunction, trDate, passId) {
  		/* Flag de campo visitado; por ahora erróneo hasta que la
  		** validación demuestre lo contrario. */
     	this.data[id] = null;
- 
+
     	if (validateFunction) {
     		validation = validateFunction(value, this.passengerId);
- 
+
     		if (validation.valid) {
     			this.data[id] = validation.value; /* agregamos a los datos */
 
@@ -581,7 +585,20 @@ function PassengerValidator(type, validateFunction, trDate, passId) {
     }
 }
 
+var isErrorCardShowed = false;
+var validCreditCard = false;
+
 function PaymentCardValidator() {
+
+	this.callback = function(valid, id, validation) {
+		validCreditCard = valid;
+		if (!valid) {
+			setCreditCardError();
+			isErrorCardShowed = true;
+			validation.ignore = true;
+			$('#' + id).siblings('p').hide();
+		}		
+	}
 
 	this.expDateReady = function() {
 		return this.data[EXP_YEAR] && this.data[EXP_MONTH];
@@ -609,16 +626,16 @@ function PaymentCardValidator() {
 
 		this.validExpDate = true;
 
-	    return validValidation();		
+	    return validValidation();
 	}
 
 	this.creditCardId = function(id) {
 		return this.expId(id) || CARD_NUM == id || SEC_CODE == id;
 	}
 
-	this.validateCreditCard = function() {
+	this.validateCreditCard = function(id, validation) {
 		var expDate = this.data[EXP_MONTH] + this.data[EXP_YEAR].slice(-2);
-		this.validCreditCard = validateCreditCardAPI(this.data[CARD_NUM], expDate, this.data[SEC_CODE]);
+		this.validCreditCard = validateCreditCardAPI(this.data[CARD_NUM], expDate, this.data[SEC_CODE], this.callback, id, validation);
 
 		return this.validCreditCard;
 	}
@@ -631,9 +648,7 @@ function PaymentCardValidator() {
 							  'installments': null
 							};
 
-	this.validCreditCard = false;
 	this.validExpDate = false;
-	this.isErrorCardShowed = false;
 	this.data = {};
     this.backup = {};
 
@@ -668,11 +683,11 @@ function PaymentCardValidator() {
 
 		this.data[id] = null;
 
-		/* Se quita cartel de error de tarjeta de cŕedito si 
+		/* Se quita cartel de error de tarjeta de cŕedito si
 		** modifica algo relacionado a la tarjeta de crédito */
-		if (this.creditCardId(id) && this.isErrorCardShowed) {
+		if (this.creditCardId(id) && isErrorCardShowed) {
 			removeCreditCardError();
-			this.isErrorCardShowed = false;
+			isErrorCardShowed = false;
 		}
 
 		var validation = validateFunction(value);
@@ -695,12 +710,7 @@ function PaymentCardValidator() {
 			}
 
 	    	if (this.creditCardReady() && this.creditCardId(id)) {
-	    		if (!this.validateCreditCard()) {
-	    			setCreditCardError();
-	    			this.isErrorCardShowed = true;
-	    			validation.ignore = true;
-	    			$('#' + id).siblings('p').hide();
-	    		}
+	    		this.validateCreditCard(id, validation);
 	    	}
 		}
 
@@ -708,8 +718,10 @@ function PaymentCardValidator() {
 	}
 
 	this.validateStage = function() {
-    	return validateStep(this.data, this.inputValidations) && this.validCreditCard;
+    	return validateStep(this.data, this.inputValidations) && validCreditCard;
 	}
+
+
 }
 
 function removeCreditCardError() {
@@ -910,11 +922,12 @@ function ContactValidator() {
 		for(var prop in this.phones)
 			if (this.phones[prop] == null)
 				return true;
+		return false;
 	}
 
 	this.validateStage = function() {
 		var valid = validateStep(this.phones, this.phones) && !this.invalidPhones();
-		return validateStep({'email': this.email}, {'email': this.email}) && valid;
+		return validateStep({'email': this.email}, {'email': this.email}) && this.email && valid;
 	}
 }
 
@@ -935,7 +948,7 @@ function validateStep(data, step, optionals, extraId) {
                 data[prop] = null;   /* Mensaje de error colocado --> reemplazamos undefined por null */
                 if (extraId === undefined)
                 	setErrorState($id, CAMPO_OBLIGATORIO); /* Esta función se encuentra en checkout.js*/
-                else 
+                else
                 	setErrorState($('#' + prop + '-' + extraId), CAMPO_OBLIGATORIO);
             }
             else if (data[prop] === null) { /* Ya tiene el mensaje de error correspondiente */
@@ -957,5 +970,5 @@ function validateStep(data, step, optionals, extraId) {
     	}
     }
 
-    return valid;    
+    return valid;
 }
