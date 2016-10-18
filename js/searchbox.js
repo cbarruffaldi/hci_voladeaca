@@ -6,23 +6,23 @@
 	var $id_map = global.$acUtils.id_map;
 	var soloIda = false;
 
-	$( function(){$("#datepicker1").datepicker({minDate: '+2D'}) 
-		 
+	$( function(){$("#datepicker1").datepicker({minDate: '+2D'})
+
 		});
 	$("#datepicker1").keydown(function() {
 		$( function(){$("#datepicker1").datepicker("hide") } );
   		return true;
 		});
 
-	$("#cal1").click( function() { 
+	$("#cal1").click( function() {
 		$( function() { $("#datepicker1").datepicker("show") });
-	});	
+	});
 
-	$("#cal2").click( function() { 
+	$("#cal2").click( function() {
 		$( function() { $("#datepicker2").datepicker("show") });
 	});
 
-	$("#origen, #destino").on('focus', function(){ 
+	$("#origen, #destino").on('focus', function(){
 		var self = $(this);
 		if(self.hasClass('inputerr')){
 			self.val("");
@@ -58,7 +58,7 @@
 				error.fadeIn();
 				return false;
 			}
-			else{ 
+			else{
 				return true;
 			}
 		}
@@ -84,7 +84,7 @@
 		$("#datepicker1-err").fadeOut();
 		$("#datepicker2-err").fadeOut();
 
-		var departure, arrival; 
+		var departure, arrival;
 
 		if(date1.val() || emptyCheck){
 			departure = moment(date1.val(), "DD/MM/YYYY", true);
@@ -108,10 +108,10 @@
 			}
 		}
 
-		if(valid && departure && (soloIda || arrival)){ 
+		if(valid && departure && (soloIda || arrival)){
 			//Si ambas estan definidas y bien formadas
 			//chequeo que no sean incompatibles.
-		
+
 			var now = moment();
 			now.add(2,'days');
 			console.log(now);
@@ -158,11 +158,13 @@
 		$(".idavuelta button").removeClass("selected-iv");
 		$(this).addClass("selected-iv");
 
-		if ($(this).data("info") == "ida")
-			global.setOneWay();	
-		else 
+		if ($(this).data("info") == "ida") {
+			global.setOneWay();
+			$("#datepicker2").val("");
+		}
+		else
 			global.setRoundWay();
-		
+
 	})
 
 	$("#searchButton").on('click', function(obj){
@@ -173,7 +175,7 @@
 
 		checker = dateCheck(true) & checker;
 
-		if(checker){		
+		if(checker){
 			var iDate = moment($("#datepicker1").val(), "DD/MM/YYYY").format("YYYY-MM-DD");
 
 			if(!soloIda){

@@ -16,7 +16,6 @@ function updateNumbers() {
 	$("#psg-dropdown .btn-content").text(str);
 
 	var btns = $(".passenger-row button");
-	//console.log(btns);
 
 	for (var i = 0; i < btns.length; i++) {
 		if ($(btns[i]).data("sum") == "minus") {
@@ -32,8 +31,8 @@ function updateNumbers() {
 	}
 }
 
-function zeroPaxError() {
-	$("#zero-psg-msg").fadeIn();
+function zeroAdultsError() {
+	$("#zero-adults-msg").fadeIn();
 }
 
 function updatePax(pressedbtn) {
@@ -45,11 +44,10 @@ function updatePax(pressedbtn) {
 
 	var cat = $(pressedbtn).data("info");
 
-	passengers[cat] += sum;
-	if (passengers.total() == 0) {
-		passengers[cat] -= sum;
-		zeroPaxError();
-	}
+	if (cat == "adults" && passengers[cat] + sum == 0)
+		zeroAdultsError();
+	else
+		passengers[cat] += sum;
 
 	updateNumbers();
 }
@@ -65,7 +63,7 @@ jQuery(document).ready(function() {
 
 			if (okbtn.is(e.target) || (!psgdrop.is(e.target) && psgdrop.has(e.target).length === 0 && $(".open").has(e.target).length === 0)) {
 				psgdrop.parent().removeClass("open");
-				$(".passengers").find("#zero-psg-msg").fadeOut();
+				$(".passengers").find("#zero-adults-msg").fadeOut();
 			}
 		});
 
@@ -73,7 +71,7 @@ jQuery(document).ready(function() {
 	});
 
 	$(".passenger-row button").on("click", function() {
-		$("#zero-psg-msg").fadeOut();
+		$("#zero-adults-msg").fadeOut();
 		updatePax(this);
 	});
 });

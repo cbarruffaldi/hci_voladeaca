@@ -5,9 +5,23 @@ app2.controller("promoCtrl", function($scope, $http) {
 	$scope.containers = [];
 	$scope.promos = [];
 
-	$(".btn-month").on("click", function(){fill(this, "month", "duration")});
-	$(".btn-duration").on("click", function(){fill(this,"duration", "dest")});
-	$(".btn-dest").on("click", function(){fill(this, "dest")});
+	function resetData() {
+		$scope.containers = [];
+		$scope.containers = [];
+	}
+
+	$(".btn-month").on("click", function(){
+		resetData();
+		fill(this, "month", "duration");
+	});
+	$(".btn-duration").on("click", function(){
+		resetData();
+		fill(this,"duration", "dest");
+	});
+	$(".btn-dest").on("click", function(){
+		resetData();
+		fill(this, "dest");
+	});
 
 	var promocion = {};
 	var selected = {};
@@ -26,14 +40,14 @@ app2.controller("promoCtrl", function($scope, $http) {
 		if(expanded[selected]){
 			selectButton(button, selected);
 
-			if(toExpand){	
+			if(toExpand){
 				expanded[toExpand] || make_available(toExpand);
 			}
 		}
 	}
 
 	function make_available(category){
-		$(".btn-" + category).removeClass("disabled"); 	
+		$(".btn-" + category).removeClass("disabled");
 		expanded[category] = true;
 	}
 
@@ -82,8 +96,6 @@ app2.controller("promoCtrl", function($scope, $http) {
 		var dur = promosInfo[query.duration];
 		var vdate = promosInfo[query.month].toString() + (dur > 8 ? "" : "0") + (1 + dur).toString();
 
-		$scope.promos = {};
-		$scope.containers = [];
 		for (var des of promosInfo[query.dest]) {
 			fetchPromo(idate, vdate, "EZE", des);
 		}
