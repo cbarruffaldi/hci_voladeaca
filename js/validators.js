@@ -920,14 +920,14 @@ function ContactValidator() {
 
 	this.invalidPhones = function() {
 		for(var prop in this.phones)
-			if (this.phones[prop] == null)
+			if (this.phones[prop] == null || this.phones[prop].length == 0)
 				return true;
 		return false;
 	}
 
 	this.validateStage = function() {
 		var valid = validateStep(this.phones, this.phones) && !this.invalidPhones();
-		return validateStep({'email': this.email}, {'email': this.email}) && this.email && valid;
+		return validateStep({'email': this.email}, {'email': this.email}) && this.email && this.email.length && valid;
 	}
 }
 
