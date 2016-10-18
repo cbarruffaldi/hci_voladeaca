@@ -33,7 +33,7 @@ function removeErrorState(inputForm) {
 
 /* 0: pasajeros
 *  1: pago
-*  2: contacto*/
+*  2: contacto */
 
 function getCurrentStage() {
     if (summaryStage !== null)
@@ -43,10 +43,13 @@ function getCurrentStage() {
     return indexTab;
 }
 
-var $passengers = JSON.parse(localStorage.boughtFlight).passengers;
+var $bought = JSON.parse(localStorage.boughtFlight);
+var $passengers = $bought.passengers;
 
-/* TODO: obtener verdadera cantidad de adultos, niños, infantes y fecha de fin de viaje */
-var passengersValidator = new PassengersValidator($passengers.adults, $passengers.children, $passengers.infants, new Date()); /* Etapa 0 */
+var twoWay = $bought.twoWays ? 1 : 0;
+var finalDate = $bought.container.flights[twoWay].flight.arrivalMoment.date;
+
+var passengersValidator = new PassengersValidator($passengers.adults, $passengers.children, $passengers.infants, finalDate); /* Etapa 0 */
 var paymentValidator = new PaymentValidator();     /* Etapa 1 */
 var contactValidator = new ContactValidator();     /* Etapa 2 */
 
@@ -62,7 +65,7 @@ $(document).ready(function() {
         var validator = validators[indexTab];
 
     /* Comentar siguiente if si resulta molesto no poder pasar las etapas */
-        if (validator.validateStage()) {
+    //    if (validator.validateStage()) {
             if(next.hasClass('disabled-tab')) {
                 next.removeClass('disabled-tab');
                 next.removeClass('disabled');
@@ -77,7 +80,7 @@ $(document).ready(function() {
                 fillPaymentSum(validator.getData());
                 fillBillingSum(validator.getData());
             }
-        }
+    //    }
     });
 });
 
@@ -133,11 +136,15 @@ $(document).ready(function() {
             return false;
         }
         cleanSummaryStage(stageIndex);
-        $('.nav-tabs > .active').prev('li').find('a').tab('show');        
+        $('.nav-tabs .active').prev('li').find('a').tab('show');        
     });
 });
 
 $(document).ready(function(){
+    $('#code-popover').click(function(event) {
+        event.preventDefault();
+    });
+
     $('#code-popover').popover({
         html: true,
         trigger: 'hover',
@@ -247,19 +254,25 @@ $(document).on('show.bs.modal', '#modify-modal', function(event) {
     var modifyStage = getModifyStage(modifyLink);
     summaryStage = modifyStage[0];
     var tabId = $('#' + (summaryStage + 1));
+    var modalHeader = $('.modal-title');
 
     validators[summaryStage].generateBackup();
 
-    /* TODO: ver que pasajero es */
+    var formGroup = tabId.find('.form-group').eq(modifyStage[1]);
+    formGroupParent = formGroup.parent();
+    modal.find('.modal-body').append(formGroup);
+
     if (summaryStage == 0) {
-        var formGroup = tabId.find('.form-group').eq(modifyStage[1]);
-        formGroupParent = formGroup.parent();
-        modal.find('.modal-body').append(formGroup);
+        modalHeader.text('Modificar Información de Pasajero');
     }
     else if (summaryStage == 1) {
-        var formGroup = tabId.find('.form-group').eq(modifyStage[1]);
-        formGroupParent = formGroup.parent();
-        modal.find('.modal-body').append(formGroup);
+        if (modifyStage[1])
+            modalHeader.text('Modificar Información de Facturación');
+        else
+            modalHeader.text('Modificar Información de Tarjeta');
+    }
+    else if (summaryStage == 2) {
+            modalHeader.text('Modificar Información de Contacto');
     }
 });
 
@@ -363,12 +376,14 @@ function addPaymentData(card, installments, expdate, secCode,obj){
 }
 
 function addBillingData(country, street ,zipcode, floor, department, obj){
-    if(floor != '')
-        floor = floor + 'º ';
+    if (floor.length)
+        floor = 'Piso: ' + floor + ' ';
+    if (department.length)
+        department = 'Dpto.: ' + department + ' ';
 
     var x1 = '<div class="sum-field col-md-12">' + country + '</div>';
     var x2 = '<div class="sum-field col-md-12"">' + street +'</div>';
-    var x3 = '<div class="sum-field col-md-12">' +floor  + department+ ' ' + zipcode +'</div>';
+    var x3 = '<div class="sum-field col-md-12">' + floor  + department +  zipcode +'</div>';
     var x4 = '<a href="#" class="col-md-offset-9 sum-modal" data-toggle="modal" data-target="#modify-modal">Modificar...</a>';
 
     obj.append(x1);
@@ -382,14 +397,18 @@ function fillPaymentSum(data) {
 }
 
 function fillBillingSum(data){
-    addBillingData(data["country"]+ ', ' + data["city"], data["street"]+ ' ' + data["addr-num"],data["zip-code"],data["floor"], data["department"], $(".summary-billing"));
+    addBillingData(data["city"] + ', ' + data["country"], data["street"]+ ' ' + data["addr-num"],data["zip-code"],data["floor"], data["department"], $(".summary-billing"));
 }
 
 
+var countries;
+var currentCities;
 
 /*Eleccion de Paises */
 
 $(document).ready(function () {
+
+    var cityTypeahead;
 
     function loadCountries(document) {
 
@@ -412,13 +431,16 @@ $(document).ready(function () {
             },
             source: stocks.ttAdapter()
         })
-            .on('typeahead:selected', function (event, data) {
-            $("#city").val('');
-            createCityJSON(cities,data.id);
-        })
-            .on('change', function() {
-                console.log('Por favor elija un país de la lista');
-                //TODO:MANDAR AL VALIDADOR PARA QUE LO PONGA EN ROJITO
+            .on('blur', function() {
+                if(cityTypeahead) {
+                    cityTypeahead.typeahead('destroy');
+                    currentCities = undefined;
+                }
+                console.log('se ejecuta change');
+                $("#city").val('');
+                var countryId = findCountryId($('#country').val());
+                if (countryId)
+                    currentCities = createCityJSON(cities, countryId);                
             });
 
 
@@ -444,16 +466,16 @@ $(document).ready(function () {
         dataType: 'jsonp',
         success: function (data) {
 
-            createCountryJSON(data);
+            countries = createCountryJSON(data);
         },
         type: 'GET'
     });
 
     function createCountryJSON(data) {
-        jsonObj = [];
+        var jsonObj = [];
 
         $.each(data.countries, function () {
-            item = {};
+            var item = {};
             item ["id"] = $(this).attr('id');
             item ["name"] = decodeHtml($(this).attr('name'));
 
@@ -461,7 +483,10 @@ $(document).ready(function () {
         });
 
         loadCountries(jsonObj);
+
+        return jsonObj;
     };
+
 
     /*Eleccion de ciudades */
 
@@ -481,18 +506,13 @@ $(document).ready(function () {
         });
         stocks.initialize();
 
-        var cityTypeahead =$('.city-typeahead').typeahead(null, {
+        cityTypeahead =$('.city-typeahead').typeahead(null, {
             name: 'stocks',
             displayKey: function (stock) {
                 return stock.name;
             },
             source: stocks.ttAdapter()
-        }).on('typeahead:selected', function (event, data) {
-            console.log(data);
-            cityTypeahead.typeahead('destroy');
-        }).on('change', function() {
-            console.log('Por favor elija un país de la lista');
-            //TODO:MANDAR AL VALIDADOR PARA QUE LO PONGA EN ROJITO
+        }).on('blur', function (event, data) {
         });
 
     };
@@ -513,23 +533,39 @@ $(document).ready(function () {
         type: 'GET'
     });
 
+    function findCountryId(name) {
+        var id;
+
+        countries.forEach(function(country) {
+            if (country['name'].toUpperCase() == name.toUpperCase())
+                id = country['id'];
+        });
+
+        return id;
+    }
+
     function createCityJSON(data,id) {
-        jsonObj = [];
+        var jsonObj = [];
 
         $.each(data.cities, function () {
             if ($(this).attr('country').id == id) {
 
-            item = {};
-            item ["id"] = $(this).attr('id');
-            item ["name"] = decodeHtml($(this).attr('name'));
-            item ["country"] = $(this).attr('country').id;
+                var split = decodeHtml($(this).attr('name')).split(',');
+
+
+                item = {};
+                item ["id"] = $(this).attr('id');
+                item ["name"] = split.length == 3 ? split[0] + ',' + split[1] : split[0];
+                item ["country"] = $(this).attr('country').id;
 
                 jsonObj.push(item);
+
             }
         });
 
         console.log(jsonObj);
         loadCities(jsonObj);
+        return jsonObj;
     };
 
 });

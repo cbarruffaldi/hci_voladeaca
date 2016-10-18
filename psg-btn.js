@@ -14,6 +14,21 @@ function updateNumbers() {
 	var t = passengers.total();
 	var str = t + " Pasajero" + ((t == 1) ? "" : "s");
 	$("#psg-dropdown .btn-content").text(str);
+
+	var btns = $(".passenger-row button");
+
+	for (var i = 0; i < btns.length; i++) {
+		if ($(btns[i]).data("sum") == "minus") {
+			if  (passengers[$(btns[i]).data("info")] == 0) {
+				$(btns[i]).addClass("disabled");
+				$(btns[i]).attr("disabled", true);
+			}
+			else {
+				$(btns[i]).removeClass("disabled");
+				$(btns[i]).attr("disabled", false);
+			}
+		}
+	}
 }
 
 function zeroAdultsError() {
@@ -26,19 +41,15 @@ function updatePax(pressedbtn) {
 		sum = -1;
 	else
 		sum = 1;
-	
-	var cat = $(pressedbtn).data("info");
-	
-	if (cat == "adults" && passengers[cat] + sum < 1)
-		zeroAdultsError();
-	else if(passengers[cat] + sum >= 0)
-		passengers[cat] += sum;
-		
-	updateNumbers();
-}
 
-function totalPassengers() {
-	return adults + children + infants;
+	var cat = $(pressedbtn).data("info");
+
+	if (cat == "adults" && passengers[cat] + sum == 0)
+		zeroAdultsError();
+	else
+		passengers[cat] += sum;
+
+	updateNumbers();
 }
 
 jQuery(document).ready(function() {
@@ -52,14 +63,15 @@ jQuery(document).ready(function() {
 
 			if (okbtn.is(e.target) || (!psgdrop.is(e.target) && psgdrop.has(e.target).length === 0 && $(".open").has(e.target).length === 0)) {
 				psgdrop.parent().removeClass("open");
+				$(".passengers").find("#zero-adults-msg").fadeOut();
 			}
 		});
-	});	
+
+		updateNumbers();
+	});
 
 	$(".passenger-row button").on("click", function() {
 		$("#zero-adults-msg").fadeOut();
 		updatePax(this);
 	});
-})
-
-window.passengers = passengers;
+});

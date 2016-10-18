@@ -5,9 +5,23 @@ app2.controller("promoCtrl", function($scope, $http) {
 	$scope.containers = [];
 	$scope.promos = [];
 
-	$(".btn-month").on("click", function(){fill(this, "month", "duration")});
-	$(".btn-duration").on("click", function(){fill(this,"duration", "dest")});
-	$(".btn-dest").on("click", function(){fill(this, "dest")});
+	function resetData() {
+		$scope.containers = [];
+		$scope.containers = [];
+	}
+
+	$(".btn-month").on("click", function(){
+		resetData();
+		fill(this, "month", "duration");
+	});
+	$(".btn-duration").on("click", function(){
+		resetData();
+		fill(this,"duration", "dest");
+	});
+	$(".btn-dest").on("click", function(){
+		resetData();
+		fill(this, "dest");
+	});
 
 	var promocion = {};
 	var selected = {};
@@ -26,14 +40,14 @@ app2.controller("promoCtrl", function($scope, $http) {
 		if(expanded[selected]){
 			selectButton(button, selected);
 
-			if(toExpand){	
+			if(toExpand){
 				expanded[toExpand] || make_available(toExpand);
 			}
 		}
 	}
 
 	function make_available(category){
-		$(".btn-" + category).removeClass("disabled"); 	
+		$(".btn-" + category).removeClass("disabled");
 		expanded[category] = true;
 	}
 
@@ -82,8 +96,6 @@ app2.controller("promoCtrl", function($scope, $http) {
 		var dur = promosInfo[query.duration];
 		var vdate = promosInfo[query.month].toString() + (dur > 8 ? "" : "0") + (1 + dur).toString();
 
-		$scope.promos = {};
-		$scope.containers = [];
 		for (var des of promosInfo[query.dest]) {
 			fetchPromo(idate, vdate, "EZE", des);
 		}
@@ -148,62 +160,261 @@ app2.controller("promoCtrl", function($scope, $http) {
 	}
 
 	function destCityName(container) {
-		var longname = container.flights[0].flight.arrivalAirport.city.name;
-		return longname.substr(0, longname.indexOf(','));
+		return container.flights[0].flight.arrival.cityshort;
 	}
 
-	function process(response, vresponse){
-		var iFlights = stripFlights(response.data.flights);
-		var vFlights = stripFlights(vresponse.data.flights);
+	// function process(response, vresponse){
+	// 	var iFlights = stripFlights(response.data.flights);
+	// 	var vFlights = stripFlights(vresponse.data.flights);
+	//
+	// 	combineAndPush(iFlights, vFlights);
+	// }
+	//
+	// function combineAndPush(iFlights, vFlights){
+	// 	for(var i in iFlights){
+	// 		for(var j in vFlights){
+	// 			$scope.containers.push(new Container(iFlights[i], vFlights[j]));
+	// 		}
+	// 	}
+	// }
+	//
+	// function stripFlights(f){
+	// 	flights = [];
+	// 	for(var i in f) {
+	// 		var fli = new FlightDetails(f[i]);
+	// 		flights.push(fli)
+	// 	}
+	// 	return flights;
+	// }
+	//
+	// function FlightDetails(flight){
+	// 	r = flight.outbound_routes[0]
+	// 	s = r.segments[0];
+	// 	this.departAirport = s.departure.airport;
+	// 	this.arrivalAirport = s.arrival.airport;
+	// 	this.airline = s.airline;
+	//
+	// 	this.departMoment = moment(s.departure.date);
+	// 	this.departMoment.utcOffset(parseInt(s.departure.airport.time_zone));
+	//
+	// 	this.arrivalMoment = moment(s.arrival.date);
+	// 	this.arrivalMoment.utcOffset(parseInt(s.arrival.airport.time_zone));
+	//
+	// 	this.duration = r.duration;
+	// 	this.flnumber = s.number;
+	// 	this.flid = s.id;
+	//
+	// 	this.price = flight.price;
+	// 	return this;
+	// }
+	//
+	// function Container(flight1, flight2){
+	// 	this.flights = []
+	// 	this.flights[0] = { desc: "IDA ", flight: flight1 };
+	// 	this.precio = 5000 + Math.floor(25000*Math.random());
+	// 	if(flight2){
+	// 		this.flights[1] = { desc: "VUELTA ", flight: flight2};
+	// 	}
+	// 	return this;
+	// }
 
-		combineAndPush(iFlights, vFlights);
+	//2
+
+	function process(response, vresponse){
+		console.log(response);
+		var iFlights = stripFlights(response.data.flights);
+		if(vresponse){
+			var vFlights = stripFlights(vresponse.data.flights);
+			combineAndPush(iFlights, vFlights);
+
+		} else {
+			pushAll(iFlights);
+		}
+	}
+
+
+	$scope.airports = {iList: [],
+						 vList: [],
+						 iCity: "",
+						 vCity: "",
+						 filter: {}};
+
+	function pushAll(flights){
+			var maxPrice;
+			var minPrice;
+
+			if(flights.length > 0){
+				$scope.airports.iCity = flights[0].departure.airport.city.name.split(",")[0];
+				$scope.airports.vCity = flights[0].arrival.airport.city.name.split(",")[0];
+			}
+
+			for(var i in flights){
+
+				var c = new Container(flights[i]);
+				$scope.containers.push(c);
+
+				if(!$scope.airports.filter[flights[i].departure.airport.id]){
+					$scope.airports.iList.push(flights[i].departure.airport);
+					$scope.airports.filter[flights[i].departure.airport.id] = true;
+				}
+
+				if(!$scope.airports.filter[flights[i].arrival.airport.id]){
+					$scope.airports.vList.push(flights[i].arrival.airport);
+					$scope.airports.filter[flights[i].arrival.airport.id] = true;
+				}
+			}
 	}
 
 	function combineAndPush(iFlights, vFlights){
+			if(iFlights.length > 0){
+				$scope.airports.iCity = iFlights[0].departure.airport.city.name.split(",")[0];
+			}
+			if(vFlights.length > 0){
+				$scope.airports.vCity = vFlights[0].departure.airport.city.name.split(",")[0];
+			}
+
+
 		for(var i in iFlights){
 			for(var j in vFlights){
-				$scope.containers.push(new Container(iFlights[i], vFlights[j]));
+				var c = new Container(iFlights[i], vFlights[j]);
+
+				$scope.containers.push(c);
+
+					if(!$scope.airports.filter[iFlights[i].departure.airport.id]){
+					$scope.airports.iList.push(iFlights[i].departure.airport);
+					$scope.airports.filter[iFlights[i].departure.airport.id] = true;
+				}
+
+					if(!$scope.airports.filter[vFlights[j].departure.airport.id]){
+					$scope.airports.vList.push(vFlights[j].departure.airport);
+					$scope.airports.filter[vFlights[j].departure.airport.id] = true;
+				}
+
 			}
 		}
 	}
 
+
 	function stripFlights(f){
 		flights = [];
-		for(var i in f) {
+		for(var i in f){
 			var fli = new FlightDetails(f[i]);
 			flights.push(fli)
 		}
 		return flights;
 	}
 
+
 	function FlightDetails(flight){
+		this.departure = {}
+		this.arrival = {}
+
 		r = flight.outbound_routes[0]
 		s = r.segments[0];
-		this.departAirport = s.departure.airport;
-		this.arrivalAirport = s.arrival.airport;
+
+		this.departure.airport = s.departure.airport;
+		this.departure.airport.name = s.departure.airport.description.split(",")[0];
+
+		this.arrival.airport = s.arrival.airport;
+		this.arrival.airport.name = s.arrival.airport.description.split(",")[0];
+
+		var citylong = s.departure.airport.city.name;
+
+		this.departure.cityshort = citylong.substr(0, citylong.indexOf(','));
+
+		citylong = s.arrival.airport.city.name;
+
+		this.arrival.airport = s.arrival.airport;
+		this.arrival.cityshort = citylong.substr(0, citylong.indexOf(','));
+
 		this.airline = s.airline;
 
-		this.departMoment = moment(s.departure.date);
-		this.departMoment.utcOffset(parseInt(s.departure.airport.time_zone));
+		this.departMoment = new TimeDetails(s.departure.date);
+		this.arrivalMoment = new TimeDetails(s.arrival.date);
 
-		this.arrivalMoment = moment(s.arrival.date);
-		this.arrivalMoment.utcOffset(parseInt(s.arrival.airport.time_zone));
+		var auxDur = r.duration.split(':');
 
-		this.duration = r.duration;
-		this.flnumber = s.number;
-		this.flid = s.id;
+		this.flightMinutes = parseInt(auxDur[0])*60 + parseInt(auxDur[1]);
+		this.duration = Number(auxDur[0]).toString() + "h " + Number(auxDur[1]).toString() + "m";
+
+		this.number = s.number;
+		this.id = s.id;
 
 		this.price = flight.price;
-		return this;
+		return this; //?
 	}
+
+	function TimeDetails($date){
+		this.date = new Date($date);
+		this.dayName = getDayName(this.date.getDay());
+		this.monthName = getMonthName(this.date.getMonth());
+		this.fullDayName = this.dayName + " " + this.date.getDate();
+
+		var t = $date.split(" ")[1].split(":");
+		this.clockName = t[0] + ":" + t[1] + "hs";
+	}
+
 
 	function Container(flight1, flight2){
 		this.flights = []
 		this.flights[0] = { desc: "IDA ", flight: flight1 };
-		this.precio = 5000 + Math.floor(25000*Math.random());
+
 		if(flight2){
 			this.flights[1] = { desc: "VUELTA ", flight: flight2};
+			this.price = mergePrices(flight1.price, flight2.price);
+		}else{
+			this.price = flight1.price;
 		}
+
+		this.precio = this.price.total.total;
 		return this;
+	}
+
+	function getDayName(d){
+			var days = ["Domingo", "Lunes", "Martes",
+						"Miércoles", "Jueves", "Viernes", "Sábado"]
+
+			if(d >= 0 && d <= 6)
+				return days[d];
+			else
+				return "";
+		}
+
+
+	function getMonthName(m){
+			var months = ["enero", "febrero", "marzo",
+						"abril", "mayo", "junio", "julio",
+						"agosto", "septiembre", "octubre", "noviembre",
+						"diciembre"];
+
+			if(m >= 0 && m <= 11)
+				return months[m];
+			else
+				return "";
+		}
+
+
+	function mergePrices(p, q){
+		var price = { total : {}}
+
+		if(p.adults){
+			price.adults = p.adults;
+			price.adults.base_fare += q.adults.base_fare;
+		}
+		if(p.children){
+			price.children = p.children;
+			price.children.base_fare += q.children.base_fare;
+		}
+		if(p.infants){
+			price.infants = p.infants;
+			price.infants.base_fare += q.infants.base_fare;
+		}
+
+		price.total.charges = parseInt(p.total.charges) + parseInt(q.total.charges);
+		price.total.fare = parseInt(p.total.fare) + parseInt(q.total.fare);
+		price.total.taxes = parseInt(p.total.taxes) + parseInt(q.total.taxes);
+		price.total.total = parseInt(p.total.total) + parseInt(q.total.total);
+
+		return price;
 	}
 });

@@ -9,26 +9,15 @@
 		<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
 		<link href="css/typeahead.css" rel="stylesheet"/>
 
-		<script src="js/vendor/jquery-1.11.2.min.js"></script>
-
-		<script src="js/validators.js"></script>
-		<script src="js/checkout.js"></script>
 		<link rel="stylesheet" href="css/checkout.css">
 		<link rel="stylesheet" href="css/main.css">
 		<link rel="stylesheet" href="css/buttons.css">
 
-
-		<script src="bootstrap.min.js"></script> <!--TODO:VER POR QUE NO FUNCIONA EL OTRO-->
-		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-
-		<script src="type/typeahead.bundle.min.js"></script>
-		<script src="type/bloodhound.min.js"></script>
-		<script src="js/ngcheckout.js"></script>
-
+		<script src="extlib/angular.min.js"></script>
 
 	</head>
 
-	<body ng-app="checkoutApp">
+	<body data-ng-app="checkoutApp" data-ng-controller="CheckoutController">
 
 		<!-- header -->
 		<header>
@@ -127,13 +116,13 @@
 
 				<div class="tab-content col-md-12">
 
-					<div class="tab-pane active" id="1" ng-controller="PassengersController">
+					<div class="tab-pane active" id="1">
 						<div class="row" id="form1">
 							<div class="col-md-12 title-style">
 								<h3>Información de Pasajeros</h3>
 							</div>
 						</div>
-						<div class="row" ng-repeat="passenger in passengerList">
+						<div class="row" data-ng-repeat="passenger in passengerList">
 							<div class="col-md-12 form-style">
 								<div class="col-md-2 psg-type-col">
 									<div class="psg-type">
@@ -199,11 +188,11 @@
 														<label>Fecha de Nacimiento:</label>
 													</div>
 													<label for="birth-day-{{$index}}" class="hidden">Día</label>
-													<input autocomplete="off" type="text" class="form-control birth-day" placeholder="DD" id="birth-day-{{$index}}"/>
+													<input maxlength="2" autocomplete="off" type="text" class="form-control birth-day" placeholder="DD" id="birth-day-{{$index}}"/>
 													<label for="birth-month-{{$index}}" class="hidden">Mes</label>
-													<input autocomplete="off" type="text" class="form-control birth-month" placeholder="MM" id="birth-month-{{$index}}"/>
+													<input maxlength="2" autocomplete="off" type="text" class="form-control birth-month" placeholder="MM" id="birth-month-{{$index}}"/>
 													<label for="birth-year-{{$index}}" class="hidden">Año</label>
-													<input autocomplete="off" type="text" class="form-control birth-year" placeholder="YYYY" id="birth-year-{{$index}}"/>
+													<input maxlength="4" autocomplete="off" type="text" class="form-control birth-year" placeholder="YYYY" id="birth-year-{{$index}}"/>
 													<p class="error-msg" id="error-birthdate-{{$index}}"></p>
 													<p class="error-msg" id="error-birth-day-{{$index}}"></p>
 													<p class="error-msg" id="error-birth-month-{{$index}}"></p>
@@ -237,12 +226,12 @@
 										<div class="row">
 											<div class="col-md-8 form-field">
 												<label for="card-num">Número de la tarjeta:</label>
-												<input autocomplete="off" type="text" class="form-control" id="card-num"/>
+												<input maxlength="16" autocomplete="off" type="text" class="form-control" id="card-num"/>
 												<p class="error-msg"></p>
 											</div>
 											<div class="col-md-2 col-md-offset-1 form-field">
 												<label for="installments">Cuotas:</label>
-												<select class="form-control" id="installments">
+												<select autocomplete="off" class="form-control" id="installments">
 													<option>1</option>
 													<option>2</option>
 													<option>3</option>
@@ -278,9 +267,9 @@
 													<label>Vencimiento:</label>
 												</div>
 												<label for="exp-month" class="hidden">Mes:</label>
-												<input autocomplete="off" type="text" class="form-control" placeholder="mes" id="exp-month">
+												<input maxlength="2" autocomplete="off" type="text" class="form-control" placeholder="mes" id="exp-month">
 												<label for="exp-year" class="hidden">Año:</label>
-												<input autocomplete="off" type="text" class="form-control" placeholder="año" id="exp-year">
+												<input maxlength="4" autocomplete="off" type="text" class="form-control" placeholder="año" id="exp-year">
 												<p class="error-msg" id="error-expiration"></p>
 												<p class="error-msg" id="error-exp-month"></p>
 												<p class="error-msg" id="error-exp-year"></p>
@@ -391,233 +380,251 @@
 					<div class="tab-pane fade" id="3">
 						<div class="row" id="form3">
 							<!--Titulo -->
-							<div class="col-md-12 title-style">
-								<h3>Información de Contacto</h3>
+							<div class="row">
+								<div class="col-md-12 title-style">
+									<h3>Información de Contacto</h3>
+								</div>
 							</div>
-							<div class="col-md-9 form-style" id="contact-form">
 
-								<div class="form-group">
-									<!--Primera Fila -->
-									<div class="row">
-										<div class="col-md-8 form-field">
-											<label for="email" >E-mail:</label>
-											<input autocomplete="off" type="text" class="form-control" id="email" maxlength="128">
-											<p class="error-msg"></p>
-										</div>
-									</div>
+							<div class="row">
+								<div class="col-md-9 form-style" id="contact-form">
 
-									<!-- Segunda Fila -->
-									<div class="row">
-										<div class="phone-data">
-											<div class="col-md-1 form-field phone-row">
-												<label class="tocenter-label">Teléfono:</label>
-											</div>
-											<div class="col-md-2 form-field">
-												<label for="phone-type-0">Tipo:</label>
-												<select class="form-control" id="phone-type-0">
-													<option>Fijo</option>
-													<option>Celular</option>
-												</select>
-											</div>
-											<div class="col-md-8 form-field phone-input">
-												<label for="phone-0">Número:</label>
-												<input autocomplete="off" type="text" class="form-control" id="phone-0">
+									<div class="form-group">
+										<!--Primera Fila -->
+										<div class="row">
+											<div class="col-md-8 form-field">
+												<label for="email" >E-mail:</label>
+												<input autocomplete="off" type="text" class="form-control" id="email" maxlength="128">
 												<p class="error-msg"></p>
 											</div>
-											<div class="col-md-1 tocenter-label">
-												<a href="#" class="btn btn-default add-Phone add-rem-button">
-													<span class="glyphicon glyphicon-plus-sign"></span>
-												</a>
+										</div>
+
+										<!-- Segunda Fila -->
+										<div class="row">
+											<div class="phone-data">
+												<div class="col-md-1 form-field phone-row">
+													<label class="tocenter-label">Teléfono:</label>
+												</div>
+												<div class="col-md-2 form-field">
+													<label for="phone-type-0">Tipo:</label>
+													<select class="form-control" id="phone-type-0">
+														<option>Fijo</option>
+														<option>Celular</option>
+													</select>
+												</div>
+												<div class="col-md-8 form-field phone-input">
+													<label for="phone-0">Número:</label>
+													<input autocomplete="off" type="text" class="form-control" id="phone-0">
+													<p class="error-msg"></p>
+												</div>
+												<div class="col-md-1 tocenter-label">
+													<a href="#" class="btn btn-default add-Phone add-rem-button">
+														<span class="glyphicon glyphicon-plus-sign"></span>
+													</a>
+												</div>
 											</div>
 										</div>
 									</div>
 								</div>
-							</div>
+								<div class="row">
+									<div class="col-md-3 sum-box summary">
+										<h3>Resumen</h3>
+										<h5>Pasajeros</h5>
+										<div class="summary-passengers">
+										</div>
+										<h5>Pago</h5>
+										<h6>Tarjeta</h6>
+										<div class="summary-payment">
+										</div>
 
-							<div class="col-md-3 sum-box summary">
-								<h3>Resumen</h3>
-								<h5>Pasajeros</h5>
-								<div class="summary-passengers">
+										<h6>Facturación</h6>
+										<div class="summary-billing">
+
+										</div>
+
+									</div>
 								</div>
-								<h5>Pago</h5>
-								<h6>Tarjeta</h6>
-								<div class="summary-payment">
-								</div>
-
-								<h6>Facturación</h6>
-								<div class="summary-billing">
-
-								</div>
-
 							</div>
 						</div>
 
 					</div>
 
 					<div class="tab-pane fade" id="4">
-						<h3 class="title-style">Confirmación</h3>
+						<div class="row">
+							<div class="col-md-12 title-style">
+								<h3 class="title-style">Confirmación</h3>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<div class="panel-group">
 
-						<div class="panel-group">
-
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4>Información de Pasajeros</h4>
-								</div>
-
-								<div class="panel-body">
-									<div class="row">
-										<div class="col-md-2">
-											<p><span class="glyphicon glyphicon-user"></span>Adulto</p>
+									<div class="panel panel-default">
+										<div class="panel-heading">
+											<h4>Información de Pasajeros</h4>
 										</div>
-										<div class="col-md-10">
 
-											<div class="row">
-												<div class="col-sm-6">
-													<p><strong>Nombre: </strong>Lorem</p>
+										<div class="panel-body">
+
+										<!-- row de un pasajero -->
+											<div class="row" data-ng-repeat="passenger in passengersData">
+												<div class="col-md-2">
+													<p><span class="glyphicon glyphicon-user"></span>{{passenger['type']}}</p>
 												</div>
-												<div class="col-sm-6">
-													<p><strong>Apellido: </strong>Ipsum</p>
+												<div class="col-md-10">
+
+													<div class="row">
+														<div class="col-md-6">
+															<p><strong>Nombre: </strong>{{passenger['usr-name']}}</p>
+														</div>
+														<div class="col-md-6">
+															<p><strong>Apellido: </strong>{{passenger['usr-lname']}}</p>
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-md-6">
+															<p><strong>País: </strong>{{passenger['usr-country']}}</p>
+														</div>
+														<div class="col-md-6">
+															<p><strong>Documento: </strong>{{passenger['usr-doc']}}</p>
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-md-6">
+															<p><strong>Número de Documento: </strong>{{passenger['usr-docnum']}}</p>
+														</div>
+														<div class="col-md-6">
+															<p><strong>Fecha de nacimiento: </strong>{{passenger['birth-day']}}/{{passenger['birth-month']}}/{{passenger['birth-year']}}</p>
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-md-12">
+															<p><strong>Sexo: </strong>{{passenger['usr-gen']}}</p>
+														</div>
+													</div>
 												</div>
-												<div class="col-sm-6">
-													<p><strong>País: </strong>Argentina</p>
-												</div>
-												<div class="col-sm-6">
-													<p><strong>Tipo: </strong>DNI</p>
-												</div>
-												<div class="col-sm-12">
-													<p><strong>Número: </strong>1540227113</p>
-												</div>
-												<div class="col-sm-6">
-													<p><strong>Sexo :</strong>?</p>
-												</div>
-												<div class="col-sm-6">
-													<p><strong>Fecha de nacimiento: </strong>dd/mm/aaaa</p>
-												</div>
+
 											</div>
+										<!-- fin row de pasajero -->
 
 										</div>
 									</div>
 
-									<!-- Pasajeros subsiguientes irían en otro row com mismo formato -->
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<h4>Información de Pago</h4>
+									</div>
 
-								</div>
-							</div>
+									<div class="panel-body">
+										<div class="panel-group">
 
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4>Información de Pago</h4>
-								</div>
+											<div class="panel panel-default">
+												<div class="panel-heading">
+													<h5>Detalles de Tarjeta</h5>
+												</div>
 
-								<div class="panel-body">
-									<div class="panel-group">
-
-										<div class="panel panel-default">
-											<div class="panel-heading">
-												<h5>Detalles de Tarjeta</h5>
+												<div class="panel-body">
+													<div class="row">
+														<div class="col-sm-4">
+															<p><strong>Número de la tarjeta: </strong>{{paymentData['card-num']}}</p>
+														</div>
+														<div class="col-sm-4">
+															<p><strong>Código de seguridad: </strong>{{paymentData['sec-code']}}</p>
+														</div>
+														<div class="col-sm-4">
+															<p><strong>Vencimiento: </strong>{{paymentData['exp-month']}}/{{paymentData['exp-year']}}</p>
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-sm-4">
+															<p><strong>Nombre del titular: </strong>{{paymentData['cardholder']}}</p>
+														</div>
+														<div class="col-sm-8">
+															<p><strong>Cuotas: </strong>{{paymentData['installments']}}</p>
+														</div>
+													</div>
+												</div>
 											</div>
 
-											<div class="panel-body">
-												<div class="row">
-													<div class="col-sm-12">
-														<p><strong>Número de la tarjeta: </strong>Lorem</p>
+											<div class="panel panel-default">
+												<div class="panel-heading">
+													<h5>Datos de Facturación</h5>
+												</div>
+
+												<div class="panel-body">
+													<div class="row">
+														<div class="col-sm-4">
+															<p><strong>País: </strong>{{paymentData['country']}}</p>
+														</div>
+														<div class="col-sm-8">
+															<p><strong>Ciudad: </strong>{{paymentData['city']}}</p>
+														</div>
 													</div>
-													<div class="col-sm-4">
-														<p><strong>Vencimiento: </strong>Lorem</p>
+													<div class="row">
+														<div class="col-sm-4">
+															<p><strong>Calle: </strong>{{paymentData['street']}}</p>
+														</div>
+														<div class="col-sm-4">
+															<p><strong>Número: </strong>{{paymentData['addr-num']}}</p>
+														</div>
+														<div class="col-sm-4">
+															<p><strong>Código Postal: </strong>{{paymentData['zip-code']}}</p>
+														</div>
 													</div>
-													<div class="col-sm-8">
-														<p><strong>Código de seguridad: </strong>Lorem</p>
+													<div class="row">
+														<div class="col-sm-4" data-ng-if="paymentData['floor'].length">
+															<p><strong>Piso: </strong>{{paymentData['floor']}}</p>
+														</div>
+														<div class="col-sm-8" data-ng-if="paymentData['department'].length">
+															<p><strong>Departamento: </strong>{{paymentData['department']}}</p>
+														</div>
 													</div>
-													<div class="col-sm-12">
-														<p><strong>Nombre del titular: </strong>Lorem</p>
-													</div>
+												</div>
+											</div>
 												</div>
 											</div>
 										</div>
 
-										<div class="panel panel-default">
-											<div class="panel-heading">
-												<h5>Datos de Facturación</h5>
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<h4>Información de Contacto</h4>
+									</div>
+
+									<div class="panel-body">
+										<div class="row">
+											<div class="col-md-12">
+												<p><strong>E-mail: </strong>{{contactData['email']}}</p>
+											</div>
+										</div>
+										<div class="row" data-ng-repeat="phone in phones">
+											<div class="col-md-4">
+												<p><span class="glyphicon glyphicon-earphone"></span><strong>Tipo: </strong>{{phone['type']}}</p>
 											</div>
 
-											<div class="panel-body">
-
-												<div class="row">
-													<div class="col-sm-4">
-														<p><strong>Situación fiscal: </strong>Lorem</p>
-													</div>
-													<div class="col-sm-8">
-														<p><strong>CUIL: </strong>123-345345-345</p>
-													</div>
-													<div class="col-sm-4">
-														<p><strong>País: </strong>Argentina</p>
-													</div>
-													<div class="col-sm-4">
-														<p><strong>Provincia: </strong>KEKEKEKE</p>
-													</div>
-													<div class="col-sm-4">
-														<p><strong>Ciudad: </strong>KOKOKOKO</p>
-													</div>
-													<div class="col-sm-4">
-														<p><strong>Calle: </strong>KIKIKIKI</p>
-													</div>
-													<div class="col-sm-4">
-														<p><strong>Número: </strong>47764617</p>
-													</div>
-													<div class="col-sm-4">
-														<p><strong>Código Postal: </strong>1426</p>
-													</div>
-
-												</div>
-
+											<div class="col-md-8">
+												<p><strong>Número: </strong>{{phone['number']}}</p>
 											</div>
 										</div>
 									</div>
+
+								</div>
 								</div>
 							</div>
-
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4>Información de Contacto</h4>
-								</div>
-
-								<div class="panel-body">
-									<div class="row">
-										<div class="col-md-12">
-											<p><strong>E-mail: </strong></p>
-										</div>
-
-										<div class="col-md-4">
-											<p><span class="glyphicon glyphicon-earphone"></span><strong>Tipo: </strong>Fijo</p>
-										</div>
-
-										<div class="col-md-4">
-											<p><strong>Código de área: </strong>47764617</p>
-										</div>
-
-										<div class="col-md-4">
-											<p><strong>Número: </strong>47764617</p>
-										</div>
-									</div>
-								</div>
-
-							</div>
-
+						</div>
+						</div>
 						</div>
 
+			</div>
+
+				<div class="row">
+					<div class="col-md-2">
+						<button class="arrow-btn btnPrev vda-btn">-Volver</button>
 					</div>
-
+					<div class="col-md-2 col-md-offset-8">
+						<button class="arrow-btn btnNext vda-btn" data-ng-click="fillDatas()">Continuar-</button>
+					</div>
 				</div>
 			</div>
-			<div class="row">
-				<div class="col-md-2">
-					<button class="arrow-btn btnPrev vda-btn">-Volver</button>
-				</div>
-				<div class="col-md-2 col-md-offset-8">
-					<button class="arrow-btn btnNext vda-btn">Continuar-</button>
-				</div>
-			</div>
-
-		</div>
 
 
 		<!-- MODAL DE PASAJERO -->
@@ -628,17 +635,30 @@
 				<!-- Modal content-->
 				<div class="modal-content">
 					<div class="modal-header">
-						<h4 class="modal-title">Modificar Información de pasajero</h4>
+						<h4 class="modal-title"></h4>
 					</div>
 					<div class="modal-body col-md-12">
 					</div>
 
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default cancel-btn">Cancelar</button>
-						<button type="button" class="btn btn-default save-btn">Guardar</button>
+						<button type="button" class="btn btn-default save-btn" data-ng-click="fillDatas()">Guardar</button>
 					</div>
 				</div>
 
 			</div>
 		</div>
+
+		<!-- TODO: falta el footer -->
+
+		<script src="js/vendor/jquery-1.11.2.min.js"></script>
+		<script src="js/validators.js"></script>
+		<script src="js/checkout.js"></script>
+		<script src="bootstrap.min.js"></script> <!--TODO:VER POR QUE NO FUNCIONA EL OTRO-->
+		<script src="type/typeahead.bundle.min.js"></script>
+		<script src="type/bloodhound.min.js"></script>
+		<script src="js/ngcheckout.js"></script>
 	</body>
+
+
+</html>
