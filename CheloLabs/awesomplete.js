@@ -57,7 +57,16 @@ var _ = function (input, o) {
 
 	$.bind(this.input, {
 		"input": this.evaluate.bind(this),
-		"blur": this.close.bind(this, { reason: "blur" }),
+		"blur": function(evt) {
+			var c = evt.keyCode;
+			if(me.opened) {
+				if (me.selected) {
+					evt.preventDefault();
+					me.select();
+				}
+			me.close.bind(this, { reason: "blur" });
+		}
+	},
 		"keydown": function(evt) {
 			var c = evt.keyCode;
 

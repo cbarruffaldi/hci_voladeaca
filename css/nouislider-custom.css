@@ -8,10 +8,8 @@
 	-webkit-touch-callout: none;
 	-webkit-user-select: none;
 	-ms-touch-action: none;
-	touch-action: none;
 	-ms-user-select: none;
 	-moz-user-select: none;
-	user-select: none;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 }
