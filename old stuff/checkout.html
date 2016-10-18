@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Página de Compra</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="js/vendor/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/checkout.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <script type="javascript">
+        $("a.tooltipLink").tooltip();
+    </script>
+</head>
+
+<body>
+
+<!-- header -->
+<header>
+    <nav id="header-nav" class="navbar navbar-default">
+        <div class="container">
+            <div class="navbar-header">
+                <a href="#" class="pull-left">
+                    <div id="logo-img"></div>
+                </a>
+
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapsable-nav" aria-expanded="false">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+            </div>
+
+
+            <div id="collapsable-nav" class="collapse navbar-collapse">
+                <ul id="nav-list" class="nav navbar-nav navbar-left">
+                    <li class="hvr-fade">
+                        <a href="#"><span class="glyphicon glyphicon-search"></span>Buscar</a>
+                    </li>
+                    <li class="hvr-fade"><a href="#"><span class="glyphicon glyphicon-usd"></span>Promociones</a></li>
+
+                    <li class="hvr-bounce-to-top"><a href="#"><span class="glyphicon glyphicon-star"></span>Rese&ntilde;as</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+</header>
+
+<!-- title -->
+<div class="container">
+    <div class="row"><h1>Página de Compra</h1>
+    </div>
+</div>
+
+
+<!-- Tabs -->
+<div id="step-tabs" class="container">
+    <ul class="nav nav-tabs nav-justified">
+        <li class="active">
+            <a  href="#1" data-toggle="tab">1.Información de Pasajeros</a>
+        </li>
+        <li><a href="#2" data-toggle="tab">2.Información de Pago</a>
+        </li>
+        <li><a href="#3" data-toggle="tab">3.Información de Contacto</a>
+        </li>
+        <li><a href="#4" data-toggle="tab">4.Confirmacion</a>
+        </li>
+    </ul>
+
+
+<!--CUADRO RESUMEN-->
+    <div class="container">
+        <h3 class="row title-style ">Información del viaje</h3>
+        <div class="row">
+            <div class="panel panel-default">
+                <div class="panel-body col-md-12 sum-box">
+                    <div class="row">
+                        <div class="col-md-2">
+                            FECHA
+                            <hr>
+                        </div>
+                        <div class="col-md-8">
+                            INFO GENERAL
+                            <hr>
+                        </div>
+                        <div class="col-md-2">
+                            DETALLES DEL PRECIO
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2">
+                            FECHA
+                        </div>
+                        <div class="col-md-8">
+                            INFO GENERAL
+                        </div>
+                        <div class="col-md-2">
+                            TOTAL: $$$$$$$
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    <div class="tab-content ">
+        <div class="tab-pane active" id="1">
+
+            <!--FORMULARIO-->
+            <div class="container">
+                <div class="row title-style"><h3>Información de Pasajeros</h3></div>
+                <div class="row form-style">
+                    <span class="glyphicon glyphicon-user col-md-1">Adulto</span>
+
+                    <div class="col-md-8">
+                        <div class="row">
+                            <div class="form-group form-inline">
+                                <div class="form-group form-inline">
+                                    <label for="usr-name" class="form-tags">Nombre:</label>
+                                    <input type="text" class="form-control" id="usr-name">
+                                </div>
+                                <div class="form-group form-inline">
+                                    <label for="usr-lname" class="form-tags">Apellido:</label>
+                                    <input type="text" class="form-control" id="usr-lname">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group form-inline">
+                                <div class="form-group form-inline">
+                                    <label for="usr-country" class="form-tags">País:</label>
+                                    <select class="form-control" id="usr-country">
+                                        <option value="AF">Afganistán</option>
+                                        <option value="AL">Albania</option>
+                                        <option value="DE">Alemania</option>
+                                        <option value="AD">Andorra</option>
+                                        <option value="AO">Angola</option>
+                                        <option value="AI">Anguilla</option>
+                                        <option value="AQ">Antártida</option>
+                                        <option value="AG">Antigua y Barbuda</option>
+                                        <option value="AN">Antillas Holandesas</option>
+                                        <option value="SA">Arabia Saudí</option>
+                                        <option value="DZ">Argelia</option>
+                                        <option value="AR" selected>Argentina</option>
+                                        <option value="AM">Armenia</option>
+                                        <option value="AW">Aruba</option>
+                                        <option value="AU">Australia</option>
+                                        <option value="AT">Austria</option>
+                                        <option value="AZ">Azerbaiyán</option>
+                                        <option value="BS">Bahamas</option>
+                                        <option value="BH">Bahrein</option>
+                                        <option value="BD">Bangladesh</option>
+                                        <option value="BB">Barbados</option>
+                                        <option value="BE">Bélgica</option>
+                                        <option value="BZ">Belice</option>
+                                        <option value="BJ">Benin</option>
+                                        <option value="BM">Bermudas</option>
+                                        <option value="BY">Bielorrusia</option>
+                                        <option value="MM">Birmania</option>
+                                        <option value="BO">Bolivia</option>
+                                        <option value="BA">Bosnia y Herzegovina</option>
+                                        <option value="BW">Botswana</option>
+                                        <option value="BR">Brasil</option>
+                                        <option value="BN">Brunei</option>
+                                        <option value="BG">Bulgaria</option>
+                                        <option value="BF">Burkina Faso</option>
+                                        <option value="BI">Burundi</option>
+                                        <option value="BT">Bután</option>
+                                        <option value="CV">Cabo Verde</option>
+                                        <option value="KH">Camboya</option>
+                                        <option value="CM">Camerún</option>
+                                        <option value="CA">Canadá</option>
+                                        <option value="TD">Chad</option>
+                                        <option value="CL">Chile</option>
+                                        <option value="CN">China</option>
+                                        <option value="CY">Chipre</option>
+                                        <option value="VA">Ciudad del Vaticano (Santa Sede)</option>
+                                        <option value="CO">Colombia</option>
+                                        <option value="KM">Comores</option>
+                                        <option value="CG">Congo</option>
+                                        <option value="CD">Congo, República Democrática del</option>
+                                        <option value="KR">Corea</option>
+                                        <option value="KP">Corea del Norte</option>
+                                        <option value="CI">Costa de Marfíl</option>
+                                        <option value="CR">Costa Rica</option>
+                                        <option value="HR">Croacia (Hrvatska)</option>
+                                        <option value="CU">Cuba</option>
+                                        <option value="DK">Dinamarca</option>
+                                        <option value="DJ">Djibouti</option>
+                                        <option value="DM">Dominica</option>
+                                        <option value="EC">Ecuador</option>
+                                        <option value="EG">Egipto</option>
+                                        <option value="SV">El Salvador</option>
+                                        <option value="AE">Emiratos Árabes Unidos</option>
+                                        <option value="ER">Eritrea</option>
+                                        <option value="SI">Eslovenia</option>
+                                        <option value="ES">España</option>
+                                        <option value="US">Estados Unidos</option>
+                                        <option value="EE">Estonia</option>
+                                        <option value="ET">Etiopía</option>
+                                        <option value="FJ">Fiji</option>
+                                        <option value="PH">Filipinas</option>
+                                        <option value="FI">Finlandia</option>
+                                        <option value="FR">Francia</option>
+                                        <option value="GA">Gabón</option>
+                                        <option value="GM">Gambia</option>
+                                        <option value="GE">Georgia</option>
+                                        <option value="GH">Ghana</option>
+                                        <option value="GI">Gibraltar</option>
+                                        <option value="GD">Granada</option>
+                                        <option value="GR">Grecia</option>
+                                        <option value="GL">Groenlandia</option>
+                                        <option value="GP">Guadalupe</option>
+                                        <option value="GU">Guam</option>
+                                        <option value="GT">Guatemala</option>
+                                        <option value="GY">Guayana</option>
+                                        <option value="GF">Guayana Francesa</option>
+                                        <option value="GN">Guinea</option>
+                                        <option value="GQ">Guinea Ecuatorial</option>
+                                        <option value="GW">Guinea-Bissau</option>
+                                        <option value="HT">Haití</option>
+                                        <option value="HN">Honduras</option>
+                                        <option value="HU">Hungría</option>
+                                        <option value="IN">India</option>
+                                        <option value="ID">Indonesia</option>
+                                        <option value="IQ">Irak</option>
+                                        <option value="IR">Irán</option>
+                                        <option value="IE">Irlanda</option>
+                                        <option value="BV">Isla Bouvet</option>
+                                        <option value="CX">Isla de Christmas</option>
+                                        <option value="IS">Islandia</option>
+                                        <option value="KY">Islas Caimán</option>
+                                        <option value="CK">Islas Cook</option>
+                                        <option value="CC">Islas de Cocos o Keeling</option>
+                                        <option value="FO">Islas Faroe</option>
+                                        <option value="HM">Islas Heard y McDonald</option>
+                                        <option value="FK">Islas Malvinas</option>
+                                        <option value="MP">Islas Marianas del Norte</option>
+                                        <option value="MH">Islas Marshall</option>
+                                        <option value="UM">Islas menores de Estados Unidos</option>
+                                        <option value="PW">Islas Palau</option>
+                                        <option value="SB">Islas Salomón</option>
+                                        <option value="SJ">Islas Svalbard y Jan Mayen</option>
+                                        <option value="TK">Islas Tokelau</option>
+                                        <option value="TC">Islas Turks y Caicos</option>
+                                        <option value="VI">Islas Vírgenes (EE.UU.)</option>
+                                        <option value="VG">Islas Vírgenes (Reino Unido)</option>
+                                        <option value="WF">Islas Wallis y Futuna</option>
+                                        <option value="IL">Israel</option>
+                                        <option value="IT">Italia</option>
+                                        <option value="JM">Jamaica</option>
+                                        <option value="JP">Japón</option>
+                                        <option value="JO">Jordania</option>
+                                        <option value="KZ">Kazajistán</option>
+                                        <option value="KE">Kenia</option>
+                                        <option value="KG">Kirguizistán</option>
+                                        <option value="KI">Kiribati</option>
+                                        <option value="KW">Kuwait</option>
+                                        <option value="LA">Laos</option>
+                                        <option value="LS">Lesotho</option>
+                                        <option value="LV">Letonia</option>
+                                        <option value="LB">Líbano</option>
+                                        <option value="LR">Liberia</option>
+                                        <option value="LY">Libia</option>
+                                        <option value="LI">Liechtenstein</option>
+                                        <option value="LT">Lituania</option>
+                                        <option value="LU">Luxemburgo</option>
+                                        <option value="MK">Macedonia, Ex-República Yugoslava de</option>
+                                        <option value="MG">Madagascar</option>
+                                        <option value="MY">Malasia</option>
+                                        <option value="MW">Malawi</option>
+                                        <option value="MV">Maldivas</option>
+                                        <option value="ML">Malí</option>
+                                        <option value="MT">Malta</option>
+                                        <option value="MA">Marruecos</option>
+                                        <option value="MQ">Martinica</option>
+                                        <option value="MU">Mauricio</option>
+                                        <option value="MR">Mauritania</option>
+                                        <option value="YT">Mayotte</option>
+                                        <option value="MX">México</option>
+                                        <option value="FM">Micronesia</option>
+                                        <option value="MD">Moldavia</option>
+                                        <option value="MC">Mónaco</option>
+                                        <option value="MN">Mongolia</option>
+                                        <option value="MS">Montserrat</option>
+                                        <option value="MZ">Mozambique</option>
+                                        <option value="NA">Namibia</option>
+                                        <option value="NR">Nauru</option>
+                                        <option value="NP">Nepal</option>
+                                        <option value="NI">Nicaragua</option>
+                                        <option value="NE">Níger</option>
+                                        <option value="NG">Nigeria</option>
+                                        <option value="NU">Niue</option>
+                                        <option value="NF">Norfolk</option>
+                                        <option value="NO">Noruega</option>
+                                        <option value="NC">Nueva Caledonia</option>
+                                        <option value="NZ">Nueva Zelanda</option>
+                                        <option value="OM">Omán</option>
+                                        <option value="NL">Países Bajos</option>
+                                        <option value="PA">Panamá</option>
+                                        <option value="PG">Papúa Nueva Guinea</option>
+                                        <option value="PK">Paquistán</option>
+                                        <option value="PY">Paraguay</option>
+                                        <option value="PE">Perú</option>
+                                        <option value="PN">Pitcairn</option>
+                                        <option value="PF">Polinesia Francesa</option>
+                                        <option value="PL">Polonia</option>
+                                        <option value="PT">Portugal</option>
+                                        <option value="PR">Puerto Rico</option>
+                                        <option value="QA">Qatar</option>
+                                        <option value="UK">Reino Unido</option>
+                                        <option value="CF">República Centroafricana</option>
+                                        <option value="CZ">República Checa</option>
+                                        <option value="ZA">República de Sudáfrica</option>
+                                        <option value="DO">República Dominicana</option>
+                                        <option value="SK">República Eslovaca</option>
+                                        <option value="RE">Reunión</option>
+                                        <option value="RW">Ruanda</option>
+                                        <option value="RO">Rumania</option>
+                                        <option value="RU">Rusia</option>
+                                        <option value="EH">Sahara Occidental</option>
+                                        <option value="KN">Saint Kitts y Nevis</option>
+                                        <option value="WS">Samoa</option>
+                                        <option value="AS">Samoa Americana</option>
+                                        <option value="SM">San Marino</option>
+                                        <option value="VC">San Vicente y Granadinas</option>
+                                        <option value="SH">Santa Helena</option>
+                                        <option value="LC">Santa Lucía</option>
+                                        <option value="ST">Santo Tomé y Príncipe</option>
+                                        <option value="SN">Senegal</option>
+                                        <option value="SC">Seychelles</option>
+                                        <option value="SL">Sierra Leona</option>
+                                        <option value="SG">Singapur</option>
+                                        <option value="SY">Siria</option>
+                                        <option value="SO">Somalia</option>
+                                        <option value="LK">Sri Lanka</option>
+                                        <option value="PM">St. Pierre y Miquelon</option>
+                                        <option value="SZ">Suazilandia</option>
+                                        <option value="SD">Sudán</option>
+                                        <option value="SE">Suecia</option>
+                                        <option value="CH">Suiza</option>
+                                        <option value="SR">Surinam</option>
+                                        <option value="TH">Tailandia</option>
+                                        <option value="TW">Taiwán</option>
+                                        <option value="TZ">Tanzania</option>
+                                        <option value="TJ">Tayikistán</option>
+                                        <option value="TF">Territorios franceses del Sur</option>
+                                        <option value="TP">Timor Oriental</option>
+                                        <option value="TG">Togo</option>
+                                        <option value="TO">Tonga</option>
+                                        <option value="TT">Trinidad y Tobago</option>
+                                        <option value="TN">Túnez</option>
+                                        <option value="TM">Turkmenistán</option>
+                                        <option value="TR">Turquía</option>
+                                        <option value="TV">Tuvalu</option>
+                                        <option value="UA">Ucrania</option>
+                                        <option value="UG">Uganda</option>
+                                        <option value="UY">Uruguay</option>
+                                        <option value="UZ">Uzbekistán</option>
+                                        <option value="VU">Vanuatu</option>
+                                        <option value="VE">Venezuela</option>
+                                        <option value="VN">Vietnam</option>
+                                        <option value="YE">Yemen</option>
+                                        <option value="YU">Yugoslavia</option>
+                                        <option value="ZM">Zambia</option>
+                                        <option value="ZW">Zimbabue</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group form-inline">
+                                    <label for="usr-doc" class="form-tags">Tipo:</label>
+                                    <select class="form-control" id="usr-doc">
+                                        <option>DNI</option>
+                                        <option>Pasaporte</option>
+                                        <option>Otro</option>
+                                    </select>
+                                </div>
+                                <div class="form-group form-inline">
+                                    <label for="usr-docnum" class="form-tags">Numero:</label>
+                                    <input type="text" class="form-control" id="usr-docnum">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group form-inline justified">
+                                <div class="form-group form-inline">
+                                    <label for="usr-gen" class="form-tags">Sexo:</label>
+                                    <select class="form-control" id="usr-gen">
+                                        <option>Femenino</option>
+                                        <option>Masculino</option>
+                                    </select>
+                                </div>
+                                <div class="form-group form-inline" id="birth-form">
+                                    <label for="birth-day" class="form-tags">Fecha Nacimiento:</label>
+                                    <input type="number" class="form-control " placeholder="dia" id="birth-day">
+                                    /
+                                    <label for="birth-month" class="form-tags hidden">Mes</label>
+                                    <input type="number" class="form-control" placeholder="mes" id="birth-month">
+                                    /
+                                    <label for="birth-year" class="form-tags hidden">Año</label>
+                                    <input type="number" class="form-control " placeholder="año" id="birth-year">
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <button class="col-md-offset-11"><span class="glyphicon glyphicon-menu-right"></span></button>
+                        </div>
+                    </div>
+
+                    <!-- RESUMEN -->
+                    <div class="col-md-2">
+                        RESUMEN?
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <!--TAB-->
+        <div class="tab-pane" id="2">
+
+            <!--FORMULARIO-->
+            <div class="container">
+                <div class="row title-style"><h3>Información de Pago</h3></div>
+                <div class="row form-style" id="form-row">
+                    <div class="col-md-8">
+                        <div class="row sub-style"><h4>Detalles de la tarjeta</h4></div>
+                        <div class="row">
+                            <div class="form-group form-inline">
+                                <div class="form-group form-inline">
+                                    <label for="card-num" class="form-tags">Número de la tarjeta:</label>
+                                    <input type="text" class="form-control" id="card-num">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group form-inline">
+                                <div class="form-group form-inline">
+                                    <label for="exp-month" class="form-tags">Vencimiento:</label>
+                                        <input type="number" class="form-control" placeholder="mes" id="exp-month">
+                                        /
+                                    <label for="exp-year" class="form-tags hidden">año:</label>
+                                        <input type="number" class="form-control" placeholder="año" id="exp-year">
+
+                                    <label for="sec-code" class="form-tags" >Cód.de seguridad:</label>
+                                    <input type="number" class="form-control" id="sec-code">
+                                    <a data-toggle="tooltip" class="tooltipLink" data-original-title="Tooltip text goes here">
+                                        <span class="glyphicon glyphicon-question-sign"></span>
+                                    </a>
+                                    </div>
+                                </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group form-inline justified">
+                                <div class="form-group form-inline">
+                                    <label for="cardholder" class="form-tags ">Nombre del titular:</label>
+                                    <input type="text" class="form-control" id="cardholder" placeholder="Nombre como figura en la tarjeta">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row sub-style"><h4>Datos de Facturacion</h4></div>
+                        <div class="row">
+
+                            <div class="form-group form-inline">
+                                <div class="form-group form-inline">
+                                    <label for="fiscal" class="form-tags">Situacion Fiscal:</label>
+                                    <select class="form-control" id="fiscal">
+                                        <option>Situacion Fiscal 1</option>
+                                        <option>Situacion Fiscal 2</option>
+                                        <option>Situacion Fiscal 3</option>
+                                    </select>
+                                    <label for="cuil" class="form-tags">CUIL:</label>
+                                    <input type="text" class="form-control" id="cuil">
+                                </div>
+                            </div>
+                            <div class="form-group form-inline">
+                                <div class="form-group form-inline">
+                                    <label for="country" class="form-tags">País:</label>
+                                    <select class="form-control" id="country">
+                                        <option>Opciones</option>
+                                    </select>
+                                    <label for="prov" class="form-tags">Provincia:</label>
+                                    <select class="form-control" id="prov">
+                                            <option>Provincias</option>
+                                    </select>
+
+                                    <label for="city" class="form-tags">Ciudad:</label>
+                                    <select class="form-control" id="city">
+                                        <option>Ciudades</option>
+                                    </select>
+
+                                </div>
+                            </div>
+
+                            <div class="form-group form-inline">
+                                <div class="form-group form-inline">
+                                    <label for="street" class="form-tags">Calle:</label>
+                                    <input type="text" class="form-control" id="street">
+                                    <label for="addr-num" class="form-tags">Número:</label>
+                                    <input type="text" class="form-control" id="addr-num">
+                                    <label for="zip-code" class="form-tags">Cód.Postal:</label>
+                                    <input type="text" class="form-control" id="zip-code">
+                                </div>
+                            </div>
+
+                            </div>
+
+
+                        <div class="row">
+                            <button ><span class="glyphicon glyphicon-menu-left"></span></button>
+                            <button class="col-md-offset-10"><span class="glyphicon glyphicon-menu-right"></span></button>
+
+                        </div>
+                        </div>
+
+
+                    <!-- RESUMEN -->
+                    <div class="col-md-2" id="summary" >
+                        <h3 sum></h3>
+
+                    </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+        <!--TAB-->
+        <div class="tab-pane" id="3">
+            <div class="container">
+                <div class="row title-style"><h3>Información de Contacto</h3></div>
+                <div class="row form-style">
+                    <div class="col-md-8">
+                        <div class="row">
+                            <div class="form-group form-inline">
+                                <div class="form-group form-inline">
+                                    <label for="email" class="form-tags">E-mail:</label>
+                                    <input type="text" class="form-control" id="email">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group form-inline">
+                                <div class="form-group form-inline">
+
+                                    <label for="phone-type" class="form-tags">Tipo:</label>
+                                    <select class="form-control" id="phone-type">
+                                        <option>Fijo</option>
+                                        <option>Celular</option>
+                                    </select>
+                                    <label for="phone-area" class="form-tags">Código de Área:</label>
+                                    <input type="number" class="form-control" id="phone-area">
+                                    <label for="phone" class="form-tags">Número:</label>
+                                    <input type="text" class="form-control" id="phone">
+                                    <span class="glyphicon glyphicon-plus-sign "></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        <!--TAB-->
+        <div class="tab-pane" id="4">
+            <h3 class="title-style">Confirmación</h3>
+
+            <div class="panel-group">
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4>Información de Pasajeros</h4>
+                    </div>
+
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <p><span class="glyphicon glyphicon-user"></span>Adulto</p>
+                            </div>
+                            <div class="col-md-10">
+
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <p><strong>Nombre: </strong>Lorem</p>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <p><strong>Apellido: </strong>Ipsum</p>
+                                    </div>                                    
+                                    <div class="col-sm-6">
+                                        <p><strong>País: </strong>Argentina</p>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <p><strong>Tipo: </strong>DNI</p>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <p><strong>Número: </strong>1540227113</p>
+                                    </div>                                                                        
+                                    <div class="col-sm-6">
+                                        <p><strong>Sexo :</strong>?</p>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <p><strong>Fecha de nacimiento: </strong>dd/mm/aaaa</p>
+                                    </div>                                    
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- Pasajeros subsiguientes irían en otro row com mismo formato -->
+
+                    </div>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4>Información de Pago</h4>
+                    </div>
+
+                    <div class="panel-body">
+                        <div class="panel-group">
+
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h5>Detalles de Tarjeta</h5>
+                                </div>
+
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <p><strong>Número de la tarjeta: </strong>Lorem</p>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <p><strong>Vencimiento: </strong>Lorem</p>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <p><strong>Código de seguridad: </strong>Lorem</p>
+                                        </div>
+                                        <div class="col-sm-12">
+                                            <p><strong>Nombre del titular: </strong>Lorem</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h5>Datos de Facturación</h5>
+                                </div>
+
+                                <div class="panel-body">
+
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <p><strong>Situación fiscal: </strong>Lorem</p>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <p><strong>CUIL: </strong>123-345345-345</p>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <p><strong>País: </strong>Argentina</p>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <p><strong>Provincia: </strong>KEKEKEKE</p>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <p><strong>Ciudad: </strong>KOKOKOKO</p>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <p><strong>Calle: </strong>KIKIKIKI</p>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <p><strong>Número: </strong>47764617</p>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <p><strong>Código Postal: </strong>1426</p>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4>Información de Contacto</h4>
+                    </div>
+
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p><strong>E-mail: </strong></p>
+                            </div>
+
+                            <div class="col-md-4">
+                                <p><span class="glyphicon glyphicon-earphone"></span><strong>Tipo: </strong>Fijo</p>
+                            </div>
+
+                            <div class="col-md-4">
+                                <p><strong>Código de área: </strong>47764617</p>
+                            </div>
+
+                            <div class="col-md-4">
+                                <p><strong>Número: </strong>47764617</p>
+                            </div>              
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<footer>
+    <div class="container">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <p>&copy; VolaDeAca 2016</p>
+    </div>
+        </div>
+</footer>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+</body>
+</html>
