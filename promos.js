@@ -70,7 +70,8 @@ app2.controller("promoCtrl", function($scope, $http, $q) {
 			$("#loadImg").css('visibility', 'visible');
 			$("#loadImg").show();
 			$("#promoResultShow").hide();
-			sendPromoSearch(query)
+			$(".botonera button").attr("disabled", true);
+			sendPromoSearch(query);
 		}
 
 	}
@@ -97,14 +98,14 @@ app2.controller("promoCtrl", function($scope, $http, $q) {
 		for (var des of promosInfo[query.dest]) {
 			promises.push(fetchPromo(idate, vdate, "BUE", des));
 		}
-		console.log("PROMISES");
-		console.log(promises);
-		// No anda
-		$q.all(promises).then(function(response){
-			fetchImages();
-		});
 
-		// fetchImages();
+		$q.all(promises).then(function(response){
+			fetchImages().then(function(){
+				$("#promoResultShow").show();
+				$("#loadImg").hide();
+				$(".botonera button").attr("disabled", false);
+			});
+		});
 	}
 
 	function fetchPromo(idate, vdate, orig, dest){
@@ -130,8 +131,8 @@ app2.controller("promoCtrl", function($scope, $http, $q) {
 			}).then(function success(vresponse){
 				process(response, vresponse);
 				$scope.promos = getCheapestFlights($scope.containers);
-				$("#promoResultShow").show();
-				$("#loadImg").hide();
+				// $("#promoResultShow").show();
+				// $("#loadImg").hide();
 				deferred.resolve();
 			},
 							function errorCallback(response){
@@ -150,12 +151,15 @@ app2.controller("promoCtrl", function($scope, $http, $q) {
 	}
 
 	function fetchImages() {
+		var deferred = $q.defer();
 		console.log("PROMOS");
 		console.log($scope.promos);
 		for (var key in $scope.promos) {
 			console.log(key);
 			imagefetch(key);
 		}
+		deferred.resolve();
+		return deferred.promise;
 	}
 
 	var imgperpage = 20;
