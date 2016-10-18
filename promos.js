@@ -104,6 +104,7 @@ app2.controller("promoCtrl", function($scope, $http, $q) {
 				$("#promoResultShow").show();
 				$("#loadImg").hide();
 				$(".botonera button").attr("disabled", false);
+				console.log($scope.promos);
 			});
 		});
 	}
@@ -150,10 +151,7 @@ app2.controller("promoCtrl", function($scope, $http, $q) {
 
 	function fetchImages() {
 		var deferred = $q.defer();
-		console.log("PROMOS");
-		console.log($scope.promos);
 		for (var key in $scope.promos) {
-			console.log(key);
 			imagefetch(key);
 		}
 		deferred.resolve();
@@ -165,9 +163,6 @@ app2.controller("promoCtrl", function($scope, $http, $q) {
 	function setImage(city, response) {
 		var imgdata = response.data.photos.photo[parseInt(Math.random() * imgperpage)];
 		var imgsrc = "https://farm" + imgdata.farm + ".staticflickr.com/" + imgdata.server + "/" + imgdata.id + "_" + imgdata.secret + ".jpg";
-		console.log("SET IMAGE");
-		console.log($scope.promos);
-		console.log("CITY " + city)
 		$scope.promos[city]["imgsrc"] = imgsrc;
 	}
 
@@ -226,8 +221,7 @@ app2.controller("promoCtrl", function($scope, $http, $q) {
 	$scope.airports = {iList: [],
 										 vList: [],
 										 iCity: "",
-										 vCity: "",
-										 filter: {}};
+										 vCity: ""};
 
 	function pushAll(flights){
 		var maxPrice;
@@ -243,15 +237,6 @@ app2.controller("promoCtrl", function($scope, $http, $q) {
 			var c = new Container(flights[i]);
 			$scope.containers.push(c);
 
-			if(!$scope.airports.filter[flights[i].departure.airport.id]){
-				$scope.airports.iList.push(flights[i].departure.airport);
-				$scope.airports.filter[flights[i].departure.airport.id] = true;
-			}
-
-			if(!$scope.airports.filter[flights[i].arrival.airport.id]){
-				$scope.airports.vList.push(flights[i].arrival.airport);
-				$scope.airports.filter[flights[i].arrival.airport.id] = true;
-			}
 		}
 	}
 
@@ -269,17 +254,6 @@ app2.controller("promoCtrl", function($scope, $http, $q) {
 				var c = new Container(iFlights[i], vFlights[j]);
 
 				$scope.containers.push(c);
-
-				if(!$scope.airports.filter[iFlights[i].departure.airport.id]){
-					$scope.airports.iList.push(iFlights[i].departure.airport);
-					$scope.airports.filter[iFlights[i].departure.airport.id] = true;
-				}
-
-				if(!$scope.airports.filter[vFlights[j].departure.airport.id]){
-					$scope.airports.vList.push(vFlights[j].departure.airport);
-					$scope.airports.filter[vFlights[j].departure.airport.id] = true;
-				}
-
 			}
 		}
 	}

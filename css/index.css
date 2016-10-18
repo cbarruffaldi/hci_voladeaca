@@ -146,6 +146,18 @@
 	cursor: pointer;
 }
 
+.promo-date {
+	background-color: rgba(0,0,0,0.55);
+	font-size: 1.3em;
+	padding: 0 10px;
+	display: inline-block;
+	font-weight: lighter;
+}
+
+.promo-date:hover {
+	cursor: pointer;
+}
+
 .promo-dest {
 	display: inline-block;
 	padding: 0 10px;
@@ -157,4 +169,34 @@
 	background-color: rgba(0,0,0,0.55);
 	font-size: 1.3em;
 	padding: 0 10px;
+}
+
+.modal-dialog {
+	margin-top: 150px;
+}
+
+.promo-dest-modal {
+	color: #204DCC;
+	font-size: 2.5em;
+}
+
+.promo-info-modal {
+	color: #333;
+	font-size: 1.3em;
+}
+
+.promo-price-modal {
+	color: #DC0055;
+	font-weight: 600;
+}
+
+.psg-select-message {
+	margin-top: 10%;
+	color: #333;
+	font-size: 1.1em;
+}
+
+.promo-date-modal {
+	color: #333;
+	font-size: 1.3em;
 }
