@@ -24,7 +24,7 @@
 	padding: 0.1em 0 0.1em 0.5em;
 	border-top-right-radius: 5px;
 	border-top-left-radius: 3px;
-	background: #DC0055;
+	background: #204DCC;
 }
 
 .title-style h3 {
@@ -39,7 +39,7 @@
 	border-bottom-left-radius: 5px;
 	border-bottom-right-radius: 5px;
 	background-color: #FFFFFF;
-	border: 1px solid #DC0055;
+	border: 1px solid #204DCC;
 }
 
 .tab-row {
@@ -129,9 +129,12 @@ input.error-input {
 	font-size: 0.9em;
 }
 
+/*
 .single-label {
 	padding-left: 0;
 }
+*/
+
 .form-tags {
 	margin: 10px;
 	display: inline-block;
@@ -157,7 +160,7 @@ input.error-input {
 
 .arrow-btn button:hover {
 	border: 1px solid #FFFFFF;
-	background-color: #DC0055;
+	background-color: #204DCC;
 }
 
 .arrow-btn button:active {
@@ -165,15 +168,20 @@ input.error-input {
 	background-color: crimson;
 }
 
+/*
 .city-typeahead, #country {
 	width: 20em;
 }
+*/
 
 .sub-style{
 	background-color: #d8d8d8;
 	padding: 0.8em;
 }
 
+.twitter-typeahead {
+	display: inline !important;
+}
 /*
 .nav-tabs{
 border-radius: 30px;

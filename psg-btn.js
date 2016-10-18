@@ -1,3 +1,9 @@
+//var app2 = angular.module("flightApp", []);
+//
+app.controller("psgButtonCtrl", function($scope, $http, $q) {
+	console.log("Hola");
+});
+
 var passengers = {}
 passengers.adults = 1
 passengers.children = 0

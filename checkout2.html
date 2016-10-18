@@ -155,7 +155,7 @@
 
 													<label for="usr-country-{{$index}}">Pais:</label>
 													<input autocomplete="off" class="typeahead country-typeahead form-control" type="text" id="usr-country-{{$index}}">
-                                                    <p class="error-msg"></p>
+													<p class="error-msg"></p>
 												</div>
 
 												<div class="col-md-2 col-md-offset-1 form-field openField">
@@ -184,19 +184,25 @@
 												</div>
 
 												<div class="col-md-9 form-inline form-field openField" >
-													<div class="col-md-12 single-label">
-														<label>Fecha de Nacimiento:</label>
+													<div class="row">
+														<div class="col-md-12 single-label">
+															<label>Fecha de Nacimiento:</label>
+														</div>
 													</div>
-													<label for="birth-day-{{$index}}" class="hidden">Día</label>
-													<input maxlength="2" autocomplete="off" type="text" class="form-control birth-day" placeholder="DD" id="birth-day-{{$index}}"/>
-													<label for="birth-month-{{$index}}" class="hidden">Mes</label>
-													<input maxlength="2" autocomplete="off" type="text" class="form-control birth-month" placeholder="MM" id="birth-month-{{$index}}"/>
-													<label for="birth-year-{{$index}}" class="hidden">Año</label>
-													<input maxlength="4" autocomplete="off" type="text" class="form-control birth-year" placeholder="YYYY" id="birth-year-{{$index}}"/>
-													<p class="error-msg" id="error-birthdate-{{$index}}"></p>
-													<p class="error-msg" id="error-birth-day-{{$index}}"></p>
-													<p class="error-msg" id="error-birth-month-{{$index}}"></p>
-													<p class="error-msg" id="error-birth-year-{{$index}}"></p>
+													<div class="row">
+														<div class="col-md-12 single-label">
+															<label for="birth-day-{{$index}}" class="hidden">Día</label>
+															<input maxlength="2" autocomplete="off" type="text" class="form-control birth-day" placeholder="DD" id="birth-day-{{$index}}"/>
+															<label for="birth-month-{{$index}}" class="hidden">Mes</label>
+															<input maxlength="2" autocomplete="off" type="text" class="form-control birth-month" placeholder="MM" id="birth-month-{{$index}}"/>
+															<label for="birth-year-{{$index}}" class="hidden">Año</label>
+															<input maxlength="4" autocomplete="off" type="text" class="form-control birth-year" placeholder="YYYY" id="birth-year-{{$index}}"/>
+															<p class="error-msg" id="error-birthdate-{{$index}}"></p>
+															<p class="error-msg" id="error-birth-day-{{$index}}"></p>
+															<p class="error-msg" id="error-birth-month-{{$index}}"></p>
+															<p class="error-msg" id="error-birth-year-{{$index}}"></p>
+														</div>
+													</div>
 												</div>
 											</div>
 										</div>
@@ -207,173 +213,190 @@
 					</div>
 
 					<div class="tab-pane fade" id="2">
-						<div class="row" id="form2">
+						<div id="form2">
 							<!--Titulo -->
 							<div class="row">
 								<div class="col-md-12 title-style">
 									<h3>Información de Pago</h3>
 								</div>
 							</div>
-							<div class="col-md-9 form-style">
+							<div class="row">
+								<div class="col-md-9 form-style">
 
-								<!--Subtitulo 1-->
-								<div class="col-md-12 sub-style">
-									<h4>Detalles de la Tarjeta</h4>
-								</div>
-								<div id="card-details">
-									<div class="form-group">
-										<!--Primera Fila -->
-										<div class="row">
-											<div class="col-md-8 form-field">
-												<label for="card-num">Número de la tarjeta:</label>
-												<input maxlength="16" autocomplete="off" type="text" class="form-control" id="card-num"/>
-												<p class="error-msg"></p>
-											</div>
-											<div class="col-md-2 col-md-offset-1 form-field">
-												<label for="installments">Cuotas:</label>
-												<select autocomplete="off" class="form-control" id="installments">
-													<option>1</option>
-													<option>2</option>
-													<option>3</option>
-													<option>4</option>
-													<option>5</option>
-													<option>6</option>
-													<option>7</option>
-													<option>8</option>
-													<option>9</option>
-													<option>10</option>
-													<option>11</option>
-													<option>12</option>
-													<option>13</option>
-													<option>14</option>
-													<option>15</option>
-													<option>16</option>
-													<option>17</option>
-													<option>18</option>
-													<option>19</option>
-													<option>20</option>
-													<option>21</option>
-													<option>22</option>
-													<option>23</option>
-													<option>24</option>
-												</select>
-											</div>
+									<!--Subtitulo 1-->
+									<div class="row">
+										<div class="col-md-12 sub-style">
+											<h4>Detalles de la Tarjeta</h4>
 										</div>
-
-										<!-- Segunda Fila-->
-										<div class="row">
-											<div class="col-md-4 form-inline form-field">
-												<div class="col-md-12 single-label">
-													<label>Vencimiento:</label>
+									</div>
+									<div id="card-details">
+										<div class="form-group">
+											<!--Primera Fila -->
+											<div class="row">
+												<div class="col-md-8 form-field">
+													<label for="card-num">Número de la tarjeta:</label>
+													<input maxlength="16" autocomplete="off" type="text" class="form-control" id="card-num"/>
+													<p class="error-msg"></p>
 												</div>
-												<label for="exp-month" class="hidden">Mes:</label>
-												<input maxlength="2" autocomplete="off" type="text" class="form-control" placeholder="mes" id="exp-month">
-												<label for="exp-year" class="hidden">Año:</label>
-												<input maxlength="4" autocomplete="off" type="text" class="form-control" placeholder="año" id="exp-year">
-												<p class="error-msg" id="error-expiration"></p>
-												<p class="error-msg" id="error-exp-month"></p>
-												<p class="error-msg" id="error-exp-year"></p>
+												<div class="col-md-2 col-md-offset-1 form-field">
+													<label for="installments">Cuotas:</label>
+													<select autocomplete="off" class="form-control" id="installments">
+														<option>1</option>
+														<option>2</option>
+														<option>3</option>
+														<option>4</option>
+														<option>5</option>
+														<option>6</option>
+														<option>7</option>
+														<option>8</option>
+														<option>9</option>
+														<option>10</option>
+														<option>11</option>
+														<option>12</option>
+														<option>13</option>
+														<option>14</option>
+														<option>15</option>
+														<option>16</option>
+														<option>17</option>
+														<option>18</option>
+														<option>19</option>
+														<option>20</option>
+														<option>21</option>
+														<option>22</option>
+														<option>23</option>
+														<option>24</option>
+													</select>
+												</div>
 											</div>
 
-											<div class="col-md-4 form-inline form-field">
-												<label for="sec-code"  >Cód.de seguridad:</label>
-												<input autocomplete="off" type="text" class="form-control" id="sec-code">
-												<a href='#' id= 'code-popover' data-toggle="popover" title="¿Donde se ecuentra el código de seguridad?" data-content="<img src='img/security-code.jpg' width='200' />">
-													<span class="glyphicon glyphicon-question-sign"></span>
-												</a>
-												<p class="error-msg"></p>
+											<!-- Segunda Fila-->
+											<div class="row">
+												<div class="col-md-4 form-inline form-field">
+													<div class="row">
+														<div class="col-md-12 single-label">
+															<label>Vencimiento:</label>
+														</div>
+													</div>
+													<label for="exp-month" class="hidden">Mes:</label>
+													<input maxlength="2" autocomplete="off" type="text" class="form-control" placeholder="mes" id="exp-month">
+													<label for="exp-year" class="hidden">Año:</label>
+													<input maxlength="4" autocomplete="off" type="text" class="form-control" placeholder="año" id="exp-year">
+													<p class="error-msg" id="error-expiration"></p>
+													<p class="error-msg" id="error-exp-month"></p>
+													<p class="error-msg" id="error-exp-year"></p>
+												</div>
+
+												<div class="col-md-4 form-inline form-field">
+													<label for="sec-code"  >Cód.de seguridad:</label>
+													<input autocomplete="off" type="text" class="form-control" id="sec-code">
+													<a href='#' id= 'code-popover' data-toggle="popover" title="¿Donde se ecuentra el código de seguridad?" data-content="<img src='img/security-code.jpg' width='200' />">
+														<span class="glyphicon glyphicon-question-sign"></span>
+													</a>
+													<p class="error-msg"></p>
+												</div>
+
+												<!-- Mensaje error validación tarjeta de crédito -->
+												<div class="col-md-4">
+													<p id="error-card">No hemos podido verificar su tarjeta de crédito. Por favor revise sus datos.</p>
+												</div>
 											</div>
 
-											<!-- Mensaje error validación tarjeta de crédito -->
-											<div class="col-md-4">
-												<p id="error-card">No hemos podido verificar su tarjeta de crédito. Por favor revise sus datos.</p>
-											</div>
-										</div>
 
-
-										<!-- Tercera fila -->
-										<div class="row">
-											<div class="col-md-12 form-field">
-												<label for="cardholder" >Nombre del titular:</label>
-												<input autocomplete="off" type="text" class="form-control" id="cardholder" placeholder="Nombre como figura en la tarjeta">
-												<p class="error-msg"></p>
-											</div>
-										</div>
-
-									</div>
-								</div>
-
-								<!--Subtitulo 2 -->
-								<div class="col-md-12 sub-style">
-									<h4>Datos de Facturacion</h4>
-								</div>
-								<div id="billing-details">
-									<div class="form-group">
-
-										<!--Primera Linea -->
-										<div class="row">
-											<div class="col-md-5 form-field">
-												<label for="country" class="col-md-12">País:</label>
-												<input autocomplete="off" class="typeahead form-control" type="text" id="country">
-                                                <p class="error-msg"></p>
-											</div>
-
-											<div class="col-md-4 form-field">
-												<label for="city">Ciudad:</label>
-												<input autocomplete="off" class="typeahead city-typeahead form-control" type="text" id="city">
-                                                <p class="error-msg"></p>
-											</div>
-										</div>
-
-										<!--Tercer Fila -->
-										<div class="row">
-											<div class="col-md-1">
-												<label class="tocenter-label">Dirección:</label>
-											</div>
-
-											<div class="col-md-4 form-field">
-												<label for="street">Calle:</label>
-												<input autocomplete="off" type="text" class="form-control" id="street" maxlength="80">
-												<p class="error-msg"></p>
-											</div>
-
-											<div class="col-md-2 form-field">
-												<label for="addr-num">Número:</label>
-
-												<input autocomplete="off" type="text" class="form-control" id="addr-num" maxlength="6">
-												<p class="error-msg"></p>
-											</div>
-
-											<div class="col-md-2 form-field">
-												<label for="zip-code">Cód.Postal:</label>
-												<input autocomplete="off" type="text" class="form-control" id="zip-code" maxlength="10">
-												<p class="error-msg"></p>
-											</div>
-
-											<div class="col-md-2 form-field">
-												<label for="floor">Piso:</label>
-												<input autocomplete="off" type="text" class="form-control" id="floor" maxlength="3">
-												<p class="error-msg"></p>
-											</div>
-
-											<div class="col-md-1 form-field">
-												<label for="department">Dpto.:</label>
-												<input autocomplete="off" type="text" class="form-control" id="department" maxlength="2">
-												<p class="error-msg"></p>
+											<!-- Tercera fila -->
+											<div class="row">
+												<div class="col-md-12 form-field">
+													<label for="cardholder" >Nombre del titular:</label>
+													<input autocomplete="off" type="text" class="form-control" id="cardholder" placeholder="Nombre como figura en la tarjeta">
+													<p class="error-msg"></p>
+												</div>
 											</div>
 
 										</div>
 									</div>
+
+									<!--Subtitulo 2 -->
+									<div class="row">
+										<div class="col-md-12 sub-style">
+											<h4>Datos de Facturacion</h4>
+										</div>
+									</div>
+									<div id="billing-details">
+										<div class="form-group">
+
+											<!--Primera Linea -->
+											<div class="row">
+												<div class="col-md-5 form-field">
+													<div class="row">
+														<div class="col-md-12">
+															<label for="country">País:</label>
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-md-12">
+															<input autocomplete="off" class="typeahead form-control" type="text" id="country">
+															<p class="error-msg"></p>
+														</div>
+													</div>
+												</div>
+
+												<div class="col-md-4 form-field">
+													<label for="city">Ciudad:</label>
+													<input autocomplete="off" class="typeahead city-typeahead form-control" type="text" id="city">
+													<p class="error-msg"></p>
+												</div>
+											</div>
+
+											<!--Tercer Fila -->
+											<div class="row">
+												<div class="col-md-1">
+													<label class="tocenter-label">Dirección</label>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-md-5 form-field">
+													<label for="street">Calle:</label>
+													<input autocomplete="off" type="text" class="form-control" id="street" maxlength="80">
+													<p class="error-msg"></p>
+												</div>
+
+												<div class="col-md-2 form-field">
+													<label for="addr-num">Número:</label>
+
+													<input autocomplete="off" type="text" class="form-control" id="addr-num" maxlength="6">
+													<p class="error-msg"></p>
+												</div>
+
+												<div class="col-md-2 form-field">
+													<label for="zip-code">Cód.Postal:</label>
+													<input autocomplete="off" type="text" class="form-control" id="zip-code" maxlength="10">
+													<p class="error-msg"></p>
+												</div>
+
+												<div class="col-md-2 form-field">
+													<label for="floor">Piso:</label>
+													<input autocomplete="off" type="text" class="form-control" id="floor" maxlength="3">
+													<p class="error-msg"></p>
+												</div>
+
+												<div class="col-md-1 form-field">
+													<label for="department">Dpto.:</label>
+													<input autocomplete="off" type="text" class="form-control" id="department" maxlength="2">
+													<p class="error-msg"></p>
+												</div>
+
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="col-md-3 sum-box summary">
+									<h3>Resumen</h3>
+									<h5>Pasajeros</h5>
+									<div class="summary-passengers">
+									</div>
 								</div>
 							</div>
 
-							<div class="col-md-3 sum-box summary">
-								<h3>Resumen</h3>
-								<h5>Pasajeros</h5>
-								<div class="summary-passengers">
-								</div>
-
-							</div>
 						</div>
 					</div>
 
@@ -466,7 +489,7 @@
 
 										<div class="panel-body">
 
-										<!-- row de un pasajero -->
+											<!-- row de un pasajero -->
 											<div class="row" data-ng-repeat="passenger in passengersData">
 												<div class="col-md-2">
 													<p><span class="glyphicon glyphicon-user"></span>{{passenger['type']}}</p>
@@ -505,126 +528,126 @@
 												</div>
 
 											</div>
-										<!-- fin row de pasajero -->
+											<!-- fin row de pasajero -->
 
 										</div>
 									</div>
 
-								<div class="panel panel-default">
-									<div class="panel-heading">
-										<h4>Información de Pago</h4>
-									</div>
-
-									<div class="panel-body">
-										<div class="panel-group">
-
-											<div class="panel panel-default">
-												<div class="panel-heading">
-													<h5>Detalles de Tarjeta</h5>
-												</div>
-
-												<div class="panel-body">
-													<div class="row">
-														<div class="col-sm-4">
-															<p><strong>Número de la tarjeta: </strong>{{paymentData['card-num']}}</p>
-														</div>
-														<div class="col-sm-4">
-															<p><strong>Código de seguridad: </strong>{{paymentData['sec-code']}}</p>
-														</div>
-														<div class="col-sm-4">
-															<p><strong>Vencimiento: </strong>{{paymentData['exp-month']}}/{{paymentData['exp-year']}}</p>
-														</div>
-													</div>
-													<div class="row">
-														<div class="col-sm-4">
-															<p><strong>Nombre del titular: </strong>{{paymentData['cardholder']}}</p>
-														</div>
-														<div class="col-sm-8">
-															<p><strong>Cuotas: </strong>{{paymentData['installments']}}</p>
-														</div>
-													</div>
-												</div>
-											</div>
-
-											<div class="panel panel-default">
-												<div class="panel-heading">
-													<h5>Datos de Facturación</h5>
-												</div>
-
-												<div class="panel-body">
-													<div class="row">
-														<div class="col-sm-4">
-															<p><strong>País: </strong>{{paymentData['country']}}</p>
-														</div>
-														<div class="col-sm-8">
-															<p><strong>Ciudad: </strong>{{paymentData['city']}}</p>
-														</div>
-													</div>
-													<div class="row">
-														<div class="col-sm-4">
-															<p><strong>Calle: </strong>{{paymentData['street']}}</p>
-														</div>
-														<div class="col-sm-4">
-															<p><strong>Número: </strong>{{paymentData['addr-num']}}</p>
-														</div>
-														<div class="col-sm-4">
-															<p><strong>Código Postal: </strong>{{paymentData['zip-code']}}</p>
-														</div>
-													</div>
-													<div class="row">
-														<div class="col-sm-4" data-ng-if="paymentData['floor'].length">
-															<p><strong>Piso: </strong>{{paymentData['floor']}}</p>
-														</div>
-														<div class="col-sm-8" data-ng-if="paymentData['department'].length">
-															<p><strong>Departamento: </strong>{{paymentData['department']}}</p>
-														</div>
-													</div>
-												</div>
-											</div>
-												</div>
-											</div>
+									<div class="panel panel-default">
+										<div class="panel-heading">
+											<h4>Información de Pago</h4>
 										</div>
 
-								<div class="panel panel-default">
-									<div class="panel-heading">
-										<h4>Información de Contacto</h4>
-									</div>
+										<div class="panel-body">
+											<div class="panel-group">
 
-									<div class="panel-body">
-										<div class="row">
-											<div class="col-md-12">
-												<p><strong>E-mail: </strong>{{contactData['email']}}</p>
-											</div>
-										</div>
-										<div class="row" data-ng-repeat="phone in phones">
-											<div class="col-md-4">
-												<p><span class="glyphicon glyphicon-earphone"></span><strong>Tipo: </strong>{{phone['type']}}</p>
-											</div>
+												<div class="panel panel-default">
+													<div class="panel-heading">
+														<h5>Detalles de Tarjeta</h5>
+													</div>
 
-											<div class="col-md-8">
-												<p><strong>Número: </strong>{{phone['number']}}</p>
+													<div class="panel-body">
+														<div class="row">
+															<div class="col-sm-4">
+																<p><strong>Número de la tarjeta: </strong>{{paymentData['card-num']}}</p>
+															</div>
+															<div class="col-sm-4">
+																<p><strong>Código de seguridad: </strong>{{paymentData['sec-code']}}</p>
+															</div>
+															<div class="col-sm-4">
+																<p><strong>Vencimiento: </strong>{{paymentData['exp-month']}}/{{paymentData['exp-year']}}</p>
+															</div>
+														</div>
+														<div class="row">
+															<div class="col-sm-4">
+																<p><strong>Nombre del titular: </strong>{{paymentData['cardholder']}}</p>
+															</div>
+															<div class="col-sm-8">
+																<p><strong>Cuotas: </strong>{{paymentData['installments']}}</p>
+															</div>
+														</div>
+													</div>
+												</div>
+
+												<div class="panel panel-default">
+													<div class="panel-heading">
+														<h5>Datos de Facturación</h5>
+													</div>
+
+													<div class="panel-body">
+														<div class="row">
+															<div class="col-sm-4">
+																<p><strong>País: </strong>{{paymentData['country']}}</p>
+															</div>
+															<div class="col-sm-8">
+																<p><strong>Ciudad: </strong>{{paymentData['city']}}</p>
+															</div>
+														</div>
+														<div class="row">
+															<div class="col-sm-4">
+																<p><strong>Calle: </strong>{{paymentData['street']}}</p>
+															</div>
+															<div class="col-sm-4">
+																<p><strong>Número: </strong>{{paymentData['addr-num']}}</p>
+															</div>
+															<div class="col-sm-4">
+																<p><strong>Código Postal: </strong>{{paymentData['zip-code']}}</p>
+															</div>
+														</div>
+														<div class="row">
+															<div class="col-sm-4" data-ng-if="paymentData['floor'].length">
+																<p><strong>Piso: </strong>{{paymentData['floor']}}</p>
+															</div>
+															<div class="col-sm-8" data-ng-if="paymentData['department'].length">
+																<p><strong>Departamento: </strong>{{paymentData['department']}}</p>
+															</div>
+														</div>
+													</div>
+												</div>
 											</div>
 										</div>
 									</div>
 
-								</div>
+									<div class="panel panel-default">
+										<div class="panel-heading">
+											<h4>Información de Contacto</h4>
+										</div>
+
+										<div class="panel-body">
+											<div class="row">
+												<div class="col-md-12">
+													<p><strong>E-mail: </strong>{{contactData['email']}}</p>
+												</div>
+											</div>
+											<div class="row" data-ng-repeat="phone in phones">
+												<div class="col-md-4">
+													<p><span class="glyphicon glyphicon-earphone"></span><strong>Tipo: </strong>{{phone['type']}}</p>
+												</div>
+
+												<div class="col-md-8">
+													<p><strong>Número: </strong>{{phone['number']}}</p>
+												</div>
+											</div>
+										</div>
+
+									</div>
 								</div>
 							</div>
 						</div>
-						</div>
-						</div>
-
-			</div>
-
-				<div class="row">
-					<div class="col-md-2">
-						<button class="arrow-btn btnPrev vda-btn">-Volver</button>
-					</div>
-					<div class="col-md-2 col-md-offset-8">
-						<button class="arrow-btn btnNext vda-btn" data-ng-click="fillDatas()">Continuar-</button>
 					</div>
 				</div>
+
 			</div>
+
+			<div class="row">
+				<div class="col-md-2">
+					<button class="arrow-btn btnPrev vda-btn">-Volver</button>
+				</div>
+				<div class="col-md-2 col-md-offset-8">
+					<button class="arrow-btn btnNext vda-btn" data-ng-click="fillDatas()">Continuar-</button>
+				</div>
+			</div>
+		</div>
 
 
 		<!-- MODAL DE PASAJERO -->

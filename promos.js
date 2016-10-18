@@ -1,7 +1,6 @@
-var app2 = angular.module("promoApp", []);
+app = angular.module("flightApp", []);
 
-app2.controller("promoCtrl", function($scope, $http, $q) {
-
+app.controller("promoCtrl", function($scope, $http, $q) {
 	$scope.containers = [];
 	$scope.promos = {};
 
