@@ -144,6 +144,15 @@ label {
 	overflow: auto;
 }
 
+.oneway-flight-box {
+	margin-top: 3%;
+	border-radius: 3px;
+	box-shadow: 0 0 12px #a3a3a3;
+	background: #FFFFFF;
+	overflow: auto;
+	height: 9em;
+}
+
 .flight-info {
 	background-color: #FFFFFF;
 	border: 0;

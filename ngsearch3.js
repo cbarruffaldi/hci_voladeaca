@@ -6,6 +6,11 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 		$scope.scrollLimit = 10;
 		$scope.orderBy = {criterion: 'price', reversed: false}
 		
+
+		$scope.getFlightBox = function(){
+			return $scope.twoWays ? "flight-box" : "oneway-flight-box";
+		}
+
 		function fillAirlines(){
 		 return	$http({
 			 	method: 'GET',
@@ -58,7 +63,6 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 												children: children ? parseInt(children):0,
 												infants: infants ? parseInt(infants) : 0,
 												total: parseInt(adults )+parseInt(children)+ parseInt(infants)};
-			console.log($scope.selectedFlight);								
 
 			$http({
  				method: 'GET',
@@ -102,7 +106,6 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 			localStorage.removeItem('boughtFlight');
 
 			$selectedFlight.container = container;
-			console.log($selectedFlight);
 			sessionStorage.setItem('boughtFlight', JSON.stringify($selectedFlight));
 
 			if(localStorage.boughtFlight){
