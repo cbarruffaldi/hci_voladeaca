@@ -165,7 +165,6 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 
 		$scope.orderFn = function(c){
 			var ret = 0;
-			console.log(c);
 			switch($scope.orderBy.criterion) {
   			  case 'price':
         		ret = c.price.total.total;
