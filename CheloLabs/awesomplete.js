@@ -54,19 +54,22 @@ var _ = function (input, o) {
 	});
 
 	// Bind events
-
-	$.bind(this.input, {
-		"input": this.evaluate.bind(this),
-		"blur": function(evt) {
+	jQuery(this.input).on("blur", function(evt) {
 			var c = evt.keyCode;
 			if(me.opened) {
 				if (me.selected) {
 					evt.preventDefault();
 					me.select();
 				}
-			me.close.bind(this, { reason: "blur" });
-		}
-	},
+				else{
+					me.close.bind(this, {reason: "blur"});
+				}
+			}
+		
+	});
+
+	$.bind(this.input, {
+		"input": this.evaluate.bind(this),
 		"keydown": function(evt) {
 			var c = evt.keyCode;
 

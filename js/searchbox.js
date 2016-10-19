@@ -1,4 +1,4 @@
-(function(global){
+function initSearchbox(global){
 	if(! global.$acUtils ){
 		console.log("Err");
 	}
@@ -6,9 +6,9 @@
 	var $id_map = global.$acUtils.id_map;
 	var soloIda = false;
 
-	$( function(){$("#datepicker1").datepicker({minDate: '+2D'})
+	$("#datepicker1").datepicker({minDate: '+2D'});
+	$("#datepicker2").datepicker({minDate: '+2D'});
 
-		});
 	$("#datepicker1").keydown(function() {
 		$( function(){$("#datepicker1").datepicker("hide") } );
   		return true;
@@ -33,8 +33,14 @@
 
 	});
 
-	$("#origen").on('blur', function(){isValidAirport(this)});
-	$("#destino").on('blur', function(){isValidAirport(this)});
+	$("#origen").on('blur', function(evt){
+			isValidAirport(this);
+	});
+
+	$("#destino").on('blur', function(evt){
+			isValidAirport(this);
+	});
+
 
 	var validators = {};
 
@@ -52,7 +58,7 @@
 		error.fadeOut();
 
 		if(textbox.val()){
-			if(! $id_map[textbox.val()]){
+			if(!$id_map[textbox.val()]){
 				textbox.addClass('inputerr');
 				error.text("Por favor ingrese algo valido");
 				error.fadeIn();
@@ -193,4 +199,4 @@
 		}
 	})
 
-})(window);
+};

@@ -1,4 +1,6 @@
 jQuery(document).ready(function(){
+	$acUtils.load().then( function(){
+	
 
 	new Awesomplete(document.getElementById("origen"), {
 		list: $acUtils.airportList,
@@ -12,6 +14,8 @@ jQuery(document).ready(function(){
 		autoFirst: true}
 	);
 
+		initSearchbox(window);
 
+	});
 	
 }); //document.ready

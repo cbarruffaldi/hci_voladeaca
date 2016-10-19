@@ -22,15 +22,14 @@
 		else {
 			$(".idavuelta button").removeClass("selected-iv");
 			$(".idavuelta .ida").addClass("selected-iv");
-			global.setOneWay();
+			//global.setOneWay();
 		}
 		
-		global.$acUtils.cityFill();
-		global.$acUtils.name_map["AEP"];
+		//global.$acUtils.name_map["AEP"];
 	};
 
 	jQuery(document).ready(function(){
-		fillSearchBox();
+		$acUtils.load().then(fillSearchBox);
 	});
 
 })(window);

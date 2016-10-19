@@ -4,16 +4,34 @@
   var idMap = {};
   var nameMap = {};
 
+  var acUtils = {
+      listFill: fill,
+      cityFill: cfill,
+      id_map: idMap,
+      name_map: nameMap,
+      airportList: airports
+    }
+
     function load(){
-      $.ajax({
+      if(!localStorage.acUtils){
+      return $.ajax({
         url: "http://hci.it.itba.edu.ar/v1/api/geo.groovy?method=getairports&callback=$acUtils.listFill",
         datatype: "jsonp"
-      });
-
-      $.ajax({
-        url: "http://hci.it.itba.edu.ar/v1/api/geo.groovy?method=getcities&callback=$acUtils.cityFill",
-        datatype: "jsonp"
-      });
+      }).then(function(){
+          $.ajax({
+          url: "http://hci.it.itba.edu.ar/v1/api/geo.groovy?method=getcities&callback=$acUtils.cityFill",
+          datatype: "jsonp"});
+        });
+    }
+    else{
+      console.log("Here");
+      var ac =JSON.parse(localStorage.acUtils);
+      acUtils.id_map = ac.id_map;
+      acUtils.name_map = ac.name_map;
+      acUtils.airportList = ac.airportList;
+      console.log(window.$acUtils);
+      return $.Deferred().resolve();
+    }
 
     }
 
@@ -43,20 +61,13 @@
         idMap[disp] = cityID;
       }
 
-    }
-    
-    //Este es el objeto que le voy a exponer a global (namespace de estas funciones)
-    var acUtils = {
-      listFill: fill,
-      cityFill: cfill,
-      id_map: idMap,
-      name_map: nameMap,
-      airportList: airports
+      localStorage.setItem('acUtils', JSON.stringify(acUtils));
+      console.log("wacho")
+      console.log(localStorage.acUtils);
+
     }
     
     global.$acUtils = acUtils;
-
-    load();
-    
+    global.$acUtils.load = load;  
 })(window);
 
