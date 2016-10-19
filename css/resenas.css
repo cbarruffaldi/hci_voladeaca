@@ -12,12 +12,11 @@
 }
 
 .review-box {
-	margin-top: 3%;
 	border-radius: 3px;
 	box-shadow: 0 0 12px #a3a3a3;
 	background: #FFFFFF;
+	margin-bottom: 3%;
 }
-
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -30,37 +29,53 @@ input::-webkit-inner-spin-button {
 	margin-top: 10px;
 }
 
-.review_t{
+
+
+.review_st{
 	background: #DC0055;
 	color: #FFFFFF;
+	padding-left: 10px;
+	font-size: 2em;
+}
+
+.review_t{
+	margin-top: 3%;
+	background: #e04380;
+	color: #FFFFFF;
+	padding-left: 10px;
+	font-size: 2em;
 }
 
 
+ul.tabs{
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+}
+ul.tabs li{
+	background: none;
+	color: #222;
+	display: inline-block;
+	padding: 10px 15px;
+	cursor: pointer;
+}
 
-		ul.tabs{
-			margin: 0px;
-			padding: 0px;
-			list-style: none;
-		}
-		ul.tabs li{
-			background: none;
-			color: #222;
-			display: inline-block;
-			padding: 10px 15px;
-			cursor: pointer;
-		}
+ul.tabs li.current{
+	background: #dddddd;
+	color: #222;
+}
 
-		ul.tabs li.current{
-			background: #dddddd;
-			color: #222;
-		}
+.tab-content{
+	display: none;
+	background: #dddddd;
+	padding: 15px;
+}
 
-		.tab-content{
-			display: none;
-			background: #dddddd;
-			padding: 15px;
-		}
+.tab-content.current{
+	display: inherit;
+}
 
-		.tab-content.current{
-			display: inherit;
-		}
+
+.ratings ul{
+list-style: none;
+}
