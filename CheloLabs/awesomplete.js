@@ -56,6 +56,7 @@ var _ = function (input, o) {
 	// Bind events
 	jQuery(this.input).on("blur", function(evt) {
 			var c = evt.keyCode;
+		if(!me.noresults){
 			if(me.opened) {
 				if (me.selected) {
 					evt.preventDefault();
@@ -65,6 +66,10 @@ var _ = function (input, o) {
 					me.close.bind(this, {reason: "blur"});
 				}
 			}
+		} else{
+			evt.preventDefault();
+			me.close();
+		}
 		
 	});
 
@@ -77,15 +82,19 @@ var _ = function (input, o) {
 			// Enter / Esc / Up / Down
 			if(me.opened) {
 				if (c === 13 && me.selected) { // Enter
+					if(!me.noresults){
 					evt.preventDefault();
 					me.select();
+				}else{me.close({reason: "noresults-close"})};
 				}
 				else if (c === 27) { // Esc
 					me.close({ reason: "esc" }, true);
 				}
 				else if (c === 38 || c === 40) { // Down/Up arrow
 					evt.preventDefault();
-					me[c === 38? "previous" : "next"]();
+					if(!me.noresults){
+						me[c === 38? "previous" : "next"]();
+					}
 				}
 			}
 		}
@@ -95,7 +104,7 @@ var _ = function (input, o) {
 
 	$.bind(this.ul, {"mousedown": function(evt) {
 		var li = evt.target;
-
+		if(!me.noresults){
 		if (li !== this) {
 
 			while (li && !/li/i.test(li.nodeName)) {
@@ -107,6 +116,7 @@ var _ = function (input, o) {
 				me.select(li, evt.target);
 			}
 		}
+	}
 	}});
 
 	if (this.input.hasAttribute("list")) {
@@ -269,8 +279,12 @@ _.prototype = {
 				});
 
 			if (this.ul.children.length === 0) {
-				this.close({ reason: "nomatches" });
+				this.noresults = true;
+				me.ul.appendChild(me.item("No se encontraron resultados para: <strong>" + value + "</strong>", ""));
+				this.open();
+				//this.close({ reason: "nomatches" });
 			} else {
+				this.noresults = false;
 				this.open();
 			}
 		}
