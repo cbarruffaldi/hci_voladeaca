@@ -24,12 +24,12 @@
         });
     }
     else{
-      console.log("Here");
+//      console.log("Here");
       var ac =JSON.parse(localStorage.acUtils);
       acUtils.id_map = ac.id_map;
       acUtils.name_map = ac.name_map;
       acUtils.airportList = ac.airportList;
-      console.log(window.$acUtils);
+//      console.log(window.$acUtils);
       return $.Deferred().resolve();
     }
 

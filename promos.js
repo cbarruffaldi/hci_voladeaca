@@ -99,7 +99,7 @@ app.controller("promoCtrl", function($scope, $http, $q) {
 		console.log(iDate);
 		console.log(vDate);
 		var uri = 'search3.html?';
-		uri += 'orig=' + p.flights[0].flight.departure.airport.id;
+		uri += 'orig=' + 'BUE'; // TODO cambiar BUE
 		uri += '&dest=' + p.flights[0].flight.arrival.airport.id;
 		uri += '&date=' + iDate;
 		uri += '&vdate=' + vDate;
@@ -118,19 +118,23 @@ app.controller("promoCtrl", function($scope, $http, $q) {
 	}
 
 	function sendPromoSearch(query) {
-		var dayida, strida, idate, dayvuelta, strvuelta, vdate;
+		var dayida = parseInt(Math.random() * 15) + 1;
+		var strida = toDayString(dayida);
 
+		var idate = promosInfo[query.month] + strida;
+
+		var dayvuelta = promosInfo[query.duration] + dayida;
+		var strvuelta = toDayString(dayvuelta);
+
+		var vdate = promosInfo[query.month].toString() + strvuelta;
 		var promises = [];
+		
 		for (var des of promosInfo[query.dest]) {
-			dayida = parseInt(Math.random() * 15) + 1;
-			strida = toDayString(dayida);
-
-			idate = promosInfo[query.month] + strida;
-
-			dayvuelta = promosInfo[query.duration] + dayida;
-			strvuelta = toDayString(dayvuelta);
-
-			vdate = promosInfo[query.month].toString() + strvuelta;
+			console.log("idate " + idate);
+			console.log("vdate " + vdate);
+			console.log("des " + des);
+			
+			// TODO BUE
 			promises.push(fetchPromo(idate, vdate, "BUE", des));
 		}
 
@@ -167,7 +171,7 @@ app.controller("promoCtrl", function($scope, $http, $q) {
 				$scope.promos = getCheapestFlights($scope.containers);
 				deferred.resolve();
 			},
-							function errorCallback(response){
+				function errorCallback(response){
 				console.log("Error in response");
 				deferred.reject();
 			}
@@ -194,6 +198,8 @@ app.controller("promoCtrl", function($scope, $http, $q) {
 		if (containers.length == 0)
 			return f;
 
+		console.log("CONTAINERS");
+		console.log(containers);
 		for (var co of containers) {
 			var city = destCityName(co);
 			if (f[city]) {

@@ -6,6 +6,7 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 		$scope.scrollLimit = 10;
 		$scope.orderBy = {criterion: 'price', reversed: false}
 		
+		$scope.updatePax = $window.passengers.update;
 
 		$scope.getFlightBox = function(){
 			return $scope.twoWays ? "flight-box" : "oneway-flight-box";
