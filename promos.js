@@ -83,7 +83,7 @@ app.controller("promoCtrl", function($scope, $http, $q) {
 	promosInfo["Brasil"] = ["FLN", "CGN", "GRU", "VCP"];
 	promosInfo["Europa"] = ["MAD", "BAR", "LON", "CIA", "FCO"];
 	promosInfo["EEUU"] = ["MIA", "NYC", "LAX"];
-	promosInfo["Argentina"] = ["COR", "RGL", "PSS", "MDZ", "REL", "SLA", "FTE"];
+	promosInfo["Argentina"] = ["COR", "PSS", "MDZ", "REL", "SLA", "FTE"];
 	promosInfo["weekend"] = 3;
 	promosInfo["week"] = 7;
 	promosInfo["twoweeks"] = 14;
@@ -99,12 +99,10 @@ app.controller("promoCtrl", function($scope, $http, $q) {
 		}
 
 		$q.all(promises).then(function(response){
-			fetchImages().then(function(){
-				$("#promoResultShow").show();
-				$("#loadImg").hide();
-				$(".botonera button").attr("disabled", false);
-				console.log($scope.promos);
-			});
+			setImages();
+			$("#promoResultShow").show();
+			$("#loadImg").hide();
+			$(".botonera button").attr("disabled", false);
 		});
 	}
 
@@ -147,35 +145,12 @@ app.controller("promoCtrl", function($scope, $http, $q) {
 
 		return deferred.promise;
 	}
-
-	function fetchImages() {
-		var deferred = $q.defer();
-		for (var key in $scope.promos) {
-			imagefetch(key);
+	
+	function setImages() {
+		for (var p in $scope.promos) {
+			console.log($scope.promos[p]);
+			$scope.promos[p].imgsrc = "./img/cityimg/" + $scope.promos[p].shortName.split(' ').join('').toLocaleLowerCase() + ".jpg";
 		}
-		deferred.resolve();
-		return deferred.promise;
-	}
-
-	var imgperpage = 20;
-
-	function setImage(city, response) {
-		var imgdata = response.data.photos.photo[parseInt(Math.random() * imgperpage)];
-		var imgsrc = "https://farm" + imgdata.farm + ".staticflickr.com/" + imgdata.server + "/" + imgdata.id + "_" + imgdata.secret + ".jpg";
-		$scope.promos[city]["imgsrc"] = imgsrc;
-	}
-
-	function imagefetch(city) {
-		var imgURL = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=95efcd2116dd721d9feec9015096c944&tags=city%2C+travel&text=" + city.split(' ').join('+') + "&sort=interestingness-desc&has_geo=1&per_page=" + imgperpage + "&page=1&format=json&nojsoncallback=1"
-		$http({
-			method: 'GET',
-			dataType: 'json',
-			url: imgURL
-		}).then(function successCallback(response) {
-			setImage(city, response);
-		}, function errorCallback(resp) {
-			console.log("Error in response");
-		});
 	}
 
 	function getCheapestFlights(containers) {

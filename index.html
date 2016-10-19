@@ -89,119 +89,67 @@
 								<div id="datepicker2-err" class="formError"></div>
 							</div>
 
-							<div class='col-md-2 passengers' data-ng-controller="psgButtonCtrl">
-								<button type="button" id="psg-dropdown" class="vda-btn dropdown-toggle" ng-click="openDropdown(this)" aria-haspopup="true" aria-expanded="false">
-									<span class="btn-content">1 Pasajero</span>
-									<span class="caret"></span>
-								</button>
-								<div class="dropdown-menu">
-									<div  class="row passenger-row">
-										<div class="col-md-5">
-											<div class="cat-title">Adultos</div>
-											<div class="cat-info">+ de 11 años</div>
+							<div data-ng-include="'./snippets/paxbutton.html'"></div>
 
-										</div>
-										<div class="col-md-7">
-											<button type="button" data-sum="minus" data-info="adults" class="vda-btn">-</button>
-											<div class="passenger-number" id="adult-number">0</div>
-											<button type="button" data-sum="plus" data-info="adults" class="vda-btn">+</button>
-										</div>
-									</div>
-									<div id="zero-adults-msg" class="row">
-										Debe haber por lo menos un adulto
-									</div>
-									<div class="row div-line"></div>
-									<div class="row passenger-row">
-										<div class="col-md-5">
-											<div class="cat-title">Niños</div>
-											<div class="cat-info">+ de 2 años</div>
-										</div>
-										<div class="col-md-7">
-											<button type="button" data-sum="minus" class="vda-btn" data-info="children">-</button>
-											<div class="passenger-number" id="child-number">0</div>
-											<button type="button" data-sum="plus"  data-info="children" class="vda-btn">+</button>
-										</div>
-									</div>
-									<div class="row div-line"></div>
-									<div class="row passenger-row">
-										<div class="col-md-5">
-											<div class="cat-title">Infantes</div>
-											<div class="cat-info">0 a 2 años</div>
 
-										</div>
-										<div class="col-md-7">
-											<button type="button" data-sum="minus" data-info="infants" class="vda-btn">-</button>
-											<div class="passenger-number" id="infant-number">0</div>
-											<button type="button" data-sum="plus" data-info="infants" class="vda-btn">+</button>
-										</div>
-									</div>
-									<div class="row div-line"></div>
-									<div class="row">
-										<button type="button" id="ok-btn" class="vda-btn">OK</button>
-									</div>
+							<div class="row">
+								<div class="col-md-12 searchbut">
+									<button type="button" class="vda-btn" id="searchButton" aria-label="Buscar">
+										<span class="glyphicon glyphicon-search" aria-hidden="true"></span> BUSCAR
+									</button>
 								</div>
 							</div>
+						</div> <!-- searchbox -->
+
+					</div> <!-- row -->
+
+				</div> <!-- container -->
+				<!-- </div> - body-search -->
+
+				<!-- <div class="body-contents"> -->
+
+				<div class="container">
+					<div class="row explore-content explora-area">
+						<div class="titulo">Explorar promociones</div>
+						<div class="subtitulo">
+							<h4>Elegí la <strong>fecha</strong>, la <strong> duración</strong> y el <strong>destino</strong> del viaje que buscás</h4>
 						</div>
 
-						<div class="row">
-							<div class="col-md-12 searchbut">
-								<button type="button" class="vda-btn" id="searchButton" aria-label="Buscar">
-									<span class="glyphicon glyphicon-search" aria-hidden="true"></span> BUSCAR
-								</button>
+						<div class="row botonera promo_month">
+							<button type="button" class="vda-btn btn-month" data-promo="8" data-month="Noviembre">Noviembre</button>
+							<button type="button" class="vda-btn btn-month" data-promo="9" data-month="Diciembre">Diciembre</button>
+							<button type="button" class="vda-btn btn-month" data-promo="10" data-month="Enero-2017"> Enero 2017</button>
+							<button type="button" class="vda-btn btn-month" data-promo="11" data-month="Febrero-2017">Febrero 2017</button>
+						</div>
+
+						<div class="row botonera" id="promo_duration">
+							<button type="button" class="vda-btn btn-duration disabled" data-promo="0" data-duration="weekend">Fin de semana</button>
+							<button type="button" class="vda-btn btn-duration disabled" data-promo="1" data-duration="week">Una semana</button>
+							<button type="button" class="vda-btn btn-duration disabled" data-promo="2" data-duration="twoweeks">Dos semanas</button>
+						</div>
+
+
+						<div class="row botonera" id="promo_dest">
+							<button type="button" class="vda-btn btn-dest disabled" data-promo="0" data-dest="Brasil">Playas de Brasil</button>
+							<button type="button" class="vda-btn btn-dest disabled" data-promo="1" data-dest="Europa">Europa</button>
+							<button type="button" class="vda-btn btn-dest disabled" data-promo="2" data-dest="EEUU">EEUU</button>
+							<button type="button" class="vda-btn btn-dest disabled" data-promo="3" data-dest="Argentina">Argentina</button>
+						</div>
+
+						<div class="row results-area">
+							<div id="loadImg" style="visibility:hidden" class="spinner">
+								<div class="dot1"></div>
+								<div class="dot2"></div>
+							</div>
+							<div id="promoResultShow" data-ng-include="'./snippets/promoresults.html'">
 							</div>
 						</div>
-					</div> <!-- searchbox -->
 
-
-				</div> <!-- row -->
-
-			</div> <!-- container -->
-			<!-- </div> - body-search -->
-
-			<!-- <div class="body-contents"> -->
-
-			<div class="container">
-				<div class="row explore-content explora-area">
-					<div class="titulo">Explorar promociones</div>
-					<div class="subtitulo">
-						<h4>Elegí la <strong>fecha</strong>, la <strong> duración</strong> y el <strong>destino</strong> del viaje que buscás</h4>
 					</div>
-
-					<div class="row botonera promo_month">
-						<button type="button" class="vda-btn btn-month" data-promo="8" data-month="Noviembre">Noviembre</button>
-						<button type="button" class="vda-btn btn-month" data-promo="9" data-month="Diciembre">Diciembre</button>
-						<button type="button" class="vda-btn btn-month" data-promo="10" data-month="Enero-2017"> Enero 2017</button>
-						<button type="button" class="vda-btn btn-month" data-promo="11" data-month="Febrero-2017">Febrero 2017</button>
-					</div>
-
-					<div class="row botonera" id="promo_duration">
-						<button type="button" class="vda-btn btn-duration disabled" data-promo="0" data-duration="weekend">Fin de semana</button>
-						<button type="button" class="vda-btn btn-duration disabled" data-promo="1" data-duration="week">Una semana</button>
-						<button type="button" class="vda-btn btn-duration disabled" data-promo="2" data-duration="twoweeks">Dos semanas</button>
-					</div>
-
-
-					<div class="row botonera" id="promo_dest">
-						<button type="button" class="vda-btn btn-dest disabled" data-promo="0" data-dest="Brasil">Playas de Brasil</button>
-						<button type="button" class="vda-btn btn-dest disabled" data-promo="1" data-dest="Europa">Europa</button>
-						<button type="button" class="vda-btn btn-dest disabled" data-promo="2" data-dest="EEUU">EEUU</button>
-						<button type="button" class="vda-btn btn-dest disabled" data-promo="3" data-dest="Argentina">Argentina</button>
-					</div>
-
-					<div class="row results-area">
-						<div id="loadImg" style="visibility:hidden" class="spinner">
-							<div class="dot1"></div>
-							<div class="dot2"></div>
-						</div>
-						<div id="promoResultShow" data-ng-include="'./snippets/promoresults.html'">
-						</div>
-					</div>
-
 				</div>
 			</div>
-		</div>
 
-		<!--
+			<!--
 
 <footer>
 <div class="container">
@@ -211,21 +159,17 @@
 </div>
 </footer>
 -->
-		<script>
-			
-		</script>
 
-
-		<script src="bootstrap.min.js"></script>
-		<script src="CheloLabs/awesomplete.js"></script>
-		<script src="CheloLabs/acomplete.js"></script>
-		<script src="js/searchbox.js"></script>
-		<script src="indexScript.js"></script>
-		<script src="js/moment.js"></script>
-		<script src="jqueryui/jquery-ui.js"></script>
-		<script src="jqueryui/uidatepicker-es.js"></script>
-		<script src="datepicker.js"></script>
-		<script src="promos.js"></script>
-		<script src="psg-btn.js"></script>
-	</body>
-</html>
+			<script src="bootstrap.min.js"></script>
+			<script src="CheloLabs/awesomplete.js"></script>
+			<script src="CheloLabs/acomplete.js"></script>
+			<script src="js/searchbox.js"></script>
+			<script src="indexScript.js"></script>
+			<script src="js/moment.js"></script>
+			<script src="jqueryui/jquery-ui.js"></script>
+			<script src="jqueryui/uidatepicker-es.js"></script>
+			<script src="datepicker.js"></script>
+			<script src="promos.js"></script>
+			<script src="psg-btn.js"></script>
+			</body>
+		</html>

@@ -1,9 +1,3 @@
-//var app2 = angular.module("flightApp", []);
-//
-app.controller("psgButtonCtrl", function($scope, $http, $q) {
-	console.log("Hola");
-});
-
 var passengers = {}
 passengers.adults = 1
 passengers.children = 0
@@ -14,12 +8,12 @@ passengers.total = function() {
 }
 
 function updateNumbers() {
-	$("#adult-number").text(passengers.adults);
-	$("#child-number").text(passengers.children);
-	$("#infant-number").text(passengers.infants);
+	$(".adult-number").text(passengers.adults);
+	$(".child-number").text(passengers.children);
+	$(".infant-number").text(passengers.infants);
 	var t = passengers.total();
 	var str = t + " Pasajero" + ((t == 1) ? "" : "s");
-	$("#psg-dropdown .btn-content").text(str);
+	$(".psg-dropdown .btn-content").text(str);
 
 	var btns = $(".passenger-row button");
 
@@ -38,7 +32,7 @@ function updateNumbers() {
 }
 
 function zeroAdultsError() {
-	$("#zero-adults-msg").fadeIn();
+	$(".zero-adults-msg").fadeIn();
 }
 
 function updatePax(pressedbtn) {
@@ -58,26 +52,22 @@ function updatePax(pressedbtn) {
 	updateNumbers();
 }
 
-jQuery(document).ready(function() {
-	$("#psg-dropdown").on("click", function(e) {
-		$("#psg-dropdown").parent().toggleClass("open");
+jQuery(document).on('click', '.psg-dropdown', function() {
+	$(this).parent().toggleClass("open");
+	updateNumbers();
+});
 
-		// Listener para cerrar dropdown.
-		$("body").on("click", function(e) {
-			var psgdrop = $("#psg-dropdown");
-			var okbtn = $("#ok-btn");
+jQuery(document).on('click', 'body', function(e) {
+	var psgdrop = $(".psg-dropdown");
+	var okbtn = $(".ok-btn");
 
-			if (okbtn.is(e.target) || (!psgdrop.is(e.target) && psgdrop.has(e.target).length === 0 && $(".open").has(e.target).length === 0)) {
-				psgdrop.parent().removeClass("open");
-				$(".passengers").find("#zero-adults-msg").fadeOut();
-			}
-		});
+	if (okbtn.is(e.target) || (!psgdrop.is(e.target) && psgdrop.has(e.target).length === 0 && $(".open").has(e.target).length === 0)) {
+		psgdrop.parent().removeClass("open");
+		$(".passengers").find(".zero-adults-msg").fadeOut();
+	}
+});
 
-		updateNumbers();
-	});
-
-	$(".passenger-row button").on("click", function() {
-		$("#zero-adults-msg").fadeOut();
-		updatePax(this);
-	});
+jQuery(document).on('click', '.passenger-row button', function() {
+	$(".zero-adults-msg").fadeOut();
+	updatePax(this);
 });

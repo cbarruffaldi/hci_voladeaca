@@ -1,49 +1,55 @@
-<button type="button" id="psg-dropdown" class="vda-btn dropdown-toggle" aria-haspopup="true" aria-expanded="false">
-  <span class="btn-content">1 Pasajero</span>
-  <span class="caret"></span>
-</button>
-<div class="dropdown-menu">
-  <div  class="row passenger-row">
-    <div class="col-md-5">
-      <div class="cat-title">Adultos</div>
-      <div class="cat-info">+ de 13 años</div>
-    </div>
-    <div class="col-md-7">
-      <button type="button" data-sum="minus" data-info="adults" class="vda-btn">-</button>
-      <div class="passenger-number" id="adult-number">1</div>
-      <button type="button" data-sum="plus" data-info="adults" class="vda-btn">+</button>
-    </div>
-  </div>
-  <div id="zero-adults-msg" class="row">
-    Debe haber por lo menos un adulto
-  </div>
-  <div class="row div-line"></div>
-  <div class="row passenger-row">
-    <div class="col-md-5">
-      <div class="cat-title">Niños</div>
-      <div class="cat-info">+ de 2 años</div>
-    </div>
-    <div class="col-md-7">
-      <button type="button" data-sum="minus" class="vda-btn" data-info="children">-</button>
-      <div class="passenger-number" id="child-number">0</div>
-      <button type="button" data-sum="plus"  data-info="children" class="vda-btn">+</button>
-    </div>
-  </div>
-  <div class="row div-line"></div>
-  <div class="row passenger-row">
-    <div class="col-md-5">
-      <div class="cat-title">Infantes</div>
-      <div class="cat-info">0 a 2 años</div>
+<div class='col-md-2 passengers'>
+	<div class="passengers-menu">
+		<button type="button" class="vda-btn dropdown-toggle psg-dropdown" aria-haspopup="true" aria-expanded="false">
+			<span class="btn-content">1 Pasajero</span>
+			<span class="caret"></span>
+		</button>
+		<div class="dropdown-menu">
+			<div  class="row passenger-row">
+				<div class="col-md-5">
+					<div class="cat-title">Adultos</div>
+					<div class="cat-info">+ de 11 años</div>
 
-    </div>
-    <div class="col-md-7">
-      <button type="button" data-sum="minus" data-info="infants" class="vda-btn">-</button>
-      <div class="passenger-number" id="infant-number">0</div>
-      <button type="button" data-sum="plus" data-info="infants" class="vda-btn">+</button>
-    </div>
-  </div>
-  <div class="row div-line"></div>
-  <div class="row">
-    <button type="button" id="ok-btn" class="vda-btn">OK</button>
-  </div>
+				</div>
+				<div class="col-md-7">
+					<button type="button" data-sum="minus" data-info="adults" class="vda-btn">-</button>
+					<div class="passenger-number adult-number">0</div>
+					<button type="button" data-sum="plus" data-info="adults" class="vda-btn">+</button>
+				</div>
+			</div>
+			<div class="row zero-adults-msg">
+				Debe haber por lo menos un adulto
+			</div>
+			<div class="row div-line"></div>
+			<div class="row passenger-row">
+				<div class="col-md-5">
+					<div class="cat-title">Niños</div>
+					<div class="cat-info">de 2 a 11 años</div>
+				</div>
+				<div class="col-md-7">
+					<button type="button" data-sum="minus" class="vda-btn" data-info="children">-</button>
+					<div class="passenger-number child-number">0</div>
+					<button type="button" data-sum="plus"  data-info="children" class="vda-btn">+</button>
+				</div>
+			</div>
+			<div class="row div-line"></div>
+			<div class="row passenger-row">
+				<div class="col-md-5">
+					<div class="cat-title">Infantes</div>
+					<div class="cat-info">Menos de 2 años</div>
+
+				</div>
+				<div class="col-md-7">
+					<button type="button" data-sum="minus" data-info="infants" class="vda-btn">-</button>
+					<div class="passenger-number infant-number">0</div>
+					<button type="button" data-sum="plus" data-info="infants" class="vda-btn">+</button>
+				</div>
+			</div>
+			<div class="row div-line"></div>
+			<div class="row">
+				<button type="button" class="ok-btn vda-btn">OK</button>
+			</div>
+		</div>
+	</div>
 </div>
+
