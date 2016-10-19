@@ -9,11 +9,12 @@
 		<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
 		<link href="css/typeahead.css" rel="stylesheet"/>
 
-		<link rel="stylesheet" href="css/checkout.css">
 		<link rel="stylesheet" href="css/main.css">
 		<link rel="stylesheet" href="css/buttons.css">
+        <link rel="stylesheet" href="css/checkout.css">
 
-		<script src="extlib/angular.min.js"></script>
+
+        <script src="extlib/angular.min.js"></script>
 
 	</head>
 
@@ -62,13 +63,13 @@
 		<!-- Tabs -->
 		<div id="step-tabs" class="container">
 
-			<ul class="nav nav-tabs nav-justified">
+			<ul class="nav nav-tabs ">
 				<li class="active">
 					<a href="#1">1. Pasajeros</a>
 				</li>
 				<li class="disabled disabled-tab"><a href="#2">2. Pago</a>
 				</li>
-				<li class="disabled disabled-tab"><a href="#3">3. Información de Contacto</a>
+				<li class="disabled disabled-tab"><a href="#3">3. Contacto</a>
 				</li>
 				<li class="disabled disabled-tab"><a href="#4">4. Confirmación</a>
 				</li>
@@ -699,10 +700,10 @@
 
 			<div class="row">
 				<div class="col-md-2">
-					<button class="arrow-btn btnPrev vda-btn">-Volver</button>
+					<button class="arrow-btn btnPrev vda-btn">&laquo;Volver</button>
 				</div>
 				<div class="col-md-2 col-md-offset-8">
-					<button class="arrow-btn btnNext vda-btn" data-ng-click="fillDatas()">Continuar-</button>
+					<button class="arrow-btn btnNext vda-btn" data-ng-click="fillDatas()">Continuar&raquo;</button>
 				</div>
 			</div>
 		</div>
