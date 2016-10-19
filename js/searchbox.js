@@ -34,16 +34,11 @@ function initSearchbox(global){
 	});
 
 	$("#origen").on('blur', function(evt){
-		console.log(evt.originalEvent)
-			if(!event.autocompleteselect){
-				isValidAirport(this);
-		}
-		});
+			isValidAirport(this);
+	});
 
 	$("#destino").on('blur', function(evt){
-			if(!evt.originalEvent.autocompleteselect){
-				isValidAirport(this);
-			}
+			isValidAirport(this);
 	});
 
 
@@ -64,9 +59,6 @@ function initSearchbox(global){
 
 		if(textbox.val()){
 			if(!$id_map[textbox.val()]){
-				console.log(textbox.val());
-				console.log($id_map[textbox.val()]);
-				console.log($id_map);
 				textbox.addClass('inputerr');
 				error.text("Por favor ingrese algo valido");
 				error.fadeIn();

@@ -22,7 +22,7 @@
 		else {
 			$(".idavuelta button").removeClass("selected-iv");
 			$(".idavuelta .ida").addClass("selected-iv");
-			global.setOneWay();
+			//global.setOneWay();
 		}
 		
 		//global.$acUtils.name_map["AEP"];
