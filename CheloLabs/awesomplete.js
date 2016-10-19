@@ -11,7 +11,7 @@ var _ = function (input, o) {
 	var me = this;
 
 	// Setup
-
+	console.log("const"); console.log(o)
 	this.isOpened = false;
 
 	this.input = $(input);
@@ -76,18 +76,27 @@ var _ = function (input, o) {
 	$.bind(this.input, {
 		"input": this.evaluate.bind(this),
 		"keydown": function(evt) {
+
 			var c = evt.keyCode;
+			console.log("shots fired: " + c)
+			if(c === 100){
+				evt.preventDefault();
+				me.close();
+				}
 
 			// If the dropdown `ul` is in view, then act on keydown for the following keys:
 			// Enter / Esc / Up / Down
 			if(me.opened) {
+
 				if (c === 13 && me.selected) { // Enter
 					if(!me.noresults){
 					evt.preventDefault();
 					me.select();
+					me.input.blur();
 				}else{me.close({reason: "noresults-close"})};
 				}
 				else if (c === 27) { // Esc
+					evt.preventDefault();
 					me.close({ reason: "esc" }, true);
 				}
 				else if (c === 38 || c === 40) { // Down/Up arrow
@@ -97,10 +106,17 @@ var _ = function (input, o) {
 					}
 				}
 			}
-		}
+		},
 	});
 
 	$.bind(this.input.form, {"submit": this.close.bind(this, { reason: "submit" })});
+
+	jQuery(this.input).on("mousedown", function(evt) {
+		if(me.noresults){
+		me.close();
+		me.input.focus();
+	}
+	});
 
 	$.bind(this.ul, {"mousedown": function(evt) {
 		var li = evt.target;
@@ -114,8 +130,15 @@ var _ = function (input, o) {
 			if (li && evt.button === 0) {  // Only select on left click
 				evt.preventDefault();
 				me.select(li, evt.target);
+				me.input.blur();
+
 			}
 		}
+	} else{
+		evt.preventDefault();
+		me.input.value = "";
+		me.close();
+		me.input.focus();
 	}
 	}});
 
@@ -258,7 +281,6 @@ _.prototype = {
 	evaluate: function() {
 		var me = this;
 		var value = this.input.value;
-
 		if (value.length >= this.minChars && this._list.length > 0) {
 			this.index = -1;
 			// Populate list with options that match
@@ -274,6 +296,7 @@ _.prototype = {
 				.sort(this.sort)
 				.slice(0, this.maxItems);
 
+
 			this.suggestions.forEach(function(text) {
 					me.ul.appendChild(me.item(text, value));
 				});
@@ -282,12 +305,18 @@ _.prototype = {
 				this.noresults = true;
 				me.ul.appendChild(me.item("No se encontraron resultados para: <strong>" + value + "</strong>", ""));
 				this.open();
+				jQuery(this.input).addClass('x');
 				//this.close({ reason: "nomatches" });
 			} else {
+				jQuery(this.input).removeClass('x');
 				this.noresults = false;
 				this.open();
 			}
 		}
+		else if(value.length < this.minChars){
+				jQuery(this.input).removeClass('x');
+				this.close();
+			}
 		else {
 			this.close({ reason: "nomatches" });
 		}
@@ -308,9 +337,16 @@ _.FILTER_STARTSWITH = function (text, input) {
 
 _.SORT_BYLENGTH = function (a, b) {
 	if (a.length !== b.length) {
+		var acity = (a.label.indexOf("todos los aeropuertos") !== -1)
+		var bcity = (b.label.indexOf("todos los aeropuertos") !== -1)
+		if(acity && !bcity){
+			return -1;
+		}
+		else if(bcity && !acity){
+			return 1;
+		}
 		return a.length - b.length;
 	}
-
 	return a < b? -1 : 1;
 };
 
