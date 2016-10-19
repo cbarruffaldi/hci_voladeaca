@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>VolaDeAca</title>
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+		<link rel="stylesheet" href="jqueryui/jquery-ui.css">
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/bootstrap-theme.min.css">
+		<link rel="stylesheet" href="./CheloLabs/awesomplete.css">
+		<link rel="stylesheet" href="css/main.css">
+		<link rel="stylesheet" href="css/index.css">
+		<link rel="stylesheet" href="css/index-searchbox.css">
+		<link rel="stylesheet" href="css/buttons.css">
+		<link rel="stylesheet" href="css/psg-btn.css">
+		<link rel="stylesheet" href="css/spinner.css">
+		<link rel="stylesheet" href="css/explore-modal.css">
+
+
+		<script src="extlib/angular.min.js"></script>
+		<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+
+	</head>
+	<body data-ng-app="flightApp" data-ng-controller="promoCtrl">
+		<header>
+			<div data-ng-include="'./snippets/nav.html'"></div>
+		</header>
+
+
+		<div class="body-contents">
+
+			<div class="container">
+				<div class="row searchcontent">
+					<div class="titulo search_t">Buscar vuelos</div>
+					<div class="searchbox col-sm-12">
+						<div class="row idavuelta">
+							<div class="col-md-3">
+								<button data-info="idavuelta" class="vda-text-btn selected-iv"> Ida y vuelta</button>
+								<button data-info="ida" class="vda-text-btn"> Solo ida</button>
+							</div>
+						</div>
+
+						<div class="row search">
+
+							<div id="orig-col" class="col-md-3">
+								<div class="formtitle">Origen</div>
+								<div class="form-group">
+									<input type="search" class="form-control awesomplete clearable" autocomplete="off" id="origen" placeholder="Ciudad o aeropuerto...">
+								</div>
+								<div id="origen-err" class="formError"></div>
+							</div><!-- /input-group -->
+
+							<div id="dest-col" class="col-md-3">
+								<div class="formtitle">Destino</div>
+								<div class="form-group">
+									<input type="search" class="form-control awesomplete clearable" autocomplete="off" id="destino" placeholder="Ciudad o aeropuerto...">
+								</div>
+								<div id="destino-err" class="formError"></div>
+
+							</div>
+
+							<div id="date-col-1" class='col-md-2'>
+								<div class="formtitle">Fecha de salida</div>
+								<div class="form-group">
+									<div class='input-group date'>
+										<input type='text' class="form-control" id='datepicker1' autocomplete="off" placeholder='dd/mm/aaaa' />
+										<span class="input-group-addon" id="cal1">
+											<span class="glyphicon glyphicon-calendar"></span>
+										</span>
+									</div>
+								</div>
+								<div id="datepicker1-err" class="formError"></div>
+							</div>
+
+							<div id="date-col-2"  class='col-md-2'>
+								<div class="formtitle">Fecha de vuelta</div>
+								<div class="form-group">
+									<div class='input-group date'>
+										<input type='text' class="form-control" id='datepicker2' autocomplete="off" placeholder='dd/mm/aaaa' />
+										<span class="input-group-addon" id="cal2">
+											<span class="glyphicon glyphicon-calendar"></span>
+										</span>
+									</div>
+								</div>
+								<div id="datepicker2-err" class="formError"></div>
+							</div>
+							<div class="col-md-2">
+								<div data-ng-include="'./snippets/paxbutton.html'"></div>
+							</div>
+
+							<div class="row">
+								<div class="col-md-12 searchbut">
+									<button type="button" class="vda-btn" id="searchButton" aria-label="Buscar">
+										<span class="glyphicon glyphicon-search" aria-hidden="true"></span> BUSCAR
+									</button>
+								</div>
+							</div>
+						</div> <!-- searchbox -->
+
+					</div> <!-- row -->
+
+				</div> <!-- container -->
+			</div>
+				<!-- </div> - body-search -->
+
+				<!-- <div class="body-contents"> -->
+
+				<div class="container">
+					<div class="row explore-content explora-area">
+						<div class="titulo">Explorar promociones</div>
+						<div class="subtitulo">
+							<h4>Elegí la <strong>fecha</strong>, la <strong> duración</strong> y el <strong>destino</strong> del viaje que buscás</h4>
+						</div>
+
+						<div class="row botonera promo_month">
+							<button type="button" class="vda-btn btn-month" data-promo="8" data-month="Noviembre">Noviembre</button>
+							<button type="button" class="vda-btn btn-month" data-promo="9" data-month="Diciembre">Diciembre</button>
+							<button type="button" class="vda-btn btn-month" data-promo="10" data-month="Enero-2017"> Enero 2017</button>
+							<button type="button" class="vda-btn btn-month" data-promo="11" data-month="Febrero-2017">Febrero 2017</button>
+						</div>
+
+						<div class="row botonera" id="promo_duration">
+							<button type="button" class="vda-btn btn-duration disabled" data-promo="0" data-duration="weekend">Fin de semana</button>
+							<button type="button" class="vda-btn btn-duration disabled" data-promo="1" data-duration="week">Una semana</button>
+							<button type="button" class="vda-btn btn-duration disabled" data-promo="2" data-duration="twoweeks">Dos semanas</button>
+						</div>
+
+
+						<div class="row botonera" id="promo_dest">
+							<button type="button" class="vda-btn btn-dest disabled" data-promo="0" data-dest="Brasil">Playas de Brasil</button>
+							<button type="button" class="vda-btn btn-dest disabled" data-promo="1" data-dest="Europa">Europa</button>
+							<button type="button" class="vda-btn btn-dest disabled" data-promo="2" data-dest="EEUU">EEUU</button>
+							<button type="button" class="vda-btn btn-dest disabled" data-promo="3" data-dest="Argentina">Argentina</button>
+						</div>
+
+						<div class="row results-area">
+							<div id="loadImg" style="visibility:hidden" class="spinner">
+								<div class="dot1"></div>
+								<div class="dot2"></div>
+							</div>
+							<div id="promoResultShow" data-ng-include="'./snippets/promoresults.html'">
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+			<!--
+
+<footer>
+<div class="container">
+<div class="row">
+<p>&copy; VolaDeAca 2016</p>
+</div>
+</div>
+</footer>
+-->
+
+			<script src="bootstrap.min.js"></script>
+			<script src="CheloLabs/acomplete.js"></script>
+			<script src="typehead.bundle.js"></script>
+			<script src="type/bloodhound.js"></script>
+			<script>
+
+			var nbaTeams = new Bloodhound({
+  datumTokenizer: Bloodhound.tokenizers.obj.whitespace('team'),
+  queryTokenizer: Bloodhound.tokenizers.whitespace,
+  prefetch: '../data/nba.json'
+});
+
+var nhlTeams = new Bloodhound({
+  datumTokenizer: Bloodhound.tokenizers.obj.whitespace('team'),
+  queryTokenizer: Bloodhound.tokenizers.whitespace,
+  prefetch: '../data/nhl.json'
+});
+
+$('#multiple-datasets .typeahead').typeahead({
+  highlight: true
+},
+{
+  name: 'nba-teams',
+  display: 'team',
+  source: nbaTeams,
+  templates: {
+    header: '<h3 class="league-name">NBA Teams</h3>'
+  }
+},
+{
+  name: 'nhl-teams',
+  display: 'team',
+  source: nhlTeams,
+  templates: {
+    header: '<h3 class="league-name">NHL Teams</h3>'
+  }
+});
+
+			</script>
+			<script src="js/searchbox.js"></script>
+			<script src="js/moment.js"></script>
+			<script src="jqueryui/jquery-ui.js"></script>
+			<script src="jqueryui/uidatepicker-es.js"></script>
+			<script src="datepicker.js"></script>
+			<script src="promos.js"></script>
+			<script src="psg-btn.js"></script>
+			</body>
+		</html>
