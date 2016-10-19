@@ -129,12 +129,6 @@ input.error-input {
 	font-size: 0.9em;
 }
 
-/*
-.single-label {
-	padding-left: 0;
-}
-*/
-
 .form-tags {
 	margin: 10px;
 	display: inline-block;
@@ -167,12 +161,6 @@ input.error-input {
 	box-shadow: none;
 	background-color: crimson;
 }
-
-/*
-.city-typeahead, #country {
-	width: 20em;
-}
-*/
 
 .sub-style{
 	background-color: #d8d8d8;
@@ -207,8 +195,6 @@ color:#fff;
 .disabled-tab{
 	
 }
-
-
 
 .birth-day,.birth-month,.birth-year,#exp-month,#exp-year{
 	width: 70px !important;
