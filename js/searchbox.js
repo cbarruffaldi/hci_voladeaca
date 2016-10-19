@@ -26,7 +26,8 @@ function initSearchbox(global){
 		var self = $(this);
 		if(self.hasClass('inputerr')){
 			self.val("");
-			self.removeClass('inputerr')
+			self.removeClass('inputerr');
+			self.removeClass('x');
 			var errid = '#' + self.attr("id") + '-err';
 			$(errid).fadeOut();
 		}
