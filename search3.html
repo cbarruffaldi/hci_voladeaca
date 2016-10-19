@@ -133,8 +133,8 @@
 								<div class="searchbox">
 									<div class="row idavuelta">
 										<div class="col-md-6">
-											<button data-info="idavuelta" class="vda-text-btn selected-iv"> Ida y vuelta</button>
-											<button data-info="ida" class="vda-text-btn"> Solo ida</button>
+											<button data-info="idavuelta" class="vda-text-btn idavuelta selected-iv"> Ida y vuelta</button>
+											<button data-info="ida" class="ida vda-text-btn"> Solo ida</button>
 										</div>
 									</div>
 
@@ -173,7 +173,7 @@
 											</div>
 
 											<div class='col-md-2 passengers'>
-												<div data-ng-include="'./snippets/paxbutton.html'"></div>
+												<div data-ng-include="'./snippets/paxbutton.html'"  onload="updatePax()"></div>
 											</div>
 
 											<div class="col-md-2 modify-search-btn">
@@ -299,7 +299,6 @@
 				<div class="col-md-1 col-lg-0"></div>
 			</div>
 		</div>
-		</div>
 	<script src="js/moment.js" ></script>
 	<script src="jqueryui/jquery-ui.js"></script>
 	<script src="jqueryui/uidatepicker-es.js"></script>
@@ -309,17 +308,17 @@
 	<script src="js/ng-infinite-scroll.js"></script>
 	<script src="search-page-script.js"></script>
 	<script src="flight-select.js"></script>
-	<script src="search-setup.js"></script>
 	<script src="ngsearch3.js"></script>
 	<script src="js/vendor/bootstrap.min.js"></script>
 	<script src="CheloLabs/awesomplete.js"></script>
 	<script src="CheloLabs/acomplete.js"></script>
-	<script src="js/searchbox.js"></script>
 	<script src="indexScript.js"></script>
 	<script src="js/moment.js"></script>
 	<script src="jqueryui/jquery-ui.js"></script>
 	<script src="jqueryui/uidatepicker-es.js"></script>
 	<script src="datepicker.js"></script>
 	<script src="psg-btn.js"></script>
+	<script src="search-setup.js"></script>
+	<script src="js/searchbox.js"></script>
 	</body>
 </html>

@@ -14,33 +14,28 @@
 		var vdate = getURLParameter("vdate");
 
 		idate = idate.split('-').reverse().join('/');
-		vdate = vdate.split('-').reverse().join('/');
-		//		
-		//		console.log($acUtils.name_map);
-		//		console.log(orig);
-		//		console.log(dest);
-		//		console.log($acUtils.name_map[orig]);
-		//		console.log($acUtils.name_map[dest]);
 
 		$("#origen").val($acUtils.name_map[orig]);
 		$("#destino").val($acUtils.name_map[dest]);
 		$("#datepicker1").val(idate);
 
-		if (vdate)
+		if (vdate) {
+			vdate = vdate.split('-').reverse().join('/');
 			$("#datepicker2").val(vdate);
+		}
 		else {
 			$(".idavuelta button").removeClass("selected-iv");
 			$(".idavuelta .ida").addClass("selected-iv");
-			//global.setOneWay();
+			global.setOneWay();
 		}
 
 		global.passengers.adults = parseInt(adults);
 		global.passengers.children = parseInt(children);
 		global.passengers.infants = parseInt(infants);
-		global.passengers.update();
+
 	};
 
-	jQuery(document).ready(function(){
+	$(document).ready(function(){
 		$acUtils.load().then(function(){
 			fillSearchBox();
 		});
