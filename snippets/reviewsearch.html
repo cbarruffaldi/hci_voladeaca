@@ -3,28 +3,30 @@
 	<div data-ng-if="!flightSelected">
 		<div data-ng-repeat="f in flightResults | limitTo: scrollLimit.details">
 		<div class="container">
-			
-			<h3 class="row"> {{f.flight.airline.id}} {{f.flight.number}} </h3>
+			<div class="review-box row">
+			<div class="col-md-12">
+			<h3> {{f.flight.airline.id}} {{f.flight.number}} </h3>
 			<div class="row ratetitulo"><strong>Ratings promedio: {{(f.rating.overall).toFixed(2)}}</strong></div>
-				<div class="row ratings">
+			<div class="row ratings">
 					<div class="col-md-6">
 					<ul>
 						<li>Comfort: {{(f.rating.comfort).toFixed(2)}}</li>
 						<li>Food: {{(f.rating.food).toFixed(2)}}</li>
 						<li>Friendliness: {{(f.rating.friendliness).toFixed(2)}}</li>
+					</ul>
 					</div>
 					<div class="col-md-6">
+					<ul>
 						<li>Mileage_program: {{(f.rating.mileage_program).toFixed(2)}}</li>
 						<li>Punctuality: {{(f.rating.punctuality).toFixed(2)}}</li>
 						<li>Quality/Price: {{(f.rating.quality_price).toFixed(2)}}</li>
 					</ul>
 					</div>
-				</div>
-		<div class="row">
+		</div>
 			<h4><a href="#" data-ng-click="selectFlight(f)">Ver todas</a></h4>
 		</div>
 		</div>
-	</div>
+		</div>
 		
 	</div>
 </div>

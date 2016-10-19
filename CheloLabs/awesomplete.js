@@ -59,12 +59,16 @@ var _ = function (input, o) {
 		"input": this.evaluate.bind(this),
 		"blur": function(evt) {
 			var c = evt.keyCode;
+			evt.autocompleteselect = true;
 			if(me.opened) {
 				if (me.selected) {
 					evt.preventDefault();
 					me.select();
+					me.close.bind(this, { reason: "select" });
 				}
-			me.close.bind(this, { reason: "blur" });
+			else{
+				me.close.bind(this, {reason: "blur"});
+			}
 		}
 	},
 		"keydown": function(evt) {
