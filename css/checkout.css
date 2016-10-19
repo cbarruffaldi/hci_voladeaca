@@ -1,3 +1,7 @@
+input.tt-hint {
+	display: none;
+}
+
 .openField {
 	display: none;
 }
