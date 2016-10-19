@@ -30,22 +30,15 @@ function initSearchbox(global){
 			self.removeClass('x');
 			var errid = '#' + self.attr("id") + '-err';
 			$(errid).fadeOut();
-		}else if(self.val()){
-			self.addClass('x');
 		}
+
 	});
 
 	$("#origen").on('blur', function(evt){
-			$(this).removeClass('x');
-			if(isValidAirport(this) && !$("#destino").val()) {
-				evt.preventDefault();
-				$("#destino").focus();
-			}
-
+			isValidAirport(this);
 	});
 
 	$("#destino").on('blur', function(evt){
-			$(this).removeClass('x');
 			isValidAirport(this);
 	});
 
@@ -82,6 +75,7 @@ function initSearchbox(global){
 			if(!$id_map[textbox.val()]){
 				textbox.addClass('inputerr');
 				error.text("Por favor ingrese algo valido");
+				textbox.addClass('x');
 				error.fadeIn();
 				return false;
 			}

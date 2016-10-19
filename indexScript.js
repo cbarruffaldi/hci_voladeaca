@@ -4,7 +4,6 @@ jQuery(document).ready(function(){
 
 	new Awesomplete(document.getElementById("origen"), {
 		list: $acUtils.airportList,
-		blist: ["Chelo", "Es", "Un", "Idolo", "Buenos Dias", "Buenos Aires", "Buena Vida"],
 		minChars: 3,
 		autoFirst: true}
 	);
