@@ -202,6 +202,11 @@
 	margin: 10px 0;
 }
 
+.modal-body .dropdown-menu {
+	left: inherit !important;
+	margin: 0;
+}
+
 .modal-body .buy-btn {
 	margin-top: 10px;
 	font-size: 1.3em;

@@ -37,14 +37,15 @@ jQuery(document).ready(function(){
 	});
 
 
-//	$(".details-btn button").on("click", function() {
-//		var btn = $(this);
-//		btn.parent().find(".price-details").collapse('toggle');
-//		if (btn.text() == "+ detalles") {
-//			btn.text("- detalles");
-//		} else {
-//			btn.text("+ detalles");
-//		}
-//	});
 
+});
+
+$(document).on("click", ".details-btn button", function() {
+	var btn = $(this);
+	btn.parent().find(".price-details").collapse('toggle');
+	if (btn.text() == "+ detalles") {
+		btn.text("- detalles");
+	} else {
+		btn.text("+ detalles");
+	}
 });

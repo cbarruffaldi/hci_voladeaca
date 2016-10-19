@@ -106,6 +106,7 @@ app.controller("promoCtrl", function($scope, $http, $q) {
 		uri += '&adults=' + window.passengers.adults;
 		uri += '&children=' + window.passengers.children;
 		uri += '&infants=' + window.passengers.infants;
+		uri += '&promo=true'
 		window.location.href = uri;
 	}
 
