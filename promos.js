@@ -88,13 +88,48 @@ app.controller("promoCtrl", function($scope, $http, $q) {
 	promosInfo["week"] = 7;
 	promosInfo["twoweeks"] = 14;
 
+	$scope.searchPromo = function (city) {
+		console.log(city);
+		var p = $scope.promos[city];
+		console.log(p);
+		var iDate = moment(p.flights[0].flight.departMoment.date).format("YYYY-MM-DD");
+
+		var vDate = moment(p.flights[1].flight.departMoment.date).format("YYYY-MM-DD");
+
+		console.log(iDate);
+		console.log(vDate);
+		var uri = 'search3.html?';
+		uri += 'orig=' + p.flights[0].flight.departure.airport.id;
+		uri += '&dest=' + p.flights[0].flight.arrival.airport.id;
+		uri += '&date=' + iDate;
+		uri += '&vdate=' + vDate;
+		uri += '&adults=' + window.passengers.adults;
+		uri += '&children=' + window.passengers.children;
+		uri += '&infants=' + window.passengers.infants;
+		window.location.href = uri;
+	}
+
+	function toDayString(num) {
+		var str = num.toString();
+		if (num < 10)
+			str = "0" + str;
+		return str;
+	}
+
 	function sendPromoSearch(query) {
-		var idate = promosInfo[query.month] + "01";
-		var dur = promosInfo[query.duration];
-		var vdate = promosInfo[query.month].toString() + (dur > 8 ? "" : "0") + (1 + dur).toString();
+		var dayida, strida, idate, dayvuelta, strvuelta, vdate;
 
 		var promises = [];
 		for (var des of promosInfo[query.dest]) {
+			dayida = parseInt(Math.random() * 15) + 1;
+			strida = toDayString(dayida);
+
+			idate = promosInfo[query.month] + strida;
+
+			dayvuelta = promosInfo[query.duration] + dayida;
+			strvuelta = toDayString(dayvuelta);
+
+			vdate = promosInfo[query.month].toString() + strvuelta;
 			promises.push(fetchPromo(idate, vdate, "BUE", des));
 		}
 
@@ -145,7 +180,7 @@ app.controller("promoCtrl", function($scope, $http, $q) {
 
 		return deferred.promise;
 	}
-	
+
 	function setImages() {
 		for (var p in $scope.promos) {
 			console.log($scope.promos[p]);
@@ -176,8 +211,6 @@ app.controller("promoCtrl", function($scope, $http, $q) {
 	function destCityName(container) {
 		return container.flights[0].flight.arrival.cityshort;
 	}
-
-	//2
 
 	function process(response, vresponse){
 		console.log(response);

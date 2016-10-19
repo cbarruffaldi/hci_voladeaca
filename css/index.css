@@ -173,16 +173,17 @@
 
 .modal-dialog {
 	margin-top: 150px;
+	width: 800px;
 }
 
 .promo-dest-modal {
 	color: #204DCC;
-	font-size: 2.5em;
+	font-size: 3.5em;
 }
 
-.promo-info-modal {
+.promo-info-modal, .promo-date-modal {
 	color: #333;
-	font-size: 1.3em;
+	font-size: 1.7em;
 }
 
 .promo-price-modal {
@@ -193,10 +194,24 @@
 .psg-select-message {
 	margin-top: 10%;
 	color: #333;
-	font-size: 1.1em;
+	font-size: 1.3em;
+	font-weight: 400;
 }
 
-.promo-date-modal {
-	color: #333;
+.modal-body .psg-dropdown {
+	margin: 10px 0;
+}
+
+.modal-body .buy-btn {
+	margin-top: 10px;
 	font-size: 1.3em;
+	color: #FFFFFF;
+	background-color: #DC0055;
+	border: 1px solid #DC0055;
+	transition: all 0.4s;
+}
+
+.modal-body .buy-btn:hover{ 
+	background-color: #DC0055;
+	border: 1px solid #204DCC;
 }

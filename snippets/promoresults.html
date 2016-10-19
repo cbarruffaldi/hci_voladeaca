@@ -1,7 +1,7 @@
 <div data-ng-repeat="p in promos">
 	<div class="col-md-4">
 		<div class="result-box" data-toggle="modal" data-target="#modal-explore-{{$index}}">
-			<img class="place-img" src="{{p.imgsrc}}"/>
+			<img class="place-img" data-ng-src="{{p.imgsrc}}"/>
 			<div class="promo-text">
 				<div class="promo-dest">	{{p.shortName}}
 				</div>
@@ -21,7 +21,7 @@
 				<div class="modal-body">
 					<div class="row">
 						<div class="col-md-7">
-							<img class="place-img" src="{{p.imgsrc}}"/>
+							<img class="place-img" data-ng-src="{{p.imgsrc}}"/>
 						</div>
 						<div class="col-md-5">
 							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -38,10 +38,8 @@
 								Elegí la cantidad de pasajeros
 							</div>
 							<div data-ng-include="'./snippets/paxbutton.html'"></div>
-							<div>
-								<button type="button" class="vda-btn" id="promo-search-btn-{{$index}}">Buscar Promoción</button>
-							</div>
 						</div>
+						<button type="button" class="vda-btn buy-btn" id="promo-search-btn-{{$index}}" data-ng-city="{{p.shortName}}" data-ng-click="searchPromo(p.shortName)">Buscar Promoción</button>
 					</div>
 				</div>
 			</div>
