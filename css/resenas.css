@@ -13,9 +13,9 @@
 
 .review-box {
 	border-radius: 3px;
-	box-shadow: 0 0 12px #a3a3a3;
-	background: #FFFFFF;
+	background: #d2d1d1;
 	margin-bottom: 3%;
+	border-radius: 4px;
 }
 
 input::-webkit-outer-spin-button,
@@ -27,6 +27,8 @@ input::-webkit-inner-spin-button {
 
 .search-reviews-box{
 	margin-top: 10px;
+	border-radius: 4px;
+
 }
 
 .comments{
@@ -36,10 +38,13 @@ input::-webkit-inner-spin-button {
 }
 
 .review_st{
-	background: #DC0055;
+	background: CornflowerBlue;
 	color: #FFFFFF;
 	padding-left: 10px;
 	font-size: 2em;
+	border-top-right-radius: 5px;
+	border-top-left-radius: 3px;
+
 }
 
 .review_t{
@@ -48,6 +53,28 @@ input::-webkit-inner-spin-button {
 	color: #FFFFFF;
 	padding-left: 10px;
 	font-size: 2em;
+	border-top-right-radius: 5px;
+	border-top-left-radius: 3px;
+
+}
+
+.review-head{
+	position:relative;
+	height:10px;
+	background: #DC0055;
+}
+.review-head:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-width: 0 0 35px 35px;
+  border-style: solid;
+  border-color: #DC0055 #fff;
+  -webkit-box-shadow: 3px 1px 1px 0px  rgba(0,0,0,0.3);
+  -moz-box-shadow: 3px 1px 1px 0px rgba(0,0,0,0.3);
+  box-shadow: 3px 1px 1px 0px rgba(0,0,0,0.3) /* -1px 1px 1px rgba(0,0,0,0.2);
+*/
 }
 
 
@@ -85,7 +112,8 @@ ul.tabs li.current{
 }
 
 .ratings ul{
-padding-top: 10px;
+padding-top: 15px;
+padding-bottom:15px;
 list-style: none;
 }
 
@@ -109,22 +137,21 @@ list-style: none;
 .ratings li{
 	font-size: 1.1em;
 	padding:3px;
-	color: #ff0000;
 }
-
 
 .bubble
 {
 position: relative;
 font-style: italic;
 width: 90%;
-margin-top: 15px;
+margin-top: 25px;
 padding: 15px;
-background: #FFFFF;
+background: #FFFFFF;
 -webkit-border-radius: 10px;
 -moz-border-radius: 10px;
 border-radius: 10px;
 border: #DC0055 solid 1px;
+box-shadow: 4px 3px 10px -3px #7d3d56;
 }
 
 .bubble:after
@@ -134,6 +161,7 @@ position: absolute;
 border-style: solid;
 border-width: 0 15px 15px;
 border-color: #FFFFFF transparent;
+background-color: #fff transparent;
 display: block;
 width: 0;
 z-index: 1;
@@ -148,9 +176,17 @@ position: absolute;
 border-style: solid;
 border-width: 0 15px 15px;
 border-color: #DC0055 transparent;
+background-color: #fff transparent;
 display: block;
 width: 0;
 z-index: 0;
 top: -16px;
 left: 29px;
+}
+
+
+.stars{
+	margin-top: -10px;
+    margin-left: 30px;
+    font-size: 2em;
 }
