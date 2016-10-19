@@ -25,9 +25,9 @@ function initSearchbox(global){
 	$("#origen, #destino").on('focus', function(){
 		var self = $(this);
 		if(self.hasClass('inputerr')){
-			self.val("");
+		//	self.val("");
 			self.removeClass('inputerr');
-			self.removeClass('x');
+		//	self.removeClass('x');
 			var errid = '#' + self.attr("id") + '-err';
 			$(errid).fadeOut();
 		}else if(self.val()){
@@ -36,8 +36,8 @@ function initSearchbox(global){
 	});
 
 	$("#origen").on('blur', function(evt){
-			$(this).removeClass('x');
 			if(isValidAirport(this) && !$("#destino").val()) {
+				$(this).removeClass('x');
 				evt.preventDefault();
 				$("#destino").focus();
 			}
@@ -45,8 +45,9 @@ function initSearchbox(global){
 	});
 
 	$("#destino").on('blur', function(evt){
-			$(this).removeClass('x');
-			isValidAirport(this);
+			if(isValidAirport(this))
+				$(this).removeClass('x');
+
 	});
 
 

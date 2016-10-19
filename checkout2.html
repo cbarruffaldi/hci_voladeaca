@@ -9,11 +9,12 @@
 		<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
 		<link href="css/typeahead.css" rel="stylesheet"/>
 
-		<link rel="stylesheet" href="css/checkout.css">
 		<link rel="stylesheet" href="css/main.css">
 		<link rel="stylesheet" href="css/buttons.css">
+        <link rel="stylesheet" href="css/checkout.css">
 
-		<script src="extlib/angular.min.js"></script>
+
+        <script src="extlib/angular.min.js"></script>
 
 	</head>
 
@@ -62,7 +63,7 @@
 		<!-- Tabs -->
 		<div id="step-tabs" class="container">
 
-			<ul class="nav nav-tabs nav-justified">
+			<ul class="nav nav-tabs ">
 				<li class="active">
 					<a href="#1">1. Pasajeros</a>
 				</li>
@@ -76,39 +77,99 @@
 
 
 			<!--CUADRO RESUMEN-->
-      <div class="resume-box">
-  			<div class="row">
-  				<div class="title-style col-md-12"><h3>Información del Viaje</h3></div>
-  			</div>
-  			<div class="row">
-  				<div class="col-md-12 info-box">
-  								<div class="row">
-  									<div class="col-md-2">
-  										FECHA
-  										<hr>
-  									</div>
-  									<div class="col-md-8">
-  										INFO GENERAL
-  										<hr>
-  									</div>
-  									<div class="col-md-2">
-  										DETALLES DEL PRECIO
-  									</div>
-  								</div>
-  								<div class="row">
-  									<div class="col-md-2">
-  										FECHA
-  									</div>
-  									<div class="col-md-8">
-  										INFO GENERAL
-  									</div>
-  									<div class="col-md-2">
-  										TOTAL: $$$$$$$
-  									</div>
-  								</div>
-  				</div>
-  			</div>
-    </div>
+
+			<div class="resume-box">
+                <div class="row">
+				    <div class="title-style col-md-12"><h3>Información del viaje</h3></div>
+                </div>
+                <div class="row">
+				    <div class="col-md-12 info-box">
+                    <div class="col-md-10">
+                    <div class="row">
+                        <div class="col-md-12 box-row">
+                            <div class="col-md-2">
+                                <div class="row">
+                                    <h4 class="col-md-12" data-ng-bind="idaFlightDetails.number"></h4>
+                                </div>
+                            </div>
+                            <div class="col-md-10">
+                                <div class="col-md-1">
+                                    <div data-ng-bind="idaFlightDetails.airlineName"></div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class= "depart-date" data-ng-bind="idaFlightDetails.departureDate"></div>
+                                    <div class= "depart-time" data-ng-bind="idaFlightDetails.departureTime"></div>
+                                </div>
+                                <div class="col-md-2">
+                                    <span data-ng-bind="idaFlightDetails.airportFromName"></span>
+                                </div>
+                                <div class="col-md-1">
+                                    <span><!-- puede ir el avioncito --></span>
+                                </div>
+                                <div class="col-md-2">
+                                    <span data-ng-bind="idaFlightDetails.airportToName"></span>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class= "land-date" data-ng-bind="idaFlightDetails.arrivalDate"></div>
+                                    <div class= "land-time" data-ng-bind="idaFlightDetails.arrivalTime"></div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="duration" data-ng-bind="idaFlightDetails.duration"></div>
+                                    <span class="glyphicon glyphicon-time duration"></span>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 box-row">
+                            <div class="col-md-2">
+                                <div class="row">
+                                    <h4 class="col-md-12" data-ng-bind="returnFlightDetails.number"></h4>
+                                </div>
+
+                            </div>
+                            <div class="col-md-10">
+                                <div class="col-md-1">
+                                    <div data-ng-bind="returnFlightDetails.airlineName"></div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class= "depart-date" data-ng-bind="returnFlightDetails.departureDate"></div>
+                                    <div class= "depart-time" data-ng-bind="returnFlightDetails.departureTime"></div>
+                                </div>
+                                <div class="col-md-2">
+                                    <span data-ng-bind="returnFlightDetails.airportFromName"></span>
+                                </div>
+                                <div class="col-md-1">
+                                    <span><!-- puede ir el avioncito--></span>
+                                </div>
+                                <div class="col-md-2">
+                                    <span data-ng-bind="returnFlightDetails.airportToName"></span>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class= "land-date" data-ng-bind="returnFlightDetails.arrivalDate"></div>
+                                    <div class= "land-time" data-ng-bind="returnFlightDetails.arrivalTime"></div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="duration" data-ng-bind="returnFlightDetails.duration"></div>
+                                    <!--falta el relojito de duration , pero solo tiene que aparece si es two-way-->
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="col-md-2 flight-price-box">
+                        <div class="price-number" data-ng-bind="'$' + flightPrice.total"></div>
+                        <div class="details">
+                            <div data-ng-bind=" 'Pasajes: ' + flightPrice.fare"></div>
+                            <div data-ng-bind=" 'Impuestos: ' + flightPrice.taxes"></div>
+                            <div data-ng-bind=" 'Recargos: ' + flightPrice.charges"></div>
+                        </div>
+                    </div>
+				</div>
+                </div>
+			</div>
 
 			<div class="row">
 
@@ -637,10 +698,10 @@
 
 			<div class="row">
 				<div class="col-md-2">
-					<button class="arrow-btn btnPrev vda-btn">-Volver</button>
+					<button class="arrow-btn btnPrev vda-btn">&laquo;Volver</button>
 				</div>
 				<div class="col-md-2 col-md-offset-8">
-					<button class="arrow-btn btnNext vda-btn" data-ng-click="fillDatas()">Continuar-</button>
+					<button class="arrow-btn btnNext vda-btn" data-ng-click="fillDatas()">Continuar&raquo;</button>
 				</div>
 			</div>
 		</div>

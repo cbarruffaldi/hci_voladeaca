@@ -17,7 +17,7 @@
         <link rel="stylesheet" href="css/angular-animations.css">
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
         <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
-  <script src="extlib/angular.min.js"></script>
+        <script src="extlib/angular.min.js"></script>
 
    <!--     <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script> -->
 
@@ -64,8 +64,15 @@
   </div>
 
   <div class="container-fluid">
+    <div data-ng-if="!flightSelected">
     <div data-ng-include="'./snippets/reviewsearch.html'">
     </div>
+  </div>
+
+    <div data-ng-if="flightSelected">
+    <div data-ng-include="'./snippets/individualreviews.html'">
+    </div>
+  </div>
   </div>
 
 

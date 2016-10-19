@@ -77,7 +77,7 @@ app.controller("reviewsCtrl", function($scope, $http, $window) {
 //		this.flight = JSON.parse(JSON.stringify(seed.flight));
 //		this.rating = JSON.parse(JSON.stringify(seed.rating));
 		this.totalReviews = 1;
-		this.wouldRecommendCount = seed.yes_reccomend ? 1 : 0;
+		this.wouldRecommendCount = seed.yes_recommend ? 1 : 0;
 
 		this.merge = function(other){
 			self.rating.comfort = (self.rating.comfort + other.rating.comfort)/2.0			
@@ -87,6 +87,8 @@ app.controller("reviewsCtrl", function($scope, $http, $window) {
 			self.rating.overall = (self.rating.overall + other.rating.overall)/2.0			
 			self.rating.punctuality = (self.rating.punctuality + other.rating.punctuality)/2.0;
 			self.rating.quality_price = (self.rating.quality_price + other.rating.quality_price)/2.0;
+			self.totalReviews++;
+			self.wouldRecommendCount += other.yes_recommend ? 1: 0;
 
 		}	
 	}

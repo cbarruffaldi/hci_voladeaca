@@ -1,12 +1,11 @@
 <div infinite-scroll='loadMore("details")' infinite-scroll-distance='1'>
-	<div class="col-md-1"></div>
-	<div class="col-md-10">
-	<div data-ng-if="!flightSelected">
 		<div data-ng-repeat="f in flightResults | limitTo: scrollLimit.details">
+		<div class="col-md-1"></div>
+		<div class="col-md-5 revcont">
 			<div class="review_t row"> {{f.flight.airline.id}} {{f.flight.number}}</div>
 			<div class="review-box row">
-			<div class="col-md-12">
-			<div class="row ratetitulo"><strong>Ratings promedio: {{(f.rating.overall).toFixed(2)}}</strong></div>
+			<div class="row ratetitulo"><strong>Ratings promedio: {{(f.rating.overall).toFixed(2)}}</strong>
+			<br/>{{(100* f.wouldRecommendCount / f.totalReviews).toFixed(2)}} % lo recomienda</div>
 			<div class="row ratings">
 					<div class="col-md-6">
 					<ul>
@@ -23,50 +22,11 @@
 					</ul>
 					</div>
 		</div>
-			<h4><a href="#" data-ng-click="selectFlight(f)">Ver todas</a></h4>
+			<span class="row viewmore"><h4><a href="#" data-ng-click="selectFlight(f)">Ver todas &raquo;</a></h4></span>
 		</div>
 		</div>
-				<span class="lineseparator"></span>
-		</div>
-	</div>
+		<div data-ng-if="$last && (($index % 2) == 0)"><div class="col-md-5"></div></div>
 </div>
-<div class="col-md-1"></div>
-
-<div infinite-scroll='loadMore("reviews")' infinite-scroll-distance='1' id="reviewRes">
-	<div data-ng-if="flightSelected">
-	<h4><a href="#" data-ng-click="deselectFlight()">&laquo; Volver </a>
-	<div class="row review" data-ng-repeat="r in reviewResults | filter: filterReviews | limitTo: scrollLimit.reviews">
-		<div class="col-md-2"></div>
-		<div class="col-md-8">
-		<div class="row reviewtitle">
-		<h3>{{r.flight.airline.id}} {{r.flight.number}}</h3>
-		</div>
-		<div class="row review-details">
-		Overall: {{r.rating.overall}}
-		Would recomend: {{r.yes_recommend}}
-
-		</div>
-		<div class="row comments">
-		<strong>Comments:</strong><br />
-		<p>{{r.comments}}</p>
-		</div>
-		<div class="row ratings">
-		<div class="col-md-6">
-		<p><strong>Rating:</strong></p>
-		<ul>
-		<li>Comfort: {{r.rating.comfort}}</li>
-		<li>Food: {{r.rating.comfort}}</li>
-		<li>Friendliness: {{r.rating.comfort}}</li>
-		</div>
-		<div class="col-md-6">
-		<li>Mileage_program: {{r.rating.comfort}}</li>
-		<li>Punctuality: {{r.rating.punctuality}}</li>
-		<li>Quality/Price: {{r.rating.quality_price}}</li>
-		<ul>
-		</div>
-		</div>
-		</div>
-		<div class="col-md-2"></div>
-	</div>
-	</div>
 </div>
+
+

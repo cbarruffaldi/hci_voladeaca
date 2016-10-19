@@ -74,7 +74,16 @@ $(document).ready(function() {
             next.find('a').tab('show');
             active.addClass('disabled');
             active.addClass('disabled-tab');
-            
+
+            var data = active;
+
+        var data = $("#data");
+        var sequence = parseInt(data.text()) + 1;
+        var state = { value : sequence };
+        history.pushState(state, "", "sequence.html");
+        data.text(sequence);
+
+
             if(indexTab == 0) {
                 fillPassengerSum(validator.getData());
             } 

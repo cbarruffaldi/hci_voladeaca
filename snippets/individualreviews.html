@@ -1,0 +1,45 @@
+<div class="row">
+<div class="col-md-8">
+<div infinite-scroll='loadMore("reviews")' infinite-scroll-distance='1' id="reviewRes">
+	<h4><a href="#" data-ng-click="deselectFlight()">&laquo; Volver </a>
+	<div class="row review" data-ng-repeat="r in reviewResults | filter: filterReviews | limitTo: scrollLimit.reviews">
+		<div class="col-md-2"></div>
+		<div class="col-md-8">
+		<div class="row review_t">
+		<h3>Reseña #{{$index + 1}}</h3>
+		</div>
+		<div class="review-box row">
+		<div class="row ratetitulo">
+		Overall: {{r.rating.overall}}
+		Would recomend: {{r.yes_recommend}}
+
+		</div>
+		<div class="row comments">
+		<div class="bubble">{{r.comments}}</div>
+		</div>
+		<div class="row ratings">
+		<div class="col-md-6">
+		<p><strong>Rating:</strong></p>
+		<ul>
+		<li>Comfort: {{r.rating.comfort}}</li>
+		<li>Food: {{r.rating.comfort}}</li>
+		<li>Friendliness: {{r.rating.comfort}}</li>
+		</div>
+		<div class="col-md-6">
+		<li>Mileage_program: {{r.rating.comfort}}</li>
+		<li>Punctuality: {{r.rating.punctuality}}</li>
+		<li>Quality/Price: {{r.rating.quality_price}}</li>
+		<ul>
+		</div>
+		</div>
+		</div>
+	</div>
+		<div class="col-md-2"></div>
+	</div>
+</div>
+</div>
+<div class="col-md-4">
+
+</div>
+
+</div>

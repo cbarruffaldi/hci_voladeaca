@@ -1,7 +1,7 @@
 .searchcontent{
 	margin-top: 5%;
 	box-shadow: 1px 0px 15px #333;
-	margin-bottom: 11%;
+	margin-bottom: 50px;
 }
 
 .titulo{
@@ -29,7 +29,11 @@ input::-webkit-inner-spin-button {
 	margin-top: 10px;
 }
 
-
+.comments{
+	padding-top: 10px;
+	margin-bottom: 20px;
+	margin-left: 15px;
+}
 
 .review_st{
 	background: #DC0055;
@@ -52,6 +56,7 @@ ul.tabs{
 	padding: 0px;
 	list-style: none;
 }
+
 ul.tabs li{
 	background: none;
 	color: #222;
@@ -75,7 +80,77 @@ ul.tabs li.current{
 	display: inherit;
 }
 
+.revcont{
+	margin: 10px;
+}
 
 .ratings ul{
+padding-top: 10px;
 list-style: none;
+}
+
+.ratetitulo {
+	font-size: 1.2em;	
+	padding-left: 30px;
+}
+
+.viewmore {
+	padding-left: 40px;
+}
+
+.viewmore a{
+	padding-left: 10px;	
+}
+.viewmore a:hover{
+	text-decoration: none;
+	font-weight: 600;
+}
+
+.ratings li{
+	font-size: 1.1em;
+	padding:3px;
+	color: #ff0000;
+}
+
+
+.bubble
+{
+position: relative;
+font-style: italic;
+width: 90%;
+margin-top: 15px;
+padding: 15px;
+background: #FFFFF;
+-webkit-border-radius: 10px;
+-moz-border-radius: 10px;
+border-radius: 10px;
+border: #DC0055 solid 1px;
+}
+
+.bubble:after
+{
+content: '';
+position: absolute;
+border-style: solid;
+border-width: 0 15px 15px;
+border-color: #FFFFFF transparent;
+display: block;
+width: 0;
+z-index: 1;
+top: -15px;
+left: 29px;
+}
+
+.bubble:before
+{
+content: '';
+position: absolute;
+border-style: solid;
+border-width: 0 15px 15px;
+border-color: #DC0055 transparent;
+display: block;
+width: 0;
+z-index: 0;
+top: -16px;
+left: 29px;
 }
