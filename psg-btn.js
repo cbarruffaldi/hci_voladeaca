@@ -1,4 +1,4 @@
-var passengers = {}
+passengers = {}
 passengers.adults = 1
 passengers.children = 0
 passengers.infants = 0
@@ -8,6 +8,7 @@ passengers.total = function() {
 }
 
 function updateNumbers() {
+	console.log("UPDATING");
 	$(".adult-number").text(passengers.adults);
 	$(".child-number").text(passengers.children);
 	$(".infant-number").text(passengers.infants);
@@ -30,6 +31,8 @@ function updateNumbers() {
 		}
 	}
 }
+
+passengers.update = updateNumbers;
 
 function zeroAdultsError() {
 	$(".zero-adults-msg").fadeIn();

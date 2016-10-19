@@ -13,8 +13,17 @@
 		var infants = getURLParameter("infants");
 		var vdate = getURLParameter("vdate");
 
-		$("#origen").val(orig);
-		$("#destino").val(dest);
+		idate = idate.split('-').reverse().join('/');
+		vdate = vdate.split('-').reverse().join('/');
+		//		
+		//		console.log($acUtils.name_map);
+		//		console.log(orig);
+		//		console.log(dest);
+		//		console.log($acUtils.name_map[orig]);
+		//		console.log($acUtils.name_map[dest]);
+
+		$("#origen").val($acUtils.name_map[orig]);
+		$("#destino").val($acUtils.name_map[dest]);
 		$("#datepicker1").val(idate);
 
 		if (vdate)
@@ -24,12 +33,17 @@
 			$(".idavuelta .ida").addClass("selected-iv");
 			//global.setOneWay();
 		}
-		
-		//global.$acUtils.name_map["AEP"];
+
+		global.passengers.adults = parseInt(adults);
+		global.passengers.children = parseInt(children);
+		global.passengers.infants = parseInt(infants);
+		global.passengers.update();
 	};
 
 	jQuery(document).ready(function(){
-		$acUtils.load().then(fillSearchBox);
+		$acUtils.load().then(function(){
+			fillSearchBox();
+		});
 	});
 
 })(window);
