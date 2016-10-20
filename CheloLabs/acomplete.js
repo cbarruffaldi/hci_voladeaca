@@ -59,6 +59,7 @@
         var disp = cityID + " - " + nombre + " (todos los aeropuertos)";
         airports.push({value: disp, label: disp}); 
         idMap[disp] = cityID;
+				nameMap[cityID] = disp;
       }
 
       localStorage.setItem('acUtils', JSON.stringify(acUtils));
