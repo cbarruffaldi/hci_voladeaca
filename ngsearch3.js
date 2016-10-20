@@ -204,7 +204,7 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 			console.log(response);
 			console.log(vresponse);
 
-			if(response.data.flights.length == 0 || (vresponse && vresponse.data.flight.length == 0)){
+			if(response.data.flights.length == 0 || (vresponse && vresponse.data.flights.length == 0)){
 				$scope.emptySearch = true;
 
 				return;
