@@ -7,7 +7,7 @@
 
 .formtitle{
 	font-weight: bold;
-	color: #5b5b5b;
+	color: #333;
 	padding-left: 3px;
 }
 
@@ -15,6 +15,10 @@
 	color: #7b7b7b;
 }
 
+
+.disabled-dp {
+	cursor: not-allowed !important;
+}
 
 .formError{
 	margin-top: -10px;

@@ -11,23 +11,26 @@ function initSearchbox(global){
 
 	$("#datepicker1").keydown(function() {
 		$( function(){$("#datepicker1").datepicker("hide") } );
-  		return true;
-		});
+		return true;
+	});
 
 	$("#cal1").click( function() {
 		$( function() { $("#datepicker1").datepicker("show") });
 	});
 
 	$("#cal2").click( function() {
-		$( function() { $("#datepicker2").datepicker("show") });
+		$( function() { 
+			if (!soloIda) 
+				$("#datepicker2").datepicker("show") 
+		});
 	});
 
 	$("#origen, #destino").on('focus', function(){
 		var self = $(this);
 		if(self.hasClass('inputerr')){
-		//	self.val("");
+			//	self.val("");
 			self.removeClass('inputerr');
-		//	self.removeClass('x');
+			//	self.removeClass('x');
 			var errid = '#' + self.attr("id") + '-err';
 			$(errid).fadeOut();
 		}else if(self.val()){
@@ -36,32 +39,32 @@ function initSearchbox(global){
 	});
 
 	$("#origen").on('blur', function(evt){
-			if(isValidAirport(this) && !$("#destino").val()) {
-				$(this).removeClass('x');
-				evt.preventDefault();
-				$("#destino").focus();
-			}
+		if(isValidAirport(this) && !$("#destino").val()) {
+			$(this).removeClass('x');
+			evt.preventDefault();
+			$("#destino").focus();
+		}
 
 	});
 
 	$("#destino").on('blur', function(evt){
-			if(isValidAirport(this))
-				$(this).removeClass('x');
+		if(isValidAirport(this))
+			$(this).removeClass('x');
 
 	});
 
 
 	jQuery(function($) {
-	 // CLEARABLE INPUT
- 	function tog(v){return v?'addClass':'removeClass';} 
-  	$(document)/*.on('input', '.clearable', function(){
+		// CLEARABLE INPUT
+		function tog(v){return v?'addClass':'removeClass';} 
+		$(document)/*.on('input', '.clearable', function(){
     $(this)[tog(this.value)]('x');
   	})*/.on('mousemove', '.x', function( e ){
-    $(this)[tog(this.offsetWidth-18 < e.clientX-this.getBoundingClientRect().left)]('onX');   
- 	 }).on('touchstart click', '.onX', function( ev ){
-   	 ev.preventDefault();
-   	 $(this).removeClass('x onX').val('').change();
-   	});
+			$(this)[tog(this.offsetWidth-18 < e.clientX-this.getBoundingClientRect().left)]('onX');   
+		}).on('touchstart click', '.onX', function( ev ){
+			ev.preventDefault();
+			$(this).removeClass('x onX').val('').change();
+		});
 	});
 
 	var validators = {};
@@ -170,6 +173,7 @@ function initSearchbox(global){
 	global.setOneWay = function() {
 		var pickerVuelta = $("#date-col-2");
 		pickerVuelta.addClass("disabled-dp");
+		$("#cal2").addClass("disabled-dp");
 		pickerVuelta.find("input").prop('disabled', true);
 		soloIda = true;
 	}
@@ -177,7 +181,8 @@ function initSearchbox(global){
 	global.setRoundWay = function() {
 		var pickerVuelta = $("#date-col-2");
 		pickerVuelta.removeClass("disabled-dp");
-		pickerVuelta.find("input").prop('disabled', false);
+		$("#cal2").removeClass("disabled-dp");
+		pickerVuelta.find("input").prop('disabled', false);	
 		soloIda = false;
 	}
 

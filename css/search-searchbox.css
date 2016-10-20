@@ -29,6 +29,10 @@
 	position: relative;
 }
 
+.disabled-dp {
+	cursor: not-allowed !important;
+}
+
 .formError {
     position: absolute;
     color: #FFF;
