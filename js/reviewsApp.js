@@ -1,6 +1,6 @@
 var app = angular.module("reviewsApp", ['ngAnimate', 'infinite-scroll']);
 
-app.controller("reviewsCtrl", function($scope, $http, $window) {
+app.controller("reviewsCtrl", function($scope, $http, $sce, $window) {
 	$scope.scrollLimit = {details: 10, reviews: 5}
 	$scope.reviewResults = [];
 	$scope.flightResults = [];
@@ -8,6 +8,20 @@ app.controller("reviewsCtrl", function($scope, $http, $window) {
 	$scope.flightSelected;
 	var selectedDetails = {};
 
+	$scope.getStars = function(score){
+		ret = "";
+		for(var i = 1 ; i <= 5; i++){
+			if(2*i <= score){
+				ret += '<span class="star on"></span>'
+			}else if(2*i - 1 <= score){
+				ret += '<span class="star half"></span>'	
+			}
+			else{
+				ret += '<span class="star"></span>'
+			}
+		}
+		return $sce.trustAsHtml(ret);
+	}
 
 	$scope.selectFlight = function (f){
 		selectedDetails = {number: f.flight.number, airline: f.flight.airline.id};
@@ -98,15 +112,13 @@ app.controller("reviewsCtrl", function($scope, $http, $window) {
 			$scope.scrollLimit[which] += 5;
 		}
 
-
-
 		$('#vuelotab').click(function(){
 		$('ul.tabs li').removeClass('current');
 		$(this).addClass('current');
 		$("#vuelobox").addClass('current');
 		$("#aerobox").removeClass('current');
 		$("#aerotitle").html("Aerolínea (<em>opcional<em>):");
-	})
+		})
 
 	$('#aerotab').click(function(){
 		$("#aerotitle").html("Aerolínea:");
@@ -162,6 +174,7 @@ app.controller("reviewsCtrl", function($scope, $http, $window) {
 			$scope.airlineData = airlineData
 			console.log($scope.airlineData)			
 	}
+
 
 
 });
