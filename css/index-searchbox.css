@@ -1,8 +1,8 @@
 .searchbox{
 	background: rgba( 235, 235, 235, 0.8);
 	padding-bottom: 1em;
-	border-bottom-left-radius: 5px;
-	border-bottom-right-radius: 5px;
+	box-shadow: 0 1px 15px #7B7B7B;
+	border-radius: 5px;
 }
 
 .formtitle{

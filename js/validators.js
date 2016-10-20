@@ -507,9 +507,8 @@ function PassengerValidator(type, validateFunction, trDate, passId) {
                                 'birth-day': validateBirthDay,
                                 'birth-month': validateBirthMonth,
                                 'birth-year': validateBirthYear,
-                                'usr-country': validateCountry,
                                 'usr-doc': null,
-                                'usr-gen': null };
+                            };
 
 
     this.getData = function() {
@@ -897,7 +896,7 @@ function ContactValidator() {
     	for (var prop in this.backupPhones) {
     		var form = $('#' + prop)
     		this.phones[prop] = this.backupPhones[prop];
-    		form.val(this.data[prop]);
+    		form.val(this.phones[prop]);
     		removeErrorState(form);
     		form.siblings('.error-msg').hide();
     	}
