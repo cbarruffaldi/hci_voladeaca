@@ -57,6 +57,10 @@
 	cursor: pointer;
 }
 
+#origen, #destino {
+	padding-left: 10px;
+}
+
 .clearable{
   background: #fff url(data:image/gif;base64,R0lGODlhBwAHAIAAAP///5KSkiH5BAAAAAAALAAAAAAHAAcAAAIMTICmsGrIXnLxuDMLADs=) no-repeat right -10px center;
   border: 1px solid #999;
