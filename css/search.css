@@ -315,3 +315,23 @@ label {
 	transition: all 0.4s;
 	box-shadow: 0 0 8px #b3b3b3;
 }
+
+.emptyresults{
+	padding: 100px;
+}
+
+
+.greyout{
+ /*   background-color: white;*/
+    filter:alpha(opacity=40); /* IE */
+    opacity: 0.4; /* Safari, Opera */
+    -moz-opacity:0.40; /* FireFox */
+    z-index: 20;
+    height: 100%;
+    width: 100%;
+   /* background-repeat:no-repeat;
+    background-position:center;*/
+    position:absolute;
+    top: 0px;
+    left: 0px;
+}

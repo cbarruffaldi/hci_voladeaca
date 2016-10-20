@@ -5,7 +5,7 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 		$scope.containers = [] 
 		$scope.scrollLimit = 10;
 		$scope.orderBy = {criterion: 'price', reversed: false}
-		
+
 		$scope.updatePax = $window.passengers.update;
 
 		$scope.getFlightBox = function(){
@@ -46,6 +46,10 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 			$selectedFlight.twoWays = $scope.twoWays;
 
 			if(!(orig && dest && date && (adults || children || infants))){
+				$scope.emptySearch = true;
+				$scope.paramError = true;
+				$(".filter-area").addClass("greyout");
+				$("#loadImg").hide();
 				console.log("Param error");
 				return;
 			}
@@ -199,6 +203,15 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 
 		function process(response, vresponse){
 			console.log(response);
+			console.log(vresponse);
+
+			if(response.data.flights.length == 0 || (vresponse && vresponse.data.flight.length == 0)){
+				$scope.emptySearch = true;
+				$(".filter-area").addClass("greyout");
+
+				return;
+			}
+			$scope.emptySearch = false;
 			var iFlights = stripFlights(response.data.flights);
 			setFilters(response.data.filters[0].values);
 			if(vresponse){
