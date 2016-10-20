@@ -2,6 +2,7 @@ passengers = {}
 passengers.adults = 1
 passengers.children = 0
 passengers.infants = 0
+maxpassengers = 8;
 
 passengers.total = function() {
 	return this.adults + this.children + this.infants;
@@ -23,15 +24,31 @@ function updateNumbers() {
 	for (var i = 0; i < btns.length; i++) {
 		if ($(btns[i]).data("sum") == "minus") {
 			if  (passengers[$(btns[i]).data("info")] == 0) {
-				$(btns[i]).addClass("disabled");
-				$(btns[i]).attr("disabled", true);
+				disableButton($(btns[i]));
 			}
 			else {
-				$(btns[i]).removeClass("disabled");
-				$(btns[i]).attr("disabled", false);
+				enableButton($(btns[i]));
 			}
 		}
 	}
+	
+	var plusBtns = $(".passenger-row button[data-sum='plus']");
+	if (passengers.total() == 8) {
+		console.log("TOTAL: "+ passengers.total());
+		disableButton(plusBtns);
+	} else{
+		enableButton(plusBtns);
+	}
+}
+
+function disableButton(btn) {
+	$(btn).addClass("disabled");
+	$(btn).attr("disabled", true);
+}
+
+function enableButton(btn) {
+	$(btn).removeClass("disabled");
+	$(btn).attr("disabled", false);
 }
 
 passengers.update = updateNumbers;

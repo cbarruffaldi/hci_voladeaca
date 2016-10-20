@@ -65,6 +65,7 @@
 	padding-bottom: 12px;
 	line-height: 10px;
 	margin-top: 4%;
+	transition: all 0.3s;
 }
 
 .ok-btn {
