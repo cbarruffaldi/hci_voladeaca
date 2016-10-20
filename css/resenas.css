@@ -314,3 +314,14 @@ textarea {
   	cursor:pointer;
   }
 
+.leave-review-toggle{
+	font-size: 1.5em;
+	margin-top: 5px;
+	margin-left: 10px;
+
+}
+.leave-review-toggle:hover{
+	cursor:pointer;
+	font-weight: bold;
+	text-decoration: none;
+}
