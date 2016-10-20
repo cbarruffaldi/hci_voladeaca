@@ -112,15 +112,13 @@ app.controller("reviewsCtrl", function($scope, $http, $sce, $window) {
 			$scope.scrollLimit[which] += 5;
 		}
 
-
-
 		$('#vuelotab').click(function(){
 		$('ul.tabs li').removeClass('current');
 		$(this).addClass('current');
 		$("#vuelobox").addClass('current');
 		$("#aerobox").removeClass('current');
 		$("#aerotitle").html("Aerolínea (<em>opcional<em>):");
-	})
+		})
 
 	$('#aerotab').click(function(){
 		$("#aerotitle").html("Aerolínea:");
@@ -176,6 +174,7 @@ app.controller("reviewsCtrl", function($scope, $http, $sce, $window) {
 			$scope.airlineData = airlineData
 			console.log($scope.airlineData)			
 	}
+
 
 
 });
