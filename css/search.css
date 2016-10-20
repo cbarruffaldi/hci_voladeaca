@@ -4,7 +4,6 @@
 }
 
 .filter-area {
-	margin: 5%;
 	padding: 5%;
 	margin-top: 5%;
 	background-color: #FFFFFF;
@@ -61,8 +60,6 @@ label {
 
 .depart-time-button {
 	display: inline-block;
-	width: 65px;
-	height: 70px;
 }
 
 .depart-time-button:hover {
