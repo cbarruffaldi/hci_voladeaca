@@ -4,7 +4,7 @@ body{
 
 #header-nav{
 	z-index: 1;
-	background: #2d5be3;
+	background: #204DCC;
 	border-radius: 0;
 	border: 0;
 	margin-bottom:0;
@@ -12,12 +12,11 @@ body{
 
 #logo-img{
 	background: url('../img/logowhite2.svg') no-repeat;
-	background-size: 190px 40px;
+	background-size: 170px 35px;
 	background-position: center;
 	width: 250px;
 	height: 55px;
 }
-
 
 #nav-list{
 	text-align: center;
@@ -25,12 +24,13 @@ body{
 
 #nav-list a{
 	height: 60px;
-	padding-top: 20px;
+	padding: 20px 14px;
 	color: #F7F7F7;
 	font-size: 1.3em;
-	letter-spacing: 1px;
-	font-weight: 200;
+	font-weight: 300;
+	letter-spacing: 2px;
 	text-align: center;
+/*	text-shadow: 0 0 1px #e3e3e3;*/
 	text-shadow: 0 0 0;
 }
 

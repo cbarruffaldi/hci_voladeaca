@@ -74,12 +74,7 @@
 
 .modify-search-btn button:hover {
 	border: 1px solid #FFFFFF;
-	background-color: #DC0055;
-}
-
-.modify-search-btn button:active {
-	box-shadow: none;
-	background-color: crimson;
+	background-color: #2d5be3;
 }
 
 .psg-dropdown {
