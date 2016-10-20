@@ -295,7 +295,12 @@ function validateSecCode(num) {
 }
 
 function validateCardholder(cardholder) {
-	return validateName(cardholder, "nombre del titular de la tarjeta");
+	var validation = validateName(cardholder, "nombre del titular de la tarjeta");
+
+	if (validation.valid && cardholder.split(' ').length < 2)
+		validation = invalidValidation("Incluya nombre y apellido del titutar de la tarjeta");
+
+	return validation;
 }
 
 function validateCreditCardAPI(number, expDate, secCod, callback, id, validation) {
@@ -747,6 +752,13 @@ function setCreditCardError() {
 	$('#' + SEC_CODE).addClass(ERROR_INPUT);
 }
 
+function getCityData(city) {
+	for (var i = 0; i < currentCities.length; i++) {
+		if(currentCities[i]["name"].toUpperCase() == city.toUpperCase())
+			return currentCities[i];
+	}
+}
+
 function PaymentAddressValidator() {
 
 	this.isOptional = function(id) {
@@ -797,6 +809,8 @@ function PaymentAddressValidator() {
 
 		if (validation.valid) {
 			this.data[id] = validation.value;
+			if (id == 'city')
+				this.data['city-data'] = getCityData(validation.value);
 		}
 
 		return validation;
@@ -825,7 +839,7 @@ function PaymentValidator() {
 		return this.cardValidator.getData();
 	}
 
-	this.getAddressData = function() {
+	this.getBillingData = function() {
 		return this.addrValidator.getData();
 	}
 

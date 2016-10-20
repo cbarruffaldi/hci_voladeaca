@@ -64,13 +64,14 @@ $(document).ready(function() {
         var next = active.next('li'); /* siguiente tab al actual */
         var validator = validators[indexTab];
 
-    /* Comentar siguiente if si resulta molesto no poder pasar las etapas */
-        if (validator.validateStage()) {
+        if (indexTab == 3) {
+            translateBookingData(passengersValidator.getData(), paymentValidator.getCardData(), paymentValidator.getBillingData(), contactValidator.getData());
+        }
+        else if (validator.validateStage()) {  /* Comentar si resulta molesto no poder pasar las etapas */
             if(next.hasClass('disabled-tab')) {
                 next.removeClass('disabled-tab');
                 next.removeClass('disabled');
             }
-
             next.find('a').tab('show');
             active.addClass('disabled');
             active.addClass('disabled-tab');
@@ -82,6 +83,7 @@ $(document).ready(function() {
                 fillPaymentSum(validator.getData());
                 fillBillingSum(validator.getData());
             }
+
 
             var data = active;
 
@@ -102,6 +104,8 @@ $(document).on('blur', 'input', function() {
     var validation;
 
     value = value.trim();
+    $(this).val(value);
+    
     if (value.length > 0) {
         var words = value.split(/[\s]+/);
         words = words.map(function (word) {return word.toUpperFirstLetter();});
@@ -558,18 +562,18 @@ $(document).ready(function () {
         return id;
     }
 
-    function createCityJSON(data,id) {
+    function createCityJSON(data, id) {
         var jsonObj = [];
 
         $.each(data.cities, function () {
             if ($(this).attr('country').id == id) {
 
                 var split = decodeHtml($(this).attr('name')).split(',');
-
+                split.pop();
 
                 item = {};
                 item ["id"] = $(this).attr('id');
-                item ["name"] = split.length == 3 ? split[0] + ',' + split[1] : split[0];
+                item ["name"] = split.join(',');
                 item ["country"] = $(this).attr('country').id;
 
                 jsonObj.push(item);
