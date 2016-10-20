@@ -4,11 +4,11 @@
 }
 
 .filter-area {
-	padding: 5%;
+	padding: 20px;
 	margin-top: 5%;
 	background-color: #FFFFFF;
 	border-radius: 3px;
-	box-shadow: 0 0 10px #a3a3a3;
+	box-shadow: 0 0 10px #a5a5a5;
 }
 
 .filter-area h2 {

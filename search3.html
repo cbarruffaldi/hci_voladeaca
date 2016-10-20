@@ -20,12 +20,6 @@
 		<link rel="stylesheet" href="css/spinner.css">
 		<link rel="stylesheet" href="./CheloLabs/awesomplete.css">
 
-		<style>
-			.row .selected-box{
-				margin-bottom: 20px;
-			}
-		</style>
-
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
 		<script src="extlib/angular.min.js"></script>
@@ -127,9 +121,9 @@
 				</div>
 
 				<div class="col-md-9">
-					<div class="row">
-						<div class="col-md-12">
-							<div class="search-row">
+					<div class="search-row">
+						<div class="row">
+							<div class="col-md-10">
 								<div class="searchbox">
 									<div class="row idavuelta">
 										<div class="col-md-6">
@@ -139,54 +133,62 @@
 									</div>
 
 									<div class="row search">
-											<div id="orig-col" class="col-md-2">
-												<div class="form-group">
-													<input type="text" class="form-control awesomplete" id="origen" placeholder="Ciudad o aeropuerto...">
+										<div id="orig-col" class="col-md-2 no-gutters">
+											<div class="form-group">
+												<input type="text" class="form-control awesomplete" id="origen" placeholder="Ciudad o aeropuerto...">
+											</div>
+											<div id="origen-err" class="formError"></div>
+										</div><!-- /input-group -->
+										<div class="col-md-1 no-gutters arrow-col">
+											<span class="glyphicon glyphicon-arrow-right"></span>
+										</div>
+										<div id="dest-col" class="col-md-2 no-gutters">
+											<div class="form-group">
+												<input type="text" class="form-control awesomplete" id="destino" placeholder="Ciudad o aeropuerto...">
+											</div>
+											<div id="destino-err" class="formError"></div>
+
+										</div>
+
+										<div id="date-col-1" class='col-md-2 no-gutters'>
+											<div class="form-group">
+												<div class='input-group date'>
+													<input type='text' class="form-control" id='datepicker1' placeholder='dd/mm/aaaa' />
+													<span class="input-group-addon" id="cal1">
+														<span class="glyphicon glyphicon-calendar"></span>
+													</span>
 												</div>
-												<div id="origen-err" class="formError"></div>
-											</div><!-- /input-group -->
+											</div>
+											<div id="datepicker1-err" class="formError"></div>
+										</div>
 
-											<div id="dest-col" class="col-md-2">
-												<div class="form-group">
-													<input type="text" class="form-control awesomplete" id="destino" placeholder="Ciudad o aeropuerto...">
+										<div id="date-col-2"  class='col-md-2 no-gutters'>
+											<div class="form-group">
+												<div class='input-group date'>
+													<input type='text' class="form-control" id='datepicker2' autocomplete="off" placeholder='dd/mm/aaaa' />
+													<span class="input-group-addon" id="cal1">
+														<span class="glyphicon glyphicon-calendar"></span>
+													</span>
 												</div>
-												<div id="destino-err" class="formError"></div>
-
 											</div>
+											<div id="datepicker2-err" class="formError"></div>
+										</div>
 
-											<div id="date-col-1" class='col-md-2'>
-												<div class="form-group">
-													<div class='input-group date'>
-														<input type='text' class="form-control" id='datepicker1' placeholder='dd/mm/aaaa' />
-													</div>
-												</div>
-												<div id="datepicker1-err" class="formError"></div>
-											</div>
+										<div class='col-md-2 passengers'>
+											<div data-ng-include="'./snippets/paxbutton.html'"  onload="updatePax()"></div>
+										</div>
 
-											<div id="date-col-2"  class='col-md-2'>
-												<div class="form-group">
-													<div class='input-group date'>
-														<input type='text' class="form-control" id='datepicker2' autocomplete="off" placeholder='dd/mm/aaaa' />
-													</div>
-												</div>
-												<div id="datepicker2-err" class="formError"></div>
-											</div>
-
-											<div class='col-md-2 passengers'>
-												<div data-ng-include="'./snippets/paxbutton.html'"  onload="updatePax()"></div>
-											</div>
-
-											<div class="col-md-2 modify-search-btn">
-												<button type="button" class="vda-btn" id="searchButton" aria-label="Buscar">
-													<span class="glyphicon glyphicon-search" aria-hidden="true"></span> BUSCAR
-												</button>
-											</div>
 									</div>
+								</div>
+							</div>
+							<div class="col-md-2">
+								<div class="modify-search-btn">
+									<button type="button" class="vda-btn" id="searchButton" aria-label="Buscar">
+										<span class="glyphicon glyphicon-search" aria-hidden="true"></span> BUSCAR		</button>
 								</div>
 							</div>
 						</div>
 					</div>
-
 
 
 					<!-- carousel vuelos baratos -->
@@ -298,26 +300,26 @@
 				</div>
 			</div>
 		</div>
-	<script src="js/moment.js" ></script>
-	<script src="jqueryui/jquery-ui.js"></script>
-	<script src="jqueryui/uidatepicker-es.js"></script>
-	<script src="extlib/wNumb.js"></script>
-	<script src="extlib/nouislider.min.js"></script>
-	<script src="datepicker.js"></script>
-	<script src="js/ng-infinite-scroll.js"></script>
-	<script src="search-page-script.js"></script>
-	<script src="flight-select.js"></script>
-	<script src="ngsearch3.js"></script>
-	<script src="js/vendor/bootstrap.min.js"></script>
-	<script src="CheloLabs/awesomplete.js"></script>
-	<script src="CheloLabs/acomplete.js"></script>
-	<script src="indexScript.js"></script>
-	<script src="js/moment.js"></script>
-	<script src="jqueryui/jquery-ui.js"></script>
-	<script src="jqueryui/uidatepicker-es.js"></script>
-	<script src="datepicker.js"></script>
-	<script src="psg-btn.js"></script>
-	<script src="search-setup.js"></script>
-	<script src="js/searchbox.js"></script>
+		<script src="js/moment.js" ></script>
+		<script src="jqueryui/jquery-ui.js"></script>
+		<script src="jqueryui/uidatepicker-es.js"></script>
+		<script src="extlib/wNumb.js"></script>
+		<script src="extlib/nouislider.min.js"></script>
+		<script src="datepicker.js"></script>
+		<script src="js/ng-infinite-scroll.js"></script>
+		<script src="search-page-script.js"></script>
+		<script src="flight-select.js"></script>
+		<script src="ngsearch3.js"></script>
+		<script src="bootstrap.min.js"></script>
+		<script src="CheloLabs/awesomplete.js"></script>
+		<script src="CheloLabs/acomplete.js"></script>
+		<script src="indexScript.js"></script>
+		<script src="js/moment.js"></script>
+		<script src="jqueryui/jquery-ui.js"></script>
+		<script src="jqueryui/uidatepicker-es.js"></script>
+		<script src="datepicker.js"></script>
+		<script src="psg-btn.js"></script>
+		<script src="search-setup.js"></script>
+		<script src="js/searchbox.js"></script>
 	</body>
 </html>
