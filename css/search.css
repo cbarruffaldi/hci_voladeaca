@@ -8,7 +8,7 @@
 	margin-top: 5%;
 	background-color: #FFFFFF;
 	border-radius: 3px;
-	box-shadow: 0 0 10px #a5a5a5;
+	box-shadow: 0 0 8px #b3b3b3;
 }
 
 .filter-area h2 {
@@ -31,7 +31,7 @@
 }
 
 .filter-section-name {
-	font-size: 1em;
+	font-size: 1.1em;
 	font-weight: 500;
 	letter-spacing: 1px;
 	color: #204dcc;
@@ -50,7 +50,16 @@
 .price-filter button {
 	font-weight: 500;
 	color: #204DCC;
+	border: 1px solid #204DCC;
+	padding: 2px 10px;
+	border-radius: 15px;
+	transition: all 0.4s;
 }
+
+.price-filter button:hover {
+	background-color: rgba(32, 77, 204, 0.1);
+}
+
 
 label {
 	margin-top: 2%;
@@ -112,7 +121,7 @@ label {
 	padding: 3%;
 	border: 1px solid #7b7b7b;
 	border-radius: 3px;
-	box-shadow: 0 0 5px #e3e3e3;
+	box-shadow: 0 0 8px #b3b3b3;
 }
 
 .carousel-flight:hover {
@@ -137,15 +146,20 @@ label {
 .flight-box {
 	margin-top: 3%;
 	border-radius: 3px;
-	box-shadow: 0 0 12px #a3a3a3;
+	box-shadow: 0 0 8px #b3b3b3;
 	background: #FFFFFF;
 	overflow: auto;
+	transition: all 0.4s;
+}
+
+.flight-box:hover, .one-way-flight-box:hover {
+	box-shadow: 0 0 8px #204DCC;
 }
 
 .oneway-flight-box {
 	margin-top: 3%;
 	border-radius: 3px;
-	box-shadow: 0 0 12px #a3a3a3;
+	box-shadow: 0 0 8px #b3b3b3;
 	background: #FFFFFF;
 	overflow: auto;
 	height: 9em;
@@ -198,7 +212,7 @@ label {
 	border-radius: 3px;
 	padding: 1%;
 	margin: 1%;
-	box-shadow: 0 0 8px #7b7b7b;
+	box-shadow: 0 0 8px #b3b3b3;
 }
 
 .selected-box .air-img img {
@@ -248,7 +262,7 @@ label {
 }
 
 .airports-col img {
-	max-width: 55%;
+	max-width: 50%;
 	margin-top: 0;
 }
 
@@ -299,5 +313,5 @@ label {
 
 .buy-btn .vda-btn:hover {
 	transition: all 0.4s;
-	box-shadow: 0 0 10px #e3e3e3;
+	box-shadow: 0 0 8px #b3b3b3;
 }

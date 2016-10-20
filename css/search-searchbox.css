@@ -7,7 +7,7 @@
 	margin-top: 20px;
 	background-color: #FFFFFF;
 	border-radius: 3px;
-	box-shadow: 0 0 10px #a5a5a5;
+	box-shadow: 0 0 8px #b3b3b3;
 }
 
 .arrow-col {
@@ -94,3 +94,10 @@
 	padding-right: 0;
 }
 
+.date .glyphicon {
+	padding: 0;
+}
+
+.date .input-group-addon {
+	padding: 5px;
+}
