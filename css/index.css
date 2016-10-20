@@ -9,8 +9,7 @@
 .titulo{
 	font-size: 2em;
 	padding: 0.1em 0 0.1em 0.5em;
-	border-top-right-radius: 5px;
-	border-top-left-radius: 3px;
+	margin-bottom: 5PX;
 }
 
 .subtitulo h4{
@@ -18,8 +17,11 @@
 }
 
 .search_t {
-	background: #DC0055;
-	color: #FFFFFF;
+	font-size: 2.5em;
+	font-weight: 500;
+	text-align: center;
+/*	background: #DC0055;*/
+	color: #DC0055;
 }
 
 .explora-area .titulo {
@@ -30,7 +32,7 @@
 
 .searchcontent{
 	margin-top: 11%;
-	box-shadow: 1px 0px 15px #333;
+/*	box-shadow: 1px 0px 15px #333;*/
 	margin-bottom: 11%;
 }
 

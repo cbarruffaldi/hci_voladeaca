@@ -541,11 +541,6 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 				return "";
 		}
 
-	
-
-	//Ejecucion
-
-
 	if(!localStorage.airlineLogos){
 		fillAirlines().then(fetch);
 	}else{
