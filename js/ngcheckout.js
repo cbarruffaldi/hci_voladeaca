@@ -29,6 +29,8 @@ app.controller('CheckoutController', function($scope) {
 
 	$scope.passengerList = buildList($bought.passengers);
 
+    $scope.passPlural = $scope.passengerList.length > 1 ? 's' : '';
+
 	$scope.$bought = $bought;
 
 	console.log($bought.container.flights[0].flight.id);
@@ -110,8 +112,7 @@ app.controller('CheckoutController', function($scope) {
 	function getPrice(flight){
 		return flight.price;
 	}
-
-
+	
 
 	/* Parte de confirmación */
 

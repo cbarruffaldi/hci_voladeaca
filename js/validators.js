@@ -896,7 +896,7 @@ function ContactValidator() {
     	for (var prop in this.backupPhones) {
     		var form = $('#' + prop)
     		this.phones[prop] = this.backupPhones[prop];
-    		form.val(this.data[prop]);
+    		form.val(this.phones[prop]);
     		removeErrorState(form);
     		form.siblings('.error-msg').hide();
     	}

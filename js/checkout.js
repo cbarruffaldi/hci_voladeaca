@@ -247,12 +247,11 @@ function restorePhones(phonesId) {
     });
 }
 
-var SUM_PASSENGERS = '.summary-passengers';
-var SUM_PAYMENT = '.summary-payment';
-var SUM_BILLING = '.summary-billing';
+var SUM_PASSENGERS = '.summary-passengers, .conf-passengers';
+var SUM_PAYMENT = '.summary-payment, .conf-payment';
+var SUM_BILLING = '.summary-billing, .conf-billing';
 
 function getModifyStage(modify) {
-    /* TODO: para varios pasajeros */
     if (modify.parents(SUM_PASSENGERS).length) {
         var passIndex = modify.parent().index();
         return [0, passIndex];
@@ -281,7 +280,7 @@ $(document).on('show.bs.modal', '#modify-modal', function(event) {
     modal.find('.modal-body').append(formGroup);
 
     if (summaryStage == 0) {
-        modalHeader.text('Modificar Información de Pasajero');
+        modalHeader.text('Modificar Información del Pasajero');
     }
     else if (summaryStage == 1) {
         if (modifyStage[1])
@@ -329,8 +328,10 @@ $(document).ready(function() {
         var modalStage = getCurrentStage();
         var validator = validators[modalStage];
 
-        if (validator.validateStage())
+        if (validator.validateStage()) {
             saveModal(validator);
+            fillDatas();
+        }
     });
 
     $('.cancel-btn').click(function() {

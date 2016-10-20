@@ -66,7 +66,7 @@
 
 			<ul class="nav nav-tabs ">
 				<li class="active">
-					<a href="#1">1. Pasajeros</a>
+					<a href="#1">1. Pasajero<span data-ng-bind="passPlural"></span></a>
 				</li>
 				<li class="disabled disabled-tab"><a href="#2">2. Pago</a>
 				</li>
@@ -176,7 +176,7 @@
 					<div class="tab-pane active" id="1">
 						<div class="row" id="form1">
 							<div class="col-md-12 title-style">
-								<h3>Información de Pasajeros</h3>
+								<h3>Información de Pasajero<span data-ng-bind="passPlural"></span></h3>
 							</div>
 						</div>
 						<div class="row" data-ng-repeat="passenger in passengerList">
@@ -436,7 +436,7 @@
 
 								<div class="col-md-3 sum-box summary form-style">
 									<h3>Resumen</h3>
-									<h5>Pasajeros</h5>
+									<h5>Pasajero<span data-ng-bind="passPlural"></span></h5>
 									<div class="summary-passengers">
 									</div>
 								</div>
@@ -496,7 +496,7 @@
 								</div>
 									<div class="col-md-3 sum-box summary form-style">
 										<h3>Resumen</h3>
-										<h5>Pasajeros</h5>
+										<h5>Pasajero<span data-ng-bind="passPlural"></span></h5>
 										<div class="summary-passengers">
 										</div>
 										<h5>Pago</h5>
@@ -527,51 +527,41 @@
 
 									<div class="panel panel-default">
 										<div class="panel-heading">
-											<h4>Información de Pasajeros</h4>
+											<h4>Información de Pasajero<span data-ng-bind="passPlural"></span></h4>
 										</div>
 
 										<div class="panel-body">
 
 											<!-- row de un pasajero -->
-											<div class="row" data-ng-repeat="passenger in passengersData">
-												<div class="col-md-2">
-													<p><span class="glyphicon glyphicon-user"></span>{{passenger['type']}}</p>
-												</div>
-												<div class="col-md-10">
+                      <div class="panel-group">
+  											<div class="panel panel-default sub-panel conf-passengers" data-ng-repeat="passenger in passengersData">
+                          
+  												<div class="panel-body">
+  													<div class="row">
+  														<div class="col-md-4">
+  															<p><strong>Nombre: </strong>{{passenger['usr-name']}}</p>
+  														</div>
+  														<div class="col-md-4">
+  															<p><strong>Apellido: </strong>{{passenger['usr-lname']}}</p>
+  														</div>
+                              <div class="col-md-4">
+                                <p><strong>Fecha de nacimiento: </strong>{{passenger['birth-day']}}/{{passenger['birth-month']}}/{{passenger['birth-year']}}</p>
+                              </div>
+                            </div>
 
-													<div class="row">
-														<div class="col-md-6">
-															<p><strong>Nombre: </strong>{{passenger['usr-name']}}</p>
-														</div>
-														<div class="col-md-6">
-															<p><strong>Apellido: </strong>{{passenger['usr-lname']}}</p>
-														</div>
-													</div>
-													<div class="row">
-														<div class="col-md-6">
-															<p><strong>País: </strong>{{passenger['usr-country']}}</p>
-														</div>
-														<div class="col-md-6">
-															<p><strong>Documento: </strong>{{passenger['usr-doc']}}</p>
-														</div>
-													</div>
-													<div class="row">
-														<div class="col-md-6">
-															<p><strong>Número de Documento: </strong>{{passenger['usr-docnum']}}</p>
-														</div>
-														<div class="col-md-6">
-															<p><strong>Fecha de nacimiento: </strong>{{passenger['birth-day']}}/{{passenger['birth-month']}}/{{passenger['birth-year']}}</p>
-														</div>
-													</div>
-													<div class="row">
-														<div class="col-md-12">
-															<p><strong>Sexo: </strong>{{passenger['usr-gen']}}</p>
-														</div>
-													</div>
-												</div>
-
-											</div>
-											<!-- fin row de pasajero -->
+                            <div class="row">
+                              <div class="col-md-4">
+                                <p><strong>Documento: </strong>{{passenger['usr-doc']}}</p>
+                              </div>
+                              <div class="col-md-8">
+                                <p><strong>Número de Documento: </strong>{{passenger['usr-docnum']}}</p>
+                              </div>
+                            </div>
+                            <a href="#" class="col-md-offset-9 sum-modal confirmation-modify" data-toggle="modal" data-target="#modify-modal" data-stage="0">Modificar...</a>
+                          </div>
+  											</div>
+  											<!-- fin panel de pasajero -->
+                    </div>
 
 										</div>
 									</div>
@@ -584,7 +574,7 @@
 										<div class="panel-body">
 											<div class="panel-group">
 
-												<div class="panel panel-default">
+												<div class="panel panel-default sub-panel conf-payment">
 													<div class="panel-heading">
 														<h5>Detalles de Tarjeta</h5>
 													</div>
@@ -609,10 +599,11 @@
 																<p><strong>Cuotas: </strong>{{paymentData['installments']}}</p>
 															</div>
 														</div>
+                            <a href="#" class="col-md-offset-9 sum-modal confirmation-modify" data-toggle="modal" data-target="#modify-modal">Modificar...</a>
 													</div>
 												</div>
 
-												<div class="panel panel-default">
+												<div class="panel panel-default sub-panel conf-billing">
 													<div class="panel-heading">
 														<h5>Datos de Facturación</h5>
 													</div>
@@ -645,6 +636,7 @@
 																<p><strong>Departamento: </strong>{{paymentData['department']}}</p>
 															</div>
 														</div>
+                            <a href="#" class="col-md-offset-9 sum-modal confirmation-modify" data-toggle="modal" data-target="#modify-modal">Modificar...</a>
 													</div>
 												</div>
 											</div>
@@ -671,6 +663,7 @@
 													<p><strong>Número: </strong>{{phone['number']}}</p>
 												</div>
 											</div>
+                      <a href="#" class="col-md-offset-9 sum-modal confirmation-modify" data-toggle="modal" data-target="#modify-modal">Modificar...</a>
 										</div>
 
 									</div>
