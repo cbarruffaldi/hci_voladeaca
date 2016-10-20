@@ -11,6 +11,9 @@ var MAX_PHONE = 25;
 var MAX_EMAIL = 128;
 var MAX_DEPT = 2;
 
+var ADULT_YEAR = 11;
+var INFANT_YEAR = 2;
+
 var BIRTH_DAY = 'birth-day';
 var BIRTH_MONTH = 'birth-month';
 var BIRTH_YEAR = 'birth-year';
@@ -34,10 +37,12 @@ var ERROR_MSG_SHORT = 'Demasiado corto';
 var ERROR_MSG_LONG = 'Demasiado largo';
 var ERROR_MSG_ALPHANUM = 'Solo se permiten dígitos y letras';
 
-
-
 String.prototype.toUpperFirstLetter = function() {
     return this.charAt(0).toUpperCase() + this.slice(1).toLowerCase();
+}
+
+function mandatoryFieldString(string) {
+	return 'Ingrese ' + string;
 }
 
 /* Retornan objetos que representan una validación.
@@ -79,7 +84,7 @@ function validatePhone(phone) {
 	var n = phone.length;
 
 	if (n == 0)
-		return invalidValidation(CAMPO_OBLIGATORIO);
+		return invalidValidation(mandatoryFieldString('número de teléfono'));
 	if (n > MAX_PHONE)
 		return invalidValidation(ERROR_MSG_LONG);
 
@@ -91,7 +96,7 @@ function validateEmail(email) {
 	var n = email.length;
 
 	if (n == 0)
-		return invalidValidation(CAMPO_OBLIGATORIO);
+		return invalidValidation(mandatoryFieldString("el e-mail de contacto"));
 	if (!regex.test(email))
 		return invalidValidation('E-mail inválido');
 	if (n > MAX_EMAIL)
@@ -104,7 +109,7 @@ function validateStreet(street) {
 	var n = street.length;
 
 	if (n == 0)
-		return invalidValidation(CAMPO_OBLIGATORIO);
+		return invalidValidation(mandatoryFieldString("nombre de la calle"));
 	if (n > MAX_NAME)
 		return invalidValidation(ERROR_MSG_LONG);
 
@@ -115,7 +120,7 @@ function validateAddrNum(addrNum) {
 	var n = addrNum.length;
 
 	if (n == 0)
-		return invalidValidation(CAMPO_OBLIGATORIO);
+		return invalidValidation(mandatoryFieldString("número de la calle"));
 	if (!isAlphaNum(addrNum))
 		return invalidValidation(ERROR_MSG_ALPHANUM);
 	if (n > MAX_ADDR_NUM)
@@ -150,7 +155,7 @@ function validateDocNum(num) {
 	var n = num.length;
 
     if (n == 0)
-        return invalidValidation(CAMPO_OBLIGATORIO);
+        return invalidValidation(mandatoryFieldString("número de documento"));
     if (!isNumber(num))
         return invalidValidation(ERROR_MSG_NUMBER);
     if (n > MAX_DOC_NUM)
@@ -159,14 +164,14 @@ function validateDocNum(num) {
     return validValidation(num);
 }
 
-function validateName(string) {
+function validateName(string, mandatoryString) {
     var n = string.length;
 
     if (n > MAX_NAME)
         return invalidValidation(ERROR_MSG_LONG);
 
     if (n == 0)  /* Ingresó únicamente espacios o nada */
-        return invalidValidation(CAMPO_OBLIGATORIO);
+        return invalidValidation(mandatoryFieldString(mandatoryString));
 
     if (!isAlphaSpecial(string))
         return invalidValidation("Solo se permiten letras y espacios");
@@ -174,9 +179,9 @@ function validateName(string) {
     return validValidation(string);
 }
 
-function validateDay(d) {
+function validateDay(d, mandatoryString) {
 	if (d.length == 0)
-		return invalidValidation('Día obligatorio');
+		return invalidValidation(mandatoryFieldString(mandatoryString));
 	if (!isNumber(d) || d < 1 || d > 31)
 		return invalidValidation('Día inválido');
 	if (d.length == 1)
@@ -184,9 +189,9 @@ function validateDay(d) {
 	return validValidation(d);
 }
 
-function validateMonth(m) {
+function validateMonth(m, mandatoryString) {
 	if (m.length == 0)
-		return invalidValidation('Mes obligatorio');
+		return invalidValidation(mandatoryFieldString(mandatoryString));
 	if (!isNumber(m) || m < 1 || m > 12)
 		return invalidValidation('Mes inválido');
 	if (m.length == 1)
@@ -194,9 +199,9 @@ function validateMonth(m) {
 	return validValidation(m);
 }
 
-function validateYear(y) {
+function validateYear(y, mandatoryString) {
 	if (y.length == 0)
-		return invalidValidation('Año obligatorio');
+		return invalidValidation(mandatoryFieldString(mandatoryString));
 	if (!isNumber(y) || y < 1880)
 		return invalidValidation('Año inválido');
 	return validValidation(y);
@@ -238,7 +243,7 @@ function validateZipCode(zipCode) {
 	var n = zipCode.length;
 
 	if (n == 0)
-		return invalidValidation(CAMPO_OBLIGATORIO);
+		return invalidValidation(mandatoryFieldString("código postal"));
 	if (!isAlphaNum(zipCode))
 		return invalidValidation(ERROR_MSG_ALPHANUM);
 	if (n > MAX_ZIP_CODE)
@@ -253,7 +258,7 @@ function validateCardNumber(num) {
 	if (!isNumber(num))
 		return invalidValidation(ERROR_MSG_NUMBER);
 	if (n == 0)
-		return invalidValidation(CAMPO_OBLIGATORIO);
+		return invalidValidation(mandatoryFieldString("número de la tarjeta"));
 	if (n < MIN_CREDIT_NUM)
 		return invalidValidation(ERROR_MSG_SHORT);
 	if (n > MAX_CREDIT_NUM)
@@ -263,14 +268,14 @@ function validateCardNumber(num) {
 }
 
 function validateExpMonth(num) {
-	var validation = validateMonth(num);
+	var validation = validateMonth(num, "mes de vencimiento de la tarjeta");
 	return manageBirthErrors(validation, EXP_MONTH, ERROR_EXP_MONTH);
 }
 
 function validateExpYear(num) {
 	if (num.length == 2)
 		num = '20' + num;
-	var validation = validateYear(num);
+	var validation = validateYear(num, "año de vencimiento de la tarjeta");
 	return manageBirthErrors(validation, EXP_YEAR, ERROR_EXP_YEAR);
 }
 
@@ -280,7 +285,7 @@ function validateSecCode(num) {
 	if (!isNumber(num))
 		return invalidValidation(ERROR_MSG_NUMBER);
 	if (n == 0)
-		return invalidValidation(CAMPO_OBLIGATORIO);
+		return invalidValidation(mandatoryFieldString("código de seguridad de la tarjeta"));
 	if (n < MIN_SEC_CODE)
 		return invalidValidation(ERROR_MSG_SHORT);
 	if (n > MAX_SEC_CODE)
@@ -289,9 +294,13 @@ function validateSecCode(num) {
 	return validValidation(num);
 }
 
-/* TODO: Preguntar. En las tarjetas de crédito aparece más que primer nombre y apellido */
 function validateCardholder(cardholder) {
-	return validateName(cardholder);
+	var validation = validateName(cardholder, "nombre del titular de la tarjeta");
+
+	if (validation.valid && cardholder.split(' ').length < 2)
+		validation = invalidValidation("Incluya nombre y apellido del titutar de la tarjeta");
+
+	return validation;
 }
 
 function validateCreditCardAPI(number, expDate, secCod, callback, id, validation) {
@@ -312,8 +321,21 @@ function validateDate(day, month, year) {
     return validValidation();
 }
 
-var ADULT_YEAR = 11;
-var INFANT_YEAR = 2;
+function validateBirthDay(d, passengerId) {
+	var validation = validateDay(d, "día de nacimiento");
+
+	return manageBirthErrors(validation, BIRTH_DAY + '-' + passengerId, ERROR_BIRTH_DAY + '-' + passengerId);
+}
+function validateBirthMonth(m, passengerId) {
+	var validation = validateMonth(m, "mes de nacimiento");
+
+	return manageBirthErrors(validation, BIRTH_MONTH + '-' + passengerId, ERROR_BIRTH_MONTH + '-' + passengerId);
+}
+function validateBirthYear(y, passengerId) {
+	var validation = validateYear(y, "año de nacimiento");
+
+	return manageBirthErrors(validation, BIRTH_YEAR + '-' + passengerId, ERROR_BIRTH_YEAR + '-' + passengerId);
+}
 
 function validateAdultDate(day, month, year, travelDate) {
 	var birthDate = new Date(year, month - 1, day);
@@ -346,6 +368,45 @@ function validateChildDate(day, month, year, travelDate) {
 	return validValidation();
 }
 
+function validateCountry(name) {
+	var validation = invalidValidation('País inválido');
+
+	if (!name.length)
+		return invalidValidation(mandatoryFieldString("país"));
+
+	countries.forEach(function (country) {
+		if (country['name'].toUpperCase() == name.toUpperCase())
+			validation = validValidation(name);
+	});
+
+	return validation;
+}
+
+
+function validateCity(name) {
+	var validation = invalidValidation('Ciudad inválida');
+
+	if(!name.length)
+		return invalidValidation(mandatoryFieldString("ciudad"));
+
+	if (currentCities) {
+		currentCities.forEach(function(city) {
+			if (city['name'].toUpperCase() == name.toUpperCase())
+				validation = validValidation(name);
+		});
+	}
+	
+	return validation;
+}
+
+function validateFirstName(value) {
+	return validateName(value, "nombre del pasajero");
+}
+
+function validateLastName(value) {
+	return validateName(value, "apellido del pasajero");
+}
+
 /* VALIDADORES
 ** Métodos públicos:
 **
@@ -353,7 +414,7 @@ function validateChildDate(day, month, year, travelDate) {
 ** 		Valida el valor del campo con ese id y value.
 ** validateStage()
 **		Valida la etapa entera. Si hubo un campo que ni se tocó
-**		muestra error CAMPO_OBLIGATORIO.
+**		muestra error de campo obligatorio dependiendo del campo.
 ** getData()
 **      Devuelve los datos.
 **
@@ -428,37 +489,6 @@ function PassengersValidator(ad, ch, inf, travelDate) {
 	}
 }
 
-function validateCountry(name) {
-	var validation = invalidValidation('País inválido');
-
-	if (!name.length)
-		return invalidValidation(CAMPO_OBLIGATORIO);
-
-	countries.forEach(function (country) {
-		if (country['name'].toUpperCase() == name.toUpperCase())
-			validation = validValidation(name);
-	});
-
-	return validation;
-}
-
-
-function validateCity(name) {
-	var validation = invalidValidation('Ciudad inválida');
-
-	if(!name.length)
-		return invalidValidation(CAMPO_OBLIGATORIO);
-
-	if (currentCities) {
-		currentCities.forEach(function(city) {
-			if (city['name'].toUpperCase() == name.toUpperCase())
-				validation = validValidation(name);
-		});
-	}
-	
-	return validation;
-}
-
 function PassengerValidator(type, validateFunction, trDate, passId) {
 
 	/* Mapa id-->función. Las que tienen función null es porque no son input, sino de selección
@@ -471,30 +501,12 @@ function PassengerValidator(type, validateFunction, trDate, passId) {
     this.validateBirthCategory = validateFunction;
     this.passengerId = passId;
 
-	this.validateBirthDay = function(d, passengerId) {
-		var validation = validateDay(d);
-
-		return manageBirthErrors(validation, BIRTH_DAY + '-' + passengerId, ERROR_BIRTH_DAY + '-' + passengerId);
-	}
-
-	this.validateBirthMonth = function(m, passengerId) {
-		var validation = validateMonth(m);
-
-		return manageBirthErrors(validation, BIRTH_MONTH + '-' + passengerId, ERROR_BIRTH_MONTH + '-' + passengerId);
-	}
-
-	this.validateBirthYear = function(y, passengerId) {
-		var validation = validateYear(y);
-
-		return manageBirthErrors(validation, BIRTH_YEAR + '-' + passengerId, ERROR_BIRTH_YEAR + '-' + passengerId);
-	}
-
-	this.inputValidations = {	'usr-name': validateName,
-                                'usr-lname': validateName,
+	this.inputValidations = {	'usr-name': validateFirstName,
+                                'usr-lname': validateLastName,
                                 'usr-docnum': validateDocNum,
-                                'birth-day': this.validateBirthDay,
-                                'birth-month': this.validateBirthMonth,
-                                'birth-year': this.validateBirthYear,
+                                'birth-day': validateBirthDay,
+                                'birth-month': validateBirthMonth,
+                                'birth-year': validateBirthYear,
                                 'usr-country': validateCountry,
                                 'usr-doc': null,
                                 'usr-gen': null };
@@ -740,6 +752,13 @@ function setCreditCardError() {
 	$('#' + SEC_CODE).addClass(ERROR_INPUT);
 }
 
+function getCityData(city) {
+	for (var i = 0; i < currentCities.length; i++) {
+		if(currentCities[i]["name"].toUpperCase() == city.toUpperCase())
+			return currentCities[i];
+	}
+}
+
 function PaymentAddressValidator() {
 
 	this.isOptional = function(id) {
@@ -790,6 +809,8 @@ function PaymentAddressValidator() {
 
 		if (validation.valid) {
 			this.data[id] = validation.value;
+			if (id == 'city')
+				this.data['city-data'] = getCityData(validation.value);
 		}
 
 		return validation;
@@ -818,7 +839,7 @@ function PaymentValidator() {
 		return this.cardValidator.getData();
 	}
 
-	this.getAddressData = function() {
+	this.getBillingData = function() {
 		return this.addrValidator.getData();
 	}
 
@@ -919,15 +940,21 @@ function ContactValidator() {
 	}
 
 	this.invalidPhones = function() {
-		for(var prop in this.phones)
-			if (this.phones[prop] == null || this.phones[prop].length == 0)
-				return true;
-		return false;
+		var invalid = false;
+		for(var prop in this.phones) {
+			if (this.phones[prop] === null)
+				invalid = true;
+			else if (this.phones[prop] === undefined || this.phones[prop].length == 0) {
+				setErrorState($('#' + prop), validatePhone('').value);
+				invalid = true;
+			}
+		}
+		return invalid;
 	}
 
 	this.validateStage = function() {
-		var valid = validateStep(this.phones, this.phones) && !this.invalidPhones();
-		return validateStep({'email': this.email}, {'email': this.email}) && this.email && this.email.length && valid;
+		var valid = !this.invalidPhones();
+		return validateStep({'email': this.email}, {'email': validateEmail}) && valid;
 	}
 }
 
@@ -946,10 +973,11 @@ function validateStep(data, step, optionals, extraId) {
             if (data[prop] === undefined) { /* No hay mensaje de error, hay que colocarlo */
                 valid = false;
                 data[prop] = null;   /* Mensaje de error colocado --> reemplazamos undefined por null */
-                if (extraId === undefined)
-                	setErrorState($id, CAMPO_OBLIGATORIO); /* Esta función se encuentra en checkout.js*/
-                else
-                	setErrorState($('#' + prop + '-' + extraId), CAMPO_OBLIGATORIO);
+                var errorValidation = step[prop]('', extraId);
+                if (extraId === undefined && !errorValidation.ignore)
+                	setErrorState($id, errorValidation.value); /* Esta función se encuentra en checkout.js*/
+                else if (!errorValidation.ignore)
+                	setErrorState($('#' + prop + '-' + extraId), errorValidation.value);
             }
             else if (data[prop] === null) { /* Ya tiene el mensaje de error correspondiente */
                 valid = false;

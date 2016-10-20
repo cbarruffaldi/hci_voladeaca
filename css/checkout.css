@@ -86,6 +86,7 @@ input.tt-hint {
 label {
 	font-weight: bold;
 	padding-left: 1px;
+	cursor: text;
 }
 
 .direc-subtitle {
@@ -188,6 +189,7 @@ input.error-input {
 
 .sub-style h4 {
 	margin: 0;
+	margin-left: 16px;
 }
 
 .twitter-typeahead {
@@ -251,36 +253,31 @@ color:#fff;
 .add-rem-button{
 	background: transparent;
 	border: thin;
-
 }
+
 label {
 	margin: 5px;
 	text-align: left;
 }
 
-.glyphicon {
-	margin-right: 0.3em;
-}
-
 .glyphicon-question-sign{
 	font-size: medium;
-
 }
 
 .glyphicon.glyphicon-menu-right{
 	font-size: x-large;
-
-
 }
+
 .glyphicon.glyphicon-menu-left{
 	font-size: x-large;
-
 }
+
 .glyphicon.glyphicon-user{
+	margin-right: 0.3em;
+	cursor: default;
 	font-size: larger;
 	margin-top: 20px;
 }
-
 
 .glyphicon.glyphicon-plus-sign{
 	font-size: medium;

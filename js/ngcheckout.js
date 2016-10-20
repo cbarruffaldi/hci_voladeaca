@@ -29,6 +29,8 @@ app.controller('CheckoutController', function($scope) {
 
 	$scope.passengerList = buildList($bought.passengers);
 
+	console.log($bought.container.flights[0].flight.id);
+
 	/*Cuadro resumen de vuelo */
 	if($bought.twoWays == true) {
 		$scope.returnFlightDetails = getFlightDetails($bought.container.flights[1].flight);
