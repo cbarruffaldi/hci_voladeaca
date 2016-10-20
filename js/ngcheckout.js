@@ -29,6 +29,8 @@ app.controller('CheckoutController', function($scope) {
 
 	$scope.passengerList = buildList($bought.passengers);
 
+	$scope.$bought = $bought;
+
 	console.log($bought.container.flights[0].flight.id);
 
 	/*Cuadro resumen de vuelo */

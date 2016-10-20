@@ -5,3 +5,10 @@ Carousel vuelos baratos
 Badge para vuelo con promoción
 
 Inhabilitar campo de ciudad si no hay pais seleccionado
+Cruz para cerrar cartel de promociones más vistoso
+Barra de navegación principal tiene que notarse más cual está seleccionado
+Cambiar colores en subtitulos Ida, Vuelta y el de los aeropuertos para que no se vea clickeable
+Boton reestablecer de precio tiene que sombrearse o algo en un hover; idem con los iconos de horarios de despegue
+Quitar país de pasajeros
+Mover botón de agregar más teléfonos debajo del último teléfono
+No se sombrea el cuadrado de promociones si hovereas sobre el titulo
