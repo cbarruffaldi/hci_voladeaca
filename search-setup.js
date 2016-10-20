@@ -13,6 +13,7 @@
 		var infants = getURLParameter("infants");
 		var vdate = getURLParameter("vdate");
 
+		if(orig && dest && idate && adults && children && infants){
 		idate = idate.split('-').reverse().join('/');
 
 		$("#origen").val($acUtils.name_map[orig]);
@@ -28,10 +29,10 @@
 			$(".idavuelta .ida").addClass("selected-iv");
 			global.setOneWay();
 		}
-
-		global.passengers.adults = parseInt(adults);
-		global.passengers.children = parseInt(children);
-		global.passengers.infants = parseInt(infants);
+	}
+		global.passengers.adults = parseInt(adults) || 1;
+		global.passengers.children = parseInt(children) || 0;
+		global.passengers.infants = parseInt(infants) || 0;
 
 	};
 
