@@ -12,3 +12,4 @@ Boton reestablecer de precio tiene que sombrearse o algo en un hover; idem con l
 Quitar país de pasajeros
 Mover botón de agregar más teléfonos debajo del último teléfono
 No se sombrea el cuadrado de promociones si hovereas sobre el titulo
+Que haya alggún feedback visual cuando se hace hover en los filtros de la aerolinea sobre toda la fila, no solo el nombre o checkbox
