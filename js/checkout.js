@@ -188,7 +188,7 @@ function addPhone(id){
         '</div> ' +
         '<div class="col-md-8 form-field phone-input"> ' +
         '<label for="phone-' + id + '">Número:</label> ' +
-        '<input autocomplete="off" type="text" class="form-control" id="phone-' + id + '"> ' +
+        '<input maxlength="25" autocomplete="off" type="text" class="form-control" id="phone-' + id + '"> ' +
         '<p class="error-msg"></p> ' +
         '</div> ' +
         '<div class="col-md-1 tocenter-label">' +
@@ -355,16 +355,12 @@ function addName(name, obj) {
     obj.append('<h5 class="sum-passname">' + name + '</h5>');
 }
 
-function addPassData(country, doctype, docnum, gen, birth, obj){
-    var x1 = '<div class="sum-field col-md-6">' + country + '</div>';
+function addPassData(doctype, docnum, birth, obj){
     var x2 = '<div class="sum-field col-md-6">' + doctype + ':'+ docnum +'</div>';
-    var x3 = '<div class="sum-field col-md-6">' + gen + '</div>';
     var x4 = '<div class="sum-field col-md-6">' + birth +'</div>';
     var x5 = '<a href="#" class="col-md-offset-9 sum-modal" data-toggle="modal" data-target="#modify-modal">Modificar...</a>';
 
-    obj.append(x1);
     obj.append(x2);
-    obj.append(x3);
     obj.append(x4);
     obj.append(x5);
 }
@@ -374,7 +370,7 @@ function fillPassengerSum(passengersData) {
     passengersData.forEach(function(data) {
         var passengerSum = $('<div class="summary-passenger"></div>');
         addName(data["usr-name"] + ' ' + data["usr-lname"], passengerSum);
-        addPassData(data["usr-country"], data["usr-doc"], data["usr-docnum"], data["usr-gen"], data["birth-day"] + '/' + data["birth-month"] + '/' + data["birth-year"], passengerSum);
+        addPassData(data["usr-doc"], data["usr-docnum"], data["birth-day"] + '/' + data["birth-month"] + '/' + data["birth-year"], passengerSum);
         $(".summary-passengers").append(passengerSum);
     });
 }
@@ -424,7 +420,36 @@ var currentCities;
 
 /*Eleccion de Paises */
 
+function removeDisabledInput(id) {
+    var input = $('#' + id);
+    input.removeAttr('disabled');
+    input.removeClass('disabled');
+}
+
+function addDisabledInput(id) {
+    var input = $('#' + id);
+    input.attr('disabled', 'disabled');
+    input.addClass('disabled');
+}
+
+$(document).on('click', '.tt-dataset', function() {
+    removeDisabledInput('city');
+});
+
 $(document).ready(function () {
+
+    var prevCountry;
+
+    $('#country').keyup(function() {
+        var validation = paymentValidator.validate('country', $('#country').val());
+        console.log('asd');
+        if(validation.valid) {
+            removeDisabledInput('city');
+        }
+        else {
+            addDisabledInput('city');
+        }          
+    });
 
     var cityTypeahead;
 
@@ -450,15 +475,20 @@ $(document).ready(function () {
             source: stocks.ttAdapter()
         })
             .on('blur', function() {
+                var countryName = $('#country').val();
                 if(cityTypeahead) {
                     cityTypeahead.typeahead('destroy');
                     currentCities = undefined;
                 }
-                console.log('se ejecuta change');
-                $("#city").val('');
-                var countryId = findCountryId($('#country').val());
-                if (countryId)
-                    currentCities = createCityJSON(cities, countryId);                
+
+                if (prevCountry && prevCountry.toLowerCase() != countryName.toLowerCase())
+                    $("#city").val('');
+
+                var countryId = findCountryId(countryName);
+                if (countryId) {
+                    prevCountry = countryName;
+                    currentCities = createCityJSON(cities, countryId);
+                }           
             });
 
 

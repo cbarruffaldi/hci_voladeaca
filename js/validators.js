@@ -507,9 +507,8 @@ function PassengerValidator(type, validateFunction, trDate, passId) {
                                 'birth-day': validateBirthDay,
                                 'birth-month': validateBirthMonth,
                                 'birth-year': validateBirthYear,
-                                'usr-country': validateCountry,
                                 'usr-doc': null,
-                                'usr-gen': null };
+                            };
 
 
     this.getData = function() {
