@@ -1,6 +1,6 @@
 <div class="row">
 		<h4><a href="#" data-ng-click="deselectFlight()">&laquo; Volver </a></h4>
-<div class="col-md-6">
+<div class="col-md-7">
 <div infinite-scroll='loadMore("reviews")' infinite-scroll-distance='1'>
 	<div class="row review" data-ng-repeat="r in reviewResults | filter: filterReviews | limitTo: scrollLimit.reviews">
 		<div class="col-md-2"></div>
@@ -33,7 +33,7 @@
 	</div>
 </div>
 </div>
-<div class="col-md-5">
+<div class="col-md-4">
 <div class="row">
 <div class="col-md-12" id="review-form">
 <div class="leave-review_t">¡Dejá tu reseña para este vuelo!</div>
@@ -78,6 +78,7 @@
 		</div>
 	</div>
 	Recomendaria este vuelo a mis amigos: <span class="option-recommend selected" id="yes_rec" data-ng-click="yesRec(true)">Si</span> | <span class="option-recommend" id="no_rec" data-ng-click="yesRec(false)">No</span>
+
 			<div class="row sendreview">
 			<div class="col-md-12">
 			<button type="button" class="vda-btn" id="reviewButton" aria-label="Enviar" 	data-ng-click="send()"><span class="glyphicon glyphicon-send" aria-hidden="true"></span>Enviar reseña</button>
