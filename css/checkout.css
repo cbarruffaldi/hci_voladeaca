@@ -231,6 +231,20 @@ color:#fff;
 
 }
 
+.panel-body {
+	position: relative;
+}
+
+.confirmation-modify {
+	position: absolute;
+	bottom: 10px;
+	right: 15px;
+}
+
+.panel-group .panel + .panel {
+	margin-top: 15px;
+}
+
 .birth-day,.birth-month,.birth-year,#exp-month,#exp-year{
 	width: 70px !important;
 }
