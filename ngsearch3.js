@@ -1,5 +1,13 @@
 var app = angular.module("flightApp", ['ngAnimate', 'infinite-scroll']);
 
+app.directive('emitLastRepeaterElement', function() {
+	return function(scope) {
+		 if (scope.$last) setTimeout(function(){
+                scope.$emit('LastRepeaterElement');
+     }, 1);
+	};
+});
+
 app.controller("flightCtrl", function($scope, $http, $window) {
 		$scope.twoWays = false;
 		$scope.containers = [] 
@@ -540,6 +548,11 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 			else
 				return "";
 		}
+	
+	$scope.$on('LastRepeaterElement', function(){
+		console.log("Tooltips");
+    $('[data-toggle="tooltip"]').tooltip(); 
+	});
 
 	if(!localStorage.airlineLogos){
 		fillAirlines().then(fetch);
