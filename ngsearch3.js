@@ -56,6 +56,7 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 			if(!(orig && dest && date && (adults || children || infants))){
 				$scope.emptySearch = true;
 				$scope.paramError = true;
+				$(".filter-area").addClass("greyout");
 				$("#loadImg").hide();
 				console.log("Param error");
 				return;
@@ -143,7 +144,7 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 		//	if(activeAirlineFilter()){
 				airlinePass = $scope.airlineFilter[flight1.airline.id];
 				if(flight2){
-					airlinePass = airlinePass || $scope.airlineFilter[flight2.airline.id];
+					airlinePass = airlinePass && $scope.airlineFilter[flight2.airline.id];
 				}
 		//	}
 			pass = pass && airlinePass;
@@ -219,6 +220,7 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 			}
 			$scope.emptySearch = false;
 			$(".filter-area").removeClass("greyout");
+			$(".filter-area").removeClass("disabled");
 
 			var iFlights = stripFlights(response.data.flights);
 			setFilters(response.data.filters[0].values);
