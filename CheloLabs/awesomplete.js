@@ -78,7 +78,6 @@ var _ = function (input, o) {
 		"keydown": function(evt) {
 
 			var c = evt.keyCode;
-			console.log("shots fired: " + c)
 			if(c === 100){
 				evt.preventDefault();
 				me.close();
@@ -204,6 +203,7 @@ _.prototype = {
 
 		//Chelo Modification
 		if(validate && global.validateInput){
+			console.log("Teh")
 			validateInput(this.input)
 		}
 

@@ -115,14 +115,12 @@
                                     <div class= "land-time" data-ng-bind="idaFlightDetails.arrivalTime"></div>
                                 </div>
                                 <div class="col-md-2">
-                                    <div class="duration" data-ng-bind="idaFlightDetails.duration"></div>
-                                    <span class="glyphicon glyphicon-time duration"></span>
-
+                                    <span class="glyphicon glyphicon-time duration"></span><span class="duration" data-ng-bind="idaFlightDetails.duration"></span>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row" data-ng-if="$bought.twoWays">
                         <div class="col-md-12 box-row">
                             <div class="col-md-2">
                                 <div class="row">
@@ -152,8 +150,7 @@
                                     <div class= "land-time" data-ng-bind="returnFlightDetails.arrivalTime"></div>
                                 </div>
                                 <div class="col-md-2">
-                                    <div class="duration" data-ng-bind="returnFlightDetails.duration"></div>
-                                    <!--falta el relojito de duration , pero solo tiene que aparece si es two-way-->
+                                    <span class="glyphicon glyphicon-time duration"></span><span class="duration" data-ng-bind="returnFlightDetails.duration"></span>
                                 </div>
 
                             </div>

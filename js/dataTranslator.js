@@ -130,15 +130,22 @@ function translateBookingData(passengersData, cardData, billingData, contactData
 
 	console.log(JSON.stringify(bookingData));
 
-	if ($bought.twoWays) {
-		var otherBookingData = $.extend({"flight_id": $bought.container.flights[1].flight.id}, translatedData);
-		console.log(JSON.stringify(otherBookingData));
-	}
-
 	$.ajax({ 
         url: "http://hci.it.itba.edu.ar/v1/api/booking.groovy?method=bookflight2&booking=" + encodeURI(JSON.stringify(bookingData)) + "&callback=?",
         dataType: "jsonp"
     }).done(function(data) {
     	alert("booking = " + data["booking"]);
     });
+
+
+    if ($bought.twoWays) {
+		var otherBookingData = $.extend({"flight_id": $bought.container.flights[1].flight.id}, translatedData);
+		console.log(JSON.stringify(otherBookingData));
+		$.ajax({ 
+	        url: "http://hci.it.itba.edu.ar/v1/api/booking.groovy?method=bookflight2&booking=" + encodeURI(JSON.stringify(otherBookingData)) + "&callback=?",
+	        dataType: "jsonp"
+	    }).done(function(data) {
+	    	alert("booking = " + data["booking"]);
+	    });
+	}
 }

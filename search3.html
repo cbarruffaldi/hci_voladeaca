@@ -38,7 +38,7 @@
 		<div class="container-fluid">
 			<div class="row">
 				<div class ="col-md-3">
-					<div class="filter-area">
+					<div class="filter-area greyout">
 						<h2> Filtros </h2>
 						<div class="price-filter filter-box">
 							<div class="filter-name"> Precio</div>
@@ -195,64 +195,7 @@
 
 					<!-- carousel vuelos baratos -->
 					<div class="results-carousel">
-						<div class="row">
-							<div class="col-md-1">
-								<button type="button" id="left-car-btn" class="vda-btn"><span class="glyphicon glyphicon-chevron-left"></span></button>
-							</div>
-							<div class="col-md-2">
-								<div class="carousel-flight">
-									<div class="air-name">
-										Aerolínea 1
-									</div>
-									<div class="fl-price">
-										$20
-									</div>
-								</div>
-							</div>
-							<div class="col-md-2">
-								<div class="carousel-flight">
-									<div class="air-name">
-										Aerolínea 2
-									</div>
-									<div class="fl-price">
-										$50
-									</div>
-								</div>
-							</div>
-							<div class="col-md-2">
-								<div class="carousel-flight">
-									<div class="air-name">
-										Aerolínea 3
-									</div>
-									<div class="fl-price">
-										$80
-									</div>
-								</div>
-							</div>
-							<div class="col-md-2">
-								<div class="carousel-flight">
-									<div class="air-name">
-										Aerolínea 4
-									</div>
-									<div class="fl-price">
-										$14
-									</div>
-								</div>
-							</div>
-							<div class="col-md-2">
-								<div class="carousel-flight">
-									<div class="air-name">
-										Aerolínea 5
-									</div>
-									<div class="fl-price">
-										$10
-									</div>
-								</div>
-							</div>
-							<div class="col-md-1">
-								<button type="button" id="right-car-btn" class="vda-btn"><span class="glyphicon glyphicon-chevron-right"></span></button>
-							</div>
-						</div>
+						<div data-ng-if="!emptySearch" data-ng-include="'./snippets/airlinecarousel.html'"></div>
 					</div>
 					<!-- fin carousel -->
 
@@ -295,9 +238,15 @@
 							<div class="dot2"></div>
 						</div>
 						<!-- <img id="loadImg" style="padding-top: 250px; padding-left: 48%"src="./CheloLabs/ajax-loader.gif"></img> -->
-						<div
-								 id="resultShow" data-ng-include="'./snippets/searchresults.html'">
+						<div id="resultShow">
+						<div data-ng-if="!emptySearch"
+								 data-ng-include="'./snippets/searchresults.html'">
 						</div>
+						<div data-ng-if="emptySearch"
+								 data-ng-include="'./snippets/emptysearch.html'">
+						</div>
+					</div>
+
 					</div>
 				</div>
 			</div>

@@ -4,9 +4,10 @@ app.controller("reviewsCtrl", function($scope, $http, $sce, $window) {
 	$scope.scrollLimit = {details: 10, reviews: 5}
 	$scope.reviewResults = [];
 	$scope.flightResults = [];
-
 	$scope.flightSelected;
 	var selectedDetails = {};
+
+	$scope.yesRecommend = true;
 
 	$scope.getStars = function(score){
 		ret = "";
@@ -107,7 +108,9 @@ app.controller("reviewsCtrl", function($scope, $http, $sce, $window) {
 		}	
 	}
 
-
+	$scope.triggerForm = function(event){
+		console.log(event);
+	}
 	$scope.loadMore = function(which){
 			$scope.scrollLimit[which] += 5;
 		}
@@ -179,6 +182,9 @@ app.controller("reviewsCtrl", function($scope, $http, $sce, $window) {
 		return parseInt(slider.noUiSlider.get());
 	}
 
+	$window.validateInput = function(){
+		//$scope.search();
+	}
 	$scope.send = function(){
 		send = {};
 		rating = {};
@@ -190,7 +196,7 @@ app.controller("reviewsCtrl", function($scope, $http, $sce, $window) {
  		rating.mileage_program = getSliderValue('mileage-slider');
 
  		send.rating = rating;
- 		send.yes_recommend = true;
+ 		send.yes_recommend = $scope.yesRecommend;
  		send.comments = $("#rating-comments").val();
 
  		send.flight = {
@@ -203,12 +209,72 @@ app.controller("reviewsCtrl", function($scope, $http, $sce, $window) {
 
 		$.ajax({
 		  type: "POST",
-		  	url: 'http://hci.it.itba.edu.ar/v1/api/review.groovy?method=reviewairline',
-  			data: JSON.stringify(send)
+		  contentType: 'application/json',
+		  url: 'http://hci.it.itba.edu.ar/v1/api/review.groovy?method=reviewairline',
+  		  data: JSON.stringify(send)
 		}).then(function(response){
 			console.log(response);
 		});
 
 		};
 
+
+		$scope.yesRec = function(rec){
+			$scope.yesRecommend = rec;
+			if(rec){
+				$("#no_rec").removeClass('selected');
+				$("#yes_rec").addClass('selected');
+			}else{
+				$("#yes_rec").removeClass('selected');
+				$("#no_rec").addClass('selected');
+			}
+		}
+});
+
+
+app.directive('myEnter', function () {
+    return function (scope, element, attrs) {
+        element.bind("keydown keypress", function (event) {
+            if(event.which === 13) {
+                scope.$apply(function (){
+                	scope.search()
+                });
+
+                event.preventDefault();
+            }
+        });
+    };
+});
+
+
+
+function initSlider(id){
+	var handlesSlider = document.getElementById(id);
+	noUiSlider.create(handlesSlider, {
+		start: [5],
+		//snap: true,
+		step: 1,
+		//behaviour: 'tap',
+		tooltips: [wNumb({decimals:0})],
+		range: {
+			'min': 1,
+			'max': 10
+		},
+
+		pips: {
+		mode: 'positions',
+		stepped: true,
+		values: [0,100],
+		density: 9
+	}
+
+		//step: minPrice - maxPrice,
+	});
+}
+
+app.directive('vdaSlider', function () {
+    return function (scope, element, attrs) {
+    	console.log(attrs.id);
+    	initSlider(attrs.id);
+    };
 });
