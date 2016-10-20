@@ -183,14 +183,14 @@
 							<div class="col-md-12 form-style">
 								<div class="col-md-2 psg-type-col">
 									<div class="psg-type">
-										<span class="glyphicon glyphicon-user"></span>{{passenger.type}}</div>
+										<span class="glyphicon glyphicon-user"></span><span data-ng-bind="passenger.type"></span></div>
 								</div>
 								<form>
 									<div class="col-md-10">
 										<div class="form-group">
 											<!--Primer Fila-->
 
-											<div class="row">
+											<div class="row passenger-row">
 												<div class="col-md-6 form-field">
 													<label for="usr-name-{{$index}}">Nombre:</label>
 													<input autocomplete="off" type="text" class="form-control usr-name basicField" id="usr-name-{{$index}}" value="" maxlength="80">
@@ -208,14 +208,8 @@
 
 											<!--Segunda Fila-->
 											<div class="row">
+
 												<div class="col-md-2 form-field openField">
-
-													<label for="usr-country-{{$index}}">País:</label>
-													<input autocomplete="off" class="typeahead country-typeahead form-control" type="text" id="usr-country-{{$index}}">
-													<p class="error-msg"></p>
-												</div>
-
-												<div class="col-md-2 col-md-offset-1 form-field openField">
 													<label for="usr-doc-{{$index}}">Documento:</label>
 													<select class="form-control usr-doc" id="usr-doc-{{$index}}">
 														<option>DNI</option>
@@ -223,24 +217,13 @@
 													</select>
 												</div>
 
-												<div class="col-md-6 col-md-offset-1 form-field openField">
+												<div class="col-md-4 form-field openField">
 													<label for="usr-docnum-{{$index}}">Número de Documento:</label>
 													<input autocomplete="off" type="text" class="form-control usr-docnum" id="usr-docnum-{{$index}}" maxlength="8">
 													<p class="error-msg"></p>
 												</div>
-											</div>
 
-											<!--Tercera fila -->
-											<div class="row">
-												<div class="col-md-3 form-field openField">
-													<label for="usr-gen-{{$index}}">Sexo:</label>
-													<select class="form-control usr-gen" id="usr-gen-{{$index}}">
-														<option>Femenino</option>
-														<option>Masculino</option>
-													</select>
-												</div>
-
-												<div class="col-md-9 form-inline form-field openField" >
+												<div class="col-md-6 form-inline form-field openField" >
 													<div class="row">
 														<div class="col-md-12 single-label">
 															<label>Fecha de Nacimiento:</label>
@@ -261,6 +244,11 @@
 														</div>
 													</div>
 												</div>
+											</div>
+
+											<!--Tercera fila -->
+											<div class="row">
+
 											</div>
 										</div>
 									</div>
@@ -398,7 +386,7 @@
 
 												<div class="col-md-4 form-field">
 													<label for="city">Ciudad:</label>
-													<input autocomplete="off" class="typeahead city-typeahead form-control" type="text" id="city">
+													<input autocomplete="off" class="typeahead city-typeahead form-control disabled-input" type="text" id="city" disabled>
 													<p class="error-msg"></p>
 												</div>
 											</div>
@@ -494,7 +482,7 @@
 												</div>
 												<div class="col-md-8 form-field phone-input">
 													<label for="phone-0">Número:</label>
-													<input autocomplete="off" type="text" class="form-control" id="phone-0">
+													<input autocomplete="off" type="text" class="form-control" id="phone-0" maxlength="25">
 													<p class="error-msg"></p>
 												</div>
 												<div class="col-md-1 tocenter-label">

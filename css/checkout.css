@@ -227,6 +227,10 @@ color:#fff;
 	
 }
 
+.disabled-input {
+
+}
+
 .birth-day,.birth-month,.birth-year,#exp-month,#exp-year{
 	width: 70px !important;
 }
@@ -238,8 +242,8 @@ color:#fff;
 	display: none;
 }
 
-.usr-name, .usr-lname, #cuil{
-	width:300px
+.usr-name, .usr-lname {
+	width: 81%;
 }
 
 #birth-form{
@@ -270,6 +274,10 @@ label {
 
 .glyphicon.glyphicon-menu-left{
 	font-size: x-large;
+}
+
+.glyphicon.glyphicon-time {
+	cursor: default;
 }
 
 .glyphicon.glyphicon-user{
@@ -331,4 +339,8 @@ label {
 	padding: inherit;
 	padding-top: 0.5em;
 	padding-bottom: 0.5em;
+}
+
+.passenger-row {
+	margin-bottom: 10px;
 }
