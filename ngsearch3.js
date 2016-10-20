@@ -48,7 +48,6 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 			if(!(orig && dest && date && (adults || children || infants))){
 				$scope.emptySearch = true;
 				$scope.paramError = true;
-				$(".filter-area").addClass("greyout");
 				$("#loadImg").hide();
 				console.log("Param error");
 				return;
@@ -207,11 +206,12 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 
 			if(response.data.flights.length == 0 || (vresponse && vresponse.data.flight.length == 0)){
 				$scope.emptySearch = true;
-				$(".filter-area").addClass("greyout");
 
 				return;
 			}
 			$scope.emptySearch = false;
+			$(".filter-area").removeClass("greyout");
+
 			var iFlights = stripFlights(response.data.flights);
 			setFilters(response.data.filters[0].values);
 			if(vresponse){
