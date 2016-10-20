@@ -85,6 +85,12 @@ label {
 	max-height: 100%;
 	max-width: 100%;
 	border-top: 4px solid white;
+	transition: all 0.2s;
+}
+
+.depart-time-button img:hover {
+/*	border-color: #204DCC;*/
+	box-shadow: 0 0 3px #204DCC;
 }
 
 .selected-time {
@@ -261,6 +267,10 @@ label {
 	margin-top: 3px;
 }
 
+.airports-col .airport-id:hover {
+	cursor: default;
+}
+
 .airports-col img {
 	max-width: 50%;
 	margin-top: 0;
@@ -335,3 +345,17 @@ label {
     top: 0px;
     left: 0px;
 }
+
+/*
+.tooltip.top .tooltip-arrow {
+  bottom: 0;
+  left: 50%;
+  margin-left: -5px;
+  border-top-color: #fff !important;
+  border-width: 5px 5px 0;
+}
+.tooltip-inner {
+  color: #000;
+  background: #fff;
+  border: solid 1px #fff;
+}*/

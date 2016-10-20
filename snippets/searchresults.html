@@ -1,6 +1,6 @@
 <!-- <div data-ng-repeat="c in containers"> -->
-<div infinite-scroll='loadMore()' infinite-scroll-distance='1'>
-	<div class="row flight-box" data-ng-repeat="c in containers | filter: filterFn | orderBy: orderFn | limitTo: scrollLimit">
+<div infinite-scroll='loadMore()' infinite-scroll-distance='1' >
+	<div class="row flight-box" data-ng-repeat="c in containers | filter: filterFn | orderBy: orderFn | limitTo: scrollLimit" emit-last-repeater-element="">
 		<div class="col-md-10 flight-info">
 			<div data-ng-repeat="t in c.flights">
 				<div class="row airports-line-info">
@@ -9,9 +9,9 @@
 					</div>
 					<div class="col-md-10 orig-dest-badges">
 						{{t.flight.departure.cityshort}}
-						<span class="airport-badge">{{t.flight.departure.airport.id}}</span>
+<!--						<span class="airport-badge">{{t.flight.departure.airport.id}}</span>-->
 						<span class="glyphicon glyphicon-arrow-right"></span>
-						<span class="airport-badge" data-toggle="tooltip" title="Hooray!">{{t.flight.arrival.airport.id}}</span>
+<!--						<span class="airport-badge" data-toggle="tooltip" title="Hooray!">{{t.flight.arrival.airport.id}}</span>-->
 						{{t.flight.arrival.cityshort}}
 					</div>
 				</div>
@@ -34,7 +34,7 @@
 					</div>
 
 					<div class="col-md-1 no-gutters airports-col"> 
-						<span class="airport-id depart-air">
+						<span class="airport-id land-air" data-toggle="tooltip" title="{{t.flight.departure.airport.name}}" data-placement="bottom">
 							{{t.flight.departure.airport.id}}
 						</span>
 					</div>
@@ -42,20 +42,10 @@
 						<span class="arrow-icon"><img src="./img/icn/black-plane.svg"></span>
 					</div>
 					<div class="col-md-1 no-gutters airports-col">
-						<span class="airport-id land-air">
+						<span class="airport-id land-air" data-toggle="tooltip" title="{{t.flight.arrival.airport.name}}" data-placement="bottom">
 							{{t.flight.arrival.airport.id}}
 						</span>
 					</div>
-
-					<!--
-<div class="col-md-3 airports-col">
-<span class="airport-id depart-air">{{t.flight.departure.airport.id}}</span>
-<span class="arrow-icon"><img src="./img/icn/pp.svg"></span>
-<span class="airport-id land-air">
-{{t.flight.arrival.airport.id}}
-</span>
-</div>
--->
 					<div class="col-md-2 date-col">
 						<div class="land-date">
 							{{t.flight.arrivalMoment.fullDayName}}
