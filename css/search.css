@@ -346,6 +346,10 @@ label {
     left: 0px;
 }
 
+.hidden{
+	display: none;
+}
+
 /*
 .tooltip.top .tooltip-arrow {
   bottom: 0;
