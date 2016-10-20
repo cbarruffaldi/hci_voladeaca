@@ -161,7 +161,6 @@ app.controller("reviewsCtrl", function($scope, $http, $sce, $window) {
 		initAutocomplete();
 	}
 
-
 	function initAutocomplete(){
 			var airlineData = JSON.parse(localStorage.airlineData);
 			console.log(airlineData.list)
@@ -174,7 +173,42 @@ app.controller("reviewsCtrl", function($scope, $http, $sce, $window) {
 			$scope.airlineData = airlineData
 			console.log($scope.airlineData)			
 	}
+	
+	function getSliderValue(id){
+		var slider = document.getElementById(id);
+		return parseInt(slider.noUiSlider.get());
+	}
 
+	$scope.send = function(){
+		send = {};
+		rating = {};
+		rating.friendliness = getSliderValue('friendliness-slider');
+		rating.food = getSliderValue('food-slider');
+		rating.comfort = getSliderValue('comfort-slider');
+		rating.quality_price = getSliderValue('quality-slider');
+		rating.punctuality = getSliderValue('punctuality-slider');
+ 		rating.mileage_program = getSliderValue('mileage-slider');
 
+ 		send.rating = rating;
+ 		send.yes_recommend = true;
+ 		send.comments = $("#rating-comments").val();
+
+ 		send.flight = {
+ 			airline: {id: selectedDetails.airline},
+ 			number: selectedDetails.number
+ 		}
+
+ 		console.log(send);
+ 		console.log(JSON.stringify(send));
+
+		$.ajax({
+		  type: "POST",
+		  	url: 'http://hci.it.itba.edu.ar/v1/api/review.groovy?method=reviewairline',
+  			data: JSON.stringify(send)
+		}).then(function(response){
+			console.log(response);
+		});
+
+		};
 
 });
