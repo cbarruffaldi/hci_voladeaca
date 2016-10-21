@@ -120,7 +120,7 @@ label {
 	background-color: #0F9E5E;
 }
 
-p.error-msg {
+p.error-msg, #error-card {
 	color: #a0003a;
 	font-size: 0.9em;
 	margin: 0;
@@ -134,12 +134,13 @@ input.error-input {
 	border: 1px solid #FF0000;
 }
 
-#error-card {
-	margin-top: 1.8em;
-	margin-right: 0.5em;
-	color: #a0003a;
-	display: none;
-	font-size: 0.9em;
+.confirmation-panel {
+	padding: 0;
+	border: 1px solid #204DCC;
+}
+
+.panel-group {
+	margin-bottom: 0;
 }
 
 .form-tags {
@@ -241,17 +242,10 @@ color:#fff;
 	right: 15px;
 }
 
-.panel-group .panel + .panel {
-	margin-top: 15px;
-}
-
-.birth-day,.birth-month,.birth-year,#exp-month,#exp-year{
+.birth-day,.birth-month,.birth-year,#exp-month,#exp-year, #sec-code{
 	width: 70px !important;
 }
 
-#cardholder, #card-num{
-	width: 570px;
-}
 .hidden{
 	display: none;
 }

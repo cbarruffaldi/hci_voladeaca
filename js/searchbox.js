@@ -3,13 +3,35 @@ function initSearchbox(global){
 		console.log("Err");
 	}
 
+	window.console.log("CHELO");
+
+	var $acUtils = global.$acUtils; 
+	new Awesomplete(document.getElementById("origen"), {
+		list: $acUtils.airportList,
+		blist: ["Chelo", "Es", "Un", "Idolo", "Buenos Dias", "Buenos Aires", "Buena Vida"],
+		minChars: 3,
+		autoFirst: true}
+	);
+
+	new Awesomplete(document.getElementById("destino"), {
+		list: $acUtils.airportList,
+		minChars: 3,
+		autoFirst: true}
+	);
+
+
 	var $id_map = global.$acUtils.id_map;
 	var soloIda = false;
 
-	$("#datepicker1").datepicker({minDate: '+2D'});
-	$("#datepicker2").datepicker({minDate: '+2D'});
+	//$("#datepicker1").datepicker({minDate: '+2D'});
+//	$("#datepicker2").datepicker({minDate: '+2D'});
 
 	$("#datepicker1").keydown(function() {
+		$( function(){$("#datepicker1").datepicker("hide") } );
+		return true;
+	});
+
+	$("#datepicker2").keydown(function() {
 		$( function(){$("#datepicker1").datepicker("hide") } );
 		return true;
 	});

@@ -71,7 +71,7 @@ function translatePassengersData(passengersData) {
 }
 
 function translatePaymentData(cardData, billingData) {
-	var translatedPaymentData = {"installments": parseInt(cardData["installments"])};
+	var translatedPaymentData = {"installments": 1};
 
 	translatedPaymentData["credit_card"] = translateData(cardData);
 	translatedPaymentData["billing_address"] = translateBillingData(billingData);

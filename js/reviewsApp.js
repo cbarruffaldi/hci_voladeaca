@@ -46,7 +46,11 @@ app.controller("reviewsCtrl", function($scope, $http, $sce, $window) {
 		if(!$scope.airlineData){
 			return "";
 		}
-		return $scope.airlineData.name_map[selectedDetails.airline] + " #" + selectedDetails.number;
+		return $scope.flightName(selectedDetails.airline, selectedDetails.number);
+	}
+
+	$scope.flightName = function(id, number){
+		return $scope.airlineData.name_map[id] + " #" + number;
 	}
 
 	$scope.selectFlight = function (f){

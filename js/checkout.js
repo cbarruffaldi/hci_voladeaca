@@ -83,6 +83,9 @@ $(document).ready(function() {
                 fillPaymentSum(validator.getData());
                 fillBillingSum(validator.getData());
             }
+            else if (indexTab == 2) {
+                $(this).text('Finalizar Compra');
+            }
 
 
             var data = active;
@@ -172,11 +175,16 @@ $(document).ready(function() {
         if (stageIndex == 0) {
             parent.history.back();
             return false;
+        } else if(stageIndex == 3) {
+            $('.btnNext').text('Continuar\»');
         }
+
         cleanSummaryStage(stageIndex);
         $('.nav-tabs .active').addClass('disabled');
         $('.nav-tabs .active').addClass('disabled');
         $('.nav-tabs .active').prev('li').find('a').tab('show'); 
+
+
 
     });
 });
@@ -262,8 +270,14 @@ function restorePhones(phonesId) {
     var backupPhonesId = Object.keys(contactValidator.getBackupPhones());
     fieldCounter = backupPhonesId.length;
     var wrapper = $('.modal-body').children('.form-group');
+    var addButton = $('.add-Phone'); //Add button selector
 
     $('.extra-phone').remove();
+
+    if (backupPhonesId.length == 5)
+        addButton.hide();       
+    else
+        addButton.show();
 
     backupPhonesId.forEach(function(stringId) {
         if (stringId != 'phone-0')
@@ -453,12 +467,15 @@ function removeDisabledInput(id) {
     var input = $('#' + id);
     input.removeAttr('disabled');
     input.removeClass('disabled');
+    input.removeAttr('placeholder');
 }
 
 function addDisabledInput(id) {
     var input = $('#' + id);
     input.attr('disabled', 'disabled');
     input.addClass('disabled');
+    input.attr('placeholder', 'Ingrese país primero');    
+    removeErrorState(input);
 }
 
 $(document).on('click', '.tt-dataset', function() {

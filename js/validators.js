@@ -96,9 +96,9 @@ function validateEmail(email) {
 	var n = email.length;
 
 	if (n == 0)
-		return invalidValidation(mandatoryFieldString("el e-mail de contacto"));
+		return invalidValidation(mandatoryFieldString("el correo electrónico"));
 	if (!regex.test(email))
-		return invalidValidation('E-mail inválido');
+		return invalidValidation('Correo electrónico inválido');
 	if (n > MAX_EMAIL)
 		return invalidValidation(ERROR_MSG_LONG);
 
@@ -667,7 +667,6 @@ function PaymentCardValidator() {
 							  'exp-year': validateExpYear,
 							  'sec-code': validateSecCode,
 							  'cardholder': validateCardholder,
-							  'installments': null
 							};
 
 	this.validExpDate = false;
