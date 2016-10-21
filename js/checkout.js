@@ -269,7 +269,7 @@ $(document).ready(function(){
 function restorePhones(phonesId) {
     var backupPhonesId = Object.keys(contactValidator.getBackupPhones());
     fieldCounter = backupPhonesId.length;
-    var wrapper = $('.modal-body').children('.form-group');
+    var wrapper = $('#modify-modal .modal-body').children('.form-group');
     var addButton = $('.add-Phone'); //Add button selector
 
     $('.extra-phone').remove();
@@ -314,7 +314,7 @@ $(document).on('show.bs.modal', '#modify-modal', function(event) {
     var modifyStage = getModifyStage(modifyLink);
     summaryStage = modifyStage[0];
     var tabId = $('#' + (summaryStage + 1));
-    var modalHeader = $('.modal-title');
+    var modalHeader = modal.find('.modal-title');
 
     validators[summaryStage].generateBackup();
 
@@ -474,7 +474,8 @@ function addDisabledInput(id) {
     var input = $('#' + id);
     input.attr('disabled', 'disabled');
     input.addClass('disabled');
-    input.attr('placeholder', 'Ingrese país primero');    
+    input.attr('placeholder', 'Ingrese país primero');
+    input.val(''); 
     removeErrorState(input);
 }
 
