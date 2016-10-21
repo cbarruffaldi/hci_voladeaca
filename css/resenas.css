@@ -34,6 +34,10 @@
 	border-top-left-radius: 5px;
 }
 
+.search-col button {
+	width: 100%;
+}
+
 .review-box {
 	background: #FFF;
 	color: #333;
@@ -44,7 +48,6 @@
 }
 
 .ind-review-box {
-	
 	background: #FFF;
 	color: #333;
 	margin-bottom: 20px;
@@ -73,13 +76,9 @@ input::-webkit-inner-spin-button {
 }
 
 .review_st{
-	background: #DC0055;
-	color: #FFFFFF;
-	padding-left: 10px;
-	font-size: 2em;
-	border-top-right-radius: 5px;
-	border-top-left-radius: 3px;
-
+	color: #DC0055;
+	font-size: 2.5em;
+	text-align: center;
 }
 
 .review_st_alt{
@@ -138,13 +137,20 @@ ul.tabs li{
 }
 
 ul.tabs li.current{
-	background: #dddddd;
+	background: #c4c4c4;
 	color: #222;
 }
 
+.center-col {
+	text-align: center;
+}
+
+.awesomplete > ul {
+	min-width: 60% !important;
+}
+	
 .tab-content{
 	display: none;
-	padding: 15px;
 }
 
 .tab-content.current{
