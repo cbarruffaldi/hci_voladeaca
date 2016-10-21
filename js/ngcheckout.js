@@ -117,9 +117,21 @@ app.controller('CheckoutController', function($scope) {
 	/* Parte de confirmación */
 
 	$scope.fillDatas = function() {
-		$scope.passengersData = passengersValidator.getData();
-		$scope.paymentData = paymentValidator.getData();
-		$scope.contactData = contactValidator.getData();
-		$scope.phones = $scope.contactData['phones'];
+		if (getCurrentStage() != 3) { /* si es 3 es el continuar del confirmar */
+			$scope.passengersData = passengersValidator.getData();
+			$scope.paymentData = paymentValidator.getData();
+			$scope.contactData = contactValidator.getData();
+			$scope.phones = $scope.contactData['phones'];
+		}
+	}
+
+	$scope.fillModalDatas = function() {
+		var modalStage = getCurrentStage();
+        var validator = validators[modalStage];
+
+        if (validator.validateStage()) {
+        	$scope.fillDatas();
+            saveModal(validator);
+        }
 	}
 });

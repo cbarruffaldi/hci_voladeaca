@@ -271,7 +271,7 @@
 									<!--Subtitulo 1-->
 									<div class="row">
 										<div class="col-md-12 sub-style">
-											<h4>Detalles de la Tarjeta</h4>
+											<h4>Datos de la Tarjeta</h4>
 										</div>
 									</div>
 									<div id="card-details">
@@ -362,7 +362,7 @@
 									<!--Subtitulo 2 -->
 									<div class="row">
 										<div class="col-md-12 sub-style">
-											<h4>Datos de Facturacion</h4>
+											<h4>Datos de Facturación</h4>
 										</div>
 									</div>
 									<div id="billing-details">
@@ -539,7 +539,7 @@
   												<div class="panel-body">
   													<div class="row">
   														<div class="col-md-4">
-  															<p><strong>Nombre: </strong>{{passenger['usr-name']}}</p>
+  															<p><strong>Nombre: </strong><span>{{passenger['usr-name']}}</span></p>
   														</div>
   														<div class="col-md-4">
   															<p><strong>Apellido: </strong>{{passenger['usr-lname']}}</p>
@@ -576,7 +576,7 @@
 
 												<div class="panel panel-default sub-panel conf-payment">
 													<div class="panel-heading">
-														<h5>Detalles de Tarjeta</h5>
+														<h5>Datos de la Tarjeta</h5>
 													</div>
 
 													<div class="panel-body">
@@ -701,7 +701,7 @@
 
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default cancel-btn">Cancelar</button>
-						<button type="button" class="btn btn-default save-btn" data-ng-click="fillDatas()">Guardar</button>
+						<button type="button" class="btn btn-default save-btn" data-ng-click="fillModalDatas()">Guardar</button>
 					</div>
 				</div>
 

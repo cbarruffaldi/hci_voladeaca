@@ -131,7 +131,7 @@ $(document).on('keyup', 'input', function() {
     var validator = validators[indexTab];
     var validation;
 
-    if (!validator.alreadyValidated(id))
+    if (!validator.alreadyValidated(id) || (value.length > 0 && value[value.length-1] == ' '))
         return;
     
     validation = validator.validate(id, value);
@@ -261,16 +261,18 @@ $(document).ready(function(){
 function restorePhones(phonesId) {
     var backupPhonesId = Object.keys(contactValidator.getBackupPhones());
     fieldCounter = backupPhonesId.length;
-    var wrapper = $('#contact-form').children('.form-group');
+    var wrapper = $('.modal-body').children('.form-group');
 
     $('.extra-phone').remove();
 
     backupPhonesId.forEach(function(stringId) {
-        wrapper.append(addPhone(stringId.split('-')[1]));
+        if (stringId != 'phone-0')
+            wrapper.append(addPhone(stringId.split('-')[1]));
     });
 }
 
-var SUM_PASSENGERS = '.summary-passengers, .conf-passengers';
+var SUM_PASSENGERS = '.summary-passengers';
+var CONF_PASSENGERS = '.conf-passengers';
 var SUM_PAYMENT = '.summary-payment, .conf-payment';
 var SUM_BILLING = '.summary-billing, .conf-billing';
 
@@ -278,6 +280,10 @@ function getModifyStage(modify) {
     if (modify.parents(SUM_PASSENGERS).length) {
         var passIndex = modify.parent().index();
         return [0, passIndex];
+    }
+    if (modify.parents(CONF_PASSENGERS).length) {
+        var passIndex = modify.parent().parent().index();  
+        return [0, passIndex];      
     }
     else if (modify.parents(SUM_PAYMENT).length)
         return [1, 0];
@@ -348,13 +354,12 @@ function cancelModal(validator) {
 
 $(document).ready(function() {
     $('.save-btn').click(function() {
-        var modalStage = getCurrentStage();
+/*        var modalStage = getCurrentStage();
         var validator = validators[modalStage];
 
         if (validator.validateStage()) {
             saveModal(validator);
-            fillDatas();
-        }
+        } */
     });
 
     $('.cancel-btn').click(function() {
