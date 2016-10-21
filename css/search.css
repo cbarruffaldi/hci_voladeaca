@@ -358,7 +358,3 @@ label {
 .hidden{
 	display: none;
 }
-
-#modal-error .modal-dialog {
-	margin-top: 160px;
-}

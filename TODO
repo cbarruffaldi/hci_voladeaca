@@ -5,7 +5,6 @@ Badge para vuelo con promoción
 Barra de navegación principal tiene que notarse más cual está seleccionado
 Quitar país de pasajeros
 Mover botón de agregar más teléfonos debajo del último teléfono
-No se sombrea el cuadrado de promociones si hovereas sobre el titulo
 Que haya alggún feedback visual cuando se hace hover en los filtros de la aerolinea sobre toda la fila, no solo el nombre o checkbox
 Tooltip en los badges de aeropuertos - falta ponerles estilo
 Inputs de busqueda con borde rojo cuando hay error

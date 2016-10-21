@@ -22,6 +22,17 @@ app.controller("promoCtrl", function($scope, $http, $q) {
 		fill(this, "dest");
 	});
 
+	$(document).on('mouseenter', ".promo-text", function(e) {
+//		console.log("ENTER");
+//		console.log($(this).parent().find(".place-img"));
+		$(this).parent().find(".place-img").addClass("hover-img");
+	});
+
+	$(document).on('mouseleave', ".promo-text", function(e) {
+//		console.log("LEAVE");
+//		console.log($(this).parent().find(".place-img"));
+		$(this).parent().find(".place-img").removeClass("hover-img");	});
+
 	var selected = {};
 	var query = {};
 	var completedSelection = false;
@@ -124,12 +135,12 @@ app.controller("promoCtrl", function($scope, $http, $q) {
 
 		var vdate = promosInfo[query.month].toString() + strvuelta;
 		var promises = [];
-		
+
 		for (var des of promosInfo[query.dest]) {
 			console.log("idate " + idate);
 			console.log("vdate " + vdate);
 			console.log("des " + des);
-			
+
 			// TODO BUE
 			promises.push(fetchPromo(idate, vdate, "BUE", des));
 		}
@@ -168,7 +179,7 @@ app.controller("promoCtrl", function($scope, $http, $q) {
 				$scope.promos = getCheapestFlights($scope.containers);
 				deferred.resolve();
 			},
-				function errorCallback(response){
+							function errorCallback(response){
 				console.log("Error in response");
 				deferred.reject();
 			}

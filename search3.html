@@ -18,6 +18,8 @@
 		<link rel="stylesheet" href="css/nouislider-custom.css">
 		<link rel="stylesheet" href="css/psg-btn.css">
 		<link rel="stylesheet" href="css/spinner.css">
+		<link rel="stylesheet" href="css/ribbon.css">
+
 		<link rel="stylesheet" href="./CheloLabs/awesomplete.css">
 
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
@@ -239,13 +241,13 @@
 						</div>
 						<!-- <img id="loadImg" style="padding-top: 250px; padding-left: 48%"src="./CheloLabs/ajax-loader.gif"></img> -->
 						<div id="resultShow">
-						<div data-ng-if="!emptySearch"
-								 data-ng-include="'./snippets/searchresults.html'">
+							<div data-ng-if="!emptySearch"
+									 data-ng-include="'./snippets/searchresults.html'">
+							</div>
+							<div data-ng-if="emptySearch"
+									 data-ng-include="'./snippets/emptysearch.html'">
+							</div>
 						</div>
-						<div data-ng-if="emptySearch"
-								 data-ng-include="'./snippets/emptysearch.html'">
-						</div>
-					</div>
 
 					</div>
 				</div>

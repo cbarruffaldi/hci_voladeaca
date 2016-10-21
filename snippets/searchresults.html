@@ -9,9 +9,9 @@
 					</div>
 					<div class="col-md-10 orig-dest-badges">
 						{{t.flight.departure.cityshort}}
-<!--						<span class="airport-badge">{{t.flight.departure.airport.id}}</span>-->
+						<!--						<span class="airport-badge">{{t.flight.departure.airport.id}}</span>-->
 						<span class="glyphicon glyphicon-arrow-right"></span>
-<!--						<span class="airport-badge" data-toggle="tooltip" title="Hooray!">{{t.flight.arrival.airport.id}}</span>-->
+						<!--						<span class="airport-badge" data-toggle="tooltip" title="Hooray!">{{t.flight.arrival.airport.id}}</span>-->
 						{{t.flight.arrival.cityshort}}
 					</div>
 				</div>
@@ -62,42 +62,43 @@
 			</div>
 		</div>
 		<div data-ng-if="twoWays">
-		<div class="col-md-2 flight-price-box">
-			<div class="price-number">
-				${{c.price.total.total}}
-			</div>
-			<div class="collapse price-details" id="price-details-{{$index}}">
-				<div>Pasaje: ${{c.price.total.fare}}</div>                        
-				<div>Impuestos: ${{c.price.total.taxes}}</div>
-				<div>Recargos: ${{c.price.total.charges}}</div>
-			</div>
-			<div class="details-btn">
-				<button data-toggle="collapse"data-target="#price-details-{{$index}}" class="vda-text-btn">+ detalles</button>
-			</div>
-			<div class="buy-btn" data-ng-click="newCont()">
-				<button class="vda-btn" id="btn-{{c.id}}" data-ng-click="buy(c)">Comprar</button>
+			<div class="col-md-2 flight-price-box">
+<!--				<div class="ribbon"><span>PROMO</span></div>-->
+				<div class="price-number">
+					${{c.price.total.total}}
+				</div>
+				<div class="collapse price-details" id="price-details-{{$index}}">
+					<div>Pasaje: ${{c.price.total.fare}}</div>                        
+					<div>Impuestos: ${{c.price.total.taxes}}</div>
+					<div>Recargos: ${{c.price.total.charges}}</div>
+				</div>
+				<div class="details-btn">
+					<button data-toggle="collapse"data-target="#price-details-{{$index}}" class="vda-text-btn">+ detalles</button>
+				</div>
+				<div class="buy-btn" data-ng-click="newCont()">
+					<button class="vda-btn" id="btn-{{c.id}}" data-ng-click="buy(c)">Comprar</button>
+				</div>
 			</div>
 		</div>
-	</div>
 
-	<div data-ng-if="!twoWays">
-		<div class="col-md-2 flight-price-box-oneway">
-			<div class="price-number">
-				${{c.price.total.total}}
-			</div>
-			<div class="collapse price-details" id="price-details-{{$index}}">
-				<div>Pasaje: ${{c.price.total.fare}}</div>                        
-				<div>Impuestos: ${{c.price.total.taxes}}</div>
-				<div>Recargos: ${{c.price.total.charges}}</div>
-			</div>
-			<div class="details-btn">
-				<button data-toggle="collapse"data-target="#price-details-{{$index}}" class="vda-text-btn">+ detalles</button>
-			</div>
-			<div class="buy-btn" data-ng-click="newCont()">
-				<button class="vda-btn" id="btn-{{c.id}}" data-ng-click="buy(c)">Comprar</button>
+		<div data-ng-if="!twoWays">
+			<div class="col-md-2 flight-price-box-oneway">
+				<div class="price-number">
+					${{c.price.total.total}}
+				</div>
+				<div class="collapse price-details" id="price-details-{{$index}}">
+					<div>Pasaje: ${{c.price.total.fare}}</div>                        
+					<div>Impuestos: ${{c.price.total.taxes}}</div>
+					<div>Recargos: ${{c.price.total.charges}}</div>
+				</div>
+				<div class="details-btn">
+					<button data-toggle="collapse"data-target="#price-details-{{$index}}" class="vda-text-btn">+ detalles</button>
+				</div>
+				<div class="buy-btn" data-ng-click="newCont()">
+					<button class="vda-btn" id="btn-{{c.id}}" data-ng-click="buy(c)">Comprar</button>
+				</div>
 			</div>
 		</div>
-	</div>
 	</div>
 </div>
 <!-- 	</div> c in containers -->
