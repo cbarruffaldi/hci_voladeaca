@@ -13,18 +13,18 @@
 	margin-top: 5%;
 	margin-bottom: 50px;
 	background: rgba( 235, 235, 235, 0.8);
-    padding-bottom: 1em;
-    box-shadow: 0 1px 15px #7B7B7B;
-    border-radius: 5px
+	padding-bottom: 1em;
+	box-shadow: 0 1px 15px #7B7B7B;
+	border-radius: 5px
 }
 
 .reviewcontent{	
 	margin-top: 5%;
 	margin-bottom: 50px;
 	background: rgba( 235, 235, 235, 0.8);
-    padding-bottom: 1em;
-    box-shadow: 0 1px 15px #7B7B7B;
-    border-radius: 5px
+	padding-bottom: 1em;
+	box-shadow: 0 1px 15px #7B7B7B;
+	border-radius: 5px
 }
 
 .titulo{
@@ -148,7 +148,7 @@ ul.tabs li.current{
 .awesomplete > ul {
 	min-width: 60% !important;
 }
-	
+
 .tab-content{
 	display: none;
 }
@@ -268,8 +268,8 @@ textarea {
 #review-form{
 	padding:0;
 	background: rgba( 235, 235, 235, 0.8);
-    box-shadow: 0 1px 15px #7B7B7B;
-    border-radius: 5px;
+	box-shadow: 0 1px 15px #7B7B7B;
+	border-radius: 5px;
 }
 
 .leave-review_t{
@@ -383,4 +383,22 @@ textarea {
 	cursor:pointer;
 	font-weight: bold;
 	text-decoration: none;
+}
+
+.rate-num {
+	color: black;
+	padding: 2px 9px;
+	border-radius: 5px;
+}
+
+.red {
+	border: 1px solid crimson;
+}
+
+.orange {
+	border: 1px solid coral;
+}
+
+.green {
+	border: 1px solid chartreuse;
 }

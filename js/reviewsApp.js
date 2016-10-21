@@ -1,5 +1,21 @@
 var app = angular.module("reviewsApp", ['ngAnimate', 'infinite-scroll']);
 
+app.directive('setReviewColors', function() {
+	return function(scope) {
+		if (scope.$last) setTimeout(function(){
+			$(".ratings .rate-num").each(function() {
+				var rate = parseFloat($(this).text());
+				if (rate < 6)
+					$(this).addClass("red");
+				else if (rate < 8)
+					$(this).addClass("orange");
+				else 
+					$(this).addClass("green");
+			})     
+		}, 1);
+	};
+});
+
 app.controller("reviewsCtrl", function($scope, $http, $sce, $window) {
 	$scope.scrollLimit = {details: 10, reviews: 5}
 	$scope.reviewResults = [];
@@ -47,47 +63,47 @@ app.controller("reviewsCtrl", function($scope, $http, $sce, $window) {
 		$scope.reviewResults = [];
 		$scope.flightResults = [];
 		var URL = 'http://hci.it.itba.edu.ar/v1/api/review.groovy?method=getairlinereviews';
-  				if($("#nroVuelo").val()){
-  					URL += '&flight_number=' + $("#nroVuelo").val();
-  				}
-  				if($("#input-aerolinea").val()){
-  				  URL += "&airline_id=" + $scope.airlineData.id_map[$("#input-aerolinea").val()];
-  				}
-  				  console.log(URL);
-	
+		if($("#nroVuelo").val()){
+			URL += '&flight_number=' + $("#nroVuelo").val();
+		}
+		if($("#input-aerolinea").val()){
+			URL += "&airline_id=" + $scope.airlineData.id_map[$("#input-aerolinea").val()];
+		}
+		console.log(URL);
+
 		$http({
-			 	method: 'GET',  				  
-			 	url: URL,
-			 }).then(function successCallback(response){
-  					console.log(response);
-  					var added = {};
-  					for(var i in response.data.reviews){
-  						var r = response.data.reviews[i];
-  						var rid = r.flight.airline.id + r.flight.number;
-  						if(added[rid]){
-  							added[rid].merge(r);
-  						} else {
-  							added[rid] = new ReviewDetails(r);
-  						}
-  						r.comments = decodeURIComponent(decodeHtml(r.comments));
-  						$scope.reviewResults.push(r);
-  						
-  					}
-					$scope.flightResults = Object.keys(added).map(function (key) { return added[key]; });
-					scrollTo("reviewRes");
+			method: 'GET',  				  
+			url: URL,
+		}).then(function successCallback(response){
+			console.log(response);
+			var added = {};
+			for(var i in response.data.reviews){
+				var r = response.data.reviews[i];
+				var rid = r.flight.airline.id + r.flight.number;
+				if(added[rid]){
+					added[rid].merge(r);
+				} else {
+					added[rid] = new ReviewDetails(r);
+				}
+				r.comments = decodeURIComponent(decodeHtml(r.comments));
+				$scope.reviewResults.push(r);
+
+			}
+			$scope.flightResults = Object.keys(added).map(function (key) { return added[key]; });
+			scrollTo("reviewRes");
 		});
 	}
 
 	function scrollTo(id){
-    $('html,body').animate({
-        scrollTop: $("#"+id).offset().top - 100},
-        'slow');
+		$('html,body').animate({
+			scrollTop: $("#"+id).offset().top - 100},
+													 'slow');
 	}	
 
 	function decodeHtml(html) {
-    	var txt = document.createElement("textarea");
-    	txt.innerHTML = html;
-    	return txt.value;
+		var txt = document.createElement("textarea");
+		txt.innerHTML = html;
+		return txt.value;
 	}
 
 	$scope.filterReviews = function(r){
@@ -96,10 +112,10 @@ app.controller("reviewsCtrl", function($scope, $http, $sce, $window) {
 
 	function ReviewDetails(seed){
 		var self = this;
-			this.flight = $.extend(true, {}, seed.flight);
-			this.rating = $.extend(true, {}, seed.rating);
-//		this.flight = JSON.parse(JSON.stringify(seed.flight));
-//		this.rating = JSON.parse(JSON.stringify(seed.rating));
+		this.flight = $.extend(true, {}, seed.flight);
+		this.rating = $.extend(true, {}, seed.rating);
+		//		this.flight = JSON.parse(JSON.stringify(seed.flight));
+		//		this.rating = JSON.parse(JSON.stringify(seed.rating));
 		this.totalReviews = 1;
 		this.wouldRecommendCount = seed.yes_recommend ? 1 : 0;
 
@@ -121,16 +137,16 @@ app.controller("reviewsCtrl", function($scope, $http, $sce, $window) {
 		console.log(event);
 	}
 	$scope.loadMore = function(which){
-			$scope.scrollLimit[which] += 5;
-		}
+		$scope.scrollLimit[which] += 5;
+	}
 
-		$('#vuelotab').click(function(){
+	$('#vuelotab').click(function(){
 		$('ul.tabs li').removeClass('current');
 		$(this).addClass('current');
 		$("#vuelobox").addClass('current');
 		$("#aerobox").removeClass('current');
 		$("#aerotitle").html("Aerolínea (<em>opcional<em>):");
-		})
+	})
 
 	$('#aerotab').click(function(){
 		$("#aerotitle").html("Aerolínea:");
@@ -143,28 +159,28 @@ app.controller("reviewsCtrl", function($scope, $http, $sce, $window) {
 		$("#nroVuelo").trigger("change");
 	})
 
-	
-	function fillAirlines(){
-		 return	$.ajax({
-			 	//method: 'GET',
-			 	dataType: "jsonp",
-  				url: 'http://hci.it.itba.edu.ar/v1/api/misc.groovy?method=getairlines&callback=?'}
-  				).done(function successCallback(response){
-					var airlineData = { list: [], id_map: {}, name_map: {}, logo_map: {}};
-					console.log(response);
-					for(var i in response.airlines){
-						airlineData.list.push(response.airlines[i].name);
-						airlineData.id_map[response.airlines[i].name] = response.airlines[i].id;
-						airlineData.name_map[response.airlines[i].id] = response.airlines[i].name;
-						airlineData.logo_map[response.airlines[i].id] = response.airlines[i].logo;
 
-					}
-				localStorage.setItem('airlineData', JSON.stringify(airlineData));
+	function fillAirlines(){
+		return	$.ajax({
+			//method: 'GET',
+			dataType: "jsonp",
+			url: 'http://hci.it.itba.edu.ar/v1/api/misc.groovy?method=getairlines&callback=?'}
+									).done(function successCallback(response){
+			var airlineData = { list: [], id_map: {}, name_map: {}, logo_map: {}};
+			console.log(response);
+			for(var i in response.airlines){
+				airlineData.list.push(response.airlines[i].name);
+				airlineData.id_map[response.airlines[i].name] = response.airlines[i].id;
+				airlineData.name_map[response.airlines[i].id] = response.airlines[i].name;
+				airlineData.logo_map[response.airlines[i].id] = response.airlines[i].logo;
+
+			}
+			localStorage.setItem('airlineData', JSON.stringify(airlineData));
 		});
 
 
-		}
-	
+	}
+
 
 	if(!localStorage.airlineData){
 		fillAirlines().done(initAutocomplete)
@@ -174,11 +190,11 @@ app.controller("reviewsCtrl", function($scope, $http, $sce, $window) {
 	}
 
 	function initAutocomplete(){
-			var airlineData = JSON.parse(localStorage.airlineData);
-			$scope.airlineData = airlineData
-			console.log($scope.airlineData)			
+		var airlineData = JSON.parse(localStorage.airlineData);
+		$scope.airlineData = airlineData
+		console.log($scope.airlineData)			
 	}
-	
+
 	function getSliderValue(id){
 		var slider = document.getElementById(id);
 		return parseInt(slider.noUiSlider.get());
@@ -196,75 +212,75 @@ app.controller("reviewsCtrl", function($scope, $http, $sce, $window) {
 		rating.comfort = getSliderValue('comfort-slider');
 		rating.quality_price = getSliderValue('quality-slider');
 		rating.punctuality = getSliderValue('punctuality-slider');
- 		rating.mileage_program = getSliderValue('mileage-slider');
+		rating.mileage_program = getSliderValue('mileage-slider');
 
- 		send.rating = rating;
- 		send.yes_recommend = $scope.yesRecommend;
- 		send.comments = $("#rating-comments").val();
+		send.rating = rating;
+		send.yes_recommend = $scope.yesRecommend;
+		send.comments = $("#rating-comments").val();
 
- 		if($scope.flightSelected){
- 			send.flight = {
- 				airline: {id: selectedDetails.airline},
- 				number: selectedDetails.number
- 			}
- 		}
- 		else{
- 			send.flight = {
- 				airline : {id: $scope.airlineData.id_map[$("#input-aerolinea-rev").val()]},
- 				number: parseInt($("#input-number-rev").val())
- 			}
- 		}
+		if($scope.flightSelected){
+			send.flight = {
+				airline: {id: selectedDetails.airline},
+				number: selectedDetails.number
+			}
+		}
+		else{
+			send.flight = {
+				airline : {id: $scope.airlineData.id_map[$("#input-aerolinea-rev").val()]},
+				number: parseInt($("#input-number-rev").val())
+			}
+		}
 
- 		console.log(send);
- 		console.log(JSON.stringify(send));
+		console.log(send);
+		console.log(JSON.stringify(send));
 
 		$.ajax({
-		  type: "POST",
-		  contentType: 'application/json',
-		  url: 'http://hci.it.itba.edu.ar/v1/api/review.groovy?method=reviewairline',
-  		  data: JSON.stringify(send)
+			type: "POST",
+			contentType: 'application/json',
+			url: 'http://hci.it.itba.edu.ar/v1/api/review.groovy?method=reviewairline',
+			data: JSON.stringify(send)
 		}).then(function(response){
 			console.log(response);
 		});
 
-		};
+	};
 
 
-		$scope.yesRec = function(rec){
-			$scope.yesRecommend = rec;
-			if(rec){
-				$("#no_rec").removeClass('selected');
-				$("#yes_rec").addClass('selected');
-			}else{
-				$("#yes_rec").removeClass('selected');
-				$("#no_rec").addClass('selected');
-			}
+	$scope.yesRec = function(rec){
+		$scope.yesRecommend = rec;
+		if(rec){
+			$("#no_rec").removeClass('selected');
+			$("#yes_rec").addClass('selected');
+		}else{
+			$("#yes_rec").removeClass('selected');
+			$("#no_rec").addClass('selected');
 		}
+	}
 });
 
 
 app.directive('myEnter', function () {
-    return function (scope, element, attrs) {
-        element.bind("keydown keypress", function (event) {
-            if(event.which === 13) {
-                scope.$apply(function (){
-                	scope.search()
-                });
+	return function (scope, element, attrs) {
+		element.bind("keydown keypress", function (event) {
+			if(event.which === 13) {
+				scope.$apply(function (){
+					scope.search()
+				});
 
-                event.preventDefault();
-            }
-        });
-    };
+				event.preventDefault();
+			}
+		});
+	};
 });
 
 app.directive('reviewAutocomplete', function () {
-    return function (scope, element, attrs) {
-    	new Awesomplete(document.getElementById(attrs.id), {
-				list: scope.airlineData.list,
-				minChars: 1,
-				autoFirst: true}
-			);
-    };
+	return function (scope, element, attrs) {
+		new Awesomplete(document.getElementById(attrs.id), {
+			list: scope.airlineData.list,
+			minChars: 1,
+			autoFirst: true}
+									 );
+	};
 });
 
 
@@ -283,19 +299,19 @@ function initSlider(id){
 		},
 
 		pips: {
-		mode: 'positions',
-		stepped: true,
-		values: [0,100],
-		density: 9
-	}
+			mode: 'positions',
+			stepped: true,
+			values: [0,100],
+			density: 9
+		}
 
 		//step: minPrice - maxPrice,
 	});
 }
 
 app.directive('vdaSlider', function () {
-    return function (scope, element, attrs) {
-    	console.log(attrs.id);
-    	initSlider(attrs.id);
-    };
+	return function (scope, element, attrs) {
+		console.log(attrs.id);
+		initSlider(attrs.id);
+	};
 });

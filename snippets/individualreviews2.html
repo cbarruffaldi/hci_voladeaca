@@ -2,7 +2,7 @@
 <div class="row">
 	<div class="col-md-12">
 		<div infinite-scroll='loadMore("reviews")' infinite-scroll-distance='1'>
-			<div class="review" data-ng-repeat="r in reviewResults | filter: filterReviews | limitTo: scrollLimit.reviews">
+			<div class="review" data-ng-repeat="r in reviewResults | filter: filterReviews | limitTo: scrollLimit.reviews" set-review-colors="">
 				<div class="col-md-6">
 					<div class="col-md-12">
 					<div class="row review-head">
@@ -16,16 +16,16 @@
 							<div class="row ratings">
 								<div class="col-md-6">
 									<ul>
-										<li>Comfort: {{r.rating.comfort}}</li>
-										<li>Food: {{r.rating.comfort}}</li>
-										<li>Friendliness: {{r.rating.comfort}}</li>
+										<li>Comfort: <span class="rate-num">{{r.rating.comfort}}</span></li>
+										<li>Food: <span class="rate-num">{{r.rating.comfort}}</span></li>
+										<li>Friendliness: <span class="rate-num">{{r.rating.comfort}}</span></li>
 									</ul>
 								</div>
 								<div class="col-md-6">
 									<ul>
-										<li>Mileage_program: {{r.rating.comfort}}</li>
-										<li>Punctuality: {{r.rating.punctuality}}</li>
-										<li>Quality/Price: {{r.rating.quality_price}}</li>
+										<li>Mileage_program: <span class="rate-num">{{r.rating.comfort}}</span></li>
+										<li>Punctuality: <span class="rate-num">{{r.rating.punctuality}}</span></li>
+										<li>Quality/Price: <span class="rate-num">{{r.rating.quality_price}}</span></li>
 									</ul>
 								</div>
 							</div>
