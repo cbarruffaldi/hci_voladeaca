@@ -8,5 +8,5 @@ Mover botón de agregar más teléfonos debajo del último teléfono
 Que haya alggún feedback visual cuando se hace hover en los filtros de la aerolinea sobre toda la fila, no solo el nombre o checkbox
 Tooltip en los badges de aeropuertos - falta ponerles estilo
 Inputs de busqueda con borde rojo cuando hay error
-Puntajes con color segun si son buenos o malos
 Fade in para los mensajes de error en la busqueda
+Footer en pagina de busqueda

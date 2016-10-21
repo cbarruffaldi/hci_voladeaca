@@ -360,9 +360,8 @@ label {
 	display: none;
 }
 
-body, html {
+body {
 	margin: 0;
-	overflow: hidden !important;
 	height:100% !important;
 }
 
