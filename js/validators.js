@@ -84,7 +84,7 @@ function validatePhone(phone) {
 	var n = phone.length;
 
 	if (n == 0)
-		return invalidValidation(mandatoryFieldString('número de teléfono'));
+		return invalidValidation(mandatoryFieldString('el número de teléfono'));
 	if (n > MAX_PHONE)
 		return invalidValidation(ERROR_MSG_LONG);
 
@@ -109,7 +109,7 @@ function validateStreet(street) {
 	var n = street.length;
 
 	if (n == 0)
-		return invalidValidation(mandatoryFieldString("nombre de la calle"));
+		return invalidValidation(mandatoryFieldString("el nombre de la calle"));
 	if (n > MAX_NAME)
 		return invalidValidation(ERROR_MSG_LONG);
 
@@ -120,7 +120,7 @@ function validateAddrNum(addrNum) {
 	var n = addrNum.length;
 
 	if (n == 0)
-		return invalidValidation(mandatoryFieldString("número de la calle"));
+		return invalidValidation(mandatoryFieldString("el número de la calle"));
 	if (!isAlphaNum(addrNum))
 		return invalidValidation(ERROR_MSG_ALPHANUM);
 	if (n > MAX_ADDR_NUM)
@@ -155,7 +155,7 @@ function validateDocNum(num) {
 	var n = num.length;
 
     if (n == 0)
-        return invalidValidation(mandatoryFieldString("número de documento"));
+        return invalidValidation(mandatoryFieldString("el número de documento"));
     if (!isNumber(num))
         return invalidValidation(ERROR_MSG_NUMBER);
     if (n > MAX_DOC_NUM)
@@ -243,7 +243,7 @@ function validateZipCode(zipCode) {
 	var n = zipCode.length;
 
 	if (n == 0)
-		return invalidValidation(mandatoryFieldString("código postal"));
+		return invalidValidation(mandatoryFieldString("el código postal"));
 	if (!isAlphaNum(zipCode))
 		return invalidValidation(ERROR_MSG_ALPHANUM);
 	if (n > MAX_ZIP_CODE)
@@ -258,7 +258,7 @@ function validateCardNumber(num) {
 	if (!isNumber(num))
 		return invalidValidation(ERROR_MSG_NUMBER);
 	if (n == 0)
-		return invalidValidation(mandatoryFieldString("número de la tarjeta"));
+		return invalidValidation(mandatoryFieldString("el número de la tarjeta"));
 	if (n < MIN_CREDIT_NUM)
 		return invalidValidation(ERROR_MSG_SHORT);
 	if (n > MAX_CREDIT_NUM)
@@ -268,14 +268,14 @@ function validateCardNumber(num) {
 }
 
 function validateExpMonth(num) {
-	var validation = validateMonth(num, "mes de vencimiento de la tarjeta");
+	var validation = validateMonth(num, "el mes de vencimiento de la tarjeta");
 	return manageBirthErrors(validation, EXP_MONTH, ERROR_EXP_MONTH);
 }
 
 function validateExpYear(num) {
 	if (num.length == 2)
 		num = '20' + num;
-	var validation = validateYear(num, "año de vencimiento de la tarjeta");
+	var validation = validateYear(num, "el año de vencimiento de la tarjeta");
 	return manageBirthErrors(validation, EXP_YEAR, ERROR_EXP_YEAR);
 }
 
@@ -285,7 +285,7 @@ function validateSecCode(num) {
 	if (!isNumber(num))
 		return invalidValidation(ERROR_MSG_NUMBER);
 	if (n == 0)
-		return invalidValidation(mandatoryFieldString("código de seguridad de la tarjeta"));
+		return invalidValidation(mandatoryFieldString("el código de seguridad de la tarjeta"));
 	if (n < MIN_SEC_CODE)
 		return invalidValidation(ERROR_MSG_SHORT);
 	if (n > MAX_SEC_CODE)
@@ -295,7 +295,7 @@ function validateSecCode(num) {
 }
 
 function validateCardholder(cardholder) {
-	var validation = validateName(cardholder, "nombre del titular de la tarjeta");
+	var validation = validateName(cardholder, "el nombre del titular de la tarjeta");
 
 	if (validation.valid && cardholder.split(' ').length < 2)
 		validation = invalidValidation("Incluya nombre y apellido del titutar de la tarjeta");
@@ -322,17 +322,17 @@ function validateDate(day, month, year) {
 }
 
 function validateBirthDay(d, passengerId) {
-	var validation = validateDay(d, "día de nacimiento");
+	var validation = validateDay(d, "el día de nacimiento");
 
 	return manageBirthErrors(validation, BIRTH_DAY + '-' + passengerId, ERROR_BIRTH_DAY + '-' + passengerId);
 }
 function validateBirthMonth(m, passengerId) {
-	var validation = validateMonth(m, "mes de nacimiento");
+	var validation = validateMonth(m, "el mes de nacimiento");
 
 	return manageBirthErrors(validation, BIRTH_MONTH + '-' + passengerId, ERROR_BIRTH_MONTH + '-' + passengerId);
 }
 function validateBirthYear(y, passengerId) {
-	var validation = validateYear(y, "año de nacimiento");
+	var validation = validateYear(y, "el año de nacimiento");
 
 	return manageBirthErrors(validation, BIRTH_YEAR + '-' + passengerId, ERROR_BIRTH_YEAR + '-' + passengerId);
 }
@@ -372,7 +372,7 @@ function validateCountry(name) {
 	var validation = invalidValidation('País inválido');
 
 	if (!name.length)
-		return invalidValidation(mandatoryFieldString("país"));
+		return invalidValidation(mandatoryFieldString("el país"));
 
 	countries.forEach(function (country) {
 		if (country['name'].toUpperCase() == name.toUpperCase())
@@ -387,7 +387,7 @@ function validateCity(name) {
 	var validation = invalidValidation('Ciudad inválida');
 
 	if(!name.length)
-		return invalidValidation(mandatoryFieldString("ciudad"));
+		return invalidValidation(mandatoryFieldString("la ciudad"));
 
 	if (currentCities) {
 		currentCities.forEach(function(city) {
@@ -400,11 +400,11 @@ function validateCity(name) {
 }
 
 function validateFirstName(value) {
-	return validateName(value, "nombre del pasajero");
+	return validateName(value, "el nombre del pasajero");
 }
 
 function validateLastName(value) {
-	return validateName(value, "apellido del pasajero");
+	return validateName(value, "el apellido del pasajero");
 }
 
 /* VALIDADORES
@@ -519,11 +519,11 @@ function PassengerValidator(type, validateFunction, trDate, passId) {
 
 
     this.getData = function() {
-    	return this.data;
+    	return $.extend(true, {}, this.data);
     }
 
     this.generateBackup = function() {
-    	this.backup = $.extend(true, {}, this.getData());
+    	this.backup = this.getData();
     }
 
     this.applyBackup = function() {
@@ -675,11 +675,11 @@ function PaymentCardValidator() {
     this.backup = {};
 
 	this.getData = function() {
-		return this.data;
+		return $.extend(true, {}, this.data);
 	}
 
     this.generateBackup = function() {
-    	this.backup = $.extend(true, {}, this.getData());
+    	this.backup = this.getData();
     }
 
     this.applyBackup = function() {
@@ -794,11 +794,11 @@ function PaymentAddressValidator() {
     this.backup = {};
 
 	this.getData = function() {
-		return this.data;
+		return $.extend(true, {}, this.data);
 	}
 
     this.generateBackup = function() {
-    	this.backup = $.extend(true, {}, this.getData());
+    	this.backup = this.getData();
     }
 
     this.applyBackup = function() {
@@ -917,7 +917,7 @@ function ContactValidator() {
     	this.phones = {};
 
     	for (var prop in this.backupPhones) {
-    		var form = $('#' + prop)
+    		var form = $('#' + prop);
     		this.phones[prop] = this.backupPhones[prop];
     		form.val(this.phones[prop]);
     		removeErrorState(form);
@@ -926,7 +926,7 @@ function ContactValidator() {
 
     	this.email = this.backupEmail;
 
-    	var form = $('#email')
+    	var form = $('#email');
     	form.val(this.email);
     	removeErrorState(form);
     	form.siblings('.error-msg').hide();
