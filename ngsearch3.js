@@ -57,6 +57,10 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 				$scope.emptySearch = true;
 				$scope.paramError = true;
 				$(".filter-area").addClass("greyout");
+				$(".currency-menu").addClass("greyout");
+				$(".order-by-menu").addClass("greyout");
+				$(".currency-menu button").attr("disabled", true);
+				$(".order-by-menu button").attr("disabled", true);
 				$("#loadImg").hide();
 				console.log("Param error");
 				return;
@@ -220,8 +224,12 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 			}
 			$scope.emptySearch = false;
 			$(".filter-area").removeClass("greyout");
+			$(".currency-menu").removeClass("greyout");
+			$(".order-by-menu").removeClass("greyout");
 			$(".filter-area").removeClass("disabled");
-
+			$(".currency-menu button").attr("disabled", false);
+			$(".order-by-menu button").attr("disabled", false);
+			
 			var iFlights = stripFlights(response.data.flights);
 			setFilters(response.data.filters[0].values);
 			if(vresponse){

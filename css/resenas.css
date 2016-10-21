@@ -1,17 +1,16 @@
-
-
 .contents {
-	background: url('../img/bg/sky.jpg') no-repeat;
+	background: url('../img/bg/skywh.jpeg') no-repeat;
 	background-attachment: fixed;
 	background-position: center;
 	background-repeat: no-repeat;
-	min-height: 600px;
+	background-size: cover;
+	min-height: 750px;
 }
 
 
 .searchcontent{
 	margin-top: 5%;
-	margin-bottom: 50px;
+	margin-bottom: 10px;
 	background: rgba( 235, 235, 235, 0.8);
 	padding-bottom: 1em;
 	box-shadow: 0 1px 15px #7B7B7B;
@@ -28,14 +27,13 @@
 }
 
 .titulo{
-	font-size: 2em;
 	padding: 0.1em 0 0.1em 0.5em;
 	border-top-right-radius: 5px;
 	border-top-left-radius: 5px;
 }
 
 .search-col button {
-	width: 100%;
+	width: 80%;
 }
 
 .review-box {
@@ -70,9 +68,7 @@ input::-webkit-inner-spin-button {
 }
 
 .comments{
-	padding-top: 10px;
-	margin-bottom: 20px;
-	margin-left: 15px;
+	padding: 10px;
 }
 
 .review_st{
@@ -114,13 +110,55 @@ input::-webkit-inner-spin-button {
 	left: 0;
 	border-width: 0 0 35px 35px;
 	border-style: solid;
-	border-color: #204Dcc gray;
+	border-color: #204Dcc #fff;
 	-webkit-box-shadow: 3px 1px 1px 0px  rgba(0,0,0,0.3);
 	-moz-box-shadow: 3px 1px 1px 0px rgba(0,0,0,0.3);
 	box-shadow: 3px 1px 1px 0px rgba(0,0,0,0.3) /* -1px 1px 1px rgba(0,0,0,0.2);
 		*/
 }
 
+.review-btn-row {
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+.back-btn {
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.back-btn button {
+	font-size: 1.2em;
+	font-weight: 500;
+}
+
+.title-row h3 {
+	font-size: 1.6em;
+	font-weight: 500;	color: #333;
+	margin-bottom: 10px;
+	padding: 1% 12%;
+	border-radius: 10px;
+	display: inline-block;
+	background-color: #fff;
+	box-shadow: 0 0 10px #a3a3a3;
+}
+
+.leave-review-btn {
+	font-size: 1.6em;
+	padding: 2% 12%;
+	letter-spacing: 1px;
+	font-weight: 400;
+	color: #fff;
+	transition: all 0.3s;
+	background-color: #204DCC;
+	border-color: #204DCC;
+	margin-bottom: 15px;
+}
+
+.leave-review-btn:hover {
+	border-color: cornflowerblue;
+	background-color: cornflowerblue;
+}
 
 ul.tabs{
 	margin: 0px;
@@ -130,15 +168,22 @@ ul.tabs{
 
 ul.tabs li{
 	background: none;
-	color: #222;
+	color: #333;
 	display: inline-block;
 	padding: 10px 15px;
 	cursor: pointer;
+	border: 1px solid transparent;
+	border-bottom: 0;
+	transition: all 0.2s;
 }
 
 ul.tabs li.current{
-	background: #c4c4c4;
-	color: #222;
+	background: #fff;
+	color: #333;
+	border: 1px solid cornflowerblue;
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
+	border-bottom: 0;
 }
 
 .center-col {
@@ -194,20 +239,22 @@ ul.tabs li.current{
 	border: cornflowerblue solid 1px;
 	margin: 0;
 	margin-top: 3%;
-	margin-bottom: 3%;
+	margin-right: 20px;
+	margin-left: 25px;
 }
 
 
 .ritem{
-margin: 0 15px 15px 25px;
+	margin: 0 15px 15px 25px;
 }
 
 .rcategory{
-width: 100%;
-display: block;
-text-align: center;
-font-size: 0.8em;
-font-weight: bold;
+	width: 100%;
+	display: block;
+	text-align: center;
+	font-size: 1em;
+	text-overflow: ellipsis;
+	font-weight: bold;
 }
 
 .comment{
@@ -226,6 +273,7 @@ font-weight: bold;
 	z-index: 1;
 	top: -15px;
 	left: 29px;
+	margin-left: 20px;
 }
 
 .bubble:before
@@ -241,11 +289,9 @@ font-weight: bold;
 	z-index: 0;
 	top: -16px;
 	left: 29px;
+	margin-left: 20px;
 }
 
-.form-bubble{
-	/*	margin-left: 3%;*/
-}
 textarea {
 	width: 100%;
 	resize: none;
@@ -255,14 +301,18 @@ textarea {
 textarea:focus {
 	outline: 0;
 }
+.comment-title {
+	padding-left: 35px;
+	font-size: 1.5em;
+	font-weight: bold;
+}
 
 .stars{
-	padding-left: 30px;
 	font-weight: bold;
 }
 .star {
 	font-size: x-large;
-	width: 30px;
+	width: 25px;
 	display: inline-block;
 	color: gray;
 }
@@ -282,6 +332,11 @@ textarea:focus {
 	margin-left: -20px;
 	width: 10px;
 	overflow: hidden;
+}
+
+.row-stars h4 {
+	display: inline-block;
+	margin: 0;
 }
 
 #review-form{
@@ -365,7 +420,7 @@ textarea:focus {
 	overflow:hidden;
 	position:relative;
 	background:
-	url('data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB3aWR0aD0iMjBweCIgaGVpZ2h0PSIyMHB4IiB2aWV3Qm94PSIwIDAgMjAgMjAiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDIwIDIwIiB4bWw6c3BhY2U9InByZXNlcnZlIj48cG9seWdvbiBmaWxsPSIjREREREREIiBwb2ludHM9IjEwLDAgMTMuMDksNi41ODMgMjAsNy42MzkgMTUsMTIuNzY0IDE2LjE4LDIwIDEwLDE2LjU4MyAzLjgyLDIwIDUsMTIuNzY0IDAsNy42MzkgNi45MSw2LjU4MyAiLz48L3N2Zz4=');
+		url('data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB3aWR0aD0iMjBweCIgaGVpZ2h0PSIyMHB4IiB2aWV3Qm94PSIwIDAgMjAgMjAiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDIwIDIwIiB4bWw6c3BhY2U9InByZXNlcnZlIj48cG9seWdvbiBmaWxsPSIjREREREREIiBwb2ludHM9IjEwLDAgMTMuMDksNi41ODMgMjAsNy42MzkgMTUsMTIuNzY0IDE2LjE4LDIwIDEwLDE2LjU4MyAzLjgyLDIwIDUsMTIuNzY0IDAsNy42MzkgNi45MSw2LjU4MyAiLz48L3N2Zz4=');
 	background-size: contain;
 
 }
@@ -433,10 +488,10 @@ textarea:focus {
 }
 
 .rate-num {
-color: black;
-padding: 2px 9px;
-border-radius: 5px;
-display: block;
+	color: black;
+	padding: 2px 9px;
+	border-radius: 5px;
+	display: block;
 }
 
 .red {

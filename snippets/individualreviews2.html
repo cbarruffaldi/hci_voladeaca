@@ -5,13 +5,22 @@
 			<div class="review" data-ng-repeat="r in reviewResults | filter: filterReviews | limitTo: scrollLimit.reviews" set-review-colors="">
 				<div class="col-md-6">
 					<div class="col-md-12">
-					<div class="row review-head">
-					</div>
-					<div class="ind-review-box row">
-						<div class="col-md-12">
+						<div class="row review-head">
+						</div>
+						<div class="ind-review-box row">
 							<div class="row comments">
-								<div class="stars">Calificación: <div data-ng-bind-html="getStars(r.rating.overall)"></div></div>
-								<div class="bubble"><div class="comment">{{r.comments}}</div></div>
+								<div class="col-md-12">
+									<div class="comment-title">Comentario</div>
+									<div class="bubble"><div class="comment">{{r.comments}}</div></div>
+								</div>
+							</div>
+							<div class="row row-stars">
+								<div class="col-md-12 center-col">
+										<h4>Calificación</h4>
+									<div class="stars">
+										<div data-ng-bind-html="getStars(r.rating.overall)"></div>
+									</div>
+								</div>
 							</div>
 							<div class="row ratings">
 								<div class="col-md-6">
@@ -34,9 +43,9 @@
 						</div>
 
 					</div>
-					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+</div>
 

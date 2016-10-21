@@ -35,18 +35,9 @@
 		<div class="contents">
 			<div class="container">
 
-				<div data-ng-if="flightSelected" class="ng-cloak">
-					<button class="vda-btn" data-ng-click="deselectFlight()">&laquo; Volver a la búsqueda</button>
-				</div>
 
-				<div class="row reviewcontent">
-					<button type="button" class="vda-btn" data-toggle="modal" data-target="#leaveReviewModal">
-						<span data-ng-if="!flightSelected" class="titulo review_st">Dejar una reseña</span>
-						<span data-ng-if="flightSelected" class="ng-cloak titulo review_st_alt">Dejar una reseña para {{getSelectedFlightName()}}</span>
-					</button>
-					<div data-ng-include="'./snippets/leave-review.html'">
-					</div>
-				</div>
+
+
 				<div data-ng-if="!flightSelected">
 					<div class="row searchcontent">
 						<div class="search-reviews-box">
@@ -59,7 +50,7 @@
 								<div class="col-md-12 ">
 									<ul class="tabs center-col">
 										<li class="tab-link current" data-tab="tab-1" id="aerotab"><strong>Por aerolinea</strong></li>
-										<li class="tab-link" data-tab="tab-2" id="vuelotab"><strong>Por vuelo</strong></li>
+										<li class="tab-link" data-tab="tab-2" id="vuelotab"><strong>Por número de vuelo</strong></li>
 									</ul>
 
 									<div id="aerobox" class="tab-content current col-md-6 col-md-offset-3">
@@ -77,15 +68,38 @@
 							</div> <!-- searchbox -->
 
 							<div class="row">
-								<div class="col-md-2 col-md-offset-5 search-col">
+								<div class="col-md-4 col-md-offset-4 search-col center-col">
 									<button type="button" class="vda-btn" id="searchButton" aria-label="Buscar" data-ng-click="search()">
-										<span class="glyphicon glyphicon-search" aria-hidden="true"></span> BUSCAR
+										<span class="glyphicon glyphicon-search" aria-hidden="true"></span> BUSCAR RESEÑAS
 									</button>
 								</div>
 							</div>
 						</div> 
 					</div>
 				</div> 
+				
+				<div class="row review-btn-row">
+					<div data-ng-if="flightSelected" class="ng-cloak">
+						<div class="row title-row">
+							<div class="center-col col-md-12">
+								<h3>Reseñas del vuelo {{getSelectedFlightName()}}</h3>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-3 back-btn">
+						<div data-ng-if="flightSelected" class="ng-cloak">
+							<button class="vda-btn" data-ng-click="deselectFlight()"><span class="glyphicon glyphicon-chevron-left"></span>Volver a la búsqueda</button>
+						</div>
+					</div>
+					<div class="col-md-6 center-col">
+						<button type="button" class="vda-btn leave-review-btn" data-toggle="modal" data-target="#leaveReviewModal">
+							<span data-ng-if="!flightSelected">Dejar una reseña</span>
+							<span data-ng-if="flightSelected" class="ng-cloak">Dejar una reseña para este vuelo</span>
+						</button>
+						<div data-ng-include="'./snippets/leave-review.html'">
+						</div>
+					</div>
+				</div>
 			</div>
 			<div class="container-fluid" id="reviewRes">
 				<div class="row">
