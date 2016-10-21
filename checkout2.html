@@ -236,7 +236,7 @@
 															<label for="birth-month-{{$index}}" class="hidden">Mes</label>
 															<input maxlength="2" autocomplete="off" type="text" class="form-control birth-month" placeholder="MM" id="birth-month-{{$index}}"/>
 															<label for="birth-year-{{$index}}" class="hidden">Año</label>
-															<input maxlength="4" autocomplete="off" type="text" class="form-control birth-year" placeholder="YYYY" id="birth-year-{{$index}}"/>
+															<input maxlength="4" autocomplete="off" type="text" class="form-control birth-year" placeholder="AAAA" id="birth-year-{{$index}}"/>
 															<p class="error-msg" id="error-birthdate-{{$index}}"></p>
 															<p class="error-msg" id="error-birth-day-{{$index}}"></p>
 															<p class="error-msg" id="error-birth-month-{{$index}}"></p>
@@ -299,9 +299,9 @@
 
                         <div class="col-md-3 form-inline form-field">
                           <label for="exp-month" class="hidden">Mes:</label>
-                          <input maxlength="2" autocomplete="off" type="text" class="form-control" placeholder="mes" id="exp-month">
+                          <input maxlength="2" autocomplete="off" type="text" class="form-control" placeholder="MM" id="exp-month">
                           <label for="exp-year" class="hidden">Año:</label>
-                          <input maxlength="4" autocomplete="off" type="text" class="form-control" placeholder="año" id="exp-year">
+                          <input maxlength="4" autocomplete="off" type="text" class="form-control" placeholder="AAAA" id="exp-year">
                           <p class="error-msg" id="error-expiration"></p>
                           <p class="error-msg" id="error-exp-month"></p>
                           <p class="error-msg" id="error-exp-year"></p>
@@ -395,13 +395,13 @@
 
                         <div class="col-md-2 form-field">
                           <label for="floor">Piso:</label>
-                          <input autocomplete="off" type="text" class="form-control" id="floor" maxlength="3">
+                          <input autocomplete="off" type="text" class="form-control" id="floor" maxlength="3" placeholder="Opcional">
                           <p class="error-msg"></p>
                         </div>
 
                         <div class="col-md-2 form-field">
                           <label for="department">Departamento:</label>
-                          <input autocomplete="off" type="text" class="form-control" id="department" maxlength="2">
+                          <input autocomplete="off" type="text" class="form-control" id="department" maxlength="2" placeholder="Opcional">
                           <p class="error-msg"></p>
                         </div>
 
@@ -437,7 +437,7 @@
 										<!--Primera Fila -->
 										<div class="row">
 											<div class="col-md-8 form-field">
-												<label for="email" >E-mail:</label>
+												<label for="email" >Correo electrónico:</label>
 												<input autocomplete="off" type="text" class="form-control" id="email" maxlength="128">
 												<p class="error-msg"></p>
 											</div>
@@ -613,7 +613,7 @@
                           <div class="panel-body">
       											<div class="row">
       												<div class="col-md-12">
-      													<p><strong>E-mail: </strong>{{contactData['email']}}</p>
+      													<p><strong>Correo electrónico: </strong>{{contactData['email']}}</p>
       												</div>
       											</div>
       											<div class="row" data-ng-repeat="phone in phones">
