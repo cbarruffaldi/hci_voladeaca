@@ -38,7 +38,16 @@
 	background: #FFF;
 	color: #333;
 	padding: 20px;
-	margin-bottom: 40px;
+	border-bottom-left-radius: 3px;
+	border-bottom-right-radius: 3px;
+	box-shadow: 0 0 8px #b3b3b3;
+}
+
+.ind-review-box {
+	
+	background: #FFF;
+	color: #333;
+	margin-bottom: 20px;
 	border-bottom-left-radius: 3px;
 	border-bottom-right-radius: 3px;
 	box-shadow: 0 0 8px #b3b3b3;
@@ -106,7 +115,7 @@ input::-webkit-inner-spin-button {
 	left: 0;
 	border-width: 0 0 35px 35px;
 	border-style: solid;
-	border-color: #204Dcc #cacaca;
+	border-color: #204Dcc gray;
 	-webkit-box-shadow: 3px 1px 1px 0px  rgba(0,0,0,0.3);
 	-moz-box-shadow: 3px 1px 1px 0px rgba(0,0,0,0.3);
 	box-shadow: 3px 1px 1px 0px rgba(0,0,0,0.3) /* -1px 1px 1px rgba(0,0,0,0.2);
@@ -143,6 +152,8 @@ ul.tabs li.current{
 }
 
 .ratings ul{
+	text-align: center;
+	padding-left: 0;
 	list-style: none;
 }
 
@@ -162,6 +173,7 @@ ul.tabs li.current{
 
 .ratings li{
 	font-size: 1.1em;
+	font-weight: 500;
 	padding:3px;
 }
 
@@ -177,7 +189,7 @@ ul.tabs li.current{
 	-moz-border-radius: 10px;
 	border-radius: 10px;
 	border: #DC0055 solid 1px;
-	box-shadow: 4px 3px 10px -3px #7d3d56;
+	box-shadow: 0 0 10px #a3a3a3;
 }
 
 .bubble:after

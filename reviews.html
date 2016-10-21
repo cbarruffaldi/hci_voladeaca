@@ -34,51 +34,50 @@
 
 	<div class="contents">
 		<div class="container">
-      
-      <div data-ng-if="flightSelected" class="ng-cloak">
-       <button class="vda-btn" data-ng-click="deselectFlight()">&laquo; Volver a la búsqueda</button>
-      </div>
 
-      <div class="row reviewcontent">
-      <div class="col-md-1"></div>
-      <div data-ng-if="!flightSelected" class="titulo review_st">Dejar una reseña</div>
-      <div data-ng-if="flightSelected" class="ng-cloak titulo review_st_alt">Dejar una reseña para {{getSelectedFlightName()}}</div>
-      <div data-ng-include="'./snippets/leave-review.html'">
-      </div>
+			<div data-ng-if="flightSelected" class="ng-cloak">
+				<button class="vda-btn" data-ng-click="deselectFlight()">&laquo; Volver a la búsqueda</button>
+			</div>
 
-      <div class="col-md-1"></div>
-      </div>
-      <div data-ng-if="!flightSelected">
-			<div class="row searchcontent">
-				<div class="titulo review_st">Buscar reseñas</div>
-				<div class="col-sm-1"></div>
-				<div class="search-reviews-box">
-					<div class="col-sm-10">
-						<ul class="tabs">
-							<li class="tab-link current" data-tab="tab-1" id="aerotab"><strong>Por aerolinea</strong></li>
-							<li class="tab-link" data-tab="tab-2" id="vuelotab"><strong>Por vuelo</strong></li>
-						</ul>
+			<div class="row reviewcontent">
+				<div class="col-md-1"></div>
+				<div data-ng-if="!flightSelected" class="titulo review_st">Dejar una reseña</div>
+				<div data-ng-if="flightSelected" class="ng-cloak titulo review_st_alt">Dejar una reseña para {{getSelectedFlightName()}}</div>
+				<div data-ng-include="'./snippets/leave-review.html'">
+				</div>
 
-						<div id="aerobox" class="tab-content current col-md-6">
-							<div class="formtitle" id="aerotitle">Aerolínea:</div>
-							<div class="form-group">
-								<input type="text" data-my-enter="yes" class="form-control awesomplete" data-review-autocomplete="true" id="input-aerolinea"/>
+				<div class="col-md-1"></div>
+			</div>
+			<div data-ng-if="!flightSelected">
+				<div class="row searchcontent">
+					<div class="search-reviews-box">
+						<div class="titulo review_st">Buscar reseñas</div>
+						<div class="col-sm-10">
+							<ul class="tabs">
+								<li class="tab-link current" data-tab="tab-1" id="aerotab"><strong>Por aerolinea</strong></li>
+								<li class="tab-link" data-tab="tab-2" id="vuelotab"><strong>Por vuelo</strong></li>
+							</ul>
+
+							<div id="aerobox" class="tab-content current col-md-6">
+								<div class="formtitle" id="aerotitle">Aerolínea:</div>
+								<div class="form-group">
+									<input type="text" data-my-enter="yes" class="form-control awesomplete" data-review-autocomplete="true" id="input-aerolinea"/>
+								</div>
 							</div>
-						</div>
-						<div id="vuelobox" class="tab-content col-md-6">
-							<div class="formtitle">Numero de vuelo:</div>
-							<div class="form-group">
-								<input type="text" data-ng-model="flightNum" class="form-control" id="nroVuelo" placeholder=""/>
+							<div id="vuelobox" class="tab-content col-md-6">
+								<div class="formtitle">Numero de vuelo:</div>
+								<div class="form-group">
+									<input type="text" data-ng-model="flightNum" class="form-control" id="nroVuelo" placeholder=""/>
+								</div>
 							</div>
-						</div>
-					</div> <!-- searchbox -->
-					<button type="button" class="vda-btn" id="searchButton" aria-label="Buscar" data-ng-click="search()">
-						<span class="glyphicon glyphicon-search" aria-hidden="true"></span> BUSCAR
-					</button>
+						</div> <!-- searchbox -->
+						<button type="button" class="vda-btn" id="searchButton" aria-label="Buscar" data-ng-click="search()">
+							<span class="glyphicon glyphicon-search" aria-hidden="true"></span> BUSCAR
+						</button>
 
-				</div> <!-- row -->
-			</div> <!-- container -->
-    </div>
+					</div> <!-- row -->
+				</div> <!-- container -->
+			</div>
 		</div>
 		<div class="container-fluid" id="reviewRes">
 			<div class="row">
@@ -95,28 +94,28 @@
 				</div>
 			</div>
 		</div>
-</div>
+	</div>
 
 
 
-		<footer>  
-			<div class="container">
-				<div class="row">
-					<div class="col-md-4" />
-					<p>&copy; VolaDeAca 2016</p>
-				</div> <!-- row -->
-				</footer>
-			<script src="js/vendor/jquery-1.11.2.min.js"></script>
-			<script src="js/angular-animate.js"></script>
+	<footer>  
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4" />
+				<p>&copy; VolaDeAca 2016</p>
+			</div> <!-- row -->
+			</footer>
+		<script src="js/vendor/jquery-1.11.2.min.js"></script>
+		<script src="js/angular-animate.js"></script>
 
-			<script src="js/vendor/bootstrap.min.js"></script>
-			<script src="js/resenas.js"></script>
-			<script src="CheloLabs/awesomplete.js"></script> 
-			<script src="CheloLabs/acomplete.js"></script>
-			<script src="js/ng-infinite-scroll.js"></script>
-			<script src="js/reviewsApp.js"></script>
-			<script src="extlib/nouislider.min.js"></script>
-			<script src="extlib/wNumb.js"></script>
+		<script src="js/vendor/bootstrap.min.js"></script>
+		<script src="js/resenas.js"></script>
+		<script src="CheloLabs/awesomplete.js"></script> 
+		<script src="CheloLabs/acomplete.js"></script>
+		<script src="js/ng-infinite-scroll.js"></script>
+		<script src="js/reviewsApp.js"></script>
+		<script src="extlib/nouislider.min.js"></script>
+		<script src="extlib/wNumb.js"></script>
 
-			</body>
-		</html>
+		</body>
+	</html>

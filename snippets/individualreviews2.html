@@ -1,36 +1,40 @@
 
 <div class="row">
-<div class="col-md-12">
-<div infinite-scroll='loadMore("reviews")' infinite-scroll-distance='1'>
-	<div class="row review" data-ng-repeat="r in reviewResults | filter: filterReviews | limitTo: scrollLimit.reviews">
-		<div class="col-md-2"></div>
-	<div class="col-md-8">
-		<div class="row review-head">
-		</div>
-		<div class="review-box row">
-			<div class="row comments">
-			<div class="stars">Calificación: <div data-ng-bind-html="getStars(r.rating.overall)"></div></div>
-			<div class="bubble">{{r.comments}}</div>
-			</div>
-			<div class="row ratings">
+	<div class="col-md-12">
+		<div infinite-scroll='loadMore("reviews")' infinite-scroll-distance='1'>
+			<div class="review" data-ng-repeat="r in reviewResults | filter: filterReviews | limitTo: scrollLimit.reviews">
 				<div class="col-md-6">
-					<ul>
-						<li>Comfort: {{r.rating.comfort}}</li>
-						<li>Food: {{r.rating.comfort}}</li>
-						<li>Friendliness: {{r.rating.comfort}}</li>
-					</ul>
-				</div>
-				<div class="col-md-6">
-					<ul>
-						<li>Mileage_program: {{r.rating.comfort}}</li>
-						<li>Punctuality: {{r.rating.punctuality}}</li>
-						<li>Quality/Price: {{r.rating.quality_price}}</li>
-					</ul>
+					<div class="col-md-12">
+					<div class="row review-head">
+					</div>
+					<div class="ind-review-box row">
+						<div class="col-md-12">
+							<div class="row comments">
+								<div class="stars">Calificación: <div data-ng-bind-html="getStars(r.rating.overall)"></div></div>
+								<div class="bubble">{{r.comments}}</div>
+							</div>
+							<div class="row ratings">
+								<div class="col-md-6">
+									<ul>
+										<li>Comfort: {{r.rating.comfort}}</li>
+										<li>Food: {{r.rating.comfort}}</li>
+										<li>Friendliness: {{r.rating.comfort}}</li>
+									</ul>
+								</div>
+								<div class="col-md-6">
+									<ul>
+										<li>Mileage_program: {{r.rating.comfort}}</li>
+										<li>Punctuality: {{r.rating.punctuality}}</li>
+										<li>Quality/Price: {{r.rating.quality_price}}</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+
+					</div>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	</div>
-</div>
-</div>
 
