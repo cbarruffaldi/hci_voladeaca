@@ -21,58 +21,58 @@ jQuery(document).ready(function(){
 
 
 
-	$(function() {
-
-    var $sidebar   = $(".filter-area"), 
-        $window    = $(window),
-        offset     = $sidebar.offset(),
-        topPadding = 15;
-	
-  	 var lastScroll = 0;
-
-
-$(function() {
-    var $sidebar   = $(".filter-area"), 
-        $window    = $(window),
-        offset     = $sidebar.offset(),
-        topPadding = 15,
-        bottomPadding = 350,
-        windowHeight = $window.height();
-
-        var lastScroll = 0;
-
-    $window.scroll(function() {
-    	var st = $(this).scrollTop();
-
-    	if(st < lastScroll){
-        if ($window.scrollTop() < $sidebar.offset().top) {
-            $sidebar.stop().animate({
-                marginTop: $window.scrollTop() - offset.top + topPadding
-            }, {duration: 0}, "_default");
-        } else {
-            $sidebar.stop().animate({
-                marginBottom: 0
-            }, {duration:50}, "_default");
-
-    	}
-    	}
-    	else if(st > lastScroll){
-        if ($window.scrollTop() + $window.height() > $sidebar.position().top + $sidebar.outerHeight(true)) {
-            $sidebar.stop().animate({
-                marginTop: $window.scrollTop() - offset.top - bottomPadding
-            }, {duration: 0}, "_default");
-        } else {
-            $sidebar.stop().animate({
-                marginBottom: 0
-            }, {duration:50}, "_default");
-
-    	}
-
-	}
-    lastScroll = st;
-
-    });
-    
+//	$(function() {
+//
+//    var $sidebar   = $(".filter-area"), 
+//        $window    = $(window),
+//        offset     = $sidebar.offset(),
+//        topPadding = 15;
+//	
+//  	 var lastScroll = 0;
+//
+//
+//$(function() {
+//    var $sidebar   = $(".filter-area"), 
+//        $window    = $(window),
+//        offset     = $sidebar.offset(),
+//        topPadding = 15,
+//        bottomPadding = 350,
+//        windowHeight = $window.height();
+//
+//        var lastScroll = 0;
+//
+//    $window.scroll(function() {
+//    	var st = $(this).scrollTop();
+//
+//    	if(st < lastScroll){
+//        if ($window.scrollTop() < $sidebar.offset().top) {
+//            $sidebar.stop().animate({
+//                marginTop: $window.scrollTop() - offset.top + topPadding
+//            }, {duration: 0}, "_default");
+//        } else {
+//            $sidebar.stop().animate({
+//                marginBottom: 0
+//            }, {duration:50}, "_default");
+//
+//    	}
+//    	}
+//    	else if(st > lastScroll){
+//        if ($window.scrollTop() + $window.height() > $sidebar.position().top + $sidebar.outerHeight(true)) {
+//            $sidebar.stop().animate({
+//                marginTop: $window.scrollTop() - offset.top - bottomPadding
+//            }, {duration: 0}, "_default");
+//        } else {
+//            $sidebar.stop().animate({
+//                marginBottom: 0
+//            }, {duration:50}, "_default");
+//
+//    	}
+//
+//	}
+//    lastScroll = st;
+//
+//    });
+//    
 });
 
 

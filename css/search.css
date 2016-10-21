@@ -90,7 +90,7 @@ label {
 }
 
 .depart-time-button img:hover {
-/*	border-color: #204DCC;*/
+	/*	border-color: #204DCC;*/
 	box-shadow: 0 0 3px #204DCC;
 }
 
@@ -342,20 +342,48 @@ label {
 }
 
 .greyout{
- /*   background-color: white;*/
-    filter:alpha(opacity=40); /* IE */
-    opacity: 0.4; /* Safari, Opera */
-    -moz-opacity:0.40; /* FireFox */
-    z-index: 20;
-    height: 100%;
-    width: 100%;
-   /* background-repeat:no-repeat;
-    background-position:center;*/
-    position:absolute;
-    top: 0px;
-    left: 0px;
+	/*   background-color: white;*/
+	filter:alpha(opacity=40); /* IE */
+	opacity: 0.4; /* Safari, Opera */
+	-moz-opacity:0.40; /* FireFox */
+	z-index: 20;
+	height: 100%;
+	width: 100%;
+	/* background-repeat:no-repeat;
+	background-position:center;*/
+	position:absolute;
+	top: 0px;
+	left: 0px;
 }
 
 .hidden{
 	display: none;
+}
+
+body, html {
+	margin: 0;
+	overflow: hidden !important;
+	height:100% !important;
+}
+
+#left {
+	margin-top: 4em;
+	height:100%;
+	position: absolute;
+	top: 0px;
+	bottom: 0;
+	left: 0;
+	width: 25%;
+	overflow-y: scroll; 
+}
+
+#right {
+	margin-top: 4em;
+	height:100%;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	overflow-y: scroll;
+	width: 75%;
 }
