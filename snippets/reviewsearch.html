@@ -4,7 +4,7 @@
 			<div class="revcont">
 				<div class="review_t row">
 					<div class="col-md-12">
-						{{f.flight.airline.id}} {{f.flight.number}}
+						{{flightName(f.flight.airline.id, f.flight.number)}}
 					</div>
 				</div>
 				<div class="row">
@@ -20,22 +20,24 @@
 								</span>
 							</div>
 						</div>
-						<div class="row ratings">
-							<div class="col-md-6">
-								<ul>
-									<li>Comfort: <span class="rate-num">{{(f.rating.comfort).toFixed(2)}}</span></li>
-									<li>Food: <span class="rate-num">{{(f.rating.food).toFixed(2)}}</span></li>
-									<li>Friendliness: <span class="rate-num">{{(f.rating.friendliness).toFixed(2)}}</span></li>
-								</ul>
+							<div class="row ratings">
+								<div class="col-md-6">
+									<ul>
+										<li class="ritem"><span class="rcategory">Comfort</span> <span class="rate-num">{{f.rating.comfort.toFixed(2)}}</span></li>
+										<li class="ritem"><span class="rcategory">Comida</span> <span class="rate-num">{{f.rating.food.toFixed(2)}}</span></li>
+										<li class="ritem"><span class="rcategory">Beneficios de viajero frecuente</span> <span class="rate-num">{{f.rating.mileage_program.toFixed(2)}}</span></li>
+									</ul>
+								</div>
+								<div class="col-md-6">
+									<ul>
+										<li class="ritem"><span class="rcategory">Amabilidad</span> <span class="rate-num">{{f.rating.friendliness.toFixed(2)}}</span></li>
+
+										<li class="ritem"><span class="rcategory">Puntualidad</span> <span class="rate-num">{{f.rating.punctuality.toFixed(2)}}</span></li>
+										<li class="ritem"><span class="rcategory">Relacion precio/calidad</span> <span class="rate-num">{{f.rating.quality_price.toFixed(2)}}</span></li>
+
+									</ul>
+								</div>
 							</div>
-							<div class="col-md-6">
-								<ul>
-									<li>Mileage_program: <span class="rate-num">{{(f.rating.mileage_program).toFixed(2)}}</span></li>
-									<li>Punctuality: <span class="rate-num">{{(f.rating.punctuality).toFixed(2)}}</span></li>
-									<li>Quality/Price: <span class="rate-num">{{(f.rating.quality_price).toFixed(2)}}</span></li>
-								</ul>
-							</div>
-						</div>
 						<div class="row viewmore">
 							<div class="col-md-12">
 								<a class="see-more-btn" href="#" data-ng-click="selectFlight(f)">Ver reseñas de este vuelo<span class="glyphicon glyphicon-chevron-right"></span></a>

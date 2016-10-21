@@ -198,6 +198,11 @@ ul.tabs li.current{
 	box-shadow: 0 0 10px #a3a3a3;
 }
 
+
+.ritem{
+margin: 0 15px 15px 25px;
+}
+
 .rcategory{
 width: 100%;
 display: block;
@@ -401,8 +406,8 @@ textarea {
 color: black;
 padding: 2px 9px;
 border-radius: 5px;
-margin-left: 29px;
-display: block;}
+display: block;
+}
 
 .red {
 	border: 1px solid crimson;
