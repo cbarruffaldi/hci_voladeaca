@@ -458,6 +458,13 @@ function PassengersValidator(ad, ch, inf, travelDate) {
 		return data;
 	}
 
+	this.alreadyValidated = function(id) {
+		var split = id.split('-');
+		var passId = split.pop();
+
+		return this.passengerValidators[passId].alreadyValidated(split.join('-'));				
+	}
+
 	this.validate = function(id, value) {
 		var split = id.split('-');
 		var passId = split.pop();
@@ -553,6 +560,10 @@ function PassengerValidator(type, validateFunction, trDate, passId) {
 
     	return validation;
     }
+
+	this.alreadyValidated = function(id) {
+		return this.data[id] !== undefined;
+	}
 
     this.validate = function(id, value) {
     	var validateFunction = this.inputValidations[id];
@@ -686,6 +697,10 @@ function PaymentCardValidator() {
     	removeCreditCardError();
     }
 
+	this.alreadyValidated = function(id) {
+		return this.data[id] !== undefined;
+	}
+
 	this.validate = function(id, value) {
 		var validateFunction = this.inputValidations[id];
 
@@ -796,6 +811,10 @@ function PaymentAddressValidator() {
     	this.backup = {};
     }
 
+	this.alreadyValidated = function(id) {
+		return this.data[id] !== undefined;
+	}
+
 	this.validate = function(id, value) {
 		var inputValidation = this.inputValidations[id] || this.optionalValidations[id];
 
@@ -840,6 +859,10 @@ function PaymentValidator() {
 
 	this.getBillingData = function() {
 		return this.addrValidator.getData();
+	}
+
+	this.alreadyValidated = function(id) {
+		return this.cardValidator.alreadyValidated(id) || this.addrValidator.alreadyValidated(id);
 	}
 
 	this.getData = function() {
@@ -918,6 +941,13 @@ function ContactValidator() {
 			data['phones'].push({'type': type, 'number': this.phones[prop]});
 		}
 		return data;
+	}
+
+	this.alreadyValidated = function(id) {
+		if (id == 'email')
+			return this.email !== undefined;
+		else
+			return this.phones[id] !== undefined;
 	}
 
 	this.validate = function(id, value) {

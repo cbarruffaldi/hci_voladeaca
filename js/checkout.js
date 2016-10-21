@@ -123,6 +123,28 @@ $(document).on('blur', 'input', function() {
         setErrorState($(this), validation.value);
     }    
 });
+
+$(document).on('keyup', 'input', function() {
+    var indexTab = getCurrentStage();
+    var id = $(this).attr('id');
+    var value = $(this).val();
+    var validator = validators[indexTab];
+    var validation;
+
+    if (!validator.alreadyValidated(id))
+        return;
+    
+    validation = validator.validate(id, value);
+
+    if (validation.valid) {
+        if (!validation.ignore)
+            removeErrorState($(this));
+    }
+    else if (!validation.ignore) {
+        setErrorState($(this), validation.value);
+    }    
+});
+
 /*
 $(document).ready(function(){
     $(".nav-tabs a").click(function(){
@@ -133,6 +155,7 @@ $(document).ready(function(){
 });
 
 */
+
 function cleanSummaryStage(stage) {
     if (stage == 1) {
         $(".summary-passengers").children().remove();
@@ -172,7 +195,7 @@ $(document).ready(function(){
         }
 })});
 
-$(document).on('click', '.basicField', function(){
+$(document).on('focus', '.basicField', function(){
     $(this).closest('.form-group').find('.openField').show();
 });
 
@@ -435,6 +458,8 @@ function addDisabledInput(id) {
 
 $(document).on('click', '.tt-dataset', function() {
     removeDisabledInput('city');
+
+    removeErrorState($(this).parent().siblings('input'));
 });
 
 $(document).ready(function () {
@@ -442,8 +467,7 @@ $(document).ready(function () {
     var prevCountry;
 
     $('#country').keyup(function() {
-        var validation = paymentValidator.validate('country', $('#country').val());
-        console.log('asd');
+        var validation = validateCountry($('#country').val());
         if(validation.valid) {
             removeDisabledInput('city');
         }
