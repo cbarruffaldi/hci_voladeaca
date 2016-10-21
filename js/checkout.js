@@ -67,7 +67,7 @@ $(document).ready(function() {
         if (indexTab == 3) {
             translateBookingData(passengersValidator.getData(), paymentValidator.getCardData(), paymentValidator.getBillingData(), contactValidator.getData());
         }
-        //else if (validator.validateStage()) {  /* Comentar si resulta molesto no poder pasar las etapas */
+        else if (validator.validateStage()) {  /* Comentar si resulta molesto no poder pasar las etapas */
             if(next.hasClass('disabled-tab')) {
                 next.removeClass('disabled-tab');
                 next.removeClass('disabled');
@@ -95,7 +95,7 @@ $(document).ready(function() {
             var state = { value : sequence };
             history.pushState(state, "", "sequence.html");
             data.text(sequence);
-        //}
+        }
     });
 });
 
@@ -467,12 +467,15 @@ function removeDisabledInput(id) {
     var input = $('#' + id);
     input.removeAttr('disabled');
     input.removeClass('disabled');
+    input.removeAttr('placeholder');
 }
 
 function addDisabledInput(id) {
     var input = $('#' + id);
     input.attr('disabled', 'disabled');
     input.addClass('disabled');
+    input.attr('placeholder', 'Ingrese país primero');    
+    removeErrorState(input);
 }
 
 $(document).on('click', '.tt-dataset', function() {
