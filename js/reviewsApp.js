@@ -46,7 +46,11 @@ app.controller("reviewsCtrl", function($scope, $http, $sce, $window) {
 		if(!$scope.airlineData){
 			return "";
 		}
-		return $scope.airlineData.name_map[selectedDetails.airline] + " #" + selectedDetails.number;
+		return $scope.flightName(selectedDetails.airline, selectedDetails.number);
+	}
+
+	$scope.flightName = function(id, number){
+		return $scope.airlineData.name_map[id] + " #" + number;
 	}
 
 	$scope.selectFlight = function (f){
@@ -302,7 +306,7 @@ function initSlider(id){
 			mode: 'positions',
 			stepped: true,
 			values: [0,100],
-			density: 9
+			density: 11
 		}
 
 		//step: minPrice - maxPrice,

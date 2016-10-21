@@ -20,11 +20,11 @@ app.controller('CheckoutController', function($scope) {
 	}
 
 	var $bought;
-    if(!localStorage.boughtFlight){
+    if(!sessionStorage.boughtFlight){
       console.log("No se que haces en esta pagina plebeyo, volve a la busqueda");
     }
     else{
-        $bought = JSON.parse(localStorage.boughtFlight);
+        $bought = JSON.parse(sessionStorage.boughtFlight);
     }
 
 	$scope.passengerList = buildList($bought.passengers);

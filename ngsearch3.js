@@ -119,6 +119,7 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 			localStorage.removeItem('boughtFlight');
 
 			$selectedFlight.container = container;
+			
 			sessionStorage.setItem('boughtFlight', JSON.stringify($selectedFlight));
 
 			if(localStorage.boughtFlight){
