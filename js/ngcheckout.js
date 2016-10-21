@@ -21,11 +21,13 @@ app.controller('CheckoutController', function($scope) {
 
 	var $bought;
     if(!sessionStorage.boughtFlight){
+      $scope.validCheckout = false;
       console.log("No se que haces en esta pagina plebeyo, volve a la busqueda");
     }
     else{
+    	$scope.validCheckout = true;
         $bought = JSON.parse(sessionStorage.boughtFlight);
-    }
+    	console.log($bought);
 
 	$scope.passengerList = buildList($bought.passengers);
 
@@ -41,7 +43,9 @@ app.controller('CheckoutController', function($scope) {
 	}
 
 	$scope.flightPrice = $bought.container.price.total;
+	$scope.flightPricesPerPerson = $bought.container.price;
 	$scope.idaFlightDetails = getFlightDetails($bought.container.flights[0].flight);
+	}
 
 	/* Es re feo esto, pero es mas facil para buscar las cosas que estan super anidadas */
 	function getFlightDetails(flights){
@@ -60,7 +64,7 @@ app.controller('CheckoutController', function($scope) {
 						duration: getDuration(flights),
 						number: getFlightNumber(flights),
 						price: getPrice(flights),
-						logo: getLogo(getAirlineId(flights))	};
+						logo: getLogo(getAirlineId(flights)),	};
 
 		return flight;
 	}

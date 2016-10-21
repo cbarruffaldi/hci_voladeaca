@@ -320,6 +320,17 @@ label {
 	color: #204DCC;
 }
 
+.details-info {
+	font-size: 0.7em;
+	font-weight: 400;
+	letter-spacing: 1px;
+}
+.city-info {
+	font-size: 1em;
+	font-weight: 400;
+	letter-spacing: 1px;
+}
+
 .duration-col{
 	text-align: center;
 }
@@ -357,6 +368,12 @@ label {
 	width: 35px;
 }
 
-.city-info {
-	
+.error-msg{
+	text-align: center;
+	color: #333;
+}
+
+.error-img {
+	height:200px;
+
 }
