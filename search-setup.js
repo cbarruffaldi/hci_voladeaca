@@ -33,7 +33,6 @@
 		global.passengers.adults = parseInt(adults) || 1;
 		global.passengers.children = parseInt(children) || 0;
 		global.passengers.infants = parseInt(infants) || 0;
-
 	};
 
 	$(document).ready(function(){

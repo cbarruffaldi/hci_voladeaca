@@ -302,7 +302,7 @@ function initSlider(id){
 			mode: 'positions',
 			stepped: true,
 			values: [0,100],
-			density: 9
+			density: 11
 		}
 
 		//step: minPrice - maxPrice,

@@ -50,10 +50,8 @@ function initSearchbox(global){
 	$("#destino").on('blur', function(evt){
 		if(isValidAirport(this))
 			$(this).removeClass('x');
-
 	});
-
-
+	
 	jQuery(function($) {
 		// CLEARABLE INPUT
 		function tog(v){return v?'addClass':'removeClass';} 
