@@ -667,7 +667,6 @@ function PaymentCardValidator() {
 							  'exp-year': validateExpYear,
 							  'sec-code': validateSecCode,
 							  'cardholder': validateCardholder,
-							  'installments': null
 							};
 
 	this.validExpDate = false;

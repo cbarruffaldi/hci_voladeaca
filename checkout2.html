@@ -276,72 +276,54 @@
 									</div>
 									<div id="card-details">
 										<div class="form-group">
+
+                      <div class="row">
+
+                        <div class="col-md-5 form-field">
+                          <label for="card-num">Número de la tarjeta:</label>
+                        </div>
+                        <div class="col-md-3 single-label">
+                          <label>Vencimiento:</label>
+                        </div>
+                        <div class="col-md-4 form-inline form-field">
+                          <label for="sec-code">Código de seguridad:</label>
+                        </div>
+
+                      </div>
 											<!--Primera Fila -->
 											<div class="row">
-												<div class="col-md-8 form-field">
-													<label for="card-num">Número de la tarjeta:</label>
+												<div class="col-md-5 form-field">
 													<input maxlength="16" autocomplete="off" type="text" class="form-control" id="card-num"/>
 													<p class="error-msg"></p>
 												</div>
-												<div class="col-md-2 col-md-offset-1 form-field">
-													<label for="installments">Cuotas:</label>
-													<select autocomplete="off" class="form-control" id="installments">
-														<option>1</option>
-														<option>2</option>
-														<option>3</option>
-														<option>4</option>
-														<option>5</option>
-														<option>6</option>
-														<option>7</option>
-														<option>8</option>
-														<option>9</option>
-														<option>10</option>
-														<option>11</option>
-														<option>12</option>
-														<option>13</option>
-														<option>14</option>
-														<option>15</option>
-														<option>16</option>
-														<option>17</option>
-														<option>18</option>
-														<option>19</option>
-														<option>20</option>
-														<option>21</option>
-														<option>22</option>
-														<option>23</option>
-														<option>24</option>
-													</select>
-												</div>
+
+                        <div class="col-md-3 form-inline form-field">
+                          <label for="exp-month" class="hidden">Mes:</label>
+                          <input maxlength="2" autocomplete="off" type="text" class="form-control" placeholder="mes" id="exp-month">
+                          <label for="exp-year" class="hidden">Año:</label>
+                          <input maxlength="4" autocomplete="off" type="text" class="form-control" placeholder="año" id="exp-year">
+                          <p class="error-msg" id="error-expiration"></p>
+                          <p class="error-msg" id="error-exp-month"></p>
+                          <p class="error-msg" id="error-exp-year"></p>
+                        </div>
+
+                        <div class="col-md-4 form-inline form-field">
+                          <input autocomplete="off" type="text" class="form-control" id="sec-code">
+                          <a href='#' id= 'code-popover' data-toggle="popover" title="¿Donde se ecuentra el código de seguridad?" data-content="<img src='img/security-code.jpg' width='200' />">
+                            <span class="glyphicon glyphicon-question-sign"></span>
+                          </a>
+                          <p class="error-msg"></p>
+                        </div>
+
 											</div>
 
 											<!-- Segunda Fila-->
 											<div class="row">
-												<div class="col-md-4 form-inline form-field">
-													<div class="row">
-														<div class="col-md-12 single-label">
-															<label>Vencimiento:</label>
-														</div>
-													</div>
-													<label for="exp-month" class="hidden">Mes:</label>
-													<input maxlength="2" autocomplete="off" type="text" class="form-control" placeholder="mes" id="exp-month">
-													<label for="exp-year" class="hidden">Año:</label>
-													<input maxlength="4" autocomplete="off" type="text" class="form-control" placeholder="año" id="exp-year">
-													<p class="error-msg" id="error-expiration"></p>
-													<p class="error-msg" id="error-exp-month"></p>
-													<p class="error-msg" id="error-exp-year"></p>
-												</div>
-
-												<div class="col-md-4 form-inline form-field">
-													<label for="sec-code">Código de seguridad:</label>
-													<input autocomplete="off" type="text" class="form-control" id="sec-code">
-													<a href='#' id= 'code-popover' data-toggle="popover" title="¿Donde se ecuentra el código de seguridad?" data-content="<img src='img/security-code.jpg' width='200' />">
-														<span class="glyphicon glyphicon-question-sign"></span>
-													</a>
-													<p class="error-msg"></p>
-												</div>
+	
+												
 
 												<!-- Mensaje error validación tarjeta de crédito -->
-												<div class="col-md-4">
+												<div class="col-md-12">
 													<p id="error-card">No hemos podido verificar su tarjeta de crédito. Por favor revise sus datos.</p>
 												</div>
 											</div>
@@ -349,7 +331,7 @@
 
 											<!-- Tercera fila -->
 											<div class="row">
-												<div class="col-md-12 form-field">
+												<div class="col-md-5 form-field">
 													<label for="cardholder" >Nombre del titular:</label>
 													<input autocomplete="off" type="text" class="form-control" id="cardholder" placeholder="Nombre como figura en la tarjeta">
 													<p class="error-msg"></p>
@@ -404,28 +386,28 @@
 													<p class="error-msg"></p>
 												</div>
 
-												<div class="col-md-2 form-field">
-													<label for="addr-num">Número:</label>
+                        <div class="col-md-2 form-field">
+                          <label for="addr-num">Número:</label>
 
-													<input autocomplete="off" type="text" class="form-control" id="addr-num" maxlength="6">
-													<p class="error-msg"></p>
-												</div>
+                          <input autocomplete="off" type="text" class="form-control" id="addr-num" maxlength="6">
+                          <p class="error-msg"></p>
+                        </div>
+
+                        <div class="col-md-2 form-field">
+                          <label for="floor">Piso:</label>
+                          <input autocomplete="off" type="text" class="form-control" id="floor" maxlength="3">
+                          <p class="error-msg"></p>
+                        </div>
+
+                        <div class="col-md-2 form-field">
+                          <label for="department">Departamento:</label>
+                          <input autocomplete="off" type="text" class="form-control" id="department" maxlength="2">
+                          <p class="error-msg"></p>
+                        </div>
 
 												<div class="col-md-2 form-field">
 													<label for="zip-code">Código Postal:</label>
 													<input autocomplete="off" type="text" class="form-control" id="zip-code" maxlength="10">
-													<p class="error-msg"></p>
-												</div>
-
-												<div class="col-md-2 form-field">
-													<label for="floor">Piso:</label>
-													<input autocomplete="off" type="text" class="form-control" id="floor" maxlength="3">
-													<p class="error-msg"></p>
-												</div>
-
-												<div class="col-md-2 form-field">
-													<label for="department">Departamento:</label>
-													<input autocomplete="off" type="text" class="form-control" id="department" maxlength="2">
 													<p class="error-msg"></p>
 												</div>
 

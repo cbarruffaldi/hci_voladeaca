@@ -262,8 +262,14 @@ function restorePhones(phonesId) {
     var backupPhonesId = Object.keys(contactValidator.getBackupPhones());
     fieldCounter = backupPhonesId.length;
     var wrapper = $('.modal-body').children('.form-group');
+    var addButton = $('.add-Phone'); //Add button selector
 
     $('.extra-phone').remove();
+
+    if (backupPhonesId.length == 5)
+        addButton.hide();       
+    else
+        addButton.show();
 
     backupPhonesId.forEach(function(stringId) {
         if (stringId != 'phone-0')
