@@ -1,10 +1,30 @@
-body{
-	background-color: #cacaca;
+
+
+.contents {
+	background: url('../img/bg/sky.jpg') no-repeat;
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	min-height: 600px;
 }
+
+
 .searchcontent{
 	margin-top: 5%;
-	box-shadow: 1px 0px 15px #333;
 	margin-bottom: 50px;
+	background: rgba( 235, 235, 235, 0.8);
+    padding-bottom: 1em;
+    box-shadow: 0 1px 15px #7B7B7B;
+    border-radius: 5px
+}
+
+.reviewcontent{	
+	margin-top: 5%;
+	margin-bottom: 50px;
+	background: rgba( 235, 235, 235, 0.8);
+    padding-bottom: 1em;
+    box-shadow: 0 1px 15px #7B7B7B;
+    border-radius: 5px
 }
 
 .titulo{
@@ -18,6 +38,7 @@ body{
 	background: #FFF;
 	color: #333;
 	padding: 20px;
+	margin-bottom: 40px;
 	border-bottom-left-radius: 3px;
 	border-bottom-right-radius: 3px;
 	box-shadow: 0 0 8px #b3b3b3;
@@ -51,6 +72,17 @@ input::-webkit-inner-spin-button {
 	border-top-left-radius: 3px;
 
 }
+
+.review_st_alt{
+	background: #204Dcc;
+	color: #FFFFFF;
+	padding-left: 10px;
+	font-size: 2em;
+	border-top-right-radius: 5px;
+	border-top-left-radius: 3px;
+
+}
+
 
 .review_t{
 	margin-top: 3%;
@@ -103,7 +135,6 @@ ul.tabs li.current{
 
 .tab-content{
 	display: none;
-	background: #dddddd;
 	padding: 15px;
 }
 
@@ -218,8 +249,9 @@ textarea {
 
 #review-form{
 	padding:0;
-	background: #ea8fb2;
-	border-radius: 3px;
+	background: rgba( 235, 235, 235, 0.8);
+    box-shadow: 0 1px 15px #7B7B7B;
+    border-radius: 5px;
 }
 
 .leave-review_t{
@@ -277,6 +309,7 @@ textarea {
 	margin-bottom: 5px;
 	border-bottom: 1px solid #FFFFFF;
 }
+
 
 .sendreview button:hover {
 	border-bottom: 1px solid #7b7b7b;

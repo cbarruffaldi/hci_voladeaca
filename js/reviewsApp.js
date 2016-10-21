@@ -4,8 +4,10 @@ app.controller("reviewsCtrl", function($scope, $http, $sce, $window) {
 	$scope.scrollLimit = {details: 10, reviews: 5}
 	$scope.reviewResults = [];
 	$scope.flightResults = [];
-	$scope.flightSelected;
+	$scope.flightSelected = false;
 	var selectedDetails = {};
+
+
 
 	$scope.yesRecommend = true;
 
@@ -22,6 +24,13 @@ app.controller("reviewsCtrl", function($scope, $http, $sce, $window) {
 			}
 		}
 		return $sce.trustAsHtml(ret);
+	}
+
+	$scope.getSelectedFlightName = function(){
+		if(!$scope.airlineData){
+			return "";
+		}
+		return $scope.airlineData.name_map[selectedDetails.airline] + " #" + selectedDetails.number;
 	}
 
 	$scope.selectFlight = function (f){
@@ -166,13 +175,6 @@ app.controller("reviewsCtrl", function($scope, $http, $sce, $window) {
 
 	function initAutocomplete(){
 			var airlineData = JSON.parse(localStorage.airlineData);
-			console.log(airlineData.list)
-			new Awesomplete(document.getElementById("input-aerolinea"), {
-				list: airlineData.list,
-				minChars: 1,
-				autoFirst: true}
-			);
-
 			$scope.airlineData = airlineData
 			console.log($scope.airlineData)			
 	}
@@ -185,6 +187,7 @@ app.controller("reviewsCtrl", function($scope, $http, $sce, $window) {
 	$window.validateInput = function(){
 		//$scope.search();
 	}
+
 	$scope.send = function(){
 		send = {};
 		rating = {};
@@ -199,9 +202,17 @@ app.controller("reviewsCtrl", function($scope, $http, $sce, $window) {
  		send.yes_recommend = $scope.yesRecommend;
  		send.comments = $("#rating-comments").val();
 
- 		send.flight = {
- 			airline: {id: selectedDetails.airline},
- 			number: selectedDetails.number
+ 		if($scope.flightSelected){
+ 			send.flight = {
+ 				airline: {id: selectedDetails.airline},
+ 				number: selectedDetails.number
+ 			}
+ 		}
+ 		else{
+ 			send.flight = {
+ 				airline : {id: $scope.airlineData.id_map[$("#input-aerolinea-rev").val()]},
+ 				number: parseInt($("#input-number-rev").val())
+ 			}
  		}
 
  		console.log(send);
@@ -243,6 +254,16 @@ app.directive('myEnter', function () {
                 event.preventDefault();
             }
         });
+    };
+});
+
+app.directive('reviewAutocomplete', function () {
+    return function (scope, element, attrs) {
+    	new Awesomplete(document.getElementById(attrs.id), {
+				list: scope.airlineData.list,
+				minChars: 1,
+				autoFirst: true}
+			);
     };
 });
 

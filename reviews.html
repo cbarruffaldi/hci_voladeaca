@@ -34,6 +34,21 @@
 
 	<div class="contents">
 		<div class="container">
+      
+      <div data-ng-if="flightSelected" class="ng-cloak">
+       <button class="vda-btn" data-ng-click="deselectFlight()">&laquo; Volver a la búsqueda</button>
+      </div>
+
+      <div class="row reviewcontent">
+      <div class="col-md-1"></div>
+      <div data-ng-if="!flightSelected" class="titulo review_st">Dejar una reseña</div>
+      <div data-ng-if="flightSelected" class="ng-cloak titulo review_st_alt">Dejar una reseña para {{getSelectedFlightName()}}</div>
+      <div data-ng-include="'./snippets/leave-review.html'">
+      </div>
+
+      <div class="col-md-1"></div>
+      </div>
+      <div data-ng-if="!flightSelected">
 			<div class="row searchcontent">
 				<div class="titulo review_st">Buscar reseñas</div>
 				<div class="col-sm-1"></div>
@@ -47,7 +62,7 @@
 						<div id="aerobox" class="tab-content current col-md-6">
 							<div class="formtitle" id="aerotitle">Aerolínea:</div>
 							<div class="form-group">
-								<input type="text" data-my-enter="yes" class="form-control awesomplete" id="input-aerolinea"/>
+								<input type="text" data-my-enter="yes" class="form-control awesomplete" data-review-autocomplete="true" id="input-aerolinea"/>
 							</div>
 						</div>
 						<div id="vuelobox" class="tab-content col-md-6">
@@ -63,8 +78,8 @@
 
 				</div> <!-- row -->
 			</div> <!-- container -->
+    </div>
 		</div>
-
 		<div class="container-fluid" id="reviewRes">
 			<div class="row">
 				<div class="col-md-10 col-md-offset-1">
@@ -80,6 +95,7 @@
 				</div>
 			</div>
 		</div>
+</div>
 
 
 
