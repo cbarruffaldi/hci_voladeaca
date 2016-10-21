@@ -11,21 +11,21 @@
 						<div class="col-md-12">
 							<div class="row comments">
 								<div class="stars">Calificación: <div data-ng-bind-html="getStars(r.rating.overall)"></div></div>
-								<div class="bubble">{{r.comments}}</div>
+								<div class="bubble"><div class="comment">{{r.comments}}</div></div>
 							</div>
 							<div class="row ratings">
 								<div class="col-md-6">
 									<ul>
-										<li>Comfort: <span class="rate-num">{{r.rating.comfort}}</span></li>
-										<li>Food: <span class="rate-num">{{r.rating.comfort}}</span></li>
-										<li>Friendliness: <span class="rate-num">{{r.rating.comfort}}</span></li>
+										<li><span class="rcategory">Comfort:</span> <span class="rate-num">{{r.rating.comfort}}</span></li>
+										<li><span class="rcategory">Food:</span> <span class="rate-num">{{r.rating.comfort}}</span></li>
+										<li><span class="rcategory">Friendliness:</span> <span class="rate-num">{{r.rating.comfort}}</span></li>
 									</ul>
 								</div>
 								<div class="col-md-6">
 									<ul>
-										<li>Mileage_program: <span class="rate-num">{{r.rating.comfort}}</span></li>
-										<li>Punctuality: <span class="rate-num">{{r.rating.punctuality}}</span></li>
-										<li>Quality/Price: <span class="rate-num">{{r.rating.quality_price}}</span></li>
+										<li><span class="rcategory">Mileage_program:</span> <span class="rate-num">{{r.rating.comfort}}</span></li>
+										<li><span class="rcategory">Punctuality:</span> <span class="rate-num">{{r.rating.punctuality}}</span></li>
+										<li><span class="rcategory">Quality/Price:</span> <span class="rate-num">{{r.rating.quality_price}}</span></li>
 									</ul>
 								</div>
 							</div>
