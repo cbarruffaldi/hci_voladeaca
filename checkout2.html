@@ -609,21 +609,25 @@
 										</div>
 
 										<div class="panel-body">
-											<div class="row">
-												<div class="col-md-12">
-													<p><strong>E-mail: </strong>{{contactData['email']}}</p>
-												</div>
-											</div>
-											<div class="row" data-ng-repeat="phone in phones">
-												<div class="col-md-4">
-													<p><span class="glyphicon glyphicon-earphone"></span><strong>Tipo: </strong>{{phone['type']}}</p>
-												</div>
+                        <div class="panel panel-default sub-panel">
+                          <div class="panel-body">
+      											<div class="row">
+      												<div class="col-md-12">
+      													<p><strong>E-mail: </strong>{{contactData['email']}}</p>
+      												</div>
+      											</div>
+      											<div class="row" data-ng-repeat="phone in phones">
+      												<div class="col-md-4">
+      													<p><span class="glyphicon glyphicon-earphone"></span><strong>Tipo: </strong>{{phone['type']}}</p>
+      												</div>
 
-												<div class="col-md-8">
-													<p><strong>Número: </strong>{{phone['number']}}</p>
-												</div>
-											</div>
-                      <a href="#" class="col-md-offset-9 sum-modal confirmation-modify" data-toggle="modal" data-target="#modify-modal">Modificar...</a>
+      												<div class="col-md-8">
+      													<p><strong>Número: </strong>{{phone['number']}}</p>
+      												</div>
+      											</div>
+                            <a href="#" class="col-md-offset-9 sum-modal confirmation-modify" data-toggle="modal" data-target="#modify-modal">Modificar...</a>
+                        </div>
+                      </div>
 										</div>
 
 									</div>

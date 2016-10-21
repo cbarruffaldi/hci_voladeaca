@@ -136,6 +136,11 @@ input.error-input {
 
 .confirmation-panel {
 	padding: 0;
+	border: 1px solid #204DCC;
+}
+
+.panel-group {
+	margin-bottom: 0;
 }
 
 .form-tags {
@@ -235,10 +240,6 @@ color:#fff;
 	position: absolute;
 	bottom: 10px;
 	right: 15px;
-}
-
-.panel-group .panel + .panel {
-	margin-top: 15px;
 }
 
 .birth-day,.birth-month,.birth-year,#exp-month,#exp-year, #sec-code{
