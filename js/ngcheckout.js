@@ -47,19 +47,32 @@ app.controller('CheckoutController', function($scope) {
 	function getFlightDetails(flights){
 		var flight = { 	departureDate: getDepartureDate(flights),
 						departureTime: getDepartureTime(flights),
+						departureCity: getDepartureCity(flights),
 						airportFromName: getFromAirportName(flights),
 						airportToName: getToAirportName(flights),
 						airportFromId: getFromAirportId(flights),
 						airportToId: getToAirportId(flights),
 						airlineName: getAirlineName(flights),
-						airlineId: getAirlineId(flights),
+						airlineId: getAirlineId(flights), 
 						arrivalDate: getArrivalDate(flights),
 						arrivalTime: getArrivalTime(flights),
+						arrivalCity: getArrivalCity(flights),
 						duration: getDuration(flights),
 						number: getFlightNumber(flights),
-						price: getPrice(flights)	};
+						price: getPrice(flights),
+						logo: getLogo(getAirlineId(flights))	};
 
 		return flight;
+	}
+
+	function getLogo(airlineID) {
+		if( !localStorage.airlineLogos)
+			return "";
+		
+		var logo = JSON.parse(localStorage.airlineLogos);
+		return logo[airlineID];
+	
+
 	}
 
 	function getDepartureDate( flight) {
@@ -73,6 +86,13 @@ app.controller('CheckoutController', function($scope) {
 		return flight.arrival.airport.id;
 	}
 
+	function getDepartureCity(flight) {
+		return flight.departure.cityshort;
+	}
+
+	function getArrivalCity(flight) {
+		return flight.arrival.cityshort;
+	}
 	function getDepartureTime(flight) {
 		return flight.departMoment.clockName;
 	}

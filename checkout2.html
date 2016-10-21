@@ -61,6 +61,8 @@
 		</div>
 
 
+    <div data-ng-if="">
+
 		<!-- Tabs -->
 		<div id="step-tabs" class="container">
 
@@ -84,88 +86,102 @@
 				    <div class="title-style col-md-12"><h3>Información del viaje</h3></div>
                 </div>
                 <div class="row">
-				    <div class="col-md-12 info-box">
-                    <div class="col-md-10">
-                    <div class="row">
-                        <div class="col-md-12 box-row">
-                            <div class="col-md-2">
-                                <div class="row">
-                                    <h4 class="col-md-12" data-ng-bind="idaFlightDetails.number"></h4>
-                                </div>
-                            </div>
-                            <div class="col-md-10">
-                                <div class="col-md-1">
-                                    <div data-ng-bind="idaFlightDetails.airlineName"></div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class= "depart-date" data-ng-bind="idaFlightDetails.departureDate"></div>
-                                    <div class= "depart-time" data-ng-bind="idaFlightDetails.departureTime"></div>
-                                </div>
-                                <div class="col-md-2">
-                                    <span data-ng-bind="idaFlightDetails.airportFromName"></span>
-                                </div>
-                                <div class="col-md-1">
-                                    <span><!-- puede ir el avioncito --></span>
-                                </div>
-                                <div class="col-md-2">
-                                    <span data-ng-bind="idaFlightDetails.airportToName"></span>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class= "land-date" data-ng-bind="idaFlightDetails.arrivalDate"></div>
-                                    <div class= "land-time" data-ng-bind="idaFlightDetails.arrivalTime"></div>
-                                </div>
-                                <div class="col-md-2">
-                                    <span class="glyphicon glyphicon-time duration"></span><span class="duration" data-ng-bind="idaFlightDetails.duration"></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row" data-ng-if="$bought.twoWays">
-                        <div class="col-md-12 box-row">
-                            <div class="col-md-2">
-                                <div class="row">
-                                    <h4 class="col-md-12" data-ng-bind="returnFlightDetails.number"></h4>
-                                </div>
+      				    <div class="col-md-12 info-box">
+                          <div class="col-md-10">
+                          <div class="row">
+                              <div class="col-md-12 box-row">
 
-                            </div>
-                            <div class="col-md-10">
-                                <div class="col-md-1">
-                                    <div data-ng-bind="returnFlightDetails.airlineName"></div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class= "depart-date" data-ng-bind="returnFlightDetails.departureDate"></div>
-                                    <div class= "depart-time" data-ng-bind="returnFlightDetails.departureTime"></div>
-                                </div>
-                                <div class="col-md-2">
-                                    <span data-ng-bind="returnFlightDetails.airportFromName"></span>
-                                </div>
-                                <div class="col-md-1">
-                                    <span><!-- puede ir el avioncito--></span>
-                                </div>
-                                <div class="col-md-2">
-                                    <span data-ng-bind="returnFlightDetails.airportToName"></span>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class= "land-date" data-ng-bind="returnFlightDetails.arrivalDate"></div>
-                                    <div class= "land-time" data-ng-bind="returnFlightDetails.arrivalTime"></div>
-                                </div>
-                                <div class="col-md-2">
-                                    <span class="glyphicon glyphicon-time duration"></span><span class="duration" data-ng-bind="returnFlightDetails.duration"></span>
-                                </div>
+                                  <div class="col-md-2">
+                                    <div class="row">
+                                        <span class='city-info' data-ng-bind="'De: ' + idaFlightDetails.departureCity"></span>
+                                    </div>
+                                    <div class="row">
+                                        <span class= 'city-info' data-ng-bind="'A: ' + idaFlightDetails.arrivalCity"></span>
+                                      </div>
+                                      <div class="row">
+                                          <h5 class="col-md-12" data-ng-bind="idaFlightDetails.number"></h5>
+                                      </div>
+                                  </div>
 
-                            </div>
-                        </div>
-                    </div>
-                    </div>
-                    <div class="col-md-2 flight-price-box">
-                        <div class="price-number" data-ng-bind="'$' + flightPrice.total"></div>
-                        <div class="details">
-                            <div data-ng-bind=" 'Pasajes: ' + flightPrice.fare"></div>
-                            <div data-ng-bind=" 'Impuestos: ' + flightPrice.taxes"></div>
-                            <div data-ng-bind=" 'Recargos: ' + flightPrice.charges"></div>
-                        </div>
-                    </div>
-				</div>
+                                  <div class="col-md-10">
+                                      <div class="col-md-1">
+                                          <img data-ng-src="{{idaFlightDetails.logo}}"></img>
+                                      </div>
+                                      <div class="col-md-2">
+                                          <div class= "depart-date" data-ng-bind="idaFlightDetails.departureDate"></div>
+                                          <div class= "depart-time" data-ng-bind="idaFlightDetails.departureTime"></div>
+                                      </div>
+                                      <div class="col-md-2">
+                                          <span data-ng-bind="idaFlightDetails.airportFromName"></span>
+                                      </div>
+                                      <div class="col-md-1">
+                                          <span><img class='arrow-icon' src='./img/icn/black-plane.svg'></img></span>
+                                      </div>
+                                      <div class="col-md-2">
+                                          <span data-ng-bind="idaFlightDetails.airportToName"></span>
+                                      </div>
+                                      <div class="col-md-2">
+                                          <div class= "land-date" data-ng-bind="idaFlightDetails.arrivalDate"></div>
+                                          <div class= "land-time" data-ng-bind="idaFlightDetails.arrivalTime"></div>
+                                      </div>
+                                      <div class="col-md-2">
+                                          <span class="glyphicon glyphicon-time duration"></span><span class="duration" data-ng-bind="idaFlightDetails.duration"></span>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="row" data-ng-if="$bought.twoWays">
+                              <div class="col-md-12 box-row">
+                                  <div class="col-md-2">
+                                    <div class="row">
+                                      <span class='city-info' data-ng-bind="'De: ' + returnFlightDetails.departureCity"></span>
+                                    </div>
+                                    <div class="row">
+                                        <span class= 'city-info' data-ng-bind="'A: ' + returnFlightDetails.arrivalCity"></span>
+                                      </div>
+                                      <div class="row">
+                                          <h5 class="col-md-12" data-ng-bind="returnFlightDetails.number"></h5>
+                                      </div>
+
+                                  </div>
+                                  <div class="col-md-10">
+                                      <div class="col-md-1">
+                                          <img data-ng-src="{{returnFlightDetails.logo}}"></img>
+                                      </div>
+                                      <div class="col-md-2">
+                                          <div class= "depart-date" data-ng-bind="returnFlightDetails.departureDate"></div>
+                                          <div class= "depart-time" data-ng-bind="returnFlightDetails.departureTime"></div>
+                                      </div>
+                                      <div class="col-md-2">
+                                          <span data-ng-bind="returnFlightDetails.airportFromName"></span>
+                                      </div>
+                                      <div class="col-md-1">
+                                          <span><img class='arrow-icon'src='./img/icn/black-plane.svg'></img></span>
+                                      </div>
+                                      <div class="col-md-2">
+                                          <span data-ng-bind="returnFlightDetails.airportToName"></span>
+                                      </div>
+                                      <div class="col-md-2">
+                                          <div class= "land-date" data-ng-bind="returnFlightDetails.arrivalDate"></div>
+                                          <div class= "land-time" data-ng-bind="returnFlightDetails.arrivalTime"></div>
+                                      </div>
+                                      <div class="col-md-2">
+                                          <span class="glyphicon glyphicon-time duration"></span><span class="duration" data-ng-bind="returnFlightDetails.duration"></span>
+                                      </div>
+
+                                  </div>
+                              </div>
+                          </div>
+                          </div>
+                          <div class="col-md-2 flight-price-box">
+                              <div class="price-number" data-ng-bind="'$' + flightPrice.total"></div>
+                              <div class="details">
+                                  <div data-ng-bind=" 'Pasajes: ' + flightPrice.fare"></div>
+                                  <div data-ng-bind=" 'Impuestos: ' + flightPrice.taxes"></div>
+                                  <div data-ng-bind=" 'Recargos: ' + flightPrice.charges"></div>
+                              </div>
+                          </div>
+      				    </div>
                 </div>
 			</div>
 
@@ -671,6 +687,8 @@
 
 			</div>
 		</div>
+
+    </div>
 
 		<!-- TODO: falta el footer -->
 
