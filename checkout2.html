@@ -582,11 +582,8 @@
 															</div>
 														</div>
 														<div class="row">
-															<div class="col-sm-4">
+															<div class="col-sm-12">
 																<p><strong>Nombre del titular: </strong>{{paymentData['cardholder']}}</p>
-															</div>
-															<div class="col-sm-8">
-																<p><strong>Cuotas: </strong>{{paymentData['installments']}}</p>
 															</div>
 														</div>
                             <a href="#" class="col-md-offset-9 sum-modal confirmation-modify" data-toggle="modal" data-target="#modify-modal">Modificar...</a>
@@ -702,6 +699,25 @@
 			</div>
 		</div>
 
+
+    <div id="error-modal" class="modal fade" role="dialog" data-backdrop="static">
+      <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Error de conexión</h4>
+          </div>
+          <div class="modal-body">
+            <h1>¡Te quedaste sin Internet!</h1>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Salir</button>
+          </div>
+        </div>
+
+      </div>
     </div>
 
 
