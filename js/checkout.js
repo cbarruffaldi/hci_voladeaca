@@ -67,7 +67,7 @@ $(document).ready(function() {
         if (indexTab == 3) {
             translateBookingData(passengersValidator.getData(), paymentValidator.getCardData(), paymentValidator.getBillingData(), contactValidator.getData());
         }
-        else if (validator.validateStage()) {  /* Comentar si resulta molesto no poder pasar las etapas */
+        //else if (validator.validateStage()) {  /* Comentar si resulta molesto no poder pasar las etapas */
             if(next.hasClass('disabled-tab')) {
                 next.removeClass('disabled-tab');
                 next.removeClass('disabled');
@@ -83,6 +83,9 @@ $(document).ready(function() {
                 fillPaymentSum(validator.getData());
                 fillBillingSum(validator.getData());
             }
+            else if (indexTab == 2) {
+                $(this).text('Finalizar Compra');
+            }
 
 
             var data = active;
@@ -92,7 +95,7 @@ $(document).ready(function() {
             var state = { value : sequence };
             history.pushState(state, "", "sequence.html");
             data.text(sequence);
-        }
+        //}
     });
 });
 
@@ -172,11 +175,16 @@ $(document).ready(function() {
         if (stageIndex == 0) {
             parent.history.back();
             return false;
+        } else if(stageIndex == 3) {
+            $('.btnNext').text('Continuar\»');
         }
+
         cleanSummaryStage(stageIndex);
         $('.nav-tabs .active').addClass('disabled');
         $('.nav-tabs .active').addClass('disabled');
         $('.nav-tabs .active').prev('li').find('a').tab('show'); 
+
+
 
     });
 });

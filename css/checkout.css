@@ -134,6 +134,10 @@ input.error-input {
 	border: 1px solid #FF0000;
 }
 
+.confirmation-panel {
+	padding: 0;
+}
+
 .form-tags {
 	margin: 10px;
 	display: inline-block;
