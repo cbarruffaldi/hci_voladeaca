@@ -1,12 +1,12 @@
 $(function() {
 	var dateFormat = "dd/mm/yy",
 			from = $( "#datepicker1" )
-	.datepicker({})
+	.datepicker({minDate: +2})
 	.on( "change", function() {
 		to.datepicker( "option", "minDate", getDate( this ) );
 	}),
 			to = $( "#datepicker2" )
-	.datepicker({})
+	.datepicker({minDate: +2})
 
 	function getDate( element ) {
 		var date;
