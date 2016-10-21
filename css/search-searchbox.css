@@ -61,15 +61,15 @@
 }
 
 .selected-iv {
-	color: #204DCC !important;
-	border-top: 3px solid #204DCC !important;
+	color: #DC0055 !important;
+	border-top: 3px solid #DC0055 !important;
 }
 
 .modify-search-btn button {
 	font-size: 1.1em;
 	color: #FFFFFF;
-	border: 1px solid #204DCC;
-	background-color: #204DCC;
+	border: 1px solid #DC0055;
+	background-color: #DC0055;
 	margin-top: 20px;
 	margin-left: -10px;
 	transition: all 0.3s;
@@ -78,7 +78,7 @@
 
 .modify-search-btn button:hover {
 	border: 1px solid #FFFFFF;
-	background-color: #2d5be3;
+	background-color: #cd1863;
 }
 
 .psg-dropdown {

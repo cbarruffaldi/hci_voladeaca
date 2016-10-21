@@ -89,18 +89,14 @@ app.controller("promoCtrl", function($scope, $http, $q) {
 	promosInfo["twoweeks"] = 14;
 
 	$scope.searchPromo = function (city) {
-		console.log(city);
 		var p = $scope.promos[city];
-		console.log(p);
 		var iDate = moment(p.flights[0].flight.departMoment.date).format("YYYY-MM-DD");
 
 		var vDate = moment(p.flights[1].flight.departMoment.date).format("YYYY-MM-DD");
 
-		console.log(iDate);
-		console.log(vDate);
 		var uri = 'search3.html?';
 		uri += 'orig=' + 'BUE'; // TODO cambiar BUE
-		uri += '&dest=' + p.flights[0].flight.arrival.airport.id;
+		uri += '&dest=' + p.flights[0].flight.arrival.airport.city.id;
 		uri += '&date=' + iDate;
 		uri += '&vdate=' + vDate;
 		uri += '&adults=' + window.passengers.adults;
@@ -143,6 +139,7 @@ app.controller("promoCtrl", function($scope, $http, $q) {
 			$("#promoResultShow").show();
 			$("#loadImg").hide();
 			$(".botonera button").attr("disabled", false);
+			console.log($scope.promos);
 		});
 	}
 

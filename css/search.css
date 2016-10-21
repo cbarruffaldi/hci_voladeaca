@@ -327,9 +327,18 @@ label {
 }
 
 .emptyresults{
-	padding: 100px;
+	text-align: center;
+	color: #5b5b5b;
+	margin: 50px;
+}
+.emptyresults h2 {
+	font-weight: 300;
 }
 
+
+.emptyresults img {
+	height: 200px;
+}
 
 .greyout{
  /*   background-color: white;*/
@@ -350,16 +359,6 @@ label {
 	display: none;
 }
 
-/*
-.tooltip.top .tooltip-arrow {
-  bottom: 0;
-  left: 50%;
-  margin-left: -5px;
-  border-top-color: #fff !important;
-  border-width: 5px 5px 0;
+#modal-error .modal-dialog {
+	margin-top: 160px;
 }
-.tooltip-inner {
-  color: #000;
-  background: #fff;
-  border: solid 1px #fff;
-}*/

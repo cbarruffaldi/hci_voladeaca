@@ -10,3 +10,4 @@ Que haya alggún feedback visual cuando se hace hover en los filtros de la aerol
 Tooltip en los badges de aeropuertos - falta ponerles estilo
 Inputs de busqueda con borde rojo cuando hay error
 Puntajes con color segun si son buenos o malos
+Fade in para los mensajes de error en la busqueda
