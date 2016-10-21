@@ -20,12 +20,14 @@ app.controller('CheckoutController', function($scope) {
 	}
 
 	var $bought;
-    if(!localStorage.boughtFlight){
+    if(!sessionStorage.boughtFlight){
+      $scope.validCheckout = false;
       console.log("No se que haces en esta pagina plebeyo, volve a la busqueda");
     }
     else{
-        $bought = JSON.parse(localStorage.boughtFlight);
-    }
+    	$scope.validCheckout = true;
+        $bought = JSON.parse(sessionStorage.boughtFlight);
+    	console.log($bought);
 
 	$scope.passengerList = buildList($bought.passengers);
 
@@ -41,25 +43,40 @@ app.controller('CheckoutController', function($scope) {
 	}
 
 	$scope.flightPrice = $bought.container.price.total;
+	$scope.flightPricesPerPerson = $bought.container.price;
 	$scope.idaFlightDetails = getFlightDetails($bought.container.flights[0].flight);
+	}
 
 	/* Es re feo esto, pero es mas facil para buscar las cosas que estan super anidadas */
 	function getFlightDetails(flights){
 		var flight = { 	departureDate: getDepartureDate(flights),
 						departureTime: getDepartureTime(flights),
+						departureCity: getDepartureCity(flights),
 						airportFromName: getFromAirportName(flights),
 						airportToName: getToAirportName(flights),
 						airportFromId: getFromAirportId(flights),
 						airportToId: getToAirportId(flights),
 						airlineName: getAirlineName(flights),
-						airlineId: getAirlineId(flights),
+						airlineId: getAirlineId(flights), 
 						arrivalDate: getArrivalDate(flights),
 						arrivalTime: getArrivalTime(flights),
+						arrivalCity: getArrivalCity(flights),
 						duration: getDuration(flights),
 						number: getFlightNumber(flights),
-						price: getPrice(flights)	};
+						price: getPrice(flights),
+						logo: getLogo(getAirlineId(flights)),	};
 
 		return flight;
+	}
+
+	function getLogo(airlineID) {
+		if( !localStorage.airlineLogos)
+			return "";
+		
+		var logo = JSON.parse(localStorage.airlineLogos);
+		return logo[airlineID];
+	
+
 	}
 
 	function getDepartureDate( flight) {
@@ -73,6 +90,13 @@ app.controller('CheckoutController', function($scope) {
 		return flight.arrival.airport.id;
 	}
 
+	function getDepartureCity(flight) {
+		return flight.departure.cityshort;
+	}
+
+	function getArrivalCity(flight) {
+		return flight.arrival.cityshort;
+	}
 	function getDepartureTime(flight) {
 		return flight.departMoment.clockName;
 	}

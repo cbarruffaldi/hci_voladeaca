@@ -1,0 +1,20 @@
+.no-js-content{
+	margin-top: -10px;
+	width: 100%;
+	background: #f00; 
+	padding: 20px;
+	color: #fff;
+	position: absolute;
+	z-index: 100000;
+}
+
+.no-js-content a{
+	color: #96FF00;
+	font-style: italic;
+	text-decoration: underline;
+}
+.no-js-content a:hover{
+	color: #84e000;
+	font-style: italic;
+	text-decoration: underline;
+}

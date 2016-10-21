@@ -123,6 +123,7 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 			localStorage.removeItem('boughtFlight');
 
 			$selectedFlight.container = container;
+
 			sessionStorage.setItem('boughtFlight', JSON.stringify($selectedFlight));
 
 			if(localStorage.boughtFlight){
@@ -216,10 +217,17 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 		function process(response, vresponse){
 			console.log(response);
 			console.log(vresponse);
+		
+			if(response.data.error){
+				$scope.emptySearch = true;
+				$scope.paramError = true;
+				$("#loadImg").hide();
+				$("#resultShow").show();
+				return;
+			}
 
 			if(response.data.flights.length == 0 || (vresponse && vresponse.data.flights.length == 0)){
 				$scope.emptySearch = true;
-
 				return;
 			}
 			$scope.emptySearch = false;
@@ -430,15 +438,12 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 	
 		  if(p.adults){
 				price.adults = p.adults;
-				price.adults.base_fare += q.adults.base_fare;
 			}
 			if(p.children){
 				price.children = p.children;
-				price.children.base_fare += q.children.base_fare;
 			}
 			if(p.infants){
 				price.infants = p.infants;
-				price.infants.base_fare += q.infants.base_fare;
 			}
 
 			price.total.charges = parseInt(p.total.charges) + parseInt(q.total.charges);

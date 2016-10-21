@@ -15,11 +15,11 @@
     function load(){
       if(!localStorage.acUtils){
       return $.ajax({
-        url: "http://hci.it.itba.edu.ar/v1/api/geo.groovy?method=getairports&callback=$acUtils.listFill",
+        url: "http://hci.it.itba.edu.ar/v1/api/geo.groovy?method=getairports&page_size=10000&callback=$acUtils.listFill",
         datatype: "jsonp"
       }).then(function(){
           $.ajax({
-          url: "http://hci.it.itba.edu.ar/v1/api/geo.groovy?method=getcities&callback=$acUtils.cityFill",
+          url: "http://hci.it.itba.edu.ar/v1/api/geo.groovy?method=getcities&page_size=10000&callback=$acUtils.cityFill",
           datatype: "jsonp"});
         });
     }

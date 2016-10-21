@@ -118,7 +118,7 @@ function translateContactData(contactData) {
 
 function translateBookingData(passengersData, cardData, billingData, contactData) {
 	var translatedData = {};
-	var $bought = JSON.parse(localStorage.boughtFlight);
+	var $bought = JSON.parse(sessionStorage.boughtFlight);
 
 	translatedData["passengers"] = translatePassengersData(passengersData);
 	translatedData["payment"] = translatePaymentData(cardData, billingData);
@@ -130,22 +130,50 @@ function translateBookingData(passengersData, cardData, billingData, contactData
 
 	console.log(JSON.stringify(bookingData));
 
-	$.ajax({ 
-        url: "http://hci.it.itba.edu.ar/v1/api/booking.groovy?method=bookflight2&booking=" + encodeURI(JSON.stringify(bookingData)) + "&callback=?",
-        dataType: "jsonp"
-    }).done(function(data) {
-    	alert("booking = " + data["booking"]);
-    });
-
+	sessionStorage.bookingIda = JSON.stringify(bookingData);
 
     if ($bought.twoWays) {
 		var otherBookingData = $.extend({"flight_id": $bought.container.flights[1].flight.id}, translatedData);
+		sessionStorage.bookingVuelta = JSON.stringify(otherBookingData);
 		console.log(JSON.stringify(otherBookingData));
+	}
+
+	buyFlight();
+}
+
+
+function buyFlight() {
+
+	var bookingIda = sessionStorage.bookingIda;
+	var bookingVuelta = sessionStorage.bookingVuelta;
+
+	$.ajax({ 
+        url: "http://hci.it.itba.edu.ar/v1/api/booking.groovy?method=bookflight2&booking=" + bookingIda + "&callback=?",
+        dataType: "jsonp",
+        timeout: 5000,
+        success: function(data) {
+        	/* mostrar que la compra se realizó con éxito */
+    		alert("booking = " + data["booking"]);
+    	},
+    	error: function() {
+    		localStorage.bookingIda = bookingIda;
+    		/* manejo del error de conexión */
+    	}
+    });
+
+    if (bookingVuelta) {
 		$.ajax({ 
-	        url: "http://hci.it.itba.edu.ar/v1/api/booking.groovy?method=bookflight2&booking=" + encodeURI(JSON.stringify(otherBookingData)) + "&callback=?",
-	        dataType: "jsonp"
-	    }).done(function(data) {
-	    	alert("booking = " + data["booking"]);
-	    });
+	        url: "http://hci.it.itba.edu.ar/v1/api/booking.groovy?method=bookflight2&booking=" + bookingVuelta + "&callback=?",
+	        dataType: "jsonp",
+        	timeout: 5000,
+			success: function(data) {
+				/* Mostrar que la compra se realizó con éxito */
+    			alert("booking = " + data["booking"]);
+    		},
+    		error: function(data) {
+  	    		localStorage.bookingVuelta = bookingVuelta;
+    			/* manejo del error de conexión */
+    		}
+		});
 	}
 }

@@ -306,9 +306,14 @@ function validateCardholder(cardholder) {
 function validateCreditCardAPI(number, expDate, secCod, callback, id, validation) {
     $.ajax({ 
         url: "http://hci.it.itba.edu.ar/v1/api/booking.groovy?method=validatecreditcard&number="+number+"&exp_date="+expDate+"&sec_code="+secCod+"&callback=?",
-        dataType: "jsonp"
-    }).done(function(data) {
-    	callback(data.valid, id, validation);
+        dataType: "jsonp",
+        timeout: 5000,
+        success: function(data) {
+        	callback(data.valid, id, validation);
+        },
+        error: function() {
+        	$('#error-modal').modal('show');
+        }
     });
 }
 

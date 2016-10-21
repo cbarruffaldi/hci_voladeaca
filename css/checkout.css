@@ -320,6 +320,17 @@ label {
 	color: #204DCC;
 }
 
+.details-info {
+	font-size: 0.7em;
+	font-weight: 400;
+	letter-spacing: 1px;
+}
+.city-info {
+	font-size: 1em;
+	font-weight: 400;
+	letter-spacing: 1px;
+}
+
 .duration-col{
 	text-align: center;
 }
@@ -351,4 +362,18 @@ label {
 
 .passenger-row {
 	margin-bottom: 10px;
+}
+
+.arrow-icon {
+	width: 35px;
+}
+
+.error-msg{
+	text-align: center;
+	color: #333;
+}
+
+.error-img {
+	height:200px;
+
 }
