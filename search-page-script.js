@@ -18,6 +18,7 @@ jQuery(document).ready(function(){
 	$(".depart-time-button img").on("click", function(){
 		selectBorder(this);
 	});
+});
 
 
 
@@ -73,36 +74,31 @@ jQuery(document).ready(function(){
 //
 //    });
 //    
+
+
+
+//});
+
+
+
+
+
+
+$("#order-dropdown a").on("click", function() {
+	var orderbtn = $("#orderby-btn")
+	orderbtn.text(this.text);
+	orderbtn.append('<span class="caret"></span>');
 });
 
-
-    
+$("#currency-dropdown a").on("click", function() {
+	var currbtn = $("#currency-btn")
+	currbtn.text(this.text);
+	currbtn.append('<span class="caret"></span>');
 });
 
-
-
-
-
-
-	$("#order-dropdown a").on("click", function() {
-		var orderbtn = $("#orderby-btn")
-		orderbtn.text(this.text);
-		orderbtn.append('<span class="caret"></span>');
-	});
-
-	$("#currency-dropdown a").on("click", function() {
-		var currbtn = $("#currency-btn")
-		currbtn.text(this.text);
-		currbtn.append('<span class="caret"></span>');
-	});
-
-	$(".options-btn button").on("click", function(obj){
-		var toggleID = $(this).attr("data-toggle");
-		$("[data-toggleinfo = " + toggleID + "]").collapse('toggle');
-	});
-
-
-
+$(".options-btn button").on("click", function(obj){
+	var toggleID = $(this).attr("data-toggle");
+	$("[data-toggleinfo = " + toggleID + "]").collapse('toggle');
 });
 
 $(document).on("click", ".details-btn button", function() {

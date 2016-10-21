@@ -13,111 +13,110 @@
 		<link rel="stylesheet" href="css/main.css">
 		<link rel="stylesheet" href="css/buttons.css">
 		<link rel="stylesheet" href="css/resenas.css">
-		<link rel="stylesheet" href="./CheloLabs/awesomplete.css"></link>
-	<link rel="stylesheet" href="css/angular-animations.css">
-	<link rel="stylesheet" href="css/nouislider-reviews.css">
-	<link rel="stylesheet" href="css/nouislider.pips.css">
-	<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
-	<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
-	<script src="extlib/angular.min.js"></script>
+		<link rel="stylesheet" href="./CheloLabs/awesomplete.css">
+		<link rel="stylesheet" href="css/angular-animations.css">
+		<link rel="stylesheet" href="css/nouislider-reviews.css">
+		<link rel="stylesheet" href="css/nouislider.pips.css">
+		<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+		<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+		<script src="extlib/angular.min.js"></script>
 
-	<!--     <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script> -->
+		<!--     <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script> -->
 
 	</head>
-<body data-ng-app="reviewsApp" data-ng-controller="reviewsCtrl">
-	<!--[if lt IE 8]>
+	<body data-ng-app="reviewsApp" data-ng-controller="reviewsCtrl">
+		<!--[if lt IE 8]>
 <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]-->
-	<header>
-		<div data-ng-include="'./snippets/nav.html'"></div>
-	</header>
+		<header>
+			<div data-ng-include="'./snippets/nav.html'"></div>
+		</header>
 
-	<div class="contents">
-		<div class="container">
+		<div class="contents">
+			<div class="container">
 
-			<div data-ng-if="flightSelected" class="ng-cloak">
-				<button class="vda-btn" data-ng-click="deselectFlight()">&laquo; Volver a la búsqueda</button>
-			</div>
-
-			<div class="row reviewcontent">
-				<div class="col-md-1"></div>
-				<div data-ng-if="!flightSelected" class="titulo review_st">Dejar una reseña</div>
-				<div data-ng-if="flightSelected" class="ng-cloak titulo review_st_alt">Dejar una reseña para {{getSelectedFlightName()}}</div>
-				<div data-ng-include="'./snippets/leave-review.html'">
+				<div data-ng-if="flightSelected" class="ng-cloak">
+					<button class="vda-btn" data-ng-click="deselectFlight()">&laquo; Volver a la búsqueda</button>
 				</div>
 
-				<div class="col-md-1"></div>
-			</div>
-			<div data-ng-if="!flightSelected">
-				<div class="row searchcontent">
-					<div class="search-reviews-box">
-						<div class="row">
-							<div class="col-md-12 center-col">
-								<div class="review_st">Buscar reseñas</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-12 ">
-								<ul class="tabs center-col">
-									<li class="tab-link current" data-tab="tab-1" id="aerotab"><strong>Por aerolinea</strong></li>
-									<li class="tab-link" data-tab="tab-2" id="vuelotab"><strong>Por vuelo</strong></li>
-								</ul>
-
-								<div id="aerobox" class="tab-content current col-md-6 col-md-offset-3">
-									<div class="form-group">
-										<input type="text" data-my-enter="yes" class="form-control awesomplete" data-review-autocomplete="true" id="input-aerolinea" placeholder="Nombre de Aerolínea"/>
-									</div>
-								</div>
-								<div id="vuelobox" class="tab-content col-md-6">
-									<div class="form-group">
-										<input type="text" data-ng-model="flightNum" class="form-control" id="nroVuelo" placeholder=""/>
-									</div>
-								</div>
-							</div>
-
-						</div> <!-- searchbox -->
-
-						<div class="row">
-							<div class="col-md-2 col-md-offset-5 search-col">
-								<button type="button" class="vda-btn" id="searchButton" aria-label="Buscar" data-ng-click="search()">
-									<span class="glyphicon glyphicon-search" aria-hidden="true"></span> BUSCAR
-								</button>
-							</div>
-						</div>
-					</div> 
-				</div>
-			</div> 
-		</div>
-		<div class="container-fluid" id="reviewRes">
-			<div class="row">
-				<div class="col-md-10 col-md-offset-1">
-					<div data-ng-if="!flightSelected">
-						<div data-ng-include="'./snippets/reviewsearch.html'">
-						</div>
-					</div>
-
-					<div data-ng-if="flightSelected">
-						<div data-ng-include="'./snippets/individualreviews2.html'">
-						</div>
+				<div class="row reviewcontent">
+					<button type="button" class="vda-btn" data-toggle="modal" data-target="#leaveReviewModal">
+						<span data-ng-if="!flightSelected" class="titulo review_st">Dejar una reseña</span>
+						<span data-ng-if="flightSelected" class="ng-cloak titulo review_st_alt">Dejar una reseña para {{getSelectedFlightName()}}</span>
+					</button>
+					<div data-ng-include="'./snippets/leave-review.html'">
 					</div>
 				</div>
+				<div data-ng-if="!flightSelected">
+					<div class="row searchcontent">
+						<div class="search-reviews-box">
+							<div class="row">
+								<div class="col-md-12 center-col">
+									<div class="review_st">Buscar reseñas</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12 ">
+									<ul class="tabs center-col">
+										<li class="tab-link current" data-tab="tab-1" id="aerotab"><strong>Por aerolinea</strong></li>
+										<li class="tab-link" data-tab="tab-2" id="vuelotab"><strong>Por vuelo</strong></li>
+									</ul>
+
+									<div id="aerobox" class="tab-content current col-md-6 col-md-offset-3">
+										<div class="form-group">
+											<input type="text" data-my-enter="yes" class="form-control awesomplete" data-review-autocomplete="true" id="input-aerolinea" placeholder="Nombre de Aerolínea"/>
+										</div>
+									</div>
+									<div id="vuelobox" class="tab-content col-md-6">
+										<div class="form-group">
+											<input type="text" data-ng-model="flightNum" class="form-control" id="nroVuelo" placeholder=""/>
+										</div>
+									</div>
+								</div>
+
+							</div> <!-- searchbox -->
+
+							<div class="row">
+								<div class="col-md-2 col-md-offset-5 search-col">
+									<button type="button" class="vda-btn" id="searchButton" aria-label="Buscar" data-ng-click="search()">
+										<span class="glyphicon glyphicon-search" aria-hidden="true"></span> BUSCAR
+									</button>
+								</div>
+							</div>
+						</div> 
+					</div>
+				</div> 
+			</div>
+			<div class="container-fluid" id="reviewRes">
+				<div class="row">
+					<div class="col-md-10 col-md-offset-1">
+						<div data-ng-if="!flightSelected">
+							<div data-ng-include="'./snippets/reviewsearch.html'">
+							</div>
+						</div>
+
+						<div data-ng-if="flightSelected">
+							<div data-ng-include="'./snippets/individualreviews2.html'">
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
-	</div>
 
 
 
-	<footer>  
-		<div class="container">
-			<div class="row">
-				<div class="col-md-4" />
-				<p>&copy; VolaDeAca 2016</p>
-			</div> <!-- row -->
-			</footer>
+		<footer>  
+			<div class="container">
+				<div class="row">
+					<p>&copy; VolaDeAca 2016</p>
+				</div> <!-- row -->
+			</div>
+		</footer>
 		<script src="js/vendor/jquery-1.11.2.min.js"></script>
 		<script src="js/angular-animate.js"></script>
 
-		<script src="js/vendor/bootstrap.min.js"></script>
+		<script src="bootstrap.min.js"></script>
 		<script src="js/resenas.js"></script>
 		<script src="CheloLabs/awesomplete.js"></script> 
 		<script src="CheloLabs/acomplete.js"></script>
@@ -126,5 +125,5 @@
 		<script src="extlib/nouislider.min.js"></script>
 		<script src="extlib/wNumb.js"></script>
 
-		</body>
-	</html>
+	</body>
+</html>
