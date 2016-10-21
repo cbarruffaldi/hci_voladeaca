@@ -8,15 +8,15 @@
 	box-sizing: border-box;
 }
 .noUi-pips {
-	padding-top:3px;
 	position: absolute;
-	color: #dc0055;
+	color: #204DCC;
 }
 
 /* Values;
  *
  */
 .noUi-value {
+	padding-top: 2px;
 	position: absolute;
 	text-align: center;
 }

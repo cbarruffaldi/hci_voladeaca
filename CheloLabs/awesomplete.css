@@ -40,6 +40,7 @@
 	border: 1px solid rgba(0,0,0,.3);
 	box-shadow: .05em .2em .6em rgba(0,0,0,.2);
 	text-shadow: none;
+	z-index: 9000;
 }
 
 @supports (transform: scale(0)) {
