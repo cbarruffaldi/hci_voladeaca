@@ -118,7 +118,7 @@ function translateContactData(contactData) {
 
 function translateBookingData(passengersData, cardData, billingData, contactData) {
 	var translatedData = {};
-	var $bought = JSON.parse(localStorage.boughtFlight);
+	var $bought = JSON.parse(sessionStorage.boughtFlight);
 
 	translatedData["passengers"] = translatePassengersData(passengersData);
 	translatedData["payment"] = translatePaymentData(cardData, billingData);
