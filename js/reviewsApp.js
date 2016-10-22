@@ -67,11 +67,20 @@ app.controller("reviewsCtrl", function($scope, $http, $sce, $window) {
 		$scope.reviewResults = [];
 		$scope.flightResults = [];
 		var URL = 'http://hci.it.itba.edu.ar/v1/api/review.groovy?method=getairlinereviews';
+		
+
 		if($("#nroVuelo").val()){
 			URL += '&flight_number=' + $("#nroVuelo").val();
 		}
+
 		if($("#input-aerolinea").val()){
-			URL += "&airline_id=" + $scope.airlineData.id_map[$("#input-aerolinea").val()];
+			var name = $scope.airlineData.id_map[$("#input-aerolinea").val()];
+			if(!name){
+				$("#input-aerolinea").addClass("inputerr");
+				$("#aerolinea-err").text("Ingrese una fecha valida");
+				return;
+			}
+			URL += "&airline_id=" + name;
 		}
 		console.log(URL);
 
