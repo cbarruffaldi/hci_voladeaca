@@ -28,15 +28,19 @@
 		<!--[if lt IE 8]>
 <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to impove your experience.</p>
 <![endif]-->
+		<noscript>
+			<link rel="stylesheet" href="css/error-nojs.css"/>
+			<div class="no-js-content">
+			<h4>¡Alerta! JavaScript desactivado</h4> Esta página utiliza JavaScript para funcionar. Actualiza tu navegador o consulta <a href="https://www.google.com.ar/search?q=cómo+habilitar+javascript" target="_blank" >cómo habilitar javascript</a>
+			</div>
+		</noscript>
+
 		<header>
 			<div data-ng-include="'./snippets/nav.html'"></div>
 		</header>
-
+		
 		<div class="contents">
 			<div class="container">
-
-
-
 
 				<div data-ng-if="!flightSelected">
 					<div class="row searchcontent">
