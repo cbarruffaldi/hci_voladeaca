@@ -4,12 +4,15 @@
         width: 100%;
         text-align: center;
       }
-#map-loading{
+
+#maploading{
 	position:relative;
 	padding-top: 20%;
-	z-index: 10;
 }
 
+.active{
+	z-index: 100;
+}
 #mapform, #calendar{
 	padding: 30px;
 	color: #DC0055;
