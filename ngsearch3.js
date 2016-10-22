@@ -37,7 +37,7 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 		$scope.promo = function(f){
 			window.console.log($scope.minPrice);
 			return getURLParameter("promo") == "true" 
-						&& f.price.total.total == $scope.minPrice;
+						&& f.price.total.total == $scope.dealPrice;
 		}
 
 		$scope.getLogo = function(id){
@@ -144,6 +144,7 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 
 
 		$scope.filterFn = function myFilter(container, b, c){
+
 			var pass = true;
 			var flight1 = container.flights[0].flight;
 			if(container.flights[1]){
@@ -321,7 +322,8 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 					var c = new Container(iFlights[i], vFlights[j]);
 					var price = c.price.total.total;
 					if(!minPrice || price < minPrice){
-						$scope.minPrice = price;
+						minPrice = price;
+						$scope.dealPrice = price;
 					}
 					if(!maxPrice || maxPrice < price){
 						maxPrice = price;
@@ -341,7 +343,7 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 
 				}
 			}
-			initSlider($scope.minPrice, maxPrice);
+			initSlider(minPrice, maxPrice);
 		}
 
 
