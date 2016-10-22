@@ -77,6 +77,7 @@ $(document).ready(function() {
             active.addClass('disabled-tab');
 
             if(indexTab == 0) {
+            	$('.btnPrev').text('\«Volver');
                 fillPassengerSum(validator.getData());
             } 
             else if(indexTab == 1) {
@@ -87,22 +88,44 @@ $(document).ready(function() {
                 $(this).text('Finalizar Compra');
             }
 
-
-            var data = active;
-
-            var data = $("#data");
-            var sequence = parseInt(data.text()) + 1;
-            var state = { value : sequence };
-            history.pushState(state, "", "sequence.html");
-            data.text(sequence);
+      //      history.pushState({'value' : indexTab}, "", "checkout2.html");
         }
     });
 
+/*	window.onpopstate = function(event) {
+		var indexTab = event.state.value;
+		$('.nav-tabs .active').addClass('disabled');
+		$('.nav-tabs .active').addClass('disabled');
+		$('.nav-tabs .active').prev('li').find('a').tab('show');
 
-    //$('#error-internet-card').click(paymentValidator.cardValidator.validateCreditCard('', validValidation('')));
+		if (indexTab == 0) {
+			$('.btnPrev').text('Volver a Búsqueda');
+		}
+		else if (indexTab == 2) {
+			$('.btnNext').text('Continuar\»');
+		}
+	}; */
 
+    $('#error-internet-card').click(function() {
+    	paymentValidator.cardValidator.validateCreditCard('', validValidation(''));
+    });
 
+	$('.btnPrev').click(function() {
+		var indexTab = getCurrentStage();
+		$('.nav-tabs .active').addClass('disabled');
+		$('.nav-tabs .active').addClass('disabled');
+		$('.nav-tabs .active').prev('li').find('a').tab('show');
 
+		if (indexTab == 1) {
+			$('.btnPrev').text('Volver a Búsqueda');
+		}
+		else if (indexTab == 0) {
+			window.history.back();
+		}
+		else if (indexTab == 3) {
+			$('.btnNext').text('Continuar\»');
+		}
+	});
 });
 
 $(document).on('blur', 'input', function() {
@@ -175,26 +198,6 @@ function cleanSummaryStage(stage) {
     }    
 }
 
-$(document).ready(function() {
-    $('.btnPrev').click(function() {
-        var stageIndex = getCurrentStage();
-        if (stageIndex == 0) {
-            parent.history.back();
-            return false;
-        } else if(stageIndex == 3) {
-            $('.btnNext').text('Continuar\»');
-        }
-
-        cleanSummaryStage(stageIndex);
-        $('.nav-tabs .active').addClass('disabled');
-        $('.nav-tabs .active').addClass('disabled');
-        $('.nav-tabs .active').prev('li').find('a').tab('show'); 
-
-
-
-    });
-});
-
 $(document).ready(function(){
     $('#code-popover').click(function(event) {
         event.preventDefault();
@@ -223,7 +226,7 @@ function addPhone(id){
         '<option>Celular</option> ' +
         '</select> ' +
         '</div> ' +
-        '<div class="col-md-8 form-field phone-input"> ' +
+        '<div class="col-md-4 form-field phone-input"> ' +
         '<label for="phone-' + id + '">Número:</label> ' +
         '<input maxlength="25" autocomplete="off" type="text" class="form-control" id="phone-' + id + '"> ' +
         '<p class="error-msg"></p> ' +

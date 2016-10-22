@@ -306,20 +306,22 @@ function validateCardholder(cardholder) {
 var noInternetError = false;
 
 function validateCreditCardAPI(number, expDate, secCod, callback, id, validation) {
-    $.ajax({ 
+
+	if (noInternetError) {
+		$('#' + CARD_NUM).removeClass(ERROR_INPUT);
+		$('#' + EXP_YEAR).removeClass(ERROR_INPUT);
+		$('#' + EXP_MONTH).removeClass(ERROR_INPUT);
+		$('#' + SEC_CODE).removeClass(ERROR_INPUT);
+		$('#error-internet-card').hide();
+		noInternetError = false;
+	}
+
+
+	$.ajax({
         url: "http://hci.it.itba.edu.ar/v1/api/booking.groovy?method=validatecreditcard&number="+number+"&exp_date="+expDate+"&sec_code="+secCod+"&callback=?",
         dataType: "jsonp",
-        timeout: 3000,
+        timeout: 4000,
         success: function(data) {
-        	if (noInternetError) {
-        		$('#error-internet-card').hide();
-	        	$('#' + CARD_NUM).removeClass(ERROR_INPUT);
-				$('#' + EXP_YEAR).removeClass(ERROR_INPUT);
-				$('#' + EXP_MONTH).removeClass(ERROR_INPUT);
-				$('#' + SEC_CODE).removeClass(ERROR_INPUT);
-				noInternetError = false;
-			}
-
         	callback(data.valid, id, validation);
         },
         error: function() {

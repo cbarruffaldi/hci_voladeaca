@@ -19,7 +19,7 @@
 
 	</head>
 
-	<body data-ng-app="checkoutApp" data-ng-controller="CheckoutController" ng-cloak>
+	<body data-ng-app="checkoutApp" data-ng-controller="CheckoutController" data-ng-cloak>
 
 		<!-- header -->
 		<header>
@@ -79,7 +79,7 @@
 
                                   <div class="col-md-10">
                                       <div class="col-md-1">
-                                          <img data-ng-src="{{idaFlightDetails.logo}}">
+                                          <img data-ng-src="{{idaFlightDetails.logo}}" alt="Imagen no disponible" src="img/dummy.png">
                                       </div>
                                       <div class="col-md-2">
                                           <div class= "depart-date">{{idaFlightDetails.departureDate}}</div>
@@ -89,7 +89,7 @@
                                           <span>{{idaFlightDetails.airportFromName}}</span>
                                       </div>
                                       <div class="col-md-1">
-                                          <span><img class='arrow-icon' src='./img/icn/black-plane.svg'></span>
+                                          <span><img class='arrow-icon' src='./img/icn/black-plane.svg' alt="Imagen no disponible"></span>
                                       </div>
                                       <div class="col-md-2">
                                           <span>{{idaFlightDetails.airportToName}}</span>
@@ -120,7 +120,7 @@
                                   </div>
                                   <div class="col-md-10">
                                       <div class="col-md-1">
-                                          <img data-ng-src="{{returnFlightDetails.logo}}">
+                                          <img data-ng-src="{{returnFlightDetails.logo}}" alt="Imagen no disponible" src="img/dummy.png">
                                       </div>
                                       <div class="col-md-2">
                                           <div class= "depart-date">{{returnFlightDetails.departureDate}}</div>
@@ -130,7 +130,7 @@
                                           <span >{{returnFlightDetails.airportFromName}}</span>
                                       </div>
                                       <div class="col-md-1">
-                                          <span><img class='arrow-icon'src='./img/icn/black-plane.svg'></span>
+                                          <span><img class='arrow-icon' src='./img/icn/black-plane.svg' alt="Imagen no disponible"></span>
                                       </div>
                                       <div class="col-md-2">
                                           <span>{{returnFlightDetails.airportToName}}</span>
@@ -431,7 +431,7 @@
 									<div class="form-group">
 										<!--Primera Fila -->
 										<div class="row">
-											<div class="col-md-8 form-field">
+											<div class="col-md-7 form-field">
 												<label for="email" >Correo electrónico:</label>
 												<input autocomplete="off" type="text" class="form-control" id="email" maxlength="128">
 												<p class="error-msg"></p>
@@ -451,7 +451,7 @@
 														<option>Celular</option>
 													</select>
 												</div>
-												<div class="col-md-8 form-field phone-input">
+												<div class="col-md-4 form-field phone-input">
 													<label for="phone-0">Número:</label>
 													<input autocomplete="off" type="text" class="form-control" id="phone-0" maxlength="25">
 													<p class="error-msg"></p>
@@ -633,7 +633,8 @@
 
 			<div class="row">
 				<div class="col-md-2">
-					<button class="arrow-btn btnPrev vda-btn"><span class="glyphicon glyphicon-chevron-left"></span>Volver</button>
+					<button class="arrow-btn btnPrev vda-btn">Volver a Búsqueda<span class="glyphicon glyphicon-chevron-left">
+						</button>
 				</div>
 				<div class="col-md-2 col-md-offset-8">
 					<button class="arrow-btn btnNext vda-btn" data-ng-click="fillDatas()">Continuar<span class="glyphicon glyphicon-chevron-right"></span></button>
@@ -641,10 +642,11 @@
 			</div>
 		</div>
 
+	</div>
 
     <div data-ng-if="!validCheckout" class="error-msg">
 	  <div>
-	      <img class="error-img" src="img/PlaneCrash.png">
+	      <img class="error-img" src="img/PlaneCrash.png" alt="">
 	    </div>
 	    <h1>¡Ups! No deberías llegar a esta página antes de seleccionar un vuelo</h1>
 	    <br/><br/>

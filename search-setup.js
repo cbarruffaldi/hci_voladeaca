@@ -28,7 +28,7 @@ $(document).ready(function(){
 		else {
 			$(".idavuelta button").removeClass("selected-iv");
 			$(".idavuelta .ida").addClass("selected-iv");
-			global.setOneWay();
+			window.setOneWay();
 		}
 	}
 		window.passengers.adults = parseInt(adults) || 1;
