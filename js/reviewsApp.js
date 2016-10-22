@@ -67,7 +67,7 @@ app.controller("reviewsCtrl", function($scope, $http, $sce, $window) {
 		$scope.reviewResults = [];
 		$scope.flightResults = [];
 		var URL = 'http://hci.it.itba.edu.ar/v1/api/review.groovy?method=getairlinereviews';
-		
+
 
 		if($("#nroVuelo").val()){
 			URL += '&flight_number=' + $("#nroVuelo").val();
@@ -217,6 +217,29 @@ app.controller("reviewsCtrl", function($scope, $http, $sce, $window) {
 		//$scope.search();
 	}
 
+	function validateReview(send) {
+		valid = true;
+		if (send.comments == '') {
+			$('.bubble').addClass("comment-err");
+			console.log("INVALID COMMENT")
+			valid = false
+		}
+
+		if (!send.flight || !send.flight.airline.id) {
+			$('#input-aerolinea-rev').addClass("input-err");
+			console.log("INVALID AIRLINE")
+			valid = false
+		}
+
+		if (!send.flight || !send.flight.number) {
+			$('input-number-rev').addClass("input-err");
+			console.log("INVALID FL NUMBER")
+			valid = false
+		}
+		console.log("VALID REVIEW: " + valid)
+		return valid
+	}
+
 	$scope.send = function(){
 		send = {};
 		rating = {};
@@ -244,18 +267,19 @@ app.controller("reviewsCtrl", function($scope, $http, $sce, $window) {
 			}
 		}
 
-		console.log(send);
-		console.log(JSON.stringify(send));
+		if (validateReview(send)) {
+			$.ajax({
+				type: "POST",
+				contentType: 'application/json',
+				url: 'http://hci.it.itba.edu.ar/v1/api/review.groovy?method=reviewairline',
+				data: JSON.stringify(send)
+			}).then(function(response){
+				console.log(response);
+			});
 
-		$.ajax({
-			type: "POST",
-			contentType: 'application/json',
-			url: 'http://hci.it.itba.edu.ar/v1/api/review.groovy?method=reviewairline',
-			data: JSON.stringify(send)
-		}).then(function(response){
-			console.log(response);
-		});
-
+			console.log(send);
+			console.log(JSON.stringify(send));
+		}
 	};
 
 
@@ -271,6 +295,15 @@ app.controller("reviewsCtrl", function($scope, $http, $sce, $window) {
 	}
 });
 
+$(document).on('click', '#input-aerolinea-rev', function() {
+	console.log("removing")
+	$(this).removeClass("input-err");
+});
+
+$(document).on('click', '#input-number-rev', function() {
+	console.log("removing")
+	$(this).removeClass("input-err");
+});
 
 app.directive('myEnter', function () {
 	return function (scope, element, attrs) {

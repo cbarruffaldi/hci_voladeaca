@@ -588,6 +588,19 @@ console.log("Starert");
 	
 	$scope.$on('LastRepeaterElement', function(){
     $('[data-toggle="tooltip"]').tooltip(); 
+		$('.ida-vuelta-badge').each(function() {
+			console.log($(this).text());
+			var appendArrow;
+			if ($(this).text().replace(/ /g,'')
+ == "IDA") 
+				appendArrow = 'glyphicon-chevron-right'
+			else
+				appendArrow = 'glyphicon-chevron-left'
+			
+			console.log(appendArrow);
+			$(this).append("<span class='glyphicon " + appendArrow + "'> </span>");
+		})
+		
 	});
 
 	if(!localStorage.airlineLogos){

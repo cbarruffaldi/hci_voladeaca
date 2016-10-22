@@ -40,13 +40,13 @@
 
 			<ul class="nav nav-tabs ">
 				<li class="active">
-					<a href="#1">1. Pasajero<span data-ng-bind="passPlural"></span></a>
+					<a href="#1">1. Pasajero<span data-ng-bind="passPlural"></span> <span class="glyphicon glyphicon-user"></span></a>
 				</li>
-				<li class="disabled disabled-tab"><a href="#2">2. Pago</a>
+				<li class="disabled disabled-tab"><a href="#2">2. Pago <span class="glyphicon glyphicon-credit-card"></span></a>
 				</li>
-				<li class="disabled disabled-tab"><a href="#3">3. Contacto</a>
+				<li class="disabled disabled-tab"><a href="#3">3. Contacto <span class="glyphicon glyphicon-book"></span></a>
 				</li>
-				<li class="disabled disabled-tab"><a href="#4">4. Confirmación</a>
+				<li class="disabled disabled-tab"><a href="#4">4. Confirmación <span class="glyphicon glyphicon-ok"></span></a>
 				</li>
 			</ul>
 
@@ -255,7 +255,7 @@
 							<!--Titulo -->
 							<div class="row">
 								<div class="col-md-12 title-style">
-									<h3>Información de Pago</h3>
+									<h3>Información de Pago <span class="glyphicon glyphicon-credit-card"></span></h3>
 								</div>
 							</div>
 							<div class="row">
@@ -264,7 +264,7 @@
 									<!--Subtitulo 1-->
 									<div class="row">
 										<div class="col-md-12 sub-style">
-											<h4>Datos de la Tarjeta</h4>
+											<h4>Datos de la Tarjeta </h4>
 										</div>
 									</div>
 									<div id="card-details">
@@ -431,9 +431,9 @@
 									<div class="form-group">
 										<!--Primera Fila -->
 										<div class="row">
-											<div class="col-md-8 form-field">
+											<div class="col-md-7 form-field">
 												<label for="email" >Correo electrónico:</label>
-												<input autocomplete="off" type="text" class="form-control" id="email" maxlength="128">
+												<input autocomplete="off" type="text" class="form-control" id="email" maxlength="128" placeholder="ejemplo@correo.com">
 												<p class="error-msg"></p>
 											</div>
 										</div>
@@ -451,7 +451,7 @@
 														<option>Celular</option>
 													</select>
 												</div>
-												<div class="col-md-8 form-field phone-input">
+												<div class="col-md-4 form-field phone-input">
 													<label for="phone-0">Número:</label>
 													<input autocomplete="off" type="text" class="form-control" id="phone-0" maxlength="25">
 													<p class="error-msg"></p>
@@ -633,10 +633,11 @@
 
 			<div class="row">
 				<div class="col-md-2">
-					<button class="arrow-btn btnPrev vda-btn">Volver a Búsqueda</button>
+					<button class="arrow-btn btnPrev vda-btn">Volver a Búsqueda<span class="glyphicon glyphicon-chevron-left"/>
+						</button>
 				</div>
 				<div class="col-md-2 col-md-offset-8">
-					<button class="arrow-btn btnNext vda-btn" data-ng-click="fillDatas()">Continuar&raquo;</button>
+					<button class="arrow-btn btnNext vda-btn" data-ng-click="fillDatas()">Continuar<span class="glyphicon glyphicon-chevron-right"></span></button>
 				</div>
 			</div>
 		</div>
