@@ -40,8 +40,9 @@
 
 .slider-box {
 	padding-top: 5%;
-	padding-bottom: 23%;
-	padding-right: 17%;
+	padding-bottom: 25%;
+	padding-right: 10%;
+	padding-left: 8%;
 }
 
 .price-filter {
@@ -109,45 +110,6 @@ label {
 .boton-pasajeros .dropdown-menu {
 	width: 100%;
 	padding: 10px;
-}
-
-.results-carousel {
-	margin: 1%;
-	padding: 1%;
-}
-
-.results-carousel button {
-	height: 4em;
-	border-radius: 5px;
-	background-color: #FFFFFF;
-}
-
-.carousel-flight {
-	height: 4em;
-	text-align: center;
-	padding: 3%;
-	border: 1px solid #7b7b7b;
-	border-radius: 3px;
-	box-shadow: 0 0 8px #b3b3b3;
-}
-
-.carousel-flight:hover {
-	border-color: #204DCC;
-	transition: all 0.3s;
-	cursor: pointer;
-	box-shadow: 0 0 5px #204DCC;
-}
-
-.carousel-flight .air-name {
-	font-size: 1.2em;
-	font-weight: 500;
-}
-
-.carousel-flight .fl-price {
-	font-size: 1.3em;
-	font-weight: 500;
-	letter-spacing: 1px;
-	color: #204DCC;
 }
 
 .flight-box {
@@ -378,9 +340,10 @@ body {
 	padding-bottom: 3em;
 }
 
-#left::-webkit-scrollbar { width: 10px !important; 
-    
-	  }
+#left::-webkit-scrollbar { 
+	/*	width: 10px !important; */
+
+}
 
 #right {
 	margin-top: 4em;
@@ -389,6 +352,6 @@ body {
 	top: 0;
 	bottom: 0;
 	right: 0;
-	/*overflow-y: scroll;*/
+	overflow-y: scroll;
 	width: 75%;
 }

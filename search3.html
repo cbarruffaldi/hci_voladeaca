@@ -36,7 +36,7 @@
 		<noscript>
 			<link rel="stylesheet" href="css/error-nojs.css" >
 			<div class="no-js-content">
-			<h4>¡Alerta! JavaScript desactivado</h4> Esta página utiliza JavaScript para funcionar. Actualiza tu navegador o consulta <a href="https://www.google.com.ar/search?q=cómo+habilitar+javascript" target="_blank" >cómo habilitar javascript</a>
+				<h4>¡Alerta! JavaScript desactivado</h4> Esta página utiliza JavaScript para funcionar. Actualiza tu navegador o consulta <a href="https://www.google.com.ar/search?q=cómo+habilitar+javascript" target="_blank" >cómo habilitar javascript</a>
 			</div>
 		</noscript>
 
@@ -162,12 +162,11 @@
 
 										<div id="date-col-1" class='col-md-2 no-gutters'>
 											<div class="form-group">
-												<div class='input-group date'>
+												<div class='input-group date' id="cal1">
+													<input type='text' class="form-control" id='datepicker1' autocomplete="off" placeholder='dd/mm/aaaa' />
 													<span class="input-group-addon" id="cal1">
 														<span class="glyphicon glyphicon-calendar"></span>
-														<span class="glyphicon glyphicon-chevron-right"></span>
 													</span>
-													<input type='text' class="form-control" id='datepicker1' placeholder='dd/mm/aaaa' />
 												</div>
 											</div>
 											<div id="datepicker1-err" class="formError"></div>
@@ -175,12 +174,11 @@
 
 										<div id="date-col-2"  class='col-md-2 no-gutters'>
 											<div class="form-group">
-												<div class='input-group date'>
-													<span class="input-group-addon" id="cal1">
-														<span class="glyphicon glyphicon-calendar"></span>
-														<span class="glyphicon glyphicon-chevron-left"></span>
-													</span>
+												<div class='input-group date' id="cal2">
 													<input type='text' class="form-control" id='datepicker2' autocomplete="off" placeholder='dd/mm/aaaa' />
+													<span class="input-group-addon" id="cal2">
+														<span class="glyphicon glyphicon-calendar"></span>
+													</span>
 												</div>
 											</div>
 											<div id="datepicker2-err" class="formError"></div>
@@ -202,12 +200,9 @@
 						</div>
 					</div>
 
-
-					<!-- carousel vuelos baratos -->
 					<div class="results-carousel">
-						<div data-ng-if="!emptySearch" data-ng-include="'./snippets/airlinecarousel.html'"></div>
+						<div data-ng-if="!emptySearch" data-ng-include="'./snippets/featuredflights.html'"></div>
 					</div>
-					<!-- fin carousel -->
 
 					<div class="row sort-options">
 						<div class="col-md-3">
@@ -220,12 +215,11 @@
 									<ul class="dropdown-menu" id="order-dropdown">
 										<li><a href="#" data-ng-click="toggleOrder('price')">Menor Precio</a></li>
 										<li><a href="#" data-ng-click="toggleOrder('duration')">Menor Duración</a></li>
-										<li><a href="#" data-ng-click="toggleOrder('score')">Mejor Puntaje</a></li>
 									</ul>
 								</div>
 							</div>
 						</div>
-						
+
 					</div>
 					<div class="col-md-12 flight-options-area">
 						<div id="loadImg" class="spinner">
@@ -246,7 +240,7 @@
 				</div>
 			</div>
 		</div>
-		
+
 		<script src="js/moment.js" ></script>
 		<script src="jqueryui/jquery-ui.js"></script>
 		<script src="jqueryui/uidatepicker-es.js"></script>
