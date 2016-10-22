@@ -17,16 +17,16 @@ $(document).ready( function(){
 
 
 	function update(city, date){
-		if(validate()){
+		if(validate(true, true, true)){
 			mapUtils.updateMap($acUtils.id_map[city]);
 		}
 
 	}
 
-	function validate(city, date){
+	function validate(city, date, emptyCheck){
 		var val = true;
 		if(city){
-			textbox = $("#inputCity");
+			var textbox = $("#inputCity");
 
 			textbox.removeClass('inputerr');
 			var error = $("#air-error");
@@ -38,39 +38,44 @@ $(document).ready( function(){
 					textbox.addClass('inputerr');
 					error.text("Por favor ingrese algo valido");
 					error.fadeIn();
-					return false;
-				}
-				else{
-					return true;
+					val = false;
 				}
 			}
-			else{
+			else if(emptyCheck){
 				textbox.addClass('inputerr');
 				error.text("Esto no puede quedar vacío");
 				error.fadeIn();
-				return false;
+				val = false;
 			}
 		}
 		
 		if(date){
-		var timestamp=Date.parse($("#datepicker").val());
+			var picker = $("#datepicker");
+			picker.removeClass('inputerr');
+			var picker_err = $("#datepicker-err");
+			picker_err.fadeOut();
 
-		if (isNaN(timestamp)){
-
+			if(picker.val() || emptyCheck){
+				var picked = moment(picker.val(), "DD/MM/YYYY", true);
+				if(!picked.isValid()){
+					picker.addClass('inputerr');
+					val = false;
+					picker_err.text("Ingrese una fecha valida");
+					picker_err.fadeIn();
+				}
+				if(val){
+					var now = moment();
+					if(picked.diff(now, 'days') + 1 < 2){
+						val = false;
+						picker.addClass('inputerr');
+						picker_err.text("Debe ser por lo menos dos días desde ahora");
+						picker_err.fadeIn();
+					}
+				}
 		}
+	}
 
-
-			departure = moment(date1.val(), "DD/MM/YYYY", true);
-			if(!departure.isValid()){
-				date1.addClass('inputerr');
-				valid = false;
-
-				$("#datepicker1-err").text("Ingrese una fecha valida");
-				$("#datepicker1-err").fadeIn();
-		}
-
-		return true;
-
+		return val;
 	}
 
 
@@ -90,8 +95,16 @@ $(document).ready( function(){
 
 
 	$("#inputCity").on('blur', function(){
-		validate($(this).val());		
+		validate(true);	
+		var self = $(this);
+		if(! self.val()){
+			self.removeClass('x');
+		}	
 	})
+
+	//$("#datepicker").on('blur', function(){
+	//	validate(false, true);		
+	//})
 
 	$("#inputCity").keypress(function(event) {
 	 	  if (event.which == 13) {
@@ -103,9 +116,9 @@ $(document).ready( function(){
 	//	$("#inputCity").on('change', function() {
 	//									mapUtils.updateMap($acUtils.id_map[$(this).val()]);
 	//								});
-		
+	
 		$("#updateCity").on('click', function(){
-			update($("#inputCity").val());
+			update($("#inputCity").val(), $("#datepicker").val());
 		})
 	}
 
