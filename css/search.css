@@ -244,22 +244,13 @@ label {
 }
 
 .flight-price-box {
-	height: 22em;
 	background: #DC0055;
 	border-bottom-right-radius: 3px;
 	border-top-right-radius: 3px;
 	text-align: center;
 }
 
-.flight-price-box-oneway {
-	height: 22em;
-	background: #DC0055;
-	border-bottom-right-radius: 3px;
-	border-top-right-radius: 3px;
-	text-align: center;
-}
-
-.price-number {
+.twoWay .price-number {
 	padding-top: 50%;
 	font-size: 2.5em;
 	line-height: 1em;
@@ -267,13 +258,13 @@ label {
 	font-weight: 500;
 }
 
-.details-btn, .price-details {
+.twoWay .details-btn,.twoWay .price-details {
 	color: #FFFFFF;
 	font-weight: 500;
 	margin-top: 5px;
 }
 
-.buy-btn .vda-btn {
+.twoWay .buy-btn .vda-btn {
 	margin-top: 10%;
 	color: #000000;
 	font-size: 1.3em;
@@ -282,7 +273,7 @@ label {
 	font-weight: 800;
 }
 
-.buy-btn .vda-btn:hover {
+.twoWay .buy-btn .vda-btn:hover {
 	transition: all 0.4s;
 	box-shadow: 0 0 8px #b3b3b3;
 }
@@ -351,4 +342,11 @@ body {
 	right: 0;
 	overflow-y: scroll;
 	width: 75%;
+}
+
+.row-eq-height {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
