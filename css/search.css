@@ -4,7 +4,6 @@
 }
 
 .filter-area {
-
 	padding: 20px;
 	margin-top: 5%;
 	background-color: #FFFFFF;
@@ -100,11 +99,9 @@ label {
 	box-sizing: border-box;
 }
 
-.three-day-row button {
-	width: 100%;
-	font-size: 1.1em;
-	padding: 0.8%;
-	margin-bottom: 1%;
+.order-by-menu {
+	margin-top: 10px;
+	margin-bottom: -10px;
 }
 
 .boton-pasajeros .dropdown-menu {
@@ -119,6 +116,7 @@ label {
 	background: #FFFFFF;
 	overflow: auto;
 	transition: all 0.4s;
+	overflow-x: hidden;
 }
 
 .flight-box:hover, .one-way-flight-box:hover {
@@ -342,7 +340,6 @@ body {
 
 #left::-webkit-scrollbar { 
 	/*	width: 10px !important; */
-
 }
 
 #right {
