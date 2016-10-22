@@ -98,7 +98,10 @@ $(document).ready(function() {
         }
     });
 
+
     //$('#error-internet-card').click(paymentValidator.cardValidator.validateCreditCard('', validValidation('')));
+
+
 
 });
 

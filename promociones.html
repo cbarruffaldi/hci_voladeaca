@@ -9,7 +9,6 @@
         <link rel="stylesheet" href="jqueryui/jquery-ui.css">
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/bootstrap-theme.min.css">
-        <link rel="stylesheet" href="css/hover.css" media="all">
         <link rel="stylesheet" href="css/main.css">
         <link rel="stylesheet" href="css/spinner.css">
         <link rel="stylesheet" href="css/buttons.css">
@@ -49,6 +48,7 @@
             </div>
             <div id="calendar" class="col-md-4">               <h4>Cerca de la fecha:</h4>
                   <input type='text' class="form-control" id='datepicker' autocomplete="off" placeholder='dd/mm/aaaa' />
+              <div id="datepicker-err" class="formError"></div>
            </div>
            <div class="col-md-2" id="update-map-btn">
             <button class="vda-btn" id="updateCity">BUSCAR</button>
@@ -92,6 +92,7 @@
     async defer></script>
     
     <script src="js/clearinput.js"></script>
+     <script src="js/moment.js"></script>
 
     <script src="./CheloLabs/maps.js"></script>
     <script src="./CheloLabs/mapscript.js"></script>
