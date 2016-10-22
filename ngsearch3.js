@@ -128,12 +128,6 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 
 			sessionStorage.setItem('boughtFlight', JSON.stringify($selectedFlight));
 
-			if(localStorage.boughtFlight){
-				console.log("Have one in local");
-				localStorage.setItem('boughtFlight', JSON.stringify($selectedFlight));
-			}
-
-			localStorage.setItem('boughtFlight', JSON.stringify($selectedFlight));
 			window.location.href = "checkout2.html";
 
 
@@ -148,6 +142,9 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 				var flight2 = container.flights[1].flight;
 			}
 
+console.log("Starert");
+			console.log(pass);
+
 			var airlinePass = true;
 		//	if(activeAirlineFilter()){
 				airlinePass = $scope.airlineFilter[flight1.airline.id];
@@ -156,27 +153,39 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 				}
 		//	}
 			pass = pass && airlinePass;
+			window.console.log(pass)
 
 			pass = pass && $scope.iTimeFilter.validate(flight1.departMoment.date.getHours());
+			window.console.log(pass)
 		
 			if(flight2){
 				pass = pass && $scope.vTimeFilter.validate(flight2.departMoment.date.getHours());
 			}
+			window.console.log(pass)
 
 			if($scope.maxprice){
 				pass = pass && (container.price.total.total <= $scope.maxprice)
 			}
+			console.log(container.price.total.total)
+			window.console.log(pass)
+
 			if($scope.minprice){
 				pass = pass && (container.price.total.total >= $scope.minprice)
 			}
+			window.console.log(pass)
 
 			pass = pass && $scope.airports.filter[flight1.departure.airport.id]
 			pass = pass && $scope.airports.filter[flight1.arrival.airport.id]
+			window.console.log(pass)
 			
 			if(flight2){
+
 					pass = pass && $scope.airports.filter[flight2.departure.airport.id]
 					pass = pass && $scope.airports.filter[flight2.arrival.airport.id]
 			}
+
+			window.console.log(pass)
+						window.console.log("End")
 
 			return pass;
 
@@ -276,6 +285,7 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 						$scope.airports.iList.push(flights[i].departure.airport);
 						$scope.airports.filter[flights[i].departure.airport.id] = true;
 					}
+			
 
 					if(!$scope.airports.filter[flights[i].arrival.airport.id]){
 						$scope.airports.vList.push(flights[i].arrival.airport);
@@ -290,7 +300,7 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 						minPrice = price;
 					}
 				
-					else if(!maxPrice || maxPrice < price){
+					if(!maxPrice || maxPrice < price){
 						maxPrice = price;
 					}
 
@@ -330,10 +340,20 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 						$scope.airports.iList.push(iFlights[i].departure.airport);
 						$scope.airports.filter[iFlights[i].departure.airport.id] = true;
 					}
+						
+						if(!$scope.airports.filter[iFlights[i].arrival.airport.id]){
+						$scope.airports.vList.push(iFlights[i].arrival.airport);
+						$scope.airports.filter[iFlights[i].arrival.airport.id] = true;
+					}
 
 						if(!$scope.airports.filter[vFlights[j].departure.airport.id]){
 						$scope.airports.vList.push(vFlights[j].departure.airport);
 						$scope.airports.filter[vFlights[j].departure.airport.id] = true;
+					}
+
+						if(!$scope.airports.filter[vFlights[j].arrival.airport.id]){
+						$scope.airports.iList.push(vFlights[j].arrival.airport);
+						$scope.airports.filter[vFlights[j].arrival.airport.id] = true;
 					}
 
 				}
@@ -567,7 +587,6 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 		}
 	
 	$scope.$on('LastRepeaterElement', function(){
-		console.log("Tooltips");
     $('[data-toggle="tooltip"]').tooltip(); 
 	});
 

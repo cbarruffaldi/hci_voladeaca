@@ -13,10 +13,17 @@ mapSetup = function(global){
    		zoom: 2
 	   });
 	
-	function updateMap(id){
+	function updateMap(id, date){
 		clearMarkers();
 
-		
+		$http({
+			method: 'GET',
+			url:  "http://hci.it.itba.edu.ar/v1/api/geo.groovy?method=getcitybyid&id=" + id;
+		}).then( function(response) { 
+			fillMap(response, date);
+		})
+
+		/*
 		$.ajax({ url: "http://hci.it.itba.edu.ar/v1/api/geo.groovy?method=getcitybyid&id=" + id + "&callback=mapUtils.updateCity",
 				 dataType: "jsonp"});
 
@@ -25,6 +32,7 @@ mapSetup = function(global){
 						 url: "http://hci.it.itba.edu.ar/v1/api/booking.groovy?method=getflightdeals&from=" + id + "&callback=mapUtils.fillMap",
 						 dataType: "jsonp"
 						});
+		*/
 	}
 
 
@@ -40,7 +48,7 @@ mapSetup = function(global){
 		}
 
 
-		function fillMap(response){
+		function fillMap(response, date){
 			var deals = response.deals;
 
 			var info;
@@ -58,20 +66,25 @@ mapSetup = function(global){
 									price: deals[i].price
 								  };
 
+				details['date'] = date;
+
 				addMarker(details);
 			}
 
 		}
 
 		function addMarker(details){
-			var img = "./img/paper-marker-sm.png"
-			var point = {lat: details.lat, lng: details.lgt}
-			var marker = new google.maps.Marker({
-	    	position: point,
-	    	map: map,
-	    	//icon: img
-		  	//  title: details.info.name;
-		  	});
+			var deferred = $q.defer();
+
+			
+			var minPrice = details['info'].price;
+
+
+			function petition(date){
+
+			}
+
+			function fin(){ 
 
 			var contentString = "<strong>" + details['info'].name + "</strong>" + "<br />"
 								+ "<strong>Precio: </strong>" +  details['info'].price + "<br />"
@@ -83,6 +96,7 @@ mapSetup = function(global){
 						  });
 
 
+
 			marker.addListener('click', function() {
 			  	if(mapUtils.infow){
 			  		mapUtils.infow.close();
@@ -92,6 +106,17 @@ mapSetup = function(global){
 		  		});
 
 			mapUtils.markers.push(marker);
+
+			var point = {lat: details.lat, lng: details.lgt}
+			var marker = new google.maps.Marker({
+	    	position: point,
+	    	map: map,
+	    	icon: img
+		  	//  title: details.info.name;
+		  	});
+
+			}
+		
 		}
 
 
