@@ -35,7 +35,6 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 		}
 		
 		$scope.promo = function(f){
-			window.console.log($scope.minPrice);
 			return getURLParameter("promo") == "true" 
 						&& f.price.total.total == $scope.dealPrice;
 		}
