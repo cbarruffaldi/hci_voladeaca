@@ -1,4 +1,4 @@
-(function(global){
+mapSetup = function(global){
 
 	var mapUtils = {};
 	
@@ -15,6 +15,7 @@
 	
 	function updateMap(id){
 		clearMarkers();
+
 		
 		$.ajax({ url: "http://hci.it.itba.edu.ar/v1/api/geo.groovy?method=getcitybyid&id=" + id + "&callback=mapUtils.updateCity",
 				 dataType: "jsonp"});
@@ -63,12 +64,13 @@
 		}
 
 		function addMarker(details){
-
+			var img = "./img/paper-marker-sm.png"
 			var point = {lat: details.lat, lng: details.lgt}
 			var marker = new google.maps.Marker({
 	    	position: point,
 	    	map: map,
-		  //  title: details.info.name;
+	    	//icon: img
+		  	//  title: details.info.name;
 		  	});
 
 			var contentString = "<strong>" + details['info'].name + "</strong>" + "<br />"
@@ -111,4 +113,4 @@
 	mapUtils.initMap = initMap;
 	global.mapUtils = mapUtils;
 
-})(window);
+};

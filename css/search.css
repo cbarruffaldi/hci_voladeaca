@@ -378,6 +378,10 @@ body {
 	padding-bottom: 3em;
 }
 
+#left::-webkit-scrollbar { width: 10px !important; 
+    
+	  }
+
 #right {
 	margin-top: 4em;
 	height:100%;
