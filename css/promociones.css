@@ -6,9 +6,13 @@
       }
 
 #maploading{
-	position:relative;
-	padding-top: 20%;
+	position: relative;
+	padding-top: 4%;
+	padding-left: 48%;
+	width: 100%;
+	height: 100%;
 }
+
 
 .active{
 	z-index: 100;
