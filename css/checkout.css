@@ -368,7 +368,7 @@ label {
 	width: 35px;
 }
 
-.error-msg{
+div.error-msg{
 	text-align: center;
 	color: #333;
 }
