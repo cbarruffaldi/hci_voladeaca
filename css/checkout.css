@@ -30,7 +30,7 @@ input.tt-hint {
 	padding: 0.1em 0 0.1em 0.5em;
 	border-top-right-radius: 5px;
 	border-top-left-radius: 3px;
-	background: #204DCC;
+	background: cornflowerblue;
 }
 
 .title-style h3 {
@@ -51,7 +51,7 @@ input.tt-hint {
 	border-bottom-left-radius: 5px;
 	border-bottom-right-radius: 5px;
 	background-color: #FFFFFF;
-	border: 1px solid #204DCC;
+	border: 1px solid cornflowerblue;
 }
 
 .tab-row {
@@ -172,17 +172,10 @@ input.error-input {
 .arrow-btn {
 	margin-top: 10px;
 	font-size: 1.3em;
+	font-weight: 500;
 	transition: all 0.3s;
 	width: 100%;
-	letter-spacing: 1px;
 	padding: 0.5em 1em !important;
-	background-color: #DC0055;
-	color: white;
-}
-
-.arrow-btn button:hover {
-	border: 1px solid #FFFFFF;
-	background-color: #204DCC;
 }
 
 .arrow-btn button:active {
@@ -209,7 +202,7 @@ input.error-input {
 	background-color: inherit;
 	border: 0;
 	cursor:default;
-	color: #DC0055;
+	color: #204DCC;
 
 }.nav-tabs>li>a, .nav-tabs>li>a:hover, .nav-tabs>li>a:focus {
 	background-color: inherit;
@@ -296,7 +289,7 @@ label {
 	cursor: default;
 }
 
-.glyphicon.glyphicon-user{
+.psg-type .glyphicon.glyphicon-user{
 	margin-right: 0.3em;
 	cursor: default;
 	font-size: larger;
