@@ -1,7 +1,4 @@
-CSS reseñas
-Datepicker busqueda con restricciones
 Carousel vuelos baratos
-Badge para vuelo con promoción
 Barra de navegación principal tiene que notarse más cual está seleccionado
 Quitar país de pasajeros
 Mover botón de agregar más teléfonos debajo del último teléfono
@@ -10,3 +7,4 @@ Tooltip en los badges de aeropuertos - falta ponerles estilo
 Inputs de busqueda con borde rojo cuando hay error
 Fade in para los mensajes de error en la busqueda
 Footer en pagina de busqueda
+Aclaracion de precios en dolares
