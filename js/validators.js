@@ -311,15 +311,26 @@ function validateCreditCardAPI(number, expDate, secCod, callback, id, validation
         dataType: "jsonp",
         timeout: 3000,
         success: function(data) {
-        	$('#error-internet-card').hide();
-        	removeCreditCardError();
+        	if (noInternetError) {
+        		$('#error-internet-card').hide();
+	        	$('#' + CARD_NUM).removeClass(ERROR_INPUT);
+				$('#' + EXP_YEAR).removeClass(ERROR_INPUT);
+				$('#' + EXP_MONTH).removeClass(ERROR_INPUT);
+				$('#' + SEC_CODE).removeClass(ERROR_INPUT);
+				noInternetError = false;
+			}
+
         	callback(data.valid, id, validation);
-			noInternetError = false;
         },
         error: function() {
-        	$('#error-internet-card').fadeIn();
-        	setCreditCardError();
-        	validCreditCard = false;
+        	if (!noInternetError) {
+	        	$('#error-internet-card').fadeIn();
+				$('#' + CARD_NUM).addClass(ERROR_INPUT);
+				$('#' + EXP_YEAR).addClass(ERROR_INPUT);
+				$('#' + EXP_MONTH).addClass(ERROR_INPUT);
+				$('#' + SEC_CODE).addClass(ERROR_INPUT);
+			}
+	        validCreditCard = false;
 			noInternetError = true;
         }
     });
@@ -873,6 +884,10 @@ function PaymentValidator() {
 
 	this.getBillingData = function() {
 		return this.addrValidator.getData();
+	}
+
+	this.validateCreditCard = function() {
+		this.cardValidator.validateCreditCard('', validValidation(''));
 	}
 
 	this.alreadyValidated = function(id) {
