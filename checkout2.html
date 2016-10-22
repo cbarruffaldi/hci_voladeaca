@@ -19,7 +19,7 @@
 
 	</head>
 
-	<body data-ng-app="checkoutApp" data-ng-controller="CheckoutController" ng-cloak>
+	<body data-ng-app="checkoutApp" data-ng-controller="CheckoutController" data-ng-cloak>
 
 		<!-- header -->
 		<header>
@@ -79,7 +79,7 @@
 
                                   <div class="col-md-10">
                                       <div class="col-md-1">
-                                          <img data-ng-src="{{idaFlightDetails.logo}}">
+                                          <img data-ng-src="{{idaFlightDetails.logo}}" alt="Imagen no disponible" src="img/dummy.png">
                                       </div>
                                       <div class="col-md-2">
                                           <div class= "depart-date">{{idaFlightDetails.departureDate}}</div>
@@ -89,7 +89,7 @@
                                           <span>{{idaFlightDetails.airportFromName}}</span>
                                       </div>
                                       <div class="col-md-1">
-                                          <span><img class='arrow-icon' src='./img/icn/black-plane.svg'></span>
+                                          <span><img class='arrow-icon' src='./img/icn/black-plane.svg' alt="Imagen no disponible"></span>
                                       </div>
                                       <div class="col-md-2">
                                           <span>{{idaFlightDetails.airportToName}}</span>
@@ -120,7 +120,7 @@
                                   </div>
                                   <div class="col-md-10">
                                       <div class="col-md-1">
-                                          <img data-ng-src="{{returnFlightDetails.logo}}">
+                                          <img data-ng-src="{{returnFlightDetails.logo}}" alt="Imagen no disponible" src="img/dummy.png">
                                       </div>
                                       <div class="col-md-2">
                                           <div class= "depart-date">{{returnFlightDetails.departureDate}}</div>
@@ -130,7 +130,7 @@
                                           <span >{{returnFlightDetails.airportFromName}}</span>
                                       </div>
                                       <div class="col-md-1">
-                                          <span><img class='arrow-icon'src='./img/icn/black-plane.svg'></span>
+                                          <span><img class='arrow-icon' src='./img/icn/black-plane.svg' alt="Imagen no disponible"></span>
                                       </div>
                                       <div class="col-md-2">
                                           <span>{{returnFlightDetails.airportToName}}</span>
@@ -641,10 +641,11 @@
 			</div>
 		</div>
 
+	</div>
 
     <div data-ng-if="!validCheckout" class="error-msg">
 	  <div>
-	      <img class="error-img" src="img/PlaneCrash.png">
+	      <img class="error-img" src="img/PlaneCrash.png" alt="">
 	    </div>
 	    <h1>¡Ups! No deberías llegar a esta página antes de seleccionar un vuelo</h1>
 	    <br/><br/>

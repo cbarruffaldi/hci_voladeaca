@@ -52,9 +52,9 @@
 						<h2> Filtros </h2>
 						<div class="price-filter filter-box">
 							<div class="filter-name"> Precio</div>
-							<input style="display:none" data-ng-model="minprice" ng-model-options="{debounce: 1000}" id="preciomin"/>
+							<input style="display:none" data-ng-model="minprice" data-ng-model-options="{debounce: 1000}" id="preciomin"/>
 
-							<input style="display:none" data-ng-model="maxprice" ng-model-options="{debounce: 1000}" id="preciomax"/>
+							<input style="display:none" data-ng-model="maxprice" data-ng-model-options="{debounce: 1000}" id="preciomax"/>
 							<div class="slider-box">
 								<div id="price-slider">
 								</div>
@@ -123,7 +123,7 @@
 							<div class="filter-name">Aerolíneas</div>
 							<div data-ng-repeat="a in airlines">
 								<input type="checkbox" id="airl-cbox{{a.id}}" data-ng-click="toggleAirline(a.id)" checked="checked" />
-								<label for="airl-cbox{{a.id}}"><img data-ng-src="{{getLogo(a.id)}}" alt="{{a.name}}" /><span class="airfilter">{{a.name}}</span></label>
+								<label for="airl-cbox{{a.id}}"><img data-ng-src="{{getLogo(a.id)}}" alt="{{a.name}}" src="img/dummy.png"/><span class="airfilter">{{a.name}}</span></label>
 								<br/>
 							</div>
 						</div>
