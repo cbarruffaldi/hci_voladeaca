@@ -320,7 +320,7 @@ function validateCreditCardAPI(number, expDate, secCod, callback, id, validation
 	$.ajax({
         url: "http://hci.it.itba.edu.ar/v1/api/booking.groovy?method=validatecreditcard&number="+number+"&exp_date="+expDate+"&sec_code="+secCod+"&callback=?",
         dataType: "jsonp",
-        timeout: 2000,
+        timeout: 4000,
         success: function(data) {
         	callback(data.valid, id, validation);
         },
