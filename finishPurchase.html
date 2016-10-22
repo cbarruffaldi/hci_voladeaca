@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Finalización de Compra</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+	<link href="css/typeahead.css" rel="stylesheet"/>
+
+	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="css/buttons.css">
+	<link rel="stylesheet" href="css/finishPurchase.css">
+
+
+</head>
+
+<body ng-app="">
+
+<header>
+	<div data-ng-include="'snippets/nav.html'"></div>
+</header>
+
+<div class="body-contents">
+
+	<div class="container">
+		<div class="successfulPurchase">
+			<div class="row">
+				<div class="col-md-12 title-style">
+					¡Su compra fue realizada con éxito!
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<a href="index.html">
+						<button type="button" class="vda-btn goToIndex">Volver a la página principal</button>
+					</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="failedPurchase">
+			<div class="row">
+				<div class="col-md-12 title-style">
+					<div class="row">
+					Lo sentimos, ocurrió un error al realizar la compra.
+					</div>
+					<div class="row"> Por favor inténtelo nuevamente</div>
+				</div>
+			</div>
+
+			<!-- Ver que hace en este caso -->
+			<div class="row">
+				<div class="col-md-12">
+					<a href="index.html">
+						<button type="button" class="vda-btn goToIndex">Volver a la página principal</button>
+					</a>
+				</div>
+			</div>
+	</div>
+
+</div>
+
+</div>
+
+
+<script src="extlib/angular.min.js"></script>
+<script src="js/vendor/jquery-1.11.2.min.js"></script>
+<script src="bootstrap.min.js"></script> <!--TODO:VER POR QUE NO FUNCIONA EL OTRO-->
+<script src="js/finishPurchase.js"></script>
+
+</body>

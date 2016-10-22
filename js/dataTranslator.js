@@ -141,7 +141,6 @@ function translateBookingData(passengersData, cardData, billingData, contactData
 	buyFlight();
 }
 
-
 function buyFlight() {
 
 	var bookingIda = sessionStorage.bookingIda;
@@ -153,7 +152,9 @@ function buyFlight() {
         timeout: 5000,
         success: function(data) {
         	/* mostrar que la compra se realizó con éxito */
-    		alert("booking = " + data["booking"]);
+    		if(!bookingVuelta){
+				finishPurchase(data["booking"]);
+		    }
     	},
     	error: function() {
     		localStorage.bookingIda = bookingIda;
@@ -168,7 +169,8 @@ function buyFlight() {
         	timeout: 5000,
 			success: function(data) {
 				/* Mostrar que la compra se realizó con éxito */
-    			alert("booking = " + data["booking"]);
+				finishPurchase(data["booking"]);
+
     		},
     		error: function(data) {
   	    		localStorage.bookingVuelta = bookingVuelta;
@@ -176,4 +178,10 @@ function buyFlight() {
     		}
 		});
 	}
+}
+
+function finishPurchase(state){
+	var uri = 'finishPurchase.html?';
+	uri += 'booking=' + state;
+	window.location.href = uri;
 }
