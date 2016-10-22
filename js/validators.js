@@ -98,7 +98,7 @@ function validateEmail(email) {
 	if (n == 0)
 		return invalidValidation(mandatoryFieldString("el correo electrónico"));
 	if (!regex.test(email))
-		return invalidValidation('Correo electrónico inválido');
+		return invalidValidation('El correo electrónico ingresado no es válido. Verifique que tenga el siguiente formato: "ejemplo@correo.com');
 	if (n > MAX_EMAIL)
 		return invalidValidation(ERROR_MSG_LONG);
 
@@ -116,13 +116,17 @@ function validateStreet(street) {
 	return validValidation(street);
 }
 
+function invalidAlphaNum(name) {
+	return name + ' sólo puede contener dígitos y letras';
+}
+
 function validateAddrNum(addrNum) {
 	var n = addrNum.length;
 
 	if (n == 0)
 		return invalidValidation(mandatoryFieldString("el número de la calle"));
 	if (!isAlphaNum(addrNum))
-		return invalidValidation(ERROR_MSG_ALPHANUM);
+		return invalidValidation(invalidAlphaNum('El número de la calle'));
 	if (n > MAX_ADDR_NUM)
 		return invalidValidation(ERROR_MSG_LONG);
 
@@ -133,7 +137,7 @@ function validateFloor(floor) {
 	var n = floor.length;
 
 	if (n > 0 && !isAlphaNum(floor))
-		return invalidValidation(ERROR_MSG_ALPHANUM);
+		return invalidValidation(invalidAlphaNum('El piso'));
 	if (n > MAX_FLOOR)
 		return invalidValidation(ERROR_MSG_LONG);
 
@@ -144,11 +148,15 @@ function validateDepartment(dep) {
 	var n = dep.length;
 
 	if (n > 0 && !isAlphaNum(dep))
-		return invalidValidation(ERROR_MSG_ALPHANUM);
+		return invalidValidation(invalidAlphaNum('El departamento'));
 	if (n > MAX_DEPT)
 		return invalidValidation(ERROR_MSG_LONG);
 
 	return validValidation(dep.toUpperCase());
+}
+
+function invalidNum(name) {
+	return name + ' sólo puede contener dígitos';
 }
 
 function validateDocNum(num) {
@@ -157,14 +165,14 @@ function validateDocNum(num) {
     if (n == 0)
         return invalidValidation(mandatoryFieldString("el número de documento"));
     if (!isNumber(num))
-        return invalidValidation(ERROR_MSG_NUMBER);
+        return invalidValidation(invalidNum('El número de documento'));
     if (n > MAX_DOC_NUM)
         return invalidValidation(ERROR_MSG_LONG);
 
     return validValidation(num);
 }
 
-function validateName(string, mandatoryString) {
+function validateName(string, mandatoryString, title) {
     var n = string.length;
 
     if (n > MAX_NAME)
@@ -174,7 +182,7 @@ function validateName(string, mandatoryString) {
         return invalidValidation(mandatoryFieldString(mandatoryString));
 
     if (!isAlphaSpecial(string))
-        return invalidValidation("Solo se permiten letras y espacios");
+        return invalidValidation("El " + title + " no puede contener dígitos");
 
     return validValidation(string);
 }
@@ -182,8 +190,10 @@ function validateName(string, mandatoryString) {
 function validateDay(d, mandatoryString) {
 	if (d.length == 0)
 		return invalidValidation(mandatoryFieldString(mandatoryString));
-	if (!isNumber(d) || d < 1 || d > 31)
-		return invalidValidation('Día inválido');
+	if (!isNumber(d))
+		return invalidValidation(invalidNum('El día'));
+	if (d < 1 || d > 31)
+		return invalidValidation('El día sólo puede estar entre 1 a 31');
 	if (d.length == 1)
 		d = '0' + d;
 	return validValidation(d);
@@ -192,8 +202,10 @@ function validateDay(d, mandatoryString) {
 function validateMonth(m, mandatoryString) {
 	if (m.length == 0)
 		return invalidValidation(mandatoryFieldString(mandatoryString));
-	if (!isNumber(m) || m < 1 || m > 12)
-		return invalidValidation('Mes inválido');
+	if (!isNumber(d))
+		return invalidValidation(invalidNum('El mes'));
+	if (m < 1 || m > 12)
+		return invalidValidation('El mes sólo puede estar entre 1 y 12');
 	if (m.length == 1)
 		m = '0' + m;
 	return validValidation(m);
@@ -202,8 +214,8 @@ function validateMonth(m, mandatoryString) {
 function validateYear(y, mandatoryString) {
 	if (y.length == 0)
 		return invalidValidation(mandatoryFieldString(mandatoryString));
-	if (!isNumber(y) || y < 1880)
-		return invalidValidation('Año inválido');
+	if (!isNumber(y))
+		return invalidValidation(invalidNum('El año'));
 	return validValidation(y);
 }
 
@@ -245,7 +257,7 @@ function validateZipCode(zipCode) {
 	if (n == 0)
 		return invalidValidation(mandatoryFieldString("el código postal"));
 	if (!isAlphaNum(zipCode))
-		return invalidValidation(ERROR_MSG_ALPHANUM);
+		return invalidValidation(invalidAlphaNum('El código postal'));
 	if (n > MAX_ZIP_CODE)
 		return invalidValidation(ERROR_MSG_LONG);
 
@@ -259,10 +271,6 @@ function validateCardNumber(num) {
 		return invalidValidation(ERROR_MSG_NUMBER);
 	if (n == 0)
 		return invalidValidation(mandatoryFieldString("el número de la tarjeta"));
-	if (n < MIN_CREDIT_NUM)
-		return invalidValidation(ERROR_MSG_SHORT);
-	if (n > MAX_CREDIT_NUM)
-		return invalidValidation(ERROR_MSG_LONG);
 
 	return validValidation(num);
 }
@@ -295,7 +303,7 @@ function validateSecCode(num) {
 }
 
 function validateCardholder(cardholder) {
-	var validation = validateName(cardholder, "el nombre del titular de la tarjeta");
+	var validation = validateName(cardholder, "el nombre del titular de la tarjeta", "nombre del titular de la tarjeta");
 
 	if (validation.valid && cardholder.split(' ').length < 2)
 		validation = invalidValidation("Incluya nombre y apellido del titutar de la tarjeta");
@@ -340,9 +348,10 @@ function validateCreditCardAPI(number, expDate, secCod, callback, id, validation
 
 function validateDate(day, month, year) {
     var birthDate = new Date(year, month - 1, day);
+	var months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
 
     if (birthDate.getMonth()+1 != month)
-        return invalidValidation('Fecha inválida');
+        return invalidValidation('No existe el ' + day + ' de ' + months[month-1]);
 
     return validValidation();
 }
@@ -426,11 +435,11 @@ function validateCity(name) {
 }
 
 function validateFirstName(value) {
-	return validateName(value, "el nombre del pasajero");
+	return validateName(value, "el nombre del pasajero", "nombre del pasajero");
 }
 
 function validateLastName(value) {
-	return validateName(value, "el apellido del pasajero");
+	return validateName(value, "el apellido del pasajero", "apellido del pasajero");
 }
 
 /* VALIDADORES
