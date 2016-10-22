@@ -19,7 +19,7 @@
 
 	</head>
 
-	<body data-ng-app="checkoutApp" data-ng-controller="CheckoutController">
+	<body data-ng-app="checkoutApp" data-ng-controller="CheckoutController" ng-cloak>
 
 		<!-- header -->
 		<header>
@@ -79,7 +79,7 @@
 
                                   <div class="col-md-10">
                                       <div class="col-md-1">
-                                          <img data-ng-src="{{idaFlightDetails.logo}}"></img>
+                                          <img data-ng-src="{{idaFlightDetails.logo}}">
                                       </div>
                                       <div class="col-md-2">
                                           <div class= "depart-date">{{idaFlightDetails.departureDate}}</div>
@@ -89,7 +89,7 @@
                                           <span>{{idaFlightDetails.airportFromName}}</span>
                                       </div>
                                       <div class="col-md-1">
-                                          <span><img class='arrow-icon' src='./img/icn/black-plane.svg'></img></span>
+                                          <span><img class='arrow-icon' src='./img/icn/black-plane.svg'></span>
                                       </div>
                                       <div class="col-md-2">
                                           <span>{{idaFlightDetails.airportToName}}</span>
@@ -120,7 +120,7 @@
                                   </div>
                                   <div class="col-md-10">
                                       <div class="col-md-1">
-                                          <img data-ng-src="{{returnFlightDetails.logo}}"></img>
+                                          <img data-ng-src="{{returnFlightDetails.logo}}">
                                       </div>
                                       <div class="col-md-2">
                                           <div class= "depart-date">{{returnFlightDetails.departureDate}}</div>
@@ -130,7 +130,7 @@
                                           <span >{{returnFlightDetails.airportFromName}}</span>
                                       </div>
                                       <div class="col-md-1">
-                                          <span><img class='arrow-icon'src='./img/icn/black-plane.svg'></img></span>
+                                          <span><img class='arrow-icon'src='./img/icn/black-plane.svg'></span>
                                       </div>
                                       <div class="col-md-2">
                                           <span>{{returnFlightDetails.airportToName}}</span>
