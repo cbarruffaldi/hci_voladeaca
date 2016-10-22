@@ -63,7 +63,9 @@
 		</div>
 		<div data-ng-if="twoWays">
 			<div class="col-md-2 flight-price-box">
-				<!--				<div class="ribbon"><span>PROMO</span></div>-->
+				<div data-ng-if="promo(c)">
+					<div class="ribbon"><span>PROMO</span></div>
+				</div>
 				<div class="price-number">
 					${{c.price.total.total}}
 				</div>
