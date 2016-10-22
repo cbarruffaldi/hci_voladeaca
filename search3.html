@@ -36,7 +36,7 @@
 		<noscript>
 			<link rel="stylesheet" href="css/error-nojs.css" >
 			<div class="no-js-content">
-			<h4>¡Alerta! JavaScript desactivado</h4> Esta página utiliza JavaScript para funcionar. Actualiza tu navegador o consulta <a href="https://www.google.com.ar/search?q=cómo+habilitar+javascript" target="_blank" >cómo habilitar javascript</a>
+				<h4>¡Alerta! JavaScript desactivado</h4> Esta página utiliza JavaScript para funcionar. Actualiza tu navegador o consulta <a href="https://www.google.com.ar/search?q=cómo+habilitar+javascript" target="_blank" >cómo habilitar javascript</a>
 			</div>
 		</noscript>
 
@@ -52,9 +52,9 @@
 						<h2> Filtros </h2>
 						<div class="price-filter filter-box">
 							<div class="filter-name"> Precio</div>
-							<input style="display:none" data-ng-model="minprice" ng-model-options="{debounce: 1000}" id="preciomin"/>
+							<input style="display:none" data-ng-model="minprice" data-ng-model-options="{debounce: 1000}" id="preciomin"/>
 
-							<input style="display:none" data-ng-model="maxprice" ng-model-options="{debounce: 1000}" id="preciomax"/>
+							<input style="display:none" data-ng-model="maxprice" data-ng-model-options="{debounce: 1000}" id="preciomax"/>
 							<div class="slider-box">
 								<div id="price-slider">
 								</div>
@@ -123,7 +123,7 @@
 							<div class="filter-name">Aerolíneas</div>
 							<div data-ng-repeat="a in airlines">
 								<input type="checkbox" id="airl-cbox{{a.id}}" data-ng-click="toggleAirline(a.id)" checked="checked" />
-								<label for="airl-cbox{{a.id}}"><img data-ng-src="{{getLogo(a.id)}}" alt="{{a.name}}" /><span class="airfilter">{{a.name}}</span></label>
+								<label for="airl-cbox{{a.id}}"><img data-ng-src="{{getLogo(a.id)}}" alt="{{a.name}}" src="img/dummy.png"/><span class="airfilter">{{a.name}}</span></label>
 								<br/>
 							</div>
 						</div>
@@ -162,12 +162,11 @@
 
 										<div id="date-col-1" class='col-md-2 no-gutters'>
 											<div class="form-group">
-												<div class='input-group date'>
+												<div class='input-group date' id="cal1">
+													<input type='text' class="form-control" id='datepicker1' autocomplete="off" placeholder='dd/mm/aaaa' />
 													<span class="input-group-addon" id="cal1">
 														<span class="glyphicon glyphicon-calendar"></span>
-														<span class="glyphicon glyphicon-chevron-right"></span>
 													</span>
-													<input type='text' class="form-control" id='datepicker1' placeholder='dd/mm/aaaa' />
 												</div>
 											</div>
 											<div id="datepicker1-err" class="formError"></div>
@@ -175,12 +174,11 @@
 
 										<div id="date-col-2"  class='col-md-2 no-gutters'>
 											<div class="form-group">
-												<div class='input-group date'>
-													<span class="input-group-addon" id="cal1">
-														<span class="glyphicon glyphicon-calendar"></span>
-														<span class="glyphicon glyphicon-chevron-left"></span>
-													</span>
+												<div class='input-group date' id="cal2">
 													<input type='text' class="form-control" id='datepicker2' autocomplete="off" placeholder='dd/mm/aaaa' />
+													<span class="input-group-addon" id="cal2">
+														<span class="glyphicon glyphicon-calendar"></span>
+													</span>
 												</div>
 											</div>
 											<div id="datepicker2-err" class="formError"></div>
@@ -202,12 +200,7 @@
 						</div>
 					</div>
 
-
-					<!-- carousel vuelos baratos -->
-					<div class="results-carousel">
-						<div data-ng-if="!emptySearch" data-ng-include="'./snippets/airlinecarousel.html'"></div>
-					</div>
-					<!-- fin carousel -->
+					<div data-ng-if="!emptySearch" data-ng-include="'./snippets/featuredflights.html'"></div>
 
 					<div class="row sort-options">
 						<div class="col-md-3">
@@ -220,23 +213,6 @@
 									<ul class="dropdown-menu" id="order-dropdown">
 										<li><a href="#" data-ng-click="toggleOrder('price')">Menor Precio</a></li>
 										<li><a href="#" data-ng-click="toggleOrder('duration')">Menor Duración</a></li>
-										<li><a href="#" data-ng-click="toggleOrder('score')">Mejor Puntaje</a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-2 col-md-offset-7">
-							<div class="currency-menu greyout">
-								<label for="currency-btn">Moneda:</label>
-								<div class="btn-group">
-									<button id="currency-btn" class="vda-btn vda-btn-small dropdown-toggle" disabled="" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-										ARS<span class="caret"></span>
-									</button>
-									<ul class="dropdown-menu dropdown-menu-right" id="currency-dropdown">
-										<li><a href="#">ARS</a></li>
-										<li><a href="#">USD</a></li>
-										<li><a href="#">EUR</a></li>
-										<li><a href="#">REA</a></li>
 									</ul>
 								</div>
 							</div>
@@ -261,7 +237,7 @@
 				</div>
 			</div>
 		</div>
-		
+
 		<script src="js/moment.js" ></script>
 		<script src="jqueryui/jquery-ui.js"></script>
 		<script src="jqueryui/uidatepicker-es.js"></script>

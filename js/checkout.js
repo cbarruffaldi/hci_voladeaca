@@ -77,6 +77,7 @@ $(document).ready(function() {
             active.addClass('disabled-tab');
 
             if(indexTab == 0) {
+            	$('.btnPrev').text('\«Volver');
                 fillPassengerSum(validator.getData());
             } 
             else if(indexTab == 1) {
@@ -99,7 +100,9 @@ $(document).ready(function() {
     });
 
 
-    //$('#error-internet-card').click(paymentValidator.cardValidator.validateCreditCard('', validValidation('')));
+    $('#error-internet-card').click(function() {
+    	paymentValidator.cardValidator.validateCreditCard('', validValidation(''));
+    });
 
 
 
@@ -179,9 +182,13 @@ $(document).ready(function() {
     $('.btnPrev').click(function() {
         var stageIndex = getCurrentStage();
         if (stageIndex == 0) {
-            parent.history.back();
-            return false;
-        } else if(stageIndex == 3) {
+	        parent.history.back();
+	        return false;
+        }
+        else if (stageIndex == 1) {
+        	$(this).text('Volver a Búsqueda');
+        }
+        else if(stageIndex == 3) {
             $('.btnNext').text('Continuar\»');
         }
 

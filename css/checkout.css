@@ -130,6 +130,10 @@ p.error-msg, #error-card, #error-internet-card {
 	white-space: pre-line;
 }
 
+#error-internet-card:hover {
+	text-decoration: underline;
+}
+
 #error-internet-card {
 	cursor: pointer;
 }
