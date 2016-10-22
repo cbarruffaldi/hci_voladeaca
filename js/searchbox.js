@@ -149,9 +149,8 @@ function initSearchbox(global){
 			//chequeo que no sean incompatibles.
 
 			var now = moment();
-			now.add(2,'days');
-			console.log(now);
-			if(now.isAfter(departure)){
+	//		now.add(2,'days');
+			if(departure.diff(now, 'days') + 1 < 2){
 				date1.addClass('inputerr');
 				$("#datepicker1-err").text("Debe ser por lo menos dos días desde ahora");
 				$("#datepicker1-err").fadeIn();
