@@ -11,8 +11,9 @@
 
 		<link rel="stylesheet" href="css/main.css">
 		<link rel="stylesheet" href="css/buttons.css">
-    <link rel="stylesheet" href="css/checkout.css">
+    	<link rel="stylesheet" href="css/checkout.css">
 
+		<link rel="dns-prefetch" href="./finishPurchase.html">
 
         <script src="extlib/angular.min.js"></script>
 
@@ -30,15 +31,6 @@
 			<div class="row"><h1>Página de Compra</h1>
 			</div>
 		</div>
-
-    <div data-ng-if="!validCheckout" class="error-msg">
-  <div >
-      <img class="error-img" src="img/PlaneCrash.png">
-    </div>
-    <h1>¡Ups! No deberías llegar a esta página antes de seleccionar un vuelo</h1>
-    <br/><br/>
-    <h2><a href="./index.html">Volver a la página principal</a></h2>
-</div>
 
 
     <div data-ng-if="validCheckout">
@@ -321,11 +313,13 @@
 											<!-- Segunda Fila-->
 											<div class="row">
 	
-												
-
 												<!-- Mensaje error validación tarjeta de crédito -->
 												<div class="col-md-12">
 													<p id="error-card">No hemos podido verificar su tarjeta de crédito. Por favor revise sus datos.</p>
+												</div>
+
+												<div class="col-md-12">
+													<p id="error-internet-card">¡Sin Internet! No hemos podido verificar su tarjeta de crédito porque se ha perdido la conexión a Internet. Haga click en este texto para reintentar.</p>
 												</div>
 											</div>
 
@@ -648,6 +642,15 @@
 		</div>
 
 
+    <div data-ng-if="!validCheckout" class="error-msg">
+	  <div>
+	      <img class="error-img" src="img/PlaneCrash.png">
+	    </div>
+	    <h1>¡Ups! No deberías llegar a esta página antes de seleccionar un vuelo</h1>
+	    <br/><br/>
+	    <h2><a href="./index.html">Volver a la página principal</a></h2>
+	</div>
+
 		<!-- MODAL DE PASAJERO -->
 		<!-- TODO: NO SE DONDE SE PONEN ESTAS COSAS -->
 		<div id="modify-modal" class="modal fade" role="dialog" data-backdrop="static">
@@ -670,33 +673,25 @@
 			</div>
 		</div>
 
-
-    <div id="error-modal" class="modal fade" role="dialog" data-backdrop="static">
+    <div id="buying-modal" class="modal fade" role="dialog" data-backdrop="static">
       <div class="modal-dialog">
 
         <!-- Modal content-->
         <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title">Error de conexión</h4>
-          </div>
           <div class="modal-body">
-            <h1>¡Te quedaste sin Internet!</h1>
-          </div>
-
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Salir</button>
+            <h1 class="buying-text">Comprando vuelo{{$bought.twoWays ? 's' : ''}}...</h1>
           </div>
         </div>
 
       </div>
-    </div>
+    </div>    
 
 
 		<!-- TODO: falta el footer -->
 
 		<script src="js/vendor/jquery-1.11.2.min.js"></script>
 		<script src="js/validators.js"></script>
-    <script src="js/dataTranslator.js"></script>
+    	<script src="js/dataTranslator.js"></script>
 		<script src="js/checkout.js"></script>
 		<script src="bootstrap.min.js"></script> <!--TODO:VER POR QUE NO FUNCIONA EL OTRO-->
 		<script src="type/typeahead.bundle.min.js"></script>

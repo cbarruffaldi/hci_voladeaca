@@ -97,6 +97,9 @@ $(document).ready(function() {
             data.text(sequence);
         }
     });
+
+    $('#error-internet-card').click(paymentValidator.cardValidator.validateCreditCard('', validValidation('')));
+
 });
 
 $(document).on('blur', 'input', function() {

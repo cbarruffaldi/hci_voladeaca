@@ -303,16 +303,24 @@ function validateCardholder(cardholder) {
 	return validation;
 }
 
+var noInternetError = false;
+
 function validateCreditCardAPI(number, expDate, secCod, callback, id, validation) {
     $.ajax({ 
         url: "http://hci.it.itba.edu.ar/v1/api/booking.groovy?method=validatecreditcard&number="+number+"&exp_date="+expDate+"&sec_code="+secCod+"&callback=?",
         dataType: "jsonp",
-        timeout: 5000,
+        timeout: 3000,
         success: function(data) {
+        	$('#error-internet-card').hide();
+        	removeCreditCardError();
         	callback(data.valid, id, validation);
+			noInternetError = false;
         },
         error: function() {
-        	$('#error-modal').modal('show');
+        	$('#error-internet-card').fadeIn();
+        	setCreditCardError();
+        	validCreditCard = false;
+			noInternetError = true;
         }
     });
 }
@@ -715,9 +723,11 @@ function PaymentCardValidator() {
 
 		/* Se quita cartel de error de tarjeta de cŕedito si
 		** modifica algo relacionado a la tarjeta de crédito */
-		if (this.creditCardId(id) && isErrorCardShowed) {
+		if (this.creditCardId(id) && (isErrorCardShowed || noInternetError)) {
+			$('#error-internet-card').hide();
 			removeCreditCardError();
 			isErrorCardShowed = false;
+			noInternetError = false;
 		}
 
 		var validation = validateFunction(value);

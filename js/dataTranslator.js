@@ -126,41 +126,37 @@ function translateBookingData(passengersData, cardData, billingData, contactData
 
 	console.log(JSON.stringify(translatedData));
 
-	var bookingData = $.extend({"flight_id": $bought.container.flights[0].flight.id}, translatedData);
+	var bookingData = JSON.stringify($.extend({"flight_id": $bought.container.flights[0].flight.id}, translatedData));
+	var otherBookingData = undefined;
 
-	console.log(JSON.stringify(bookingData));
 
-	sessionStorage.bookingIda = JSON.stringify(bookingData);
+    if ($bought.twoWays)
+		otherBookingData = JSON.stringify($.extend({"flight_id": $bought.container.flights[1].flight.id}, translatedData));
 
-    if ($bought.twoWays) {
-		var otherBookingData = $.extend({"flight_id": $bought.container.flights[1].flight.id}, translatedData);
-		sessionStorage.bookingVuelta = JSON.stringify(otherBookingData);
-		console.log(JSON.stringify(otherBookingData));
-	}
-
-	buyFlight();
+	buyFlight(bookingData, otherBookingData);
 }
 
-function buyFlight() {
+function buyFlight(bookingIda, bookingVuelta) {
 
-	var bookingIda = sessionStorage.bookingIda;
-	var bookingVuelta = sessionStorage.bookingVuelta;
+	showBuyingModal();
 
-	$.ajax({ 
-        url: "http://hci.it.itba.edu.ar/v1/api/booking.groovy?method=bookflight2&booking=" + bookingIda + "&callback=?",
-        dataType: "jsonp",
-        timeout: 5000,
-        success: function(data) {
-        	/* mostrar que la compra se realizó con éxito */
-    		if(!bookingVuelta){
-				finishPurchase(data["booking"]);
-		    }
-    	},
-    	error: function() {
-    		localStorage.bookingIda = bookingIda;
-    		/* manejo del error de conexión */
-    	}
-    });
+	if (bookingIda) {
+		$.ajax({ 
+	        url: "http://hci.it.itba.edu.ar/v1/api/booking.groovy?method=bookflight2&booking=" + bookingIda + "&callback=?",
+	        dataType: "jsonp",
+	        timeout: 5000,
+	        success: function(data) {
+	        	/* mostrar que la compra se realizó con éxito */
+	    		if(!bookingVuelta) {
+					finishPurchase(data["booking"]);
+			    }
+	    	},
+	    	error: function() {
+	    		localStorage.bookingIda = bookingIda;
+	    		finishPurchase('false');
+	    	}
+	    });
+	}
 
     if (bookingVuelta) {
 		$.ajax({ 
@@ -170,11 +166,10 @@ function buyFlight() {
 			success: function(data) {
 				/* Mostrar que la compra se realizó con éxito */
 				finishPurchase(data["booking"]);
-
     		},
     		error: function(data) {
   	    		localStorage.bookingVuelta = bookingVuelta;
-    			/* manejo del error de conexión */
+  	    		finishPurchase('false');
     		}
 		});
 	}
@@ -184,4 +179,8 @@ function finishPurchase(state){
 	var uri = 'finishPurchase.html?';
 	uri += 'booking=' + state;
 	window.location.href = uri;
+}
+
+function showBuyingModal() {
+	$('#buying-modal').modal('show');
 }
