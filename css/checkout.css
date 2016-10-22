@@ -120,7 +120,7 @@ label {
 	background-color: #0F9E5E;
 }
 
-p.error-msg, #error-card {
+p.error-msg, #error-card, #error-internet-card {
 	color: #a0003a;
 	font-size: 0.9em;
 	margin: 0;
@@ -128,6 +128,10 @@ p.error-msg, #error-card {
 	padding-top: 0.2em;
 	display: none;
 	white-space: pre-line;
+}
+
+#error-internet-card {
+	cursor: pointer;
 }
 
 input.error-input {
