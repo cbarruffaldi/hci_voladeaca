@@ -34,6 +34,11 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 
 		}
 		
+		$scope.promo = function(f){
+			window.console.log($scope.minPrice);
+			return getURLParameter("promo") == "true" 
+						&& f.price.total.total == $scope.minPrice;
+		}
 
 		$scope.getLogo = function(id){
 			return $scope.airlineLogos[id];
@@ -316,7 +321,7 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 					var c = new Container(iFlights[i], vFlights[j]);
 					var price = c.price.total.total;
 					if(!minPrice || price < minPrice){
-						minPrice = price;
+						$scope.minPrice = price;
 					}
 					if(!maxPrice || maxPrice < price){
 						maxPrice = price;
@@ -336,7 +341,7 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 
 				}
 			}
-			initSlider(minPrice, maxPrice);
+			initSlider($scope.minPrice, maxPrice);
 		}
 
 

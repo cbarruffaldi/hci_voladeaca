@@ -2,8 +2,8 @@
 	<div data-ng-repeat="f in flightResults | limitTo: scrollLimit.details" set-review-colors="">
 		<div class="col-md-6">
 			<div class="revcont">
-				<div class="review_t row">
-					<div class="col-md-12">
+				<div class="review_t row" data-ng-click="selectFlight(f)">
+					<div class="col-md-12 flight-review-t">
 						{{flightName(f.flight.airline.id, f.flight.number)}}
 					</div>
 				</div>

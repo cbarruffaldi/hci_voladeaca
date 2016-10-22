@@ -2,7 +2,7 @@
 <div class="row">
 	<div class="col-md-12">
 		<div infinite-scroll='loadMore("reviews")' infinite-scroll-distance='1'>
-			<div class="review" data-ng-repeat="r in reviewResults | filter: filterReviews | limitTo: scrollLimit.reviews" set-review-colors="">
+			<div class="review" data-ng-repeat="r in reviewResults | filter: filterReviews | limitTo: scrollLimit.reviews" data-set-review-colors="">
 				<div class="col-md-6">
 					<div class="col-md-12">
 						<div class="row review-head">

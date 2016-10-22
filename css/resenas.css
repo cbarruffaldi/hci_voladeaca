@@ -96,6 +96,11 @@ input::-webkit-inner-spin-button {
 	font-size: 2em;
 	border-top-right-radius: 5px;
 	border-top-left-radius: 3px;
+	cursor:pointer;
+}
+
+.review_t:hover{
+	background: #204DCC;
 }
 
 .review-head{
@@ -209,8 +214,11 @@ ul.tabs li.current{
 }
 
 .ratetitulo {
+	color:#DC0055;
 	font-size: 1.2em;
 	text-align: center;
+	padding-bottom: 20px;
+
 }
 
 .revcont{ 
@@ -218,7 +226,7 @@ ul.tabs li.current{
 }
 
 .avg-rating, .would-reccomend {
-	font-size: 1.2em;
+	font-size: 1.1em;
 	font-weight: 400;
 }
 
@@ -238,15 +246,18 @@ ul.tabs li.current{
 	border-radius: 10px;
 	border: cornflowerblue solid 1px;
 	margin: 0;
-	margin-top: 3%;
+	margin-top: 5%;
 	margin-right: 20px;
 	margin-left: 25px;
+	margin-bottom: 5%;
 }
 
 
 .ritem{
 	margin: 0 15px 15px 25px;
 }
+
+
 
 .rcategory{
 	width: 100%;
@@ -270,7 +281,7 @@ ul.tabs li.current{
 	border-color: #fff transparent;
 	display: block;
 	width: 0;
-	z-index: 1;
+	z-index: 0;
 	top: -15px;
 	left: 29px;
 	margin-left: 20px;
@@ -367,7 +378,24 @@ textarea:focus {
 	padding-right: 15px;
 	font-size: 1.2em;
 	color: #333;
-	border-radius: 3px;}
+	border-radius: 3px;
+	margin-bottom: 25px;
+}
+
+.inputerr{
+	border: 1px solid #FF0000 !important;
+}
+
+.formError{
+	margin-top: -10px;
+	padding-left: 5px;
+	font-size:0.9em;
+	color: #a0003a;
+	position: absolute;
+	display: none;
+	padding-bottom: 15px;
+	line-height: 13px;
+}
 
 
 .slider{
