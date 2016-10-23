@@ -17,6 +17,8 @@
 		<link rel="stylesheet" href="css/angular-animations.css">
 		<link rel="stylesheet" href="css/nouislider-reviews.css">
 		<link rel="stylesheet" href="css/nouislider.pips.css">
+		<link rel="stylesheet" href="css/spinner.css">
+
 		<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
 		<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
 		<script src="extlib/angular.min.js"></script>
@@ -31,14 +33,14 @@
 		<noscript>
 			<link rel="stylesheet" href="css/error-nojs.css"/>
 			<div class="no-js-content">
-			<h4>¡Alerta! JavaScript desactivado</h4> Esta página utiliza JavaScript para funcionar. Actualiza tu navegador o consulta <a href="https://www.google.com.ar/search?q=cómo+habilitar+javascript" target="_blank" >cómo habilitar javascript</a>
+				<h4>¡Alerta! JavaScript desactivado</h4> Esta página utiliza JavaScript para funcionar. Actualiza tu navegador o consulta <a href="https://www.google.com.ar/search?q=cómo+habilitar+javascript" target="_blank" >cómo habilitar javascript</a>
 			</div>
 		</noscript>
 
 		<header>
 			<div data-ng-include="'./snippets/nav.html'"></div>
 		</header>
-		
+
 		<div class="contents">
 			<div class="container">
 
@@ -60,7 +62,7 @@
 									<div id="aerobox" class="tab-content current col-md-6 col-md-offset-3">
 										<div class="form-group">
 											<input type="text" data-my-enter="yes" class="form-control awesomplete" data-review-autocomplete="true" id="input-aerolinea" placeholder="Nombre de Aerolínea"/>
-										<div id="aerolinea-err" class="formError"></div>
+											<div id="aerolinea-err" class="formError"></div>
 										</div>
 									</div>
 									<div id="vuelobox" class="tab-content col-md-6">
@@ -82,7 +84,7 @@
 						</div> 
 					</div>
 				</div> 
-				
+
 				<div class="row review-btn-row">
 					<div data-ng-if="flightSelected" class="ng-cloak">
 						<div class="row title-row">

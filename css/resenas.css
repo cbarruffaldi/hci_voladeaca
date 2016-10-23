@@ -246,10 +246,9 @@ ul.tabs li.current{
 	border-radius: 10px;
 	border: cornflowerblue solid 1px;
 	margin: 0;
-	margin-top: 5%;
+	margin-top: 4%;
 	margin-right: 20px;
 	margin-left: 25px;
-	margin-bottom: 5%;
 }
 
 
@@ -379,7 +378,6 @@ textarea:focus {
 	font-size: 1.2em;
 	color: #333;
 	border-radius: 3px;
-	margin-bottom: 25px;
 }
 
 .inputerr{
@@ -432,11 +430,6 @@ textarea:focus {
 
 .sendreview button:hover {
 	border-bottom: 1px solid #7b7b7b;
-}
-
-.rec-quest {
-	margin-top: 10px;
-	margin-bottom: 10px;
 }
 
 .star-rating{
@@ -498,7 +491,7 @@ textarea:focus {
 }
 
 #leaveReviewModal .modal-dialog {
-	margin-top: 6em !important;
+	margin-top: 3em !important;
 	margin-bottom: 0;
 }
 
@@ -532,4 +525,70 @@ textarea:focus {
 
 .green {
 	border: 1px solid chartreuse;
+}
+
+.input-err input {
+	transition: all 0.3s;
+	border-color: crimson;
+}
+
+.comment-err .bubble {
+	transition: all 0.3s;
+	border-color: crimson;
+}
+
+.comment-err .bubble:before {
+	transition: all 0.3s;
+	border-color: crimson transparent;
+	background-color: #d0d0d0 transparent;
+}
+
+.err-msg {
+	color: crimson;
+	font-size: 1.1em;
+	display: none;
+	position: absolute;
+}
+
+.airline-input .err-msg, .number-input .err-msg {
+	left: 20px;
+} 
+
+.comment-area .err-msg {
+	left: 4em;
+}
+
+.slider-area {
+	margin-top: 2em;
+}
+
+#reviewSent .modal-dialog, #sendingModal .modal-dialog{
+	margin-top: 20%;
+}
+
+#sendingModal .modal-body {
+	padding: 35px;
+}
+
+#sendingModal .sending-msg {
+	font-size: 2em;
+	color: #7b7b7b;
+	text-align: center;
+}
+
+#reviewSent .modal-body{
+	background-color: #DFF2BF;
+	border-radius: 10px;
+}
+
+#reviewSent .success-msg{
+	color: #4F8A10;
+	text-align: center;
+	font-size: 2em;
+}
+
+#reviewSent .vda-btn {
+	padding: 2% 4%;
+	margin-top: 2%;
+	color: #4F8A10;
 }

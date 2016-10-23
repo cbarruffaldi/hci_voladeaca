@@ -220,23 +220,22 @@ app.controller("reviewsCtrl", function($scope, $http, $sce, $window) {
 	function validateReview(send) {
 		valid = true;
 		if (send.comments == '') {
-			$('.bubble').addClass("comment-err");
-			console.log("INVALID COMMENT")
+			$('.comment-area').addClass("comment-err");
+			$('.comment-area .err-msg').fadeIn();
 			valid = false
 		}
 
 		if (!send.flight || !send.flight.airline.id) {
-			$('#input-aerolinea-rev').addClass("input-err");
-			console.log("INVALID AIRLINE")
+			$('.airline-input').addClass("input-err");
+			$('.airline-input .err-msg').fadeIn();
 			valid = false
 		}
 
 		if (!send.flight || !send.flight.number) {
-			$('input-number-rev').addClass("input-err");
-			console.log("INVALID FL NUMBER")
+			$('.number-input').addClass("input-err");
+			$('.number-input .err-msg').fadeIn();
 			valid = false
 		}
-		console.log("VALID REVIEW: " + valid)
 		return valid
 	}
 
@@ -268,41 +267,58 @@ app.controller("reviewsCtrl", function($scope, $http, $sce, $window) {
 		}
 
 		if (validateReview(send)) {
+			showSendingMessage(send);
 			$.ajax({
 				type: "POST",
 				contentType: 'application/json',
 				url: 'http://hci.it.itba.edu.ar/v1/api/review.groovy?method=reviewairline',
 				data: JSON.stringify(send)
 			}).then(function(response){
-				console.log(response);
+				console.log(response)
+				messageSent()
 			});
 
-			console.log(send);
-			console.log(JSON.stringify(send));
+			console.log(send)
+			console.log(JSON.stringify(send))
 		}
 	};
+	
+	function showSendingMessage(msg) {
+		$('#leaveReviewModal').modal('toggle')
+		$('#sendingModal').modal({backdrop: 'static', keyboard: false})
+		$('#sendingModal .sending-msg').text("Enviando reseña para el vuelo " + send.flight.airline.id + send.flight.number)
+	}
 
+	function messageSent() {
+		$('#sendingModal').modal('toggle')
+		$('#reviewSent').modal('toggle')
+	}
 
 	$scope.yesRec = function(rec){
 		$scope.yesRecommend = rec;
 		if(rec){
-			$("#no_rec").removeClass('selected');
-			$("#yes_rec").addClass('selected');
+			$("#no_rec").removeClass('selected')
+			$("#yes_rec").addClass('selected')
 		}else{
-			$("#yes_rec").removeClass('selected');
-			$("#no_rec").addClass('selected');
+			$("#yes_rec").removeClass('selected')
+			$("#no_rec").addClass('selected')
 		}
 	}
 });
 
-$(document).on('click', '#input-aerolinea-rev', function() {
-	console.log("removing")
+$(document).on('click', '.airline-input', function() {
 	$(this).removeClass("input-err");
+	$('.airline-input .err-msg').fadeOut()
 });
 
-$(document).on('click', '#input-number-rev', function() {
-	console.log("removing")
+$(document).on('click', '.number-input', function() {
 	$(this).removeClass("input-err");
+	$('.number-input .err-msg').fadeOut()
+});
+
+$(document).on('click', '.comment-area', function() {
+	$(this).removeClass("comment-err");
+	$('.comment-area .err-msg').fadeOut()
 });
 
 app.directive('myEnter', function () {

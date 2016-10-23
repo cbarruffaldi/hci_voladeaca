@@ -1,5 +1,4 @@
-<!-- Modal -->
-<div class="modal fade" id="leaveReviewModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="leaveReviewModal" tabindex="-1" role="dialog">
 	<div class="modal-dialog modal-lg" role="document">
 		<div class="modal-content">
 			<div class="modal-body">
@@ -11,32 +10,36 @@
 					</div>
 					<div class="row">
 						<div class="col-md-2"></div>
-						<div class="col-md-4">
+						<div class="col-md-4 airline-input">
 							<div>
 								<h4>Aerolínea:</h4>
 							</div>
 							<input type="text" data-review-autocomplete="y" class="form-control awesomplete" id="input-aerolinea-rev"/>
-
+							<div class="err-msg">Elija una aerolínea válida</div>
 						</div>
-						<div class="col-md-4">
+						<div class="col-md-4 number-input">
 							<div>
 								<h4>Numero de vuelo:</h4>
 							</div>
 							<input type="text" class="form-control awesomplete" id="input-number-rev"/>
+							<div class="err-msg">Elija un número de vuelo válido</div>
 						</div>
-					<div class="col-md-2"></div>
+						<div class="col-md-2"></div>
 					</div>
 				</div>
 
 				<div data-ng-if="flightSelected">
 					<h4 class="title ng-cloak">Dejá tu reseña para el vuelo {{getSelectedFlightName()}}</h4>
 				</div>
-				<div class="col-md-12 center-col">
-					<div class="bubble form-bubble">
-						<textarea rows="4" cols="50" placeholder="Ingresá tu comentario acá (obligatorio)" autofocus="true" id="rating-comments"></textarea>
+				<div class="row">
+					<div class="col-md-12 center-col comment-area">
+						<div class="bubble form-bubble">
+							<textarea rows="4" cols="50" placeholder="Ingresá tu comentario acá (obligatorio)" autofocus="true" id="rating-comments"></textarea>
+						</div>
+						<div class="err-msg">Debe escribir un comentario</div>
 					</div>
 				</div>
-				<div class="row">
+				<div class="row slider-area">
 					<div class="col-md-6">
 						<div class="slider-box">
 							<div class="category">Confort</div>
@@ -89,14 +92,41 @@
 							</span>
 						</div>
 					</div>
-					<div class="row sendreview">
-						<div class="col-md-12">
-							<button type="button" class="vda-btn" data-dismiss="modal">Cancelar</button>
-							<button type="button" class="vda-btn" id="reviewButton" aria-label="Enviar" 	data-ng-click="send()"><span class="glyphicon glyphicon-send" aria-hidden="true"></span>Enviar reseña</button>
-						</div>
-					</div>
-
 				</div>
+				<div class="row sendreview">
+					<div class="col-md-12">
+						<button type="button" class="vda-btn" data-dismiss="modal">Cancelar</button>
+						<button type="button" class="vda-btn" id="reviewButton" aria-label="Enviar" 	data-ng-click="send()"><span class="glyphicon glyphicon-send" aria-hidden="true"></span>Enviar reseña</button>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+<div class="modal fade" id="sendingModal" tabindex="-1" role="dialog">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-body">
+				<div class="sending-msg">
+				</div>
+				<div class="spinner">
+					<div class="dot1"></div>
+					<div class="dot2"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="modal fade" id="reviewSent" tabindex="-1" role="dialog">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-body">
+				<div class="success-msg">
+					<span class="glyphicon glyphicon-ok"></span>Su reseña fue enviada con éxito.
+					<br/>Gracias por tu opinión.
+				</div>
+				<button type="button" class="vda-btn" data-dismiss="modal">OK</button>
 			</div>
 		</div>
 	</div>
