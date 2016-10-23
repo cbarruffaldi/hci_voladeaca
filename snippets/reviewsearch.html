@@ -12,7 +12,9 @@
 
 						<div class="row ratetitulo">
 							<div class="col-md-6">
-								<span class="avg-rating">Ratings promedio: {{(f.rating.overall).toFixed(2)}}</span>
+								<span class="avg-rating">Calificación general
+								<div data-ng-bind-html="getStars(f.rating.overall)"></div>
+								</span>
 							</div>
 							<div class="col-md-6">
 								<span class="would-reccomend">
