@@ -9,6 +9,7 @@ app.directive('emitLastRepeaterElement', function() {
 });
 
 app.controller("flightCtrl", function($scope, $http, $window) {
+		
 		$scope.twoWays = false;
 		$scope.containers = [] 
 		$scope.scrollLimit = 10;
@@ -64,7 +65,20 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 				$(".order-by-menu").addClass("greyout");
 				$(".order-by-menu button").attr("disabled", true);
 				$("#loadImg").hide();
-				console.log("Param error");
+				return;
+			}
+	
+				var i_ValidDate = moment(date, "YYYY-MM-DD", true).isValid();
+			
+				var v_ValidDate = !vdate || moment(vdate, "YYYY-MM-DD", true).isValid();
+			
+				if(!(i_ValidDate && v_ValidDate)){
+				$scope.emptySearch = true;
+				$scope.paramError = true;
+				$(".filter-area").addClass("greyout");
+				$(".order-by-menu").addClass("greyout");
+				$(".order-by-menu button").attr("disabled", true);
+				$("#loadImg").hide();
 				return;
 			}
 
@@ -95,7 +109,7 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 						$http({
 							method: 'GET',
 							url: vURL,
-							timeout: 10000
+							timeout: 7000
 						}).then(function success(vresponse){
 							process(response, vresponse);
 							$("#resultShow").show();
@@ -111,7 +125,7 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 						)
 					}
 					else {
-						console.log(response);
+//						console.log(response);
 						process(response);
 						$("#resultShow").show();
 						$("#loadImg").hide();
@@ -151,8 +165,6 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 				var flight2 = container.flights[1].flight;
 			}
 
-console.log("Starert");
-
 			var airlinePass = true;
 		//	if(activeAirlineFilter()){
 				airlinePass = $scope.airlineFilter[flight1.airline.id];
@@ -171,7 +183,6 @@ console.log("Starert");
 			if($scope.maxprice){
 				pass = pass && (container.price.total.total <= $scope.maxprice)
 			}
-			console.log(container.price.total.total)
 
 			if($scope.minprice){
 				pass = pass && (container.price.total.total >= $scope.minprice)
@@ -185,9 +196,6 @@ console.log("Starert");
 					pass = pass && $scope.airports.filter[flight2.departure.airport.id]
 					pass = pass && $scope.airports.filter[flight2.arrival.airport.id]
 			}
-
-			window.console.log(pass)
-
 			return pass;
 
 		};
@@ -228,9 +236,6 @@ console.log("Starert");
 
 
 		function process(response, vresponse){
-			console.log(response);
-			console.log(vresponse);
-		
 			if(response.data.error){
 				$scope.emptySearch = true;
 				$scope.paramError = true;
@@ -299,6 +304,7 @@ console.log("Starert");
 
 					if(!minPrice || price < minPrice){
 						minPrice = price;
+						$scope.dealPrice = price;
 					}
 				
 					if(!maxPrice || maxPrice < price){
@@ -426,6 +432,11 @@ console.log("Starert");
 			this.id = s.id;
 
 			this.price = flight.price;
+			this.price.total.charges = parseInt(this.price.total.charges);
+			this.price.total.fare = parseInt(this.price.total.fare);
+			this.price.total.taxes = parseInt(this.price.total.taxes);
+			this.price.total.total = parseInt(this.price.total.total);
+
 			return this; //?
 		}
 
@@ -588,18 +599,20 @@ console.log("Starert");
 		}
 	
 	$scope.$on('LastRepeaterElement', function(){
-    $('[data-toggle="tooltip"]').tooltip(); 
+    $('[data-toggle="tooltip"]').tooltip();
 		$('.ida-vuelta-badge').each(function() {
 			var appendArrow;
-			if ($(this).text().replace(/ /g,'')
- == "IDA") 
-				appendArrow = 'glyphicon-chevron-right'
-			else
-				appendArrow = 'glyphicon-chevron-left'
-			
-			$(this).append("<span class='glyphicon " + appendArrow + "'> </span>");
+			if ($(this).find('.glyphicon').length == 0) {
+				if ($(this).text().replace(/ /g,'')
+						== "IDA") 
+					appendArrow = 'glyphicon-chevron-right'
+				else
+					appendArrow = 'glyphicon-chevron-left'
+
+				$(this).append("<span class='glyphicon " + appendArrow + "'> </span>");
+			}
 		})
-		
+		$scope.filterflag = true;
 	});
 
 	if(!localStorage.airlineLogos){

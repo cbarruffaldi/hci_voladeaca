@@ -12,12 +12,13 @@
 		<link rel="stylesheet" href="css/bootstrap-theme.min.css">
 		<link rel="stylesheet" href="css/main.css">
 		<link rel="stylesheet" href="css/buttons.css">
-		<link rel="stylesheet" href="css/resenas.css">
+		<link rel="stylesheet" href="css/reviews.css">
 		<link rel="stylesheet" href="./CheloLabs/awesomplete.css">
 		<link rel="stylesheet" href="css/angular-animations.css">
 		<link rel="stylesheet" href="css/nouislider-reviews.css">
 		<link rel="stylesheet" href="css/nouislider.pips.css">
 		<link rel="stylesheet" href="css/spinner.css">
+		<link rel="stylesheet" href="css/psg-btn.css">
 
 		<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
 		<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
@@ -27,6 +28,7 @@
 
 	</head>
 	<body data-ng-app="reviewsApp" data-ng-controller="reviewsCtrl">
+	<div id="wrapper">
 		<!--[if lt IE 8]>
 <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to impove your experience.</p>
 <![endif]-->
@@ -67,7 +69,7 @@
 									</div>
 									<div id="vuelobox" class="tab-content col-md-6 col-md-offset-3">
 										<div class="form-group">
-											<input type="text" data-my-enter="yes" data-ng-model="flightNum" class="form-control" id="nroVuelo" maxlength="4"/>
+											<input type="text" data-my-enter="yes" data-ng-model="flightNum" class="form-control" placeholder="# Vuelo" id="nroVuelo" maxlength="4"/>
 											<div id="nroVuelo-err" class="formError"></div>
 
 										</div>
@@ -144,6 +146,8 @@
 				</div> <!-- row -->
 			</div>
 		</footer>
+
+	</div>
 		<script src="js/vendor/jquery-1.11.2.min.js"></script>
 		<script src="js/angular-animate.js"></script>
 

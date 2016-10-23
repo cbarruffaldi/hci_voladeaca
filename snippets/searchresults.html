@@ -1,6 +1,6 @@
 <!-- <div data-ng-repeat="c in containers"> -->
 <div infinite-scroll='loadMore()' infinite-scroll-distance='1' >
-	<div class="row row-eq-height flight-box" data-ng-repeat="c in containers | filter: filterFn | orderBy: orderFn | limitTo: scrollLimit" emit-last-repeater-element="">
+	<div class="row row-eq-height flight-box" data-ng-repeat="c in filtered = (containers | filter: filterFn | orderBy: orderFn | limitTo: scrollLimit)" emit-last-repeater-element="">
 		<div class="col-md-10 flight-info">
 			<div data-ng-repeat="t in c.flights">
 				<div class="row airports-line-info">
@@ -97,6 +97,9 @@
 			</div>
 		</div>
 	</div>
+	<div data-ng-if="filterflag && filtered.length == 0">
+		<div data-ng-include="'./snippets/emptyfiltered.html'">
+		</div>
+	</div>
 </div>
-
 <!-- 	</div> c in containers -->

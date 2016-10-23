@@ -23,14 +23,10 @@ app.controller("promoCtrl", function($scope, $http, $q) {
 	});
 
 	$(document).on('mouseenter', ".promo-text", function(e) {
-//		console.log("ENTER");
-//		console.log($(this).parent().find(".place-img"));
 		$(this).parent().find(".place-img").addClass("hover-img");
 	});
 
 	$(document).on('mouseleave', ".promo-text", function(e) {
-//		console.log("LEAVE");
-//		console.log($(this).parent().find(".place-img"));
 		$(this).parent().find(".place-img").removeClass("hover-img");	});
 
 	var selected = {};
@@ -75,7 +71,6 @@ app.controller("promoCtrl", function($scope, $http, $q) {
 		if (type == "dest")
 			completedSelection = true;
 
-		console.log(query);
 		if (completedSelection) {
 			$("#loadImg").css('visibility', 'visible');
 			$("#loadImg").show();
@@ -137,10 +132,6 @@ app.controller("promoCtrl", function($scope, $http, $q) {
 		var promises = [];
 
 		for (var des of promosInfo[query.dest]) {
-			console.log("idate " + idate);
-			console.log("vdate " + vdate);
-			console.log("des " + des);
-
 			// TODO BUE
 			promises.push(fetchPromo(idate, vdate, "BUE", des));
 		}
@@ -150,7 +141,6 @@ app.controller("promoCtrl", function($scope, $http, $q) {
 			$("#promoResultShow").show();
 			$("#loadImg").hide();
 			$(".botonera button").attr("disabled", false);
-			console.log($scope.promos);
 		});
 	}
 
@@ -196,7 +186,6 @@ app.controller("promoCtrl", function($scope, $http, $q) {
 
 	function setImages() {
 		for (var p in $scope.promos) {
-			console.log($scope.promos[p]);
 			$scope.promos[p].imgsrc = "./img/cityimg/" + $scope.promos[p].shortName.split(' ').join('').toLocaleLowerCase() + ".jpg";
 		}
 	}
@@ -206,8 +195,6 @@ app.controller("promoCtrl", function($scope, $http, $q) {
 		if (containers.length == 0)
 			return f;
 
-		console.log("CONTAINERS");
-		console.log(containers);
 		for (var co of containers) {
 			var city = destCityName(co);
 			if (f[city]) {
@@ -228,7 +215,6 @@ app.controller("promoCtrl", function($scope, $http, $q) {
 	}
 
 	function process(response, vresponse){
-		console.log(response);
 		var iFlights = stripFlights(response.data.flights);
 		if(vresponse){
 			var vFlights = stripFlights(vresponse.data.flights);

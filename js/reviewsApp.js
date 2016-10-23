@@ -27,6 +27,21 @@ app.controller("reviewsCtrl", function($scope, $http, $sce, $window) {
 
 	$scope.yesRecommend = true;
 
+	$scope.starChange = function(){
+		var cant = 6;
+
+		var acum = getSliderValue('friendliness-slider');
+		acum += getSliderValue('food-slider');
+		acum += getSliderValue('comfort-slider');
+		acum += getSliderValue('quality-slider');
+		acum += getSliderValue('punctuality-slider');
+		acum += getSliderValue('mileage-slider');
+		acum = acum/6;
+
+		$scope.calculatedStars = $sce.trustAsHtml("" + acum.toFixed(2) + "  " + $scope.getStars(acum));
+
+	}
+
 	$scope.getStars = function(score){
 		ret = "";
 		for(var i = 1 ; i <= 5; i++){
@@ -124,7 +139,7 @@ app.controller("reviewsCtrl", function($scope, $http, $sce, $window) {
 		$http({
 			method: 'GET',  				  
 			url: URL,
-			timeout: 3000
+			timeout: 2500
 		}).then(function successCallback(response){
 			var added = {};
 			$scope.emptySearch = true;
@@ -423,7 +438,6 @@ function initSlider(id){
 
 app.directive('vdaSlider', function () {
 	return function (scope, element, attrs) {
-		console.log(attrs.id);
 		initSlider(attrs.id);
 	};
 });

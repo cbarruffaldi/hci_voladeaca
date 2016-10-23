@@ -1,7 +1,6 @@
 var selectedTimeFilter = [];
 
 function selectBorder(elem) {
-	console.log(elem);
 	var timebtn = $(elem)
 	var i = timebtn.data("dep-time");
 

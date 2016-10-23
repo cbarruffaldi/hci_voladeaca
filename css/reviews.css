@@ -1,3 +1,13 @@
+#wrapper{
+	min-height: 100%;
+	position:relative;
+}
+
+footer{
+	top:0;
+	bottom:0;
+}
+
 .contents {
 	background: url('../img/bg/skywh.jpeg') no-repeat;
 	background-attachment: fixed;
@@ -30,6 +40,20 @@
 	padding: 0.1em 0 0.1em 0.5em;
 	border-top-right-radius: 5px;
 	border-top-left-radius: 5px;
+}
+
+
+.yRec {
+	color: #037d00;
+}
+
+.nRec {
+	color: crimson;
+}
+
+
+.w-recommend{
+	margin-bottom:10px;
 }
 
 .search-col button {
@@ -230,6 +254,10 @@ ul.tabs li.current{
 	font-weight: 400;
 }
 
+.would-reccomend{
+	padding-top: 15px;
+}
+
 .ratings li{
 	font-size: 1.1em;
 	font-weight: 500;
@@ -339,8 +367,8 @@ textarea:focus {
 	content:'\2605';
 	color: gold;
 	position: absolute;
-	margin-left: -20px;
-	width: 10px;
+	margin-left: -22px;
+	width: 11px;
 	overflow: hidden;
 }
 
@@ -366,6 +394,21 @@ textarea:focus {
 
 }
 
+#nroVuelo{
+	text-align: center;
+	font-size: 1.8em;
+	height: 2em;
+}
+
+#calculatedScore{
+text-align: center;
+margin-top: -20px;
+}
+
+
+.starsies{
+	font-size: 2em;
+}
 .category{
 	text-align: center;
 	font-weight: 500;
@@ -385,7 +428,6 @@ textarea:focus {
 }
 
 .formError{
-	margin-top: -10px;
 	padding-left: 5px;
 	font-size:0.9em;
 	color: #a0003a;
@@ -595,4 +637,20 @@ textarea:focus {
 
 #reviewRes {
 	min-height: 600px;
+}
+
+
+
+#nav-reviews a:hover{
+	color: #dc0055;
+	background-color: #fff;
+	cursor: default;
+
+}
+
+#nav-reviews a{
+	background-color: #fff;
+	cursor: default;
+	color: #dc0055;
+	font-weight: bold;
 }

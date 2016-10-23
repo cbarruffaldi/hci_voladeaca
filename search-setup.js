@@ -16,10 +16,10 @@ $(document).ready(function(){
 		if(orig && dest && idate && adults && children && infants){
 		idate = idate.split('-').reverse().join('/');
 
-		console.log($acUtils.name_map);
 		$("#origen").val($acUtils.name_map[orig]);
 		$("#destino").val($acUtils.name_map[dest]);
 		$("#datepicker1").val(idate);
+		$("#datepicker1").trigger('change');
 
 		if (vdate) {
 			vdate = vdate.split('-').reverse().join('/');
