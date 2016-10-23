@@ -20,6 +20,7 @@ $(document).ready(function(){
 		$("#origen").val($acUtils.name_map[orig]);
 		$("#destino").val($acUtils.name_map[dest]);
 		$("#datepicker1").val(idate);
+		$("#datepicker1").trigger('change');
 
 		if (vdate) {
 			vdate = vdate.split('-').reverse().join('/');

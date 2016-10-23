@@ -592,16 +592,18 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 		}
 	
 	$scope.$on('LastRepeaterElement', function(){
-    $('[data-toggle="tooltip"]').tooltip(); 
+    $('[data-toggle="tooltip"]').tooltip();
 		$('.ida-vuelta-badge').each(function() {
 			var appendArrow;
-			if ($(this).text().replace(/ /g,'')
- == "IDA") 
-				appendArrow = 'glyphicon-chevron-right'
-			else
-				appendArrow = 'glyphicon-chevron-left'
-			
-			$(this).append("<span class='glyphicon " + appendArrow + "'> </span>");
+			if ($(this).find('.glyphicon').length == 0) {
+				if ($(this).text().replace(/ /g,'')
+						== "IDA") 
+					appendArrow = 'glyphicon-chevron-right'
+				else
+					appendArrow = 'glyphicon-chevron-left'
+
+				$(this).append("<span class='glyphicon " + appendArrow + "'> </span>");
+			}
 		})
 		
 	});
