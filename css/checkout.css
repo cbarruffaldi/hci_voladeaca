@@ -403,3 +403,7 @@ div.error-msg{
 	margin-top: -30px;
 	margin-bottom: 30px;
 }
+
+.move-btn-row {
+	margin-bottom: 20px;
+}
