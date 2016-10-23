@@ -315,7 +315,7 @@
 	
 												<!-- Mensaje error validación tarjeta de crédito -->
 												<div class="col-md-12">
-													<p id="error-card">No hemos podido verificar su tarjeta de crédito. Por favor revise sus datos</p>
+													<p id="error-card">No hemos podido verificar su tarjeta de crédito. Por favor, revise sus datos</p>
 												</div>
 
 												<div class="col-md-12">
@@ -440,10 +440,14 @@
 
 										<!-- Segunda Fila -->
 										<div class="row">
+											<div class="col-md-12 form-field">
+												<label class="upper-label">Teléfonos (máximo 5):</label>
+											</div>
+										</div>
+
+										<!-- Tercera Fila -->
+										<div class="row">
 											<div class="phone-data">
-												<div class="col-md-1 form-field phone-row">
-													<label class="tocenter-label">Teléfono:</label>
-												</div>
 												<div class="col-md-2 form-field">
 													<label for="phone-type-0">Tipo:</label>
 													<select class="form-control" id="phone-type-0">
@@ -451,7 +455,7 @@
 														<option>Celular</option>
 													</select>
 												</div>
-												<div class="col-md-4 form-field phone-input">
+												<div class="col-md-5 form-field phone-input">
 													<label for="phone-0">Número:</label>
 													<input autocomplete="off" type="text" class="form-control" id="phone-0" maxlength="25">
 													<p class="error-msg"></p>
