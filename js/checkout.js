@@ -43,7 +43,7 @@ function getCurrentStage() {
     return indexTab;
 }
 
-var $bought = JSON.parse(localStorage.boughtFlight);
+var $bought = JSON.parse(sessionStorage.boughtFlight);
 var $passengers = $bought.passengers;
 
 var twoWay = $bought.twoWays ? 1 : 0;
@@ -680,3 +680,12 @@ function decodeHtml(html) {
     txt.innerHTML = html;
     return txt.value;
 }
+
+
+$(document).ready(function(){
+	$(".nav-tabs > li").click(function(){
+		if($(this).hasClass("disabled"))
+			return false;
+	});
+});
+

@@ -202,7 +202,7 @@ function validateDay(d, mandatoryString) {
 function validateMonth(m, mandatoryString) {
 	if (m.length == 0)
 		return invalidValidation(mandatoryFieldString(mandatoryString));
-	if (!isNumber(d))
+	if (!isNumber(m))
 		return invalidValidation(invalidNum('El mes'));
 	if (m < 1 || m > 12)
 		return invalidValidation('El mes sólo puede estar entre 1 y 12');
