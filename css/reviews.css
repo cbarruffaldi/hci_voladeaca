@@ -42,6 +42,20 @@ footer{
 	border-top-left-radius: 5px;
 }
 
+
+.yRec {
+	color: #037d00;
+}
+
+.nRec {
+	color: crimson;
+}
+
+
+.w-recommend{
+	margin-bottom:10px;
+}
+
 .search-col button {
 	width: 80%;
 }
@@ -380,6 +394,21 @@ textarea:focus {
 
 }
 
+#nroVuelo{
+	text-align: center;
+	font-size: 1.8em;
+	height: 2em;
+}
+
+#calculatedScore{
+text-align: center;
+margin-top: -20px;
+}
+
+
+.starsies{
+	font-size: 2em;
+}
 .category{
 	text-align: center;
 	font-weight: 500;
@@ -399,7 +428,6 @@ textarea:focus {
 }
 
 .formError{
-	margin-top: -10px;
 	padding-left: 5px;
 	font-size:0.9em;
 	color: #a0003a;
@@ -609,4 +637,20 @@ textarea:focus {
 
 #reviewRes {
 	min-height: 600px;
+}
+
+
+
+#nav-reviews a:hover{
+	color: #dc0055;
+	background-color: #fff;
+	cursor: default;
+
+}
+
+#nav-reviews a{
+	background-color: #fff;
+	cursor: default;
+	color: #dc0055;
+	font-weight: bold;
 }

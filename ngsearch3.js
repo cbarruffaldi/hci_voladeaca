@@ -418,6 +418,11 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 			this.id = s.id;
 
 			this.price = flight.price;
+			this.price.total.charges = parseInt(this.price.total.charges);
+			this.price.total.fare = parseInt(this.price.total.fare);
+			this.price.total.taxes = parseInt(this.price.total.taxes);
+			this.price.total.total = parseInt(this.price.total.total);
+
 			return this; //?
 		}
 
