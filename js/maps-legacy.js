@@ -17,6 +17,10 @@
 	
 	function updateMap(id, date){
 		clearMarkers();
+		$("#maploading").show();
+		$("#search").attr("disabled", true);
+		$("#search").addClass("disabled");
+
 		
 		$.ajax({
 						 url: "http://hci.it.itba.edu.ar/v1/api/booking.groovy?method=getflightdeals&from=" + id + "&callback=?",
@@ -24,6 +28,9 @@
 						 timeout: 5000,
 						 success: function(response){
 						 	fillMap(response, id, date);
+						 },
+						 error: function(){
+						 	alert("timeouuut");
 						 }
 						});
 	}
@@ -31,10 +38,6 @@
 
 		
 		function fillMap(response, from, date){
-			$("#maploading").show();
-			$("#search").attr("disabled", true);
-			$("#search").addClass("disabled");
-
 			//$("#map").hide();
 
 			var deals = response.deals;
@@ -84,14 +87,14 @@
 						if(tries < 1){
 							//No deberia llegar aca
 							console.log("tryout");
-							deferred.resolve();
+							deferred.reject();
 							return;
 						}
 						
 							$.ajax({
 		    				    url: URL +"&callback=?",
 		        				dataType: "jsonp",
-		        				timeout: 10000,
+		        				timeout: 5000,
 		     				   success: function(response){
 								if(response.total > 0){
 									var price = response.filters[2].min;
@@ -105,7 +108,9 @@
 								petition(ndate, tries-1, details);				
 								},
 								error: function(){
-									deferred.fail();
+									console.log(deferred)
+									deferred.reject();
+									console.log("error");
 									return;
 								}
 
