@@ -144,12 +144,14 @@ function buyFlight(bookingIda, bookingVuelta) {
 		$.ajax({ 
 	        url: "http://hci.it.itba.edu.ar/v1/api/booking.groovy?method=bookflight2&booking=" + bookingIda + "&callback=?",
 	        dataType: "jsonp",
-	        timeout: 7000,
+	        timeout: 5000,
 	        success: function(data) {
 	        	/* mostrar que la compra se realizó con éxito */
 	    		if(!bookingVuelta) {
 					finishPurchase(data["booking"]);
 			    }
+
+			    localStorage.bookingIda = undefined;
 	    	},
 	    	error: function() {
 	    		localStorage.bookingIda = bookingIda;
@@ -162,10 +164,12 @@ function buyFlight(bookingIda, bookingVuelta) {
 		$.ajax({ 
 	        url: "http://hci.it.itba.edu.ar/v1/api/booking.groovy?method=bookflight2&booking=" + bookingVuelta + "&callback=?",
 	        dataType: "jsonp",
-        	timeout: 7000,
+        	timeout: 5000,
 			success: function(data) {
 				/* Mostrar que la compra se realizó con éxito */
 				finishPurchase(data["booking"]);
+
+				localStorage.bookingVuelta = undefined;
     		},
     		error: function(data) {
   	    		localStorage.bookingVuelta = bookingVuelta;

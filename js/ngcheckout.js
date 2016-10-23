@@ -20,32 +20,32 @@ app.controller('CheckoutController', function($scope) {
 	}
 
 	var $bought;
-    if(!sessionStorage.boughtFlight){
-      $scope.validCheckout = false;
-      console.log("No se que haces en esta pagina plebeyo, volve a la busqueda");
+    if(!sessionStorage.boughtFlight) {
+	    $scope.validCheckout = false;
+	    console.log("No se que haces en esta pagina plebeyo, volve a la busqueda");
     }
-    else{
+    else {
     	$scope.validCheckout = true;
         $bought = JSON.parse(sessionStorage.boughtFlight);
     	console.log($bought);
 
-	$scope.passengerList = buildList($bought.passengers);
+		$scope.passengerList = buildList($bought.passengers);
 
-    $scope.passPlural = $scope.passengerList.length > 1 ? 's' : '';
-	$scope.dePlural = $scope.passengerList.length > 1 ? ' los' : 'l';
+	    $scope.passPlural = $scope.passengerList.length > 1 ? 's' : '';
+		$scope.dePlural = $scope.passengerList.length > 1 ? ' los' : 'l';
 
-	$scope.$bought = $bought;
+		$scope.$bought = $bought;
 
-	console.log($bought.container.flights[0].flight.id);
+		console.log($bought.container.flights[0].flight.id);
 
-	/*Cuadro resumen de vuelo */
-	if($bought.twoWays == true) {
-		$scope.returnFlightDetails = getFlightDetails($bought.container.flights[1].flight);
-	}
+		/*Cuadro resumen de vuelo */
+		if($bought.twoWays == true) {
+			$scope.returnFlightDetails = getFlightDetails($bought.container.flights[1].flight);
+		}
 
-	$scope.flightPrice = $bought.container.price.total;
-	$scope.flightPricesPerPerson = $bought.container.price;
-	$scope.idaFlightDetails = getFlightDetails($bought.container.flights[0].flight);
+		$scope.flightPrice = $bought.container.price.total;
+		$scope.flightPricesPerPerson = $bought.container.price;
+		$scope.idaFlightDetails = getFlightDetails($bought.container.flights[0].flight);
 	}
 
 	/* Es re feo esto, pero es mas facil para buscar las cosas que estan super anidadas */

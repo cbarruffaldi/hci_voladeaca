@@ -244,7 +244,7 @@ var fieldCounter = 1; //Initial field counter is 1
 $(document).ready(function(){
     var maxField = 5; //Input fields increment limitation
     var addButton = $('.add-Phone'); //Add button selector
-    var wrapper = $('#contact-form').find('.phone-data'); //Input field wrapper
+    var wrapper = $('#contact-form').find('.form-group'); //Input field wrapper
     var count = 1;
 
     function getPhoneId(buttonClicked) {

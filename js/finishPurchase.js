@@ -2,6 +2,12 @@ $(document).ready(function(){
 
 	$(".failedPurchase").hide();
 	$(".successfulPurchase").hide();
+
+	$("#buying-modal").find(".buying-text").text('Comprando vuelo' + (localStorage.bookingVuelta ? 's' : '') + '...');
+
+	$("#reset").click(function() {
+		buyFlight(localStorage.bookingIda, localStorage.bookingVuelta);
+	});
 });
 
 
