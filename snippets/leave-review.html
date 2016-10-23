@@ -43,40 +43,40 @@
 					<div class="col-md-6">
 						<div class="slider-box">
 							<div class="category">Confort</div>
-							<div class="slider" data-vda-slider="true" id="comfort-slider"></div>
+							<div class="slider" data-vda-slider="true" id="comfort-slider" data-ng-mousemove="starChange()"></div>
 						</div>
 					</div>
 					<div class="col-md-6">
 
 						<div class="slider-box">
 							<div class="category">Comida</div>
-							<div class="slider" data-vda-slider="true" id="food-slider" data-my-slider="true"></div>
+							<div class="slider" data-vda-slider="true" id="food-slider" data-my-slider="true" data-ng-mousemove="starChange()"></div>
 						</div>
 					</div>
 					<div class="col-md-6">
 
 						<div class="slider-box">
 							<div class="category">Amabilidad</div>
-							<div class="slider" data-vda-slider="true" id="friendliness-slider"></div>
+							<div class="slider" data-vda-slider="true" id="friendliness-slider" data-ng-mousemove="starChange()"></div>
 						</div>
 					</div>
 
 					<div class="col-md-6">
 						<div class="slider-box">
 							<div class="category">Relacion precio/calidad:</div>
-							<div class="slider" data-vda-slider="true" id="quality-slider"></div>
+							<div class="slider" data-ng-mousemove="starChange()" data-vda-slider="true" id="quality-slider"></div>
 						</div>
 					</div>
 					<div class="col-md-6">
 						<div class="slider-box">
 							<div class="category">Beneficios de viajero frecuentes</div> 
-							<div class="slider" data-vda-slider="true" id="mileage-slider"></div>
+							<div class="slider" data-ng-mousemove="starChange()" data-vda-slider="true" id="mileage-slider"></div>
 						</div>
 					</div>
 					<div class="col-md-6">
 						<div class="slider-box">
 							<div class="category">Puntualidad</div>
-							<div class="slider" data-vda-slider="true" id="punctuality-slider"></div>
+							<div class="slider" data-vda-slider="true" id="punctuality-slider" data-ng-mousemove="starChange()"></div>
 						</div>
 					</div>
 					<div class="row rec-row">
@@ -94,7 +94,11 @@
 					</div>
 				</div>
 				<div class="row sendreview">
-					<div class="col-md-12">
+				<div class="col-md-4"> <div id="calculatedScore"><h3>Tu calificación:</h3>
+					<div data-ng-bind-html="calculatedStars" class="starsies" data-ng-init="starChange()"></div>
+					</div>
+				</div>
+					<div class="col-md-8">
 						<button type="button" class="vda-btn" data-dismiss="modal">Cancelar</button>
 						<button type="button" class="vda-btn" id="reviewButton" aria-label="Enviar" 	data-ng-click="send()"><span class="glyphicon glyphicon-send" aria-hidden="true"></span>Enviar reseña</button>
 					</div>

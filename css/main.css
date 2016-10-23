@@ -33,7 +33,7 @@ body{
 }
 
 #nav-list a:hover{
-	color: #204DCC;
+	color: #dc0055;
 	background-color: #e2e2e2;
 	transition: all 0.3s;
 }
