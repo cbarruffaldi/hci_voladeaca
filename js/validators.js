@@ -98,7 +98,7 @@ function validateEmail(email) {
 	if (n == 0)
 		return invalidValidation(mandatoryFieldString("el correo electrónico"));
 	if (!regex.test(email))
-		return invalidValidation('El correo electrónico ingresado no es válido. Verifique que tenga el siguiente formato: "ejemplo@correo.com"');
+		return invalidValidation('el correo electrónico ingresado no es válido. Verifique que tenga el siguiente formato: "ejemplo@correo.com"');
 	if (n > MAX_EMAIL)
 		return invalidValidation(ERROR_MSG_LONG);
 
@@ -117,7 +117,7 @@ function validateStreet(street) {
 }
 
 function invalidAlphaNum(name) {
-	return name + ' sólo puede contener dígitos y letras';
+	return 'Verifique que ' + name + ' sólo contenga dígitos y letras';
 }
 
 function validateAddrNum(addrNum) {
@@ -126,7 +126,7 @@ function validateAddrNum(addrNum) {
 	if (n == 0)
 		return invalidValidation(mandatoryFieldString("el número de la calle"));
 	if (!isAlphaNum(addrNum))
-		return invalidValidation(invalidAlphaNum('El número de la calle'));
+		return invalidValidation(invalidAlphaNum('el número de la calle'));
 	if (n > MAX_ADDR_NUM)
 		return invalidValidation(ERROR_MSG_LONG);
 
@@ -137,7 +137,7 @@ function validateFloor(floor) {
 	var n = floor.length;
 
 	if (n > 0 && !isAlphaNum(floor))
-		return invalidValidation(invalidAlphaNum('El piso'));
+		return invalidValidation(invalidAlphaNum('el piso'));
 	if (n > MAX_FLOOR)
 		return invalidValidation(ERROR_MSG_LONG);
 
@@ -148,7 +148,7 @@ function validateDepartment(dep) {
 	var n = dep.length;
 
 	if (n > 0 && !isAlphaNum(dep))
-		return invalidValidation(invalidAlphaNum('El departamento'));
+		return invalidValidation(invalidAlphaNum('el departamento'));
 	if (n > MAX_DEPT)
 		return invalidValidation(ERROR_MSG_LONG);
 
@@ -156,7 +156,7 @@ function validateDepartment(dep) {
 }
 
 function invalidNum(name) {
-	return name + ' sólo puede contener dígitos';
+	return 'Verifique que ' + name + ' sólo contenga dígitos';
 }
 
 function validateDocNum(num) {
@@ -165,7 +165,7 @@ function validateDocNum(num) {
     if (n == 0)
         return invalidValidation(mandatoryFieldString("el número de documento"));
     if (!isNumber(num))
-        return invalidValidation(invalidNum('El número de documento'));
+        return invalidValidation(invalidNum('el número de documento'));
     if (n > MAX_DOC_NUM)
         return invalidValidation(ERROR_MSG_LONG);
 
@@ -174,6 +174,8 @@ function validateDocNum(num) {
 
 function validateName(string, mandatoryString, title) {
     var n = string.length;
+    var pattern = /[^\w\s]/;
+    var otherPattern = /[\d_]/;
 
     if (n > MAX_NAME)
         return invalidValidation(ERROR_MSG_LONG);
@@ -181,8 +183,8 @@ function validateName(string, mandatoryString, title) {
     if (n == 0)  /* Ingresó únicamente espacios o nada */
         return invalidValidation(mandatoryFieldString(mandatoryString));
 
-    if (!isAlphaSpecial(string))
-        return invalidValidation("El " + title + " no puede contener dígitos");
+    if (pattern.test(string) || otherPattern.test(string))
+        return invalidValidation("Verifique que el " + title + " sólo contenga letras y espacios");
 
     return validValidation(string);
 }
@@ -191,9 +193,9 @@ function validateDay(d, mandatoryString) {
 	if (d.length == 0)
 		return invalidValidation(mandatoryFieldString(mandatoryString));
 	if (!isNumber(d))
-		return invalidValidation(invalidNum('El día'));
+		return invalidValidation(invalidNum('el día'));
 	if (d < 1 || d > 31)
-		return invalidValidation('El día sólo puede estar entre 1 a 31');
+		return invalidValidation('el día sólo puede estar entre 1 a 31');
 	if (d.length == 1)
 		d = '0' + d;
 	return validValidation(d);
@@ -203,7 +205,7 @@ function validateMonth(m, mandatoryString) {
 	if (m.length == 0)
 		return invalidValidation(mandatoryFieldString(mandatoryString));
 	if (!isNumber(m))
-		return invalidValidation(invalidNum('El mes'));
+		return invalidValidation(invalidNum('el mes'));
 	if (m < 1 || m > 12)
 		return invalidValidation('El mes sólo puede estar entre 1 y 12');
 	if (m.length == 1)
@@ -215,7 +217,7 @@ function validateYear(y, mandatoryString) {
 	if (y.length == 0)
 		return invalidValidation(mandatoryFieldString(mandatoryString));
 	if (!isNumber(y))
-		return invalidValidation(invalidNum('El año'));
+		return invalidValidation(invalidNum('el año'));
 	return validValidation(y);
 }
 
@@ -257,7 +259,7 @@ function validateZipCode(zipCode) {
 	if (n == 0)
 		return invalidValidation(mandatoryFieldString("el código postal"));
 	if (!isAlphaNum(zipCode))
-		return invalidValidation(invalidAlphaNum('El código postal'));
+		return invalidValidation(invalidAlphaNum('el código postal'));
 	if (n > MAX_ZIP_CODE)
 		return invalidValidation(ERROR_MSG_LONG);
 

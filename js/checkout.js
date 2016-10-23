@@ -140,7 +140,7 @@ $(document).on('blur', 'input', function() {
     
     if (value.length > 0) {
         var words = value.split(/[\s]+/);
-        words = words.map(function (word) {return word.toUpperFirstLetter();});
+        words = words.map(function (word) {return word.length > 2 ? word.toUpperFirstLetter() : word;});
         value = words.join(' ');
     }
     
