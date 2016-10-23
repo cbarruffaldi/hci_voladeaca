@@ -118,6 +118,19 @@ input::-webkit-inner-spin-button {
 	height:10px;
 	background: #204Dcc ;
 }
+.review-head:before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	border-width: 0 0 35px 35px;
+	border-style: solid;
+	border-color: #204Dcc #fff;
+	-webkit-box-shadow: 3px 1px 1px 0px  rgba(0,0,0,0.3);
+	-moz-box-shadow: 3px 1px 1px 0px rgba(0,0,0,0.3);
+	box-shadow: 3px 1px 1px 0px rgba(0,0,0,0.3) /* -1px 1px 1px rgba(0,0,0,0.2);
+		*/
+}
 
 .review-btn-row {
 	padding-top: 20px;
@@ -190,7 +203,6 @@ ul.tabs li.current{
 
 .center-col {
 	text-align: center;
-	margin-top: 10px;
 }
 
 .awesomplete > ul {
@@ -383,6 +395,7 @@ textarea:focus {
 }
 
 .formError{
+	margin-top: -10px;
 	padding-left: 5px;
 	font-size:0.9em;
 	color: #a0003a;
@@ -524,17 +537,6 @@ textarea:focus {
 	border: 1px solid chartreuse;
 }
 
-.yRec {
-	color: #037d00;
-}
-
-.nRec {
-	color: crimson;
-}
-
-.w-recommend{
-	margin-bottom:10px;
-}
 .input-err input {
 	transition: all 0.3s;
 	border-color: crimson;
@@ -595,45 +597,12 @@ textarea:focus {
 	font-size: 2em;
 }
 
-
-#nroVuelo{
-	text-align: center;
-	font-size: 1.8em;
-	height: 2em;
-}
 #reviewSent .vda-btn {
 	padding: 2% 4%;
 	margin-top: 2%;
 	color: #4F8A10;
 }
 
-
-
-
-#nav-reviews a{
-	background-color: #fff;
-	cursor: default;
-	color: #dc0055;
-	font-weight: bold;
-}
-
-#nav-reviews a:hover{
-	color: #dc0055;
-	background-color: #fff;
-	cursor: default;
-
-}
-
-.emptyresults{
-    text-align: center;
-    padding: 30px;
-    color: #333;
-    border-radius: 13px;
-    margin-bottom: 25px;
-    background: rgba(255,255,255,0.35)
-}
-
-
-.err-img{
-	height:200px;
+#reviewRes {
+	min-height: 600px;
 }
