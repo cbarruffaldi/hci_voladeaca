@@ -62,7 +62,20 @@ app.controller("reviewsCtrl", function($scope, $http, $sce, $window) {
 		$scope.flightSelected = false;
 	}
 
+
+	function clearErrors() {
+		$("#nroVuelo").removeClass("inputerr");
+		$("#input-aerolinea").removeClass("inputerr");
+		$("#nroVuelo-err").hide();
+		$("#aerolinea-err").show();
+	}
+
+
 	$scope.search = function(){
+
+
+		$scope.noConnection = false;
+
 		while(!$scope.airlineData); //Jaja
 		$scope.reviewResults = [];
 		$scope.flightResults = [];
@@ -77,12 +90,32 @@ app.controller("reviewsCtrl", function($scope, $http, $sce, $window) {
 			var name = $scope.airlineData.id_map[$("#input-aerolinea").val()];
 			if(!name){
 				$("#input-aerolinea").addClass("inputerr");
-				$("#aerolinea-err").text("Ingrese una fecha valida");
+				$("#aerolinea-err").text("Ingrese una aerolínea válida");
+				$("#aerolinea-err").show();
 				return;
 			}
 			URL += "&airline_id=" + name;
+		}else if($("#nroVuelo").val()){
+				var rgx = new RegExp("[0-9]+");
+				if(!rgx.test($("#nroVuelo").val())) {
+					$("#nroVuelo").addClass("inputerr");
+					$("#nroVuelo-err").text("Ingrese un número");
+					$("#nroVuelo-err").show();
+					return;
+				}
+		} else {
+				$("#nroVuelo").addClass("inputerr");
+				$("#nroVuelo-err").text("Debe ingresar un número de vuelo");
+				$("#nroVuelo-err").show();
+				
+				$("#input-aerolinea").addClass("inputerr");
+				$("#aerolinea-err").text("Debe ingresar un aerolínea");
+				$("#aerolinea-err").show();
+
+				return;
 		}
-		console.log(URL);
+
+
 
 		$http({
 			method: 'GET',  				  
@@ -90,6 +123,7 @@ app.controller("reviewsCtrl", function($scope, $http, $sce, $window) {
 			timeout: 3000
 		}).then(function successCallback(response){
 			var added = {};
+			$scope.emptySearch = true;
 			for(var i in response.data.reviews){
 				var r = response.data.reviews[i];
 				var rid = r.flight.airline.id + r.flight.number;
@@ -102,6 +136,8 @@ app.controller("reviewsCtrl", function($scope, $http, $sce, $window) {
 				$scope.reviewResults.push(r);
 
 			}
+			$scope.emptySearch = $scope.reviewResults.length < 1;
+
 			$scope.flightResults = Object.keys(added).map(function (key) { return added[key]; });
 			scrollTo("reviewRes");
 		}, function errorCallback(){
@@ -156,24 +192,31 @@ app.controller("reviewsCtrl", function($scope, $http, $sce, $window) {
 		$scope.scrollLimit[which] += 5;
 	}
 
-	$('#vuelotab').click(function(){
+
+	$scope.toggleToFNum = function(){
+		clearErrors();
+		$scope.numSearch = true;
 		$('ul.tabs li').removeClass('current');
-		$(this).addClass('current');
+		$('#vuelotab').addClass('current');
 		$("#vuelobox").addClass('current');
 		$("#aerobox").removeClass('current');
 		$("#aerotitle").html("Aerolínea (<em>opcional<em>):");
-	})
+		$("#input-aerolinea").val("");
 
-	$('#aerotab').click(function(){
+	};
+
+	$scope.toggleToAero = function(){
+		clearErrors();
+		$scope.numSearch = false;
 		$("#aerotitle").html("Aerolínea:");
 		$('ul.tabs li').removeClass('current');
-		$(this).addClass('current');
+		$('#aerotab').addClass('current');
 		$("#vuelobox").removeClass('current');
 		$("#aerobox").addClass('current');
 
 		$("#nroVuelo").val("");
 		$("#nroVuelo").trigger("change");
-	})
+	};
 
 
 	function fillAirlines(){

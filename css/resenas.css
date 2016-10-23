@@ -180,6 +180,7 @@ ul.tabs li.current{
 
 .center-col {
 	text-align: center;
+	margin-top: 10px;
 }
 
 .awesomplete > ul {
@@ -374,7 +375,6 @@ textarea:focus {
 }
 
 .formError{
-	margin-top: -10px;
 	padding-left: 5px;
 	font-size:0.9em;
 	color: #a0003a;
@@ -536,4 +536,11 @@ textarea:focus {
 
 .emptyresults img {
 	height: 200px;
+}
+
+
+#nroVuelo{
+	text-align: center;
+	font-size: 1.8em;
+	height: 2em;
 }
