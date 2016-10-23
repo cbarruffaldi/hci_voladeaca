@@ -9,14 +9,12 @@ passengers.total = function() {
 }
 
 function updateNumbers() {
-//	console.log("UPDATING");
 	$(".adult-number").text(passengers.adults);
 	$(".child-number").text(passengers.children);
 	$(".infant-number").text(passengers.infants);
 	var t = passengers.total();
 	var str = t + " Pasajero" + ((t == 1) ? "" : "s");
 	
-	console.log("updating text");
 	$(".psg-dropdown .btn-content").text(str);
 
 	var btns = $(".passenger-row button");

@@ -293,7 +293,7 @@ label {
 	font-weight: 500;
 }
 
-.oneWay .details-btn,.twoWay .price-details {
+.oneWay .details-btn,.oneWay .price-details {
 	color: #FFFFFF;
 	font-weight: 500;
 }

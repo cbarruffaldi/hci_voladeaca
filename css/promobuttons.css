@@ -1,3 +1,6 @@
+.spinner {
+	visibility: hidden;
+}
 
 .explora-area .titulo {
 	color: #204DCC;
