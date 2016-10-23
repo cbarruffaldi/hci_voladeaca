@@ -520,3 +520,20 @@ textarea:focus {
 .green {
 	border: 1px solid chartreuse;
 }
+
+
+.emptyresults{
+	text-align: center;
+	color: #5b5b5b;
+	margin: 50px;
+	background: rgba(255,255,255,0.5);
+	padding: 50px 0 50px 0;
+}
+.emptyresults h2 {
+	font-weight: 300;
+}
+
+
+.emptyresults img {
+	height: 200px;
+}

@@ -87,8 +87,8 @@ app.controller("reviewsCtrl", function($scope, $http, $sce, $window) {
 		$http({
 			method: 'GET',  				  
 			url: URL,
+			timeout: 3000
 		}).then(function successCallback(response){
-			console.log(response);
 			var added = {};
 			for(var i in response.data.reviews){
 				var r = response.data.reviews[i];
@@ -104,7 +104,10 @@ app.controller("reviewsCtrl", function($scope, $http, $sce, $window) {
 			}
 			$scope.flightResults = Object.keys(added).map(function (key) { return added[key]; });
 			scrollTo("reviewRes");
-		});
+		}, function errorCallback(){
+				$scope.noConnection = true;
+				scrollTo("reviewRes");
+		})
 	}
 
 	function scrollTo(id){
