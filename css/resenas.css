@@ -108,19 +108,6 @@ input::-webkit-inner-spin-button {
 	height:10px;
 	background: #204Dcc ;
 }
-.review-head:before {
-	content: "";
-	position: absolute;
-	top: 0;
-	left: 0;
-	border-width: 0 0 35px 35px;
-	border-style: solid;
-	border-color: #204Dcc #fff;
-	-webkit-box-shadow: 3px 1px 1px 0px  rgba(0,0,0,0.3);
-	-moz-box-shadow: 3px 1px 1px 0px rgba(0,0,0,0.3);
-	box-shadow: 3px 1px 1px 0px rgba(0,0,0,0.3) /* -1px 1px 1px rgba(0,0,0,0.2);
-		*/
-}
 
 .review-btn-row {
 	padding-top: 20px;
@@ -527,6 +514,17 @@ textarea:focus {
 	border: 1px solid chartreuse;
 }
 
+.yRec {
+	color: #037d00;
+}
+
+.nRec {
+	color: crimson;
+}
+
+.w-recommend{
+	margin-bottom:10px;
+}
 .input-err input {
 	transition: all 0.3s;
 	border-color: crimson;
