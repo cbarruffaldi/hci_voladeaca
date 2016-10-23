@@ -592,3 +592,7 @@ textarea:focus {
 	margin-top: 2%;
 	color: #4F8A10;
 }
+
+#reviewRes {
+	min-height: 600px;
+}
