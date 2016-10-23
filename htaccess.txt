@@ -1,0 +1,2 @@
+RewriteEngine on
+RewriteRule ^service4/(.*)$ http://eiffel.itba.edu.ar/hci/service4/$1 [P,NC]

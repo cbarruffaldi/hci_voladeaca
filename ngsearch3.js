@@ -151,8 +151,6 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 				var flight2 = container.flights[1].flight;
 			}
 
-console.log("Starert");
-
 			var airlinePass = true;
 		//	if(activeAirlineFilter()){
 				airlinePass = $scope.airlineFilter[flight1.airline.id];
@@ -299,6 +297,7 @@ console.log("Starert");
 
 					if(!minPrice || price < minPrice){
 						minPrice = price;
+						$scope.dealPrice = price;
 					}
 				
 					if(!maxPrice || maxPrice < price){

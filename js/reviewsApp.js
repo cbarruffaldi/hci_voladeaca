@@ -124,7 +124,7 @@ app.controller("reviewsCtrl", function($scope, $http, $sce, $window) {
 		$http({
 			method: 'GET',  				  
 			url: URL,
-			timeout: 3000
+			timeout: 2500
 		}).then(function successCallback(response){
 			var added = {};
 			$scope.emptySearch = true;
