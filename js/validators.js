@@ -82,9 +82,13 @@ function isAlphaSpecial(string) {
 
 function validatePhone(phone) {
 	var n = phone.length;
+	var pattern = /[`!@$%^&*=\\|'/><?:;]/;
+
 
 	if (n == 0)
 		return invalidValidation(mandatoryFieldString('el número de teléfono'));
+	if (pattern.test(phone))
+		return invalidValidation('Verifique que el número de teléfono sea válido');
 	if (n > MAX_PHONE)
 		return invalidValidation(ERROR_MSG_LONG);
 
@@ -195,7 +199,7 @@ function validateDay(d, mandatoryString) {
 	if (!isNumber(d))
 		return invalidValidation(invalidNum('el día'));
 	if (d < 1 || d > 31)
-		return invalidValidation('el día sólo puede estar entre 1 a 31');
+		return invalidValidation('Verifique que el día se encuentre entre 1 y 31');
 	if (d.length == 1)
 		d = '0' + d;
 	return validValidation(d);
@@ -207,7 +211,7 @@ function validateMonth(m, mandatoryString) {
 	if (!isNumber(m))
 		return invalidValidation(invalidNum('el mes'));
 	if (m < 1 || m > 12)
-		return invalidValidation('El mes sólo puede estar entre 1 y 12');
+		return invalidValidation('Verifique que el mes se encuentre entre 1 y 12');
 	if (m.length == 1)
 		m = '0' + m;
 	return validValidation(m);
@@ -218,6 +222,8 @@ function validateYear(y, mandatoryString) {
 		return invalidValidation(mandatoryFieldString(mandatoryString));
 	if (!isNumber(y))
 		return invalidValidation(invalidNum('el año'));
+	if (y < 1880)
+		return invalidValidation('Verifique que el año sea mayor a 1880');
 	return validValidation(y);
 }
 
@@ -353,7 +359,7 @@ function validateDate(day, month, year) {
 	var months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
 
     if (birthDate.getMonth()+1 != month)
-        return invalidValidation('No existe el ' + day + ' de ' + months[month-1]);
+        return invalidValidation('No existe la fecha ' + day + ' de ' + months[month-1] + ' de ' + year);
 
     return validValidation();
 }
@@ -380,7 +386,7 @@ function validateAdultDate(day, month, year, travelDate) {
 	maxBirthDate.setFullYear(maxBirthDate.getFullYear() - ADULT_YEAR);
 
 	if (birthDate > maxBirthDate)
-		return invalidValidation('Fecha inválida de adulto');
+		return invalidValidation('Verifique que el pasajero tenga una edad de 11 años o más al finalizar el viaje');
 
 	return validValidation();
 }
@@ -391,7 +397,7 @@ function validateInfantDate(day, month, year, travelDate) {
 	minBirthDate.setFullYear(minBirthDate.getFullYear() - INFANT_YEAR);
 
 	if (birthDate < minBirthDate || birthDate > travelDate)
-		return invalidValidation('Fecha inválida de infante');
+		return invalidValidation('Verifique que el pasajero tenga una edad menor de 2 años al finalizar el viaje');
 
 	return validValidation();
 }
@@ -400,7 +406,7 @@ function validateChildDate(day, month, year, travelDate) {
 	var birthDate = new Date(year, month - 1, day);
 
 	if (validateAdultDate(day, month, year, travelDate).valid || validateInfantDate(day, month, year, travelDate).valid || birthDate > travelDate)
-		return invalidValidation('Fecha inválida de niño');
+		return invalidValidation('Verifique que el pasajero tenga una edad entre 2 y 11 años al finalizar el viaje');
 
 	return validValidation();
 }

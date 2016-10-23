@@ -219,14 +219,14 @@ $(document).on('focus', '.basicField', function(){
 
 function addPhone(id){
     var fieldHTML =' <div class="row extra-phone"> <div class="phone-data">' +
-        '<div class="col-md-2 col-md-offset-1 form-field">' +
+        '<div class="col-md-2 form-field">' +
         '<label for="phone-type-' + id + '">Tipo:</label>' +
         '<select class="form-control" id="phone-type-' + id + '">' +
         '<option>Fijo</option> ' +
         '<option>Celular</option> ' +
         '</select> ' +
         '</div> ' +
-        '<div class="col-md-4 form-field phone-input"> ' +
+        '<div class="col-md-5 form-field phone-input"> ' +
         '<label for="phone-' + id + '">Número:</label> ' +
         '<input maxlength="25" autocomplete="off" type="text" class="form-control" id="phone-' + id + '"> ' +
         '<p class="error-msg"></p> ' +
