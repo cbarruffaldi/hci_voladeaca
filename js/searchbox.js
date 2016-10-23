@@ -90,7 +90,7 @@ function initSearchbox(global){
 		if(textbox.val()){
 			if(!$id_map[textbox.val()]){
 				textbox.addClass('inputerr');
-				error.text("Por favor ingrese algo valido");
+				error.text("Este aeropuerto no existe. Por favor revisá lo ingresado");
 				error.fadeIn();
 				return false;
 			}
@@ -100,7 +100,7 @@ function initSearchbox(global){
 		}
 		else if(emptyCheck){
 			textbox.addClass('inputerr');
-			error.text("Esto no puede quedar vacío");
+			error.text("Este campo no puede quedar vacío");
 			error.fadeIn();
 			return false;
 		}
@@ -128,7 +128,7 @@ function initSearchbox(global){
 				date1.addClass('inputerr');
 				valid = false;
 
-				$("#datepicker1-err").text("Ingrese una fecha valida");
+				$("#datepicker1-err").text("Ingresá una fecha valida");
 				$("#datepicker1-err").fadeIn();
 			}
 
@@ -139,7 +139,7 @@ function initSearchbox(global){
 			if(!arrival.isValid()){
 				date2.addClass("inputerr");
 				valid = false;
-				$("#datepicker2-err").text("Ingrese una fecha valida");
+				$("#datepicker2-err").text("Ingresá una fecha valida");
 				$("#datepicker2-err").fadeIn();
 			}
 		}
