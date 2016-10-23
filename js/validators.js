@@ -1023,6 +1023,7 @@ function ContactValidator() {
 				invalid = true;
 			else if (this.phones[prop] === undefined || this.phones[prop].length == 0) {
 				setErrorState($('#' + prop), validatePhone('').value);
+				this.phones[prop] = null;
 				invalid = true;
 			}
 		}
