@@ -233,7 +233,7 @@ function addPhone(id){
         '</div> ' +
         '<div class="col-md-1 tocenter-label">' +
         '<a href="#" class="btn btn-default remove-phone add-rem-button">' +
-        '<span class="glyphicon glyphicon-minus-sign"></span>' +
+        '<span class="glyphicon glyphicon-minus-sign"></span>' +    'Quitar teléfono' +
         '</a>' +
         '</div>'+' </div>' +'</div>' + '</div>';
 
@@ -244,7 +244,7 @@ var fieldCounter = 1; //Initial field counter is 1
 $(document).ready(function(){
     var maxField = 5; //Input fields increment limitation
     var addButton = $('.add-Phone'); //Add button selector
-    var wrapper = $('#contact-form').children('.form-group'); //Input field wrapper
+    var wrapper = $('#contact-form').find('.phone-data'); //Input field wrapper
     var count = 1;
 
     function getPhoneId(buttonClicked) {
