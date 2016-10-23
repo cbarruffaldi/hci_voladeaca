@@ -43,7 +43,7 @@ function getCurrentStage() {
     return indexTab;
 }
 
-var $bought = JSON.parse(localStorage.boughtFlight);
+var $bought = JSON.parse(sessionStorage.boughtFlight);
 var $passengers = $bought.passengers;
 
 var twoWay = $bought.twoWays ? 1 : 0;
@@ -113,7 +113,7 @@ $(document).ready(function() {
 	$('.btnPrev').click(function() {
 		var indexTab = getCurrentStage();
 		$('.nav-tabs .active').addClass('disabled');
-		$('.nav-tabs .active').addClass('disabled');
+		$('.nav-tabs .active').addClass('disabled-tab');
 		$('.nav-tabs .active').prev('li').find('a').tab('show');
 
 		if (indexTab == 1) {
@@ -140,7 +140,7 @@ $(document).on('blur', 'input', function() {
     
     if (value.length > 0) {
         var words = value.split(/[\s]+/);
-        words = words.map(function (word) {return word.toUpperFirstLetter();});
+        words = words.map(function (word) {return word.length > 2 ? word.toUpperFirstLetter() : word;});
         value = words.join(' ');
     }
     
@@ -219,21 +219,21 @@ $(document).on('focus', '.basicField', function(){
 
 function addPhone(id){
     var fieldHTML =' <div class="row extra-phone"> <div class="phone-data">' +
-        '<div class="col-md-2 col-md-offset-1 form-field">' +
+        '<div class="col-md-2 form-field">' +
         '<label for="phone-type-' + id + '">Tipo:</label>' +
         '<select class="form-control" id="phone-type-' + id + '">' +
         '<option>Fijo</option> ' +
         '<option>Celular</option> ' +
         '</select> ' +
         '</div> ' +
-        '<div class="col-md-4 form-field phone-input"> ' +
+        '<div class="col-md-5 form-field phone-input"> ' +
         '<label for="phone-' + id + '">Número:</label> ' +
         '<input maxlength="25" autocomplete="off" type="text" class="form-control" id="phone-' + id + '"> ' +
         '<p class="error-msg"></p> ' +
         '</div> ' +
         '<div class="col-md-1 tocenter-label">' +
         '<a href="#" class="btn btn-default remove-phone add-rem-button">' +
-        '<span class="glyphicon glyphicon-minus-sign"></span>' +
+        '<span class="glyphicon glyphicon-minus-sign"></span>' +    'Quitar teléfono' +
         '</a>' +
         '</div>'+' </div>' +'</div>' + '</div>';
 
@@ -244,7 +244,7 @@ var fieldCounter = 1; //Initial field counter is 1
 $(document).ready(function(){
     var maxField = 5; //Input fields increment limitation
     var addButton = $('.add-Phone'); //Add button selector
-    var wrapper = $('#contact-form').children('.form-group'); //Input field wrapper
+    var wrapper = $('#contact-form').find('.form-group'); //Input field wrapper
     var count = 1;
 
     function getPhoneId(buttonClicked) {
@@ -680,3 +680,12 @@ function decodeHtml(html) {
     txt.innerHTML = html;
     return txt.value;
 }
+
+
+$(document).ready(function(){
+	$(".nav-tabs > li").click(function(){
+		if($(this).hasClass("disabled"))
+			return false;
+	});
+});
+

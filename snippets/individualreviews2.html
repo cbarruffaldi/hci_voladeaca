@@ -20,6 +20,14 @@
 									<div class="stars">
 										<div data-ng-bind-html="getStars(r.rating.overall)"></div>
 									</div>
+									<div class="w-recommend">
+									<div data-ng-if="r.yes_recommend" class="yRec">
+									<span class="glyphicon glyphicon-thumbs-up"></span> Lo recomiendo
+									</div>
+									<div data-ng-if="!r.yes_recommend" class="nRec">
+									<span class="glyphicon glyphicon-thumbs-down"></span> No lo recomiendo
+									</div>
+									</div>
 								</div>
 							</div>
 							<div class="row ratings">

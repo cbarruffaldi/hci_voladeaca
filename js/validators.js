@@ -82,9 +82,13 @@ function isAlphaSpecial(string) {
 
 function validatePhone(phone) {
 	var n = phone.length;
+	var pattern = /[`!@$%^&*=\\|'/><?:;]/;
+
 
 	if (n == 0)
 		return invalidValidation(mandatoryFieldString('el número de teléfono'));
+	if (pattern.test(phone))
+		return invalidValidation('Verifique que el número de teléfono sea válido');
 	if (n > MAX_PHONE)
 		return invalidValidation(ERROR_MSG_LONG);
 
@@ -98,7 +102,7 @@ function validateEmail(email) {
 	if (n == 0)
 		return invalidValidation(mandatoryFieldString("el correo electrónico"));
 	if (!regex.test(email))
-		return invalidValidation('El correo electrónico ingresado no es válido. Verifique que tenga el siguiente formato: "ejemplo@correo.com');
+		return invalidValidation('el correo electrónico ingresado no es válido. Verifique que tenga el siguiente formato: "ejemplo@correo.com"');
 	if (n > MAX_EMAIL)
 		return invalidValidation(ERROR_MSG_LONG);
 
@@ -117,7 +121,7 @@ function validateStreet(street) {
 }
 
 function invalidAlphaNum(name) {
-	return name + ' sólo puede contener dígitos y letras';
+	return 'Verifique que ' + name + ' sólo contenga dígitos y letras';
 }
 
 function validateAddrNum(addrNum) {
@@ -126,7 +130,7 @@ function validateAddrNum(addrNum) {
 	if (n == 0)
 		return invalidValidation(mandatoryFieldString("el número de la calle"));
 	if (!isAlphaNum(addrNum))
-		return invalidValidation(invalidAlphaNum('El número de la calle'));
+		return invalidValidation(invalidAlphaNum('el número de la calle'));
 	if (n > MAX_ADDR_NUM)
 		return invalidValidation(ERROR_MSG_LONG);
 
@@ -137,7 +141,7 @@ function validateFloor(floor) {
 	var n = floor.length;
 
 	if (n > 0 && !isAlphaNum(floor))
-		return invalidValidation(invalidAlphaNum('El piso'));
+		return invalidValidation(invalidAlphaNum('el piso'));
 	if (n > MAX_FLOOR)
 		return invalidValidation(ERROR_MSG_LONG);
 
@@ -148,7 +152,7 @@ function validateDepartment(dep) {
 	var n = dep.length;
 
 	if (n > 0 && !isAlphaNum(dep))
-		return invalidValidation(invalidAlphaNum('El departamento'));
+		return invalidValidation(invalidAlphaNum('el departamento'));
 	if (n > MAX_DEPT)
 		return invalidValidation(ERROR_MSG_LONG);
 
@@ -156,7 +160,7 @@ function validateDepartment(dep) {
 }
 
 function invalidNum(name) {
-	return name + ' sólo puede contener dígitos';
+	return 'Verifique que ' + name + ' sólo contenga dígitos';
 }
 
 function validateDocNum(num) {
@@ -165,7 +169,7 @@ function validateDocNum(num) {
     if (n == 0)
         return invalidValidation(mandatoryFieldString("el número de documento"));
     if (!isNumber(num))
-        return invalidValidation(invalidNum('El número de documento'));
+        return invalidValidation(invalidNum('el número de documento'));
     if (n > MAX_DOC_NUM)
         return invalidValidation(ERROR_MSG_LONG);
 
@@ -174,6 +178,8 @@ function validateDocNum(num) {
 
 function validateName(string, mandatoryString, title) {
     var n = string.length;
+    var pattern = /[^\w\s]/;
+    var otherPattern = /[\d_]/;
 
     if (n > MAX_NAME)
         return invalidValidation(ERROR_MSG_LONG);
@@ -181,8 +187,8 @@ function validateName(string, mandatoryString, title) {
     if (n == 0)  /* Ingresó únicamente espacios o nada */
         return invalidValidation(mandatoryFieldString(mandatoryString));
 
-    if (!isAlphaSpecial(string))
-        return invalidValidation("El " + title + " no puede contener dígitos");
+    if (pattern.test(string) || otherPattern.test(string))
+        return invalidValidation("Verifique que el " + title + " sólo contenga letras y espacios");
 
     return validValidation(string);
 }
@@ -191,9 +197,9 @@ function validateDay(d, mandatoryString) {
 	if (d.length == 0)
 		return invalidValidation(mandatoryFieldString(mandatoryString));
 	if (!isNumber(d))
-		return invalidValidation(invalidNum('El día'));
+		return invalidValidation(invalidNum('el día'));
 	if (d < 1 || d > 31)
-		return invalidValidation('El día sólo puede estar entre 1 a 31');
+		return invalidValidation('Verifique que el día se encuentre entre 1 y 31');
 	if (d.length == 1)
 		d = '0' + d;
 	return validValidation(d);
@@ -202,10 +208,10 @@ function validateDay(d, mandatoryString) {
 function validateMonth(m, mandatoryString) {
 	if (m.length == 0)
 		return invalidValidation(mandatoryFieldString(mandatoryString));
-	if (!isNumber(d))
-		return invalidValidation(invalidNum('El mes'));
+	if (!isNumber(m))
+		return invalidValidation(invalidNum('el mes'));
 	if (m < 1 || m > 12)
-		return invalidValidation('El mes sólo puede estar entre 1 y 12');
+		return invalidValidation('Verifique que el mes se encuentre entre 1 y 12');
 	if (m.length == 1)
 		m = '0' + m;
 	return validValidation(m);
@@ -215,7 +221,9 @@ function validateYear(y, mandatoryString) {
 	if (y.length == 0)
 		return invalidValidation(mandatoryFieldString(mandatoryString));
 	if (!isNumber(y))
-		return invalidValidation(invalidNum('El año'));
+		return invalidValidation(invalidNum('el año'));
+	if (y < 1880)
+		return invalidValidation('Verifique que el año sea mayor a 1880');
 	return validValidation(y);
 }
 
@@ -257,7 +265,7 @@ function validateZipCode(zipCode) {
 	if (n == 0)
 		return invalidValidation(mandatoryFieldString("el código postal"));
 	if (!isAlphaNum(zipCode))
-		return invalidValidation(invalidAlphaNum('El código postal'));
+		return invalidValidation(invalidAlphaNum('el código postal'));
 	if (n > MAX_ZIP_CODE)
 		return invalidValidation(ERROR_MSG_LONG);
 
@@ -351,7 +359,7 @@ function validateDate(day, month, year) {
 	var months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
 
     if (birthDate.getMonth()+1 != month)
-        return invalidValidation('No existe el ' + day + ' de ' + months[month-1]);
+        return invalidValidation('No existe la fecha ' + day + ' de ' + months[month-1] + ' de ' + year);
 
     return validValidation();
 }
@@ -378,7 +386,7 @@ function validateAdultDate(day, month, year, travelDate) {
 	maxBirthDate.setFullYear(maxBirthDate.getFullYear() - ADULT_YEAR);
 
 	if (birthDate > maxBirthDate)
-		return invalidValidation('Fecha inválida de adulto');
+		return invalidValidation('Verifique que el pasajero tenga una edad de 11 años o más al finalizar el viaje');
 
 	return validValidation();
 }
@@ -389,7 +397,7 @@ function validateInfantDate(day, month, year, travelDate) {
 	minBirthDate.setFullYear(minBirthDate.getFullYear() - INFANT_YEAR);
 
 	if (birthDate < minBirthDate || birthDate > travelDate)
-		return invalidValidation('Fecha inválida de infante');
+		return invalidValidation('Verifique que el pasajero tenga una edad menor de 2 años al finalizar el viaje');
 
 	return validValidation();
 }
@@ -398,7 +406,7 @@ function validateChildDate(day, month, year, travelDate) {
 	var birthDate = new Date(year, month - 1, day);
 
 	if (validateAdultDate(day, month, year, travelDate).valid || validateInfantDate(day, month, year, travelDate).valid || birthDate > travelDate)
-		return invalidValidation('Fecha inválida de niño');
+		return invalidValidation('Verifique que el pasajero tenga una edad entre 2 y 11 años al finalizar el viaje');
 
 	return validValidation();
 }
@@ -1015,6 +1023,7 @@ function ContactValidator() {
 				invalid = true;
 			else if (this.phones[prop] === undefined || this.phones[prop].length == 0) {
 				setErrorState($('#' + prop), validatePhone('').value);
+				this.phones[prop] = null;
 				invalid = true;
 			}
 		}

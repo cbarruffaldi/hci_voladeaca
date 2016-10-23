@@ -18,7 +18,7 @@ mapSetup = function(global){
 
 		$http({
 			method: 'GET',
-			url:  "http://hci.it.itba.edu.ar/v1/api/geo.groovy?method=getcitybyid&id=" + id;
+			url:  "http://hci.it.itba.edu.ar/v1/api/geo.groovy?method=getcitybyid&id=" + id
 		}).then( function(response) { 
 			fillMap(response, date);
 		})

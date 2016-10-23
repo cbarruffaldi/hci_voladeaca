@@ -46,23 +46,37 @@
 		<div class="failedPurchase">
 			<div class="row">
 				<div class="col-md-12 title-style">
-					Lo sentimos, ocurrió un error al realizar la compra.
+					<h1>No hay conexión.</h1>
 				</div>
 			</div>
 
 			<div class="row">
 				<div class="col-md-12 title-style">
-					Por favor inténtelo nuevamente.				
+					La compra no pudo realizarse debido a un problema con la conexión. Puede reintentar la compra cuando recupere la conexión.				
 				</div>
 			</div>
 
 			<!-- Ver que hace en este caso -->
 			<div class="row">
-				<div class="col-md-12">
+				<div class="col-md-6">
 					<a href="index.html" class="btn vda-btn goToIndex" role="button">Volver a la página principal</a>
 				</div>
+				<div class="col-md-6">
+					<a href="#" id="reset" class="btn vda-btn goToIndex" role="button">Reintentar compra</a>
+				</div>
 			</div>
-    </div>
+    	</div>
+
+    	<div id="buying-modal" class="modal fade" role="dialog" data-backdrop="static">
+      		<div class="modal-dialog">
+		        <!-- Modal content-->
+		        <div class="modal-content">
+		          <div class="modal-body">
+		            <h1 class="buying-text"></h1>  <!-- se completa en el finishPurchase.js -->
+		          </div>
+		        </div>
+	      </div>
+	    </div>
 
   </div>
 </div>

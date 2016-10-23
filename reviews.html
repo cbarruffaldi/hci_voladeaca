@@ -12,7 +12,7 @@
 		<link rel="stylesheet" href="css/bootstrap-theme.min.css">
 		<link rel="stylesheet" href="css/main.css">
 		<link rel="stylesheet" href="css/buttons.css">
-		<link rel="stylesheet" href="css/reviews.css">
+		<link rel="stylesheet" href="css/resenas.css">
 		<link rel="stylesheet" href="./CheloLabs/awesomplete.css">
 		<link rel="stylesheet" href="css/angular-animations.css">
 		<link rel="stylesheet" href="css/nouislider-reviews.css">
@@ -55,8 +55,8 @@
 							<div class="row">
 								<div class="col-md-12 ">
 									<ul class="tabs center-col">
-										<li class="tab-link current" data-tab="tab-1" id="aerotab"><strong>Por aerolinea</strong></li>
-										<li class="tab-link" data-tab="tab-2" id="vuelotab"><strong>Por número de vuelo</strong></li>
+										<li class="tab-link current" data-tab="tab-1" data-ng-click="toggleToAero()" id="aerotab"><strong>Por aerolinea</strong></li>
+										<li class="tab-link" data-tab="tab-2" data-ng-click="toggleToFNum()" id="vuelotab"><strong>Por número de vuelo</strong></li>
 									</ul>
 
 									<div id="aerobox" class="tab-content current col-md-6 col-md-offset-3">
@@ -65,9 +65,11 @@
 											<div id="aerolinea-err" class="formError"></div>
 										</div>
 									</div>
-									<div id="vuelobox" class="tab-content col-md-6">
+									<div id="vuelobox" class="tab-content col-md-6 col-md-offset-3">
 										<div class="form-group">
-											<input type="text" data-ng-model="flightNum" class="form-control" id="nroVuelo" placeholder=""/>
+											<input type="text" data-my-enter="yes" data-ng-model="flightNum" class="form-control" id="nroVuelo" maxlength="4"/>
+											<div id="nroVuelo-err" class="formError"></div>
+
 										</div>
 									</div>
 								</div>
@@ -121,7 +123,11 @@
 							</div>
 						</div>
 
-						<div data-ng-if="noConnection" data-ng-include="'./snippets/noconnection.html'">
+						<div data-ng-if="emptySearch"
+								 data-ng-include="'./snippets/emptyreviewsearch.html'">
+						</div>
+
+						<div data-ng-if="noConnection" data-ng-include="'./snippets/noconnection.html'"
 						</div>
 
 					</div>

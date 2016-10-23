@@ -144,7 +144,7 @@ input.error-input {
 
 .confirmation-panel {
 	padding: 0;
-	border: 1px solid #204DCC;
+	border: 1px solid cornflowerblue;
 }
 
 .panel-group {
@@ -338,7 +338,7 @@ label {
 
 .duration{
 	color: #DC0055;
-	font-size: 1.5em;
+	font-size: 1.3em;
 	font-weight: 500;
 }
 
@@ -377,4 +377,22 @@ div.error-msg{
 .error-img {
 	height:200px;
 
+}
+
+.popover-title{
+	text-align: center;
+}
+
+.popover {
+	background: rgba( 235, 235, 235, 0.8);
+	box-shadow: 1px 0px 15px #333;
+}
+
+.popover-content {
+	text-align: center;
+}
+
+.phonebtn {
+	padding-bottom: 1em;
+	text-align: right;
 }
