@@ -41,6 +41,7 @@ input.tt-hint {
 
 .info-box {
 	padding: 15px;
+	font-size: small;
 }
 
 .info-box, .form-style {
@@ -329,7 +330,7 @@ label {
 	letter-spacing: 1px;
 }
 .city-info {
-	font-size: 1em;
+	font-size: 1.2em;
 	font-weight: 400;
 	letter-spacing: 1px;
 }
@@ -340,12 +341,12 @@ label {
 
 .duration{
 	color: #DC0055;
-	font-size: 1.3em;
+	font-size: 1.4em;
 	font-weight: 500;
 }
 
 .price-number{
-	font-size: 2.5em;
+	font-size: 2.9em;
 	line-height: 1em;
 	font-weight: 500;
 	text-align: center;
@@ -355,6 +356,8 @@ label {
 	font-weight: 500;
 	margin-top: 5px;
 	text-align: center;
+	margin: 15px;
+	font-size: larger;
 }
 
 .box-row{
@@ -406,4 +409,22 @@ div.error-msg{
 
 .move-btn-row {
 	margin-bottom: 20px;
+}
+
+.centerText {
+	text-align: center;
+}
+
+.airportBox {
+	border-style: groove;
+	border-color: #204DCC;
+	border-width: thin;
+	border-radius: 5%;
+	min-height: 70px;
+	text-align: center;
+	background: #e7e7e7;
+}
+
+.flight-price-box {
+	margin-top: 4%;
 }

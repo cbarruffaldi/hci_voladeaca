@@ -81,26 +81,28 @@
 												<div class= "depart-date">{{idaFlightDetails.departureDate}}</div>
 												<div class= "depart-time">{{idaFlightDetails.departureTime}}</div>
 											</div>
-											<div class="col-md-2">
+											<div class="col-md-2 airportBox">
 												<span>{{idaFlightDetails.airportFromName}}</span>
 											</div>
 											<div class="col-md-1">
 												<span><img class='arrow-icon' src='./img/icn/black-plane.svg' alt="Imagen no disponible"></span>
 											</div>
-											<div class="col-md-2">
+											<div class="col-md-2 airportBox">
 												<span>{{idaFlightDetails.airportToName}}</span>
 											</div>
 											<div class="col-md-2">
 												<div class= "land-date">{{idaFlightDetails.arrivalDate}}</div>
 												<div class= "land-time">{{idaFlightDetails.arrivalTime}}</div>
 											</div>
-											<div class="col-md-2">
+											<div class="col-md-2 centerText">
+												<span class="duration">Duración</span>
 												<span class="glyphicon glyphicon-time duration"></span><span class="duration">{{idaFlightDetails.duration}}</span>
 											</div>
 										</div>
 									</div>
 								</div>
 								<div class="row" data-ng-if="$bought.twoWays">
+									<hr>
 									<div class="col-md-12 box-row">
 										<div class="col-md-2">
 											<div class="row">
@@ -122,20 +124,21 @@
 												<div class= "depart-date">{{returnFlightDetails.departureDate}}</div>
 												<div class= "depart-time">{{returnFlightDetails.departureTime}}</div>
 											</div>
-											<div class="col-md-2">
+											<div class="col-md-2 airportBox">
 												<span >{{returnFlightDetails.airportFromName}}</span>
 											</div>
 											<div class="col-md-1">
 												<span><img class='arrow-icon' src='./img/icn/black-plane.svg' alt="Imagen no disponible"></span>
 											</div>
-											<div class="col-md-2">
+											<div class="col-md-2 airportBox">
 												<span>{{returnFlightDetails.airportToName}}</span>
 											</div>
 											<div class="col-md-2">
 												<div class= "land-date">{{returnFlightDetails.arrivalDate}}</div>
 												<div class= "land-time">{{returnFlightDetails.arrivalTime}}</div>
 											</div>
-											<div class="col-md-2">
+											<div class="col-md-2 centerText">
+												<span class="duration">Duración</span>
 												<span class="glyphicon glyphicon-time duration"></span><span class="duration">{{returnFlightDetails.duration}}</span>
 											</div>
 
