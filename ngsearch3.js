@@ -9,6 +9,7 @@ app.directive('emitLastRepeaterElement', function() {
 });
 
 app.controller("flightCtrl", function($scope, $http, $window) {
+		
 		$scope.twoWays = false;
 		$scope.containers = [] 
 		$scope.scrollLimit = 10;
@@ -64,7 +65,6 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 				$(".order-by-menu").addClass("greyout");
 				$(".order-by-menu button").attr("disabled", true);
 				$("#loadImg").hide();
-				console.log("Param error");
 				return;
 			}
 
@@ -111,7 +111,7 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 						)
 					}
 					else {
-						console.log(response);
+//						console.log(response);
 						process(response);
 						$("#resultShow").show();
 						$("#loadImg").hide();
@@ -169,7 +169,6 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 			if($scope.maxprice){
 				pass = pass && (container.price.total.total <= $scope.maxprice)
 			}
-			console.log(container.price.total.total)
 
 			if($scope.minprice){
 				pass = pass && (container.price.total.total >= $scope.minprice)
@@ -183,9 +182,6 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 					pass = pass && $scope.airports.filter[flight2.departure.airport.id]
 					pass = pass && $scope.airports.filter[flight2.arrival.airport.id]
 			}
-
-			window.console.log(pass)
-
 			return pass;
 
 		};
@@ -226,9 +222,6 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 
 
 		function process(response, vresponse){
-			console.log(response);
-			console.log(vresponse);
-		
 			if(response.data.error){
 				$scope.emptySearch = true;
 				$scope.paramError = true;
@@ -600,7 +593,7 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 				$(this).append("<span class='glyphicon " + appendArrow + "'> </span>");
 			}
 		})
-		
+		$scope.filterflag = true;
 	});
 
 	if(!localStorage.airlineLogos){
