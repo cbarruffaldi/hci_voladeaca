@@ -67,6 +67,20 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 				$("#loadImg").hide();
 				return;
 			}
+	
+				var i_ValidDate = moment(date, "YYYY-MM-DD", true).isValid();
+			
+				var v_ValidDate = !vdate || moment(vdate, "YYYY-MM-DD", true).isValid();
+			
+				if(!(i_ValidDate && v_ValidDate)){
+				$scope.emptySearch = true;
+				$scope.paramError = true;
+				$(".filter-area").addClass("greyout");
+				$(".order-by-menu").addClass("greyout");
+				$(".order-by-menu button").attr("disabled", true);
+				$("#loadImg").hide();
+				return;
+			}
 
 			var baseURL = "http://hci.it.itba.edu.ar/v1/api/booking.groovy?method=getonewayflights"
 			baseURL += "&adults=" + (adults ? adults : 0);
