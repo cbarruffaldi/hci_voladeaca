@@ -598,3 +598,20 @@ textarea:focus {
 	margin-top: 2%;
 	color: #4F8A10;
 }
+
+
+
+
+#nav-reviews a{
+	background-color: #fff;
+	cursor: default;
+	color: #dc0055;
+	font-weight: bold;
+}
+
+#nav-reviews a:hover{
+	color: #dc0055;
+	background-color: #fff;
+	cursor: default;
+
+}

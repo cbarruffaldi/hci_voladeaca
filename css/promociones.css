@@ -117,3 +117,18 @@ input{
 	font-size: 1.20em;
 	color: cornflowerblue;
 }
+
+
+#nav-promo a{
+	background-color: #fff;
+	cursor: default;
+	color: #dc0055;
+	font-weight: bold;
+}
+
+#nav-promo a:hover{
+	color: #dc0055;
+	background-color: #fff;
+	cursor: default;
+
+}
