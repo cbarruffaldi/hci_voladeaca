@@ -43,16 +43,28 @@ function getCurrentStage() {
     return indexTab;
 }
 
-var $bought = JSON.parse(sessionStorage.boughtFlight);
-var $passengers = $bought.passengers;
+var $bought;
+var $passengers;
+var twoWay;
+var finalDate;
+var passengersValidator;
+var paymentValidator;
+var contactValidator;
 
-var twoWay = $bought.twoWays ? 1 : 0;
-var finalDate = $bought.container.flights[twoWay].flight.arrivalMoment.date;
+if (sessionStorage.boughtFlight) {
+	$bought = JSON.parse(sessionStorage.boughtFlight);
+	$passengers = $bought.passengers;
 
-var passengersValidator = new PassengersValidator($passengers.adults, $passengers.children, $passengers.infants, finalDate); /* Etapa 0 */
-var paymentValidator = new PaymentValidator();     /* Etapa 1 */
-var contactValidator = new ContactValidator();     /* Etapa 2 */
+	twoWay = $bought.twoWays ? 1 : 0;
+	finalDate = $bought.container.flights[twoWay].flight.arrivalMoment.date;
 
+	passengersValidator = new PassengersValidator($passengers.adults, $passengers.children, $passengers.infants, finalDate);
+	/* Etapa 0 */
+	paymentValidator = new PaymentValidator();
+	/* Etapa 1 */
+	contactValidator = new ContactValidator();
+	/* Etapa 2 */
+}
 /* Validadores por cada etapa */
 var validators = [passengersValidator, paymentValidator, contactValidator];
 
@@ -77,7 +89,7 @@ $(document).ready(function() {
             active.addClass('disabled-tab');
 
             if(indexTab == 0) {
-            	$('.btnPrev').text('\«Volver');
+            	$('.prevText').text('Volver');
                 fillPassengerSum(validator.getData());
             } 
             else if(indexTab == 1) {
@@ -85,7 +97,7 @@ $(document).ready(function() {
                 fillBillingSum(validator.getData());
             }
             else if (indexTab == 2) {
-                $(this).text('Finalizar Compra');
+                $('.nextText').text('Finalizar Compra');
             }
 
       //      history.pushState({'value' : indexTab}, "", "checkout2.html");
@@ -117,13 +129,13 @@ $(document).ready(function() {
 		$('.nav-tabs .active').prev('li').find('a').tab('show');
 
 		if (indexTab == 1) {
-			$('.btnPrev').text('Volver a Búsqueda');
+			$('.prevText').text('Volver a Búsqueda');
 		}
 		else if (indexTab == 0) {
 			window.history.back();
 		}
 		else if (indexTab == 3) {
-			$('.btnNext').text('Continuar\»');
+			$('.nextText').text('Continuar');
 		}
 	});
 });
@@ -218,7 +230,7 @@ $(document).on('focus', '.basicField', function(){
 
 
 function addPhone(id){
-    var fieldHTML =' <div class="row extra-phone"> <div class="phone-data">' +
+    var fieldHTML =' <div class="row extra-phone phone-row"> <div class="phone-data">' +
         '<div class="col-md-2 form-field">' +
         '<label for="phone-type-' + id + '">Tipo:</label>' +
         '<select class="form-control" id="phone-type-' + id + '">' +
@@ -244,7 +256,6 @@ var fieldCounter = 1; //Initial field counter is 1
 $(document).ready(function(){
     var maxField = 5; //Input fields increment limitation
     var addButton = $('.add-Phone'); //Add button selector
-    var wrapper = $('#contact-form').find('.form-group'); //Input field wrapper
     var count = 1;
 
     function getPhoneId(buttonClicked) {
@@ -253,8 +264,9 @@ $(document).ready(function(){
 
     addButton.click(function(e) { //Once add button is clicked
         e.preventDefault();
+        var wrapper = $('#contact-form, #modify-modal').find('.phone-row').last(); //Input field wrapper
         if(fieldCounter < maxField){ //Check maximum number of input fields
-            wrapper.append(addPhone(count)); // Add field html
+            wrapper.after(addPhone(count)); // Add field html
             contactValidator.addPhone(count);
             fieldCounter++; //Increment field counter
             count++;
@@ -265,7 +277,7 @@ $(document).ready(function(){
         }
     });
 
-    wrapper.on('click', '.remove-phone', function(e) { //Once remove button is clicked
+    $(document).on('click', '.remove-phone', function(e) { //Once remove button is clicked
         e.preventDefault();
         addButton.fadeIn();
         contactValidator.removePhone(getPhoneId($(this)));
@@ -278,19 +290,19 @@ $(document).ready(function(){
 function restorePhones(phonesId) {
     var backupPhonesId = Object.keys(contactValidator.getBackupPhones());
     fieldCounter = backupPhonesId.length;
-    var wrapper = $('#modify-modal .modal-body').children('.form-group');
     var addButton = $('.add-Phone'); //Add button selector
 
     $('.extra-phone').remove();
 
     if (backupPhonesId.length == 5)
-        addButton.hide();       
+        addButton.hide();
     else
         addButton.show();
 
     backupPhonesId.forEach(function(stringId) {
+        var wrapper = $('#contact-form, #modify-modal').find('.phone-row').last();
         if (stringId != 'phone-0')
-            wrapper.append(addPhone(stringId.split('-')[1]));
+            wrapper.after(addPhone(stringId.split('-')[1]));
     });
 }
 

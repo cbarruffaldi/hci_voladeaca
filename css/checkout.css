@@ -8,10 +8,6 @@ input.tt-hint {
 	display: none;
 }
 
-.fade {
-	display: none;
-}
-
 .nav-tabs li {
 	font-size: 1.3em;
 	border: 0;
@@ -251,6 +247,10 @@ color:#fff;
 	display: none;
 }
 
+.tab-fade {
+	display: none;
+}
+
 .usr-name, .usr-lname {
 	width: 81%;
 }
@@ -266,6 +266,7 @@ color:#fff;
 .add-rem-button{
 	background: transparent;
 	border: thin;
+	border-style: groove;
 }
 
 label {
@@ -307,7 +308,8 @@ label {
 }
 
 #modify-modal .modal-dialog{
-	width: 60%;
+	width: 66%;
+	margin-top: 15%;
 }
 
 .depart-date, .land-date {
@@ -394,5 +396,10 @@ div.error-msg{
 
 .phonebtn {
 	padding-bottom: 1em;
-	text-align: right;
+	padding-top: 1em;
+}
+.buying-text {
+	text-align: center;
+	margin-top: -30px;
+	margin-bottom: 30px;
 }

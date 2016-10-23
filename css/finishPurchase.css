@@ -19,3 +19,13 @@
     color: #204DCC;
     margin-bottom: 30px;
 }
+
+.buying-text {
+    text-align: center;
+    margin-top: -30px;
+    margin-bottom: 30px;
+}
+
+.modal-dialog {
+    margin-top: 15%;
+}

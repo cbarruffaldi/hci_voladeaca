@@ -12,6 +12,7 @@
 		<link rel="stylesheet" href="css/main.css">
 		<link rel="stylesheet" href="css/buttons.css">
     	<link rel="stylesheet" href="css/checkout.css">
+		<link rel="stylesheet" href="css/spinner.css">
 
 		<link rel="dns-prefetch" href="./finishPurchase.html">
 
@@ -28,7 +29,7 @@
 
 		<!-- TITULO -->
 		<div class="container">
-			<div class="row"><h1>Página de Compra</h1>
+			<div class="row"><h1>Compra</h1>
 			</div>
 		</div>
 
@@ -37,6 +38,118 @@
 
 		<!-- Tabs -->
 		<div id="step-tabs" class="container">
+
+
+			<!--CUADRO RESUMEN-->
+
+			<div class="resume-box">
+				<div class="row">
+					<div class="title-style col-md-12"><h3>Información del Viaje</h3></div>
+				</div>
+				<div class="row">
+					<div class="col-md-12 info-box">
+						<div class="col-md-10">
+							<div class="row">
+								<div class="col-md-12 box-row">
+
+									<div class="col-md-2">
+										<div class="row">
+                                        <span class='city-info'>
+                                          De: {{idaFlightDetails.departureCity}}</span>
+										</div>
+										<div class="row">
+                                        <span class= 'city-info'>
+                                          A: {{idaFlightDetails.arrivalCity}}</span>
+										</div>
+										<div class="row">
+											<h5 class="col-md-12">{{idaFlightDetails.number}}</h5>
+										</div>
+									</div>
+
+									<div class="col-md-10">
+										<div class="col-md-1">
+											<img data-ng-src="{{idaFlightDetails.logo}}" alt="Imagen no disponible" src="img/dummy.png">
+										</div>
+										<div class="col-md-2">
+											<div class= "depart-date">{{idaFlightDetails.departureDate}}</div>
+											<div class= "depart-time">{{idaFlightDetails.departureTime}}</div>
+										</div>
+										<div class="col-md-2">
+											<span>{{idaFlightDetails.airportFromName}}</span>
+										</div>
+										<div class="col-md-1">
+											<span><img class='arrow-icon' src='./img/icn/black-plane.svg' alt="Imagen no disponible"></span>
+										</div>
+										<div class="col-md-2">
+											<span>{{idaFlightDetails.airportToName}}</span>
+										</div>
+										<div class="col-md-2">
+											<div class= "land-date">{{idaFlightDetails.arrivalDate}}</div>
+											<div class= "land-time">{{idaFlightDetails.arrivalTime}}</div>
+										</div>
+										<div class="col-md-2">
+											<span class="glyphicon glyphicon-time duration"></span><span class="duration">{{idaFlightDetails.duration}}</span>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row" data-ng-if="$bought.twoWays">
+								<div class="col-md-12 box-row">
+									<div class="col-md-2">
+										<div class="row">
+											<span class='city-info'>De: {{returnFlightDetails.departureCity}}</span>
+										</div>
+										<div class="row">
+											<span class= 'city-info'>A: {{returnFlightDetails.arrivalCity}}</span>
+										</div>
+										<div class="row">
+											<h5 class="col-md-12">{{returnFlightDetails.number}}</h5>
+										</div>
+
+									</div>
+									<div class="col-md-10">
+										<div class="col-md-1">
+											<img data-ng-src="{{returnFlightDetails.logo}}" alt="Imagen no disponible" src="img/dummy.png">
+										</div>
+										<div class="col-md-2">
+											<div class= "depart-date">{{returnFlightDetails.departureDate}}</div>
+											<div class= "depart-time">{{returnFlightDetails.departureTime}}</div>
+										</div>
+										<div class="col-md-2">
+											<span >{{returnFlightDetails.airportFromName}}</span>
+										</div>
+										<div class="col-md-1">
+											<span><img class='arrow-icon' src='./img/icn/black-plane.svg' alt="Imagen no disponible"></span>
+										</div>
+										<div class="col-md-2">
+											<span>{{returnFlightDetails.airportToName}}</span>
+										</div>
+										<div class="col-md-2">
+											<div class= "land-date">{{returnFlightDetails.arrivalDate}}</div>
+											<div class= "land-time">{{returnFlightDetails.arrivalTime}}</div>
+										</div>
+										<div class="col-md-2">
+											<span class="glyphicon glyphicon-time duration"></span><span class="duration">{{returnFlightDetails.duration}}</span>
+										</div>
+
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-2 flight-price-box">
+							<div class="price-number" data-ng-bind="'$' + flightPrice.total"></div>
+							<div class="details">
+								<div data-ng-bind=" flightPricesPerPerson.adults.quantity + ' Adulto' + (flightPricesPerPerson.adults.quantity > 1 ? 's' : '') + ' ' + '$' + flightPricesPerPerson.adults.base_fare*flightPricesPerPerson.adults.quantity " class="details-info"></div>
+								<div data-ng-if = "$bought.container.price.children" data-ng-bind=" flightPricesPerPerson.children.quantity + ' Niño' + (flightPricesPerPerson.children.quantity > 1 ? 's' : '') + ' ' + '$' + flightPricesPerPerson.children.base_fare*flightPricesPerPerson.children.quantity " class="details-info" ></div>
+								<div data-ng-if = "$bought.container.price.infants" data-ng-bind=" flightPricesPerPerson.infants.quantity + ' Infante' + (flightPricesPerPerson.infants.quantity > 1 ? 's' : '') + ' ' + '$' + flightPricesPerPerson.infants.base_fare*flightPricesPerPerson.infants.quantity " class="details-info" ></div>
+								<div data-ng-bind=" 'Impuestos ' + '$' + flightPrice.taxes" class="details-info"></div>
+								<div data-ng-bind=" 'Recargos ' + '$' + flightPrice.charges" class="details-info"></div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 
 			<ul class="nav nav-tabs ">
 				<li class="active">
@@ -51,116 +164,6 @@
 			</ul>
 
 
-			<!--CUADRO RESUMEN-->
-
-			<div class="resume-box">
-                <div class="row">
-				    <div class="title-style col-md-12"><h3>Información del Viaje</h3></div>
-                </div>
-                <div class="row">
-      				    <div class="col-md-12 info-box">
-                          <div class="col-md-10">
-                          <div class="row">
-                              <div class="col-md-12 box-row">
-
-                                  <div class="col-md-2">
-                                    <div class="row">
-                                        <span class='city-info'>
-                                          De: {{idaFlightDetails.departureCity}}</span>
-                                    </div>
-                                    <div class="row">
-                                        <span class= 'city-info'>
-                                          A: {{idaFlightDetails.arrivalCity}}</span>
-                                      </div>
-                                      <div class="row">
-                                          <h5 class="col-md-12">{{idaFlightDetails.number}}</h5>
-                                      </div>
-                                  </div>
-
-                                  <div class="col-md-10">
-                                      <div class="col-md-1">
-                                          <img data-ng-src="{{idaFlightDetails.logo}}" alt="Imagen no disponible" src="img/dummy.png">
-                                      </div>
-                                      <div class="col-md-2">
-                                          <div class= "depart-date">{{idaFlightDetails.departureDate}}</div>
-                                          <div class= "depart-time">{{idaFlightDetails.departureTime}}</div>
-                                      </div>
-                                      <div class="col-md-2">
-                                          <span>{{idaFlightDetails.airportFromName}}</span>
-                                      </div>
-                                      <div class="col-md-1">
-                                          <span><img class='arrow-icon' src='./img/icn/black-plane.svg' alt="Imagen no disponible"></span>
-                                      </div>
-                                      <div class="col-md-2">
-                                          <span>{{idaFlightDetails.airportToName}}</span>
-                                      </div>
-                                      <div class="col-md-2">
-                                          <div class= "land-date">{{idaFlightDetails.arrivalDate}}</div>
-                                          <div class= "land-time">{{idaFlightDetails.arrivalTime}}</div>
-                                      </div>
-                                      <div class="col-md-2">
-                                          <span class="glyphicon glyphicon-time duration"></span><span class="duration">{{idaFlightDetails.duration}}</span>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-                          <div class="row" data-ng-if="$bought.twoWays">
-                              <div class="col-md-12 box-row">
-                                  <div class="col-md-2">
-                                    <div class="row">
-                                      <span class='city-info'>De: {{returnFlightDetails.departureCity}}</span>
-                                    </div>
-                                    <div class="row">
-                                        <span class= 'city-info'>A: {{returnFlightDetails.arrivalCity}}</span>
-                                      </div>
-                                      <div class="row">
-                                          <h5 class="col-md-12">{{returnFlightDetails.number}}</h5>
-                                      </div>
-
-                                  </div>
-                                  <div class="col-md-10">
-                                      <div class="col-md-1">
-                                          <img data-ng-src="{{returnFlightDetails.logo}}" alt="Imagen no disponible" src="img/dummy.png">
-                                      </div>
-                                      <div class="col-md-2">
-                                          <div class= "depart-date">{{returnFlightDetails.departureDate}}</div>
-                                          <div class= "depart-time">{{returnFlightDetails.departureTime}}</div>
-                                      </div>
-                                      <div class="col-md-2">
-                                          <span >{{returnFlightDetails.airportFromName}}</span>
-                                      </div>
-                                      <div class="col-md-1">
-                                          <span><img class='arrow-icon' src='./img/icn/black-plane.svg' alt="Imagen no disponible"></span>
-                                      </div>
-                                      <div class="col-md-2">
-                                          <span>{{returnFlightDetails.airportToName}}</span>
-                                      </div>
-                                      <div class="col-md-2">
-                                          <div class= "land-date">{{returnFlightDetails.arrivalDate}}</div>
-                                          <div class= "land-time">{{returnFlightDetails.arrivalTime}}</div>
-                                      </div>
-                                      <div class="col-md-2">
-                                          <span class="glyphicon glyphicon-time duration"></span><span class="duration">{{returnFlightDetails.duration}}</span>
-                                      </div>
-
-                                  </div>
-                              </div>
-                          </div>
-                          </div>
-                          <div class="col-md-2 flight-price-box">
-                              <div class="price-number" data-ng-bind="'$' + flightPrice.total"></div>
-                              <div class="details">
-                                  <div data-ng-bind=" flightPricesPerPerson.adults.quantity + ' Adulto' + (flightPricesPerPerson.adults.quantity > 1 ? 's' : '') + ' ' + '$' + flightPricesPerPerson.adults.base_fare*flightPricesPerPerson.adults.quantity " class="details-info"></div>
-                                  <div data-ng-if = "$bought.container.price.children" data-ng-bind=" flightPricesPerPerson.children.quantity + ' Niño' + (flightPricesPerPerson.children.quantity > 1 ? 's' : '') + ' ' + '$' + flightPricesPerPerson.children.base_fare*flightPricesPerPerson.children.quantity " class="details-info" ></div>
-                                  <div data-ng-if = "$bought.container.price.infants" data-ng-bind=" flightPricesPerPerson.infants.quantity + ' Infante' + (flightPricesPerPerson.infants.quantity > 1 ? 's' : '') + ' ' + '$' + flightPricesPerPerson.infants.base_fare*flightPricesPerPerson.infants.quantity " class="details-info" ></div>
-                                  <div data-ng-bind=" 'Impuestos ' + '$' + flightPrice.taxes" class="details-info"></div>
-                                  <div data-ng-bind=" 'Recargos ' + '$' + flightPrice.charges" class="details-info"></div>
-
-                              </div>
-                          </div>
-      				    </div>
-                </div>
-			</div>
 
 			<div class="row">
 
@@ -250,12 +253,12 @@
 						</div>
 					</div>
 
-					<div class="tab-pane fade" id="2">
+					<div class="tab-pane tab-fade" id="2">
 						<div id="form2">
 							<!--Titulo -->
 							<div class="row">
 								<div class="col-md-12 title-style">
-									<h3>Información de Pago <span class="glyphicon glyphicon-credit-card"></span></h3>
+									<h3>Información de Pago</h3>
 								</div>
 							</div>
 							<div class="row">
@@ -270,6 +273,11 @@
 									<div id="card-details">
 										<div class="form-group">
 
+							<div class="row">
+								<div class="col-md-12">
+									<p>Medios de pago aceptados: <em>American Express</em>, <em>Diners</em>, <em>Mastercard</em> y <em>Visa</em>.</p>
+								</div>
+							</div>
                       <div class="row">
 
                         <div class="col-md-5 form-field">
@@ -416,7 +424,7 @@
 						</div>
 					</div>
 
-					<div class="tab-pane fade" id="3">
+					<div class="tab-pane tab-fade" id="3">
 						<div id="form3">
 							<!--Titulo -->
 							<div class="row">
@@ -446,7 +454,7 @@
 										</div>
 
 										<!-- Tercera Fila -->
-										<div class="row">
+										<div class="row phone-row">
 											<div class="phone-data">
 
 												<div class="col-md-2 form-field">
@@ -464,21 +472,21 @@
 												</div>
 											</div>
 												
-										</div>
 										<div class="row">
-													<div class="col-md-2 col-md-offset-5 phonebtn">
+													<div class="col-md-2 col-md-offset-2 phonebtn">
 														<a href="#" class="btn btn-default add-Phone add-rem-button">
 															<span class="glyphicon glyphicon-plus-sign"></span>
 															Agregar teléfono
 														</a>
 													</div>
 											</div>
+										</div>
 									</div>
 								</div>
 							</div>
 						</div>
 
-					<div class="tab-pane fade" id="4">
+					<div class="tab-pane tab-fade" id="4">
 						<div class="row">
 							<div class="col-md-12 title-style">
 								<h3 class="title-style">Confirmación</h3>
@@ -642,17 +650,15 @@
 
 			<div class="row">
 				<div class="col-md-2">
-					<button class="arrow-btn btnPrev vda-btn">Volver a Búsqueda<span class="glyphicon glyphicon-chevron-left"/>
+					<button class="arrow-btn btnPrev vda-btn"><span class="glyphicon glyphicon-chevron-left"></span><span class="prevText">Volver a Búsqueda</span>
 						</button>
 				</div>
 				<div class="col-md-2 col-md-offset-8">
-					<button class="arrow-btn btnNext vda-btn" data-ng-click="fillDatas()">Continuar<span class="glyphicon glyphicon-chevron-right"></span></button>
+					<button class="arrow-btn btnNext vda-btn" data-ng-click="fillDatas()"><span class="nextText">Continuar</span><span class="glyphicon glyphicon-chevron-right"></span></button>
 				</div>
 			</div>
 		</div>
 		</div>
-
-	</div>
 
     <div data-ng-if="!validCheckout" class="error-msg">
 	  <div>
@@ -691,7 +697,11 @@
         <!-- Modal content-->
         <div class="modal-content">
           <div class="modal-body">
-            <h1 class="buying-text">Comprando vuelo{{$bought.twoWays ? 's' : ''}}...</h1>
+	          <div id="loadImg"class="spinner">
+		          <div class="dot1"></div>
+		          <div class="dot2"></div>
+	          </div>
+            <h2 class="buying-text">Comprando vuelo{{$bought.twoWays ? 's' : ''}}...</h2>
           </div>
         </div>
 

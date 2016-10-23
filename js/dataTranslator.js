@@ -149,9 +149,10 @@ function buyFlight(bookingIda, bookingVuelta) {
 	        	/* mostrar que la compra se realizó con éxito */
 	    		if(!bookingVuelta) {
 					finishPurchase(data["booking"]);
+				    sessionStorage.removeItem('boughtFlight');
 			    }
 
-			    localStorage.bookingIda = undefined;
+			    localStorage.removeItem('bookingIda');
 	    	},
 	    	error: function() {
 	    		localStorage.bookingIda = bookingIda;
@@ -169,7 +170,8 @@ function buyFlight(bookingIda, bookingVuelta) {
 				/* Mostrar que la compra se realizó con éxito */
 				finishPurchase(data["booking"]);
 
-				localStorage.bookingVuelta = undefined;
+				localStorage.removeItem('bookingVuelta');
+				sessionStorage.removeItem('boughtFlight');
     		},
     		error: function(data) {
   	    		localStorage.bookingVuelta = bookingVuelta;

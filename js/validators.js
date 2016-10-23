@@ -102,7 +102,7 @@ function validateEmail(email) {
 	if (n == 0)
 		return invalidValidation(mandatoryFieldString("el correo electrónico"));
 	if (!regex.test(email))
-		return invalidValidation('el correo electrónico ingresado no es válido. Verifique que tenga el siguiente formato: "ejemplo@correo.com"');
+		return invalidValidation('El correo electrónico ingresado no es válido. Verifique que tenga el siguiente formato: "ejemplo@correo.com"');
 	if (n > MAX_EMAIL)
 		return invalidValidation(ERROR_MSG_LONG);
 
@@ -111,9 +111,12 @@ function validateEmail(email) {
 
 function validateStreet(street) {
 	var n = street.length;
+	var pattern = /[`!@$%^&*=\\|'/><?:;]/;
 
 	if (n == 0)
 		return invalidValidation(mandatoryFieldString("el nombre de la calle"));
+	if (pattern.test(street))
+		return invalidValidation('Verifique que el nombre de la calle sea válido');
 	if (n > MAX_NAME)
 		return invalidValidation(ERROR_MSG_LONG);
 
@@ -218,12 +221,16 @@ function validateMonth(m, mandatoryString) {
 }
 
 function validateYear(y, mandatoryString) {
+	var currentDate = new Date();
 	if (y.length == 0)
 		return invalidValidation(mandatoryFieldString(mandatoryString));
 	if (!isNumber(y))
 		return invalidValidation(invalidNum('el año'));
-	if (y < 1880)
+	if (y < 1880 && mandatoryString.includes('nacimiento'))
 		return invalidValidation('Verifique que el año sea mayor a 1880');
+	if (!mandatoryString.includes('nacimiento') && y < currentDate.getFullYear())
+		return invalidValidation('Tarjeta vencida');
+
 	return validValidation(y);
 }
 
@@ -276,7 +283,7 @@ function validateCardNumber(num) {
 	var n = num.length;
 
 	if (!isNumber(num))
-		return invalidValidation(ERROR_MSG_NUMBER);
+		return invalidValidation(invalidNum('el número de la tarjeta'));
 	if (n == 0)
 		return invalidValidation(mandatoryFieldString("el número de la tarjeta"));
 
@@ -299,7 +306,7 @@ function validateSecCode(num) {
 	var n = num.length;
 
 	if (!isNumber(num))
-		return invalidValidation(ERROR_MSG_NUMBER);
+		return invalidValidation(invalidNum('el código de seguridad de la tarjeta'));
 	if (n == 0)
 		return invalidValidation(mandatoryFieldString("el código de seguridad de la tarjeta"));
 	if (n < MIN_SEC_CODE)
