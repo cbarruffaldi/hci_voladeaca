@@ -94,13 +94,18 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 
 						$http({
 							method: 'GET',
-							url: vURL
+							url: vURL,
+							timeout: 10000
 						}).then(function success(vresponse){
 							process(response, vresponse);
 							$("#resultShow").show();
 							$("#loadImg").hide();
 						},
 							function errorCallback(response){
+								$scope.noConnection = true;
+								$("#resultShow").show();
+								$("#loadImg").hide();
+
 								console.log("Error in response");
 							}
 						)
@@ -111,7 +116,11 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 						$("#resultShow").show();
 						$("#loadImg").hide();
 					}
-  			}, function errorCallback(response) {
+			}, function errorCallback(response) {
+					$scope.noConnection = true;
+					$("#resultShow").show();
+					$("#loadImg").hide();
+
     				console.log("Error in response");
     		});
 
@@ -143,7 +152,6 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 			}
 
 console.log("Starert");
-			console.log(pass);
 
 			var airlinePass = true;
 		//	if(activeAirlineFilter()){
@@ -153,30 +161,24 @@ console.log("Starert");
 				}
 		//	}
 			pass = pass && airlinePass;
-			window.console.log(pass)
 
 			pass = pass && $scope.iTimeFilter.validate(flight1.departMoment.date.getHours());
-			window.console.log(pass)
 		
 			if(flight2){
 				pass = pass && $scope.vTimeFilter.validate(flight2.departMoment.date.getHours());
 			}
-			window.console.log(pass)
 
 			if($scope.maxprice){
 				pass = pass && (container.price.total.total <= $scope.maxprice)
 			}
 			console.log(container.price.total.total)
-			window.console.log(pass)
 
 			if($scope.minprice){
 				pass = pass && (container.price.total.total >= $scope.minprice)
 			}
-			window.console.log(pass)
 
 			pass = pass && $scope.airports.filter[flight1.departure.airport.id]
 			pass = pass && $scope.airports.filter[flight1.arrival.airport.id]
-			window.console.log(pass)
 			
 			if(flight2){
 
@@ -185,7 +187,6 @@ console.log("Starert");
 			}
 
 			window.console.log(pass)
-						window.console.log("End")
 
 			return pass;
 
@@ -589,7 +590,6 @@ console.log("Starert");
 	$scope.$on('LastRepeaterElement', function(){
     $('[data-toggle="tooltip"]').tooltip(); 
 		$('.ida-vuelta-badge').each(function() {
-			console.log($(this).text());
 			var appendArrow;
 			if ($(this).text().replace(/ /g,'')
  == "IDA") 
@@ -597,7 +597,6 @@ console.log("Starert");
 			else
 				appendArrow = 'glyphicon-chevron-left'
 			
-			console.log(appendArrow);
 			$(this).append("<span class='glyphicon " + appendArrow + "'> </span>");
 		})
 		

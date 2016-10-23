@@ -11,7 +11,6 @@ var _ = function (input, o) {
 	var me = this;
 
 	// Setup
-	console.log("const"); console.log(o)
 	this.isOpened = false;
 
 	this.input = $(input);
@@ -203,7 +202,6 @@ _.prototype = {
 
 		//Chelo Modification
 		if(validate && global.validateInput){
-			console.log("Teh")
 			validateInput(this.input)
 		}
 

@@ -22,12 +22,10 @@
 		
 		<link rel="stylesheet" href="./CheloLabs/awesomplete.css">
 
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+		<script src="js/vendor/jquery-1.11.2.min.js"></script>
 
 		<script src="extlib/angular.min.js"></script>
-		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-animate.js"></script>
-
-		<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+		<script src="js/angular-animate.js"></script>
 
 	</head>
 
@@ -231,6 +229,7 @@
 							<div data-ng-if="emptySearch"
 									 data-ng-include="'./snippets/emptysearch.html'">
 							</div>
+							<div data-ng-if="noConnection" data ng-include="'./snippets/noconnection.html'"></div>
 						</div>
 
 					</div>

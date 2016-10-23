@@ -1,10 +1,10 @@
-var app = angular.module("mapApp", []);
+//var app = angular.module("mapApp", []);
 
 app.controller('mapCtrl', function($scope, $http, $q){
 
+	mapSetup(window);
 	$acUtils.load().then(function() {
 		formSetup();
-		mapSetup(window);
 	});
 
 	function formSetup(){
@@ -15,7 +15,7 @@ app.controller('mapCtrl', function($scope, $http, $q){
 		);
 	
 
-	$( "#datepicker" ).datepicker({minDate: +2, showAnim: ""});
+	$( "#datepicker" ).datepicker({minDate: +2});
 
 
 
@@ -111,9 +111,17 @@ app.controller('mapCtrl', function($scope, $http, $q){
 		}	
 	})
 
-	//$("#datepicker").on('blur', function(){
-	//	validate(false, true);		
-	//})
+
+
+	$("#datepicker").on('change', function(event){
+		validate(false,true);	
+		var self = $(this);
+		if(! self.val()){
+			self.removeClass('x');
+		}	
+	})
+
+
 
 	$("#inputCity").keypress(function(event) {
 	 	  if (event.which == 13) {
@@ -122,9 +130,6 @@ app.controller('mapCtrl', function($scope, $http, $q){
 	    }
 	});
 
-	//	$("#inputCity").on('change', function() {
-	//									mapUtils.updateMap($acUtils.id_map[$(this).val()]);
-	//								});
 	
 		$("#search").on('click', function(){
 			update();
@@ -150,11 +155,17 @@ function mapSetup(global){
 	function updateMap(id, date){
 		clearMarkers();
 		console.log(date);
+
+		$("#map").hide();
+		$("#maploading").show();
+		$("#search").attr("disabled", true);
+		$("#search").addClass("disabled");
+
 		$http({
 			method: 'GET',
 			url:  "http://hci.it.itba.edu.ar/v1/api/booking.groovy?method=getflightdeals&from=" + id
 		}).then( function(response) { 
-			fillMap(response.data, date);
+			fillMap(response.data, date, id);
 		})
 
 		/*
@@ -172,7 +183,7 @@ function mapSetup(global){
 
 		function updateCity(response){
 			if(response.city){
-				$("#tit").text("Ofertas saliendo desde " + response.city.name);
+				$("#tit").text("Ofertas saliendo desde " + response.cityname);
 				mapUtils.current = response.city.name;
 			}
 			else{
@@ -182,49 +193,93 @@ function mapSetup(global){
 		}
 
 
-		function fillMap(response, date){
+		function fillMap(response, date, from){
 			var deals = response.deals;
-
-			var info;
-			var details = {};
-
+			var promises = []
 			console.log(deals);
 			for(var i in deals){
-				info = deals[i].city
-				details['lat'] = info.latitude;
-				details['lgt']= info.longitude;
+				var details = {};
+				details['lat'] = deals[i].city.latitude;
+				details['lgt']= deals[i].city.longitude;
 			
-				details['info'] = { name: info.name,
-									country: info.country,
-									id: info.id,
-									price: deals[i].price
+				details['info'] = { name: deals[i].city.name,
+									id: from,
+									country: deals[i].city.country,
+									price: deals[i].price,
+									to: deals[i].city
 								  };
 
 				details['date'] = date;
 
-				addMarker(details);
+				promises.push(addMarker(details));
 			}
+
+			$q.all(promises).then(function(response){
+			$("#map").show();
+			$("#maploading").hide();
+			$("#search").attr("disabled", false);
+			$("#search").removeClass("disabled");
+		});
+
 
 		}
 
 		function addMarker(details){
 			var deferred = $q.defer();
 
-			
 			var minPrice = details['info'].price;
 
-			petition(date);
+			petition(details['date'], 7, details);
 
-			function petition(date){
-				$http.
+			function petition(date, tries, details){
+				var dateStr = date.format("YYYY-MM-DD");
+
+				var URL = "http://hci.it.itba.edu.ar/v1/api/booking.groovy?method=getonewayflights";
+				URL += "&from=" + details['info'].id + "&to=" + details['info'].to.id + "&adults=1&children=0&infants=0&dep_date=" + dateStr;
+
+				if(tries < 1){
+					//No deberia llegar aca
+					console.log("tryout");
+					deferred.resolve();
+					return;
+				}
+				
+				
+				$http({
+					method: 'GET',
+					url: URL
+					}).then(function(response){
+						if(response.data.total > 0){
+							var price = response.data.filters[2].min;
+							if(price == minPrice){
+							fin(date, details, deferred);
+							return;
+							}
+						}
+						var ndate = moment(date);
+						ndate.add(1,'days');
+						petition(ndate, tries-1, details);				
+					});
 			}
 
-			function fin(){ 
+			function fin(date, details, deferred){
 
-			var contentString = "<strong>" + details['info'].name + "</strong>" + "<br />"
-								+ "<strong>Precio: </strong>" +  details['info'].price + "<br />"
-								+ "<a href='#' class='markerLink' \
-										data-cityID='" + details['info'].id + "' + onclick='searchPromo(this)'>Buscar!</a>"; 
+			var dateStr = date.format("YYYY-MM-DD");
+			var URL = "./search3.html?date=" + dateStr;
+				URL += "&orig=" + details['info'].id + "&dest=" + details['info'].to.id + "&adults=1&children=0&infants=0&promo=true";
+
+			var point = {lat: details.lat, lng: details.lgt}
+			var marker = new google.maps.Marker({
+		    	position: point,
+	    		map: map,
+	    		icon: "img/paper-marker-sm.png"
+		  		//  title: details.info.name;
+		  	});
+
+			dateStr = date.format("DD/MM/YYYY");
+			var contentString = "<span class='iw-title'><strong>" + details['info'].name + "</strong></span><br />"
+								+ "Desde  <strong>USD " +  details['info'].price + "</strong> por adulto saliendo el " + dateStr + "<br />"
+								+ "<a href='"+ URL + "'>¡Buscar!</a>"; 
 
 			var infowindow  = new google.maps.InfoWindow({
 	    				content: contentString
@@ -241,17 +296,12 @@ function mapSetup(global){
 		  		});
 
 			mapUtils.markers.push(marker);
-
-			var point = {lat: details.lat, lng: details.lgt}
-			var marker = new google.maps.Marker({
-	    	position: point,
-	    	map: map,
-	    	icon: img
-		  	//  title: details.info.name;
-		  	});
-
-			}
+			deferred.resolve();
 		
+		}
+		
+		return deferred.promise;
+
 		}
 
 
@@ -266,12 +316,13 @@ function mapSetup(global){
 	mapUtils.updateMap = updateMap;
 	mapUtils.updateCity = updateCity;
 		
-	//mapUtils.updateMap("BUE");
 
 	} //initMap
 
+	$("#maploading").hide();
+
 	mapUtils.initMap = initMap;
-	global.mapUtils = mapUtils;
+	window.mapUtils = mapUtils;
 
 };
 

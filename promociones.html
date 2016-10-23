@@ -1,6 +1,7 @@
-    <head>
+  <!DOCTYPE html>
+  <head>
         <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>VolaDeAca</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,19 +14,18 @@
         <link rel="stylesheet" href="css/spinner.css">
         <link rel="stylesheet" href="css/buttons.css">
         <link rel="stylesheet" href="css/clearinput.css">
-        <link rel="stylesheet" href="./css/promociones.css"></link>
-         <link rel="stylesheet" href="./CheloLabs/awesomplete.css"></link>
+        <link rel="stylesheet" href="./css/promociones.css">
+         <link rel="stylesheet" href="./CheloLabs/awesomplete.css">
     <link rel="stylesheet" href="jqueryui/jquery-ui.css">
 
 
         <script src="extlib/angular.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
-        <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
 
    <!--     <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script> -->
 
            </head>
-    <body data-ng-app="mapApp" data-ng-controller="mapCtrl">
+    <body data-ng-app="flightApp">
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
@@ -37,7 +37,7 @@
   <div class="body-contents-promo">
 
   <div class="container">
-  <div class="row mapcontent">
+  <div class="row mapcontent" data-ng-controller="mapCtrl">
         <div class="titulo promo_t">Encontrá promociones desde donde quieras, a donde quieras</div>
         <div class="mapbox col-sm-12">
           <div class="row">
@@ -55,11 +55,16 @@
           </div>
 
         </div>
-              <div id="map"><div id="maploading" class="spinner">
+        <div id="maploading">
+          <h3>Cargando...</h3>
+          <h4>Esto puede llevar un tiempo</h4>
+          <div class="active spinner">
               <div class="dot1"></div>
               <div class="dot2"></div>
-            </div>
-</div>
+          </div>
+        </div>  
+        
+        <div id="map"></div>
        </div> <!-- searchbox -->
     </div> <!-- row -->
 
@@ -75,9 +80,11 @@
 <footer>  
   <div class="container">
     <div class="row">
-    <div class="col-md-4" />
+    <div class="col-md-4">
         <p>&copy; VolaDeAca 2016</p>
   </div> <!-- row -->
+</div>
+</div>
 </footer>
   <script src="js/vendor/jquery-1.11.2.min.js"></script>
   <script src="js/vendor/bootstrap.min.js"></script>
@@ -88,14 +95,17 @@
       <script src="jqueryui/jquery-ui.js"></script>
       <script src="jqueryui/uidatepicker-es.js"></script>
 
+    <script src="js/clearinput.js"></script>
+     <script src="js/moment.js"></script>
+    
+    <script src="./promos.js"></script>
+    <script src="./CheloLabs/mapscript.js"></script>
+    <script src="./js/promociones.js"></script>
+  
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBTZDFmbFBMRcM-9FO_zE7oEN8KBgthotk&callback=mapUtils.initMap"
     async defer></script>
     
-    <script src="js/clearinput.js"></script>
-     <script src="js/moment.js"></script>
 
-    <script src="./CheloLabs/mapscript.js"></script>
-    <script src="./js/promociones.js"></script>
 
 </body>
 </html>
