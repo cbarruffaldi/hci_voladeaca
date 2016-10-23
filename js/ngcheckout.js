@@ -32,6 +32,7 @@ app.controller('CheckoutController', function($scope) {
 	$scope.passengerList = buildList($bought.passengers);
 
     $scope.passPlural = $scope.passengerList.length > 1 ? 's' : '';
+	$scope.dePlural = $scope.passengerList.length > 1 ? ' los' : 'l';
 
 	$scope.$bought = $bought;
 

@@ -40,7 +40,7 @@
 
 			<ul class="nav nav-tabs ">
 				<li class="active">
-					<a href="">1. Pasajero<span data-ng-bind="passPlural"></span> <span class="glyphicon glyphicon-user"></span></a>
+					<a href="#1">1. Pasajero<span data-ng-bind="passPlural"></span> <span class="glyphicon glyphicon-user"></span></a>
 				</li>
 				<li class="disabled disabled-tab"><a href="#2">2. Pago <span class="glyphicon glyphicon-credit-card"></span></a>
 				</li>
@@ -55,7 +55,7 @@
 
 			<div class="resume-box">
                 <div class="row">
-				    <div class="title-style col-md-12"><h3>Información del viaje</h3></div>
+				    <div class="title-style col-md-12"><h3>Información del Viaje</h3></div>
                 </div>
                 <div class="row">
       				    <div class="col-md-12 info-box">
@@ -169,7 +169,7 @@
 					<div class="tab-pane active" id="1">
 						<div class="row" id="form1">
 							<div class="col-md-12 title-style">
-								<h3>Información de Pasajero<span data-ng-bind="passPlural"></span></h3>
+								<h3>Información de<span data-ng-bind="dePlural"></span> Pasajero<span data-ng-bind="passPlural"></span></h3>
 							</div>
 						</div>
 						<div class="row" data-ng-repeat="passenger in passengerList">
@@ -315,11 +315,11 @@
 	
 												<!-- Mensaje error validación tarjeta de crédito -->
 												<div class="col-md-12">
-													<p id="error-card">No hemos podido verificar su tarjeta de crédito. Por favor revise sus datos.</p>
+													<p id="error-card">No hemos podido verificar su tarjeta de crédito. Por favor revise sus datos</p>
 												</div>
 
 												<div class="col-md-12">
-													<p id="error-internet-card">¡Sin Internet! No hemos podido verificar su tarjeta de crédito porque se ha perdido la conexión a Internet. Haga click en este texto para reintentar.</p>
+													<p id="error-internet-card">¡Sin Internet! No hemos podido verificar su tarjeta de crédito porque se ha perdido la conexión a Internet. Haga click en este texto para reintentar</p>
 												</div>
 											</div>
 
@@ -482,7 +482,7 @@
 
 									<div class="panel panel-default">
 										<div class="panel-heading">
-											<h4>Información de Pasajero<span data-ng-bind="passPlural"></span></h4>
+											<h4>Información de<span data-ng-bind="dePlural"></span> Pasajero<span data-ng-bind="passPlural"></span></h4>
 										</div>
 
 										<div class="panel-body">

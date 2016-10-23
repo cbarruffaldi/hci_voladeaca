@@ -98,7 +98,7 @@ function validateEmail(email) {
 	if (n == 0)
 		return invalidValidation(mandatoryFieldString("el correo electrónico"));
 	if (!regex.test(email))
-		return invalidValidation('El correo electrónico ingresado no es válido. Verifique que tenga el siguiente formato: "ejemplo@correo.com');
+		return invalidValidation('El correo electrónico ingresado no es válido. Verifique que tenga el siguiente formato: "ejemplo@correo.com"');
 	if (n > MAX_EMAIL)
 		return invalidValidation(ERROR_MSG_LONG);
 

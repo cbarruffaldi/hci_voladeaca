@@ -113,7 +113,7 @@ $(document).ready(function() {
 	$('.btnPrev').click(function() {
 		var indexTab = getCurrentStage();
 		$('.nav-tabs .active').addClass('disabled');
-		$('.nav-tabs .active').addClass('disabled');
+		$('.nav-tabs .active').addClass('disabled-tab');
 		$('.nav-tabs .active').prev('li').find('a').tab('show');
 
 		if (indexTab == 1) {
