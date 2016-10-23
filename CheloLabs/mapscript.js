@@ -2,9 +2,9 @@
 
 app.controller('mapCtrl', function($scope, $http, $q){
 
+	mapSetup(window);
 	$acUtils.load().then(function() {
 		formSetup();
-		mapSetup(window);
 	});
 
 	function formSetup(){
@@ -15,7 +15,7 @@ app.controller('mapCtrl', function($scope, $http, $q){
 		);
 	
 
-	$( "#datepicker" ).datepicker({minDate: +2, showAnim: ""});
+	$( "#datepicker" ).datepicker({minDate: +2});
 
 
 
@@ -111,9 +111,17 @@ app.controller('mapCtrl', function($scope, $http, $q){
 		}	
 	})
 
-	//$("#datepicker").on('blur', function(){
-	//	validate(false, true);		
-	//})
+
+
+	$("#datepicker").on('change', function(event){
+		validate(false,true);	
+		var self = $(this);
+		if(! self.val()){
+			self.removeClass('x');
+		}	
+	})
+
+
 
 	$("#inputCity").keypress(function(event) {
 	 	  if (event.which == 13) {
@@ -122,9 +130,6 @@ app.controller('mapCtrl', function($scope, $http, $q){
 	    }
 	});
 
-	//	$("#inputCity").on('change', function() {
-	//									mapUtils.updateMap($acUtils.id_map[$(this).val()]);
-	//								});
 	
 		$("#search").on('click', function(){
 			update();
@@ -154,6 +159,7 @@ function mapSetup(global){
 		$("#map").hide();
 		$("#maploading").show();
 		$("#search").attr("disabled", true);
+		$("#search").addClass("disabled");
 
 		$http({
 			method: 'GET',
@@ -212,6 +218,7 @@ function mapSetup(global){
 			$("#map").show();
 			$("#maploading").hide();
 			$("#search").attr("disabled", false);
+			$("#search").removeClass("disabled");
 		});
 
 
@@ -258,9 +265,8 @@ function mapSetup(global){
 			function fin(date, details, deferred){
 
 			var dateStr = date.format("YYYY-MM-DD");
-			var URL = "http://hci.it.itba.edu.ar/v1/api/booking.groovy?method=getonewayflights";
-				URL += "&from=" + details['info'].id + "&to=" + details['info'].to.id + "&adults=1&children=0&infants=0&dep_date=" + dateStr;
-				URL += "&page_size=1&sort_key=total";
+			var URL = "./search3.html?date=" + dateStr;
+				URL += "&orig=" + details['info'].id + "&dest=" + details['info'].to.id + "&adults=1&children=0&infants=0&promo=true";
 
 			var point = {lat: details.lat, lng: details.lgt}
 			var marker = new google.maps.Marker({
@@ -270,10 +276,10 @@ function mapSetup(global){
 		  		//  title: details.info.name;
 		  	});
 
-			var contentString = "<strong>" + details['info'].name + "</strong>" + "<br />"
-								+ "<strong>Precio: </strong>" +  details['info'].price + "<br />"
-								+ "<a href='"+ URL + "' class='markerLink' \
-										data-cityID='" + details['info'].id + "' + onclick='searchPromo(this)'>Buscar!</a>"; 
+			dateStr = date.format("DD/MM/YYYY");
+			var contentString = "<span class='iw-title'><strong>" + details['info'].name + "</strong></span><br />"
+								+ "Desde  <strong>USD " +  details['info'].price + "</strong> por adulto saliendo el " + dateStr + "<br />"
+								+ "<a href='"+ URL + "'>¡Buscar!</a>"; 
 
 			var infowindow  = new google.maps.InfoWindow({
 	    				content: contentString
@@ -316,7 +322,7 @@ function mapSetup(global){
 	$("#maploading").hide();
 
 	mapUtils.initMap = initMap;
-	global.mapUtils = mapUtils;
+	window.mapUtils = mapUtils;
 
 };
 

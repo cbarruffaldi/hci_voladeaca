@@ -6,7 +6,6 @@
 
 .ui-draggable-handle {
 	-ms-touch-action: none;
-	touch-action: none;
 }
 /* Layout helpers
 ----------------------------------*/
@@ -61,7 +60,6 @@
 ----------------------------------*/
 .ui-state-disabled {
 	cursor: default !important;
-	pointer-events: none;
 }
 
 
@@ -102,7 +100,6 @@
 	font-size: 0.1px;
 	display: block;
 	-ms-touch-action: none;
-	touch-action: none;
 }
 .ui-resizable-disabled .ui-resizable-handle,
 .ui-resizable-autohide .ui-resizable-handle {
@@ -166,7 +163,6 @@
 }
 .ui-selectable {
 	-ms-touch-action: none;
-	touch-action: none;
 }
 .ui-selectable-helper {
 	position: absolute;
@@ -175,7 +171,6 @@
 }
 .ui-sortable-handle {
 	-ms-touch-action: none;
-	touch-action: none;
 }
 .ui-accordion .ui-accordion-header {
 	display: block;
@@ -262,7 +257,6 @@
 	-webkit-user-select: none;
 	-moz-user-select: none;
 	-ms-user-select: none;
-	user-select: none;
 
 	/* Support: IE <= 11 */
 	overflow: visible;
@@ -397,7 +391,6 @@ button.ui-button::-moz-focus-inner {
 	border-style: solid;
 }
 .ui-checkboxradio-disabled {
-	pointer-events: none;
 }
 .ui-datepicker {
 	width: 17em;
@@ -734,7 +727,6 @@ button.ui-button::-moz-focus-inner {
 	height: 1.2em;
 	cursor: default;
 	-ms-touch-action: none;
-	touch-action: none;
 }
 .ui-slider .ui-slider-range {
 	position: absolute;
