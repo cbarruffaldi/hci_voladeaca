@@ -21,6 +21,10 @@ border-radius: 5px;
 #maploading h3{
 	color: #204DCC;
 }
+
+.mapbox h4 {
+	color: #204DCC;
+}
 /*
 #maploading{
 position: relative;
@@ -89,7 +93,7 @@ input{
     border-radius: 5px;
 
 	border: #93bcff 1px solid;
-	margin-bottom: 100px; 
+	margin-bottom: 2%; 
 	padding-bottom: 1em;
 	border-bottom-left-radius: 5px;
 	border-bottom-right-radius: 5px;
