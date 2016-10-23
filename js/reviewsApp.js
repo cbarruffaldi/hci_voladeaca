@@ -66,13 +66,17 @@ app.controller("reviewsCtrl", function($scope, $http, $sce, $window) {
 	function clearErrors() {
 		$("#nroVuelo").removeClass("inputerr");
 		$("#input-aerolinea").removeClass("inputerr");
+		$("aerolinea-err").val("");
+		$("nroVuelo-err").val("");
 		$("#nroVuelo-err").hide();
-		$("#aerolinea-err").show();
+		$("#aerolinea-err").hide();
+		$scope.emptySearch = false;
+		$scope.noConnection = false;
 	}
 
 
 	$scope.search = function(){
-
+		clearErrors();
 
 		$scope.noConnection = false;
 
@@ -96,7 +100,7 @@ app.controller("reviewsCtrl", function($scope, $http, $sce, $window) {
 			}
 			URL += "&airline_id=" + name;
 		}else if($("#nroVuelo").val()){
-				var rgx = new RegExp("[0-9]+");
+				var rgx = new RegExp("^[0-9]+$");
 				if(!rgx.test($("#nroVuelo").val())) {
 					$("#nroVuelo").addClass("inputerr");
 					$("#nroVuelo-err").text("Ingrese un número");
