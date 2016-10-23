@@ -5,6 +5,23 @@
         text-align: center;
       }
 
+
+#maploading {
+position: absolute;
+padding: 3%;
+width: 30%;
+height: 200px;
+text-align: center;
+z-index: 100;
+background: rgba(255,255,255,0.8);
+margin: 4% 30% 0 30%;
+border-radius: 5px;
+}
+
+#maploading h3{
+	color: #204DCC;
+}
+/*
 #maploading{
 position: relative;
 padding-top: 4%;
@@ -12,10 +29,11 @@ width: 100%;
 height: 100%;
 text-align: center;
 }
+*/
 
-
-.active{
+.mapspin{
 	z-index: 100;
+	margin-top: 5px;
 }
 #mapform, #calendar{
 	padding: 30px;

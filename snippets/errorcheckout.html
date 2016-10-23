@@ -4,5 +4,15 @@
 		</div>
 		<h1>¡Ups! No deberías llegar a esta página antes de seleccionar un vuelo</h1>
 		<br/><br/>
-		<h2><a href="./index.html">Volver a la página principal</a></h2>
+		<h2>Serás conducido a la <a href="./index.html">página principal</a> en <div id="counter">5</div> segundos</h2>
+		<script>
+        setInterval(function() {
+            var div = document.querySelector("#counter");
+            var count = div.textContent * 1 - 1;
+            div.textContent = count;
+            if (count <= 0) {
+                location.href="index.html";
+            }
+        }, 1000);
+    </script>
 </div>
