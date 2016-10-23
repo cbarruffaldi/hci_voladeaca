@@ -638,3 +638,19 @@ margin-top: -20px;
 #reviewRes {
 	min-height: 600px;
 }
+
+
+
+#nav-reviews a:hover{
+	color: #dc0055;
+	background-color: #fff;
+	cursor: default;
+
+}
+
+#nav-reviews a{
+	background-color: #fff;
+	cursor: default;
+	color: #dc0055;
+	font-weight: bold;
+}
