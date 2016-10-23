@@ -106,7 +106,20 @@ input::-webkit-inner-spin-button {
 .review-head{
 	position:relative;
 	height:10px;
-	background: cornflowerblue ;
+	background: #204Dcc ;
+}
+.review-head:before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	border-width: 0 0 35px 35px;
+	border-style: solid;
+	border-color: #204Dcc #fff;
+	-webkit-box-shadow: 3px 1px 1px 0px  rgba(0,0,0,0.3);
+	-moz-box-shadow: 3px 1px 1px 0px rgba(0,0,0,0.3);
+	box-shadow: 3px 1px 1px 0px rgba(0,0,0,0.3) /* -1px 1px 1px rgba(0,0,0,0.2);
+		*/
 }
 
 .review-btn-row {
@@ -234,10 +247,9 @@ ul.tabs li.current{
 	border-radius: 10px;
 	border: cornflowerblue solid 1px;
 	margin: 0;
-	margin-top: 5%;
+	margin-top: 4%;
 	margin-right: 20px;
 	margin-left: 25px;
-	margin-bottom: 5%;
 }
 
 
@@ -367,7 +379,6 @@ textarea:focus {
 	font-size: 1.2em;
 	color: #333;
 	border-radius: 3px;
-	margin-bottom: 25px;
 }
 
 .inputerr{
@@ -419,11 +430,6 @@ textarea:focus {
 
 .sendreview button:hover {
 	border-bottom: 1px solid #7b7b7b;
-}
-
-.rec-quest {
-	margin-top: 10px;
-	margin-bottom: 10px;
 }
 
 .star-rating{
@@ -485,7 +491,7 @@ textarea:focus {
 }
 
 #leaveReviewModal .modal-dialog {
-	margin-top: 6em !important;
+	margin-top: 3em !important;
 	margin-bottom: 0;
 }
 
@@ -521,21 +527,64 @@ textarea:focus {
 	border: 1px solid chartreuse;
 }
 
+.input-err input {
+	transition: all 0.3s;
+	border-color: crimson;
+}
 
-.emptyresults{
+.comment-err .bubble {
+	transition: all 0.3s;
+	border-color: crimson;
+}
+
+.comment-err .bubble:before {
+	transition: all 0.3s;
+	border-color: crimson transparent;
+	background-color: #d0d0d0 transparent;
+}
+
+.err-msg {
+	color: crimson;
+	font-size: 1.1em;
+	display: none;
+	position: absolute;
+}
+
+.airline-input .err-msg, .number-input .err-msg {
+	left: 20px;
+} 
+
+.comment-area .err-msg {
+	left: 4em;
+}
+
+.slider-area {
+	margin-top: 2em;
+}
+
+#reviewSent .modal-dialog, #sendingModal .modal-dialog{
+	margin-top: 20%;
+}
+
+#sendingModal .modal-body {
+	padding: 35px;
+}
+
+#sendingModal .sending-msg {
+	font-size: 2em;
+	color: #7b7b7b;
 	text-align: center;
-	color: #5b5b5b;
-	margin: 50px;
-	background: rgba(255,255,255,0.5);
-	padding: 50px 0 50px 0;
-}
-.emptyresults h2 {
-	font-weight: 300;
 }
 
+#reviewSent .modal-body{
+	background-color: #DFF2BF;
+	border-radius: 10px;
+}
 
-.emptyresults img {
-	height: 200px;
+#reviewSent .success-msg{
+	color: #4F8A10;
+	text-align: center;
+	font-size: 2em;
 }
 
 
@@ -543,4 +592,9 @@ textarea:focus {
 	text-align: center;
 	font-size: 1.8em;
 	height: 2em;
+}
+#reviewSent .vda-btn {
+	padding: 2% 4%;
+	margin-top: 2%;
+	color: #4F8A10;
 }
