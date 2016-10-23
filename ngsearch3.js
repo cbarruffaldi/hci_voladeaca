@@ -95,7 +95,7 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 						$http({
 							method: 'GET',
 							url: vURL,
-							timeout: 10000
+							timeout: 7000
 						}).then(function success(vresponse){
 							process(response, vresponse);
 							$("#resultShow").show();

@@ -240,6 +240,10 @@ ul.tabs li.current{
 	font-weight: 400;
 }
 
+.would-reccomend{
+	padding-top: 15px;
+}
+
 .ratings li{
 	font-size: 1.1em;
 	font-weight: 500;
