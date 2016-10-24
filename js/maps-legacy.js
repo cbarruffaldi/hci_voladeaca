@@ -13,8 +13,7 @@
    		zoom: 2
 	   });
 
-   	console.log(map);
-	
+
 	function updateMap(id, date){
 		clearMarkers();
 		$("#maperror").addClass("hidden");
@@ -89,8 +88,7 @@
 						URL += "&from=" + details['info'].id + "&to=" + details['info'].to.id + "&adults=1&children=0&infants=0&dep_date=" + dateStr;
 
 						if(tries < 1){
-							//No deberia llegar aca
-							console.log("tryout");
+							//No deberia llegar aca nunca
 							deferred.reject();
 							return;
 						}
@@ -112,7 +110,6 @@
 								petition(ndate, tries-1, details);				
 								},
 								error: function(){
-									console.log(deferred)
 									deferred.reject();
 								 	$("#maploading").hide();
 									$("#search").attr("disabled", false);

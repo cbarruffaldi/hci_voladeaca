@@ -1,4 +1,4 @@
-$(function() {
+/*$(function() {
 	var dateFormat = "dd/mm/yy",
 			from = $( "#datepicker1" )
 	.datepicker({minDate: +2, showAnim: ""})
@@ -18,4 +18,4 @@ $(function() {
 		}
 		return date;
 	}
-});
+});*/

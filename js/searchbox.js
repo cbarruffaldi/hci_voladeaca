@@ -1,8 +1,31 @@
 function initSearchbox(global){
 	if(! global.$acUtils ){
-		console.log("Err");
+		//Esto no va a pasar nunca por como esta hecha la llamada,
+		//pero por las dudas
 		return;
 	}
+
+	$(function() {
+	var dateFormat = "dd/mm/yy",
+			from = $( "#datepicker1" )
+	.datepicker({minDate: +2, showAnim: ""})
+	.on( "change", function() {
+		var date = getDate( this );
+		to.datepicker( "option", "minDate",date );
+	}),
+			to = $( "#datepicker2" )
+	.datepicker({minDate: +2, showAnim: ""})
+
+	function getDate( element ) {
+		var date;
+		try {
+			date = $.datepicker.parseDate( dateFormat, element.value );
+		} catch( error ) {
+			date = null;
+		}
+		return date;
+	}
+	});
 
 	var $acUtils = global.$acUtils; 
 	new Awesomplete(document.getElementById("origen"), {
@@ -21,8 +44,6 @@ function initSearchbox(global){
 	var $id_map = global.$acUtils.id_map;
 	var soloIda = false;
 
-	//$("#datepicker1").datepicker({minDate: '+2D'});
-//	$("#datepicker2").datepicker({minDate: '+2D'});
 
 	$("#datepicker1").keydown(function() {
 		$( function(){$("#datepicker1").datepicker("hide") } );
