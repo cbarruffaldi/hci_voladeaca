@@ -138,7 +138,7 @@
 
 					dateStr = date.format("DD/MM/YYYY");
 					var contentString = "<span class='iw-title'><strong>" + details['info'].name + "</strong></span><br />"
-										+ "Desde  <strong>USD " +  details['info'].price + "</strong> por adulto saliendo el " + dateStr + "<br />"
+										+ "Desde  <strong>US$ " +  details['info'].price + "</strong> por adulto saliendo el " + dateStr + "<br />"
 										+ "<a href='"+ URL + "'>¡Buscar!</a>"; 
 
 					var infowindow  = new google.maps.InfoWindow({

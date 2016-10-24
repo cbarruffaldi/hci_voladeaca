@@ -183,14 +183,16 @@ ul.tabs{
 }
 
 ul.tabs li{
-	background: none;
-	color: #333;
+	background: #cecfcf;
+    color: #204dcc;
 	display: inline-block;
 	padding: 10px 15px;
 	cursor: pointer;
 	border: 1px solid transparent;
 	border-bottom: 0;
 	transition: all 0.2s;
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px
 }
 
 ul.tabs li.current{
@@ -308,7 +310,7 @@ ul.tabs li.current{
 	border-style: solid;
 	border-width: 0 15px 15px;
 	border-color: cornflowerblue transparent;
-	background-color: #d0d0d0 transparent;
+	background-color: rgba(255, 255, 255, 0);
 	display: block;
 	width: 0;
 	z-index: 0;
@@ -569,7 +571,7 @@ margin-top: -20px;
 .comment-err .bubble:before {
 	transition: all 0.3s;
 	border-color: crimson transparent;
-	background-color: #d0d0d0 transparent;
+	background-color: #d0d0d0;
 }
 
 .err-msg {
