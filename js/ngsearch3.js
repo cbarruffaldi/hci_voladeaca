@@ -34,6 +34,10 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 		});
 
 		}
+
+		$scope.reloadPage = function() {
+			location.reload();
+		}
 		
 		$scope.promo = function(f){
 			return getURLParameter("promo") == "true" 
