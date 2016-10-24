@@ -1,4 +1,6 @@
 var app = angular.module("reviewsApp", ['ngAnimate', 'infinite-scroll']);
+	
+$acUtils.load();
 
 app.directive('setReviewColors', function() {
 	return function(scope) {
@@ -98,7 +100,7 @@ app.controller("reviewsCtrl", function($scope, $http, $sce, $window) {
 		while(!$scope.airlineData); //Jaja
 		$scope.reviewResults = [];
 		$scope.flightResults = [];
-		var URL = 'http://hci.it.itba.edu.ar/v1/api/review.groovy?method=getairlinereviews';
+		var URL = 'http://hci.it.itba.edu.ar/v1/api/review.groovy?method=getairlinereviews&page_size=1000000';
 
 
 		if($("#nroVuelo").val()){
@@ -145,6 +147,7 @@ app.controller("reviewsCtrl", function($scope, $http, $sce, $window) {
 			$scope.emptySearch = true;
 			for(var i in response.data.reviews){
 				var r = response.data.reviews[i];
+				console.log(r);
 				var rid = r.flight.airline.id + r.flight.number;
 				if(added[rid]){
 					added[rid].merge(r);
@@ -282,24 +285,39 @@ app.controller("reviewsCtrl", function($scope, $http, $sce, $window) {
 
 	function validateReview(send) {
 		valid = true;
-		if (send.comments == '') {
+		if ($("#rating-comments").val() == '') {
 			$('.comment-area').addClass("comment-err");
 			$('.comment-area .err-msg').fadeIn();
 			valid = false
 		}
 
-		if (!send.flight || !send.flight.airline.id) {
-			$('.airline-input').addClass("input-err");
-			$('.airline-input .err-msg').fadeIn();
-			valid = false
-		}
+		valid = valid && $scope.checkNumber();
+		valid = valid && $scope.checkAirline();
 
-		if (!send.flight || !send.flight.number) {
+		return valid;
+	}
+
+
+	$scope.checkNumber = function() {
+		var rgx = new RegExp("^[0-9]+$");
+		var valid = rgx.test($("#input-number-rev").val());
+
+		if ($("#input-number-rev").val() && !valid ) {
 			$('.number-input').addClass("input-err");
 			$('.number-input .err-msg').fadeIn();
-			valid = false
+			return false;
 		}
-		return valid
+		return true;
+	}
+	
+	$scope.checkAirline = function() {
+		if ($("#input-aerolinea-rev").val() &&
+					! $scope.airlineData.id_map[$("#input-aerolinea-rev").val()] ) {
+			$('.airline-input').addClass("input-err");
+			$('.airline-input .err-msg').fadeIn();
+			return false;
+		}
+		return true;
 	}
 
 	$scope.send = function(){
@@ -316,33 +334,32 @@ app.controller("reviewsCtrl", function($scope, $http, $sce, $window) {
 		send.yes_recommend = $scope.yesRecommend;
 		send.comments = $("#rating-comments").val();
 
-		if($scope.flightSelected){
-			send.flight = {
-				airline: {id: selectedDetails.airline},
-				number: selectedDetails.number
-			}
-		}
-		else{
-			send.flight = {
-				airline : {id: $scope.airlineData.id_map[$("#input-aerolinea-rev").val()]},
-				number: parseInt($("#input-number-rev").val())
-			}
-		}
+		var valid = validateReview();
 
-		if (validateReview(send)) {
+		if(valid){
+			if($scope.flightSelected){
+				send.flight = {
+					airline: {id: selectedDetails.airline},
+					number: selectedDetails.number
+				}
+			}
+			else{
+				send.flight = {
+					airline : {id: $scope.airlineData.id_map[$("#input-aerolinea-rev").val()]},
+					number: parseInt($("#input-number-rev").val())
+				}
+			}
+
 			showSendingMessage(send);
 			$.ajax({
-				type: "POST",
-				contentType: 'application/json',
-				url: 'http://hci.it.itba.edu.ar/v1/api/review.groovy?method=reviewairline',
-				data: JSON.stringify(send)
-			}).then(function(response){
-				console.log(response)
-				messageSent()
-			});
-
-			console.log(send)
-			console.log(JSON.stringify(send))
+					type: "POST",
+					contentType: 'application/json',
+					url: 'http://hci.it.itba.edu.ar/v1/api/review.groovy?method=reviewairline',
+					data: JSON.stringify(send)
+				}).then(function(response){
+					messageSent()
+				console.log(response);
+				});		
 		}
 	};
 	
@@ -355,6 +372,7 @@ app.controller("reviewsCtrl", function($scope, $http, $sce, $window) {
 	function messageSent() {
 		$('#sendingModal').modal('toggle')
 		$('#reviewSent').modal('toggle')
+
 	}
 
 	$scope.yesRec = function(rec){
