@@ -1,0 +1,154 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>VolaDeAca</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+	<link rel="stylesheet" href="jqueryui/jquery-ui.css">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="css/spinner.css">
+	<link rel="stylesheet" href="css/buttons.css">
+	<link rel="stylesheet" href="css/clearinput.css">
+	<link rel="stylesheet" href="./css/promociones.css">
+	<link rel="stylesheet" href="./CheloLabs/awesomplete.css">
+	<link rel="stylesheet" href="jqueryui/jquery-ui.css">
+	<link rel="stylesheet" href="css/promobuttons.css">
+	<link rel="stylesheet" href="css/explore-modal.css">
+
+	<script src="./extlib/angular.min.js"></script>
+	<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+	<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+
+	<!--     <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script> -->
+
+</head>
+<body data-ng-app="flightApp" data-ng-controller="promoCtrl">
+	<!--[if lt IE 8]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+
+		<noscript>
+			<link rel="stylesheet" href="css/error-nojs.css"/>
+			<div class="no-js-content">
+				<h4>¡Alerta! JavaScript desactivado</h4> Esta página utiliza JavaScript para funcionar. Actualiza tu navegador o consulta <a href="https://www.google.com.ar/search?q=cómo+habilitar+javascript" target="_blank" >cómo habilitar javascript</a>
+			</div>
+		</noscript>
+
+	<header>
+		<div data-ng-include="'./snippets/nav.html'"></div>
+	</header>
+
+
+	<div class="body-contents-promo">
+
+		<div class="container">
+			<div class="row mapcontent"> <!--  data-ng-controller="mapCtrl" -->
+				<div class="titulo promo_t">Encontrá promociones desde donde quieras, a donde quieras</div>
+				<div class="mapbox col-sm-12">
+					<div class="row">
+						<div id="mapform" class="col-md-6">
+							<h4>¿Desde dónde queres salir?</h4>
+							<input type='text' class="awesomplete form-control clearable" id="inputCity" placeholder="Ciudad o aeropuerto..." /> 
+							<div id="air-error" class="formError"></div>
+						</div>
+						<div id="calendar" class="col-md-4">               <h4>Cerca de la fecha:</h4>
+							<input type='text' class="form-control" id='datepicker' autocomplete="off" placeholder='dd/mm/aaaa' />
+							<div id="datepicker-err" class="formError"></div>
+						</div>
+						<div class="col-md-2" id="update-map-btn">
+							<button class="vda-btn" id="search">BUSCAR</button>
+						</div>
+
+					</div>
+					<div id="maploading">
+						<h3>Cargando...</h3>
+						<h4>Por favor esperá unos segundos</h4>
+						<div class="spinner" id="mapspin">
+							<div class="dot1"></div>
+							<div class="dot2"></div>
+						</div>
+					</div>  
+
+					<div id="map"></div>
+
+				</div> <!-- mapbox -->
+			</div> <!-- row -->
+
+		</div> <!-- container -->
+		<!-- </div> - body-search --> 
+
+		<!-- <div class="body-contents"> -->
+		<div class="container">
+			<div class="row explore-content explora-area">
+				<div class="titulo">Explorá nuestras promociones</div>
+				<div class="subtitulo">
+					<h4>Elegí la <strong>fecha</strong>, la <strong> duración</strong> y el <strong>destino</strong> de tu viaje</h4>
+				</div>
+
+				<div class="row botonera promo_month">
+					<button type="button" class="vda-btn btn-month" data-promo="8" data-month="Noviembre">Noviembre</button>
+					<button type="button" class="vda-btn btn-month" data-promo="9" data-month="Diciembre">Diciembre</button>
+					<button type="button" class="vda-btn btn-month" data-promo="10" data-month="Enero-2017"> Enero 2017</button>
+					<button type="button" class="vda-btn btn-month" data-promo="11" data-month="Febrero-2017">Febrero 2017</button>
+				</div>
+
+				<div class="row botonera" id="promo_duration">
+					<button type="button" class="vda-btn btn-duration disabled" data-promo="0" data-duration="weekend">Fin de semana</button>
+					<button type="button" class="vda-btn btn-duration disabled" data-promo="1" data-duration="week">Una semana</button>
+					<button type="button" class="vda-btn btn-duration disabled" data-promo="2" data-duration="twoweeks">Dos semanas</button>
+				</div>
+
+
+				<div class="row botonera" id="promo_dest">
+					<button type="button" class="vda-btn btn-dest disabled" data-promo="0" data-dest="Brasil">Playas de Brasil</button>
+					<button type="button" class="vda-btn btn-dest disabled" data-promo="1" data-dest="Europa">Europa</button>
+					<button type="button" class="vda-btn btn-dest disabled" data-promo="2" data-dest="EEUU">EEUU</button>
+					<button type="button" class="vda-btn btn-dest disabled" data-promo="3" data-dest="Argentina">Argentina</button>
+				</div>
+
+				<div class="row results-area">
+					<div id="loadImg" class="spinner">
+						<div class="dot1"></div>
+						<div class="dot2"></div>
+					</div>
+					<div id="promoResultShow" data-ng-include="'./snippets/promoresults.html'">
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+
+
+	<footer>  
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<p>&copy; VolaDeAca 2016</p>
+				</div>
+			</div> <!-- row -->
+		</div>
+	</footer>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script src="bootstrap.min.js"></script>
+	<script src="CheloLabs/awesomplete.js"></script> 
+	<script src="CheloLabs/acomplete.js"></script>
+	<script src="jqueryui/jquery-ui.js"></script>
+	<script src="jqueryui/uidatepicker-es.js"></script>
+	<script src="js/clearinput.js"></script>
+	<script src="js/moment.js"></script>
+	<script src="./js/maps-legacy.js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBTZDFmbFBMRcM-9FO_zE7oEN8KBgthotk&callback=mapUtils.initMap"
+					async defer></script>
+	<script src="js/mapscript-legacy.js"></script>
+	<script src="js/promos.js"></script>
+	<script src="js/psg-btn.js"></script>
+
+</body>
+</html>
