@@ -204,9 +204,7 @@ app.controller("reviewsCtrl", function($scope, $http, $sce, $window) {
 		}	
 	}
 
-	$scope.triggerForm = function(event){
-		console.log(event);
-	}
+
 	$scope.loadMore = function(which){
 		$scope.scrollLimit[which] += 5;
 	}

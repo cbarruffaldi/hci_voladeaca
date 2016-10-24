@@ -119,13 +119,10 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 								$scope.noConnection = true;
 								$("#resultShow").show();
 								$("#loadImg").hide();
-
-								console.log("Error in response");
 							}
 						)
 					}
 					else {
-//						console.log(response);
 						process(response);
 						$("#resultShow").show();
 						$("#loadImg").hide();
@@ -135,7 +132,6 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 					$("#resultShow").show();
 					$("#loadImg").hide();
 
-    				console.log("Error in response");
     		});
 
 		}

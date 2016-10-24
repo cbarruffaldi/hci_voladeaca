@@ -14,6 +14,7 @@
 		<link rel="stylesheet" href="css/search.css">
 		<link rel="stylesheet" href="css/search-searchbox.css">
 		<link rel="stylesheet" href="css/buttons.css">
+		<link rel="stylesheet" href="css/clearinput.css">
 		<link rel="stylesheet" href="css/angular-animations.css">
 		<link rel="stylesheet" href="css/nouislider-custom.css">
 		<link rel="stylesheet" href="css/psg-btn.css">
@@ -144,7 +145,7 @@
 									<div class="row search">
 										<div id="orig-col" class="col-md-2 no-gutters">
 											<div class="form-group">
-												<input type="text" class="form-control awesomplete" id="origen" placeholder="Ciudad o aeropuerto...">
+												<input type="text" class="form-control awesomplete clearable" id="origen" placeholder="Ciudad o aeropuerto...">
 											</div>
 											<div id="origen-err" class="formError"></div>
 										</div><!-- /input-group -->
@@ -153,7 +154,7 @@
 										</div>
 										<div id="dest-col" class="col-md-2 no-gutters">
 											<div class="form-group">
-												<input type="text" class="form-control awesomplete" id="destino" placeholder="Ciudad o aeropuerto...">
+												<input type="text" class="form-control awesomplete clearable" id="destino" placeholder="Ciudad o aeropuerto...">
 											</div>
 											<div id="destino-err" class="formError"></div>
 
@@ -175,7 +176,7 @@
 										<div id="date-col-2"  class='col-md-2 no-gutters'>
 											<div class="form-group">
 												<div class='input-group date' id="cal2">
-													<div class="date-title">Fecha de salida</div>
+													<div class="date-title">Fecha de vuelta</div>
 													<input type='text' class="form-control" id='datepicker2' autocomplete="off" placeholder='dd/mm/aaaa' />
 													<span class="input-group-addon" id="cal2">
 														<span class="glyphicon glyphicon-calendar"></span>
@@ -250,11 +251,11 @@
 
 
 		<script src="js/moment.js" ></script>
+		<script src="js/clearinput.js" ></script>
 		<script src="jqueryui/jquery-ui.js"></script>
 		<script src="jqueryui/uidatepicker-es.js"></script>
 		<script src="extlib/wNumb.js"></script>
 		<script src="extlib/nouislider.min.js"></script>
-		<script src="js/datepicker.js"></script>
 		<script src="js/ng-infinite-scroll.js"></script>
 		<script src="js/search-page-script.js"></script>
 		<script src="js/ngsearch3.js"></script>

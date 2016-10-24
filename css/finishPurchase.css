@@ -1,31 +1,62 @@
+/*
 .body-contents {
-    background: url('../img/bg/beach.jpg') no-repeat;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+background: url('../img/bg/beach.jpg') no-repeat;
+background-attachment: fixed;
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+}
+*/
+
+.successfulPurchase{
+	text-align: center;
+	padding: 187px;
+	margin: 60px;
+	background-color: #DFF2BF;
+	box-shadow: 0 0 15px #e7e7e7;
 }
 
-.successfulPurchase, .failedPurchase{
-    text-align: center;
-    padding: 187px;
-    margin: 60px;
-    background: rgba( 235, 235, 235, 0.8);
-    box-shadow: 1px 0px 15px #333;
+.failedPurchase {
+	text-align: center;
+	padding: 187px;
+	margin: 60px;
+  background-color: #FEEFB3;
+	box-shadow: 0 0 15px #e7e7e7;
 }
 
-.title-style{
-    font-size: 2.15em;
-    color: #204DCC;
-    margin-bottom: 30px;
+.successfulPurchase .title-style{
+	font-size: 2.15em;
+	color: #4F8A10;
+	margin-bottom: 30px;
+}
+
+.failedPurchase .title-style {
+	font-size: 2.15em;
+   color: #9F6000;
+	margin-bottom: 30px;
 }
 
 .buying-text {
-    text-align: center;
-    margin-top: -30px;
-    margin-bottom: 30px;
+	text-align: center;
+	margin-top: -30px;
+	margin-bottom: 30px;
 }
 
 .modal-dialog {
-    margin-top: 15%;
+	margin-top: 15%;
+}
+
+.goToIndex {
+	color: #204DCC;
+	font-size: 1.2em;
+}
+
+.retry-purchase {
+	color: #333;
+	font-size: 1.4em;
+	margin-bottom: 20px;
+}
+
+.goToIndex:hover {
+	color: #204DCC !important;
 }

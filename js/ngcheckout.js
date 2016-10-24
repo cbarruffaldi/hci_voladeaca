@@ -22,7 +22,6 @@ app.controller('CheckoutController', function($scope) {
 	var $bought;
     if(!sessionStorage.boughtFlight) {
 	    $scope.validCheckout = false;
-	    console.log("No se que haces en esta pagina plebeyo, volve a la busqueda");
     }
     else {
     	$scope.validCheckout = true;
