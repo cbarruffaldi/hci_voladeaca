@@ -417,8 +417,8 @@ function validateChildDate(day, month, year, travelDate) {
 	return validValidation();
 }
 
-	var validation = invalidValidation('Verifique que el país sea válido');
 function validateCountry(name) {
+	var validation = invalidValidation('Verifique que el país sea válido');
 
 	if (!name.length)
 		return invalidValidation(mandatoryFieldString("el país"));
