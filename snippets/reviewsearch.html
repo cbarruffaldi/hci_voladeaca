@@ -1,5 +1,5 @@
 <div infinite-scroll='loadMore("details")' infinite-scroll-distance='1'>
-	<div data-ng-repeat="f in flightResults | limitTo: scrollLimit.details" set-review-colors="">
+	<div data-ng-repeat="f in flightResults" set-review-colors="">
 		<div class="col-md-6">
 			<div class="revcont">
 				<div class="review_t row" data-ng-click="selectFlight(f)">

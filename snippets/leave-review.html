@@ -14,14 +14,14 @@
 							<div>
 								<h4>Aerolínea:</h4>
 							</div>
-							<input type="text" data-review-autocomplete="y" class="form-control awesomplete" id="input-aerolinea-rev"/>
+							<input type="text" data-review-autocomplete="y" class="form-control awesomplete" data-ng-blur="checkAirline()" id="input-aerolinea-rev"/>
 							<div class="err-msg">Elija una aerolínea válida</div>
 						</div>
 						<div class="col-md-4 number-input">
 							<div>
 								<h4>Numero de vuelo:</h4>
 							</div>
-							<input type="text" class="form-control awesomplete" id="input-number-rev"/>
+							<input type="text" class="form-control awesomplete" id="input-number-rev" maxlength="4" data-ng-blur="checkNumber()"/>
 							<div class="err-msg">Elija un número de vuelo válido</div>
 						</div>
 						<div class="col-md-2"></div>
@@ -100,7 +100,7 @@
 				</div>
 					<div class="col-md-8">
 						<button type="button" class="vda-btn" data-dismiss="modal">Cancelar</button>
-						<button type="button" class="vda-btn" id="reviewButton" aria-label="Enviar" 	data-ng-click="send()"><span class="glyphicon glyphicon-send" aria-hidden="true"></span>Enviar reseña</button>
+						<button type="button" class="vda-btn" id="reviewButton" aria-label="Enviar" data-ng-click="send(true)"><span class="glyphicon glyphicon-send" aria-hidden="true"></span>Enviar reseña</button>
 					</div>
 				</div>
 
