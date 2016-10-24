@@ -70,6 +70,9 @@ var validators = [passengersValidator, paymentValidator, contactValidator];
 
 $(document).ready(function() {
 
+    if (!$bought.twoWays)
+        $('.flight-price-box').removeClass('flight-price-box');
+
     $('.btnNext').click(function(){
         var active = $('.nav-tabs > .active');
         var indexTab = getCurrentStage(); /* índice para saber a qué funcíón llamar */
