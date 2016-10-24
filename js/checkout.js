@@ -496,10 +496,10 @@ function removeDisabledInput(id) {
 
 function addDisabledInput(id) {
     var input = $('#' + id);
+    input.val(''); 
     input.attr('disabled', 'disabled');
     input.addClass('disabled');
     input.attr('placeholder', 'Ingrese país primero');
-    input.val(''); 
     removeErrorState(input);
 }
 

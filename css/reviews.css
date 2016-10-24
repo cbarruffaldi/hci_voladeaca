@@ -308,7 +308,7 @@ ul.tabs li.current{
 	border-style: solid;
 	border-width: 0 15px 15px;
 	border-color: cornflowerblue transparent;
-	background-color: #d0d0d0 transparent;
+	background-color: rgba(255, 255, 255, 0);
 	display: block;
 	width: 0;
 	z-index: 0;
@@ -569,7 +569,7 @@ margin-top: -20px;
 .comment-err .bubble:before {
 	transition: all 0.3s;
 	border-color: crimson transparent;
-	background-color: #d0d0d0 transparent;
+	background-color: #d0d0d0;
 }
 
 .err-msg {
