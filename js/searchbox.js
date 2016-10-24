@@ -46,13 +46,13 @@ function initSearchbox(global){
 	});
 
 
-	$("#datepicker1").on('blur', function(){
-		dateCheck();
+	$("#datepicker1").on('change', function(){
+		dateCheck(false, true);
 	})
 
 
-	$("#datepicker2").on('blur', function(){
-		dateCheck();
+	$("#datepicker2").on('change', function(){
+		dateCheck(false, false, true);
 	})
 
 	$("#origen, #destino").on('focus', function(){
@@ -120,7 +120,7 @@ function initSearchbox(global){
 	}
 
 
-	function dateCheck(emptyCheck){
+	function dateCheck(emptyCheck, secSkip){
 		var valid = true;
 
 		var date1 = $("#datepicker1");
@@ -146,7 +146,7 @@ function initSearchbox(global){
 
 		}
 
-		if(!soloIda && (date2.val() || emptyCheck)) {
+		if(!soloIda && !secSkip && (date2.val() || emptyCheck)) {
 			arrival = moment(date2.val(), "DD/MM/YYYY", true);
 			if(!arrival.isValid()){
 				date2.addClass("inputerr");
