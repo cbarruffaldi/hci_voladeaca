@@ -181,8 +181,7 @@ function validateDocNum(num) {
 
 function validateName(string, mandatoryString, title) {
     var n = string.length;
-    var pattern = /[^\w\s]/;
-    var otherPattern = /[\d_]/;
+    var pattern = /[^A-zÀ-ÿ\s]/;
 
     if (n > MAX_NAME)
         return invalidValidation(ERROR_MSG_LONG);
@@ -190,7 +189,7 @@ function validateName(string, mandatoryString, title) {
     if (n == 0)  /* Ingresó únicamente espacios o nada */
         return invalidValidation(mandatoryFieldString(mandatoryString));
 
-    if (pattern.test(string) || otherPattern.test(string))
+    if (pattern.test(string))
         return invalidValidation("Verifique que el " + title + " sólo contenga letras y espacios");
 
     return validValidation(string);

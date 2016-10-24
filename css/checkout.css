@@ -310,7 +310,7 @@ label {
 
 #modify-modal .modal-dialog{
 	width: 66%;
-	margin-top: 15%;
+	margin-top: 12%;
 }
 
 .depart-date, .land-date {
@@ -372,6 +372,7 @@ label {
 
 .arrow-icon {
 	width: 35px;
+	margin-top: 15px;
 }
 
 div.error-msg{
@@ -420,9 +421,12 @@ div.error-msg{
 	border-color: #204DCC;
 	border-width: thin;
 	border-radius: 5%;
-	min-height: 70px;
+	min-height: 72px;
 	text-align: center;
 	background: #e7e7e7;
+	padding-left: inherit;
+	padding-right: inherit;
+	padding-top: 1%;
 }
 
 .flight-price-box {
