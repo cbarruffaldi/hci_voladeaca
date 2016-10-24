@@ -1,9 +1,10 @@
 #map {
 	padding: 0;
-	height: 70%;
+	height: 600px;
 	width: 100%;
 	text-align: center;
 }
+
 
 #maploading, #maperror {
 	position: absolute;
