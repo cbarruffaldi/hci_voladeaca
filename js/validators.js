@@ -663,7 +663,7 @@ function validateCardholderDoc(num) {
 	var n = num.length;
 
     if (n == 0)
-        return invalidValidation(mandatoryFieldString("el número de documento del tituar de la tarjeta"));
+        return invalidValidation(mandatoryFieldString("el número de documento del titular de la tarjeta"));
     if (!isNumber(num))
         return invalidValidation(invalidNum('el número de documento del titular de la tarjeta'));
     if (n > MAX_DOC_NUM)
