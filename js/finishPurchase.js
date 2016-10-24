@@ -17,6 +17,7 @@ $(document).ready(function(){
 		$(".successfulPurchase").show();
 	} else {
 		$(".failedPurchase").show();
+		$(".body-contents").removeClass("body-contents");
 	}
 });
 

@@ -1,18 +1,17 @@
-/*
+
 .body-contents {
-background: url('../img/bg/beach.jpg') no-repeat;
+background: url('../img/bg/aircraft-sunset.jpeg') no-repeat;
 background-attachment: fixed;
 background-position: center;
 background-repeat: no-repeat;
 background-size: cover;
 }
-*/
 
 .successfulPurchase{
 	text-align: center;
 	padding: 187px;
 	margin: 60px;
-	background-color: #DFF2BF;
+	background-color: rgba(235, 235, 235, 0.8);
 	box-shadow: 0 0 15px #e7e7e7;
 }
 
@@ -20,13 +19,13 @@ background-size: cover;
 	text-align: center;
 	padding: 187px;
 	margin: 60px;
-  background-color: #FEEFB3;
+  	background-color: #FEEFB3;
 	box-shadow: 0 0 15px #e7e7e7;
 }
 
 .successfulPurchase .title-style{
 	font-size: 2.15em;
-	color: #4F8A10;
+	color: #204DCC;
 	margin-bottom: 30px;
 }
 
