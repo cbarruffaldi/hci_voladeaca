@@ -17,6 +17,7 @@
 	
 	function updateMap(id, date){
 		clearMarkers();
+		$("#maperror").addClass("hidden");
 		$("#maploading").show();
 		$("#search").attr("disabled", true);
 		$("#search").addClass("disabled");
@@ -30,7 +31,10 @@
 						 	fillMap(response, id, date);
 						 },
 						 error: function(){
-						 	alert("timeouuut");
+						 	$("#maploading").hide();
+							$("#search").attr("disabled", false);
+							$("#search").removeClass("disabled");
+						 	$("#maperror").removeClass("hidden");
 						 }
 						});
 	}
@@ -110,7 +114,10 @@
 								error: function(){
 									console.log(deferred)
 									deferred.reject();
-									console.log("error");
+								 	$("#maploading").hide();
+									$("#search").attr("disabled", false);
+									$("#search").removeClass("disabled");
+								 	$("#maperror").removeClass("hidden");
 									return;
 								}
 

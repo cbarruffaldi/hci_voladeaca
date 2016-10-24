@@ -5,7 +5,7 @@
 	text-align: center;
 }
 
-#maploading {
+#maploading, #maperror {
 	position: absolute;
 	padding: 3%;
 	width: 30%;
@@ -138,4 +138,8 @@ input{
 	background-color: #fff;
 	cursor: default;
 
+}
+
+.hidden{
+	display:none;
 }

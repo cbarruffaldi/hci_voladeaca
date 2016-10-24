@@ -639,3 +639,18 @@ margin-top: -20px;
 	color: #dc0055;
 	font-weight: bold;
 }
+
+
+.emptyresults{
+    text-align: center;
+    padding: 30px;
+    color: #333;
+    border-radius: 13px;
+    margin-bottom: 25px;
+    background: rgba(255,255,255,0.35)
+}
+
+
+.err-img{
+	height:200px;
+}
