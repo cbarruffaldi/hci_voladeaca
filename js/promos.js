@@ -119,6 +119,8 @@ app.controller("promoCtrl", function($scope, $http, $q) {
 	}
 
 	function sendPromoSearch(query) {
+		$scope.noConnection = false;
+
 		var dayida = parseInt(Math.random() * 15) + 1;
 		var strida = toDayString(dayida);
 
@@ -131,7 +133,6 @@ app.controller("promoCtrl", function($scope, $http, $q) {
 		var promises = [];
 
 		for (var des of promosInfo[query.dest]) {
-			// TODO BUE
 			promises.push(fetchPromo(idate, vdate, "BUE", des));
 		}
 
