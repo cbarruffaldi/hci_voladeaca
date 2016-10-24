@@ -659,6 +659,19 @@ function PassengerValidator(type, validateFunction, trDate, passId) {
 var isErrorCardShowed = false;
 var validCreditCard = false;
 
+function validateCardholderDoc(num) {
+	var n = num.length;
+
+    if (n == 0)
+        return invalidValidation(mandatoryFieldString("el número de documento del titular de la tarjeta"));
+    if (!isNumber(num))
+        return invalidValidation(invalidNum('el número de documento del titular de la tarjeta'));
+    if (n > MAX_DOC_NUM)
+        return invalidValidation(ERROR_MSG_LONG);
+
+    return validValidation(num);
+}
+
 function PaymentCardValidator() {
 
 	this.callback = function(valid, id, validation) {
@@ -716,6 +729,7 @@ function PaymentCardValidator() {
 							  'exp-year': validateExpYear,
 							  'sec-code': validateSecCode,
 							  'cardholder': validateCardholder,
+							  'cardholder-doc': validateCardholderDoc
 							};
 
 	this.validExpDate = false;

@@ -350,6 +350,12 @@
 														<input autocomplete="off" type="text" class="form-control" id="cardholder" placeholder="Nombre como figura en la tarjeta">
 														<p class="error-msg"></p>
 													</div>
+													<div class="col-md-4 form-field">
+														<label for="cardholder-doc">Número de documento del titular:</label>
+														<input autocomplete="off" type="text" class="form-control" id="cardholder-doc" maxlength="8">
+														<p class="error-msg"></p>
+													</div>
+
 												</div>
 
 											</div>
@@ -574,8 +580,11 @@
 																</div>
 															</div>
 															<div class="row">
-																<div class="col-sm-12">
+																<div class="col-sm-4">
 																	<p><strong>Nombre del titular: </strong>{{paymentData['cardholder']}}</p>
+																</div>
+																<div class="col-sm-4">
+																	<p><strong>Número de documento del titular: </strong>{{paymentData['cardholder-doc']}}</p>
 																</div>
 															</div>
 															<a href="#" class="col-md-offset-9 sum-modal confirmation-modify" data-toggle="modal" data-target="#modify-modal">Modificar...</a>
