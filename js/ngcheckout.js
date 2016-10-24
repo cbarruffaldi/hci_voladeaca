@@ -40,10 +40,16 @@ app.controller('CheckoutController', function($scope) {
 		/*Cuadro resumen de vuelo */
 		if($bought.twoWays == true) {
 			$scope.returnFlightDetails = getFlightDetails($bought.container.flights[1].flight);
+
 		}
 
-		$scope.flightPrice = $bought.container.price.total;
-		$scope.flightPricesPerPerson = $bought.container.price;
+	    if ($bought.twoWays == true) {
+	    	$scope.returnflightPricesPerPerson = $bought.container.flights[1].flight.price ;
+	    } else {
+		    $scope.returnflightPricesPerPerson = 0;
+	    }
+	    $scope.flightPrice = $bought.container.price.total;
+		$scope.idaflightPricesPerPerson = $bought.container.flights[0].flight.price;
 		$scope.idaFlightDetails = getFlightDetails($bought.container.flights[0].flight);
 	}
 

@@ -149,9 +149,9 @@
 							<div class="col-md-2 flight-price-box">
 								<div class="price-number" data-ng-bind="'$' + flightPrice.total"></div>
 								<div class="details">
-									<div data-ng-bind=" flightPricesPerPerson.adults.quantity + ' Adulto' + (flightPricesPerPerson.adults.quantity > 1 ? 's' : '') + ' ' + '$' + flightPricesPerPerson.adults.base_fare*flightPricesPerPerson.adults.quantity " class="details-info"></div>
-									<div data-ng-if = "$bought.container.price.children" data-ng-bind=" flightPricesPerPerson.children.quantity + ' Niño' + (flightPricesPerPerson.children.quantity > 1 ? 's' : '') + ' ' + '$' + flightPricesPerPerson.children.base_fare*flightPricesPerPerson.children.quantity " class="details-info" ></div>
-									<div data-ng-if = "$bought.container.price.infants" data-ng-bind=" flightPricesPerPerson.infants.quantity + ' Infante' + (flightPricesPerPerson.infants.quantity > 1 ? 's' : '') + ' ' + '$' + flightPricesPerPerson.infants.base_fare*flightPricesPerPerson.infants.quantity " class="details-info" ></div>
+									<div data-ng-bind=" idaflightPricesPerPerson.adults.quantity + ' Adulto' + (idaflightPricesPerPerson.adults.quantity > 1 ? 's' : '') + ' ' + '$' + (idaflightPricesPerPerson.adults.base_fare+returnflightPricesPerPerson.adults.base_fare)*idaflightPricesPerPerson.adults.quantity " class="details-info"></div>
+									<div data-ng-if = "$bought.container.price.children" data-ng-bind=" idaflightPricesPerPerson.children.quantity + ' Niño' + (idaflightPricesPerPerson.children.quantity > 1 ? 's' : '') + ' ' + '$' + (idaflightPricesPerPerson.children.base_fare + returnflightPricesPerPerson.children.base_fare)*idaflightPricesPerPerson.children.quantity" class="details-info" ></div>
+									<div data-ng-if = "$bought.container.price.infants" data-ng-bind=" idaflightPricesPerPerson.infants.quantity + ' Infante' + (idaflightPricesPerPerson.infants.quantity > 1 ? 's' : '') + ' ' + '$' + (idaflightPricesPerPerson.infants.base_fare+returnflightPricesPerPerson.infants.base_fare)*idaflightPricesPerPerson.infants.quantity " class="details-info" ></div>
 									<div data-ng-bind=" 'Impuestos ' + '$' + flightPrice.taxes" class="details-info"></div>
 									<div data-ng-bind=" 'Recargos ' + '$' + flightPrice.charges" class="details-info"></div>
 

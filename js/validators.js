@@ -417,8 +417,8 @@ function validateChildDate(day, month, year, travelDate) {
 	return validValidation();
 }
 
+	var validation = invalidValidation('Verifique que el país sea válido');
 function validateCountry(name) {
-	var validation = invalidValidation('País inválido');
 
 	if (!name.length)
 		return invalidValidation(mandatoryFieldString("el país"));
@@ -433,7 +433,7 @@ function validateCountry(name) {
 
 
 function validateCity(name) {
-	var validation = invalidValidation('Ciudad inválida');
+	var validation = invalidValidation('Verifique que la ciudad pertenezca al país seleccionado');
 
 	if(!name.length)
 		return invalidValidation(mandatoryFieldString("la ciudad"));
@@ -668,7 +668,7 @@ function PaymentCardValidator() {
 			isErrorCardShowed = true;
 			validation.ignore = true;
 			$('#' + id).siblings('p').hide();
-		}		
+		}
 	}
 
 	this.expDateReady = function() {
