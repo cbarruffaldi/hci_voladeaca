@@ -78,7 +78,6 @@ app.controller("promoCtrl", function($scope, $http, $q) {
 			$(".botonera button").attr("disabled", true); // desactiva los botones hasta que termine la busqueda.
 			sendPromoSearch(query);
 		}
-
 	}
 
 	var promosInfo = {};
@@ -155,7 +154,8 @@ app.controller("promoCtrl", function($scope, $http, $q) {
 
 		$http({
 			method: 'GET',
-			url: URL
+			url: URL,
+			timeout: 7000
 		}).then(function successCallback(response) {
 			var vURL = baseURL + "&dep_date=" + vdate;
 			vURL += "&from=" + dest;
@@ -163,21 +163,22 @@ app.controller("promoCtrl", function($scope, $http, $q) {
 
 			$http({
 				method: 'GET',
-				url: vURL
+				url: vURL,
+				timeout: 7000
 			}).then(function success(vresponse){
 				process(response, vresponse);
 				$scope.promos = getCheapestFlights($scope.containers);
 				deferred.resolve();
 			},
 							function errorCallback(response){
-				console.log("Error in response");
+				promoTimeOutError();
 				deferred.reject();
 			}
 						 )
 
 
 		}, function errorCallback(response) {
-			console.log("Error in response");
+			promoTimeOutError();
 			deferred.reject();
 		});
 
@@ -188,6 +189,22 @@ app.controller("promoCtrl", function($scope, $http, $q) {
 		for (var p in $scope.promos) {
 			$scope.promos[p].imgsrc = "./img/cityimg/" + $scope.promos[p].shortName.split(' ').join('').toLocaleLowerCase() + ".jpg";
 		}
+	}
+
+	function promoTimeOutError() {
+		$scope.noConnection = true
+		$("#promoResultShow").show();
+		$("#loadImg").hide();
+		$(".botonera button").attr("disabled", false);
+	}
+
+	$scope.retryPromoSearch = function() {
+		$scope.noConnection = false;
+		$("#loadImg").css('visibility', 'visible');
+		$("#loadImg").show();
+		$("#promoResultShow").hide();
+		$(".botonera button").attr("disabled", true);
+		sendPromoSearch(query);
 	}
 
 	function getCheapestFlights(containers) {
