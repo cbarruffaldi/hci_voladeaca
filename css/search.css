@@ -258,7 +258,7 @@ label {
 	border-bottom-right-radius: 3px;
 	border-top-right-radius: 3px;
 	text-align: center;
-	padding: inherit 10px;
+	padding: inherit;
 }
 
 /* Two Way flights */
