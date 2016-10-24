@@ -635,6 +635,7 @@ margin-top: -20px;
 
 #nav-reviews a{
 	background-color: #fff;
+	cursor: default;
 	color: #dc0055;
 	font-weight: bold;
 }
