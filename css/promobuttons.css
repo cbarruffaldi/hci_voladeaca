@@ -182,3 +182,21 @@
 	margin-top: 10%;
 }
 
+.promo-err .retry-btn {
+	font-size: 1.5em;
+	padding: 1% 3%;
+}
+
+.promo-err .error-img img {
+	height: 150px;
+	margin-top: 2.5%;
+}
+
+.promo-err h1 {
+	margin: 0;
+}
+
+.promo-err h2 {
+	margin-top: 1%;
+	font-weight: 400;
+}

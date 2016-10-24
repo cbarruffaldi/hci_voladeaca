@@ -46,3 +46,13 @@
 		</div>
 	</div>
 </div>
+<div data-ng-if="noConnection">
+	<div class="promo-err">
+		<div class="error-img">
+			<img src="img/PlaneCrash.png">
+		</div>
+		<h1>No hay conexión.</h1>
+		<h2>Verificá tu conexión a internet y volvé a intentar la búsqueda.</h2>
+		<button type="button" class="vda-btn retry-btn" data-ng-click="retryPromoSearch()">Reintentar</button>
+	</div>
+</div>
