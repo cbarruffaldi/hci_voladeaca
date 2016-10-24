@@ -156,7 +156,7 @@ function buyFlight(bookingIda, bookingVuelta) {
 	    	},
 	    	error: function() {
 	    		localStorage.bookingIda = bookingIda;
-	    		finishPurchase('false');
+	    		showErrorModal();
 	    	}
 	    });
 	}
@@ -167,15 +167,15 @@ function buyFlight(bookingIda, bookingVuelta) {
 	        dataType: "jsonp",
         	timeout: 5000,
 			success: function(data) {
-				/* Mostrar que la compra se realizó con éxito */
-				finishPurchase(data["booking"]);
-
 				localStorage.removeItem('bookingVuelta');
 				sessionStorage.removeItem('boughtFlight');
+				
+				/* Mostrar que la compra se realizó con éxito */
+				finishPurchase(data["booking"]);
     		},
     		error: function(data) {
   	    		localStorage.bookingVuelta = bookingVuelta;
-  	    		finishPurchase('false');
+	    		showErrorModal();
     		}
 		});
 	}
@@ -187,6 +187,22 @@ function finishPurchase(state){
 	window.location.href = uri;
 }
 
+function showErrorModal() {
+	$('#buying-modal').modal('hide');
+	$('#error-modal').modal('show');
+}
+
 function showBuyingModal() {
 	$('#buying-modal').modal('show');
 }
+
+$(document).ready(function() {
+	$('.close-btn').click(function() {
+		$('#error-modal').modal('hide');
+	});
+
+	$('.reset-btn').click(function() {
+		$('#error-modal').modal('hide');
+		buyFlight(localStorage.bookingIda, localStorage.bookingVuelta);
+	});
+});
