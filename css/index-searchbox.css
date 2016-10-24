@@ -31,6 +31,10 @@
 	line-height: 13px;
 }
 
+.inputerr{
+	border: 1px solid #FF0000 !important;
+}
+
 .idavuelta {
 	margin-top: 4px;
 	margin-bottom: 4px;

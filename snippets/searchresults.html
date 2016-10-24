@@ -65,12 +65,12 @@
 			</div>
 			<div data-ng-if="twoWays" class="twoWay">
 				<div class="price-number">
-					${{c.price.total.total}}
+					<span class="dollar">US$</span> {{c.price.total.total}}
 				</div>
 				<div class="collapse price-details" id="price-details-{{$index}}">
-					<div>Pasaje: ${{c.price.total.fare}}</div>                        
-					<div>Impuestos: ${{c.price.total.taxes}}</div>
-					<div>Recargos: ${{c.price.total.charges}}</div>
+					<div>Pasaje: US$ {{c.price.total.fare}}</div>                        
+					<div>Impuestos: US$ {{c.price.total.taxes}}</div>
+					<div>Recargos: US$ {{c.price.total.charges}}</div>
 				</div>
 				<div class="details-btn">
 					<button data-toggle="collapse"data-target="#price-details-{{$index}}" class="vda-text-btn">+ detalles</button>
@@ -81,12 +81,12 @@
 			</div>
 			<div data-ng-if="!twoWays" class="oneWay">
 				<div class="price-number">
-					${{c.price.total.total}}
+					<span class="dollar">US$</span> {{c.price.total.total}}
 				</div>
 				<div class="collapse price-details" id="price-details-{{$index}}">
-					<div>Pasaje: ${{c.price.total.fare}}</div>                        
-					<div>Impuestos: ${{c.price.total.taxes}}</div>
-					<div>Recargos: ${{c.price.total.charges}}</div>
+					<div>Pasaje: US$ {{c.price.total.fare}}</div>                        
+					<div>Impuestos: US$ {{c.price.total.taxes}}</div>
+					<div>Recargos: US$ {{c.price.total.charges}}</div>
 				</div>
 				<div class="details-btn">
 					<button data-toggle="collapse"data-target="#price-details-{{$index}}" class="vda-text-btn">+ detalles</button>
