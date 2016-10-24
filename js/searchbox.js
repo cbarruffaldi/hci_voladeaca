@@ -45,6 +45,16 @@ function initSearchbox(global){
 		});
 	});
 
+
+	$("#datepicker1").on('blur', function(){
+		dateCheck();
+	})
+
+
+	$("#datepicker2").on('blur', function(){
+		dateCheck();
+	})
+
 	$("#origen, #destino").on('focus', function(){
 		var self = $(this);
 		if(self.hasClass('inputerr')){
