@@ -25,14 +25,14 @@
 	color: #204DCC;
 }
 
-.mapspin{
+#mapspin{
+	visibility: visible;
 	z-index: 100;
 	margin-top: 5px;
 }
 
 #mapform, #calendar{
 	padding: 30px;
-	color: #DC0055;
 }
 
 #update-map-btn{
