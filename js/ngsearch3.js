@@ -331,6 +331,7 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 
 			for(var i in iFlights){
 				for(var j in vFlights){
+					if(vFlights[j].departMoment.date > iFlights[i].arrivalMoment.date){
 					var c = new Container(iFlights[i], vFlights[j]);
 					var price = c.price.total.total;
 					if(!minPrice || price < minPrice){
@@ -362,10 +363,11 @@ app.controller("flightCtrl", function($scope, $http, $window) {
 						$scope.airports.iList.push(vFlights[j].arrival.airport);
 						$scope.airports.filter[vFlights[j].arrival.airport.id] = true;
 					}
-
 				}
 			}
-			initSlider(minPrice, maxPrice);
+		}
+		
+		initSlider(minPrice, maxPrice);
 		}
 
 
