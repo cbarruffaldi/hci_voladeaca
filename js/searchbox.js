@@ -59,12 +59,14 @@ function initSearchbox(global){
 	});
 
 	$("#origen").on('blur', function(evt){
-		if(isValidAirport(this) && !$("#destino").val()) {
-			$(this).removeClass('x');
-			evt.preventDefault();
-			$("#destino").focus();
+		if(isValidAirport(this)){
+		$(this).removeClass('x');
+		
+			if(!$("#destino").val()) {
+				evt.preventDefault();
+				$("#destino").focus();
+			}
 		}
-
 	});
 
 	$("#destino").on('blur', function(evt){
