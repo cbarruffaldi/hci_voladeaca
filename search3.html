@@ -19,7 +19,7 @@
 		<link rel="stylesheet" href="css/psg-btn.css">
 		<link rel="stylesheet" href="css/spinner.css">
 		<link rel="stylesheet" href="css/ribbon.css">
-		
+
 		<link rel="stylesheet" href="./CheloLabs/awesomplete.css">
 
 		<script src="js/vendor/jquery-1.11.2.min.js"></script>
@@ -125,6 +125,7 @@
 								<br/>
 							</div>
 						</div>
+
 					</div>
 				</div>
 
@@ -161,6 +162,7 @@
 										<div id="date-col-1" class='col-md-2 no-gutters'>
 											<div class="form-group">
 												<div class='input-group date' id="cal1">
+													<div class="date-title">Fecha de salida</div>
 													<input type='text' class="form-control" id='datepicker1' autocomplete="off" placeholder='dd/mm/aaaa' />
 													<span class="input-group-addon" id="cal1">
 														<span class="glyphicon glyphicon-calendar"></span>
@@ -173,6 +175,7 @@
 										<div id="date-col-2"  class='col-md-2 no-gutters'>
 											<div class="form-group">
 												<div class='input-group date' id="cal2">
+													<div class="date-title">Fecha de salida</div>
 													<input type='text' class="form-control" id='datepicker2' autocomplete="off" placeholder='dd/mm/aaaa' />
 													<span class="input-group-addon" id="cal2">
 														<span class="glyphicon glyphicon-calendar"></span>
@@ -231,19 +234,20 @@
 							</div>
 							<div data-ng-if="noConnection" data ng-include="'./snippets/noconnection.html'"></div>
 						</div>
-
+						<div class="row">
+							<footer>
+								<div class="container">
+									<div class="row">
+										<p>&copy; VolaDeAca 2016</p>
+									</div>
+								</div>
+							</footer>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 
-	<footer>
-	<div class="container">
-	<div class="row">
-	<p>&copy; VolaDeAca 2016</p>
-	</div>
-	</div>
-	</footer>
 
 		<script src="js/moment.js" ></script>
 		<script src="jqueryui/jquery-ui.js"></script>
@@ -264,4 +268,5 @@
 		<script src="js/searchbox.js"></script>
 		<script src="search-setup.js"></script>
 	</body>
+
 </html>

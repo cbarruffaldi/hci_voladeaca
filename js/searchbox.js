@@ -178,6 +178,7 @@ function initSearchbox(global){
 		var pickerVuelta = $("#date-col-2");
 		pickerVuelta.addClass("disabled-dp");
 		$("#cal2").addClass("disabled-dp");
+		$("#datepicker2-err").fadeOut();
 		pickerVuelta.find("input").prop('disabled', true);
 		soloIda = true;
 	}

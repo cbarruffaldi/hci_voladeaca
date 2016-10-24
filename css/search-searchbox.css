@@ -34,18 +34,18 @@
 }
 
 .formError {
-    position: absolute;
-    color: #FFF;
-    top: 40px;
-    /* margin-left: 5px; */
-    font-size: 0.9em;
-    display: none;
-    z-index: 9999;
-    text-align: center;
-    padding: 2px 5px;
-    border-radius: 4px;
-    background-color: #d9534f;
-/*	background-color: #FFF;*/
+	position: absolute;
+	color: #FFF;
+	top: 40px;
+	/* margin-left: 5px; */
+	font-size: 0.9em;
+	display: none;
+	z-index: 9999;
+	text-align: center;
+	padding: 2px 5px;
+	border-radius: 4px;
+	background-color: #d9534f;
+	/*	background-color: #FFF;*/
 	border: 1px solid #d9534f;
 }
 
@@ -100,4 +100,15 @@
 
 .date .glyphicon {
 	padding: 0;
+}
+
+.date-title {
+	font-weight: 500;
+	top: -1.3em;
+	left: 5px;
+	position: absolute;
+}
+
+.disabled-dp .date-title {
+	color: #7b7b7b;
 }

@@ -313,17 +313,16 @@ label {
 	box-shadow: 0 0 8px #b3b3b3;
 }
 
-.emptyresults{
+.emptyresults, .emptyfiltered {
 	text-align: center;
 	color: #5b5b5b;
 	margin: 50px;
 }
-.emptyresults h2 {
+.emptyresults h2, .emptyfiltered h2 {
 	font-weight: 300;
 }
 
-
-.emptyresults img {
+.emptyresults img, .emptyfiltered img {
 	height: 200px;
 }
 
@@ -350,6 +349,10 @@ label {
 body {
 	margin: 0;
 	height:100% !important;
+}
+
+footer {
+	background-color: #e7e7e7;
 }
 
 #left {
