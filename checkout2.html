@@ -566,7 +566,7 @@
 																	<p><strong>Número de la tarjeta: </strong>{{paymentData['card-num']}}</p>
 																</div>
 																<div class="col-sm-4">
-																	<p><strong>Código de seguridad: </strong>{{paymentData['sec-code']}}</p>
+																	<p><strong>Código de seguridad: </strong>{{paymentData['sec-code'].length ==  4 ? 'XXXX' : 'XXX'}}</p>
 																</div>
 																<div class="col-sm-4">
 																	<p><strong>Vencimiento: </strong>{{paymentData['exp-month']}}/{{paymentData['exp-year']}}</p>
