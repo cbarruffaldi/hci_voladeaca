@@ -1,4 +1,6 @@
-
+.con-error-msg {
+	text-align: center;
+}
 
 input.tt-hint {
 	display: none;
@@ -309,6 +311,11 @@ label {
 }
 
 #modify-modal .modal-dialog{
+	width: 66%;
+	margin-top: 12%;
+}
+
+#error-modal .modal-dialog{
 	width: 66%;
 	margin-top: 12%;
 }
