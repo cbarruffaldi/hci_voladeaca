@@ -91,7 +91,7 @@ app.controller("reviewsCtrl", function($scope, $http, $sce, $window) {
 		$scope.noConnection = false;
 	}
 
-
+	
 	$scope.search = function(){
 		clearErrors();
 
