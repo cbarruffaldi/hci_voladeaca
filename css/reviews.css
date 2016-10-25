@@ -183,7 +183,6 @@ ul.tabs{
 }
 
 ul.tabs li{
-	background: #cecfcf;
     color: #204dcc;
 	display: inline-block;
 	padding: 10px 15px;
@@ -193,6 +192,11 @@ ul.tabs li{
 	transition: all 0.2s;
 	border-top-left-radius: 4px;
 	border-top-right-radius: 4px
+}
+
+ul.tabs li:hover {
+	background-color: #e3e3e3;
+	border-color: #204DCC;
 }
 
 ul.tabs li.current{
