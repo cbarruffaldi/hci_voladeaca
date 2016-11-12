@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">Voladeacapp</string>
     <string name="title_mis_vuelos">Mis Vuelos</string>
+    <string name="title_resenas">Reseñas</string>
+    <string name="title_promociones">Promociones</string>
 </resources>
