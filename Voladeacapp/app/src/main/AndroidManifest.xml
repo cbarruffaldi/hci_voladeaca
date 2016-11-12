@@ -5,13 +5,10 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="@string/title_mis_vuelos"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".MisVuelos"
-            android:label="@string/mis_vuelos_title"
-            android:theme="@style/AppTheme.NoActionBar">
+        <activity android:name=".MisVuelos">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
