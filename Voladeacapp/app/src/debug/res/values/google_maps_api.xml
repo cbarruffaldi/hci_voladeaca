@@ -1,0 +1,19 @@
+<resources>
+    <!--
+    TODO: Before you run your application, you need a Google Maps API key.
+
+    To get one, follow this link, follow the directions and press "Create" at the end:
+
+    https://console.developers.google.com/flows/enableapi?apiid=maps_android_backend&keyType=CLIENT_SIDE_ANDROID&r=D4:78:6A:5C:5A:A8:07:4E:76:28:34:0D:A6:11:56:3F:A2:85:13:71%3Bcom.example.chelo.map
+
+    You can also add your credentials to an existing key, using this line:
+    D4:78:6A:5C:5A:A8:07:4E:76:28:34:0D:A6:11:56:3F:A2:85:13:71;com.example.chelo.map
+
+    Alternatively, follow the directions here:
+    https://developers.google.com/maps/documentation/android/start#get-key
+
+    Once you have your key (it starts with "AIza"), replace the "google_maps_key"
+    string in this file.
+    -->
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyBuEqx-SSs3zmp93IkEJgHL16oeVsyifjw</string>
+</resources>
