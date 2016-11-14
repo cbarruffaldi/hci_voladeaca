@@ -7,12 +7,14 @@
         android:icon="@drawable/ic_local_atm_black_24px"
         android:title="@string/title_promociones"
         app:showAsAction="ifRoom" />
+
     <item
         android:id="@+id/action_mis_vuelos"
         android:enabled="true"
         android:icon="@drawable/ic_flight_takeoff_black_24px"
         android:title="@string/title_mis_vuelos"
         app:showAsAction="ifRoom" />
+
     <item
         android:id="@+id/action_resenas"
         android:enabled="true"

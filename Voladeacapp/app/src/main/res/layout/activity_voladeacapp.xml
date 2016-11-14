@@ -12,12 +12,12 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="hci.voladeacapp.Voladeacapp">
 
-    <TextView
+    <ListView
         android:id="@+id/text_mis_vuelos"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="@string/title_mis_vuelos" />
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/title_mis_vuelos"
+        android:listSelector="@drawable/flight_list_selector"/>
 
     <TextView
         android:id="@+id/text_promociones"
@@ -37,13 +37,13 @@
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/bottom_navigation"
-        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         app:itemBackground="@color/grey"
         app:itemIconTint="@drawable/selector"
         app:itemTextColor="@drawable/selector"
-        app:menu="@menu/bottom_navigation" />
+        app:menu="@menu/bottom_navigation"
+        android:layout_width="match_parent" />
 
 
 </RelativeLayout>
