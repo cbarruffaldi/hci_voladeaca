@@ -33,13 +33,12 @@ public class Voladeacapp extends AppCompatActivity {
         promocionesView = (TextView) findViewById(R.id.text_promociones);
         resenasView = (TextView) findViewById(R.id.text_resenas);
 
-        setDefaultVisibility();
         createMyFlightsList();
 
         BottomNavigationView bottomNavigationView = (BottomNavigationView)
                 findViewById(R.id.bottom_navigation);
-
-
+        //setDefaultVisibility(bottomNavigationView);
+        //bottomNavigationView.getMenu().findItem(R.id.action_mis_vuelos).setChecked(true);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(
                 new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -92,11 +91,16 @@ public class Voladeacapp extends AppCompatActivity {
 
     }
 
-    private void setDefaultVisibility() {
+    private void setDefaultVisibility(BottomNavigationView bnv) {
+        /*
         misVuelosView.setVisibility(View.VISIBLE);
         promocionesView.setVisibility(View.GONE);
         resenasView.setVisibility(View.GONE);
 
+        bnv.getMenu().findItem(R.id.action_mis_vuelos).setChecked(true);
+        bnv.getMenu().findItem(R.id.action_promociones).setChecked(false);
+        bnv.getMenu().findItem(R.id.action_resenas).setChecked(false);
+        */
 
     }
 
