@@ -49,13 +49,13 @@ public class Voladeacapp extends AppCompatActivity {
                                 misVuelosView.setVisibility(View.VISIBLE);
                                 promocionesView.setVisibility(View.GONE);
                                 resenasView.setVisibility(View.GONE);
-                                Intent intent = new Intent(bottomNavigationView.getContext(), MapActivity.class);
-                                startActivity(intent);
                                 break;
                             case R.id.action_promociones:
                                 misVuelosView.setVisibility(View.GONE);
                                 promocionesView.setVisibility(View.VISIBLE);
                                 resenasView.setVisibility(View.GONE);
+                                Intent intent = new Intent(bottomNavigationView.getContext(), MapActivity.class);
+                                startActivity(intent);
                                 break;
                             case R.id.action_resenas:
                                 misVuelosView.setVisibility(View.GONE);
