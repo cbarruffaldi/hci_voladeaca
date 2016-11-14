@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/flight_list_selector"
+    android:orientation="horizontal"
+    android:padding="5dip" >
+
+    <TextView
+        android:id="@+id/flight_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="VUELO #1234"
+        android:textColor="#040404"
+        android:typeface="sans"
+        android:textSize="15dip"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/origin_city"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/flight_number"
+        android:textColor="#343434"
+        android:textSize="15dip"
+        android:layout_marginTop="1dip"
+        android:text="BUENOS AIRES" />
+
+    <!-- Rightend Duration -->
+    <TextView
+        android:id="@+id/flight_state"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@id/flight_number"
+        android:gravity="right"
+        android:text="CANCELADO"
+        android:layout_marginRight="5dip"
+        android:textSize="10dip"
+        android:textColor="#10bcc9"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/destination_city"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="NUEVA YORK"
+        android:layout_alignBaseline="@+id/origin_city"
+        android:layout_alignBottom="@+id/origin_city"
+        android:layout_toEndOf="@+id/origin_city"
+        android:layout_marginLeft="20dp" />
+
+
+</RelativeLayout>

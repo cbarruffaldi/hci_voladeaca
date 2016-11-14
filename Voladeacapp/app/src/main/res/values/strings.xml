@@ -4,5 +4,9 @@
     <string name="mis_vuelos_title">Mis Vuelos</string>
     <string name="title_activity_map">Map</string>
     <string name="btn">Hola</string>
-
+    <string name="title_mis_vuelos">Mis Vuelos</string>
+    <string name="title_resenas">Reseñas</string>
+    <string name="title_promociones">Promociones</string>
+    <string name="search">Buscar</string>
+    <string name="configuration">Configuración</string>
 </resources>
