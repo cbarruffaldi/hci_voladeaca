@@ -45,31 +45,6 @@ public class MisVuelos extends Fragment {
 
     }
 
-
-    /*
-        private void createMyFlightsList() {
-            ArrayList flight_details = getListData();
-            ListView lv1 = (ListView)view.findViewById(R.id.text_mis_vuelos);
-            lv1.setAdapter(new FlightListAdapter(this, flight_details));
-            lv1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-                //ACA A LO QUE PASA CUANDO HACE CLICK
-                @Override
-                public void onItemClick(AdapterView<?> a, View v, int position, long id) {
-                    Object o = lv1.getItemAtPosition(position);
-                    Flight flightData = (Flight) o;
-
-                    Intent detailIntent = new Intent(context, FlightDetails.class);
-                    detailIntent.putExtra("number", flightData.getNumber());
-
-                    startActivity(detailIntent);
-
-
-                }
-            });
-
-        }
-        */
     /* PROBANDO UNA ARRAYLIST CUALQUIERA */
     public ArrayList getListData() {
         ArrayList<Flight> results = new ArrayList<Flight>();
