@@ -3,22 +3,25 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/action_promociones"
-        android:enabled="true"
         android:icon="@drawable/ic_local_atm_black_24px"
         android:title="@string/title_promociones"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="ifRoom"
+        android:checked="false"
+        android:checkable="true"/>
 
     <item
         android:id="@+id/action_mis_vuelos"
-        android:enabled="true"
         android:icon="@drawable/ic_flight_takeoff_black_24px"
         android:title="@string/title_mis_vuelos"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="ifRoom"
+        android:checked="false"
+        android:checkable="true"/>
 
     <item
         android:id="@+id/action_resenas"
-        android:enabled="true"
         android:icon="@drawable/ic_assignment_black_24px"
         android:title="@string/title_resenas"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="ifRoom"
+        android:checked="false"
+        android:checkable="true"/>
 </menu>

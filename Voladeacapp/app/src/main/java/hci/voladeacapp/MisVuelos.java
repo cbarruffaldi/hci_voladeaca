@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -37,6 +38,25 @@ public class MisVuelos extends Fragment {
         });
 
         return rootView;
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        Toast t = Toast.makeText(getActivity(),"haoalsdas",Toast.LENGTH_LONG);
+
+    }
+
+    @Override
+    public void onDestroy() {
+        Toast t = Toast.makeText(getActivity(),"Destruyendo",Toast.LENGTH_LONG);
+        super.onDestroy();
+    }
+
+    @Override
+    public void onDetach() {
+        Toast t = Toast.makeText(getActivity(),"Detach",Toast.LENGTH_LONG);
+        super.onDetach();
     }
 
     private void populateList() {
