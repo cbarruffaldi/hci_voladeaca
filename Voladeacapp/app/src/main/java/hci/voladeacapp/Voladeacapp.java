@@ -5,19 +5,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.TextView;
-
-import java.util.ArrayList;
 
 public class Voladeacapp extends AppCompatActivity {
 
-    private ListView misVuelosView;
+    private android.support.v4.app.Fragment misVuelosFragment;
     private TextView promocionesView;
     private TextView resenasView;
 
@@ -29,11 +26,13 @@ public class Voladeacapp extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_voladeacapp);
 
-        misVuelosView = (ListView) findViewById(R.id.text_mis_vuelos);
+        final FragmentManager fragmentManager = getSupportFragmentManager();
+
+        misVuelosFragment = fragmentManager.findFragmentById(R.id.mis_vuelos_fragment);
         promocionesView = (TextView) findViewById(R.id.text_promociones);
         resenasView = (TextView) findViewById(R.id.text_resenas);
 
-        createMyFlightsList();
+        //createMyFlightsList();
 
         final BottomNavigationView bottomNavigationView = (BottomNavigationView)
                 findViewById(R.id.bottom_navigation);
@@ -46,19 +45,19 @@ public class Voladeacapp extends AppCompatActivity {
                     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                         switch (item.getItemId()) {
                             case R.id.action_mis_vuelos:
-                                misVuelosView.setVisibility(View.VISIBLE);
+                                findViewById(R.id.mis_vuelos_fragment).setVisibility(View.VISIBLE);
                                 promocionesView.setVisibility(View.GONE);
                                 resenasView.setVisibility(View.GONE);
                                 break;
                             case R.id.action_promociones:
-                                misVuelosView.setVisibility(View.GONE);
+                                findViewById(R.id.mis_vuelos_fragment).setVisibility(View.GONE);
                                 promocionesView.setVisibility(View.VISIBLE);
                                 resenasView.setVisibility(View.GONE);
                                 Intent intent = new Intent(bottomNavigationView.getContext(), MapActivity.class);
                                 startActivity(intent);
                                 break;
                             case R.id.action_resenas:
-                                misVuelosView.setVisibility(View.GONE);
+                                findViewById(R.id.mis_vuelos_fragment).setVisibility(View.GONE);
                                 promocionesView.setVisibility(View.GONE);
                                 resenasView.setVisibility(View.VISIBLE);
                                 break;
@@ -68,6 +67,7 @@ public class Voladeacapp extends AppCompatActivity {
                 });
     }
 
+    /*
     private void createMyFlightsList() {
 
         ArrayList flight_details = getListData();
@@ -91,9 +91,10 @@ public class Voladeacapp extends AppCompatActivity {
         });
 
     }
-
+    */
+    /*
     private void setDefaultVisibility(BottomNavigationView bnv) {
-        /*
+
         misVuelosView.setVisibility(View.VISIBLE);
         promocionesView.setVisibility(View.GONE);
         resenasView.setVisibility(View.GONE);
@@ -101,11 +102,11 @@ public class Voladeacapp extends AppCompatActivity {
         bnv.getMenu().findItem(R.id.action_mis_vuelos).setChecked(true);
         bnv.getMenu().findItem(R.id.action_promociones).setChecked(false);
         bnv.getMenu().findItem(R.id.action_resenas).setChecked(false);
-        */
+
 
     }
-
-    /* PROBANDO UNA ARRAYLIST CUALQUIERA */
+    */
+    /* PROBANDO UNA ARRAYLIST CUALQUIERA
     public ArrayList getListData() {
         ArrayList<Flight> results = new ArrayList<Flight>();
         Flight flight1 = new Flight();
@@ -130,6 +131,8 @@ public class Voladeacapp extends AppCompatActivity {
         results.add(flight3);
 
         return results;    }
+
+        */
 }
 
 
