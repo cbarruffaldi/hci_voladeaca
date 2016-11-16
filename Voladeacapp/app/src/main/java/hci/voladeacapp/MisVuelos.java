@@ -3,6 +3,7 @@ package hci.voladeacapp;
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,25 +38,32 @@ public class MisVuelos extends Fragment {
             }
         });
 
+        FloatingActionButton addButton = (FloatingActionButton)rootView.findViewById(R.id.add_button);
+        addButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Toast.makeText(getActivity(),"Aca se deberia agregar un vuelo", Toast.LENGTH_LONG).show();
+            }
+        });
+
         return rootView;
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        Toast t = Toast.makeText(getActivity(),"haoalsdas",Toast.LENGTH_LONG);
+        Toast.makeText(getActivity(),"Pausa",Toast.LENGTH_LONG).show();
 
     }
 
     @Override
     public void onDestroy() {
-        Toast t = Toast.makeText(getActivity(),"Destruyendo",Toast.LENGTH_LONG);
+        Toast.makeText(getActivity(),"Destruyendo",Toast.LENGTH_LONG).show();
         super.onDestroy();
     }
 
     @Override
     public void onDetach() {
-        Toast t = Toast.makeText(getActivity(),"Detach",Toast.LENGTH_LONG);
+        Toast.makeText(getActivity(),"Detach",Toast.LENGTH_LONG).show();
         super.onDetach();
     }
 

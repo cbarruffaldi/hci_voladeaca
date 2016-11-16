@@ -1,11 +1,16 @@
 package hci.voladeacapp;
 
+import android.app.SearchManager;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.SearchView;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -30,7 +35,7 @@ public class Voladeacapp extends AppCompatActivity {
 
         final BottomNavigationView bottomNavigationView = (BottomNavigationView)
                 findViewById(R.id.bottom_navigation);
-        //setDefaultVisibility(bottomNavigationView);
+        setDefaultVisibility(bottomNavigationView);
         //bottomNavigationView.getMenu().findItem(R.id.action_mis_vuelos).setChecked(true);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(
@@ -39,16 +44,19 @@ public class Voladeacapp extends AppCompatActivity {
                     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                         switch (item.getItemId()) {
                             case R.id.action_mis_vuelos:
+                                setTitle("Mis Vuelos");
                                 findViewById(R.id.mis_vuelos_fragment).setVisibility(View.VISIBLE);
                                 findViewById(R.id.promociones_fragment).setVisibility(View.GONE);
                                 resenasView.setVisibility(View.GONE);
                                 break;
                             case R.id.action_promociones:
+                                setTitle("Promociones");
                                 findViewById(R.id.mis_vuelos_fragment).setVisibility(View.GONE);
                                 findViewById(R.id.promociones_fragment).setVisibility(View.VISIBLE);
                                 resenasView.setVisibility(View.GONE);
                                 break;
                             case R.id.action_resenas:
+                                setTitle("Reseñas");
                                 findViewById(R.id.mis_vuelos_fragment).setVisibility(View.GONE);
                                 findViewById(R.id.promociones_fragment).setVisibility(View.GONE);
                                 resenasView.setVisibility(View.VISIBLE);
@@ -59,7 +67,7 @@ public class Voladeacapp extends AppCompatActivity {
                 });
     }
 
-/*
+
     private void setDefaultVisibility(BottomNavigationView bnv) {
 
         findViewById(R.id.mis_vuelos_fragment).setVisibility(View.VISIBLE);
@@ -67,8 +75,24 @@ public class Voladeacapp extends AppCompatActivity {
         resenasView.setVisibility(View.GONE);
 
     }
-*/
 
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.mis_vuelos_menu, menu);
+
+
+        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        SearchView searchView = (SearchView) menu.findItem(R.id.action_search)
+                .getActionView();
+
+
+        searchView.setSearchableInfo(searchManager
+                .getSearchableInfo(getComponentName()));
+
+        return true;
+    }
 }
 
 

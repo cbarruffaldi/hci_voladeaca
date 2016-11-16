@@ -36,7 +36,7 @@ public class FlightDetails extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.flight_details_menu, menu);
+        inflater.inflate(R.menu.mis_vuelos_menu, menu);
 
 
         SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
