@@ -58,7 +58,9 @@
             android:layout_weight="0.75"
             android:ems="10"
             android:text= "LALLALA"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:paddingBottom="5dip"
+            android:paddingTop="5dip" />
     </LinearLayout>
 
     <LinearLayout
@@ -84,7 +86,9 @@
             android:layout_weight="0.75"
             android:ems="10"
             android:text= "LALLALA"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:paddingBottom="5dip"
+            android:paddingTop="5dip" />
     </LinearLayout>
 
     <LinearLayout
@@ -110,7 +114,9 @@
             android:layout_weight="0.75"
             android:ems="10"
             android:text= "LALLALA"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:paddingBottom="5dip"
+            android:paddingTop="5dip" />
     </LinearLayout>
 
     <LinearLayout
@@ -136,7 +142,9 @@
             android:layout_weight="0.75"
             android:ems="10"
             android:text= "LALLALA"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:paddingBottom="5dip"
+            android:paddingTop="5dip" />
     </LinearLayout>
     <LinearLayout
         android:layout_width="fill_parent"
@@ -162,7 +170,9 @@
             android:layout_weight="0.75"
             android:ems="10"
             android:text= "LALLALA"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:paddingBottom="5dip"
+            android:paddingTop="5dip" />
     </LinearLayout>
 
 
@@ -179,7 +189,7 @@
             android:layout_weight="0.25"
             android:text="@string/llegada_label"
             android:textSize="24sp"
-            android:paddingTop="30dip" />
+            android:paddingTop="20dip" />
     </LinearLayout>
 
     <LinearLayout
@@ -205,7 +215,9 @@
             android:layout_weight="0.75"
             android:ems="10"
             android:text= "LALLALA"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:paddingBottom="5dip"
+            android:paddingTop="5dip" />
     </LinearLayout>
 
     <LinearLayout
@@ -231,7 +243,9 @@
             android:layout_weight="0.75"
             android:ems="10"
             android:text= "LALLALA"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:paddingBottom="5dip"
+            android:paddingTop="5dip" />
     </LinearLayout>
 
     <LinearLayout
@@ -257,7 +271,9 @@
             android:layout_weight="0.75"
             android:ems="10"
             android:text= "LALLALA"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:paddingBottom="5dip"
+            android:paddingTop="5dip" />
     </LinearLayout>
 
     <LinearLayout
@@ -283,7 +299,9 @@
             android:layout_weight="0.75"
             android:ems="10"
             android:text= "LALLALA"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:paddingBottom="5dip"
+            android:paddingTop="5dip" />
     </LinearLayout>
     <LinearLayout
         android:layout_width="fill_parent"
@@ -309,7 +327,9 @@
             android:layout_weight="0.75"
             android:ems="10"
             android:text= "LALLALA"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:paddingBottom="5dip"
+            android:paddingTop="5dip" />
     </LinearLayout>
 
     <LinearLayout
@@ -323,14 +343,18 @@
             android:text="@string/baggage_claim_label"
             android:textSize="14sp"
             android:textStyle="normal|bold"
-            android:layout_weight="0.03" />
+            android:layout_weight="0.03"
+            android:paddingBottom="5dip"
+            android:paddingTop="5dip" />
         <TextView
             android:id="@+id/baggage_claim_data"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.25"
             android:text="34"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:paddingBottom="5dip"
+            android:paddingTop="5dip" />
 
     </LinearLayout>
 </LinearLayout>
