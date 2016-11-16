@@ -9,4 +9,12 @@
     <string name="title_promociones">Promociones</string>
     <string name="search">Buscar</string>
     <string name="configuration">Configuración</string>
+    <string name="date_label">Fecha:</string>
+    <string name="boarding_time_label">Embarque:</string>
+    <string name="airport_label">Aeropuerto:</string>
+    <string name="terminal_label">Terminal:</string>
+    <string name="gate_label">Puerta:</string>
+    <string name="salida_label">Salida</string>
+    <string name="llegada_label">Llegada</string>
+    <string name="baggage_claim_label">Recolección de equipaje:</string>
 </resources>

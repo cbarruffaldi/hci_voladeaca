@@ -31,7 +31,7 @@ public class MisVuelos extends Fragment {
                 Flight flightData = (Flight) o;
 
                 Intent detailIntent = new Intent(getActivity(), FlightDetails.class);
-                detailIntent.putExtra("number", flightData.getNumber());
+                detailIntent.putExtra("Flight",flightData);
 
                 startActivity(detailIntent);
 
@@ -79,30 +79,30 @@ public class MisVuelos extends Fragment {
     public ArrayList getListData() {
         ArrayList<Flight> results = new ArrayList<Flight>();
         Flight flight1 = new Flight();
-        flight1.setCityDestination("BUENOS AIRES");
+        flight1.setCityFrom("BUENOS AIRES");
         flight1.setNumber("12345");
-        flight1.setCityOrigin("NUEVA YORK");
+        flight1.setCityTo("NUEVA YORK");
         flight1.setState("EXPLOTADO");
         results.add(flight1);
 
         Flight flight2 = new Flight();
-        flight2.setCityDestination("EL INFINITO");
+        flight2.setCityFrom("EL INFINITO");
         flight2.setNumber("00000");
-        flight2.setCityOrigin("MAS ALLA");
+        flight2.setCityTo("MAS ALLA");
         flight2.setState("PERDIDO");
         results.add(flight2);
 
         Flight flight3 = new Flight();
-        flight3.setCityDestination("MADRID");
+        flight3.setCityFrom("MADRID");
         flight3.setNumber("00002");
-        flight3.setCityOrigin("BARILOCHE");
+        flight3.setCityTo("BARILOCHE");
         flight3.setState("RESTRASADO");
         results.add(flight3);
 
         Flight flight4 = new Flight();
-        flight4.setCityDestination("LALA");
+        flight4.setCityFrom("LALA");
         flight4.setNumber("000123");
-        flight4.setCityOrigin("ERWER");
+        flight4.setCityTo("ERWER");
         flight4.setState("RESTRASADO");
         results.add(flight4);
 

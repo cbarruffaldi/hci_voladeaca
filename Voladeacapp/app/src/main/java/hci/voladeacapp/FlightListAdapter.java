@@ -56,8 +56,8 @@ public class FlightListAdapter extends BaseAdapter {
         Flight flight = (Flight) getItem(position);
 
         numberTextView.setText(flight.getNumber());
-        originTextView.setText(flight.getCityOrigin());
-        destinationTextView.setText(flight.getCityDestination());
+        originTextView.setText(flight.getCityFrom());
+        destinationTextView.setText(flight.getCityTo());
         //stateTextView.setText(flight.getState());
 
         return convertView;

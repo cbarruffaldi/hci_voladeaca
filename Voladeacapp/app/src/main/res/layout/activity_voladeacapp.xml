@@ -39,7 +39,8 @@
         app:menu="@menu/bottom_navigation"
         android:layout_width="match_parent"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        />
 
 
 </RelativeLayout>

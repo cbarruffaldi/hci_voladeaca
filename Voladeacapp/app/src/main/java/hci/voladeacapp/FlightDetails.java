@@ -8,6 +8,7 @@ import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 public class FlightDetails extends AppCompatActivity {
 
@@ -15,8 +16,39 @@ public class FlightDetails extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_flight_details);
-        String number = this.getIntent().getExtras().getString("number");
-        setTitle(number);
+        Flight flight = (Flight)this.getIntent().getSerializableExtra("Flight");
+        setTitle(flight.getNumber());
+
+        fillDetails(flight);
+    }
+
+    private void fillDetails(Flight flight) {
+        TextView fromDate = (TextView) findViewById(R.id.from_date_data);
+        TextView toDate = (TextView) findViewById(R.id.to_date_data);
+        TextView boardingFrom= (TextView) findViewById(R.id.from_boarding_data);
+        TextView boardingTo = (TextView) findViewById(R.id.to_boarding_data);
+        TextView airportFrom = (TextView) findViewById(R.id.from_airport_data);
+        TextView airportTo = (TextView) findViewById(R.id.to_airport_data);
+        TextView terminalFrom = (TextView) findViewById(R.id.from_terminal_data);
+        TextView terminalTo = (TextView) findViewById(R.id.to_terminal_data);
+        TextView gateFrom = (TextView) findViewById(R.id.from_gate_data);
+        TextView gateTo = (TextView) findViewById(R.id.to_gate_data);
+        TextView baggageClaim = (TextView) findViewById(R.id.baggage_claim_data);
+        TextView state = (TextView) findViewById(R.id.state_data);
+
+        //date.setText(flight.getFromDate());
+        //toDate.setText(flight.getToDate());
+        //boardingFrom.setText(flight.getBoardingFrom());
+        //boardingTo.setText(flight.getBoardingTo());
+        //airportFrom.setText(flight.getAirportFrom());
+        //airportTo.setText(flight.getAirportTo());
+        //terminalFrom.setText(flight.getTerminalFrom());
+        //terminalTo.setText(flight.getTerminalTo());
+        //gateFrom.setText(flight.getGateFrom());
+        //gateTo.setText(flight.getGateTo());
+        //baggageClaim.setText(flight.getBaggageClaim());
+
+
     }
 
     @Override
