@@ -47,7 +47,7 @@ public class MisVuelos extends Fragment {
 
         return rootView;
     }
-
+/*
     @Override
     public void onPause() {
         super.onPause();
@@ -66,12 +66,14 @@ public class MisVuelos extends Fragment {
         Toast.makeText(getActivity(),"Detach",Toast.LENGTH_LONG).show();
         super.onDetach();
     }
+    */
 
     private void populateList() {
         ArrayList flight_details = getListData();
         flightsListView.setAdapter(new FlightListAdapter(getActivity(),flight_details));
 
     }
+
 
     /* PROBANDO UNA ARRAYLIST CUALQUIERA */
     public ArrayList getListData() {

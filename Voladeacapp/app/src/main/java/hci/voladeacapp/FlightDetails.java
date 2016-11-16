@@ -15,8 +15,6 @@ public class FlightDetails extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_flight_details);
-
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         String number = this.getIntent().getExtras().getString("number");
         setTitle(number);
     }
