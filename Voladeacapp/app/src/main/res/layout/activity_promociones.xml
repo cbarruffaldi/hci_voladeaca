@@ -18,9 +18,9 @@
         android:layout_height="wrap_content"
         android:id="@+id/map_button" />
 
-    <fragment
+    <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/promo_card_fragment"
-        ></fragment>
+        ></ListView>
 </LinearLayout>
