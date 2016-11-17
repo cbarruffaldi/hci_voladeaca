@@ -41,7 +41,6 @@ public class FlightListAdapter extends BaseAdapter {
             holder = new ViewHolder();
             holder.originView = (TextView) convertView.findViewById(R.id.origin_city);
             holder.destinationView = (TextView) convertView.findViewById(R.id.destination_city);
-            //holder.stateView = (TextView) convertView.findViewById(R.id.flight_state);
             holder.numberView = (TextView) convertView.findViewById(R.id.flight_number);
             convertView.setTag(holder);
         } else {
@@ -58,7 +57,6 @@ public class FlightListAdapter extends BaseAdapter {
         numberTextView.setText(flight.getNumber());
         originTextView.setText(flight.getDepartureCity());
         destinationTextView.setText(flight.getArrivalCity());
-        //stateTextView.setText(flight.getState());
 
         return convertView;
 

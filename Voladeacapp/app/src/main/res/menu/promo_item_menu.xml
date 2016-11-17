@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/overflow_more_details"
+        android:title="@string/more_details"
+        app:showAsAction="never"
+     />
+
+    <item android:id="@+id/overflow_add_flight"
+        android:title="@string/add_to_my_flights"
+        app:showAsAction="never"
+     />
+</menu>

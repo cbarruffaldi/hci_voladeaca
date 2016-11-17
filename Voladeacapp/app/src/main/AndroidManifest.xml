@@ -63,6 +63,10 @@
                 android:name="android.app.searchable"
                 android:resource="@xml/searchable" />
         </activity>
+
+        <service
+            android:name=".RetrieveCityImageService"
+            android:exported="false"/>
     </application>
 
 </manifest>

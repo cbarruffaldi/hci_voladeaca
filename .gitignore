@@ -61,3 +61,21 @@ captures/
 
 # External native build folder generated in Android Studio 2.2 and later
 .externalNativeBuild
+
+*.bin
+
+*.bin
+
+*.lock
+
+*.bin
+
+Voladeacapp/.gradle/2.14.1/taskArtifacts/fileSnapshots.bin
+
+*.iml
+
+Voladeacapp/gradle/wrapper/gradle-wrapper.jar
+
+Voladeacapp/gradle.properties
+
+Voladeacapp/gradle/wrapper/gradle-wrapper.properties
