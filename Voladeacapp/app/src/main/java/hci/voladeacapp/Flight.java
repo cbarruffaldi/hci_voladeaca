@@ -1,36 +1,26 @@
 package hci.voladeacapp;
 
+import java.util.Date;
+
 public class Flight {
     private String number;
-    private String cityOrigin, cityDestination;
-    private String aerolinea;
+    private String airline;
     private String state;
-
-    //FALTA LLENAR TODAS LAS COSAS DEL VUELO, ESTOY PROBANDO LOS ADAPTERS
+    private double price;
+    private String departureAirport;
+    private String departureCity;
+    private String arrivalAirport;
+    private String arrivalCity;
+    private Date departureDate;
+    private Date arrivalDate;
+    private int duration;
 
     public String getAerolinea() {
-        return aerolinea;
+        return airline;
     }
 
     public void setAerolinea(String aerolinea) {
-        this.aerolinea = aerolinea;
-    }
-
-
-    public String getCityOrigin() {
-        return cityOrigin;
-    }
-
-    public void setCityOrigin(String cityOrigin) {
-        this.cityOrigin = cityOrigin;
-    }
-
-    public String getCityDestination() {
-        return cityDestination;
-    }
-
-    public void setCityDestination(String cityDestination) {
-        this.cityDestination = cityDestination;
+        this.airline = aerolinea;
     }
 
     public String getState() {
@@ -48,5 +38,77 @@ public class Flight {
 
     public void setNumber(String number) {
         this.number = number;
+    }
+
+    public String getAirline() {
+        return airline;
+    }
+
+    public void setAirline(String airline) {
+        this.airline = airline;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public String getDepartureAirport() {
+        return departureAirport;
+    }
+
+    public void setDepartureAirport(String departureAirport) {
+        this.departureAirport = departureAirport;
+    }
+
+    public String getDepartureCity() {
+        return departureCity;
+    }
+
+    public void setDepartureCity(String departureCity) {
+        this.departureCity = departureCity;
+    }
+
+    public String getArrivalAirport() {
+        return arrivalAirport;
+    }
+
+    public void setArrivalAirport(String arrivalAirport) {
+        this.arrivalAirport = arrivalAirport;
+    }
+
+    public String getArrivalCity() {
+        return arrivalCity;
+    }
+
+    public void setArrivalCity(String arrivalCity) {
+        this.arrivalCity = arrivalCity;
+    }
+
+    public Date getDepartureDate() {
+        return departureDate;
+    }
+
+    public void setDepartureDate(Date departureDate) {
+        this.departureDate = departureDate;
+    }
+
+    public Date getArrivalDate() {
+        return arrivalDate;
+    }
+
+    public void setArrivalDate(Date arrivalDate) {
+        this.arrivalDate = arrivalDate;
+    }
+
+    public int getDuration() {
+        return duration;
+    }
+
+    public void setDuration(int duration) {
+        this.duration = duration;
     }
 }
