@@ -5,3 +5,12 @@ workspace.xml
 TP1.iml
 codeStyleSettings.xml
 vagrant.xml
+Voladeacapp/*.iml
+Voladeacapp/.gradle
+Voladeacapp/local.properties
+Voladeacapp/.idea/workspace.xml
+Voladeacapp/.idea/libraries
+.DS_Store
+Voladeacapp/app/build
+Voladeacapp/captures
+Voladeacapp/.externalNativeBuild
