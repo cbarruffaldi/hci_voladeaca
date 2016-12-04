@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:descendantFocusability="beforeDescendants"
+    >
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="10dp"
+        >
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:descendantFocusability="beforeDescendants"
+            android:focusableInTouchMode="true"
+            android:focusable="true"
+            android:id="@+id/dummy_focus_layout"
+            >
+
+            <TextView
+                android:text="@string/from"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView3"
+                android:textSize="18sp"
+                android:drawableStart="@drawable/ic_location_on_black_24px"
+                android:drawablePadding="5dp" />
+
+            <AutoCompleteTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/promo_from_city_autocomplete"
+                android:textSize="18sp"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:layout_weight="1"
+                android:inputType="textNoSuggestions"
+                android:imeOptions="actionSend"
+                android:maxLines="1"
+                android:selectAllOnFocus="true"
+                />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/promos_map_parent"
+        >
+        <GridView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/promo_card_list"
+            android:dividerHeight="0dp"
+            android:divider="@null"
+            android:clickable="true"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:numColumns="2">
+        </GridView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/promos_no_connection_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        android:visibility="invisible"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="No pudimos cargar los resultados. Verifica tu conexión a internet."
+            />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Reintentar"
+            />
+    </LinearLayout>
+
+</LinearLayout>

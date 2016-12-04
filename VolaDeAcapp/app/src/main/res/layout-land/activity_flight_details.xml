@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="10dp">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/promo_details_layout"
+            android:layout_marginTop="5dp"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="PROMOCIÓN"
+                android:textSize="20sp"
+                android:textColor="@color/colorAccent"
+                android:textStyle="normal|bold"
+                android:paddingRight="10dp"
+                android:layout_gravity="center" />
+
+            <android.support.v7.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                card_view:cardCornerRadius="4dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/promo_details_price"
+                    android:textSize="20sp"
+                    android:background="@color/colorAccent"
+                    android:padding="7dp"
+                    android:textStyle="normal|bold"
+                    android:textColor="@color/white"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp" />
+            </android.support.v7.widget.CardView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/airline_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="Nombre re cheto de aerolínea"
+                android:textSize="22sp" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_weight="0.25">
+                <ImageView android:src="@drawable/ic_okbadge"
+                    android:layout_height="25dp"
+                    android:layout_width="25dp"
+                    android:id="@+id/state_badge"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/state_name"
+                    android:text="En Horario"
+                    android:textSize="22sp"
+                    android:textAllCaps="true"
+                    android:textAlignment="center"
+                    android:paddingStart="10dp"
+                    android:textColor="@android:color/holo_green_dark" />
+            </LinearLayout>
+
+            <!--<TextView-->
+            <!--android:id="@+id/state_data"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_weight="0.25"-->
+            <!--android:text="ACA VA EL ESTADO"-->
+            <!--android:textSize="24sp"-->
+            <!--android:background="@color/cast_intro_overlay_button_background_color"-->
+            <!--android:textAlignment="center" />-->
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:baselineAligned="false">
+
+            <fragment android:id="@+id/fragment_salida"
+                android:name="hci.voladeacapp.ScheduleFragment"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="10dp"
+                tools:layout="@layout/fragment_flight_schedule">
+            </fragment>
+
+            <fragment android:id="@+id/fragment_llegada"
+                android:name="hci.voladeacapp.ScheduleFragment"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginBottom="15dp"
+                tools:layout="@layout/fragment_flight_schedule">
+            </fragment>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+</ScrollView>
+

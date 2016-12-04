@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardUseCompatPadding="true"
+    app:cardElevation="4dp"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp"
+        >
+
+        <TextView
+            android:id="@+id/schedule_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Salida o Entrada"
+            android:textSize="24sp"
+            android:textColor="@color/black" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="7dip">
+
+            <TextView
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.25"
+                android:text="@string/date_label"
+                android:textSize="14sp"
+                android:textIsSelectable="false"
+                android:textStyle="normal|bold" />
+
+            <TextView
+                android:id="@+id/date_data"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.75"
+                android:ems="10"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="7dip">
+
+            <TextView
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.25"
+                android:text="@string/boarding_time_label"
+                android:id="@+id/embarque_change_label"
+                android:textSize="14sp"
+                android:textIsSelectable="false"
+                android:textStyle="normal|bold" />
+
+            <TextView
+                android:id="@+id/boarding_data"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.75"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="7dip">
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_weight="0.25"
+                android:text="@string/airport_label"
+                android:textSize="14sp"
+                android:textIsSelectable="false"
+                android:textStyle="normal|bold"
+                android:layout_width="20dip" />
+
+            <TextView
+                android:id="@+id/airport_data"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.75"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="7dip">
+
+            <TextView
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="0.25"
+                android:text="@string/terminal_label"
+                android:textSize="14sp"
+                android:textIsSelectable="false"
+                android:textStyle="normal|bold" />
+            <TextView
+                android:id="@+id/terminal_data"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.75"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="7dip">
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="0.25"
+                android:text="@string/gate_label"
+                android:textSize="14sp"
+                android:textIsSelectable="false"
+                android:textStyle="normal|bold"
+                android:layout_width="20dip" />
+
+            <TextView
+                android:id="@+id/gate_data"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.75"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <LinearLayout android:id="@+id/baggage_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="7dip">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/baggage_claim_label"
+                android:textSize="14sp"
+                android:textStyle="normal|bold"
+                android:layout_weight="0.03" />
+            <TextView
+                android:id="@+id/baggage_claim_data"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.25"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+</android.support.v7.widget.CardView>

@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_add_review"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="hci.voladeacapp.AddReviewActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:baselineAligned="false">
+            <android.support.design.widget.TextInputLayout
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/airline_text_input_layout"
+                app:errorEnabled="true">
+                <AutoCompleteTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/airline_input"
+                    android:ems="10"
+                    android:hint="@string/airline_label"
+                    android:cursorVisible="false"
+                    android:imeOptions="actionNext"
+                    android:nextFocusRight="@+id/flight_number_input"
+                    android:inputType="text"/>
+            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/flight_number_text_input_layout"
+                app:errorEnabled="true">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@id/flight_number_input"
+                    android:ems="10"
+                    android:hint="@string/flight_number_label"
+                    android:inputType="number"
+                    android:cursorVisible="false"
+                    android:maxLines="1"
+                    android:imeOptions="actionDone"/>
+            </android.support.design.widget.TextInputLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/amabilidad_label"
+                android:paddingRight="8dip"
+                android:textStyle="normal|bold" />
+
+            <TextView
+                android:id="@+id/amabilidad_data"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="1" />
+
+        </LinearLayout>
+
+
+        <org.adw.library.widgets.discreteseekbar.DiscreteSeekBar
+            android:id="@+id/amabilidad_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:dsb_min="1"
+            app:dsb_max="10"
+            app:dsb_allowTrackClickToDrag="true"
+            app:dsb_progressColor="@color/colorAccent"
+            app:dsb_indicatorColor="@color/colorAccent"
+            android:paddingTop="5dip" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/confort_label"
+                android:paddingRight="8dip"
+                android:textStyle="normal|bold" />
+
+            <TextView
+                android:id="@+id/confort_data"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="1" />
+
+        </LinearLayout>
+
+
+        <org.adw.library.widgets.discreteseekbar.DiscreteSeekBar
+            android:id="@+id/confort_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:dsb_min="1"
+            app:dsb_max="10"
+            app:dsb_allowTrackClickToDrag="true"
+            app:dsb_progressColor="@color/colorAccent"
+            app:dsb_indicatorColor="@color/colorAccent"
+            android:paddingTop="5dip" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/comida_label"
+                android:paddingRight="8dip"
+                android:textStyle="normal|bold" />
+
+            <TextView
+                android:id="@+id/comida_data"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="1" />
+
+        </LinearLayout>
+
+        <org.adw.library.widgets.discreteseekbar.DiscreteSeekBar
+            android:id="@+id/comida_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:dsb_min="1"
+            app:dsb_max="10"
+            app:dsb_allowTrackClickToDrag="true"
+            app:dsb_progressColor="@color/colorAccent"
+            app:dsb_indicatorColor="@color/colorAccent"
+            android:paddingTop="5dip" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/relacion_precio_calidad_label"
+                android:paddingRight="8dip"
+                android:textStyle="normal|bold" />
+
+            <TextView
+                android:id="@+id/precio_calidad_data"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="1" />
+
+        </LinearLayout>
+
+        <org.adw.library.widgets.discreteseekbar.DiscreteSeekBar
+            android:id="@+id/precio_calidad_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:dsb_min="1"
+            app:dsb_max="10"
+            app:dsb_allowTrackClickToDrag="true"
+            app:dsb_progressColor="@color/colorAccent"
+            app:dsb_indicatorColor="@color/colorAccent"
+            android:paddingTop="5dip" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/puntualidad_label"
+                android:paddingRight="8dip"
+                android:textStyle="normal|bold" />
+
+            <TextView
+                android:id="@+id/puntualidad_data"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="1" />
+
+        </LinearLayout>
+
+        <org.adw.library.widgets.discreteseekbar.DiscreteSeekBar
+            android:id="@+id/puntualidad_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:dsb_min="1"
+            app:dsb_max="10"
+            app:dsb_allowTrackClickToDrag="true"
+            app:dsb_progressColor="@color/colorAccent"
+            app:dsb_indicatorColor="@color/colorAccent"
+            android:paddingTop="5dip" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/viajeros_frecuentes_label"
+                android:paddingRight="8dip"
+                android:textStyle="normal|bold" />
+
+            <TextView
+                android:id="@+id/viajeros_fecuentes_data"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="1" />
+
+        </LinearLayout>
+
+        <org.adw.library.widgets.discreteseekbar.DiscreteSeekBar
+            android:id="@+id/viajeros_frecuentes_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:dsb_min="1"
+            app:dsb_max="10"
+            app:dsb_allowTrackClickToDrag="true"
+            app:dsb_progressColor="@color/colorAccent"
+            app:dsb_indicatorColor="@color/colorAccent"
+            android:paddingTop="5dip" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/puntuacion_total_label"
+            android:textAlignment="center"
+            android:textStyle="normal|bold" />
+
+        <RatingBar
+            android:id="@+id/ratingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:numStars="5"
+            android:stepSize="0.1"
+            android:rating="0"
+            android:layout_gravity="center"
+            android:clickable="false"
+            android:focusableInTouchMode="false"
+            android:focusable="false"
+            android:isIndicator="true"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/recommend_label"
+            android:textAlignment="center"
+            android:textStyle="normal|bold"
+            android:layout_marginBottom="5dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <ImageButton
+                android:id="@+id/happy_button"
+                android:layout_width="0px"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_sentiment_satisfied_black_24px"
+                android:layout_weight="1"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:background="@color/grey"
+                android:layout_marginEnd="5dp" />
+            <ImageButton
+                android:id="@+id/sad_button"
+                android:layout_width="0px"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_sentiment_dissatisfied_black_24px"
+                android:layout_weight="1"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:background="@color/grey"
+                android:layout_marginStart="5dp" />
+        </LinearLayout>
+        
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/comentario_label"
+            android:textStyle="normal|bold"
+            android:layout_marginTop="5dp" />
+        
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/comment_data"
+            android:layout_gravity="center"
+            android:hint="@string/optional"
+            android:imeOptions="actionDone"
+            android:inputType="text"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="70dip"
+        android:text="@string/enviar_resena"
+        android:layout_gravity="center"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:id="@+id/send_review_button"
+        />
+    </LinearLayout>
+</ScrollView>

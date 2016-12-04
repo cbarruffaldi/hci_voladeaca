@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <SwitchPreference
+        android:defaultValue="true"
+        android:title="@string/notifications_from_this_flight"
+        android:icon="@drawable/ic_notifications_black_24dp"
+        android:key="flight_notifications_switch"
+        android:elevation="24dp" />
+
+
+    <PreferenceCategory
+        android:title="@string/notify_me_about">
+        <SwitchPreference
+            android:defaultValue="true"
+            android:title="@string/takeoff"
+            android:icon="@drawable/ic_flight_takeoff_black_24px"
+            android:key="takeoff_notifications_switch"
+            />
+        <SwitchPreference
+            android:defaultValue="true"
+            android:title="@string/landing"
+            android:icon="@drawable/ic_flight_land_black_24px"
+            android:key="landing_notifications_switch" />
+        <SwitchPreference
+            android:defaultValue="true"
+            android:title="@string/delay"
+            android:icon="@drawable/ic_timer_black_24px"
+            android:key="delay_notifications_switch" />
+        <SwitchPreference
+            android:defaultValue="true"
+            android:title="@string/deviation"
+            android:icon="@drawable/ic_directions_black_24px"
+            android:key="deviation_notifications_switch" />
+        <SwitchPreference
+            android:defaultValue="true"
+            android:title="@string/cancelation"
+            android:icon="@drawable/ic_clear_black_24px"
+            android:key="cancelation_notifications_switch" />
+    </PreferenceCategory>
+
+
+</PreferenceScreen>

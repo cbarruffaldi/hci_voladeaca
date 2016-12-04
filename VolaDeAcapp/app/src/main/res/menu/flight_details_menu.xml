@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:appcompat="http://schemas.android.com/apk/res-auto">
+
+    <!-- Follow widget -->
+    <item android:id="@+id/action_add_flight"
+        android:icon="@drawable/ic_add_white_24px"
+        android:title="Agregar a Mis Vuelos"
+        app:showAsAction="always"
+        android:visible="false"
+        />
+
+    <!-- Config widget -->
+    <item android:id="@+id/action_flight_config"
+        android:icon="@drawable/ic_notifications_white_24px"
+        android:title="Configurar notificaciones"
+        app:showAsAction="always"
+        android:visible="false"/>
+
+    <!-- Unfollow widget -->
+    <item android:id="@+id/action_remove_flight"
+        android:icon="@drawable/ic_delete_white_24px"
+        android:title="Remover de Mis Vuelos"
+        app:showAsAction="always"
+        android:visible="false"/>
+</menu>

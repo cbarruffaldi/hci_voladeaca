@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:id="@+id/airline_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="Nombre re cheto de aerolínea"
+            android:textSize="22sp"
+            android:padding="10dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp">
+            <ImageView android:src="@drawable/ic_okbadge"
+                android:layout_height="25dp"
+                android:layout_width="25dp"
+                android:id="@+id/state_badge"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/state_name"
+                android:text="En Horario"
+                android:textSize="22sp"
+                android:textAllCaps="true"
+                android:textAlignment="center"
+                android:paddingStart="10dp"
+                android:textColor="@android:color/holo_green_dark" />
+        </LinearLayout>
+        <!--<TextView-->
+        <!--android:id="@+id/state_data"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:textSize="24sp"-->
+        <!--android:background="@color/cast_intro_overlay_button_background_color"-->
+        <!--android:textAlignment="center"-->
+        <!--android:layout_margin="10dp" />-->
+
+
+        <!-- Salida -->
+
+        <fragment android:id="@+id/fragment_salida"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:name="hci.voladeacapp.ScheduleFragment"
+            tools:layout="@layout/fragment_flight_schedule" />
+
+
+        <!-- Llegada -->
+
+        <fragment android:id="@+id/fragment_llegada"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:name="hci.voladeacapp.ScheduleFragment"
+            android:layout_marginBottom="15dp"
+            tools:layout="@layout/fragment_flight_schedule" />
+
+
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="NEW PROMO DETAILS"
+            android:visibility="gone"
+            android:id="@+id/promo_new_button"
+            />
+    </LinearLayout>
+
+</ScrollView>

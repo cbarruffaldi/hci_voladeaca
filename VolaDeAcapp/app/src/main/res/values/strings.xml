@@ -1,0 +1,177 @@
+<resources>
+    <string name="app_name">VolaDeAcapp</string>
+    <string name="title_mis_vuelos">Mis Vuelos</string>
+    <string name="salida">Salida</string>
+    <string name="llegada">Llegada</string>
+    <string name="btn">HOLA</string>
+    <string name="mapa">Mapa</string>
+    <string name="search">Buscar</string>
+    <string name="title_resenas">Reseñas</string>
+    <string name="title_promociones">Promociones</string>
+    <string name="configuration">Configuración</string>
+
+    <string name="salida_label">Salida</string>
+    <string name="date_label">Fecha</string>
+    <string name="boarding_time_label">Embarque</string>
+    <string name="airport_label">Aeropuerto</string>
+    <string name="terminal_label">Terminal</string>
+    <string name="gate_label">Puerta</string>
+    <string name="llegada_label">Llegada</string>
+    <string name="baggage_claim_label">Recolección de equipaje</string>
+
+    <string name="formato_fecha">dd-MM-yyyy</string>
+
+    <string name="a_confirmar">A confirmar</string>
+
+    <string name="add_to_my_flights">Agregar a Mis Vuelos</string>
+    <string name="more_details">Ver detalles</string>
+    <string name="onTimeNotif"> está en horario</string>
+    <string name="newTakeOffTimeNotif">Nuevo horario de salida </string>
+    <string name="newLandTimeNotif">Nuevo horario de llegada </string>
+    <string name="delayedNotif"> está retrasado</string>
+    <string name="boardingTimeNotif">Horario de embarque </string>
+    <string name="boardingGateNotif">Puerta de embarque </string>
+    <string name="landedNotif"> ha aterrizado</string>
+    <string name="baggageClaimGateNotif">Recolección de equipaje </string>
+    <string name="exitGateNotif">Puerta de salida </string>
+    <string name="tookOffNotif">\" ha despegado\"</string>
+    <string name="the_flight_notif">El vuelo </string>
+    <string name="title_activity_settings">Configuración</string>
+
+
+    <string name="eliminar">Borrar</string>
+    <string name="singular_eliminado">Vuelo borrado</string>
+    <string name="plural_eliminado">Vuelos borrados</string>
+
+
+    <string name="error_required_airline">La aerolínea es requerida</string>
+    <string name="error_required_flight_number">El número de vuelo es requerido</string>
+
+    <string name="pref_title_vibrate">Vibrate</string>
+    <string name="title_dejar_resena">Dejá una reseña</string>
+    <string name="airline_label">Aerolínea</string>
+    <string name="flight_number_label">Número de vuelo</string>
+    <string name="amabilidad_label">Amabilidad</string>
+    <string name="confort_label">Confort</string>
+    <string name="comida_label">Comida</string>
+    <string name="relacion_precio_calidad_label">Relación precio-calidad</string>
+    <string name="puntualidad_label">Puntualidad</string>
+    <string name="viajeros_frecuentes_label">Programa de viajeros frecuentes</string>
+    <string name="recommend_label">¿Recomendaría este vuelo?</string>
+    <string name="puntuacion_total_label">Puntuación total</string>
+    <string name="enviar_resena">Enviar reseña</string>
+    <string name="title_activity_app_settings">Configuración</string>
+    <string name="undo">Deshacer</string>
+    <string name="deleted">Borrado</string>
+    <string name="refreshed">Actualizado</string>
+    <string name="comentario_label">Comentario</string>
+    <string name="ver_en_mapa">Ver en mapa</string>
+    <string name="notification_title">Notificaciones para %1$s %2$s</string>
+    <string name="update_frequency">Frecuencia de actualización</string>
+    <string name="localization">Localización</string>
+    <string name="language">Idioma</string>
+    <string name="lo_recomienda">lo recomienda</string>
+    <string name="arrival_time">Llegada</string>
+    <string name="english">Inglés</string>
+    <string name="spanish">Español</string>
+    <string name="updates">Actualizaciones</string>
+    <string name="update_frequency_description">Alguna descripcion de que significa esto</string>
+    <string name="from">Desde</string>
+    <string name="departing_on">Saliendo el</string>
+    <string name="every">Cada</string>
+    <string name="not_exists">No se encontró el vuelo</string>
+    <string name="missing_data">Campo incompleto</string>
+    <string name="airline_name">Nombre de Aerolinea</string>
+    <string name="flight_number">Número de vuelo</string>
+    <string name="search_flight_title">Buscar vuelo</string>
+
+    <string name="invalid_city_message">Elija una ciudad válida</string>
+
+    <string name="couldnt_determine_position">No se pudo determinar su ubicación</string>
+    <string name="optional">Opcional</string>
+    <string name="view_in_list">Ver en lista</string>
+
+    <string name="global_conn_err_msg"><strong>Dispositivo desconectado</strong> \n Es posible que las funcionalidades de la aplicación se vean reducidas</string>
+
+    <string name="conn_err_title">Error de conexión</string>
+    <string name="conn_err_msg">No pudo completarse la operación. Revisa tu conexión o intenta de nuevo más tarde.</string>
+    <string name="otro_string">Otro</string>
+    <string name="landed">Aterrizado</string>
+    <string name="programmed">Programado</string>
+    <string name="active">Volando</string>
+    <string name="diverted">Desviado</string>
+    <string name="late">Retrasado</string>
+    <string name="cancelled">Cancelado</string>
+
+
+    <string name="scheduled_notif_title">Vuelo %1$s %2$s programado</string>
+    <string name="scheduled_notif_body">Horario de salida: %1$s (UTC %2$s)</string>
+
+    <string name="delay_notif_title">Vuelo %1$s %2$s retrasado</string>
+    <string name="takeoff_delay_notif_body">El despegue está %1$d minutos retrasado</string>
+    <string name="landing_delay_notif_body">El desembarco está %1$d minutos atrasado</string>
+
+    <string name="takeoff_notif_title">Vuelo %1$s %2$s ha despegado</string>
+    <string name="takeoff_notif_body">Horario de despegue: %1$s (UTC %3$s) \n Aterrizaje programado para las %2$s (UTC %4$s)</string>
+
+    <string name="deviation_notif_title">Vuelo %1$s %2$s desviado</string>
+    <string name="deviation_notif_body">Aterrizaje reprogramado para las %1$s (UTC %3$s) en %2$s</string>
+
+    <string name="cancelation_notif_title">Vuelo %1$s %2$s cancelado</string>
+    <string name="cancelation_notif_body">Consulte a %1$s para más detalles</string>
+
+    <string name="landed_notif_title">Vuelo %1$s %2$s ha aterrizado</string>
+    <string name="landed_notif_body">Horario de aterrizaje: %2$s (UTC %3$s). Puerta de embarque: %1$s.</string>
+
+
+    <string name="no_flights">No hay vuelos agregados</string>
+    <string name="searching_flight">Buscando vuelo</string>
+    <string name="my_flights_reviews">Reseñas de Mis Vuelos</string>
+    <string name="plus_arrow_text">Tocá acá para agregar un vuelo y comenzar a seguirlo</string>
+    <string name="remove_from_my_flights">Borrar de Mis Vuelos</string>
+
+    <string name="dialog_remove_flight_body">¿Borrar %1$s de Mis Vuelos?</string>
+    <string name="dialog_remove_flight_title">Borrar</string>
+    <string name="dialog_remove_flight_yes">Borrar</string>
+    <string name="dialog_remove_flight_no">Cancelar</string>
+
+    <string name="empty_review_list">Acá aparecen las reseñas de tus vuelos</string>
+    <string name="empty_review_arrow">Podés agregar vuelos para seguir desde acá</string>
+
+    <string name="scan_QR">Escanear código QR</string>
+    <string name="prompt_QR">Apunte al código QR en su pasaje</string>
+    <string name="found_QR">Se encontró el cógido %1$s</string>
+    <string name="invalid_QR">El código no corresponde a un número de vuelo válido</string>
+    <string name="review_details_title">Detalles reseña</string>
+
+    <string name="utc_indicator">(hora local, UTC %1$s)</string>
+    <string name="notifications">Notificaciones</string>
+
+    <string name="details_title">Detalles del vuelo</string>
+
+    <string name="departure_time_label_promo">A las</string>
+    <string name="promo_price_label">PROMOCIÓN | </string>
+    <string name="detalles_del_vuelo">Detalles del vuelo</string>
+    <string name="no_reviews">Sin calificaciones</string>
+    <string name="we_cant_scan_wo_camera">No podemos escanear el código QR sin acceso a tu cámara</string>
+    <!--<string name="no_reviews">Sin reseñas</string>-->
+
+    <string name="flight_added">Vuelo agregado</string>
+    <string name="review_sent">Reseña enviada</string>
+    <string name="error_invalid_airline">Elija una aerolínea válida</string>
+    <string name="loading_promo">Cargando promoción</string>
+    <string name="notifications_from_this_flight">Notificaciones de este vuelo</string>
+    <string name="notify_me_about">Notificarme sobre</string>
+    <string name="takeoff">Despegue</string>
+    <string name="landing">Aterrizaje</string>
+    <string name="delay">Retraso</string>
+    <string name="deviation">Desvío</string>
+    <string name="cancelation">Cancelación</string>
+    <string name="why_we_use_your_localization">Usamos tu ubicación para mostrarte promociones partiendo de una ciudad cerca tuyo.</string>
+    <string name="ok">OK</string>
+    <string name="error_came_up">Se produjo un error</string>
+    <string name="try_again_later">Intente de nuevo más tarde</string>
+    <string name="searching_reviews">Buscando reseñas</string>
+    <string name="flight_change">¡El vuelo %1$s %2$s sufrió cambios!</string>
+
+</resources>

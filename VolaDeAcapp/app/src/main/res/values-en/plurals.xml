@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="selected_flights">
+        <item quantity="one">1 flight selected</item>
+        <item quantity="other">%d flights selected</item>
+    </plurals>
+
+    <plurals name="deleted_flights">
+        <item quantity="one">Flight removed</item>
+        <item quantity="other">Flights removed</item>
+    </plurals>
+
+    <plurals name="update_frequency_description_minutes">
+        <item quantity="one">Every 1 minute</item>
+        <item quantity="other">Every %d minutes</item>
+    </plurals>
+
+    <plurals name="update_frequency_description_hours">
+        <item quantity="one">Every 1 hour</item>
+        <item quantity="other">Every %d hours</item>
+    </plurals>
+</resources>

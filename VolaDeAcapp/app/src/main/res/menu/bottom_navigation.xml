@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_promociones"
+        android:icon="@drawable/ic_attach_money_black_24px"
+        android:title="@string/title_promociones"
+        app:showAsAction="ifRoom"
+        android:checked="false"
+        android:checkable="true"/>
+
+    <item
+        android:id="@+id/action_mis_vuelos"
+        android:icon="@drawable/ic_flight_takeoff_black_24px"
+        android:title="@string/title_mis_vuelos"
+        app:showAsAction="ifRoom"
+        android:checked="false"
+        android:checkable="true"/>
+
+    <item
+        android:id="@+id/action_resenas"
+        android:icon="@drawable/ic_grade_black_24px"
+        android:title="@string/title_resenas"
+        app:showAsAction="ifRoom"
+        android:checked="false"
+        android:checkable="true" />
+</menu>

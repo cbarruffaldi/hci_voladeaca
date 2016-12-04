@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/activity_review_detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:orientation="vertical"
+        tools:context="hci.voladeacapp.ReviewDetail">
+        <TextView
+            android:id="@+id/review_airline_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="HOLA tomaco"
+            android:padding="10dp"
+            android:textAlignment="center"
+            android:textSize="22sp"/>
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            app:cardElevation="4dp"
+            android:layout_height="match_parent"
+            android:elevation="15dp"
+            android:background="?attr/selectableItemBackground"
+            app:cardUseCompatPadding="true"
+            app:cardCornerRadius="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="0px"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/amabilidad_label"
+                        android:layout_gravity="center"
+                        android:gravity="center_horizontal"
+                        android:textStyle="normal|bold"
+                        android:textSize="14sp" />
+                    <RatingBar
+                        android:id="@+id/kindness_rating"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:scaleX="0.5"
+                        android:scaleY="0.5"
+                        android:isIndicator="true"
+                        android:clickable="false"
+                        android:focusableInTouchMode="false"
+                        android:focusable="false"
+                        android:numStars="5"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="0px"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/confort_label"
+                        android:layout_gravity="center"
+                        android:gravity="center_horizontal"
+                        android:textStyle="normal|bold"
+                        android:textSize="14sp" />
+                    <RatingBar
+                        android:id="@+id/comfort_rating"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:scaleX="0.5"
+                        android:scaleY="0.5"
+                        android:numStars="5"
+                        android:clickable="false"
+                        android:focusableInTouchMode="false"
+                        android:focusable="false"
+                        android:isIndicator="true" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="0px"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/comida_label"
+                        android:layout_gravity="center"
+                        android:gravity="center_horizontal"
+                        android:textStyle="normal|bold"
+                        android:textSize="14sp" />
+                    <RatingBar
+                        android:id="@+id/food_rating"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:scaleX="0.5"
+                        android:isIndicator="true"
+                        android:scaleY="0.5"
+                        android:numStars="5"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="0px"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/relacion_precio_calidad_label"
+                        android:layout_gravity="center"
+                        android:gravity="center_horizontal"
+                        android:textStyle="normal|bold"
+                        android:textSize="14sp" />
+                    <RatingBar
+                        android:id="@+id/pricequality_rating"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:scaleX="0.5"
+                        android:scaleY="0.5"
+                        android:clickable="false"
+                        android:focusableInTouchMode="false"
+                        android:focusable="false"
+                        android:isIndicator="true"
+                        android:numStars="5"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="0px"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/puntualidad_label"
+                        android:layout_gravity="center"
+                        android:gravity="center_horizontal"
+                        android:textStyle="normal|bold"
+                        android:textSize="14sp" />
+                    <RatingBar
+                        android:id="@+id/punctuality_rating"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:scaleX="0.5"
+                        android:scaleY="0.5"
+                        android:clickable="false"
+                        android:focusableInTouchMode="false"
+                        android:focusable="false"
+                        android:isIndicator="true"
+                        android:numStars="5"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="0px"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.20"
+                        android:text="@string/viajeros_frecuentes_label"
+                        android:layout_gravity="center"
+                        android:gravity="center_horizontal"
+                        android:textStyle="normal|bold"
+                        android:textSize="14sp" />
+                    <RatingBar
+                        android:id="@+id/frequentflyer_rating"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:scaleX="0.5"
+                        android:scaleY="0.5"
+                        android:clickable="false"
+                        android:focusableInTouchMode="false"
+                        android:focusable="false"
+                        android:numStars="5"
+                        android:isIndicator="true"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp">
+                    <TextView
+                        android:id="@+id/percentage_recommend"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="57%"
+                        android:layout_gravity="center"
+                        android:textStyle="normal|bold"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/lo_recomienda"
+                        android:layout_gravity="center"
+                        android:textStyle="normal|bold"
+                        android:textSize="18sp"
+                        android:layout_marginStart="10dp" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+    </LinearLayout>
+</ScrollView>
